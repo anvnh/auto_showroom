@@ -23,6 +23,9 @@ import logo236 from './logo_car236.png'
 
 import user_hero_1 from './user_hero_1.jpg'
 
+import audiA5_banner from "./audiA5/audia5_banner.jpg"
+import bg from "./login/bg.jpg"
+
 export{
     logo,
     menu,
@@ -36,4 +39,6 @@ export{
     car1, car2, car3, car4, car5, car6,
     logo1, logo4, logo5, logo236,
     user_hero_1,
+    audiA5_banner,
+    bg,
 }
