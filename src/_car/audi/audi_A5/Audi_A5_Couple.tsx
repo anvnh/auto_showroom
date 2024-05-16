@@ -1,5 +1,7 @@
 import { Navbar } from "../../../_root/_homepage"
-import { banner, a5_1, a5_2, a5_3, a5_4, a5_5, a5_6, a5_7, a5_8, a5_9, a5_10, a5_11, a5_12, a5_13, a5_14 } from "@/assets/audiA5/couple"
+import { banner, a5_1, a5_2, a5_3, a5_4, a5_5, a5_6, a5_7, a5_8, a5_9, a5_10, a5_11, a5_12, a5_13, a5_14 ,
+  mam1,backLight,light,noiThat1,
+} from "@/assets/audiA5/couple"
 import { useState, useEffect } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
@@ -33,7 +35,7 @@ const audi_A5_Couple = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 12000); // Change slide every 12 seconds
+    }, 2000); // Change slide every 12 seconds
 
     return () => clearInterval(interval);
   }, [slides.length]);
@@ -112,6 +114,14 @@ const audi_A5_Couple = () => {
           ))}
         </div>
 
+      </div>
+      <div className="font-bold text-slate-600 text-center text-[30px]">
+        <div className="mb-[50px]">Cunning Wheels</div>
+        <img className="mb-[50px] "  src={mam1}/>
+        <div className="mb-[50px]">Pretty Light</div>
+        <img className="mb-[50px]" src={light}/>
+        <div className="mb-[50px]">Inside</div>
+        <img className="mb-[50px]" src={noiThat1}/>
       </div>
     </div>
   )
