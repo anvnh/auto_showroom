@@ -16,21 +16,26 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    screens: {
+      xs: "480px",
+      ss: "620px",
+      sm: "768px",
+      md: "1060px",
+      lg: "1200px",
+      xl: "1700px",
+    },
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
+        primary: '#33343E',
+        secondary: '#F2F2F2',
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",

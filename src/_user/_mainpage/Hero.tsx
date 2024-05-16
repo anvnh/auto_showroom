@@ -18,8 +18,8 @@ const Hero = () => {
                 </div>
                 <div className="md:hidden flex">
                     <div className="absolute inset-0 flex flex-col justify-end items-center text-center text-white ml-11 mb-24">
-                        <h1 className="text-[30px] font-poppins font-bold mb-1"> Everything Your Car <br/> Needs, All in One Place </h1>
-                        <p className="text-[21px] font-poppins mb-7"> Your personal portal to a world <br/> of car ownership resources. </p>
+                        <h1 className="text-[30px] font-poppins font-bold mb-1 bg-slate-900 bg-opacity-45 rounded-3xl w-full"> Everything Your Car <br/> Needs, All in One Place </h1>
+                        <p className="text-[21px] font-poppins mb-7 bg-slate-900 bg-opacity-45 rounded-xl w-full"> Your personal portal to a world <br/> of car ownership resources. </p>
                         <Button className="h-[45px] bg-white text-black font-poppins text-[23px] w-[320px] mb-3"> Sign in  </Button>
                         <Button className="h-[45px] bg-transparent border-solid border-2 border-white font-poppins text-[23px] w-[320px]"> Create an account </Button>
                     </div>

@@ -79,9 +79,9 @@ const Navbar = () => {
 					onClick={() => setToggle(!toggle)}
 				/>
 				<div
-					className={`${
-						toggle ? "flex" : "hidden"
-					} p-6 bg-gradient-to-r from-gray-800 to-gray-700 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar z-20`}
+					className={`
+					${ toggle ? "flex" : "hidden" } 
+					p-6 bg-gradient-to-r from-gray-800 to-gray-700 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar z-20`}
 				>
 					<ul className="list-none flex justify-end items-start flex-1 flex-col">
 						<li className="relative group font-poppins font-normal cursor-pointer text-[18px] text-white mb-2.5">

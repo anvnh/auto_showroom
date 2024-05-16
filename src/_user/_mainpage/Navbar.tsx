@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import {logo, menu, close} from '../../assets'
 import { Link } from 'react-router-dom';
 import { IoIosArrowDown } from "react-icons/io";
 import { Button } from "@/components/ui/button"
 
 const Navbar = () => {
+
+	const [toggle, setToggle] = useState(false);
+
     return (
 		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
 			<Link to="/">
@@ -61,7 +65,18 @@ const Navbar = () => {
 				<Button className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"> Sign in </Button>
 			</ul>
 			<div className="sm:hidden flex">
-				<Button className="text-white text-[17px] bg-gray-950 bg-opacity-0 hover:bg-gray-700 -mr-3"> Sign in </Button>
+				<img
+					src={toggle ? close : menu}
+					alt="menu"
+					className="w-[23px] h-[24px] object-contain"
+					onClick={() => setToggle(!toggle)}
+				/>
+				<div className={`
+					${toggle ? "flex" : "hidden"}
+					text-white p-6 bg-gradient-to-r from-gray-800 to-gray-700 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar z-20
+				`}>
+					Hi
+				</div>
 			</div>
 		</nav>
 	);
