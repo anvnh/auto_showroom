@@ -1,4 +1,4 @@
-import {Navbar, Hero, Product, Footer} from './_homepage'
+import {Navbar, Hero, Product, Product2 , Footer} from './_homepage'
 
 const RootLayout = () => {
     return (
@@ -17,6 +17,11 @@ const RootLayout = () => {
                 <div className="bg-primary sm:px-16 px-6 flex justify-center items-start">
                     <div className="w-full">
                         <Product />
+                    </div>
+                </div>
+                <div className="bg-primary sm:px-16 px-6 flex justify-center items-start">
+                    <div className="w-full">
+                        <Product2 />
                     </div>
                 </div>
                 <div className="bg-primary flex justify-center items-start">
