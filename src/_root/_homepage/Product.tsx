@@ -8,6 +8,7 @@ import {
 	car6,
 	car3,
     acc,
+	aa,bannn,ditme
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import { FaArrowRight } from "react-icons/fa";
@@ -15,7 +16,7 @@ import { FaArrowRight } from "react-icons/fa";
 const Product = () => {
 	return (
 		<div className="bg-primary">
-			<div className="bg-cover bg-center h-24 sm:h-48 relative object-cover">
+			<div style={{ backgroundImage: `url(${aa})` }} className="bg-cover bg-center h-24 sm:h-48 relative object-cover">
 				<div className="flex justify-center pt-16 absolute inset-0">
 					<h1 className="relative text-white font-extrabold md:text-5xl xs:text-4xl text-2xl animate-pulse bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 ">
 						POPULAR PRODUCT
@@ -189,9 +190,9 @@ const Product = () => {
 {/*--------------banner-------------------------------------*/}
 
 				<div className="w-screen bg-white">
-					<div className="bg-[url('D:\best_webdesign\auto_showroom\src\assets\car\ggfdg.png')] bg-cover bg-center h-24 sm:h-48 relative object-cover"></div>
+					<div style={{ backgroundImage: `url(${bannn})` }} className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"></div>
 				</div>
-				<div className="bg-[url('D:\best_webdesign\auto_showroom\src\assets\car\pexels-hyundaimotorgroup-11194747.jpg')] bg-cover bg-center h-24 sm:h-48 relative object-cover">
+				<div style={{ backgroundImage: `url(${ditme})` }} className=" bg-cover bg-center h-24 sm:h-48 relative object-cover">
 					<div className="flex justify-center pt-16 absolute inset-0">
 						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 ">
 							Discover the new AAP

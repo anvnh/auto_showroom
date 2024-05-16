@@ -33,11 +33,13 @@ import pos3 from "./car/pos3.png"
 import pos4 from "./car/pos4.png"
 import pos5 from "./car/pos5.png"
 import pos6 from "./car/pos6.png"
-
+import ditme from "./car/ditme.jpg"
 import acc from "./acc.jpg"
-
-
+import aa from "./aad.png"
+import bannn from "./car/ggfdg.png"
+s
 export{
+    aa,bannn,ditme,
     logo,
     menu,
     close,
