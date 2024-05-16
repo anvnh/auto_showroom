@@ -9,12 +9,12 @@ import hero_4 from './hero_4.jpg'
 import hero_5 from './hero_5.jpg'
 import hero_6 from './hero_6.jpg'
 
-import car1 from './Product_car_1.png'
-import car2 from './Product_car_2.png'
-import car3 from './Product_car_3.png'
-import car4 from './Product_car_4.png'
-import car5 from './Product_car_5.png'
-import car6 from './Product_car_6.png'
+import car1 from './car/xe1.png'
+import car2 from './car/xe2.png'
+import car3 from './car/xe3.png'
+import car4 from './car/xe4.png'
+import car5 from './car/xe5.png'
+import car6 from './car/xe6.png'
 
 import logo1 from './logo_car1.png'
 import logo4 from './logo_car4.png'
@@ -25,6 +25,15 @@ import user_hero_1 from './user_hero_1.jpg'
 
 import audiA5_banner from "./audiA5/audia5_banner.jpg"
 import bg from "./login/bg.jpg"
+import product2 from "./car/anhhh.jpg"
+
+import pos1 from "./car/pos1.png"
+import pos2 from "./car/pos2.png"
+import pos3 from "./car/pos3.png"
+import pos4 from "./car/pos4.png"
+import pos5 from "./car/pos5.png"
+import pos6 from "./car/pos6.png"
+
 
 export{
     logo,
@@ -41,4 +50,7 @@ export{
     user_hero_1,
     audiA5_banner,
     bg,
+    product2,
+    pos1,pos2,pos3,pos4,pos5,pos6
+
 }

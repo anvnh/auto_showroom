@@ -14,12 +14,12 @@ const RootLayout = () => {
                         <Hero />
                     </div>
                 </div>
-                <div className="flex items-start justify-center px-6 bg-primary sm:px-16">
+                <div className="flex items-start justify-center  bg-primary ">
                     <div className="w-full">
                         <Product />
                     </div>
                 </div>
-                <div className="bg-primary sm:px-16 px-6 flex justify-center items-start">
+                <div className="bg-primary flex items-start pt-12">
                     <div className="w-full">
                         <Product2 />
                     </div>
