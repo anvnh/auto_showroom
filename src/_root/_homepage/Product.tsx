@@ -7,6 +7,7 @@ import {
 	car5,
 	car6,
 	car3,
+    acc,
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import { FaArrowRight } from "react-icons/fa";
@@ -14,7 +15,7 @@ import { FaArrowRight } from "react-icons/fa";
 const Product = () => {
 	return (
 		<div className="bg-primary">
-			<div className="bg-[url('D:\best_webdesign\auto_showroom\src\assets\car\â.png')] bg-cover bg-center h-24 sm:h-48 relative object-cover">
+			<div className="bg-cover bg-center h-24 sm:h-48 relative object-cover">
 				<div className="flex justify-center pt-16 absolute inset-0">
 					<h1 className="relative text-white font-extrabold md:text-5xl xs:text-4xl text-2xl animate-pulse bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 ">
 						POPULAR PRODUCT
@@ -26,8 +27,7 @@ const Product = () => {
 				<div className="flex justify-end h-auto mx-24 pb-3 pt-4 texe-xl text-5xl md:text-5xl xs:text-4xl">
 					<div className="relative group flex text-white text-sm xs:text-xl md:text-2xl -bottom-10">
 						<Button
-							type="link"
-							className="text-white text-2xl group-hover:text-blue-400 "
+							className="text-white text-2xl group-hover:text-blue-400 mb-5"
 						>
 							{" "}
 							See all{" "}
@@ -41,7 +41,8 @@ const Product = () => {
 			<div className="contrainer pt-20 md:pt-1 ">
 				<div className="relative Product grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[2fr_1fr_1fr] gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer -mb-14 ">
 					{/*--------------Card1-------------------------------------*/}
-					<div className="card group bg-[url('D:\best_webdesign\auto_showroom\src\assets\acc.jpg')] bg-cover bg-center xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500">
+					<div style={{ backgroundImage: `url(${acc})` }} className="card group bg-cover bg-center xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500">
+				
 						<div className="car w-full flex justify-center sm:justify-end">
 							<img
 								src={car1}
@@ -69,7 +70,7 @@ const Product = () => {
 					</div>
 
 					{/*--------------Card2-------------------------------------*/}
-					<div className="card group hidden bg-[url('D:\best_webdesign\auto_showroom\src\assets\macos-monterey-wwdc-21-stock-dark-mode-5k-1920x1080-5585.jpg')] bg-cover bg-center xl:block bg-white rounded-3xl p-9 w-full h-full group relative bottom-7">
+					<div style={{ backgroundImage: `url(${acc})` }} className="card group hidden bg-cover bg-center xl:block bg-white rounded-3xl p-9 w-full h-full group relative bottom-7">
 						<div className="car -mt-0 w-full h-full">
 							<img
 								src={car2}
@@ -91,7 +92,7 @@ const Product = () => {
 					</div>
 
 					{/*--------------Card3-------------------------------------*/}
-					<div className="card group bg-[url('D:\best_webdesign\auto_showroom\src\assets\macos-monterey-wwdc-21-stock-dark-mode-5k-1920x1080-5585.jpg')] bg-cover bg-center hidden xl:block bg-white rounded-3xl p-9 w-full h-full group relative bottom-7">
+					<div style={{ backgroundImage: `url(${acc})` }} className="card group bg-cover bg-center hidden xl:block bg-white rounded-3xl p-9 w-full h-full group relative bottom-7">
 						<div className="car -mt-0 w-full h-full">
 							<img
 								src={car3}
@@ -113,9 +114,9 @@ const Product = () => {
 					</div>
 				</div>
 				{/*--------------hàng 2-------------------------------------*/}
-				<div className="relative Product grid grid-cols-1 md:grid-cols-2 sm:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_2fr] mt-20 gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer xl:mt-2 xs:py-20 xs:mt-1 ">
+				<div  className="relative Product grid grid-cols-1 md:grid-cols-2 sm:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_2fr] mt-20 gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer xl:mt-2 xs:py-20 xs:mt-1 ">
 					{/*--------------Card4-------------------------------------*/}
-					<div className="card group bg-[url('D:\best_webdesign\auto_showroom\src\assets\macos-monterey-wwdc-21-stock-dark-mode-5k-1920x1080-5585.jpg')] bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7">
+					<div style={{ backgroundImage: `url(${acc})` }} className="card group bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7">
 						<div className="car -mt-0 w-full h-full">
 							<img
 								src={car4}
@@ -136,7 +137,7 @@ const Product = () => {
 						</div>
 					</div>
 					{/*--------------Card5-------------------------------------*/}
-					<div className="card group bg-[url('D:\best_webdesign\auto_showroom\src\assets\macos-monterey-wwdc-21-stock-dark-mode-5k-1920x1080-5585.jpg')] bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7">
+					<div style={{ backgroundImage: `url(${acc})` }} className="card group bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7">
 						<div className="car -mt-0 w-full h-full">
 							<img
 								src={car6}
@@ -158,7 +159,7 @@ const Product = () => {
 					</div>
 
 					{/*--------------Card6-------------------------------------*/}
-					<div className="card hidden md:block bg-[url('D:\best_webdesign\auto_showroom\src\assets\acc.jpg')] bg-cover bg-center group xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500">
+					<div style={{ backgroundImage: `url(${acc})` }} className="card hidden md:block bg-cover bg-center group xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500">
 						<div className="car w-full flex justify-center sm:justify-end">
 							<img
 								src={car5}

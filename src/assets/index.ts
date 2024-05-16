@@ -34,6 +34,8 @@ import pos4 from "./car/pos4.png"
 import pos5 from "./car/pos5.png"
 import pos6 from "./car/pos6.png"
 
+import acc from "./acc.jpg"
+
 
 export{
     logo,
@@ -51,6 +53,6 @@ export{
     audiA5_banner,
     bg,
     product2,
-    pos1,pos2,pos3,pos4,pos5,pos6
-
+    pos1,pos2,pos3,pos4,pos5,pos6,
+    acc,
 }
