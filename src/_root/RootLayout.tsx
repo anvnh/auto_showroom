@@ -1,4 +1,5 @@
-import {Navbar, Hero, Product,Banner, Footer} from './_homepage'
+
+import {Navbar, Hero, Product, Product2 ,Banner, Footer} from './_homepage'
 const RootLayout = () => {
     return (
         <section className="w-full">
@@ -18,6 +19,11 @@ const RootLayout = () => {
                         <Product />
                     </div>
                 </div>
+                <div className="bg-primary sm:px-16 px-6 flex justify-center items-start">
+                    <div className="w-full">
+                        <Product2 />
+                    </div>
+                </div>         
                 <div className="flex items-start justify-center bg-primary ">
                     <div className="w-full">
                         <Banner />
