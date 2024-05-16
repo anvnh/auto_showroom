@@ -1,13 +1,14 @@
-import { bg } from "../assets"
-import { Link } from "react-router-dom"
-const Login = () => {
+import {Link} from "react-router-dom"
+import {bg} from "../assets/login"
+const Register = () => {
   return (
-    <>
+    
+        <>
       <div className="flex items-center justify-center w-screen h-screen "
         style={{ backgroundImage: `url(${bg})` }}>
         <div className=" w-[500px] h-[400px] px-[40px] py-[25px]  rounded-[25px] border  border-[2px] backdrop-blur-3xl  text-white font-poppins ">
           <form  >
-            <div className="text-[25px] text-center">Sign In</div>
+            <div className="text-[25px] text-center">Register</div>
             <div className="text-center border-b rounded-[30px] border-t">
               Keep it all together and you'll be fine
             </div>
@@ -17,27 +18,16 @@ const Login = () => {
               <label className="block mb-[5px] hover:text-yellow-300 " htmlFor="">Password</label>
               <input type="password" className="w-full text-slate-700" />
             </div>
-            <button className="block mt-[30px] text-center w-full py-[8px]  bg-slate-700 hover:font-bold hover:bg-slate-100 hover:text-slate-800 transition ease-linear " type="submit">Sign In</button>
-            <div className="flex mt-[50px] gap-x-[10px]  items-center justify-center">
-              <div className="text-[15px]">Dont have account?</div>
-              <Link to="/register">
-                <div className="text-[15px] text-yellow-300">Sign Up Now</div>
-              </Link>
-
-            </div>
+            <button className="block mt-[30px] text-center w-full py-[8px]  bg-slate-700 hover:font-bold hover:bg-slate-100 hover:text-slate-800 transition ease-linear " type="submit">Register</button>
+            
           </form>
 
         </div>
 
       </div>
-
-
-
-
-
     </>
-
+    
   )
 }
 
-export default Login
+export default Register
