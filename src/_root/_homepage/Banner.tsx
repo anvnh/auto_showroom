@@ -13,12 +13,16 @@ const Section = () => {
             </div>
             <div className="hidden lg:flex lg:flex-row  lg:my-[25px] lg:gap-x-[10px]">
               <Link to="/audi-A5-Couple">
-                <div className=" text-center lg:w-[250px] mlg:w-[300px] lg:px-[20px] lg:py-[10px]  text-slate-800 bg-slate-200 ">
+                <div className=" text-center lg:w-[270px]  mlg:w-[300px] lg:px-[20px] lg:py-[10px]  text-slate-800 bg-slate-200
+                  hover:bg-slate-600 hover:text-white transition ease-linear
+                ">
                   Explore Audi A5 Coupe
                 </div>
               </Link>
               <Link to="/audi-A5-Sportback">
-                <div className="text-center lg:w-[250px] mlg:w-[300px] lg:px-[20px] lg:py-[10px]  border border-white">
+                <div className="text-center lg:w-[270px] mlg:w-[300px] lg:px-[20px] lg:py-[10px]  border border-white
+                  hover:bg-green-700 hover:text-white transition ease-linear  
+                ">
                   Explore Audi A5 Sportback
                 </div>
               </Link>
