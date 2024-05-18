@@ -79,19 +79,10 @@
 	transform: scale(0.5); /* Kích thước mặc định nhỏ hơn */
 }
 
-.swiper_container .swiper-slide-active {
-	transform: scale(1); /* Phóng to slide được chọn */
-}
-
-.swiper_container {
-	overflow: hidden;
-	transform: scale(1); /* Phóng to 120% */
-	transform-origin: center; /* Đặt điểm gốc của biến đổi ở giữa */
-}
 /* Các kiểu CSS trước đó */
 
 .swiper_container {
 	overflow: hidden;
-	transform: scale(1); /* Phóng to 120% */
+	transform: scale(1.1); /* Phóng to 120% */
 	transform-origin: center;
 }

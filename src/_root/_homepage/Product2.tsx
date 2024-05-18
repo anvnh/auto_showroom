@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -7,8 +7,20 @@ import "swiper/css/navigation";
 import { pos1, pos2, pos3, pos4, pos5, pos6 } from "../../assets";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import React, { useEffect, useRef, useState } from 'react'; // Import both useEffect and useRef
 
 const Product2 = () => {
+	useEffect(() => {
+		AOS.init({
+ duration: 1500,
+	easing: 'ease-in-out', 
+  once: false,  
+mirror: true,  
+	anchorPlacement: 'top-bottom', 
+		});
+  }, []);
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	const carData = [
@@ -90,6 +102,7 @@ const Product2 = () => {
 						}
 					>
 						<div
+							data-aos="flip-up"
 							className="slide-content object-cover bg-black/25 group flex flex-col items-center pt-1 pb-12 text-white font-poppins justify-center text-2xl"
 							style={{
 								width: "100%", 

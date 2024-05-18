@@ -37,7 +37,7 @@ import ditme from "./car/ditme.jpg"
 import acc from "./acc.jpg"
 import aa from "./aad.png"
 import bannn from "./car/ggfdg.png"
-s
+
 export{
     aa,bannn,ditme,
     logo,
