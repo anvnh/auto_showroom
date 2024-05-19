@@ -1,33 +1,25 @@
-import {Link} from "react-router-dom"
-import {bg} from "../assets/login"
-const Register = () => {
+import {audiA5_15} from "../assets/audiA5/"
+import {bg_1,bg_2} from "@/assets/hplat_asset/img/background"
+const SignUp = () => {
   return (
-    
-        <>
-      <div className="flex items-center justify-center w-screen h-screen "
-        style={{ backgroundImage: `url(${bg})` }}>
-        <div className=" w-[500px] h-[400px] px-[40px] py-[25px]  rounded-[25px] border  border-[2px] backdrop-blur-3xl  text-white font-poppins ">
-          <form  >
-            <div className="text-[25px] text-center">Register</div>
-            <div className="text-center border-b rounded-[30px] border-t">
-              Keep it all together and you'll be fine
-            </div>
-            <div className="mt-[18px]">
-              <label className="block mb-[5px] hover:text-yellow-300">Email or Phone</label>
-              <input type="text" className="w-full mb-[10px] text-slate-700" />
-              <label className="block mb-[5px] hover:text-yellow-300 " htmlFor="">Password</label>
-              <input type="password" className="w-full text-slate-700" />
-            </div>
-            <button className="block mt-[30px] text-center w-full py-[8px]  bg-slate-700 hover:font-bold hover:bg-slate-100 hover:text-slate-800 transition ease-linear " type="submit">Register</button>
-            
-          </form>
-
+    <div className="box-border flex items-center justify-center w-screen h-screen bg-cover item font-poppins"
+      style={{ backgroundImage :`url(${bg_2})`}} >
+      <form className=" flex items-center flex-col text-white border rounded-[40px]  backdrop-blur-2xl border-purple-700 border-[2px] h-[600px] w-[600px] shadow-xl 
+      shadow-purple-800">
+        <p className="font-bold text-center text-[35px] ">AAP Showroom</p>
+        <p className="font-medium text-[20px]">Wellcome!</p>
+        <div className="mt-[50px]">
+          <label className="block mb-[10px] ">User Name</label>
+          <input className="w-[500px] rounded-[20px] shadow-md shadow-purple-400  py-[10px] pl-[20px] bg-transparent text-slate-200" required type="text" />
+          <label className="block mb-[10px] mt-[30px] ">Email</label>
+          <input className="w-[500px] rounded-[20px] shadow-md shadow-purple-400  py-[10px] pl-[20px] bg-transparent text-slate-200" required type="email" />
+          <label className="block mt-[30px] mb-[10px] ">Password</label>
+          <input className="w-[500px] rounded-[20px] shadow-md shadow-purple-400  py-[10px] pl-[20px] bg-transparent text-slate-200" required type='password'/>
         </div>
-
-      </div>
-    </>
-    
+        <button className=" mt-[50px] bg-slate-800 font-bold text-slate-300 w-[300px] text-center py-[10px] rounded-[20px] hover:shadow-lg  hover:shadow-purple-700 hover:text-purple-400 transition ease-linear" type="submit">Sign Up</button>
+      </form> 
+    </div>
   )
 }
 
-export default Register
+export default SignUp
