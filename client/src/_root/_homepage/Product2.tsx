@@ -12,15 +12,15 @@ import 'aos/dist/aos.css';
 import React, { useEffect, useRef, useState } from 'react'; // Import both useEffect and useRef
 
 const Product2 = () => {
-	useEffect(() => {
-		AOS.init({
- duration: 1500,
-	easing: 'ease-in-out', 
-  once: false,  
-mirror: true,  
-	anchorPlacement: 'top-bottom', 
-		});
-  }, []);
+    useEffect(() => {
+        AOS.init({
+            duration: 1200,
+            easing: 'ease-in-out', 
+            once: false,  
+            mirror: true,  
+            anchorPlacement: 'top-bottom', 
+        });
+    }, []);
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	const carData = [
