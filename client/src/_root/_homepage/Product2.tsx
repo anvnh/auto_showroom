@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -9,7 +8,7 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import React, { useEffect, useRef, useState } from 'react'; // Import both useEffect and useRef
+import { useEffect, useState } from 'react'; 
 
 const Product2 = () => {
     useEffect(() => {
@@ -121,12 +120,12 @@ const Product2 = () => {
 								<h3 className="brand justify-center flex-col font-bold text-2xl md:text-4xl lg:text-5xl flex">
 									{car.brand}
 								</h3>
-								<p className="price pt-2 group-hover:scale-110 group-hover:text-red-600 transition-all ease-in-out duration-300 justify-center text-white font-bold text-base md:text-lg lg:text-xl flex">
+								<p className="price pt-2 group-hover:scale-110 group-hover:text-gray-300 transition-all ease-in-out duration-300 justify-center text-white font-bold text-base md:text-lg lg:text-xl flex">
 									{car.price}
 								</p>
 								<div className="pt-4 justify-center flex">
-									<div className="detail-button bg-white text-primary rounded-2xl px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-9 justify-center flex group-hover:bg-black transition-all duration-300 ease-in-out group-hover:text-white group-hover:scale-110 font-bold text-sm md:text-base">
-										details show
+									<div className="detail-button bg-white text-primary px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-9 justify-center flex group-hover:bg-black transition-all duration-300 ease-in-out group-hover:text-white group-hover:scale-110 font-bold text-sm md:text-base">
+                                        Details
 									</div>
 								</div>
 							</div>
