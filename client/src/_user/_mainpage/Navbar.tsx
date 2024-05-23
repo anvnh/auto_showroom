@@ -61,10 +61,10 @@ const Navbar = () => {
 			</ul>
 
 			<ul className="items-center justify-end flex-1 hidden list-none sm:flex">
-			    <Link to="/signup">
+                <Link to="/signup">
 					<Button className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"> Sign up </Button>
 				</Link>
-			    <Link to="/signin">
+                <Link to="/signin">
 					<Button className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"> Sign in </Button>
 				</Link>
 			</ul>
