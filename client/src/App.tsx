@@ -19,7 +19,6 @@ const App = () => {
                 <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
                 <Route path="/audi-A5-Sportback" element={<Audi_A5_Sportback />} />
 
-                <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
 
 
