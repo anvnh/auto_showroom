@@ -6,7 +6,7 @@ const Register = () => {
         <>
       <div className="flex items-center justify-center w-screen h-screen "
         style={{ backgroundImage: `url(${bg})` }}>
-        <div className=" w-[500px] h-[400px] px-[40px] py-[25px]  rounded-[25px] border  border-[2px] backdrop-blur-3xl  text-white font-poppins ">
+        <div className=" w-[500px] h-[400px] px-[40px] py-[25px]  rounded-[25px]  border-[2px] backdrop-blur-3xl  text-white font-poppins ">
           <form  >
             <div className="text-[25px] text-center">Register</div>
             <div className="text-center border-b rounded-[30px] border-t">

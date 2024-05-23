@@ -3,6 +3,7 @@ import RootLayout from './_root/RootLayout';
 import UserLayout from './_user/UserLayout';
 import { Audi_A5_Couple, Audi_A5_Sportback } from "./_car/audi/audi_A5"
 import {Login,Register} from "./_login"
+import Rootlayout from './_productpage/Rootlayout';
 const App = () => {
     return (
         <main className="flex h-screen">
@@ -16,6 +17,10 @@ const App = () => {
                 <Route path="/audi-A5-Sportback" element={<Audi_A5_Sportback />} />
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
+
+
+                  {/* introduce popular product */}
+                <Route path="/SeltosXLine" element={<Rootlayout/>} />
             </Routes>
         </main>
     )

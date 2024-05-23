@@ -7,7 +7,7 @@ import React, { useEffect, useRef } from "react"; // Import both useEffect and u
 const RootLayout = () => {
     useEffect(() => {
 		AOS.init({
-			duration: 2000,
+			duration: 1000,
 			easing: "ease-in-out",
 			once: false,
 			mirror: true,
@@ -17,11 +17,11 @@ const RootLayout = () => {
     return (
         <section className="w-full">
             <div className="w-full overflow-hidden bg-primary">
-                <div data-aos="zoom-out" className="flex items-start justify-center ">
-                    <div className="w-full">
-                        <Navbar />
+                    <div data-aos="zoom-out" className="flex items-start justify-center ">
+                        <div className="w-full">
+                            <Navbar />
+                        </div>
                     </div>
-                </div>
                 <div data-aos="zoom-out" className="flex items-start justify-center bg-primary">
                     <div className="w-full">
                         <Hero />

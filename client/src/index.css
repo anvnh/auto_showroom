@@ -76,13 +76,14 @@
 }
 .swiper_container .swiper-slide {
 	transition: transform 0.8s ease;
-	transform: scale(0.5); /* Kích thước mặc định nhỏ hơn */
+	transform: scale(0.5);
 }
-
-/* Các kiểu CSS trước đó */
 
 .swiper_container {
 	overflow: hidden;
-	transform: scale(1.1); /* Phóng to 120% */
+	transform: scale(1.1);
 	transform-origin: center;
+}
+.relative {
+	perspective: 1000px; /* Tạo hiệu ứng 3D */
 }
