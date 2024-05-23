@@ -13,7 +13,7 @@ const App = () => {
                 <Route path="/users" element={<UserLayout />} />
 
                 <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
-                <Route path="/audi-A5-Sportback" element={<Audi_A5_Sportback />} />
+                <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
                 <Route path="/signin" element={<SignIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
             </Routes>

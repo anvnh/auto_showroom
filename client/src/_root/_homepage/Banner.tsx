@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const Section = () => {
   return (
     <div className='box-border font-poppins Banner'>
-      <div className='banner mt-[65px] mb-[60px]'>
+      <div className='banner mt-[65px] mb-[15px]'>
         <div className="relative">
           <img className="object-cover" src={audiA5_banner} />
           <div className="absolute top-0 font-bold text-white lg:mx-[50px] lg:my-[50px] mlg:my-[100px] xl:my-[150px] ">
@@ -40,9 +40,9 @@ const Section = () => {
                 Explore Audi A5 Coupe
               </div>
             </Link>
-            <Link to="/audi-A5-Sportback">
+            <Link to="/audi-s6-limousin">
               <div className="text-center w-[260px] xs:w-[350px] px-[20px] py-[10px] text-white  border border-white">
-                Explore Audi A5 Sportback
+                Explore Audi S6 Limousin
               </div>
             </Link>
           </div>
