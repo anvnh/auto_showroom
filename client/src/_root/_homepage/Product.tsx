@@ -16,12 +16,12 @@ import { Button } from "@/components/ui/button";
 import { FaArrowRight } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import React, { useEffect, useRef } from "react"; // Import both useEffect and useRef
-
+import React, { useEffect, useRef } from "react"; 
+import { Link } from 'react-router-dom';
 const Product = () => {
 	useEffect(() => {
 		AOS.init({
-			duration: 2000,
+			duration: 1000,
 			easing: "ease-in-out",
 			once: false,
 			mirror: true,
@@ -56,27 +56,31 @@ const Product = () => {
 
 			{/*--------------Card-------------------------------------*/}
 			<div className="contrainer pt-20 md:pt-1 ">
-				<div className="relative Product grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[2fr_1fr_1fr] gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer -mb-14 ">
+				
+				<div className="relative Product grid grid-cols-1 md:grid-cols-[2fr]  xl:grid-cols-[2fr_1fr_1fr] gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer -mb-14 ">
 					{/*--------------Card1-------------------------------------*/}
+					<Link to="/SeltosXLine">
 					<div
 						style={{ backgroundImage: `url(${acc})` }}
 						data-aos="zoom-out"
 						className="card group bg-cover bg-center xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500"
 					>
+							
 						<div className="car w-full flex justify-center sm:justify-end">
 							<img
 								src={car1}
 								alt=""
 								className="object-cover rounded-lg relative transition-transform duration-500 ease-out group-hover:rotate-3 group-hover:-translate-x-1 mx:group-hover:scale-150 group-hover:scale-125 sm:group-hover:-translate-x-14 "
-								style={{ top: "-10px" }}
+								style={{ top: "17px" }}
 							/>
 						</div>
+					
 						<div className="hidden sm:block">
 							<div className="logo_Car flex flex-col items-start opacity-100 group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-36 left-24  p-2">
 								<img src={logo1} alt="" />
 							</div>
 							<div className="Product_text opacity-100 text-white  font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-5000 absolute bottom-24 left-12">
-								<h2>Hyundai Sonata 2022</h2>
+								<h2>Mercedes AMG CLS</h2>
 								<p className="text-center">$ 26 000</p>
 							</div>
 							<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
@@ -88,6 +92,7 @@ const Product = () => {
 							</div>
 						</div>
 					</div>
+					</Link>
 
 					{/*--------------Card2-------------------------------------*/}
 					<div
@@ -142,7 +147,7 @@ const Product = () => {
 					</div>
 				</div>
 				{/*--------------hàng 2-------------------------------------*/}
-				<div className="relative Product grid grid-cols-1 md:grid-cols-2 sm:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_2fr] mt-20 gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer xl:mt-2 xs:py-20 xs:mt-1 ">
+				<div className="relative  Product grid grid-cols-1 md:grid-cols-2 sm:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_2fr] mt-20 gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer xl:mt-2 xs:py-20 xs:mt-1 ">
 					{/*--------------Card4-------------------------------------*/}
 					<div
 						style={{ backgroundImage: `url(${acc})` }}
