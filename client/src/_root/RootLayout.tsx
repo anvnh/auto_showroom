@@ -7,7 +7,8 @@ import React, { useEffect, useRef } from "react"; // Import both useEffect and u
 const RootLayout = () => {
     useEffect(() => {
 		AOS.init({
-			duration: 1000,
+			duration: 900,
+
 			easing: "ease-in-out",
 			once: false,
 			mirror: true,
