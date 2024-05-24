@@ -5,14 +5,12 @@ import { Link } from 'react-router-dom';
 import { MdOpenInNew } from "react-icons/md";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-
-
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
 
-    const [dropdownVe, setDropdownVe] = useState(false);
-    const [dropdownSh, setDropdownSh] = useState(false);
-    const [dropdownIn, setDropdownIn] = useState(false);
+	const [toggleVehiclesMenu, setToggleVehiclesMenu] = useState(false);
+	const [toggleShoppingMenu, setToggleShoppingMenu] = useState(false);
+	const [toggleInventoryMenu, setToggleInventoryMenu] = useState(false);
 
     return (
 		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
@@ -21,49 +19,49 @@ const Navbar = () => {
 				alt="logo"
 				className="md:w-[68px] w-[55px] md:h-[60px] h-[55px]"
 			/>
-
 			<ul className="list-none sm:flex hidden justify-start items-center flex-1">
 				<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10 ml-5">
-					<div
-                        onClick={() => {
-                            setDropdownVe(!dropdownVe);
-                            setDropdownSh(false);
-                            setDropdownIn(false);
-                        }}
-						className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300">
+					<div 
+						onClick={() => setToggleVehiclesMenu(!toggleVehiclesMenu)}
+						className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300"
+					>
 						<p> Vehicles </p>
-                        {dropdownVe ? <IoIosArrowDown className="ml-2 mt-1" /> : <IoIosArrowUp className="ml-2 mt-1" />}
-                    </div>
+						{toggleVehiclesMenu ? (
+								<IoIosArrowDown className="ml-2 mt-1" />
+						) : (
+							<IoIosArrowUp className="ml-2 mt-1" />
+						)}
+					</div>
 					<div className="absolute -bottom-2 left-0 h-1 w-0 bg-gray-400 group-hover:w-full transition-all duration-300"></div>
 				</li>
+
+
 				<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10">
 					<div 
-                        onClick={() => {
-                            setDropdownSh(!dropdownSh);
-                            setDropdownVe(false);
-                            setDropdownIn(false);
-                        }}
+						onClick={() => setToggleShoppingMenu(!toggleShoppingMenu)}
 						className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300">
 						<p> Shopping Assist </p>
-                        {dropdownSh ? <IoIosArrowDown className="ml-2 mt-1" /> : <IoIosArrowUp className="ml-2 mt-1" />}
+						{toggleShoppingMenu ? (
+							<IoIosArrowDown className="ml-2 mt-1" />
+						) : (
+							<IoIosArrowUp className="ml-2 mt-1" />
+						)}
 					</div>
 					<div className="absolute -bottom-2 left-0 h-1 w-0 bg-gray-400 group-hover:w-full transition-all duration-300"></div>
 				</li>
-
 				<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10">
 					<div 
-                        onClick={() => {
-                            setDropdownIn(!dropdownIn);
-                            setDropdownSh(false);
-                            setDropdownVe(false);
-                        }}
+						onClick={() => setToggleInventoryMenu(!toggleInventoryMenu)}
 						className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300">
 						<p> Inventory </p>
-                        {dropdownIn ? <IoIosArrowDown className="ml-2 mt-1" /> : <IoIosArrowUp className="ml-2 mt-1" />}
+						{toggleInventoryMenu ? (
+							<IoIosArrowDown className="ml-2 mt-1" /> 
+						) : (
+							<IoIosArrowUp className="ml-2 mt-1" />
+						)}
 					</div>
 					<div className="absolute -bottom-2 left-0 h-1 w-0 bg-gray-400 group-hover:w-full transition-all duration-300"></div>
 				</li>
-
 				<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10">
 					<Link to="/users" className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300">
 						<p> Owners </p>
@@ -72,7 +70,6 @@ const Navbar = () => {
 					<div className="absolute -bottom-2 left-0 h-1 w-0 bg-gray-400 group-hover:w-full transition-all duration-300"></div>
 				</li>
 			</ul>
-
 
 			<div className="sm:hidden flex flex-1 justify-end items-center">
 				<img
