@@ -21,9 +21,11 @@ import noiThat1 from "./noiThat1.png"
 import light from "./light.png"
 import backLight from "./backLight.png"
 import mam1 from "./mam1.png"
+import power from "./power.png"
 
 
 export {
+    power,
     banner,
     adap,
     inside1,

@@ -17,6 +17,9 @@ const App = () => {
                 <Route path="/users" element={<UserLayout />} />
 
                 <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
+
+                <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
+
                 <Route path="/audi-A5-Sportback" element={<Audi_A5_Sportback />} />
 
                 <Route path="/register" element={<Register/>}/>
@@ -24,6 +27,7 @@ const App = () => {
 
                   {/* introduce popular product */}
                 <Route path="/SeltosXLine" element={<Rootlayout/>} />
+
                 <Route path="/signin" element={<SignIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
             </Routes>
