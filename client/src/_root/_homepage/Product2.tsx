@@ -64,6 +64,7 @@ const Product2 = () => {
 	return (
 		<div className="container object-cover">
 			<Swiper
+		
 				effect={"coverflow"}
 				grabCursor={true}
 				centeredSlides={true}
@@ -71,9 +72,10 @@ const Product2 = () => {
 				slidesPerView={"auto"}
 				coverflowEffect={{
 					rotate: 0,
-					stretch: 0,
-					depth: 200,
-					modifier: 2.5,
+					stretch: 3200,
+					depth: 1500,
+					modifier: 1,
+					slideShadows: false, // Tắt hiệu ứng đổ bóng
 				}}
 				pagination={{
 					el: ".swiper-pagination",
@@ -86,10 +88,10 @@ const Product2 = () => {
 				modules={[EffectCoverflow, Pagination, Navigation]}
 				className="swiper_container"
 				autoplay={{
-					delay: 1000,
-					disableOnInteraction: false,
+					delay: 500,
+					disableOnInteraction: true,
 				}}
-				speed={3000}
+				speed={1000}
 				onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
 			>
 				{/* Slides */}
@@ -102,7 +104,7 @@ const Product2 = () => {
 					>
 						<div
 							data-aos="flip-up"
-							className="slide-content object-cover bg-black/25 group flex flex-col items-center pt-1 pb-12 text-white font-poppins justify-center text-2xl"
+							className="slide-content object-cover bg-transparent group flex flex-col items-center pt-1 pb-12 text-white font-poppins justify-center text-2xl"
 							style={{
 								width: "100%", 
 								boxSizing: "border-box", 

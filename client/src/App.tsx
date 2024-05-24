@@ -27,7 +27,7 @@ const App = () => {
 
                   {/* introduce popular product */}
                 <Route path="/SeltosXLine" element={<Rootlayout/>} />
-
+                {/* ------------------------------------- */}
                 <Route path="/signin" element={<SignIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
             </Routes>
