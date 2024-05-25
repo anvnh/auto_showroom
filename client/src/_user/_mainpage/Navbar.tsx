@@ -9,23 +9,11 @@ const Navbar = () => {
 
 	const [toggle, setToggle] = useState(false);
 
-    const [toggleSignIn, setToggleSignIn] = useState(false);
-    const [toggleSignUp, setToggleSignUp] = useState(false);
-
     const [activePopup, setActivePopup] = useState(null); // 'signIn' or 'signUp'
 
-    const handleOpenSignIn = () => setActivePopup('signIn');
-    const handleOpenSignUp = () => setActivePopup('signUp');
+    const handleOpenSignIn = () => setActivePopup("signIn");
+    const handleOpenSignUp = () => setActivePopup("signUp");
     const handleClosePopup = () => setActivePopup(null);
-
-
-    const handleCloseSignIn = () => {
-        setToggleSignIn(false);
-    };
-
-    const handleCloseSignUp = () => {
-        setToggleSignUp(false);
-    };
 
     return (
 		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
