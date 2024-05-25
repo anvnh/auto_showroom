@@ -97,7 +97,7 @@ const Navbar = () => {
 					${toggle ? "flex" : "hidden"}
 					text-white p-6 bg-gradient-to-r from-gray-800 to-gray-700 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar z-20
 				`}>
-					Hi
+                    Hi
 				</div>
 			</div>
 		</nav>

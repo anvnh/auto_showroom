@@ -1,4 +1,4 @@
-import { Navbar, Hero} from './_mainpage'
+import { Navbar, Hero, About } from './_mainpage'
 
 const OwnerLayout = () => {
     return (
@@ -14,8 +14,9 @@ const OwnerLayout = () => {
                         <Hero />
                     </div>
                 </div>
-                <div className="bg-primary sm:px-16 px-6 flex justify-center items-start">
+                <div className="bg-white sm:px-16 px-6 flex justify-center items-start">
                     <div className="w-full">
+                        <About />
                     </div>
                 </div>
             </div>
