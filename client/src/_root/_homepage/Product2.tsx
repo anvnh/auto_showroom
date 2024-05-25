@@ -137,10 +137,10 @@ const Product2 = () => {
 
 				{/* Controls */}
 				<div className="slider_controler">
-					<div className="swiper-button-next slider-arrow">
+					<div className="swiper-button-next slider-arrow text-white pl-10">
 						<FaChevronRight />
 					</div>
-					<div className="swiper-button-prev slider-arrow">
+					<div className="swiper-button-prev slider-arrow text-white pr-10">
 						<FaChevronLeft />
 					</div>
 					<div className="swiper-pagination"></div>

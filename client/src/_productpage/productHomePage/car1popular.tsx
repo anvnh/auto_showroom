@@ -1,11 +1,10 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
 	mer1,
 	mer2,
@@ -29,18 +28,17 @@ import {
 	FaLinkedin,
 	FaYoutube,
 } from "react-icons/fa";
-import { jarallax } from "jarallax";
-
-const Thumbnail = ({ image, onClick, isActive }) => (
-	<img
-		src={image}
-		alt="Car Thumbnail"
-		className={`w-24 h-16 object-cover cursor-pointer rounded-md ${
-			isActive ? "border-2 border-blue-500" : ""
-		}`}
-		onClick={onClick}
-	/>
-);
+//
+// const Thumbnail = ({ image, onClick, isActive }) => (
+// 	<img
+// 		src={image}
+// 		alt="Car Thumbnail"
+// 		className={`w-24 h-16 object-cover cursor-pointer rounded-md ${
+// 			isActive ? "border-2 border-blue-500" : ""
+// 		}`}
+// 		onClick={onClick}
+// 	/>
+// );
 const car1popular = () => {
 	useEffect(() => {
 		AOS.init({
@@ -56,9 +54,9 @@ const car1popular = () => {
 	const handleThumbnailClick = (image) => {
 		setSelectedImage(image);
 	};
-	useEffect(() => {
-		window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
-	}, []);
+	// useEffect(() => {
+	// 	window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
+	// }, []);
 	return (
 		<div>
 			<div
@@ -151,7 +149,7 @@ const car1popular = () => {
 						</div>
 						<div
 							data-aos="zoom-in"
-							className="font-thin text-white md:text-2xl  p-48"
+							className="font-thin text-white md:text-2xl p-48"
 						>
 							Mercedes-AMG CLS 53 4Matic+ is equipped with a
 							turbocharged 3.0-liter I6 engine, generating maximum
