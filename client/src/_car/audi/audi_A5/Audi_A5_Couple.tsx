@@ -11,6 +11,7 @@ import { RxDotFilled } from 'react-icons/rx';
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import {motion} from "framer-motion"
 import Aos from "aos";
+import audiA5 from "@/assets/hplat_asset/video"
 const audi_A5_Couple = () => {
   const slides = [
     { url: a5_1, },
@@ -61,7 +62,7 @@ const audi_A5_Couple = () => {
               <Navbar />
             </div>
           </div>
-          <div className="">
+          <div className="hero">
             <div className="relative">
               <img className="object-cover w-screen h-screen" src={banner} />
               <div className="absolute z-10 top-0 text-slate-200 mx-[20px] my-[20px] sm:my-[50px] sm:mx-[50px]">
@@ -143,15 +144,13 @@ const audi_A5_Couple = () => {
             </div>
             <div className="w-[700px]">
               <p className="text-white text-[35px] font-bold">Aggressive design</p>
-              <p  className="text-white text-[25px] font-semibold">High performance, bringing valuable experience to the driver. No matter the road, defeating Mercedes and BMW
-</p>
+              <p  className="text-white text-[25px] font-semibold">High performance, bringing valuable experience to the driver. No matter the road, defeating Mercedes and BMW</p>
             </div>
           </div>
           <div className="flex mt-[200px] border-t justify-center items-center rounded-[40px] w-screen h-screen gap-x-[100px]">
             <div className="w-[600px]">
                 <p className=" text-[40px] font-bold text-white">TFSI Power</p>
-              <p className="text-white font-semibold text-[25px]">Make your passion, master the game, don't be afraid of your opponents
-</p>
+              <p className="text-white font-semibold text-[25px]">Make your passion, master the game, don't be afraid of your opponents</p>
             </div>
             <div className="w-[800px]  rounded-[40px]">
               <img  className="object-cover w-[900px] h-[700px] rounded-[40px]" src={power}/>
