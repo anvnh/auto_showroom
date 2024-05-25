@@ -2,11 +2,18 @@ import { useState } from 'react';
 import {logo, menu, close} from '../../assets'
 import { Link } from 'react-router-dom';
 import { IoIosArrowDown } from "react-icons/io";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { SignIn, SignUp } from "../_popup";
 
 const Navbar = () => {
 
 	const [toggle, setToggle] = useState(false);
+
+    const [activePopup, setActivePopup] = useState(null); // 'signIn' or 'signUp'
+
+    const handleOpenSignIn = () => setActivePopup("signIn");
+    const handleOpenSignUp = () => setActivePopup("signUp");
+    const handleClosePopup = () => setActivePopup(null);
 
     return (
 		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
@@ -61,12 +68,23 @@ const Navbar = () => {
 			</ul>
 
 			<ul className="items-center justify-end flex-1 hidden list-none sm:flex">
-                <Link to="/signup">
-					<Button className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"> Sign up </Button>
-				</Link>
-                <Link to="/signin">
-					<Button className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"> Sign in </Button>
-				</Link>
+                <Button 
+                    className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"
+                    onClick={handleOpenSignUp}
+                > 
+                    Sign up 
+                </Button>
+
+                <Button 
+                    className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"
+                    onClick={handleOpenSignIn}
+                > 
+                    Sign in 
+                </Button>
+
+                {activePopup === 'signIn' && <SignIn onClose={handleClosePopup} onOpenSignUp={handleOpenSignUp} />}
+                {activePopup === 'signUp' && <SignUp onClose={handleClosePopup} onOpenSignIn={handleOpenSignIn} />}
+
 			</ul>
 			<div className="flex sm:hidden">
 				<img

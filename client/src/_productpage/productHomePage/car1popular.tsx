@@ -1,11 +1,10 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
 	mer1,
 	mer2,
@@ -29,18 +28,17 @@ import {
 	FaLinkedin,
 	FaYoutube,
 } from "react-icons/fa";
-import { jarallax } from "jarallax";
-
-const Thumbnail = ({ image, onClick, isActive }) => (
-	<img
-		src={image}
-		alt="Car Thumbnail"
-		className={`w-24 h-16 object-cover cursor-pointer rounded-md ${
-			isActive ? "border-2 border-blue-500" : ""
-		}`}
-		onClick={onClick}
-	/>
-);
+//
+// const Thumbnail = ({ image, onClick, isActive }) => (
+// 	<img
+// 		src={image}
+// 		alt="Car Thumbnail"
+// 		className={`w-24 h-16 object-cover cursor-pointer rounded-md ${
+// 			isActive ? "border-2 border-blue-500" : ""
+// 		}`}
+// 		onClick={onClick}
+// 	/>
+// );
 const car1popular = () => {
 	useEffect(() => {
 		AOS.init({
@@ -56,9 +54,9 @@ const car1popular = () => {
 	const handleThumbnailClick = (image) => {
 		setSelectedImage(image);
 	};
-	useEffect(() => {
-		window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
-	}, []);
+	// useEffect(() => {
+	// 	window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
+	// }, []);
 	return (
 		<div>
 			<div
@@ -87,17 +85,17 @@ const car1popular = () => {
 							className="bg-black bg-opacity-75 rounded-2xl font-thin absolute text-white top-24 transform text-center shadow-xl 
 							md:w-[550px] w-[300px] p-2 md:p-5 "
 						>
-							<h1 className="text-2xl md:text-3xl lg:text-4xl mb-2 tracking-widest font-bold">
+							<h1 className="text-2xl md:text-3xl lg:text-4xl mb-2 	tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all ">
 								MERCEDES-AMG
 							</h1>
-							<h2 className="text-1xl md:text-2xl lg:text-3xl font-thin">
+							<h2 className="text-1xl md:text-2xl lg:text-3xl font-thin animate-pulse duration-1000 ease-in-out transition-all">
 								CLS 53 4MATIC+
 							</h2>
 						</div>
 					</div>
 					<div className="justify-center items-center flex">
 						<div className="bg-black grid ss:grid-cols-2 gap-2 grid-cols-1 bg-opacity-75 rounded-2xl font-bold absolute text-white -bottom-1 transform -translate-y-1/2 shadow-xl xl:w-[1200px] md:w-[1000px] sm:w-[700px] ss:w-[500px] w-[300px] p-7 ">
-							<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-start md:pl-40 ss:pl-1 pl-20  ">
+							<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-start md:pl-40 ss:pl-1 pl-20 animate-pulse duration-1000 ease-in-out transition-all  ">
 								<span className="font-bold">520</span>{" "}
 								<span className="text-lg font-light">Nm</span>{" "}
 								<br />
@@ -109,7 +107,7 @@ const car1popular = () => {
 								<span className="text-lg font-light">KW</span>
 							</div>
 							<div className="hidden ss:block">
-							<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-xs pr-3">
+							<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-xs pr-3 animate-pulse duration-1000 ease-in-out transition-all">
 								<span className="font-bold">
 									There is always a destination.
 								</span>{" "}
@@ -151,9 +149,9 @@ const car1popular = () => {
 						</div>
 						<div
 							data-aos="zoom-in"
-							className="font-thin text-white md:text-2xl  p-48"
+							className="font-thin text-white md:text-2xl text-sm md:p-64 ss:p-14  p-12 pb-64 pt-44 text-center"
 						>
-							Mercedes-AMG CLS 53 4Matic+ is equipped with a
+							<span className="font-bold ">Mercedes-AMG CLS 53 4Matic+</span> is equipped with a
 							turbocharged 3.0-liter I6 engine, generating maximum
 							power of 435 horsepower and maximum torque of 520
 							Nm. This power is enhanced with a 48V hybrid drive
@@ -168,33 +166,33 @@ const car1popular = () => {
 						<div
 							data-aos="zoom-in"
 							style={{ backgroundImage: `url(${mer1})` }}
-							className="bg-cover bg-center w-full h-full relative object-cover rounded-full rounded-tl-none rounded-br-none"
+							className="bg-cover bg-center w-full  min-h-[700px] md:min-h-[800px] xl:min-h-[1000px] relative object-cover rounded-full rounded-tl-none rounded-br-none pt-[900px]"
 						></div>
 					</div>
 				</div>
 				{/* ------------tiêu đề------------------ */}
+				<div className="relative xl:pt-[1400px] lg:pt-[1400px] md:pt-[1500px] sm:pt-[1000px] xs:pt-[1200px] ss:pt-[700px] pt-[1100px]">
 				<div
 					data-aos="flip-left"
-					className="font-thin text-blue-200 relative text-7xl text-center pt-[1000px]"
+					className="font-thin text-blue-200 relative text-sm ss:text-2xl  md:text-6xl sm:text-4xl text-center pb-[100px] "
 				>
 					SIGNIFICANTLY SHARPER - LIKE YOUR EYES
 				</div>
 				{/* ------------ảnh 1------------------ */}
-				<div className="pt-[300px] flex">
+				<div className="pt-0 md:pt-[20px] flex">
 					<div
 						data-aos="slide-right"
-						className="font-thin text-white text-2xl p-48"
+						className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-48 p-2 xs:p-12"
 					>
 						In addition to the newly launched upgraded version of
 						the CLS-Class, Mercedes-Benz also offers customers the
 						high-performance Mercedes-AMG CLS 53 4Matic+ version of
-						this car model. Along with that is a special limited
-						edition of only 300 vehicles.
+						this car model. 
 					</div>
 					<div className="justify-end flex">
 						<div
 							data-aos="slide-left"
-							className="relative bg-cover w-[1000px] h-[900px] rounded-bl-full"
+							className="relative bg-cover w-[200px] h-[300px] ss:w-[400px] ss:h-[500px] sm:w-[500px] sm:h-[600px] md:w-[700px] md:h-[600px] xl:w-[1000px] xl:h-[900px] rounded-bl-full"
 							style={{ backgroundImage: `url(${mer2})` }}
 						></div>
 					</div>
@@ -204,13 +202,13 @@ const car1popular = () => {
 					<div className="justify-start flex">
 						<div
 							data-aos="slide-right"
-							className="relative bg-cover w-[1000px] h-[900px] rounded-tr-full"
+							className="relative bg-cover w-[200px] h-[300px] ss:w-[400px] ss:h-[500px] sm:w-[500px] sm:h-[600px] md:w-[600px] md:h-[500px] xl:w-[1000px] xl:h-[900px] rounded-br-full"
 							style={{ backgroundImage: `url(${mer3})` }}
 						></div>
 					</div>
 					<div
 						data-aos="slide-left"
-						className="font-thin text-white text-2xl p-48"
+						className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-32 p-2 xs:p-12"
 					>
 						In addition to the newly launched upgraded version of
 						the CLS-Class, Mercedes-Benz also offers customers the
@@ -219,17 +217,18 @@ const car1popular = () => {
 						edition of only 300 vehicles.
 					</div>
 				</div>
+				</div>
 
-				{/* 3D car */}
+				{/* 3D car------------------------------------------- */}
 				<div className="">
 					<div
 						data-aos="zoom-out"
-						className="font-thin text-blue-200 relative text-7xl text-center pt-[200px]"
+						className="font-thin text-blue-200 relative text-3xl ss:text-2xl  md:text-6xl sm:text-4xl text-center pt-[200px]"
 					>
 						3D MODEL
 					</div>
 
-					<div className="sketchfab-embed-wrapper w-[1000] h-screen pt-40">
+					<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] pt-4">
 						{" "}
 						<iframe
 							className="w-full h-full"
@@ -254,12 +253,13 @@ const car1popular = () => {
 				<div className="flex">
 					<div
 						data-aos="slide-left"
-						className="relative bg-cover w-[1100px] h-[500px] rounded-tr-full"
+						className="relative bg-cover bg-center w-[200px] h-[150px] xs:w-[300px] xs:h-[200px] ss:w-[500px] ss:h-[300px] sm:w-[600px] sm:h-[400px] md:w-[800px] md:h-[500px] xl:w-[1000px] xl:h-[500px] rounded-tr-full"
 						style={{ backgroundImage: `url(${kiaposter})` }}
 					></div>
 					<div
 						data-aos="slide-right"
-						className="font-thin text-blue-200 relative text-7xl text-center top-56 left-48"
+						className="font-thin text-blue-200 relative text-xl ss:text-3xl sm:text-5xl xl:text-6xl justify-center items-center flex left-10 ss:left-12 sm:left-7 md:left-32 xs:left-20"
+
 					>
 						CAR BEHIND
 					</div>

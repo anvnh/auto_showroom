@@ -1,7 +1,6 @@
-import React from "react";
 import Navbar from "./productHomePage/Navbar";
 import Car1popular from "./productHomePage/car1popular";
-const Rootlayout = () => {
+const ProductLayout = () => {
 	return (
 		<section className="w-full">
 			<div className="w-full overflow-hidden bg-primary">
@@ -26,4 +25,4 @@ const Rootlayout = () => {
 	);
 };
 
-export default Rootlayout;
+export default ProductLayout;
