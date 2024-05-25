@@ -131,37 +131,37 @@ const audi_A5_Couple = () => {
             </div>
 
           </div>
-          <div className="text-[30px] font-bold flex justify-center mb-[100px]    text-white h-[200px] w-screen ">
-             <div className="w-[500px] h-[200px] flex justify-center items-center backdrop-blur-xl text-center border-t rounded-[40px] ">Sharp Taillights</div>
+          <div className=" font-bold flex justify-center mb-[50px]    text-white  w-screen mt-[100px] ">
+             <div className="w-[300px] sm:w-[450px] md:w-[550px] h-[100px] text-[20px] sm:text-[25px] xl:text-[34px] flex justify-center items-center backdrop-blur-xl text-center border-t rounded-[40px]  ">Sharp Taillights</div>
           </div>
           <div className="font-bold text-slate-600 text-center text-[30px] flex justify-center ">
             <img className="w-[700px] object-cover" src={a5_14}/>
             <img className="w-[700px] object-cover" src={a5_13}/>
           </div>
-          <div className="mt-[200px] w-screen h-screen flex justify-center items-center gap-x-[30px] border-t rounded-[40px]">
+          <div className="mt-[200px] sm:px-[20px] sm:gap-x-[20px] lg:gap-x-[50px] w-screen h-screen flex flex-col sm:flex-row justify-center items-center border-t rounded-[40px] "> 
             <div>
-              <img  className="w-[800px] h-[500px] rounded-[40px] object-cover" src={a5_12}              />
+              <img  className=" w-[500px] ss:w-[600px] sm:w-[500px] md:w-[600px] lg:w-[700px] mlg:w-[900px]  rounded-[40px] object-cover" src={a5_12}              />
             </div>
-            <div className="w-[700px]">
-              <p className="text-white text-[35px] font-bold">Aggressive design</p>
-              <p  className="text-white text-[25px] font-semibold">High performance, bringing valuable experience to the driver. No matter the road, defeating Mercedes and BMW</p>
+            <div className="w-[700px] sm:w-[400px]">
+              <p className=" text-center sm:text-start ss:mt-[20px] text-white text-[25px] mlg:text-[40px] font-bold ">Aggressive design</p>
+              <p  className=" hidden sm:block text-white text-[20px] mlg:text-[22px] font-semibold">High performance, bringing valuable experience to the driver. No matter the road, defeating Mercedes and BMW</p>
             </div>
           </div>
-          <div className="flex mt-[200px] border-t justify-center items-center rounded-[40px] w-screen h-screen gap-x-[100px]">
-            <div className="w-[600px]">
-                <p className=" text-[40px] font-bold text-white">TFSI Power</p>
-              <p className="text-white font-semibold text-[25px]">Make your passion, master the game, don't be afraid of your opponents</p>
+          <div className="flex mt-[200px] border-t flex-col sm:flex-row justify-center items-center rounded-[40px] w-screen h-screen sm:gap-x-[40px] md:gap-x-[100px]">
+            <div className=" sm:w-[200px] md:w-[300px]  mlg:w-[450px] xl:w-[600px] ">
+                <p className="text-[30px] sm:text-[25px] mb-[30px] sm:mb-0  font-bold text-white ss:text-blue-500 sm:text-yellow-500 md:text-blue-500 lg:text-green-500 mlg:text-red-500 xl:yellow-500 xl:text-yellow-500">TFSI Power </p>
+              <p className=" hidden sm:block text-white font-semibold sm:text-[20px] md:text-[25px] ">Make your passion, master the game, don't be afraid of your opponents</p>
             </div>
-            <div className="w-[800px]  rounded-[40px]">
-              <img  className="object-cover w-[900px] h-[700px] rounded-[40px]" src={power}/>
+            <div className="  ">
+              <img  className="object-cover rounded-[40px] w-[580px]  sm:w-[400px]   lg:w-[600px] mlg:w-[700px] xl:w-[800px]" src={power}/>
             </div>
           </div>
           <div className="mt-[100px] rounded-[40px] border-t">
             <div className="w-screen flex justify-center ">
-                <div className="text-[30px] font-bold flex items-center justify-center text-white mt-[100px] text-center w-[400px] h-[200px] backdrop-blur-xl border-b rounded-[40px]">Airplane Cockpit</div>
+                <div className="text-[22px] sm:text-[25px] lg:text-[30px]  font-bold flex items-center justify-center text-white mt-[100px] text-center w-[400px] h-[100px] mb-[30px] backdrop-blur-xl border-b rounded-[40px]">Airplane Cockpit</div>
             </div>
               <div className="w-screen flex justify-center ">
-                  <img className="w-[1500px] object-cover h-[650px] rounded-[40px] mt-[40px]" src={noiThat1}/>
+                  <img className="object-cover rounded-[40px] w-[580px]  sm:w-[800px]   lg:w-[1000px] mlg:w-[1100px] xl:w-[1200px]" src={noiThat1}/>
               </div>
           </div>
         </ParallaxLayer>
