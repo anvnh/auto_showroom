@@ -3,8 +3,8 @@ import RootLayout from './_root/RootLayout';
 import UserLayout from './_user/UserLayout';
 import { Audi_A5_Couple, Audi_A5_Sportback } from "./_car/audi/audi_A5"
 
-import {Login,Register} from "./_login"
-import Rootlayout from './_productpage/Rootlayout';
+import {Register} from "./_login"
+import ProductLayout from './_productpage/ProductLayout';
 
 import {SignUp,SignIn} from "./_login"
 const App = () => {
@@ -25,9 +25,8 @@ const App = () => {
                 <Route path="/register" element={<Register/>}/>
 
 
-                  {/* introduce popular product */}
-                <Route path="/SeltosXLine" element={<Rootlayout/>} />
-                {/* ------------------------------------- */}
+                {/* Introduce popular product */}
+                <Route path="/SeltosXLine" element={<ProductLayout />} />
                 <Route path="/signin" element={<SignIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
             </Routes>
