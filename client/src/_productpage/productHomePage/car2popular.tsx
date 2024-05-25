@@ -325,7 +325,7 @@ const car1popular = () => {
 					className="font-thin text-white md:text-2xl text-sm md:p-64 ss:p-14  p-12 pb-64 pt-44 text-center"
 				>
 					<span className="font-bold">
-						The Mercedes-AMG CLS 53 4Matic+
+						The Mercedes-Benz Maybach 2022
 					</span>{" "}
 					is a great choice for those looking for a luxurious, <br />
 					powerful sports car equipped with many advanced
