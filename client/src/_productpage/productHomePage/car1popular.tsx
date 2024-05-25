@@ -52,7 +52,7 @@ const car1popular = () => {
 			anchorPlacement: "top-center",
 		});
 	}, []);
-	const [selectedImage, setSelectedImage] = useState(mer1);
+	const [selectedImage, setSelectedImage] = useState(mer12);
 
 	const handleThumbnailClick = (image) => {
 		setSelectedImage(image);
