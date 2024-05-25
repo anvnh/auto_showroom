@@ -238,12 +238,14 @@ const Product = () => {
 				</div>
 				{/*--------------banner-------------------------------------*/}
 
+                {/*}
 				<div data-aos="slide-up" className="w-screen bg-white ">
 					<div
 						style={{ backgroundImage: `url(${bannn})` }}
 						className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 					></div>
 				</div>
+                */}
 				<div
 					data-aos="slide-down"
 					style={{ backgroundImage: `url(${ditme})` }}

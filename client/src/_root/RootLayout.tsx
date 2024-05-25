@@ -43,11 +43,7 @@ const RootLayout = () => {
                         <Product />
                     </div>
                 </div>
-                <div
-                 style={{ backgroundImage: `url(${backgroundcar2})` }}
-                 data-aos="zoom-out" className="bg-primary flex items-start pt-24 pb-28"
-                 
-                >
+                <div data-aos="zoom-out" className="bg-primary flex items-start pt-24 pb-28" >
                      <div className="w-full">
                         <Product2 />
                     </div>
