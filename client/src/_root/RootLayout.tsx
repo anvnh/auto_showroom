@@ -1,10 +1,8 @@
-
 import {Navbar, Hero, Product, Product2 ,Banner, Footer, CarBrand} from './_homepage'
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 import React, { useEffect, useRef, useState} from "react"; // Import both useEffect and useRef
-
 
 const RootLayout = () => {
     useEffect(() => {

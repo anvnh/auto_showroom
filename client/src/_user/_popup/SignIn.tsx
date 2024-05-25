@@ -3,22 +3,23 @@ import { useEffect, useState } from 'react';
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
- 
+
 import { Button } from "@/components/ui/button"
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
-import { toast } from "@/components/ui/use-toast"
 import {Link} from "react-router-dom"
 import SignUp from "./SignUp"
+import "aos/dist/aos.css";
+
 
 
 const formSchema = z.object({
@@ -63,7 +64,7 @@ const SignIn = ({ onClose, onOpenSignUp }) => {
                     <div 
                         className="absolute inset-0 bg-black opacity-70" 
                         onClick={() => setShowModal(false)} />
-                    <div className="bg-gray-950 bg-opacity-70 p-8 rounded-xl z-20 w-[403px] h-[600px]">
+                    <div className="bg-primary md:bg-opacity-70 bg-opacity-95 p-8 rounded-xl z-20 w-[403px] h-[600px]">
                         <div className="flex text-white justify-between items-center px-9">
                             <h1 className="text-2xl font-bold">
                                 <span className="border-b pb-2">
@@ -87,7 +88,9 @@ const SignIn = ({ onClose, onOpenSignUp }) => {
                                             name="username"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[18px]">Email or Phone Number</FormLabel>
+                                                    <FormLabel className="w-full text-[18px] flex justify-start">
+                                                        Email or Phone Number
+                                                    </FormLabel>
                                                     <FormControl>
                                                         <Input className="text-black" type="email" placeholder="" {...field} />
                                                     </FormControl>
@@ -102,7 +105,9 @@ const SignIn = ({ onClose, onOpenSignUp }) => {
                                             name="password"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[18px]">Password</FormLabel>
+                                                    <FormLabel className="w-full text-[18px] flex justify-start">
+                                                        Password
+                                                    </FormLabel>
 
                                                     <FormControl>
                                                         <Input className="text-black" placeholder="" type="password" {...field} />
@@ -169,9 +174,13 @@ const SignIn = ({ onClose, onOpenSignUp }) => {
                                     <div className="pt-7 text-white text-center">
                                         <p>
                                             Don't have an account?
-                                            <Link to="">
-                                                <span className="text-blue-500"> Sign up </span>
-                                            </Link>
+                                            <Button 
+                                                variant="link" className="text-blue-500 text-[15px]"
+                                                onClick={handleSignUpClick}
+                                            >
+
+                                                Sign Up
+                                            </Button>
                                         </p>
                                     </div>
 

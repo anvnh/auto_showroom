@@ -7,6 +7,8 @@ const Hero = () => {
 
     const [activePopup, setActivePopup] = useState(null); // 'signIn' or 'signUp'
 
+    type ActivePopup = 'signIn' | 'signUp' | null;
+
     const handleOpenSignIn = () => setActivePopup("signIn");
     const handleOpenSignUp = () => setActivePopup("signUp");
     const handleClosePopup = () => setActivePopup(null);

@@ -50,7 +50,7 @@ const Hero = ({selectedSection}) => {
 	
 	/*navbar event */
 	const section = selectedSection
-	console.log(section)
+	// console.log(section)
 
 	return (
 		<div className={` w-full pb-10  relative group`}>

@@ -64,7 +64,7 @@ const SignUp = ({ onClose,  onOpenSignIn}) => {
                     <div 
                         className="absolute inset-0 bg-black opacity-70" 
                         onClick={() => setShowModal(false)} />
-                    <div className="bg-gray-950 bg-opacity-70 p-8 rounded-xl z-20 w-[403px] h-[750px]">
+                    <div className="bg-primary md:bg-opacity-70 bg-opacity-95 p-8 rounded-xl z-20 w-[403px] h-[750px]">
                         <div className="flex text-white justify-between items-center px-9">
                             <Button 
                                 variant="link" 
@@ -88,7 +88,7 @@ const SignUp = ({ onClose,  onOpenSignIn}) => {
                                             name="email"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[18px]">Email</FormLabel>
+                                                    <FormLabel className="w-full text-[18px] flex justify-start">Email</FormLabel>
                                                     <FormControl>
                                                         <Input className="text-black" type="email" placeholder="" {...field} />
                                                     </FormControl>
@@ -103,7 +103,7 @@ const SignUp = ({ onClose,  onOpenSignIn}) => {
                                             name="phone"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[18px]"> Phone Number </FormLabel>
+                                                    <FormLabel className="w-full text-[18px] flex justify-start"> Phone Number </FormLabel>
 
                                                     <FormControl>
                                                         <Input className="text-black" placeholder="" type="text" {...field} />
@@ -119,7 +119,7 @@ const SignUp = ({ onClose,  onOpenSignIn}) => {
                                             name="password"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[18px]"> Your new password </FormLabel>
+                                                    <FormLabel className="w-full text-[18px] flex justify-start"> Your new password </FormLabel>
 
                                                     <FormControl>
                                                         <Input className="text-black" placeholder="" type="password" {...field} />
@@ -135,7 +135,7 @@ const SignUp = ({ onClose,  onOpenSignIn}) => {
                                             name="password_confirmation"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-[18px]"> Confirm your password </FormLabel>
+                                                    <FormLabel className="w-full text-[18px] flex justify-start"> Confirm your password </FormLabel>
 
                                                     <FormControl>
                                                         <Input className="text-black" placeholder="" type="password" {...field} />
