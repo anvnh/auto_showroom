@@ -91,7 +91,7 @@ const Product2 = () => {
 					delay: 500,
 					disableOnInteraction: true,
 				}}
-				speed={1000}
+				speed={500}
 				onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
 			>
 				{/* Slides */}
