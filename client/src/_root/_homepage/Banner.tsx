@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const Section = () => {
     return (
         <div className='box-border font-poppins Banner'>
-            <div className='banner mt-[65px]'>
+            <div>
                 <div className="relative">
                     <img className="object-cover" src={audiA5_banner} />
                     <div className="absolute top-0 font-bold text-white lg:mx-[50px] lg:my-[50px] mlg:my-[100px] xl:my-[150px] ">

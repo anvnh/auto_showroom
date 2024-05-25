@@ -37,6 +37,7 @@ import ditme from "./car/ditme.jpg";
 import acc from "./acc.jpg";
 import aa from "./aad.png";
 import bannn from "./car/ggfdg.png";
+import backgroundcar2 from "./car/background.jpg"
 
 import des from "./car1_popular/desktop.png";
 import des1 from "./car1_popular/desktop1.png";
@@ -96,10 +97,41 @@ import mer7 from "./car1_popular/mer7.jpeg";
 import mer8 from "./car1_popular/mer8.jpeg";
 import mer9 from "./car1_popular/mer9.webp";
 import mer10 from "./car1_popular/mer10.jpg";
+import mer11 from "./car1_popular/mer11.jpg";
+import mer12 from "./car1_popular/mer12.avif";
 import sky from "./car1_popular/sky.jpg";
-import logomer from "./car1_popular/logomer.png"
-import banner1 from "./car1_popular/banner1.jpg"
+import logomer from "./car1_popular/logomer.png";
+import banner1 from "./car1_popular/banner1.jpg";
+
+import merr from "./car2_popular/2mer.avif";
+import merr1 from "./car2_popular/2mer1.avif";
+import merr2 from "./car2_popular/2mer2.avif";
+import merr3 from "./car2_popular/2mer3.avif";
+import merr4 from "./car2_popular/2mer4.avif";
+import merr5 from "./car2_popular/2mer5.avif";
+import merr6 from "./car2_popular/2mer6.webp";
+import merr7 from "./car2_popular/2mer7.avif";
+import merr8 from "./car2_popular/2mer8.avif";
+import merr9 from "./car2_popular/2mer9.avif";
+import merr10 from "./car2_popular/2mer10.avif";
+import merr11 from "./car2_popular/2mer11.avif";
+import merr12 from "./car2_popular/2mer12.webp";
 export {
+	merr,
+	merr1,
+	merr2,
+	merr3,
+	merr4,
+	merr5,
+	merr6,
+	merr7,
+	merr8,
+	merr9,
+	merr10,
+	merr11,
+	merr12,
+
+
 	banner1,
 	logomer,
 	sky,
@@ -113,6 +145,8 @@ export {
 	mer8,
 	mer9,
 	mer10,
+	mer11,
+	mer12,
 	kiaposter,
 	kia,
 	kia1,
@@ -150,6 +184,7 @@ export {
 	audiA5_banner,
 	bg,
 	product2,
+	backgroundcar2,
 	pos1,
 	pos2,
 	pos3,
