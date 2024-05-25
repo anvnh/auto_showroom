@@ -1,3 +1,4 @@
+import { Footer } from "@/_root/_homepage";
 import Navbar from "./productHomePage/Navbar";
 import Car1popular from "./productHomePage/car1popular";
 const ProductLayout = () => {
@@ -18,6 +19,14 @@ const ProductLayout = () => {
 				>
 					<div className="w-full">
 						<Car1popular />
+					</div>
+				</div>
+				<div
+					data-aos="fade"
+					className="flex items-start justify-center "
+				>
+					<div className="w-full">
+						<Footer />
 					</div>
 				</div>
 			</div>

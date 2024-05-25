@@ -11,13 +11,14 @@ import {
 	aa,
 	bannn,
 	ditme,
+	logomer,
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import { FaArrowRight } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import React, { useEffect, useRef } from "react"; 
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 const Product = () => {
 	useEffect(() => {
 		AOS.init({
@@ -56,69 +57,73 @@ const Product = () => {
 
 			{/*--------------Card-------------------------------------*/}
 			<div className="contrainer pt-20 md:pt-1 ">
-				
 				<div className="relative Product grid grid-cols-1 md:grid-cols-[2fr]  xl:grid-cols-[2fr_1fr_1fr] gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer -mb-14 ">
 					{/*--------------Card1-------------------------------------*/}
-					<Link to="/SeltosXLine">
-					<div
-						style={{ backgroundImage: `url(${acc})` }}
-						data-aos="zoom-out"
-						className="card group bg-cover bg-center xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500"
-					>
-							
-						<div className="car w-full flex justify-center sm:justify-end">
-							<img
-								src={car1}
-								alt=""
-								className="object-cover rounded-lg relative transition-transform duration-500 ease-out group-hover:rotate-3 group-hover:-translate-x-1 mx:group-hover:scale-150 group-hover:scale-125 sm:group-hover:-translate-x-14 "
-								style={{ top: "17px" }}
-							/>
+					<Link to="/Mercedes-AMG-CLS">
+						<div
+							style={{ backgroundImage: `url(${acc})` }}
+							data-aos="zoom-out"
+							className="card group bg-cover bg-center xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500"
+						>
+							<div className="car w-full flex justify-center sm:justify-end">
+								<img
+									src={car1}
+									alt=""
+									className="object-cover rounded-lg relative transition-transform duration-500 ease-out group-hover:rotate-3 group-hover:-translate-x-1 mx:group-hover:scale-150 group-hover:scale-125 sm:group-hover:-translate-x-14 "
+									style={{ top: "17px" }}
+								/>
+							</div>
+
+							<div className="hidden sm:block">
+								<div className="logo_Car flex flex-col items-start opacity-100 group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-36 left-24  p-2">
+									<img src={logomer} alt="" />
+								</div>
+								<div className="Product_text opacity-100 text-white  font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-5000 absolute bottom-24 left-16">
+									<h2>Mercedes AMG CLS</h2>
+									<p className="text-center">$ 26 000</p>
+								</div>
+								<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
+									You want to sense more, see more,
+									<br />
+									perform more, and above all, you can’t{" "}
+									<br />
+									let go any more, because it won’t let <br />
+									go of you. Whatever you plan, <br />
+									you want to experience more. Your <br />
+									destination:the Mercedes-AMG CLS 53 <br />
+									4MATIC+.
+								</div>
+							</div>
 						</div>
-					
-						<div className="hidden sm:block">
-							<div className="logo_Car flex flex-col items-start opacity-100 group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-36 left-24  p-2">
-								<img src={logo1} alt="" />
-							</div>
-							<div className="Product_text opacity-100 text-white  font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-5000 absolute bottom-24 left-12">
-								<h2>Mercedes AMG CLS</h2>
-								<p className="text-center">$ 26 000</p>
-							</div>
-							<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
-								Lorem ipsum dolor sit ame secte <br />{" "}
-								adipisicing elit. Cumque facilis <br /> earum,
-								facere deleniti a, um dolor <br /> sit, amet
-								consectetur adg elit <br /> Quisquam eum quasi
-								sequi fuga{" "}
-							</div>
-						</div>
-					</div>
 					</Link>
 
 					{/*--------------Card2-------------------------------------*/}
-					<div
-						style={{ backgroundImage: `url(${acc})` }}
-						data-aos="zoom-out"
-						className="card group hidden bg-cover bg-center xl:block bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
-					>
-						<div className="car -mt-0 w-full h-full">
-							<img
-								src={car2}
-								alt=""
-								className="w-full h-full object-cover rounded-lg relative group-hover:scale-125 transition-all ease-in-out duration-300"
-								style={{ top: "-20px" }}
-							/>
-							<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
-						</div>
-						<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-							<div className="logo_Car">
-								<img src={logo236} alt="" />
+					<Link to="Mercedes-Benz-Maybach-2022">
+						<div
+							style={{ backgroundImage: `url(${acc})` }}
+							data-aos="zoom-out"
+							className="card group hidden bg-cover bg-center xl:block bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
+						>
+							<div className="car -mt-0 w-full h-full">
+								<img
+									src={car2}
+									alt=""
+									className="w-full h-full object-cover rounded-lg relative group-hover:scale-125 transition-all ease-in-out duration-300"
+									style={{ top: "-1px" }}
+								/>
+								<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
 							</div>
-							<div className="Product_text font-bold text-white text-xl">
-								<h2>Hyundai Sonata 2022</h2>
-								<p className="text-center">$ 26 000</p>
+							<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+								<div className="logo_Car">
+									<img src={logomer} alt="" />
+								</div>
+								<div className="Product_text font-bold text-white text-xl">
+									<h2>Mercedes-Benz Maybach 2022</h2>
+									<p className="text-center">$ 679 867</p>
+								</div>
 							</div>
 						</div>
-					</div>
+					</Link>
 
 					{/*--------------Card3-------------------------------------*/}
 					<div

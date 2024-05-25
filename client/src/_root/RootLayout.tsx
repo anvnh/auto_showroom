@@ -2,6 +2,9 @@ import {Navbar, Hero, Product, Product2 ,Banner, Footer, CarBrand} from './_home
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import {
+    backgroundcar2
+} from "../assets";
 import React, { useEffect, useRef, useState} from "react"; // Import both useEffect and useRef
 
 const RootLayout = () => {
@@ -40,12 +43,16 @@ const RootLayout = () => {
                         <Product />
                     </div>
                 </div>
-                <div data-aos="zoom-out" className="bg-primary flex items-start pt-12">
-                    <div className="w-full">
+                <div
+                 style={{ backgroundImage: `url(${backgroundcar2})` }}
+                 data-aos="zoom-out" className="bg-primary flex items-start pt-24 pb-28"
+                 
+                >
+                     <div className="w-full">
                         <Product2 />
                     </div>
-                </div>         
-                <div data-aos="zoom-out" className="flex items-start justify-center bg-primary ">
+                </div>   
+                <div data-aos="zoom-out" className="flex items-start justify-center bg-primary">
                     <div className="w-full">
                         <Banner />
                     </div>

@@ -87,3 +87,7 @@
 .relative {
 	perspective: 1000px; /* Tạo hiệu ứng 3D */
 }
+.light-beam {
+	@apply absolute w-2 h-full bg-gradient-to-b from-yellow-400 to-transparent opacity-50;
+	transform: translateY(-100%);
+}

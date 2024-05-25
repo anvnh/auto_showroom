@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { pos1, pos2, pos3, pos4, pos5, pos6 } from "../../assets";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import { EffectCoverflow, Pagination, Navigation ,Autoplay} from "swiper/modules";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react'; 
@@ -85,11 +85,12 @@ const Product2 = () => {
 					nextEl: ".swiper-button-next",
 					prevEl: ".swiper-button-prev",
 				}}
-				modules={[EffectCoverflow, Pagination, Navigation]}
+				
 				className="swiper_container"
+				modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
 				autoplay={{
-					delay: 500,
-					disableOnInteraction: true,
+					delay: 1500,
+					disableOnInteraction: false,
 				}}
 				speed={500}
 				onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
@@ -113,11 +114,10 @@ const Product2 = () => {
 								src={car.image}
 								alt={car.brand}
 								className="w-full max-w-xs md:max-w-sm group-hover:scale-125 transition-all ease-in-out duration-300 group-hover:rotate-2 translate-x-1 lg:max-w-md"
-                                style={{ top: "-10px" }} />{" "}
-							{/* Điều chỉnh kích thước ảnh */}
+                                style={{ top: "-10px" }} />
 							<div className="car-info px-6 py-1 rounded-3xl mt-4">
-								{" "}
-								{/* Thêm margin-top */}
+								
+						
 								<h3 className="brand justify-center flex-col font-bold text-2xl md:text-4xl lg:text-5xl flex">
 									{car.brand}
 								</h3>
