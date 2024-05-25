@@ -2,7 +2,7 @@
 import {Navbar, Hero, Product, Product2 ,Banner, Footer, CarBrand} from './_homepage'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import React, { useEffect, useRef } from "react"; // Import both useEffect and useRef
+import React, { useEffect } from "react"; // Import both useEffect and useRef
 
 const RootLayout = () => {
     useEffect(() => {
@@ -43,7 +43,7 @@ const RootLayout = () => {
                         <Banner />
                     </div>
                 </div>   
-                <div data-aos="zoom-out" className="flex items-start justify-center bg-transparent">
+                <div data-aos="zoom-out" className="flex items-start justify-center bg-gray-950 bg-opacity-50">
                     <div className="w-full">
                         <CarBrand />
                     </div>

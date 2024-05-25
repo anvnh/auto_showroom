@@ -75,7 +75,7 @@ const Product2 = () => {
 					stretch: 3200,
 					depth: 1500,
 					modifier: 1,
-					slideShadows: false, // Tắt hiệu ứng đổ bóng
+					slideShadows: false,
 				}}
 				pagination={{
 					el: ".swiper-pagination",
@@ -108,12 +108,11 @@ const Product2 = () => {
 							style={{
 								width: "100%", 
 								boxSizing: "border-box", 
-							}}
-						>
+							}} >
 							<img
 								src={car.image}
 								alt={car.brand}
-								className="w-full  max-w-xs md:max-w-sm group-hover:scale-125 transition-all ease-in-out duration-300 group-hover:rotate-2 translate-x-1 lg:max-w-md"
+								className="w-full max-w-xs md:max-w-sm group-hover:scale-125 transition-all ease-in-out duration-300 group-hover:rotate-2 translate-x-1 lg:max-w-md"
                                 style={{ top: "-10px" }} />{" "}
 							{/* Điều chỉnh kích thước ảnh */}
 							<div className="car-info px-6 py-1 rounded-3xl mt-4">
@@ -122,7 +121,7 @@ const Product2 = () => {
 								<h3 className="brand justify-center flex-col font-bold text-2xl md:text-4xl lg:text-5xl flex">
 									{car.brand}
 								</h3>
-								<p className="price pt-2 group-hover:scale-110 group-hover:text-gray-300 transition-all ease-in-out duration-300 justify-center text-white font-bold text-base md:text-lg lg:text-xl flex">
+								<p className="price pt-3 group-hover:scale-110 group-hover:text-gray-300 transition-all ease-in-out duration-300 justify-center text-white font-bold text-base md:text-lg lg:text-xl flex">
 									{car.price}
 								</p>
 								<div className="pt-4 justify-center flex">
