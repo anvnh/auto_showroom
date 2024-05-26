@@ -20,11 +20,13 @@ const Navbar = ({ onNavClick }) => {
 
 	return (
 		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
-			<img
-				src={logo}
-				alt="logo"
-				className="md:w-[68px] w-[55px] md:h-[60px] h-[55px]"
-			/>
+			<Link to="/">
+				<img
+					src={logo}
+					alt="logo"
+					className="md:w-[68px] w-[55px] md:h-[60px] h-[55px]"
+				/>
+			</Link>
 
 			<ul className="list-none sm:flex hidden justify-start items-center flex-1">
 				<li
