@@ -1,10 +1,9 @@
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'; 
 import {logo} from "@/assets";
-import { log } from 'console';
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-950 bg-opacity-50 text-white  border-t">
+        <footer className="bg-gray-950 bg-opacity-50 text-white">
             <div className="c">
                 <div className="flex flex-wrap justify-between items-center">
                     {/* Logo */}

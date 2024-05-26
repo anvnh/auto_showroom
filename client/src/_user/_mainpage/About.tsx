@@ -1,8 +1,22 @@
 import {about_1, about_2, about_3} from '@/assets/user_about'
+import { useEffect } from 'react';
+import AOS from 'aos';
 
 const About = () => {
+
+    useEffect(() => {
+		AOS.init({
+			duration: 900,
+
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-bottom",
+		});
+	}, []);
+
     return (
-        <section className="py-12"> 
+        <section data-aos="zoom-out" className="py-12"> 
             <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center"> 
                 <div className="md:pb-20 pb-15">
                     <h1 className="text-4xl font-bold mb-4">Welcome, Car Enthusiasts!</h1>

@@ -36,8 +36,8 @@ const Hero = () => {
                 <div className="absolute left-0 top-100 h-[840px] w-[65%] bg-gradient-to-r from-gray-950"></div>
                 <div className="md:flex hidden">
                     <div className="absolute inset-0 flex flex-col justify-start items-start text-white ml-28 mt-36">
-                        <h1 className="text-5xl font-poppins font-bold mb-6"> Everything Your Car <br/> Needs, All in One Place </h1>
-                        <p className="text-3xl font-poppins"> Your personal portal to a world <br/> of car ownership resources. </p>
+                        <h1 data-aos="zoom-out" className="text-5xl font-poppins font-bold mb-6"> Everything Your Car <br/> Needs, All in One Place </h1>
+                        <p data-aos="zoom-out" className="text-3xl font-poppins"> Your personal portal to a world <br/> of car ownership resources. </p>
                     </div>
                 </div>
                 <div className="md:hidden flex">
