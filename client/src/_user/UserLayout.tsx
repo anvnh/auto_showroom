@@ -18,7 +18,7 @@ const OwnerLayout = () => {
     return (
         <section className="w-full">
             <div className="bg-primary w-full overflow-hidden">
-                <div data-aos="zoom-out" className="flex justify-center items-start">
+                <div className="flex justify-center items-start">
                     <div className="w-full">
                         <Navbar />
                     </div>
