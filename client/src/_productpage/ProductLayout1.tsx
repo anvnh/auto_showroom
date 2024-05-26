@@ -1,16 +1,20 @@
 import { Footer } from "@/_root/_homepage";
-import Navbar from "./productHomePage/Navbar";
+import Navbar from "../_root/_homepage/Navbar";
 import Car1popular from "./productHomePage/car1popular";
+import React, { useEffect, useRef, useState} from "react"; // Import both useEffect and useRef
 const ProductLayout = () => {
+	const [selectedSection, setSelectedSection] = useState('');
+    const handleNavClick = (section) => {
+        setSelectedSection(prevSection => prevSection === section ? '' : section);
+    };
 	return (
 		<section className="w-full">
 			<div className="w-full overflow-hidden bg-primary">
 				<div
-					data-aos="zoom-out"
 					className="flex items-start justify-center "
 				>
 					<div className="w-full">
-						<Navbar />
+						<Navbar onNavClick={handleNavClick}  />
 					</div>
 				</div>
                 <div
