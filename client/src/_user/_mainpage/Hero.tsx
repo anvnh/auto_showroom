@@ -1,7 +1,9 @@
 import { user_hero_1 } from "@/assets"
 import { Button } from '@/components/ui/button'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SignIn, SignUp } from "../_popup";
+import AOS from 'aos';
+
 
 const Hero = () => {
 
@@ -12,6 +14,17 @@ const Hero = () => {
     const handleOpenSignIn = () => setActivePopup("signIn");
     const handleOpenSignUp = () => setActivePopup("signUp");
     const handleClosePopup = () => setActivePopup(null);
+
+    useEffect(() => {
+		AOS.init({
+			duration: 900,
+
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-bottom",
+		});
+	}, []);
 
     return (
         <div className="w-full">

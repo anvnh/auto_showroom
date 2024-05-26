@@ -23,22 +23,22 @@ const OwnerLayout = () => {
                         <Navbar />
                     </div>
                 </div>
-                <div data-aos="zoom-out" className="bg-primary flex justify-center items-start">
+                <div className="bg-primary flex justify-center items-start">
                     <div className="w-full">
                         <Hero />
                     </div>
                 </div>
-                <div data-aos="zoom-out" className="bg-white sm:px-16 px-6 flex justify-center items-start">
+                <div className="bg-white sm:px-16 px-6 flex justify-center items-start">
                     <div className="w-full">
                         <About />
                     </div>
                 </div>
-                <div data-aos="zoom-out" className="bg-primary sm:px-16 px-6 flex justify-center items-start">
+                <div className="bg-primary sm:px-16 px-6 flex justify-center items-start">
                     <div className="w-full">
                         <Benefit />
                     </div>
                 </div>
-                <div data-aos="zoom-out" className="bg-white sm:px-16 px-6 flex justify-center items-start">
+                <div className="bg-white sm:px-16 px-6 flex justify-center items-start">
                     <div className="w-full">
                         <Futher />
                     </div>
