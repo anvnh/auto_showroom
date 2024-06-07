@@ -24,14 +24,8 @@ import {
 	banner1,
 	VideoCar1Popular,
 } from "../../assets";
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import {
-	FaFacebookSquare,
-	FaTwitterSquare,
-	FaInstagramSquare,
-	FaLinkedin,
-	FaYoutube,
-} from "react-icons/fa";
+import NavbarSmall from "./NavbarSmall";
+import { Button } from "@/components/ui/button";
 const car1popular = () => {
 	// hiệu ứng hiển thị khi 5s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
@@ -58,13 +52,15 @@ const car1popular = () => {
 	const handleThumbnailClick = (image) => {
 		setSelectedImage(image);
 	};
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+	// useEffect(() => {
+	// 	window.scrollTo(0, 0);
+	// }, []);
+
 	return (
 		<div>
 			<div style={{ backgroundImage: `url(${sky})` }} className="min-h">
 				<div
+					id="Home"
 					data-aos="fade"
 					className="bg-cover bg-center relative w-full  min-h-[700px] md:min-h-[800px] xl:min-h-[1000px]"
 				>
@@ -93,7 +89,7 @@ const car1popular = () => {
            	 md:w-[550px] w-[300px] p-2 md:p-5 
             transition-opacity duration-1000 opacity-0 ${
 				isVisible ? "opacity-100" : ""
-			}`} 
+			}`}
 							>
 								<h1 className="text-2xl md:text-3xl lg:text-4xl mb-2 tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all">
 									MERCEDES-AMG
@@ -104,38 +100,47 @@ const car1popular = () => {
 							</div>
 						)}
 					</div>
-					<div className="justify-center items-center flex ">
-					{isVisible && (
-						<div className="bg-gray-900 grid ss:grid-cols-2 gap-2 grid-cols-1 bg-opacity-75 rounded-2xl font-bold absolute text-white -bottom-1 transform -translate-y-1/2 shadow-xl xl:w-[1200px] md:w-[1000px] sm:w-[700px] ss:w-[500px] w-[300px] p-7 ">
-							<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-start md:pl-40 ss:pl-1 pl-20 animate-pulse duration-1000 ease-in-out transition-all  ">
-								<span className="font-bold">520</span>{" "}
-								<span className="text-lg font-light">Nm</span>{" "}
-								<br />
-								<span className="font-bold">4.5s</span>{" "}
-								<span className="text-lg font-light">
-									0-100km/h
-								</span>
-								<br /> <span className="font-bold"> 320</span>{" "}
-								<span className="text-lg font-light">KW</span>
-							</div>
-							<div className="hidden ss:block">
-								<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-xs pr-3 animate-pulse duration-1000 ease-in-out transition-all">
-									<span className="font-bold">
-										There is always a destination.
+				<div className="hidden md:block">
+				<div className="justify-center items-center flex ">
+						{isVisible && (
+							<div className="bg-gray-900 grid ss:grid-cols-2 gap-2 grid-cols-1 bg-opacity-75 rounded-2xl font-bold absolute text-white -bottom-1 transform -translate-y-1/2 shadow-xl xl:w-[1200px] md:w-[1000px] sm:w-[700px] ss:w-[500px] w-[300px] p-7">
+								<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-start md:pl-40 ss:pl-1 pl-20 animate-pulse duration-1000 ease-in-out transition-all  ">
+									<span className="font-bold">520</span>{" "}
+									<span className="text-lg font-light">
+										Nm
 									</span>{" "}
-									Other people think ahead. You think further.
-									You want to sense more, perform more, and
-									above all, you can’t let go any more,
-									because it won’t let go of you.
+									<br />
+									<span className="font-bold">4.5s</span>{" "}
+									<span className="text-lg font-light">
+										0-100km/h
+									</span>
+									<br />{" "}
+									<span className="font-bold"> 320</span>{" "}
+									<span className="text-lg font-light">
+										KW
+									</span>
+								</div>
+								<div className="hidden ss:block">
+									<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-xs pr-3 animate-pulse duration-1000 ease-in-out transition-all">
+										<span className="font-bold">
+											There is always a destination.
+										</span>{" "}
+										Other people think ahead. You think
+										further. You want to sense more, perform
+										more, and above all, you can’t let go
+										any more, because it won’t let go of
+										you.
+									</div>
 								</div>
 							</div>
-						</div>
 						)}
 					</div>
+				</div>
 				</div>
 
 				{/* -------------------------phần 2 --------------*/}
 				<div
+					id="Introduce"
 					style={{ backgroundImage: `url(${sky})` }}
 					className=" rounded-bl-3xl bg-center w-full min-h-screen relative object-cover justify-center items-center flex"
 				>
@@ -238,12 +243,13 @@ const car1popular = () => {
 				{/* 3D car------------------------------------------- */}
 				<div className="">
 					<div
+						id="Model"
 						data-aos="zoom-out"
 						className="font-thin text-blue-200 relative text-3xl ss:text-2xl  md:text-6xl sm:text-4xl text-center pt-[200px]"
 					>
 						3D MODEL
 					</div>
-					<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] pt-16 pt-10">
+					<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] pt-52">
 						{" "}
 						<iframe
 							className="w-full md:h-[500px] h-[300px] scale-125 md:scale-150"
@@ -266,6 +272,7 @@ const car1popular = () => {
 				{/*----------------------- banner -------------------------*/}
 				<div className="flex">
 					<div
+						id="Behind"
 						data-aos="slide-left"
 						className="relative bg-cover bg-center w-[200px] h-[150px] xs:w-[300px] xs:h-[200px] ss:w-[500px] ss:h-[300px] sm:w-[600px] sm:h-[400px] md:w-[800px] md:h-[500px] xl:w-[1000px] xl:h-[500px] rounded-tr-full"
 						style={{ backgroundImage: `url(${kiaposter})` }}
@@ -355,17 +362,38 @@ const car1popular = () => {
 				</div>
 
 				{/* --------------------------conclusion --------------*/}
-				<div
-					data-aos="zoom-out"
-					className="font-thin text-white md:text-2xl text-sm md:p-64 ss:p-14  p-12 pb-64 pt-44 text-center"
-				>
-					<span className="font-bold">
-						The Mercedes-AMG CLS 53 4Matic+
-					</span>{" "}
-					is a great choice for those looking for a luxurious, <br />
-					powerful sports car equipped with many advanced
-					technologies.
-				</div>
+				<div id="Button_Buy" className="pb-24 pt-40 relative">
+        <div
+          data-aos="zoom-out"
+          className={`font-thin text-white text-center text-xl md:text-3xl transition-opacity duration-1000 opacity-0 ${
+            isVisible ? "opacity-100" : ""
+          }`}
+        >
+          <span className="font-bold">The Mercedes-AMG CLS 53 4Matic+</span>{" "}
+          is a great choice for those looking for a luxurious, <br />
+          powerful sports car equipped with many advanced technologies.
+		<br />
+		<br />
+
+		<span>For only <span className="text-red-400 font-bold">26 000 $</span> you can own this car</span>
+        </div>
+
+        <div className="mt-8 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center gap-9">
+          <Button
+            variant="outline"
+            className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110"
+          >
+            Add to Cart
+          </Button>
+
+          <Button
+            variant="outline"
+            className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110"
+          >
+            Buy Car
+          </Button>
+        </div>
+      </div>
 			</div>
 		</div>
 	);
