@@ -12,6 +12,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import {motion} from "framer-motion"
 import Aos from "aos";
 import audiA5 from "@/assets/hplat_asset/video"
+import { Footer } from "@/_root/_homepage";
 const audi_A5_Couple = () => {
   const slides = [
     { url: a5_1, },
@@ -48,7 +49,7 @@ const audi_A5_Couple = () => {
   }, [slides.length]);
   return (
     <div>
-      <Parallax pages={8}>
+      <Parallax pages={7}>
         <ParallaxLayer offset={0} speed={1}>
           <img className="h-[7000px]" src={bg_1}/>
         </ParallaxLayer>
@@ -164,10 +165,15 @@ const audi_A5_Couple = () => {
                   <img className="object-cover rounded-[40px] w-[580px]  sm:w-[800px]   lg:w-[1000px] mlg:w-[1100px] xl:w-[1200px]" src={noiThat1}/>
               </div>
           </div>
+          <div className="flex items-start justify-center">
+            <div className="w-screen bg-primary">
+              <Footer />
+            </div>
+          </div>
         </ParallaxLayer>
       </Parallax>
     </div>
   )
 }
 
-export default audi_A5_Couple
+export default audi_A5_Couple 

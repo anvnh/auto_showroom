@@ -22,6 +22,7 @@ import {
 	logomer,
 	kiaposter,
 	banner1,
+	VideoCar1Popular,
 } from "../../assets";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import {
@@ -31,18 +32,18 @@ import {
 	FaLinkedin,
 	FaYoutube,
 } from "react-icons/fa";
-//
-// const Thumbnail = ({ image, onClick, isActive }) => (
-// 	<img
-// 		src={image}
-// 		alt="Car Thumbnail"
-// 		className={`w-24 h-16 object-cover cursor-pointer rounded-md ${
-// 			isActive ? "border-2 border-blue-500" : ""
-// 		}`}
-// 		onClick={onClick}
-// 	/>
-// );
 const car1popular = () => {
+	// hiệu ứng hiển thị khi 5s trôi qua
+	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setIsVisible(true);
+		}, 3000);
+
+		return () => clearTimeout(timer);
+	}, []); // Chỉ chạy một lần khi component mount
+
 	useEffect(() => {
 		AOS.init({
 			duration: 1000,
@@ -58,44 +59,54 @@ const car1popular = () => {
 		setSelectedImage(image);
 	};
 	useEffect(() => {
-		window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
+		window.scrollTo(0, 0);
 	}, []);
-
 	return (
 		<div>
 			<div style={{ backgroundImage: `url(${sky})` }} className="min-h">
 				<div
 					data-aos="fade"
 					className="bg-cover bg-center relative w-full  min-h-[700px] md:min-h-[800px] xl:min-h-[1000px]"
-					style={{ backgroundImage: `url(${mer10})` }}
 				>
+					<video
+						autoPlay
+						muted
+						loop
+						playsInline
+						className="w-full h-auto"
+					>
+						<source src={VideoCar1Popular} />
+					</video>
+
 					<div
-						className="absolute inset-x-0 bottom-0 h-full"
+						className="overlay absolute inset-x-0 bottom-0 h-1/4"
 						style={{
-							backgroundImage: `url(${sky})`,
-							WebkitMaskImage:
-								"linear-gradient(to top, black, transparent)",
-							maskImage:
+							backgroundImage:
 								"linear-gradient(to top, black, transparent)",
 						}}
 					></div>
-
-					<div className="flex justify-center">
-						<div
-							data-aos="zoom-in"
-							className="bg-black bg-opacity-75 rounded-2xl font-thin absolute text-white top-24 transform text-center shadow-xl 
-							md:w-[550px] w-[300px] p-2 md:p-5 "
-						>
-							<h1 className="text-2xl md:text-3xl lg:text-4xl mb-2 	tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all ">
-								MERCEDES-AMG
-							</h1>
-							<h2 className="text-1xl md:text-2xl lg:text-3xl font-thin animate-pulse duration-1000 ease-in-out transition-all">
-								CLS 53 4MATIC+
-							</h2>
-						</div>
+					<div className="flex justify-center z-10">
+						{isVisible && (
+							<div
+								data-aos="zoom-in"
+								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-24 transform text-center shadow-xl
+           	 md:w-[550px] w-[300px] p-2 md:p-5 
+            transition-opacity duration-1000 opacity-0 ${
+				isVisible ? "opacity-100" : ""
+			}`} 
+							>
+								<h1 className="text-2xl md:text-3xl lg:text-4xl mb-2 tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all">
+									MERCEDES-AMG
+								</h1>
+								<h2 className="text-1xl md:text-2xl lg:text-3xl font-thin animate-pulse duration-1000 ease-in-out transition-all">
+									CLS 53 4MATIC+
+								</h2>
+							</div>
+						)}
 					</div>
-					<div className="justify-center items-center flex">
-						<div className="bg-black grid ss:grid-cols-2 gap-2 grid-cols-1 bg-opacity-75 rounded-2xl font-bold absolute text-white -bottom-1 transform -translate-y-1/2 shadow-xl xl:w-[1200px] md:w-[1000px] sm:w-[700px] ss:w-[500px] w-[300px] p-7 ">
+					<div className="justify-center items-center flex ">
+					{isVisible && (
+						<div className="bg-gray-900 grid ss:grid-cols-2 gap-2 grid-cols-1 bg-opacity-75 rounded-2xl font-bold absolute text-white -bottom-1 transform -translate-y-1/2 shadow-xl xl:w-[1200px] md:w-[1000px] sm:w-[700px] ss:w-[500px] w-[300px] p-7 ">
 							<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-start md:pl-40 ss:pl-1 pl-20 animate-pulse duration-1000 ease-in-out transition-all  ">
 								<span className="font-bold">520</span>{" "}
 								<span className="text-lg font-light">Nm</span>{" "}
@@ -119,13 +130,14 @@ const car1popular = () => {
 								</div>
 							</div>
 						</div>
+						)}
 					</div>
 				</div>
 
 				{/* -------------------------phần 2 --------------*/}
 				<div
 					style={{ backgroundImage: `url(${sky})` }}
-					className=" rounded-bl-3xl bg-center w-full min-h-screen relative object-cover  pt-12 justify-center items-center flex"
+					className=" rounded-bl-3xl bg-center w-full min-h-screen relative object-cover justify-center items-center flex"
 				>
 					<div
 						className="absolute h-full"
@@ -170,7 +182,7 @@ const car1popular = () => {
 						<div
 							data-aos="zoom-in"
 							style={{ backgroundImage: `url(${mer1})` }}
-							className="bg-cover bg-center w-full  min-h-[700px] md:min-h-[800px] xl:min-h-[1000px] relative object-cover rounded-full rounded-tl-none rounded-br-none pt-[900px]"
+							className="bg-cover bg-center w-full  min-h-[700px] md:min-h-[800px] xl:min-h-[1000px] relative object-cover rounded-full rounded-tl-none rounded-br-none pt-[900px] "
 						></div>
 					</div>
 				</div>
@@ -245,12 +257,10 @@ const car1popular = () => {
 							execution-while-out-of-viewport
 							execution-while-not-rendered
 							web-share
-							
 							src="https://sketchfab.com/models/88b9a904632e42d18254aa6bf5f43344/embed?autospin=1&autostart=1&preload=1&ui_watermark_link=0&ui_watermark=0"
 						>
 							{" "}
 						</iframe>{" "}
-			
 					</div>
 				</div>
 				{/*----------------------- banner -------------------------*/}
@@ -329,8 +339,8 @@ const car1popular = () => {
 					<div className="justify-start flex">
 						<div
 							data-aos="slide-left"
-							className="relative bg-cover w-[200px] h-[300px] ss:w-[400px] ss:h-[500px] sm:w-[500px] sm:h-[600px] md:w-[600px] md:h-[500px] xl:w-[1000px] xl:h-[900px] rounded-br-full"
-							style={{ backgroundImage: `url(${mer7})` }}
+							className="relative bg-cover w-[200px] h-[300px] ss:w-[400px] ss:h-[500px] sm:w-[500px] sm:h-[600px] md:w-[600px] md:h-[500px] xl:w-[1000px] xl:h-[900px] rounded-br-full bg-center"
+							style={{ backgroundImage: `url(${mer10})` }}
 						></div>
 					</div>
 					<div

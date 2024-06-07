@@ -116,7 +116,19 @@ import merr9 from "./car2_popular/2mer9.avif";
 import merr10 from "./car2_popular/2mer10.avif";
 import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
+
+
+
+// import video
+import VideoCar1Popular from "./Video/Mercedes-AMG CLS 53 4MATIC+.mov"
+
+
 export {
+	VideoCar1Popular,
+
+
+
+
 	merr,
 	merr1,
 	merr2,
