@@ -1,7 +1,8 @@
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../_root/_homepage/Navbar";
+import NavbarSmall from "./productHomePage/NavbarSmall";
 import Car1popular from "./productHomePage/car1popular";
-import React, { useEffect, useRef, useState} from "react"; // Import both useEffect and useRef
+import React, { useEffect, useRef, useState} from "react"; 
 const ProductLayout = () => {
 	const [selectedSection, setSelectedSection] = useState('');
     const handleNavClick = (section) => {
@@ -15,6 +16,14 @@ const ProductLayout = () => {
 				>
 					<div className="w-full">
 						<Navbar onNavClick={handleNavClick}  />
+					</div>
+				</div>
+				
+				<div
+					className="flex items-start justify-center "
+				>
+					<div className="w-full">
+					<NavbarSmall />
 					</div>
 				</div>
                 <div
