@@ -4,5 +4,8 @@
     "@react-spring/web": "^9.7.3",
     "jarallax": "^2.2.1",
     "react-infinite-logo-slider": "^1.0.13"
+  },
+  "devDependencies": {
+    "@types/react-scroll": "^1.8.10"
   }
 }
