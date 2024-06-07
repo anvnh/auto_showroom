@@ -52,9 +52,9 @@ const car1popular = () => {
 	const handleThumbnailClick = (image) => {
 		setSelectedImage(image);
 	};
-	// useEffect(() => {
-	// 	window.scrollTo(0, 0);
-	// }, []);
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<div>
