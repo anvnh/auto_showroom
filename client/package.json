@@ -33,6 +33,7 @@
     "react-icons": "^5.2.1",
     "react-infinite-logo-slider": "^1.0.13",
     "react-intersection-observer": "^9.10.2",
+    "react-parallax": "^3.5.1",
     "react-router-dom": "^6.23.1",
     "react-scroll": "^1.9.0",
     "react-scrollbars-custom": "^4.1.1",

@@ -9,9 +9,10 @@ import hero_4 from "./hero_4.jpg";
 import hero_5 from "./hero_5.jpg";
 import hero_6 from "./hero_6.jpg";
 
+import car3 from "./car_popular/car3popular/carr.png"
 import car1 from "./car/change1.png";
 import car2 from "./car/xe2.png";
-import car3 from "./car/xe3.png";
+
 import car4 from "./car/xe4.png";
 import car5 from "./car/xe5.png";
 import car6 from "./car/xe6.png";
@@ -20,6 +21,7 @@ import logo1 from "./logo_car1.png";
 import logo4 from "./logo_car4.png";
 import logo5 from "./logo_car5.png";
 import logo236 from "./logo_car236.png";
+import logoroi from "./car_popular/car3popular/logo.png"
 
 import user_hero_1 from "./user_hero_1.jpg";
 
@@ -87,6 +89,8 @@ import kia8 from "./car1_popular/kia8.jpg";
 import kia9 from "./car1_popular/kia9.jpg";
 import kiaposter from "./car1_popular/kiaposter.jpg";
 
+
+//car1 popular
 import mer1 from "./car1_popular/mer1.jpeg";
 import mer2 from "./car1_popular/mer2.jpeg";
 import mer3 from "./car1_popular/mer3.jpeg";
@@ -103,6 +107,8 @@ import sky from "./car1_popular/sky.jpg";
 import logomer from "./car1_popular/logomer.png";
 import banner1 from "./car1_popular/banner1.jpg";
 
+
+// car2 popular
 import merr from "./car2_popular/2mer.avif";
 import merr1 from "./car2_popular/2mer1.avif";
 import merr2 from "./car2_popular/2mer2.avif";
@@ -122,12 +128,50 @@ import merr12 from "./car2_popular/2mer12.webp";
 // import video
 import VideoCar1Popular from "./Video/Mercedes-AMG CLS 53 4MATIC+.mov"
 import VideoCar2Popular from "./video2/Maybach S-Class.mov"
+import VideoCar3Popular from "./car_popular/car3popular/video/0609 (2).mp4"
+import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4"
+
+
+
+
+//car3 popular
+import r1 from "./car_popular/car3popular/behind1.jpg"
+import r2 from "./car_popular/car3popular/behind2.jpg"
+import r3 from "./car_popular/car3popular/behind3.jpg"
+import r5 from "./car_popular/car3popular/cq5dam.web.1920.webp"
+import r7 from "./car_popular/car3popular/ok.png"
+import r8 from "./car_popular/car3popular/pic.jpg"
+
+
+import change1 from	"./car_popular/car3popular/change1.png"
+import change2 from	"./car_popular/car3popular/change2.png"
+import change3 from	"./car_popular/car3popular/change3.png"
+import change4 from "./car_popular/car3popular/change4.png"
+import change5 from "./car_popular/car3popular/change5.png"
+import change6 from "./car_popular/car3popular/change7.png"
+
+
 
 export {
+	r1,
+	r2,
+	r3,
+	r4,
+	r5,
+	r6,
+	r7,
+	r8,
+	change1,
+	change2,
+	change3,
+	change4,
+	change5,
+	change6,
+
 	VideoCar1Popular,
 	VideoCar2Popular,
-
-
+	VideoCar3Popular,
+	Videohieuung,
 
 	merr,
 	merr1,
@@ -192,6 +236,7 @@ export {
 	logo4,
 	logo5,
 	logo236,
+	logoroi,
 	user_hero_1,
 	audiA5_banner,
 	bg,
