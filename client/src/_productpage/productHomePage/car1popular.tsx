@@ -24,10 +24,10 @@ import {
 	banner1,
 	VideoCar1Popular,
 } from "../../assets";
-import NavbarSmall from "./NavbarSmall";
+import NavbarSmall from "../navbarSmall/NavbarSmall";
 import { Button } from "@/components/ui/button";
 const car1popular = () => {
-	// hiệu ứng hiển thị khi 5s trôi qua
+	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
 
 	useEffect(() => {
@@ -36,7 +36,7 @@ const car1popular = () => {
 		}, 3000);
 
 		return () => clearTimeout(timer);
-	}, []); // Chỉ chạy một lần khi component mount
+	}, []); 
 
 	useEffect(() => {
 		AOS.init({
@@ -86,16 +86,17 @@ const car1popular = () => {
 							<div
 								data-aos="zoom-in"
 								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-24 transform text-center shadow-xl
-           	 md:w-[550px] w-[300px] p-2 md:p-5 
+           	 ss:w-[550px] w-[200px] p-2 md:p-5 
             transition-opacity duration-1000 opacity-0 ${
 				isVisible ? "opacity-100" : ""
 			}`}
 							>
-								<h1 className="text-2xl md:text-3xl lg:text-4xl mb-2 tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all">
+								<h1 className="text-xs ss:text-3xl lg:text-4xl mb-1 tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all">
 									MERCEDES-AMG
 								</h1>
-								<h2 className="text-1xl md:text-2xl lg:text-3xl font-thin animate-pulse duration-1000 ease-in-out transition-all">
-									CLS 53 4MATIC+
+								<h2 className="text-xs ss:text-2xl lg:text-3xl font-thin animate-pulse duration-1000 ease-in-out transition-all">
+									CLS 53 4MATIC+ <br />
+									<span className="font-bold text-red-100 ">26 000 $</span>
 								</h2>
 							</div>
 						)}
@@ -142,7 +143,7 @@ const car1popular = () => {
 				<div
 					id="Introduce"
 					style={{ backgroundImage: `url(${sky})` }}
-					className=" rounded-bl-3xl bg-center w-full min-h-screen relative object-cover justify-center items-center flex"
+					className=" rounded-bl-3xl bg-center w-full min-h-screen relative object-cover justify-center items-center flex -top-96 md:top-0"
 				>
 					<div
 						className="absolute h-full"
@@ -153,14 +154,14 @@ const car1popular = () => {
 						<div className="flex justify-center items-center">
 							<div
 								data-aos="zoom-in-left"
-								className="text-white relative font-thin text-2xl p-5 ss:p-16 top-0 sm:text-5xl animate-pulse duration-1000 ease-in-out transition-all"
+								className="text-white relative font-thin text-xl p-5 ss:p-16 top-0 sm:text-5xl animate-pulse duration-1000 ease-in-out transition-all"
 							>
 								MERCEDES
 							</div>
 							<div
 								data-aos="zoom-in-right"
 								style={{ backgroundImage: `url(${logomer})` }}
-								className="w-24 bg-center h-28 bg-cover sm:h-36 animate-pulse duration-1000 ease-in-out transition-all"
+								className="w-20 bg-center h-28 bg-cover sm:h-36 animate-pulse duration-1000 ease-in-out transition-all"
 							>
 								{" "}
 							</div>
@@ -187,15 +188,15 @@ const car1popular = () => {
 						<div
 							data-aos="zoom-in"
 							style={{ backgroundImage: `url(${mer1})` }}
-							className="bg-cover bg-center w-full  min-h-[700px] md:min-h-[800px] xl:min-h-[1000px] relative object-cover rounded-full rounded-tl-none rounded-br-none pt-[900px] "
+							className="bg-cover bg-center w-full relative rounded-full rounded-tl-none rounded-br-none pt-[900px] "
 						></div>
 					</div>
 				</div>
 				{/* ------------tiêu đề------------------ */}
-				<div className="relative xl:pt-[1400px] lg:pt-[1400px] md:pt-[1500px] sm:pt-[1000px] xs:pt-[1200px] ss:pt-[700px] pt-[1100px]">
+				<div className="relative xl:pt-[1400px] lg:pt-[1400px] md:pt-[1400px] xs:pt-[500px] pt-[670px] ss:py-[100px]">
 					<div
 						data-aos="flip-left"
-						className="font-thin text-blue-200 relative text-sm ss:text-2xl  md:text-6xl sm:text-4xl text-center pb-[100px] "
+						className="font-thin text-blue-200 relative text-md ss:text-2xl  md:text-6xl sm:text-4xl text-center pb-[100px] "
 					>
 						SIGNIFICANTLY SHARPER - LIKE YOUR EYES
 					</div>
@@ -249,7 +250,7 @@ const car1popular = () => {
 					>
 						3D MODEL
 					</div>
-					<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] pt-52">
+					<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] pt-16 md:pt-52">
 						{" "}
 						<iframe
 							className="w-full md:h-[500px] h-[300px] scale-125 md:scale-150"
@@ -375,7 +376,7 @@ const car1popular = () => {
 		<br />
 		<br />
 
-		<span>For only <span className="text-red-400 font-bold">26 000 $</span> you can own this car</span>
+		<span>For only <span className="text-red-100 font-bold">26 000 $</span> you can own this car</span>
         </div>
 
         <div className="mt-8 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center gap-9">

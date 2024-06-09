@@ -1,5 +1,6 @@
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../_root/_homepage/Navbar";
+import NavbarSmall2 from "./navbarsmall/NavbarSmall2";
 import Car2popular from "./productHomePage/car2popular";
 import React, { useEffect, useRef, useState} from "react"; // Import both useEffect and useRef
 const ProductLayout = () => {
@@ -16,6 +17,13 @@ const ProductLayout = () => {
 				>
 					<div className="w-full">
 					<Navbar onNavClick={handleNavClick}  />
+					</div>
+				</div>
+				<div
+					className="flex items-start justify-center "
+				>
+					<div className="w-full">
+					<NavbarSmall2 />
 					</div>
 				</div>
                 <div
