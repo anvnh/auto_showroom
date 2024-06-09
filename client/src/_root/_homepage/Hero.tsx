@@ -4,16 +4,11 @@ import { RxDotFilled } from 'react-icons/rx';
 import { 
     hero_1, hero_2, hero_3, hero_4, hero_5, hero_6,
 } from '../../assets';
-import {kia,audi, bmwMoono, honda_black, hyundai, lambo} from "@/assets/hplat_asset/img/car_logo"
-import { kiaSoul, kiaSeltos, kiaSorento, kiaSportage } from '@/assets/hplat_asset/img/dropdownNavBarImage/vehicle/kia';
-import { audiA5, audiA8, audiEtron, audiQ5, audiQ8Etron } from '@/assets/hplat_asset/img/dropdownNavBarImage/vehicle/audi';
-import {car, note, calculation,money,
-	easyBuy, trade, localPrice, testDrive,
- } from "@/assets/hplat_asset/img/dropdownNavBarImage/shopping"
 
 
 
-const Hero = ({selectedSection}) => {
+
+const Hero = () => {
 	const slides = [
 		{ url: hero_1, },
 		{ url: hero_2, },
@@ -48,10 +43,7 @@ const Hero = ({selectedSection}) => {
 		return () => clearInterval(interval);
 	}, [slides.length]);
 	
-	/*navbar event */
-	const section = selectedSection
-	// console.log(section)
-
+	
 	return (
 		<div className={` w-full pb-10  relative group`}>
 			
@@ -78,181 +70,7 @@ const Hero = ({selectedSection}) => {
 					</div>
 				))}
 			</div>	
-			{section === "vehiclesBar" ? <div className={`absolute top-0 w-screen h-[825px]  px-[10px] lg:px-[50px] pt-[20px] backdrop-blur-xl bg-white`}>
-				<div className='rounded-[40px] border-t-[2px] border-slate-400px-[10px] pt-[10px]'>
-					<img className="w-[60px]  lg:w-[100px]  " src={kia}/>
-				</div>
-				<div className='flex justify-evenly w-screen h-[150px] xs:h-[210px]'>
-					<div>
-						<div>
-							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition ' src={kiaSoul} />
-						</div>
-						<p className='font-bold sm:text-[25px]  lg:text-[28px]'>Soul</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-					<div>
-						<div>
-							<img className=' sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={kiaSeltos} />
-						</div>
-						<p className='font-bold xs:text-[25px] md:text-[28px]'>Seltos</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-					<div>
-						<div>
-							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={kiaSportage}/>
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Soul</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-					<div>
-						<div>
-							<img className='sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={kiaSorento}/>
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Soul</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-				</div>
-				<div  className='rounded-[40px] border-t-[2px] border-slate-400 px-[10px] pt-[10px]'>
-					<img className="w-[60px] lg:w-[100px] hover:scale-110 transition" src={audi}/>
-				</div>
-				<div className='flex justify-evenly w-screen h-[150px] xs:h-[210px]'>
-					<div>
-						<div>
-							<img className='sm:w-[190px] lg:w-[250px] hover:scale-110 transiton' src={audiA5} />
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A5</p>
-						<p className='font-semibold text-[18px]'>$22,190</p>
-					</div>
-					<div>
-						<div>
-							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={audiA8} />
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A8</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-					<div>
-						<div>
-							<img className=' sm:w-[190px]  lg:w-[250px] hover:scale-110 transition' src={audiEtron}/>
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Etron</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-					<div>
-						<div>
-							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={audiQ5}/>
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Q5</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-				</div>
-				<div  className='rounded-[40px] border-t-[2px] border-slate-400 px-[10px] pt-[10px]'>
-					<img className="w-[50px] lg:w-[80px]  hover:scale-110 transition" src={bmwMoono}/>
-				</div>
-				<div className='flex justify-evenly w-screen h-[210px]'>
-					<div>
-						<div>
-							<img className='sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={audiA5} />
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A5</p>
-						<p className='font-semibold text-[18px]'>$22,190</p>
-					</div>
-					<div>
-						<div>
-							<img className='sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={audiA8} />
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A8</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-					<div>
-						<div>
-							<img className='sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={audiEtron}/>
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Etron</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-					<div>
-						<div>
-							<img className='sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={audiQ5}/>
-						</div>
-						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Q5</p>
-						<p className='font-semibold text-[18px]'>$20,190</p>
-					</div>
-				</div>
-			</div>
-				: null}
-			{section === "shoppingBar" ? <div className="absolute top-0 w-screen h-[400px] xl:px-[100px] bg-white  pt-[40px]   ">
-				<div className='h-[200px]   flex justify-evenly  '>
-					<div className=' lg:w-[300px] xl:w-[400px]  flex-row items-center justify-center text-center '>
-						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center  '>
-							<img className='w-[40px] sm:w-[50px] hover:scale-150 transition' src={money} />
-						</div>
-						<p className='font-bold text-[15px] sm:text-[20px]'>Offer and Incentives</p>
-					</div>
-					<div className='  lg:w-[300px] xl:w-[400px]  text-center '>
-						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px] hover:scale-150 transition' src={car} /></div>
-						<p className='font-bold text-[15px] sm:text-[20px]'>Build Your Car</p>
-					</div>
-					<div className='  lg:w-[300px] xl:w-[400px] text-center '>
-						<div className='  lg:w-[300px] xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px]  hover:scale-150 transition' src={calculation} /></div>
-						<p className='font-bold text-[15px] sm:text-[20px] sm:text-[20px]'>Payment Calculator</p>
-					</div>
-					<div className='  lg:w-[300px] xl:w-[400px] text-center '>
-						<div className='lg:w-[300px] xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px]  hover:scale-150 transition' src={note} /></div>
-						<p className='font-bold text-[15px] sm:text-[20px]'>Offer and Incentives</p>
-					</div>
-				</div>
-				<div className='h-[200px]   flex justify-evenly  '>
-					<div className=' lg:w-[300px]  xl:w-[400px]  flex-row items-center justify-center text-center'>
-						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center '>
-							<img className=' w-[40px] sm:w-[50px]   hover:scale-150 transition' src={trade} /></div>
-						<p className='font-bold text-[15px] sm:text-[20px]'>Trade In</p>
-					</div>
-					<div className='  lg:w-[300px] xl:w-[400px]  text-center '>
-						<div className='  lg:w-[300px]  xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px] hover:scale-150 ' src={localPrice} /></div>
-						<p className='font-bold text-[15px] sm:text-[20px]'>Get a Local Price</p>
-					</div>
-					<div className=' lg:w-[300px] xl:w-[400px] text-center '>
-						<div className='lg:w-[300px]  xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px] hover:scale-150' src={easyBuy} /></div>
-						<p className='font-bold text-[15px] sm:text-[20px]'>AAP EasyBuy</p>
-					</div>
-					<div className=' lg:w-[300px] xl:w-[400px] text-center '>
-						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px] hover:scale-150' src={testDrive} /></div>
-						<p className='font-bold text-[15px] sm:text-[20px]'>Test Drive</p>
-					</div>
-				</div>
-				
-			</div> : null}
-			{section === "inventoryBar" ? <div className="absolute top-0 w-screen h-[250px]  bg-white py-[20px]  "> 
-				<div className=''>
-					<div className='w-screen font-bold text-[30px] text-center mb-[35px] border-b-[3px]'>Choose Your Brand</div>
-					<div className='w-screen h-[100px] flex items-center justify-evenly'>
-						<div>
-							<img className=' w-[80px] md:w-[100px] hover:scale-150 transition ' src={audi}/>
-						</div>
-						<div>
-							<img className=' w-[80px] md:w-[100px] hover:scale-150 transition' src={bmwMoono}/>
-						</div>
-						<div>
-							<img className='w-[80px] md:w-[100px]  hover:scale-150 transition' src={kia}/>
-						</div>
-						<div>
-							<img className=' w-[80px] md:w-[100px]  hover:scale-150 transition' src={hyundai}/>
-						</div>
-						<div>
-							<img className=' w-[80px] md:w-[100px] hover:scale-150 transition' src={honda_black}/>		
-						</div>		
-						<div>
-							<img className='w-[80px] md:w-[100px] hover:scale-150 transition' src={lambo} />
-						</div>
-					</div>		
-				</div>	
-			</div> : null}
+			
 		</div>
 	)
 };

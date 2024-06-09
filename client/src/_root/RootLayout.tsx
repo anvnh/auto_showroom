@@ -19,23 +19,19 @@ const RootLayout = () => {
 		});
 	}, []);
 
-    /**code navbar event */        
-    const [selectedSection, setSelectedSection] = useState('');
-    const handleNavClick = (section) => {
-        setSelectedSection(prevSection => prevSection === section ? '' : section);
-    };
+    
 
     return (
         <section className="w-full">
             <div className="w-full overflow-hidden bg-primary">
                     <div className="flex items-start justify-center ">
                         <div className="w-full">
-                            <Navbar onNavClick={handleNavClick}  />
+                            <Navbar/>
                         </div>
                     </div>
-                <div data-aos="zoom-out" className="flex items-start justify-center bg-primary">
+                <div className="flex items-start justify-center bg-primary">
                     <div className="w-full">
-                        <Hero selectedSection={selectedSection} />
+                        <Hero/>
                     </div>
                 </div>
                 <div data-aos="zoom-out" className="flex items-start justify-center  bg-primary ">
