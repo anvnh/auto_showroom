@@ -12,6 +12,7 @@ import {
 	bannn,
 	ditme,
 	logomer,
+	logoroi,
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import { FaArrowRight } from "react-icons/fa";
@@ -108,7 +109,7 @@ const Product = () => {
 								<img
 									src={car2}
 									alt=""
-									className="w-full h-full object-cover rounded-lg relative group-hover:scale-125 transition-all ease-in-out duration-300"
+									className="w-full h-full object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
 									style={{ top: "-1px" }}
 								/>
 								<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
@@ -126,30 +127,32 @@ const Product = () => {
 					</Link>
 
 					{/*--------------Card3-------------------------------------*/}
+					<Link to="/Rolls-Royce-Ghost-2021">
 					<div
 						style={{ backgroundImage: `url(${acc})` }}
 						data-aos="zoom-out"
 						className="card group bg-cover bg-center hidden xl:block bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
 					>
-						<div className="car -mt-0 w-full h-full">
+						<div className="car -mt-0 w-[400px] h-full">
 							<img
 								src={car3}
 								alt=""
-								className="w-full h-full object-cover rounded-lg relative group-hover:scale-125 transition-all ease-in-out duration-300"
-								style={{ top: "-20px" }}
+								className="w-full h-full object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
+								style={{ top: "-2px" }}
 							/>
 							<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
 						</div>
 						<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 							<div className="logo_Car">
-								<img src={logo236} alt="" />
+								<img src={logoroi} alt="" />
 							</div>
 							<div className="Product_text font-bold text-white text-xl">
-								<h2>Hyundai Sonata 2022</h2>
-								<p className="text-center">$ 26 000</p>
+								<h2>Rolls Royce Ghost 2021</h2>
+								<p className="text-center">$ 1,65 million</p>
 							</div>
 						</div>
 					</div>
+					</Link>
 				</div>
 				{/*--------------hàng 2-------------------------------------*/}
 				<div className="relative  Product grid grid-cols-1 md:grid-cols-2 sm:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_2fr] mt-20 gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer xl:mt-2 xs:py-20 xs:mt-1 ">
@@ -163,7 +166,7 @@ const Product = () => {
 							<img
 								src={car4}
 								alt=""
-								className="w-full h-full object-cover rounded-lg relative group-hover:scale-125 transition-all ease-in-out duration-300"
+								className="w-full h-full object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
 								style={{ top: "-20px" }}
 							/>
 							<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
@@ -188,7 +191,7 @@ const Product = () => {
 							<img
 								src={car6}
 								alt=""
-								className="w-full h-full object-cover rounded-lg relative group-hover:scale-125 transition-all ease-in-out duration-300"
+								className="w-full h-full object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
 								style={{ top: "-20px" }}
 							/>
 							<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
@@ -247,7 +250,7 @@ const Product = () => {
 				</div>
                 */}
 				<div
-					data-aos="slide-down"
+					data-aos="slide-up"
 					style={{ backgroundImage: `url(${ditme})` }}
 					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
