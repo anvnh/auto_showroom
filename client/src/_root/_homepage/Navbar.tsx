@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { logo, menu, close } from "../../assets";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ import { audiA5, audiA8, audiEtron, audiQ5, audiQ8Etron } from '@/assets/hplat_a
 import {car, note, calculation,money,
 	easyBuy, trade, localPrice, testDrive,
  } from "@/assets/hplat_asset/img/dropdownNavBarImage/shopping"
+
+
 const Navbar = () => {
 	const [toggle, setToggle] = useState(false);
 
@@ -21,15 +23,37 @@ const Navbar = () => {
     const [selectedSection, setSelectedSection] = useState('');
     const handleNavClick = (section) => {
         setSelectedSection(prevSection => prevSection === section ? '' : section);
-    };
-/*navbar event */
+    }
 	const section = selectedSection
 	// console.log(section)
+
+	 const [isHidden, setIsHidden] = useState(false);
+    let lastScrollTop = 0;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                setIsHidden(true); // Cuộn xuống, ẩn navbar
+            } else {
+                setIsHidden(false); // Cuộn lên, hiện navbar
+            }
+
+            lastScrollTop = scrollTop;
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
 	
 
 	return (
-		<>
+		 <div className={`z-50 fixed top-0 w-full bg-gray-800 text-white  transition-transform duration-300 ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}>
 		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
 			<Link to="/">
 				<img
@@ -170,7 +194,7 @@ const Navbar = () => {
 
 					
 		</nav>
-		{section === "vehiclesBar" ? <div className={` z-50 absolute top-[81px] w-screen h-[600px] rounded-b-[20px]  px-[10px] lg:px-[50px] pt-[20px] backdrop-blur-xl bg-white`}>
+		{section === "vehiclesBar" ? <div className={`z-50 absolute top-[81px] w-screen h-[600px] rounded-b-[20px]  px-[10px] lg:px-[50px] pt-[20px] bg-white`}>
 				<div className='rounded-[40px] border-t-[2px] border-slate-400px-[10px] pt-[10px]'>
 					<img className="w-[60px]  lg:w-[100px]  " src={kia}/>
 				</div>
@@ -345,7 +369,7 @@ const Navbar = () => {
 					</div>		
 				</div>	
 			</div> : null}
-				</>
+				</div>
 	);
 };
 
