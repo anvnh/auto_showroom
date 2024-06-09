@@ -121,11 +121,11 @@ import merr12 from "./car2_popular/2mer12.webp";
 
 // import video
 import VideoCar1Popular from "./Video/Mercedes-AMG CLS 53 4MATIC+.mov"
-
+import VideoCar2Popular from "./video2/Maybach S-Class.mov"
 
 export {
 	VideoCar1Popular,
-
+	VideoCar2Popular,
 
 
 

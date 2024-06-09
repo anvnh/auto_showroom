@@ -1,6 +1,6 @@
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../_root/_homepage/Navbar";
-import NavbarSmall from "./productHomePage/NavbarSmall";
+import NavbarSmall from "./navbarsmall/NavbarSmall";
 import Car1popular from "./productHomePage/car1popular";
 import React, { useEffect, useRef, useState} from "react"; 
 const ProductLayout = () => {
