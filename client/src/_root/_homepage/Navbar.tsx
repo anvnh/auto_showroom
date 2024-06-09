@@ -4,21 +4,32 @@ import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdOpenInNew } from "react-icons/md";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-
-const Navbar = ({ onNavClick }) => {
+import {kia,audi, bmwMoono, honda_black, hyundai, lambo} from "@/assets/hplat_asset/img/car_logo"
+import { kiaSoul, kiaSeltos, kiaSorento, kiaSportage } from '@/assets/hplat_asset/img/dropdownNavBarImage/vehicle/kia';
+import { audiA5, audiA8, audiEtron, audiQ5, audiQ8Etron } from '@/assets/hplat_asset/img/dropdownNavBarImage/vehicle/audi';
+import {car, note, calculation,money,
+	easyBuy, trade, localPrice, testDrive,
+ } from "@/assets/hplat_asset/img/dropdownNavBarImage/shopping"
+const Navbar = () => {
 	const [toggle, setToggle] = useState(false);
 
 	const [dropdownVe, setDropdownVe] = useState(false);
 	const [dropdownSh, setDropdownSh] = useState(false);
 	const [dropdownIn, setDropdownIn] = useState(false);
 
-	/*code for navbar event */
-	const handleClick = (section) => {
-		onNavClick(section);
-	};
+	/**code navbar event */        
+    const [selectedSection, setSelectedSection] = useState('');
+    const handleNavClick = (section) => {
+        setSelectedSection(prevSection => prevSection === section ? '' : section);
+    };
+/*navbar event */
+	const section = selectedSection
+	// console.log(section)
+
 	
 
 	return (
+		<>
 		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
 			<Link to="/">
 				<img
@@ -32,7 +43,7 @@ const Navbar = ({ onNavClick }) => {
 				<li
 					className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10 ml-5"
 					onClick={() => {
-						handleClick("vehiclesBar");
+						handleNavClick("vehiclesBar");
 					}}
 				>
 					<div
@@ -55,7 +66,7 @@ const Navbar = ({ onNavClick }) => {
 				<li
 					className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10"
 					onClick={() => {
-						handleClick("shoppingBar");
+						handleNavClick("shoppingBar");
 					}}
 				>
 					<div
@@ -79,7 +90,7 @@ const Navbar = ({ onNavClick }) => {
 				<li
 					className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10"
 					onClick={() => {
-						handleClick("inventoryBar");
+						handleNavClick("inventoryBar");
 					}}
 				>
 					<div
@@ -156,7 +167,185 @@ const Navbar = ({ onNavClick }) => {
 					<FaUser className="text-white w-[27px] h-[27px] transform hover:scale-110 transition-transform duration-300 cursor-pointer" />
 				</li>
 			</ul>
+
+					
 		</nav>
+		{section === "vehiclesBar" ? <div className={` z-50 absolute top-[81px] w-screen h-[600px] rounded-b-[20px]  px-[10px] lg:px-[50px] pt-[20px] backdrop-blur-xl bg-white`}>
+				<div className='rounded-[40px] border-t-[2px] border-slate-400px-[10px] pt-[10px]'>
+					<img className="w-[60px]  lg:w-[100px]  " src={kia}/>
+				</div>
+				<div className='flex justify-evenly w-screen h-[150px] xs:h-[210px]'>
+					<div>
+						<div>
+							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition ' src={kiaSoul} />
+						</div>
+						<p className='font-bold sm:text-[25px]  lg:text-[28px]'>Soul</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+					<div>
+						<div>
+							<img className=' sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={kiaSeltos} />
+						</div>
+						<p className='font-bold xs:text-[25px] md:text-[28px]'>Seltos</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+					<div>
+						<div>
+							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={kiaSportage}/>
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Soul</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+					<div>
+						<div>
+							<img className='sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={kiaSorento}/>
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Soul</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+				</div>
+				<div  className='rounded-[40px] border-t-[2px] border-slate-400 px-[10px] pt-[10px]'>
+					<img className="w-[60px] lg:w-[100px] hover:scale-110 transition" src={audi}/>
+				</div>
+				<div className='flex justify-evenly w-screen h-[150px] xs:h-[210px]'>
+					<div>
+						<div>
+							<img className='sm:w-[190px] lg:w-[250px] hover:scale-110 transiton' src={audiA5} />
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A5</p>
+						<p className='font-semibold text-[18px]'>$22,190</p>
+					</div>
+					<div>
+						<div>
+							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={audiA8} />
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A8</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+					<div>
+						<div>
+							<img className=' sm:w-[190px]  lg:w-[250px] hover:scale-110 transition' src={audiEtron}/>
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Etron</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+					<div>
+						<div>
+							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={audiQ5}/>
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Q5</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+				</div>
+				{/* <div  className='rounded-[40px] border-t-[2px] border-slate-400 px-[10px] pt-[10px]'>
+					<img className="w-[50px] lg:w-[80px]  hover:scale-110 transition" src={bmwMoono}/>
+				</div> */}
+				{/* <div className='flex justify-evenly w-screen h-[210px]'>
+					<div>
+						<div>
+							<img className='sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={audiA5} />
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A5</p>
+						<p className='font-semibold text-[18px]'>$22,190</p>
+					</div>
+					<div>
+						<div>
+							<img className='sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={audiA8} />
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A8</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+					<div>
+						<div>
+							<img className='sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={audiEtron}/>
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Etron</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+					<div>
+						<div>
+							<img className='sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={audiQ5}/>
+						</div>
+						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Q5</p>
+						<p className='font-semibold text-[18px]'>$20,190</p>
+					</div>
+				</div> */}
+			</div>
+				: null}
+			{section === "shoppingBar" ? <div className=" z-50 absolute top-[81px] w-screen h-[400px] rounded-b-[20px] xl:px-[100px] bg-white  pt-[40px]   ">
+				<div className='h-[200px]   flex justify-evenly  '>
+					<div className=' lg:w-[300px] xl:w-[400px]  flex-row items-center justify-center text-center '>
+						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center  '>
+							<img className='w-[40px] sm:w-[50px] hover:scale-150 transition' src={money} />
+						</div>
+						<p className='font-bold text-[15px] sm:text-[20px]'>Offer and Incentives</p>
+					</div>
+					<div className='  lg:w-[300px] xl:w-[400px]  text-center '>
+						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center'>
+							<img className=' w-[40px] sm:w-[50px] hover:scale-150 transition' src={car} /></div>
+						<p className='font-bold text-[15px] sm:text-[20px]'>Build Your Car</p>
+					</div>
+					<div className='  lg:w-[300px] xl:w-[400px] text-center '>
+						<div className='  lg:w-[300px] xl:w-[400px] flex justify-center'>
+							<img className=' w-[40px] sm:w-[50px]  hover:scale-150 transition' src={calculation} /></div>
+						<p className='font-bold text-[15px] sm:text-[20px] sm:text-[20px]'>Payment Calculator</p>
+					</div>
+					<div className='  lg:w-[300px] xl:w-[400px] text-center '>
+						<div className='lg:w-[300px] xl:w-[400px] flex justify-center'>
+							<img className=' w-[40px] sm:w-[50px]  hover:scale-150 transition' src={note} /></div>
+						<p className='font-bold text-[15px] sm:text-[20px]'>Offer and Incentives</p>
+					</div>
+				</div>
+				<div className='h-[200px]   flex justify-evenly  '>
+					<div className=' lg:w-[300px]  xl:w-[400px]  flex-row items-center justify-center text-center'>
+						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center '>
+							<img className=' w-[40px] sm:w-[50px]   hover:scale-150 transition' src={trade} /></div>
+						<p className='font-bold text-[15px] sm:text-[20px]'>Trade In</p>
+					</div>
+					<div className='  lg:w-[300px] xl:w-[400px]  text-center '>
+						<div className='  lg:w-[300px]  xl:w-[400px] flex justify-center'>
+							<img className=' w-[40px] sm:w-[50px] hover:scale-150 ' src={localPrice} /></div>
+						<p className='font-bold text-[15px] sm:text-[20px]'>Get a Local Price</p>
+					</div>
+					<div className=' lg:w-[300px] xl:w-[400px] text-center '>
+						<div className='lg:w-[300px]  xl:w-[400px] flex justify-center'>
+							<img className=' w-[40px] sm:w-[50px] hover:scale-150' src={easyBuy} /></div>
+						<p className='font-bold text-[15px] sm:text-[20px]'>AAP EasyBuy</p>
+					</div>
+					<div className=' lg:w-[300px] xl:w-[400px] text-center '>
+						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center'>
+							<img className=' w-[40px] sm:w-[50px] hover:scale-150' src={testDrive} /></div>
+						<p className='font-bold text-[15px] sm:text-[20px]'>Test Drive</p>
+					</div>
+				</div>
+				
+			</div> : null}
+			{section === "inventoryBar" ? <div className="z-50 absolute top-[81px] w-screen h-[250px] rounded-b-[20px]  bg-white py-[20px]  "> 
+				<div className=''>
+					<div className='w-screen font-bold text-[30px] text-center mb-[35px] border-b-[3px]'>Choose Your Brand</div>
+					<div className='w-screen h-[100px] flex items-center justify-evenly'>
+						<div>
+							<img className=' w-[80px] md:w-[100px] hover:scale-150 transition ' src={audi}/>
+						</div>
+						<div>
+							<img className=' w-[80px] md:w-[100px] hover:scale-150 transition' src={bmwMoono}/>
+						</div>
+						<div>
+							<img className='w-[80px] md:w-[100px]  hover:scale-150 transition' src={kia}/>
+						</div>
+						<div>
+							<img className=' w-[80px] md:w-[100px]  hover:scale-150 transition' src={hyundai}/>
+						</div>
+						<div>
+							<img className=' w-[80px] md:w-[100px] hover:scale-150 transition' src={honda_black}/>		
+						</div>		
+						<div>
+							<img className='w-[80px] md:w-[100px] hover:scale-150 transition' src={lambo} />
+						</div>
+					</div>		
+				</div>	
+			</div> : null}
+				</>
 	);
 };
 

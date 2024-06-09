@@ -49,15 +49,7 @@ const audi_A5_Couple = () => {
   }, [slides.length]);
   return (
     <div>
-      <Parallax pages={7}>
-        <ParallaxLayer offset={0} speed={1}>
-          <img className="h-[7000px]" src={bg_1}/>
-        </ParallaxLayer>
-        <ParallaxLayer offset={3} speed={1} factor={5}>
-          <img className="h-[10000px]" src={bg_1}/>
-        </ParallaxLayer>
-       
-        <ParallaxLayer>
+              
           <div className="flex items-start justify-center">
             <div className="w-screen bg-primary">
               <Navbar />
@@ -164,14 +156,13 @@ const audi_A5_Couple = () => {
               <div className="w-screen flex justify-center ">
                   <img className="object-cover rounded-[40px] w-[580px]  sm:w-[800px]   lg:w-[1000px] mlg:w-[1100px] xl:w-[1200px]" src={noiThat1}/>
               </div>
-          </div>
-          <div className="flex items-start justify-center">
+          </div> 
+<div className="flex items-start justify-center">
             <div className="w-screen bg-primary">
               <Footer />
             </div>
           </div>
-        </ParallaxLayer>
-      </Parallax>
+              
     </div>
   )
 }
