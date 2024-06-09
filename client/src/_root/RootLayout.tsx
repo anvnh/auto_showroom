@@ -23,7 +23,7 @@ const RootLayout = () => {
 
     return (
         <section className="w-full">
-            <div className="w-full overflow-hidden bg-primary">
+            <div data-aos="zoom-out" className="w-full overflow-hidden bg-primary">
                     <div className="flex items-start justify-center ">
                         <div className="w-full">
                             <Navbar/>
