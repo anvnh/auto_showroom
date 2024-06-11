@@ -19,7 +19,6 @@ const App = () => {
 
                 <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
 
-                <Route path="/audi-A5-Sportback" element={<Audi_A5_Sportback />} />
 
                 {/* Introduce popular product */}
                 <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />

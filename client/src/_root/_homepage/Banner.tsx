@@ -19,7 +19,7 @@ const Section = () => {
                                     Explore Audi A5 Coupe
                                 </div>
                             </Link>
-                            <Link to="/audi-A5-Sportback">
+                            <Link to="/audi-s6-limousin">
                                 <div className="text-center lg:w-[270px] mlg:w-[300px] lg:px-[20px] lg:py-[10px]  border border-white
                                     hover:bg-green-700 hover:text-white transition ease-linear  
                                     ">

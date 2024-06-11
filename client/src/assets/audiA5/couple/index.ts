@@ -22,7 +22,9 @@ import light from "./light.png"
 import backLight from "./backLight.png"
 import mam1 from "./mam1.png"
 import power from "./power.png"
-
+import a5rmbg from "./a5-rmbg.png"
+import a5black from "./a5black.jpg"
+import audiMini from "./audiMini.png"
 
 export {
     power,
@@ -49,6 +51,8 @@ export {
     light,
     backLight,
     noiThat1,
-
+    a5rmbg,
+    a5black,
+    audiMini,
     
 }

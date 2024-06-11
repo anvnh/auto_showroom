@@ -31,6 +31,8 @@ module.exports = {
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        kanit: ["Kanit", "sans-serif"],
+        syncopate: ["Syncopate","sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
