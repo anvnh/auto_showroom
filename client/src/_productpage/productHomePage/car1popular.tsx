@@ -62,14 +62,14 @@ const car1popular = () => {
 				<div
 					id="Home"
 					data-aos="fade"
-					className="bg-cover bg-center relative w-full  min-h-[700px] md:min-h-[800px] xl:min-h-[1000px]"
+					className="bg-cover bg-center relative w-full min-h-[900px]  sm:min-h-[1200px] md:min-h-[800px] xl:min-h-[1000px]"
 				>
 					<video
 						autoPlay
 						muted
 						loop
 						playsInline
-						className="w-full h-auto"
+						className="w-full h-auto relative top-16"
 					>
 						<source src={VideoCar1Popular} />
 					</video>
@@ -143,7 +143,7 @@ const car1popular = () => {
 				<div
 					id="Introduce"
 					style={{ backgroundImage: `url(${sky})` }}
-					className=" rounded-bl-3xl bg-center w-full min-h-screen relative object-cover justify-center items-center flex -top-96 md:top-0"
+					className=" rounded-bl-3xl bg-center w-full min-h-screen relative object-cover justify-center items-center flex -top-96 md:top-0 "
 				>
 					<div
 						className="absolute h-full"

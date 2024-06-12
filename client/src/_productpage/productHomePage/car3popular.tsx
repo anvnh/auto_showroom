@@ -89,7 +89,7 @@ const Car3popular: React.FC = () => {
 						muted
 						loop
 						playsInline
-						className="w-full h-auto object-cover" // Giữ nguyên tỷ lệ và che phủ toàn bộ container
+						className="w-full h-auto object-cover top-16 relative" // Giữ nguyên tỷ lệ và che phủ toàn bộ container
 					>
 						<source src={VideoCar3Popular} />
 					</video>
@@ -98,21 +98,21 @@ const Car3popular: React.FC = () => {
 				<ParallaxLayer offset={0} speed={2.5} factor={1}>
 					{" "}
 					{/* Điều chỉnh speed cho phù hợp */}
-					<div className="flex justify-start w-full h-full items-center">
+					<div className="flex justify-start w-full h-full items-center bottom-64 md:bottom-0 sm:bottom-40 sm:right-60 relative md:left-11 left-0 ss:-left-52 ss:bottom-32 xs:bottom-48 ">
 						{isVisible && (
 							<div
 								data-aos="fade-up-left"
 								data-aos-delay="500" // Delay 500ms sau khi isVisible = true
 								className={`font-thin absolute text-white top-96 transform text-center shadow-xl
-                  ss:w-[900px] w-[200px] p-2 md:p-5 
+                  ss:w-[900px] xs:w-[300px] w-[200px] p-2 md:p-5 
                   transition-opacity duration-1000 opacity-0 ${
 						isVisible ? "opacity-100" : ""
 					}`}
 							>
-								<h1 className="text-xs ss:text-3xl lg:text-6xl mb-1 tracking-widest font-bold">
+								<h1 className="text-xs xs:text-xl ss:text-3xl lg:text-6xl mb-1 tracking-widest font-bold">
 									Rolls Royce Ghost 2021
 								</h1>
-								<h2 className="text-xs ss:text-2xl lg:text-4xl font-thin pt-12">
+								<h2 className="text-xs ss:text-2xl lg:text-4xl font-thin pt-1">
 									<span className="font-bold text-red-100">
 										1,65 million $
 									</span>
@@ -209,7 +209,7 @@ const Car3popular: React.FC = () => {
 				</ParallaxLayer>
 				<ParallaxLayer offset={3} speed={0.8} factor={1}>
 				<div className="font-thin text-6xl text-center text-white animate-pulse">
-							CAR COLOR
+							NEW COLOR
 						</div>
 
 				</ParallaxLayer>
