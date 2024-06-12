@@ -9,7 +9,7 @@ import hero_4 from "./hero_4.jpg";
 import hero_5 from "./hero_5.jpg";
 import hero_6 from "./hero_6.jpg";
 
-import car3 from "./car_popular/car3popular/carr.png"
+import car3 from "./car_popular/car3popular/carr.png";
 import car1 from "./car/change1.png";
 import car2 from "./car/xe2.png";
 
@@ -21,7 +21,7 @@ import logo1 from "./logo_car1.png";
 import logo4 from "./logo_car4.png";
 import logo5 from "./logo_car5.png";
 import logo236 from "./logo_car236.png";
-import logoroi from "./car_popular/car3popular/logo.png"
+import logoroi from "./car_popular/car3popular/logo.png";
 
 import user_hero_1 from "./user_hero_1.jpg";
 
@@ -39,7 +39,7 @@ import ditme from "./car/ditme.jpg";
 import acc from "./acc.jpg";
 import aa from "./aad.png";
 import bannn from "./car/ggfdg.png";
-import backgroundcar2 from "./car/background.jpg"
+import backgroundcar2 from "./car/background.jpg";
 
 import des from "./car1_popular/desktop.png";
 import des1 from "./car1_popular/desktop1.png";
@@ -89,7 +89,6 @@ import kia8 from "./car1_popular/kia8.jpg";
 import kia9 from "./car1_popular/kia9.jpg";
 import kiaposter from "./car1_popular/kiaposter.jpg";
 
-
 //car1 popular
 import mer1 from "./car1_popular/mer1.jpeg";
 import mer2 from "./car1_popular/mer2.jpeg";
@@ -107,7 +106,6 @@ import sky from "./car1_popular/sky.jpg";
 import logomer from "./car1_popular/logomer.png";
 import banner1 from "./car1_popular/banner1.jpg";
 
-
 // car2 popular
 import merr from "./car2_popular/2mer.avif";
 import merr1 from "./car2_popular/2mer1.avif";
@@ -123,42 +121,40 @@ import merr10 from "./car2_popular/2mer10.avif";
 import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
 
-
-
 // import video
-import VideoCar1Popular from "./Video/Mercedes-AMG CLS 53 4MATIC+.mov"
-import VideoCar2Popular from "./video2/Maybach S-Class.mov"
-import VideoCar3Popular from "./car_popular/car3popular/video/0609 (2).mp4"
-import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4"
-
-
-
+import VideoCar1Popular from "./Video/Mercedes-AMG CLS 53 4MATIC+.mov";
+import VideoCar2Popular from "./video2/Maybach S-Class.mov";
+import VideoCar3Popular from "./car_popular/car3popular/video/0609 (2).mp4";
+import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
 
 //car3 popular
-import r1 from "./car_popular/car3popular/behind1.jpg"
-import r2 from "./car_popular/car3popular/behind2.jpg"
-import r3 from "./car_popular/car3popular/behind3.jpg"
-import r5 from "./car_popular/car3popular/cq5dam.web.1920.webp"
-import r7 from "./car_popular/car3popular/ok.png"
-import r8 from "./car_popular/car3popular/pic.jpg"
+import r1 from "./car_popular/car3popular/behind1.jpg";
+import r2 from "./car_popular/car3popular/behind2.jpg";
+import r3 from "./car_popular/car3popular/behind3.jpg";
+import r7 from "./car_popular/car3popular/ok.png";
+import r8 from "./car_popular/car3popular/pic.jpg";
 
-
-import change1 from	"./car_popular/car3popular/change1.png"
-import change2 from	"./car_popular/car3popular/change2.png"
-import change3 from	"./car_popular/car3popular/change3.png"
-import change4 from "./car_popular/car3popular/change4.png"
-import change5 from "./car_popular/car3popular/change5.png"
-import change6 from "./car_popular/car3popular/change7.png"
-
-
+import change3 from "./car_popular/car3popular/change1.png";
+import change2 from "./car_popular/car3popular/change2.png";
+import change1 from "./car_popular/car3popular/change3.png";
+import change4 from "./car_popular/car3popular/change4.png";
+import change5 from "./car_popular/car3popular/change5.png";
+import change6 from "./car_popular/car3popular/change7.png";
+import b1 from "./car_popular/car3popular/b1.jpg";
+import b2 from "./car_popular/car3popular/b2.webp";
+import b4 from "./car_popular/car3popular/b4.webp";
+import b5 from "./car_popular/car3popular/b5.webp";
+import b6 from "./car_popular/car3popular/b6.webp";
 
 export {
+	b4,
+	b5,
+	b6,
+	b1,
+	b2,
 	r1,
 	r2,
 	r3,
-	r4,
-	r5,
-	r6,
 	r7,
 	r8,
 	change1,
@@ -167,12 +163,10 @@ export {
 	change4,
 	change5,
 	change6,
-
 	VideoCar1Popular,
 	VideoCar2Popular,
 	VideoCar3Popular,
 	Videohieuung,
-
 	merr,
 	merr1,
 	merr2,
@@ -186,8 +180,6 @@ export {
 	merr10,
 	merr11,
 	merr12,
-
-
 	banner1,
 	logomer,
 	sky,

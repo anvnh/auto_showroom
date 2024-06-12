@@ -25,7 +25,7 @@ import {
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 const car1popular = () => {
-	// hiệu ứng hiển thị khi 5s trôi qua
+	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
 
 	useEffect(() => {
@@ -84,7 +84,7 @@ const car1popular = () => {
 								data-aos="zoom-in"
 								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-24 transform text-center shadow-xl
 								ss:w-[550px] w-[200px] p-2 md:p-5 
-							transition-opacity duration-1000 opacity-0 ${isVisible ? "opacity-100" : ""}`}
+							transition-opacity duration-1000 opacity-0 font-syncopate ${isVisible ? "opacity-100" : ""}`}
 							>
 								<h1 className="text-xs ss:text-3xl lg:text-4xl mb-2 	tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all ">
 									Mercedes-Benz
@@ -155,7 +155,7 @@ const car1popular = () => {
 						<div className="flex justify-center items-center">
 							<div
 								data-aos="zoom-in-left"
-									className="text-white relative font-thin text-xl p-5 ss:p-16 top-0 sm:text-5xl animate-pulse duration-1000 ease-in-out transition-all"
+									className="text-white relative font-thin text-xl p-5 ss:p-16 top-0 sm:text-5xl animate-pulse duration-1000 ease-in-out transition-all font-syncopate"
 							>
 								MERCEDES
 							</div>
@@ -197,7 +197,7 @@ const car1popular = () => {
 				<div className="relative xl:pt-[1400px] lg:pt-[1400px] md:pt-[1400px] xs:pt-[500px] pt-[670px] ss:py-[100px]">
 					<div
 						data-aos="flip-left"
-						className="font-thin text-blue-200 relative text-sm ss:text-2xl  md:text-6xl sm:text-4xl text-center pb-[100px] "
+						className="font-thin text-blue-200 relative text-sm ss:text-2xl  md:text-6xl sm:text-4xl text-center pb-[100px] font-syncopate"
 					>
 						SIGNIFICANTLY SHARPER - LIKE YOUR EYES
 					</div>
@@ -246,7 +246,7 @@ const car1popular = () => {
 					<div
 						id="Model"
 						data-aos="zoom-out"
-						className="font-thin text-blue-200 relative text-3xl ss:text-2xl  md:text-6xl sm:text-4xl text-center pt-[200px]"
+						className="font-thin text-blue-200 relative text-3xl ss:text-2xl  md:text-6xl sm:text-4xl text-center pt-[200px] font-syncopate"
 					>
 						3D MODEL
 					</div>
@@ -280,7 +280,7 @@ const car1popular = () => {
 					></div>
 					<div
 						data-aos="slide-right"
-						className="font-thin text-blue-200 relative text-xl ss:text-3xl sm:text-5xl xl:text-6xl justify-center items-center flex left-10 ss:left-12 sm:left-7 md:left-32 xs:left-20"
+						className="font-thin text-blue-200 relative text-xl ss:text-3xl sm:text-5xl xl:text-6xl justify-center items-center flex left-10 ss:left-12 sm:left-7 md:left-32 font-syncopate xs:left-20"
 					>
 						CAR BEHIND
 					</div>
@@ -393,14 +393,14 @@ const car1popular = () => {
 					<div className="mt-8 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center gap-9">
 						<Button
 							variant="outline"
-							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110"
+							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
 						>
 							Add to Cart
 						</Button>
 
 						<Button
 							variant="outline"
-							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110"
+							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
 						>
 							Buy Car
 						</Button>
