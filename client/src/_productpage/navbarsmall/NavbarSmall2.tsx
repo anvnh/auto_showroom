@@ -55,36 +55,39 @@ const NavbarSmall2: React.FC<SubNavbarProps> = ({
 			onMouseLeave={handleMouseLeave}
 		>
 			{isVisible && (
-				<div className="flex items-center">
-					<div className="px-3 py-6 rounded-md bg-gray-700 bg-opacity-50 text-white transition-all duration-300 ease-in-out transform hover:scale-110">
-						<FaHome /> <br />
-						<IoIosInformationCircle /> <br />
-						<IoLogoModelS /> <br />
-						<FaCarSide /> <br />
-						<FaCartShopping />
-					</div>
-					{isHovered && (
-            <ul className="ml-2 transition-all duration-1000 transform origin-left scale-y-0 group-hover:scale-y-100">
-                {navItems.map((item) => (
-                    <li key={item.id} /* ... */>
-                        <Link 
-                            activeClass="owc-vertical-navigation__item--active" 
-                            to={item.id}
-                            spy={true} // Theo dõi vị trí cuộn
-                            smooth={true} // Cuộn mượt mà
-                            offset={-70} 
-                            duration={500} // Thời gian cuộn
-                            onSetActive={onNavClick} 
-                        >
-                            <div className="bg-gray-800 text-white px-2 py-3 hover:bg-gray-500 hover:scale-110 text-sm cursor-pointer transition-transform duration-200 ease-out">
-                                {item.label}
-                            </div>
-                        </Link>
-                    </li>
-                ))}
-                    </ul>
-                )}
+			<div className="flex items-center">
+			<div className="px-3 py-6 rounded-tl-xl rounded-bl-xl bg-gray-700 bg-opacity-50 text-white duration-600 transition-all ease-in-out">
+				<div className="group-hover:scale-100 transform scale-110  transition-all duration-300">
+				<FaHome/> <br />
+				<IoIosInformationCircle /> <br />
+				<IoLogoModelS /> <br />
+				<FaCarSide /> <br />
+				<FaCartShopping />
 				</div>
+			</div>
+			{isHovered && (
+				<div className="bg-gray-800 bg-opacity-60 text-white pl-1 pr-16 py-4 rounded-tr-full rounded-br-full ml-0 transition-all duration-1000 transform origin-left scale-y-0 group-hover:scale-y-100">
+					<div className="flex flex-col gap-2">
+						{" "}
+						{navItems.map((item) => (
+							<Link
+								key={item.id}
+								activeClass="owc-vertical-navigation__item--active"
+								to={item.id}
+								spy={true}
+								smooth={true}
+								offset={-70}
+								duration={500}
+								onSetActive={onNavClick}
+								className="text-xs cursor-pointer hover:bg-gray-500 hover:scale-110 transition-transform duration-200 ease-out px-2 py-2 rounded-tr-full rounded-br-full "
+							>
+								{item.label}
+							</Link>
+						))}
+					</div>
+				</div>
+			)}
+		</div>
 			)}
 		</div>
 		</div>
