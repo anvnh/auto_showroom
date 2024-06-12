@@ -25,6 +25,10 @@ import power from "./power.png"
 import a5rmbg from "./a5-rmbg.png"
 import a5black from "./a5black.jpg"
 import audiMini from "./audiMini.png"
+import audi_thanXe from "./audi_thanXe.png"
+import audi_banhXeTruoc from "./audi_banhXeTruoc.png"
+import audi_banhXeSau from "./audi_banhXeSau.png"
+import road from "./road.jpg"
 
 export {
     power,
@@ -54,5 +58,9 @@ export {
     a5rmbg,
     a5black,
     audiMini,
+    audi_thanXe,
+    audi_banhXeSau,
+    audi_banhXeTruoc,
+    road,
     
 }
