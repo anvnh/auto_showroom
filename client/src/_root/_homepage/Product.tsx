@@ -38,7 +38,7 @@ const Product = () => {
 				className="bg-cover bg-center h-24 sm:h-48 relative object-cover"
 			>
 				<div className="flex justify-center pt-16 absolute inset-0">
-					<h1 className="relative text-white font-extrabold md:text-5xl xs:text-4xl text-2xl animate-pulse bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 ">
+					<h1 className="relative text-white font-extrabold md:text-5xl xs:text-4xl text-2xl animate-pulse bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate">
 						POPULAR PRODUCT
 					</h1>
 				</div>
@@ -80,7 +80,7 @@ const Product = () => {
 									<img src={logomer} alt="" />
 								</div>
 								<div className="Product_text opacity-100 text-white  font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-5000 absolute bottom-24 left-16">
-									<h2>Mercedes AMG CLS</h2>
+									<h2 className="font-syncopate">Mercedes AMG CLS</h2>
 									<p className="text-center">$ 26 000</p>
 								</div>
 								<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
@@ -119,7 +119,7 @@ const Product = () => {
 									<img src={logomer} alt="" />
 								</div>
 								<div className="Product_text font-bold text-white text-xl">
-									<h2>Mercedes-Benz Maybach 2022</h2>
+									<h2 className="font-syncopate">Mercedes-Benz Maybach 2022</h2>
 									<p className="text-center">$ 679 867</p>
 								</div>
 							</div>
@@ -147,7 +147,7 @@ const Product = () => {
 								<img src={logoroi} alt="" />
 							</div>
 							<div className="Product_text font-bold text-white text-xl">
-								<h2>Rolls Royce Ghost 2021</h2>
+								<h2 className="font-syncopate">Rolls Royce Ghost 2021</h2>
 								<p className="text-center">$ 1,65 million</p>
 							</div>
 						</div>
@@ -176,7 +176,7 @@ const Product = () => {
 								<img src={logo236} alt="" />
 							</div>
 							<div className="Product_text font-bold text-white text-xl">
-								<h2>Hyundai Sonata 2022</h2>
+								<h2 className="font-syncopate">Hyundai Sonata 2022</h2>
 								<p className="text-center">$ 26 000</p>
 							</div>
 						</div>
@@ -201,7 +201,7 @@ const Product = () => {
 								<img src={logo236} alt="" />
 							</div>
 							<div className="Product_text font-bold text-white text-xl">
-								<h2>Hyundai Sonata 2022</h2>
+								<h2 className="font-syncopate">Hyundai Sonata 2022</h2>
 								<p className="text-center">$ 26 000</p>
 							</div>
 						</div>
@@ -225,8 +225,8 @@ const Product = () => {
 							<div className="logo_Car flex flex-col items-start opacity-100 group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-36 left-24 p-2">
 								<img src={logo1} alt="" />
 							</div>
-							<div className="Product_text opacity-100 text-white font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-5000 absolute bottom-24 left-12">
-								<h2>Hyundai Sonata 2022</h2>
+							<div className="Product_text opacity-100 text-white font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-5000 absolute bottom-24 left-12 ">
+								<h2 className="font-syncopate">Hyundai Sonata 2022</h2>
 								<p className="text-center">$ 26 000</p>
 							</div>
 							<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
@@ -255,7 +255,7 @@ const Product = () => {
 					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
 					<div className="flex justify-center pt-16 absolute inset-0">
-						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 ">
+						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate ">
 							Discover the new AAP
 						</h1>
 					</div>

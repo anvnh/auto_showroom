@@ -313,7 +313,7 @@ const Navbar = () => {
 					<div className='  lg:w-[300px] xl:w-[400px] text-center '>
 						<div className='  lg:w-[300px] xl:w-[400px] flex justify-center'>
 							<img className=' w-[40px] sm:w-[50px]  hover:scale-150 transition' src={calculation} /></div>
-						<p className='font-bold text-[15px] sm:text-[20px] sm:text-[20px]'>Payment Calculator</p>
+						<p className='font-bold text-[15px] sm:text-[20px]'>Payment Calculator</p>
 					</div>
 					<div className='  lg:w-[300px] xl:w-[400px] text-center '>
 						<div className='lg:w-[300px] xl:w-[400px] flex justify-center'>
