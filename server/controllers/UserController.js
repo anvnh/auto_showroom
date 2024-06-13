@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const User = require('../models/UserModel');
 
 
@@ -24,11 +25,11 @@ const getSingleUser = async (req, res) => {
 
 // create a user
 const createUser = async (req, res) => {
-    const {username, password, email, phone} = req.body;
+    const {username, password, email } = req.body;
 
     // add to db
     try {
-        const newUser = await User.create({username, password, email, phone});
+        const newUser = await User.create({username, password, email });
         res.status(201).json(newUser);
     } catch (error) {
         res.status(400).json(error);
@@ -38,17 +39,45 @@ const createUser = async (req, res) => {
 // delete a user
 const deleteUser = async (req, res) => {
     const { id } = req.params;
-    const user = await User.findByIdAndDelete(id);
+
+    // if(!user){
+    //     return res.status(404).json({mssg: 'User not found'});
+    // }
+    //
+    // res.status(200).json({mssg: 'User deleted successfully'});
+    
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({mssg: 'User not found'});
+    }
+
+    const user = await User.findOneAndDelete({_id: id});
 
     if(!user){
         return res.status(404).json({mssg: 'User not found'});
     }
 
-    res.status(200).json({mssg: 'User deleted successfully'});
+    res.status(200).json({mssg: 'User deleted successfully', user: user, id: id});
 }
 
 // update a user
+const updateUser = async (req, res) => {
+    const { id } = req.params;
 
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({mssg: 'User not found'});
+    }
+
+    const user = await User.findOneAndUpdate({_id: id}, {
+        ...req.body
+    })
+
+    if(!user){
+        return res.status(404).json({mssg: 'User not found'});
+    }
+
+    res.status(200).json({mssg: 'User updated successfully'});
+
+}
 
 
 module.exports = {
@@ -56,4 +85,5 @@ module.exports = {
     getSingleUser,
     createUser,
     deleteUser,
+    updateUser,
 }
