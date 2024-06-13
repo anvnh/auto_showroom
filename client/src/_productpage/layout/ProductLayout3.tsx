@@ -6,18 +6,11 @@ import Car3popular2 from "../productHomePage/car3popular2";
 import NavbarSmall3 from "../navbarsmall/NavbarSmall3";
 
 const ProductLayout3 = () => {
-	const [selectedSection, setSelectedSection] = useState('');
-    const handleNavClick = (section) => {
-        setSelectedSection(prevSection => prevSection === section ? '' : section);
-    };
+
   return (
 		<section className="w-full">
 			<div className="w-full overflow-hidden bg-primary">
-				<div className="flex items-start justify-center ">
-					<div className="w-full">
-						<Navbar onNavClick={handleNavClick} />
-					</div>
-				</div>
+
 				<div
 					className="flex items-start justify-center "
 				>

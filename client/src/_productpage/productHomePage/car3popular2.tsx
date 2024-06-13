@@ -37,7 +37,7 @@ const car3popular2 = () => {
 							className="h-screen w-screen object-cover"
 						/>
 					</div>
-					<div className="h-screen w-1/2 flex justify-center items-center bg-gray-600 text-white">
+					<div className="h-screen w-1/2 flex justify-center items-center bg-slate-800	 text-white">
 						<div className="w-[700px] h-[500px] flex justify-center items-center flex-col  border-purple-500 border-2">
 							<h1
 								data-aos="slide-right"
@@ -64,7 +64,7 @@ const car3popular2 = () => {
 				</div>
 
 				<div className="relative flex w-screen h-screen">
-					<div className="h-screen w-1/2 flex justify-center items-center bg-gray-700 text-white">
+					<div className="h-screen w-1/2 flex justify-center items-center bg-gray-900 text-white">
 						<div className="w-[700px] h-[500px] flex justify-center items-center flex-col  border-blue-500 border-2">
 							<h1 className="font-syncopate text-center text-[55px] font-medium uppercase">
 								Technology
