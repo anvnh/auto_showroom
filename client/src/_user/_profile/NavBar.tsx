@@ -25,14 +25,14 @@ const NavBar = () => {
 
     return (
         <div className="mt-10 ml-10">
-            <div className="w-[300px] h-auto bg-red-400 pb-3 pt-3 pl-10 rounded-2xl justify-center">
-                {userData && userData.map((user: User) => (
+            {userData && userData.map((user: User) => (
+                <div className="w-[300px] h-auto bg-red-400 pb-3 pt-3 pl-10 rounded-2xl justify-center mb-3">
                     <div key={user._id}>
                         <h1>{user.username}</h1>
                         <p>{user.email}</p>
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
         </div>
     )
 }
