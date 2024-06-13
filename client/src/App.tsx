@@ -2,7 +2,7 @@ import {Routes, Route} from 'react-router-dom';
 import RootLayout from './_root/RootLayout';
 import UserLayout from './_user/UserLayout';
 import { Audi_A5_Couple, Audi_A5_Sportback } from "./_car/audi/audi_A5"
-import {ProductLayout1, ProductLayout2, ProductLayout3} from './_productpage/layout/';
+import {ProductLayout1, ProductLayout2, ProductLayout3} from './_productpage/layoutt/';
 import {NavBar} from './_user/_profile';
 const App = () => {
     return (
