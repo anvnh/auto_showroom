@@ -19,3 +19,8 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:hover {
   background-color: #555; /* Màu khi di chuột qua */
 }
+/* Đặt cho phần tử chứa nội dung cuộn ngang */
+.no-horizontal-scroll {
+  overscroll-behavior-x: contain; /* Ngăn chặn cuộn tràn */
+  touch-action: pan-y;              /* Chỉ cho phép cuộn dọc bằng chạm */
+}
