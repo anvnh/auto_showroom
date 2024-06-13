@@ -1,13 +1,5 @@
 import { Navbar } from "@/_root/_homepage";
 import { mer, toyota, bmw, audi, audisport, lexus, lambo, hyundai, acura, ferari, } from "@/assets/hplat_asset/img/car_logo";
-
-import {
-  sport1,
-  sport2,
-  sport3,
-  sport4,
-  audiA5,
-} from "@/assets/audiA5/sportback";
 import {
   s1,
   s2,
