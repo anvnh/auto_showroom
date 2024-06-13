@@ -9,11 +9,7 @@ const userRoutes = require('./routes/users');
 const app = express();
 
 // cors 
-app.use(cors({
-    origin: 'http://localhost:5173', // Allow requests from this origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Allow these HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
-}));
+app.use(cors());
 
 // middleware   
 app.use(express.json());
