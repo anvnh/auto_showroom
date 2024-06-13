@@ -17,7 +17,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import {Link} from "react-router-dom"
-import SignUp from "./SignUp"
 import "aos/dist/aos.css";
 
 

@@ -4,6 +4,7 @@ const{
     getAllUsers,
     getSingleUser,
     deleteUser,
+    updateUser,
 } = require('../controllers/UserController');
 
 const router = express.Router();
@@ -24,9 +25,6 @@ router.delete('/:id', deleteUser);
 
 
 // Update user
-router.put('/:id', (req, res) => {
-    const id = req.params.id;
-    res.json({mssg: `Update user with id ${id}`});
-})
+router.patch('/:id', updateUser);
 
 module.exports = router

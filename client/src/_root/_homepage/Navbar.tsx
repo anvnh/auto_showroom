@@ -6,7 +6,7 @@ import { MdOpenInNew } from "react-icons/md";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { kia, audi, bmwMoono, honda_black, hyundai, lambo } from "@/assets/hplat_asset/img/car_logo"
 import { kiaSoul, kiaSeltos, kiaSorento, kiaSportage } from '@/assets/hplat_asset/img/dropdownNavBarImage/vehicle/kia';
-import { audiA5, audiA8, audiEtron, audiQ5, audiQ8Etron } from '@/assets/hplat_asset/img/dropdownNavBarImage/vehicle/audi';
+import { audiA5, audiA8, audiEtron, audiQ5 } from '@/assets/hplat_asset/img/dropdownNavBarImage/vehicle/audi';
 import {
 	car, note, calculation, money,
 	easyBuy, trade, localPrice, testDrive,
@@ -22,7 +22,7 @@ const Navbar = () => {
 
 	/**code navbar event */
 	const [selectedSection, setSelectedSection] = useState('');
-	const handleNavClick = (section) => {
+	const handleNavClick = (section: string) => {
 		setSelectedSection(prevSection => prevSection === section ? '' : section);
 	}
 	const section = selectedSection
@@ -54,7 +54,7 @@ const Navbar = () => {
 
 
 	return (
-		<div className={`z-50 fixed top-0 w-full bg-gray-800   transition-transform duration-300 ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}>
+		<div className={`z-50 fixed top-0 w-full bg-gray-800 transition-transform duration-300 ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}>
 			<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
 				<Link to="/">
 					<img
@@ -188,9 +188,11 @@ const Navbar = () => {
 				</div>
 
 				<ul className="list-none sm:flex hidden justify-end items-center flex-1">
-					<li className="relative group">
-						<FaUser className="text-white w-[27px] h-[27px] transform hover:scale-110 transition-transform duration-300 cursor-pointer" />
-					</li>
+                    <Link to="/profile">
+                        <li className="relative group">
+                            <FaUser className="text-white w-[27px] h-[27px] transform hover:scale-110 transition-transform duration-300 cursor-pointer" />
+                        </li>
+                    </Link>
 				</ul>
 
 
