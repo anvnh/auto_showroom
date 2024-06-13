@@ -140,13 +140,25 @@ import change1 from "./car_popular/car3popular/change3.png";
 import change4 from "./car_popular/car3popular/change4.png";
 import change5 from "./car_popular/car3popular/change5.png";
 import change6 from "./car_popular/car3popular/change7.png";
+import change10 from "./car_popular/car3popular/change10.png";
+import change8 from "./car_popular/car3popular/change8.png";
+import change9 from "./car_popular/car3popular/change9.png";
+
 import b1 from "./car_popular/car3popular/b1.jpg";
 import b2 from "./car_popular/car3popular/b2.webp";
 import b4 from "./car_popular/car3popular/b4.webp";
 import b5 from "./car_popular/car3popular/b5.webp";
 import b6 from "./car_popular/car3popular/b6.webp";
+import b7 from "./car_popular/car3popular/b7.webp";
+import b8 from "./car_popular/car3popular/b8.webp";
+import b9 from "./car_popular/car3popular/b9.webp";
+import toi from "./car_popular/car3popular/toi.png";
 
 export {
+	b7,
+	b8,
+	b9,
+	toi,
 	b4,
 	b5,
 	b6,
@@ -163,6 +175,9 @@ export {
 	change4,
 	change5,
 	change6,
+	change10,
+change8 ,
+change9 ,
 	VideoCar1Popular,
 	VideoCar2Popular,
 	VideoCar3Popular,

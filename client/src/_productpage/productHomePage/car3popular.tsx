@@ -17,29 +17,65 @@ import {
 	change4,
 	change5,
 	change6,
+	change10,
+	change8,
+	change9,
 	VideoCar3Popular,
-	Videohieuung, b4, b5, b6,
+	Videohieuung,
+	b4,
+	b5,
+	b6,
+	toi,
+	b7,
+	b8,
+	b9,
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import Car3popular2 from "../productHomePage/car3popular2";
 import { Footer } from "@/_root/_homepage";
+import Navbar from "../../_root/_homepage/Navbar";
 
 const Car3popular: React.FC = () => {
-	// hiệu ứng thay đổi ảnh trong new car color
+	// sự kiện của navbar
+	const [selectedSection, setSelectedSection] = useState("");
+	const handleNavClick = (section) => {
+		setSelectedSection((prevSection) =>
+			prevSection === section ? "" : section
+		);
+	};
+	// hiệu ứng aos
+	useEffect(() => {
+		AOS.init({
+			duration: 10000,
+			easing: "ease-in-out",
+			once: false,
+			mirror: false,
+			anchorPlacement: "top-center",
+		});
+	}, []);
+	// hiệu hiển thị sau 4s
 	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		const timer = setTimeout(() => setIsVisible(true), 2000);
+		return () => clearTimeout(timer);
+	}, []);
+
+	// hiệu ứng thay đổi ảnh trong new car color
 	const [activeImage, setActiveImage] = useState(0);
 	const [activeGroup, setActiveGroup] = useState(0);
 	const imageGroups = [
 		[change1, change2, change3],
 		[change4, change5, change6],
+		[change10, change8, change9],
 	];
-	const buttonColors = ["bg-white", "bg-white"];
+	const buttonColors = ["bg-white", "bg-white", "bg-white"];
 	const buttonColors2 = ["bg-blue-300", "bg-orange-500", "bg-purple-500"];
 
 	const buttonsRef = useRef(null);
 
 	useEffect(() => {
-		const timer = setTimeout(() => setIsVisible(true), 3000);
+		const timer = setTimeout(() => setIsVisible(true), 4000);
 		return () => clearTimeout(timer);
 	}, []);
 
@@ -49,15 +85,13 @@ const Car3popular: React.FC = () => {
 	}, [activeImage, activeGroup]);
 
 	useEffect(() => {
-		const interval = setInterval(
-			() =>
-				setActiveImage(
-					(prev) => (prev + 1) % imageGroups[activeGroup].length
-				),
-			7000
-		);
+		const interval = setInterval(() => {
+			setActiveImage(
+				(prev) => (prev + 1) % imageGroups[activeGroup].length
+			);
+		}, 7000);
 		return () => clearInterval(interval);
-	}, [activeGroup]);
+	}, [activeGroup, activeImage]); // Thêm activeImage vào mảng dependency
 
 	useEffect(() => {
 		if (buttonsRef.current) {
@@ -72,11 +106,25 @@ const Car3popular: React.FC = () => {
 	return (
 		<div className="parallax">
 			<Parallax
-				pages={7.5}
+				pages={8.7}
 				style={{ top: "0", left: "0" }}
 				className="bg-black"
 			>
-				<ParallaxLayer 	data-aos="zoom-in-right" offset={0} speed={0.1} factor={4}>
+				<ParallaxLayer className="z-10" offset={0} speed={2} factor={1}>
+					<div 
+					
+					className="flex items-start justify-center relative">
+					{isVisible && (
+						<div  className="w-full"
+						data-aos="fade-down"
+						data-aos-delay="4000"
+						data-aos-duration="2000"> 
+							<Navbar onNavClick={handleNavClick} />
+						</div>
+							)}
+					</div>
+				</ParallaxLayer>
+				<ParallaxLayer offset={0} speed={0.1} factor={4}>
 					<video
 						autoPlay
 						muted
@@ -88,9 +136,9 @@ const Car3popular: React.FC = () => {
 					</video>
 				</ParallaxLayer>
 
-				<ParallaxLayer 	data-aos="zoom-in-right" id="Home" offset={0} speed={3} factor={2}>
+				<ParallaxLayer offset={0} speed={8} factor={2}>
 					<video
-						
+						id="Home"
 						autoPlay
 						muted
 						loop
@@ -99,14 +147,15 @@ const Car3popular: React.FC = () => {
 					>
 						<source src={VideoCar3Popular} />
 					</video>
-					
 				</ParallaxLayer>
 
-				<ParallaxLayer 	data-aos="zoom-in-right" offset={0} speed={2.5} factor={1}>
+				<ParallaxLayer offset={0} speed={4.5} factor={1}>
 					<div className="flex justify-start w-full h-full items-center bottom-64 md:bottom-0 sm:bottom-40 sm:right-60 relative md:left-11 left-0 ss:-left-52 ss:bottom-32 xs:bottom-48 ">
 						{isVisible && (
 							<div
-								data-aos-delay="500"
+							data-aos="fade-up"
+							data-aos-delay="1000"
+							data-aos-duration="1000"
 								className={`font-thin absolute text-white top-96 transform text-center shadow-xl
                   ss:w-[900px] xs:w-[300px] w-[200px] p-2 md:p-5 
                   transition-opacity duration-1000 opacity-0 font-syncopate ${
@@ -125,29 +174,36 @@ const Car3popular: React.FC = () => {
 						)}
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer 	data-aos="zoom-in-right" offset={1} speed={2} factor={1}>
+				<ParallaxLayer offset={1} speed={2} factor={1}>
 					<div
-					id="Introduce"
-					className="text-center bottom-[1500px] relative ">
-						<h2 className="font-thin text-2xl text-white ">
-							<span className="font-bold text-4xl font-syncopate">
+						id="Introduce"
+						className="text-center bottom-[1500px] relative "
+					>
+						<h2 className="font-thin text-md md:first-line:text-2xl text-white px-12"
+						data-aos="slide-left"
+							data-aos-delay="1000"
+							data-aos-duration="4000"
+							>
+							<span className="font-bold md:text-4xl font-syncopate">
 								PURE EXPRESSION
 							</span>{" "}
 							<br /> <br />
 							<br />
 							Ghost presents a world of boundless potential. Its
-							purity liberates the imagination, <br /> inviting
+							purity liberates the imagination, inviting
 							you to craft a motor car that is a complete
 							original. There are no limits to what Ghost can
 							become — all one has to do is imagine.
 						</h2>
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer 	data-aos="zoom-in-right" offset={1} speed={1.3} factor={1}>
-					<h2 className="font-thin text-2xl text-white pt-28 grid grid-cols-2 gap-4 text-center bottom-[900px] relative">
-						{" "}
-						{/* Thêm grid và grid-cols-2 */}
-						<div>
+				<ParallaxLayer offset={1} speed={1.3} factor={1}>
+					<h2 className="font-thin text-sm md:text-2xl text-white pt-28 grid grid-cols-2 gap-2 md:gap-4 text-center bottom-[900px] relative px-4">
+						<div 
+						data-aos="slide-right"
+						data-aos-delay="1000"
+						data-aos-duration="4000"
+						>
 							<span className="font-bold font-syncopate">
 								NEDC * (combined):
 							</span>
@@ -162,12 +218,16 @@ const Car3popular: React.FC = () => {
 							<br />
 							<br />
 						</div>
-						<div>
+						<div
+						data-aos="slide-left"
+						data-aos-delay="1000"
+						data-aos-duration="4000"
+						>
 							<span className="font-bold font-syncopate">
 								WLTP # (combined):
 							</span>
 							<br />
-							CO2 emission: 359-347 g/km;
+							CO2 emission:359-347g/km;
 							<br />
 							<br />
 							<span className="font-bold font-syncopate">
@@ -219,9 +279,10 @@ const Car3popular: React.FC = () => {
 					</div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={3.2} speed={0.8} factor={1}>
-					<div 
-					id="Color"
-					className="relative overflow-hidden w-full h-[900px]">
+					<div
+						id="Color"
+						className="relative overflow-hidden w-full h-[900px]"
+					>
 						{/* Vùng chứa ảnh */}
 						<div className="absolute top-0 left-0 w-full h-full">
 							{imageGroups[activeGroup].map((image, index) => (
@@ -281,7 +342,7 @@ const Car3popular: React.FC = () => {
 										: "bg-gray-900 bg-opacity-50 text-white"
 								}`}
 							>
-								front of the car
+								Front of the car
 							</button>
 							<button
 								onClick={() => {
@@ -295,15 +356,30 @@ const Car3popular: React.FC = () => {
 										: "bg-gray-900 bg-opacity-50 text-white"
 								}`}
 							>
-								side of the vehicle
+								Side of the vehicle
+							</button>
+							<button
+								onClick={() => {
+									setActiveImage(0);
+									setActiveGroup(2);
+									AOS.refresh();
+								}}
+								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
+									activeGroup === 2
+										? buttonColors[1]
+										: "bg-gray-900 bg-opacity-50 text-white"
+								}`}
+							>
+								Behind of the car
 							</button>
 						</div>
 					</div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={4} speed={0.8} factor={1}>
-					<div 
-					id="Interiors"
-					className="flex justify-center bottom-[570px] bg-bla relative">
+					<div
+						id="Interiors"
+						className="flex justify-center bottom-[570px] bg-bla relative"
+					>
 						<div className="w-full">
 							<Car3popular2 />
 						</div>
@@ -311,7 +387,6 @@ const Car3popular: React.FC = () => {
 				</ParallaxLayer>
 				<ParallaxLayer offset={6} speed={1.2} factor={1}>
 					<div
-
 						data-aos="zoom-in-right"
 						className="text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[900px]"
 					>
@@ -321,26 +396,101 @@ const Car3popular: React.FC = () => {
 				<ParallaxLayer offset={6} speed={1.2} factor={1}>
 					<div
 						data-aos="zoom-in-right"
-						style={{ backgroundImage: `url(${b4})` }}
-						className="w-[1000px] bg-center h-[600px] bg-cover bottom-[600px] relative rounded-3xl left-[700px]"
+						style={{ backgroundImage: `url(${b9})` }}
+						className="w-[1200px] bg-center h-[800px] bg-cover bottom-[500px] relative rounded-3xl left-[700px]"
 					></div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
 					<div
 						data-aos="zoom-in-right"
 						style={{ backgroundImage: `url(${b5})` }}
-						className="w-[1000px] bg-center h-[600px] bg-cover rounded-3xl bottom-[300px] relative left-28"
+						className="w-[1200px] bg-center h-[800px] bg-cover rounded-3xl top-[0px] relative left-2"
 					></div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={6.4} speed={0.5} factor={1}>
 					<div
 						data-aos="zoom-in-right"
 						style={{ backgroundImage: `url(${b6})` }}
-						className="w-[1000px] bg-center h-[600px] bg-cover rounded-3xl bottom-[100px] relative left-[800px]"
+						className="w-[1200px] bg-center h-[800px] bg-cover rounded-3xl top-[300px] relative left-[800px]"
 					></div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={7} speed={0.5} factor={1}>
-				<div className="w-full bottom-4 relative">
+				<ParallaxLayer offset={7.4} speed={0.5} factor={1}>
+					<div className="article-tiles-container bg-black text-white p-6">
+						<div className="article-tiles-desc mb-6 text-center font-syncopate">
+							<h3 className="text-5xl mb-2">
+								Continue your journey
+							</h3>
+							<p>
+								You may also like the following related articles
+							</p>
+						</div>
+
+						<div className="article-tiles-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-20">
+							<div className="article-tile">
+								<figure className="hover01 overflow-hidden">
+									<img
+										src={b8}
+										className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
+									/>
+								</figure>
+								<div className="block font-syncopate text-center">
+									<h4 className="text-lg mb-2">
+										GHOST PRISM
+									</h4>
+									<p>
+										Ghost Prism draws inspiration from the
+										world of contemporary designs.
+									</p>
+								</div>
+							</div>
+
+							<div className="article-tile">
+								<figure className="hover01 overflow-hidden group relative">
+									<img
+										src={toi}
+										alt="Image 1"
+										className="w-full object-cover transform transition-opacity duration-300 group-hover:opacity-0"
+									/>
+									<img
+										src={b4}
+										alt="Image 2"
+										className="absolute top-0 left-0 w-full h-full object-cover transform transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110"
+									/>
+								</figure>
+
+								<div className="block font-syncopate text-center">
+									<h4 className="text-lg mb-2">
+										Ghost - In Detail
+									</h4>
+									<p>
+										Pure and pristine. The ultimate
+										foundation for infinite self-expression.
+									</p>
+								</div>
+							</div>
+
+							<div className="article-tile">
+								<figure className="hover01 overflow-hidden">
+									<img
+										src={b7}
+										className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
+									/>
+								</figure>
+								<div className="block font-syncopate text-center">
+									<h4 className="text-lg mb-2">
+										Commission Your Ghost
+									</h4>
+									<p>
+										Envision an original with Bespoke
+										services.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ParallaxLayer>
+				<ParallaxLayer offset={8.2} speed={2} factor={1}>
+					<div className="w-full bottom-[330px] relative">
 						<Footer />
 					</div>
 				</ParallaxLayer>

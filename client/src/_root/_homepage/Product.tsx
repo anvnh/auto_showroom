@@ -79,8 +79,8 @@ const Product = () => {
 								<div className="logo_Car flex flex-col items-start opacity-100 group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-36 left-24  p-2">
 									<img src={logomer} alt="" />
 								</div>
-								<div className="Product_text opacity-100 text-white  font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-5000 absolute bottom-24 left-16">
-									<h2 className="font-syncopate">Mercedes AMG CLS</h2>
+								<div className="Product_text opacity-100 text-white  font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-24 left-5 font-syncopate">
+									<h2>Mercedes AMG CLS</h2>
 									<p className="text-center">$ 26 000</p>
 								</div>
 								<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
@@ -119,7 +119,7 @@ const Product = () => {
 									<img src={logomer} alt="" />
 								</div>
 								<div className="Product_text font-bold text-white text-xl">
-									<h2 className="font-syncopate">Mercedes-Benz Maybach 2022</h2>
+									<h2 className="font-syncopate">Mercedes-Benz <br /> Maybach 2022</h2>
 									<p className="text-center">$ 679 867</p>
 								</div>
 							</div>
@@ -222,11 +222,11 @@ const Product = () => {
 							/>
 						</div>
 						<div className="hidden md:block">
-							<div className="logo_Car flex flex-col items-start opacity-100 group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-36 left-24 p-2">
+							<div className="logo_Car flex flex-col items-start opacity-100 group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-40 left-24 p-2">
 								<img src={logo1} alt="" />
 							</div>
-							<div className="Product_text opacity-100 text-white font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-5000 absolute bottom-24 left-12 ">
-								<h2 className="font-syncopate">Hyundai Sonata 2022</h2>
+							<div className="Product_text opacity-100 text-white font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-20 left-5 ">
+								<h2 className="font-syncopate">Hyundai Sonata</h2>
 								<p className="text-center">$ 26 000</p>
 							</div>
 							<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
