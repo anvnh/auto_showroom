@@ -11,20 +11,16 @@ const App = () => {
             <Routes>
                 {/* Home Page */}
                 <Route index element={<RootLayout/>} />
-    
+
                 {/* User Page */}
                 <Route path="/users" element={<UserLayout />} />
-                
                 <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
-
                 <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
-
 
                 {/* Introduce popular product */}
                 <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />
                 <Route path="/Mercedes-Benz-Maybach-2022" element={<ProductLayout2 />} />
                 <Route path="/Rolls-Royce-Ghost-2021" element={<ProductLayout3 />} />
-
 
                 {/* User profile */}
                 <Route path="/users/profile" element={<NavBar />} />
