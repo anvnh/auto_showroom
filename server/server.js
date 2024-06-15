@@ -1,36 +1,23 @@
-require('dotenv').config();
+import express from 'express';
+import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const userRoutes = require('./routes/users');
+import authRoutes from './routes/auth.routes.js';
+import connectMongoDB from './db/connectMongoDB.js';
 
-// create express app
+dotenv.config();
+
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// cors 
-app.use(cors());
+app.use(express.json()); // to parse req.body
+app.use(express.urlencoded({ extended: true })); // to parse form data(urlencoded)
 
-// middleware   
-app.use(express.json());
+app.use(cookieParser()); // to parse cookies
 
-app.use((req, res, next) => {
-    console.log(req.path, req.method);
-    next()
-})
+app.use("/api/auth", authRoutes); // auth routes
 
-// routes
-app.use('/api/users', userRoutes);
-
-// connect to mongodb
-mongoose.connect(process.env.MONGO_URL)
-    .then(() => {
-        // listen for requests
-        app.listen(process.env.PORT, () => {
-            console.log('Connected to DB & Server is running on port 4000')
-        });
-    })
-    .catch((err) => console.log(err));
-    
-
-
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+    connectMongoDB();
+});
