@@ -381,29 +381,28 @@ const Car3popular: React.FC = () => {
 						Sophisticated, modern, classy
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={6} speed={1.2} factor={1}>
+				<ParallaxLayer offset={6} speed={1} factor={1}>
 					<div
-						data-aos="zoom-in-right"
-						style={{ backgroundImage: `url(${b9})` }}
-						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bottom-[500px] relative rounded-3xl left-[700px]"
+							style={{ backgroundImage: `url(${b5})` }}
+						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[50px] ss:top-[150px] sm:top-[350px] md:top-[1400px]"
 					></div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
+					<div className="justify-end items-end flex"> 
 					<div
-						data-aos="zoom-in-right"
-						style={{ backgroundImage: `url(${b5})` }}
-						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover rounded-3xl top-[0px] relative left-2"
+						style={{ backgroundImage: `url(${b9})` }}
+							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[300px] ss:-top-[300px] sm:-top-[200px] md:top-[400px]"
 					></div>
+					</div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={6.4} speed={0.5} factor={1}>
-					<div
-						data-aos="zoom-in-right"
+				<div
 						style={{ backgroundImage: `url(${b6})` }}
-						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover rounded-3xl top-[300px] relative left-[800px]"
+						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[900px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[550px] ss:-top-[500px] xs:-top-[200px] md:-top-[550px]"
 					></div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={7.4} speed={0.5} factor={1} ref={(ref) => parallaxLayerRefs.current[5] = ref}>
-					<div className="article-tiles-container bg-black text-white p-6">
+					<div className="article-tiles-container bg-black text-white p-6 bottom-[900px] relative md:bottom-0">
 						<div className="article-tiles-desc mb-6 text-center font-syncopate">
 							<h3 className="text-4xl ss:text-5xl mb-2">
 								Continue your journey
