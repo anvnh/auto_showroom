@@ -3,14 +3,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import {
-	r1,
-	r2,
-	r3,
-	r4,
-	r5,
-	r6,
-	r7,
-	r8,
 	change1,
 	change2,
 	change3,
@@ -22,21 +14,29 @@ import {
 	change9,
 	VideoCar3Popular,
 	Videohieuung,
-	b4,
-	b5,
-	b6,
-	toi,
-	b7,
-	b8,
-	b9,
+	inside51,
+	inside52,
+	inside53,
+	baner51,
+	car51,
+	car52,
+	car53,
+	car54,
+	car55,
+	car56,
+	car57,
+	car58,
+	car59,
+	car592,
+	car510,
 } from "../../assets";
 import { Button } from "@/components/ui/button";
-import Car3popular2 from "../productHomePage/car3popular2";
+import Car5popular2 from "../productHomePage/car5popular2";
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../../_root/_homepage/Navbar";
-import NavbarSmall3 from "../navbarsmall/NavbarSmall3";
+import NavbarSmall4 from "../navbarsmall/NavbarSmall4";
 
-const Car3popular: React.FC = () => {
+const Car5popular: React.FC = () => {
 	// sự kiện của navbar
 	const [selectedSection, setSelectedSection] = useState("");
 	const handleNavClick = (section) => {
@@ -102,7 +102,7 @@ const Car3popular: React.FC = () => {
 	return (
 		<div className="parallax">
 			<div>
-				<NavbarSmall3
+				<NavbarSmall4
 					onNavClick={handleNavClick}
 					selectedSection={selectedSection}
 					parallaxLayerRefs={parallaxLayerRefs}
@@ -155,7 +155,8 @@ const Car3popular: React.FC = () => {
 					}`}
 							>
 								<h1 className="text-xs xs:text-xl ss:text-3xl sm:text-4xl lg:text-6xl mb-1 tracking-widest font-bold">
-									Rolls Royce Ghost 2021
+									Roll Royce Phantom <br />
+									Extended Series II
 								</h1>
 								<h2 className="text-xs ss:text-2xl lg:text-4xl sm:text-3xl font-thin pt-1">
 									<span className="font-bold text-red-100">
@@ -224,7 +225,7 @@ const Car3popular: React.FC = () => {
 				<ParallaxLayer offset={1.1} speed={0.7} factor={1}>
 					<div className="ss:bottom-[300px] md:bottom-0 bottom-0 relative justify-center items-center flex">
 						<div
-							style={{ backgroundImage: `url(${r8})` }}
+							style={{ backgroundImage: `url(${car53})` }}
 							className="w-[400px] h-[200px] ss:w-[600px] ss:h-[400px] sm:w-[800px] sm:h-[600px] md:w-[1200px] md:h-[600px] bg-cover  animate-pulse bg-center rounded-3xl relative"
 						></div>
 					</div>
@@ -236,20 +237,20 @@ const Car3popular: React.FC = () => {
 				</ParallaxLayer>
 				<ParallaxLayer offset={1.7} speed={0.8} factor={1}>
 					<div
-						style={{ backgroundImage: `url(${r1})` }}
+						style={{ backgroundImage: `url(${inside51})` }}
 						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] top-[200px] ss:top-[150px] sm:top-[350px] md:top-[1600px]"
 					></div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={1.8} speed={0.9} factor={1}>
 					<div
-						style={{ backgroundImage: `url(${r3})` }}
+						style={{ backgroundImage: `url(${inside52})` }}
 						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[900px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[100px] ss:-top-[500px] xs:-top-[200px] md:top-[500px]"
 					></div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={1.9} speed={1.2} factor={1}>
 					<div className="justify-end items-end flex">
 						<div
-							style={{ backgroundImage: `url(${r2})` }}
+							style={{ backgroundImage: `url(${inside53})` }}
 							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1px] ss:-top-[300px] sm:-top-[200px] md:top-[1200px]"
 						></div>
 					</div>
@@ -369,7 +370,7 @@ const Car3popular: React.FC = () => {
 						className="flex justify-center bottom-[900px] md:-bottom-[1100px] bg-bla relative"
 					>
 						<div className="w-full">
-							<Car3popular2 />
+							<Car5popular2 />
 						</div>
 					</div>
 				</ParallaxLayer>
@@ -383,21 +384,21 @@ const Car3popular: React.FC = () => {
 				</ParallaxLayer>
 				<ParallaxLayer offset={6} speed={1} factor={1}>
 					<div
-							style={{ backgroundImage: `url(${b5})` }}
+							style={{ backgroundImage: `url(${car54})` }}
 						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[50px] ss:top-[150px] sm:top-[350px] md:top-[1400px]"
 					></div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
 					<div className="justify-end items-end flex"> 
 					<div
-						style={{ backgroundImage: `url(${b9})` }}
+						style={{ backgroundImage: `url(${car57})` }}
 							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[300px] ss:-top-[300px] sm:-top-[200px] md:top-[400px]"
 					></div>
 					</div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={6.4} speed={0.5} factor={1}>
 				<div
-						style={{ backgroundImage: `url(${b6})` }}
+						style={{ backgroundImage: `url(${car55})` }}
 						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[900px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[550px] ss:-top-[500px] xs:-top-[200px] md:-top-[550px]"
 					></div>
 				</ParallaxLayer>
@@ -416,7 +417,7 @@ const Car3popular: React.FC = () => {
 							<div className="article-tile">
 								<figure className="hover01 overflow-hidden">
 									<img
-										src={b8}
+										src={car58}
 										className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
 									/>
 								</figure>
@@ -434,12 +435,12 @@ const Car3popular: React.FC = () => {
 							<div className="article-tile">
 								<figure className="hover01 overflow-hidden group relative">
 									<img
-										src={toi}
+										src={car592}
 										alt="Image 1"
 										className="w-full object-cover transform transition-opacity duration-300 group-hover:opacity-0"
 									/>
 									<img
-										src={b4}
+										src={car59}
 										alt="Image 2"
 										className="absolute top-0 left-0 w-full h-full object-cover transform transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110"
 									/>
@@ -459,7 +460,7 @@ const Car3popular: React.FC = () => {
 							<div className="article-tile hidden md:block">
 								<figure className="hover01 overflow-hidden">
 									<img
-										src={b7}
+										src={car510}
 										className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
 									/>
 								</figure>
@@ -484,4 +485,4 @@ const Car3popular: React.FC = () => {
 	);
 };
 
-export default Car3popular;
+export default Car5popular;
