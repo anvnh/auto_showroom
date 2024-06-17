@@ -3,17 +3,10 @@ import {logo, menu, close} from '../../assets'
 import { Link } from 'react-router-dom';
 import { IoIosArrowDown } from "react-icons/io";
 import { Button } from "@/components/ui/button";
-import { SignIn, SignUp } from "../_popup";
 
 const Navbar = () => {
 
 	const [toggle, setToggle] = useState(false);
-
-    const [activePopup, setActivePopup] = useState(null); // 'signIn' or 'signUp'
-
-    const handleOpenSignIn = () => setActivePopup("signIn");
-    const handleOpenSignUp = () => setActivePopup("signUp");
-    const handleClosePopup = () => setActivePopup(null);
 
     return (
 		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
@@ -57,7 +50,7 @@ const Navbar = () => {
 				</li>
 				<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10">
 					<Link
-						to="/owners"
+						to=""
 						className="relative flex transition duration-300 ease-in-out delay-100 group hover:-translate-y-1 hover:scale-110 hover:text-gray-300"
 					>
 						<p> Resources </p>
@@ -70,21 +63,15 @@ const Navbar = () => {
 			<ul className="items-center justify-end flex-1 hidden list-none sm:flex">
                 <Button 
                     className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"
-                    onClick={handleOpenSignUp}
                 > 
                     Sign up 
                 </Button>
 
                 <Button 
                     className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"
-                    onClick={handleOpenSignIn}
                 > 
                     Sign in 
                 </Button>
-
-                {activePopup === 'signIn' && <SignIn onClose={handleClosePopup} onOpenSignUp={handleOpenSignUp} />}
-                {activePopup === 'signUp' && <SignUp onClose={handleClosePopup} onOpenSignIn={handleOpenSignIn} />}
-
 			</ul>
 			<div className="flex sm:hidden">
 				<img

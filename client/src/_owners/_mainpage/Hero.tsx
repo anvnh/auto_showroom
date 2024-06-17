@@ -1,19 +1,10 @@
 import { user_hero_1 } from "@/assets"
 import { Button } from '@/components/ui/button'
-import { useEffect, useState } from "react";
-import { SignIn, SignUp } from "../_popup";
+import { useEffect } from "react";
 import AOS from 'aos';
 
 
 const Hero = () => {
-
-    const [activePopup, setActivePopup] = useState(null); // 'signIn' or 'signUp'
-
-    type ActivePopup = 'signIn' | 'signUp' | null;
-
-    const handleOpenSignIn = () => setActivePopup("signIn");
-    const handleOpenSignUp = () => setActivePopup("signUp");
-    const handleClosePopup = () => setActivePopup(null);
 
     useEffect(() => {
 		AOS.init({
@@ -46,19 +37,14 @@ const Hero = () => {
                         <p className="text-[21px] font-poppins mb-7 bg-slate-900 bg-opacity-45 rounded-xl w-full"> Your personal portal to a world <br/> of car ownership resources. </p>
                         <Button 
                             className="h-[45px] bg-white text-black font-poppins text-[23px] w-[320px] mb-3"
-                            onClick={handleOpenSignIn}
                         > 
                             Sign in  
                         </Button>
                         <Button 
                             className="h-[45px] bg-transparent border-solid border-2 border-white font-poppins text-[23px] w-[320px]"
-                            onClick={handleOpenSignUp}
                         > 
                             Create an account 
                         </Button>
-
-                        {activePopup === 'signIn' && <SignIn onClose={handleClosePopup} onOpenSignUp={handleOpenSignUp} />}
-                        {activePopup === 'signUp' && <SignUp onClose={handleClosePopup} onOpenSignIn={handleOpenSignIn} />}
 
                     </div>
                 </div>
