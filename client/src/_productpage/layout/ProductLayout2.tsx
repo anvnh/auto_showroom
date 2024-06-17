@@ -1,22 +1,23 @@
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../../_root/_homepage/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import NavbarSmall2 from "../navbarsmall/NavbarSmall2";
 import Car2popular from "../productHomePage/car2popular";
-import React, { useEffect, useRef, useState} from "react"; // Import both useEffect and useRef
+import React, { useEffect, useRef, useState } from "react";
 const ProductLayout = () => {
-	const [selectedSection, setSelectedSection] = useState('');
-    const handleNavClick = (section) => {
-        setSelectedSection(prevSection => prevSection === section ? '' : section);
-    };
+	const [selectedSection, setSelectedSection] = useState("");
+	const handleNavClick = (section) => {
+		setSelectedSection((prevSection) =>
+			prevSection === section ? "" : section
+		);
+	};
 	return (
-		
 		<section className="w-full">
 			<div className="w-full overflow-hidden bg-primary">
-				<div
-					className="flex items-start justify-center "
-				>
-					<div className="w-full">
-					<Navbar onNavClick={handleNavClick}  />
+				<div className="flex items-start justify-center ">
+					<div className="w-full z-10">
+						<Navbar onNavClick={handleNavClick} />
 					</div>
 				</div>
 				<div

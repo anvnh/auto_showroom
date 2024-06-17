@@ -24,7 +24,17 @@ import {
 	VideoCar2Popular,
 } from "../../assets";
 import { Button } from "@/components/ui/button";
+import Lenis from '@studio-freight/lenis'
+
+
 const car1popular = () => {
+		//smooth scroll
+		const lenis = new Lenis();
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+		requestAnimationFrame(raf);
 	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
 
@@ -41,7 +51,7 @@ const car1popular = () => {
 			duration: 1000,
 			easing: "ease-in-out",
 			once: false,
-			mirror: false,
+			mirror: true,
 			anchorPlacement: "top-center",
 		});
 	}, []);
