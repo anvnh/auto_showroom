@@ -305,6 +305,9 @@ const audi_A5_Couple = () => {
       },
     });
   }, []);
+	useEffect(() => {
+		window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
+	}, []);
 
   return (
     <div className="">

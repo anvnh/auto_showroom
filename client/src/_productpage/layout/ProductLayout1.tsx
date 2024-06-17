@@ -1,32 +1,32 @@
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../../_root/_homepage/Navbar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import NavbarSmall from "../navbarsmall/NavbarSmall";
 import Car1popular from "../productHomePage/car1popular";
-import React, { useEffect, useRef, useState} from "react"; 
+import React, { useEffect, useRef, useState } from "react";
 const ProductLayout = () => {
-	const [selectedSection, setSelectedSection] = useState('');
-    const handleNavClick = (section) => {
-        setSelectedSection(prevSection => prevSection === section ? '' : section);
-    };
+	const [selectedSection, setSelectedSection] = useState("");
+	const handleNavClick = (section) => {
+		setSelectedSection((prevSection) =>
+			prevSection === section ? "" : section
+		);
+	};
 	return (
 		<section className="w-full">
 			<div className="w-full overflow-hidden bg-primary">
-				<div
-					className="flex items-start justify-center "
-				>
-					<div className="w-full">
-						<Navbar onNavClick={handleNavClick}  />
+				<div className="flex items-start justify-center ">
+					<div className="w-full z-10">
+						<Navbar onNavClick={handleNavClick} />
 					</div>
 				</div>
-				
-				<div
-					className="flex items-start justify-center "
-				>
+
+				<div className="flex items-start justify-center ">
 					<div className="w-full">
-					<NavbarSmall />
+						<NavbarSmall />
 					</div>
 				</div>
-                <div
+				<div
 					data-aos="zoom-out"
 					className="flex items-start justify-center "
 				>

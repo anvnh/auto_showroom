@@ -64,13 +64,14 @@ const Product = () => {
 						<div
 							style={{ backgroundImage: `url(${acc})` }}
 							data-aos="zoom-out"
-							className="card group bg-cover bg-center xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500"
+							className="card group bg-cover bg-center xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500 "
 						>
 							<div className="car w-full flex justify-center sm:justify-end">
 								<img
 									src={car1}
 									alt=""
-									className="object-cover rounded-lg relative transition-transform duration-500 ease-out group-hover:rotate-3 group-hover:-translate-x-1 mx:group-hover:scale-150 group-hover:scale-125 sm:group-hover:-translate-x-14 "
+									className="object-cover left-0 md:left-16 relative transition-transform duration-500 ease-out group-hover:rotate-3 group-hover:-translate-x-1 mx:group-hover:scale-150 group-hover:scale-110 
+									scale-90 sm:group-hover:-translate-x-10 "
 									style={{ top: "17px" }}
 								/>
 							</div>
@@ -103,14 +104,14 @@ const Product = () => {
 						<div
 							style={{ backgroundImage: `url(${acc})` }}
 							data-aos="zoom-out"
-							className="card group hidden bg-cover bg-center xl:block bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
+							className="card group hidden bg-cover bg-center xl:block bg-white rounded-3xl p-6 w-full h-full group relative bottom-7"
 						>
-							<div className="car -mt-0 w-full h-full">
+							<div className="car -mt-0 w-[300px] h-[200px]">
 								<img
 									src={car2}
 									alt=""
-									className="w-full h-full object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
-									style={{ top: "-1px" }}
+									className="w-full  h-full object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
+									style={{ top: "32px" }}
 								/>
 								<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
 							</div>
@@ -131,14 +132,14 @@ const Product = () => {
 					<div
 						style={{ backgroundImage: `url(${acc})` }}
 						data-aos="zoom-out"
-						className="card group bg-cover bg-center hidden xl:block bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
+						className="card group bg-cover bg-center hidden xl:block bg-white rounded-3xl p-0 w-full h-full group relative bottom-7"
 					>
-						<div className="car -mt-0 w-[400px] h-full">
+						<div className="car -mt-0 w-[320px] h-[200px]">
 							<img
 								src={car3}
 								alt=""
-								className="w-full h-full object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
-								style={{ top: "-2px" }}
+								className="w-full h-full left-10 object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
+								style={{ top: "50px" }}
 							/>
 							<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
 						</div>

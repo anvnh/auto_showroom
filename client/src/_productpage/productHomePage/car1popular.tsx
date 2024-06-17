@@ -25,7 +25,16 @@ import {
 	VideoCar1Popular,
 } from "../../assets";
 import { Button } from "@/components/ui/button";
+import Lenis from '@studio-freight/lenis'
+
 const car1popular = () => {
+	//smooth scroll
+	const lenis = new Lenis();
+	function raf(time) {
+		lenis.raf(time);
+		requestAnimationFrame(raf);
+	}
+	requestAnimationFrame(raf);
 	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
 
@@ -35,14 +44,14 @@ const car1popular = () => {
 		}, 3000);
 
 		return () => clearTimeout(timer);
-	}, []); 
+	}, []);
 
 	useEffect(() => {
 		AOS.init({
 			duration: 1000,
 			easing: "ease-in-out",
 			once: false,
-			mirror: false,
+			mirror: true,
 			anchorPlacement: "top-center",
 		});
 	}, []);
@@ -68,7 +77,7 @@ const car1popular = () => {
 						muted
 						loop
 						playsInline
-						className="w-full h-auto relative top-16"
+						className="w-full h-auto relative top-20"
 					>
 						<source src={VideoCar1Popular} />
 					</video>
@@ -95,47 +104,51 @@ const car1popular = () => {
 								</h1>
 								<h2 className="text-xs ss:text-2xl lg:text-3xl font-thin animate-pulse duration-1000 ease-in-out transition-all">
 									CLS 53 4MATIC+ <br />
-									<span className="font-bold text-red-100 ">26 000 $</span>
+									<span className="font-bold text-red-100 ">
+										26 000 $
+									</span>
 								</h2>
 							</div>
 						)}
 					</div>
-				<div className="hidden md:block">
-				<div className="justify-center items-center flex ">
-						{isVisible && (
-							<div className="bg-gray-900 grid ss:grid-cols-2 gap-2 grid-cols-1 bg-opacity-75 rounded-2xl font-bold absolute text-white -bottom-1 transform -translate-y-1/2 shadow-xl xl:w-[1200px] md:w-[1000px] sm:w-[700px] ss:w-[500px] w-[300px] p-7">
-								<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-start md:pl-40 ss:pl-1 pl-20 animate-pulse duration-1000 ease-in-out transition-all  ">
-									<span className="font-bold">520</span>{" "}
-									<span className="text-lg font-light">
-										Nm
-									</span>{" "}
-									<br />
-									<span className="font-bold">4.5s</span>{" "}
-									<span className="text-lg font-light">
-										0-100km/h
-									</span>
-									<br />{" "}
-									<span className="font-bold"> 320</span>{" "}
-									<span className="text-lg font-light">
-										KW
-									</span>
-								</div>
-								<div className="hidden ss:block">
-									<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-xs pr-3 animate-pulse duration-1000 ease-in-out transition-all">
-										<span className="font-bold">
-											There is always a destination.
+					<div className="hidden md:block">
+						<div className="justify-center items-center flex ">
+							{isVisible && (
+								<div className="bg-gray-900 grid ss:grid-cols-2 gap-2 grid-cols-1 bg-opacity-75 rounded-2xl font-bold absolute text-white -bottom-1 transform -translate-y-1/2 shadow-xl xl:w-[1200px] md:w-[1000px] sm:w-[700px] ss:w-[500px] w-[300px] p-7">
+									<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-start md:pl-40 ss:pl-1 pl-20 animate-pulse duration-1000 ease-in-out transition-all  ">
+										<span className="font-bold">520</span>{" "}
+										<span className="text-lg font-light">
+											Nm
 										</span>{" "}
-										Other people think ahead. You think
-										further. You want to sense more, perform
-										more, and above all, you can’t let go
-										any more, because it won’t let go of
-										you.
+										<br />
+										<span className="font-bold">
+											4.5s
+										</span>{" "}
+										<span className="text-lg font-light">
+											0-100km/h
+										</span>
+										<br />{" "}
+										<span className="font-bold"> 320</span>{" "}
+										<span className="text-lg font-light">
+											KW
+										</span>
+									</div>
+									<div className="hidden ss:block">
+										<div className="font-thin xl:text-2xl md:text-xl sm:text-sm text-xs pr-3 animate-pulse duration-1000 ease-in-out transition-all">
+											<span className="font-bold">
+												There is always a destination.
+											</span>{" "}
+											Other people think ahead. You think
+											further. You want to sense more,
+											perform more, and above all, you
+											can’t let go any more, because it
+											won’t let go of you.
+										</div>
 									</div>
 								</div>
-							</div>
-						)}
+							)}
+						</div>
 					</div>
-				</div>
 				</div>
 
 				{/* -------------------------phần 2 --------------*/}
@@ -363,37 +376,46 @@ const car1popular = () => {
 
 				{/* --------------------------conclusion --------------*/}
 				<div id="Button_Buy" className="pb-24 pt-40 relative">
-        <div
-          data-aos="zoom-out"
-          className={`font-thin text-white text-center text-xl md:text-3xl transition-opacity duration-1000 opacity-0 ${
-            isVisible ? "opacity-100" : ""
-          }`}
-        >
-          <span className="font-bold">The Mercedes-AMG CLS 53 4Matic+</span>{" "}
-          is a great choice for those looking for a luxurious, <br />
-          powerful sports car equipped with many advanced technologies.
-		<br />
-		<br />
+					<div
+						data-aos="zoom-out"
+						className={`font-thin text-white text-center text-xl md:text-3xl transition-opacity duration-1000 opacity-0 ${
+							isVisible ? "opacity-100" : ""
+						}`}
+					>
+						<span className="font-bold">
+							The Mercedes-AMG CLS 53 4Matic+
+						</span>{" "}
+						is a great choice for those looking for a luxurious,{" "}
+						<br />
+						powerful sports car equipped with many advanced
+						technologies.
+						<br />
+						<br />
+						<span>
+							For only{" "}
+							<span className="text-red-100 font-bold">
+								26 000 $
+							</span>{" "}
+							you can own this car
+						</span>
+					</div>
 
-		<span>For only <span className="text-red-100 font-bold">26 000 $</span> you can own this car</span>
-        </div>
+					<div className="mt-8 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center gap-9">
+						<Button
+							variant="outline"
+							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
+						>
+							Add to Cart
+						</Button>
 
-        <div className="mt-8 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center gap-9">
-          <Button
-            variant="outline"
-            className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
-          >
-            Add to Cart
-          </Button>
-
-          <Button
-            variant="outline"
-            className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
-          >
-            Buy Car
-          </Button>
-        </div>
-      </div>
+						<Button
+							variant="outline"
+							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
+						>
+							Buy Car
+						</Button>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
