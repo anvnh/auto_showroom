@@ -1,37 +1,76 @@
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useLocation, Navigate} from 'react-router-dom';
 import RootLayout from './_root/RootLayout';
 import UserLayout from './_owners/UserLayout';
 import { Audi_A5_Couple, Audi_A5_Sportback } from "./_car/audi/audi_A5"
 
-import HomePage from './pages/auth/home/HomePage';
+import HomePage from './pages/home/HomePage';
 import SignUpPage from './pages/auth/signup/SignUpPage';
 import LoginPage from './pages/auth/login/LoginPage';
+import Sidebar from './components/social/ui/common/Sidebar';
+import RightPanel from './components/social/ui/common/RightPanel';
+import NotificationPage from './pages/notification/NotificationPage';
+import ProfilePage from './pages/profile/ProfilePage';
 
 import {ProductLayout1, ProductLayout2, ProductLayout3} from './_productpage/layout/';
+import { Toaster } from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
+import { LuDivideCircle } from 'react-icons/lu';
+import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
 const App = () => {
+    const location = useLocation();
+    const isSocialRoute = location.pathname.startsWith('/social');
+    const {data: authUser, isLoading, error, isError } = useQuery({
+        // use queryKey to give a unique name to the query and refer to it later
+        queryKey: ['authUser'],
+        queryFn: async () => {
+            try {
+                const res = await fetch('/api/auth/me');
+                const data = await res.json();
+                if(data.error) return null;
+                if (!res.ok) {
+                    throw new Error(data.message || 'Something went wrong');
+                }
+                console.log("authUser is here: ", data);
+                return data;
+            } catch (error) {
+                throw new Error(error.message);
+            }
+        },
+        retry: false,
+    })
+
+    if(isLoading) {
+        return (
+            <div className='h-screen flex justify-center items-center'>
+                <LoadingSpinner size='lg' />
+            </div>
+        )
+    }
     return (
-        <main className="flex h-screen">
-            <Routes>
-                {/* Home Page */}
-                <Route index element={<RootLayout/>} />
+        <>
+            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'max-w-[75%] mx-auto') : 'h-screen'}`}> {/* Kiểu dáng có điều kiện */}
+                {location.pathname.startsWith('/social') && authUser && <Sidebar />}
+                <Routes>
+                    <Route path="/" element={<RootLayout />} />
 
-                {/* User Page */}
-                <Route path="/owners" element={<UserLayout />} />
-                <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
-                <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
+                    <Route path="/owners" element={<UserLayout />} />
+                    <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
+                    <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
 
-                {/* Introduce popular product */}
-                <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />
-                <Route path="/Mercedes-Benz-Maybach-2022" element={<ProductLayout2 />} />
-                <Route path="/Rolls-Royce-Ghost-2021" element={<ProductLayout3 />} />
+                    <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />
+                    <Route path="/Mercedes-Benz-Maybach-2022" element={<ProductLayout2 />} />
+                    <Route path="/Rolls-Royce-Ghost-2021" element={<ProductLayout3 />} />
 
-                {/* Social pages */}
-                <Route path="/social" element={<HomePage />} />
-                <Route path="/social/signup" element={<SignUpPage />} />
-                <Route path="/social/login" element={<LoginPage />} />
-
-            </Routes>
-        </main>
+                    <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/social/login" />} />
+                    <Route path="/social/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
+                    <Route path="/social/login" element={!authUser ? <LoginPage /> : <Navigate to="/social" />} />
+                    <Route path="/social/notifications" element={authUser ? <NotificationPage /> : <Navigate to="/social/login" />} />
+                    <Route path="/social/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/social/login" />} />
+                </Routes>
+                {location.pathname.startsWith('/social') && authUser && <RightPanel />}
+                <Toaster />
+            </main>
+        </>
     )
 }
 
