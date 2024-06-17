@@ -5,15 +5,6 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { r1, r2, r3, r5, r7, r8, b1, b2, b4, b5, b6 } from "../../assets";
 import { gsap } from "gsap";
 const car3popular2 = () => {
-	useEffect(() => {
-		AOS.init({
-			duration: 9000,
-			easing: "ease-in-out",
-			once: false,
-			mirror: false,
-			anchorPlacement: "top-center",
-		});
-	}, []);
 	return (
 		<div className="bg-black">
 			<div>
@@ -23,7 +14,7 @@ const car3popular2 = () => {
 					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
 					<div className="flex justify-center pt-16 absolute inset-0">
-						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate uppercase">
+						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate uppercase text-center">
 							Interiors & Technology
 						</h1>
 					</div>

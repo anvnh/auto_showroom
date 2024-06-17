@@ -6,12 +6,7 @@ import { useEffect } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaCarSide } from "react-icons/fa";
 
-import { Link } from 'react-scroll'; 
-interface SubNavbarProps {
-	selectedSection: string;
-	onNavClick: (section: string) => void;
-}
-
+import { Link } from "react-scroll";
 const NavbarSmall2: React.FC<SubNavbarProps> = ({
 	selectedSection,
 	onNavClick,
@@ -46,50 +41,55 @@ const NavbarSmall2: React.FC<SubNavbarProps> = ({
 		}, 3000);
 
 		return () => clearTimeout(timer);
-	}, []); 
+	}, []);
 	return (
 		<div className="hidden md:block">
 			<div
-			className="owc-vertical-navigation__list fixed top-[450px] left-2 h-screen flex flex-col items-start z-20 group"
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
-		>
-			{isVisible && (
-			<div className="flex items-center">
-			<div className="px-3 py-6 rounded-tl-xl rounded-bl-xl bg-gray-700 bg-opacity-50 text-white duration-600 transition-all ease-in-out">
-				<div className="group-hover:scale-100 transform scale-110  transition-all duration-300">
-				<FaHome/> <br />
-				<IoIosInformationCircle /> <br />
-				<IoLogoModelS /> <br />
-				<FaCarSide /> <br />
-				<FaCartShopping />
-				</div>
-			</div>
-			{isHovered && (
-				<div className="bg-gray-800 bg-opacity-60 text-white pl-1 pr-16 py-4 rounded-tr-full rounded-br-full ml-0 transition-all duration-1000 transform origin-left scale-y-0 group-hover:scale-y-100">
-					<div className="flex flex-col gap-2">
-						{" "}
-						{navItems.map((item) => (
-							<Link
-								key={item.id}
-								activeClass="owc-vertical-navigation__item--active"
-								to={item.id}
-								spy={true}
-								smooth={true}
-								offset={-70}
-								duration={500}
-								onSetActive={onNavClick}
-								className="text-xs cursor-pointer hover:bg-gray-500 hover:scale-110 transition-transform duration-200 ease-out px-2 py-2 rounded-tr-full rounded-br-full "
-							>
-								{item.label}
-							</Link>
-						))}
+				className="owc-vertical-navigation__list fixed top-[450px] left-2 h-screen flex flex-col items-start z-20 group"
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
+			>
+				{isVisible && (
+					<div
+						data-aos="fade-down"
+						data-aos-delay="4000"
+						data-aos-duration="2000"
+						className="flex items-center"
+					>
+						<div className="px-3 py-6 rounded-tl-xl rounded-bl-xl bg-gray-700 bg-opacity-50 text-white duration-600 transition-all ease-in-out">
+							<div className="group-hover:scale-100 transform scale-110  transition-all duration-300">
+								<FaHome /> <br />
+								<IoIosInformationCircle /> <br />
+								<IoLogoModelS /> <br />
+								<FaCarSide /> <br />
+								<FaCartShopping />
+							</div>
+						</div>
+						{isHovered && (
+							<div className="bg-gray-800 bg-opacity-60 text-white pl-1 pr-3 py-4 rounded-tr-3xl rounded-br-3xl ml-0 transition-all duration-1000 transform origin-left scale-y-0 group-hover:scale-y-100">
+								<div className="flex flex-col gap-2">
+									{" "}
+									{navItems.map((item) => (
+										<Link
+											key={item.id}
+											activeClass="owc-vertical-navigation__item--active"
+											to={item.id}
+											spy={true}
+											smooth={true}
+											offset={-70}
+											duration={500}
+											onSetActive={onNavClick}
+											className="text-xs cursor-pointer hover:bg-gray-500 hover:scale-110 transition-transform duration-200 ease-out px-2 py-2 rounded-tr-3xl rounded-br-3xl "
+										>
+											{item.label}
+										</Link>
+									))}
+								</div>
+							</div>
+						)}
 					</div>
-				</div>
-			)}
-		</div>
-			)}
-		</div>
+				)}
+			</div>
 		</div>
 	);
 };

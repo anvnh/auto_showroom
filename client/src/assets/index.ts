@@ -41,42 +41,6 @@ import aa from "./aad.png";
 import bannn from "./car/ggfdg.png";
 import backgroundcar2 from "./car/background.jpg";
 
-import des from "./car1_popular/desktop.png";
-import des1 from "./car1_popular/desktop1.png";
-import des2 from "./car1_popular/desktop2.png";
-import des3 from "./car1_popular/desktop3.png";
-import des4 from "./car1_popular/desktop4.png";
-import des5 from "./car1_popular/desktop5.png";
-import des6 from "./car1_popular/desktop6.png";
-import des7 from "./car1_popular/desktop7.png";
-import des8 from "./car1_popular/desktop8.png";
-import des9 from "./car1_popular/desktop9.png";
-import des10 from "./car1_popular/desktop10.png";
-import des11 from "./car1_popular/desktop11.png";
-import des12 from "./car1_popular/desktop12.png";
-import des13 from "./car1_popular/desktop13.png";
-import des14 from "./car1_popular/desktop14.png";
-import des15 from "./car1_popular/desktop15.png";
-import des16 from "./car1_popular/desktop16.png";
-import des17 from "./car1_popular/desktop17.png";
-import des18 from "./car1_popular/desktop18.png";
-import des19 from "./car1_popular/desktop19.png";
-import des20 from "./car1_popular/desktop20.png";
-import des21 from "./car1_popular/desktop21.png";
-import des22 from "./car1_popular/desktop22.png";
-import des23 from "./car1_popular/desktop23.png";
-import des24 from "./car1_popular/desktop24.png";
-import des25 from "./car1_popular/desktop25.png";
-import des26 from "./car1_popular/desktop26.png";
-import des27 from "./car1_popular/desktop27.png";
-import des28 from "./car1_popular/desktop28.png";
-import des29 from "./car1_popular/desktop29.png";
-import des30 from "./car1_popular/desktop30.png";
-import des31 from "./car1_popular/desktop31.png";
-import des32 from "./car1_popular/desktop32.png";
-import des33 from "./car1_popular/desktop33.png";
-import des34 from "./car1_popular/desktop34.png";
-import des35 from "./car1_popular/desktop35.png";
 import kia from "./car1_popular/kia.jpg";
 import kia1 from "./car1_popular/kia1.jpg";
 import kia2 from "./car1_popular/kia2.jpg";
@@ -256,40 +220,4 @@ change9 ,
 	pos5,
 	pos6,
 	acc,
-	des,
-	des1,
-	des2,
-	des3,
-	des4,
-	des5,
-	des6,
-	des7,
-	des8,
-	des9,
-	des10,
-	des11,
-	des12,
-	des13,
-	des14,
-	des15,
-	des16,
-	des17,
-	des18,
-	des19,
-	des20,
-	des21,
-	des22,
-	des23,
-	des24,
-	des25,
-	des26,
-	des27,
-	des28,
-	des29,
-	des30,
-	des31,
-	des32,
-	des33,
-	des34,
-	des35,
 };
