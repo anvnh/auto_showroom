@@ -52,7 +52,6 @@ const audi_A5_Couple = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
   }, []);
-  //-------------------------------------------------------------------
 
   //smooth scroll
   const lenis = new Lenis();
@@ -61,12 +60,10 @@ const audi_A5_Couple = () => {
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
-  //----------------------------------------------------------------------
 
   //cursor effect
   const ref = useRef(null);
   const { x, y } = useFollowPointer(ref);
-  //--------------------------------------------------------------------
 
   //hero
   const container_hero = useRef(null)
@@ -363,7 +360,7 @@ const audi_A5_Couple = () => {
           ref={conAudiMn}
           className=" w-screen h-[300px] relative flex justify-center items-center "
         >
-          <p ref={conAudiMnTxt} className="font-kanit text-[50px]">
+          <p ref={conAudiMnTxt} className="font-syncopate text-[50px]">
             DO YOU WANT TO RIDE?
           </p>
         </div>
