@@ -43,12 +43,15 @@ import "./style.css";
 import { Footer } from "@/_root/_homepage";
 import { useFollowPointer } from "./pointer";
 
+
+
+
+
 const audi_A5_Couple = () => {
   //cuon dau trang
   useEffect(() => {
     window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
   }, []);
-  //---------------------------------------
 
   //smooth scroll
   const lenis = new Lenis();
@@ -57,18 +60,18 @@ const audi_A5_Couple = () => {
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
-  //---------------------------
 
   //cursor effect
   const ref = useRef(null);
   const { x, y } = useFollowPointer(ref);
 
-  const hero_section = useRef(null);
+  //hero
+  const container_hero = useRef(null)
   const audi_hero = useRef(null);
   const hero_txt = useRef(null);
   useEffect(() => {
-    const tl2 = gsap.timeline();
-    tl2
+    const text = gsap.timeline();
+    text
       .set(hero_txt.current, {
         opacity: 0,
         x: -200,
@@ -97,7 +100,7 @@ const audi_A5_Couple = () => {
         duration: 2,
       });
     ScrollTrigger.create({
-      trigger: hero_section.current,
+      trigger: container_hero.current,
       start: "center 40%",
       animation: tl3,
       scrub: true,
@@ -242,6 +245,49 @@ const audi_A5_Couple = () => {
   const box_right_section2 = useRef(null);
   const box_right_section3 = useRef(null);
   const box_right_section4 = useRef(null);
+  useEffect(()=>{
+        //box right section1
+        const tl = gsap.timeline();
+        tl.set([box_right_section1_h1.current, box_right_section1_p.current], {
+          x: 1000,
+          opacity: 0,
+        })
+          .to(box_right_section1_h1.current, {
+            x: 0,
+            opacity: 1,
+            duration: 0.7,
+          })
+          .to(
+            box_right_section1_p.current,
+            {
+              x: 0,
+              opacity: 1,
+              duration: 1,
+            },
+            "-=0.5"
+          );
+        ScrollTrigger.create({
+          trigger: box_right_section1.current,
+          start: "top top",
+          end: "bottom center",
+          toggleActions: "restart none none none",
+          animation: tl,
+        });
+    
+        gsap.to(box_left.current, {
+          xPercent: 100,
+          duration: 1,
+          scrollTrigger: {
+            trigger: box_right_section2.current,
+            start: "top top",
+            end: "bottom  bottom",
+            scrub: true,
+          },
+        });
+         return () => {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Kill all ScrollTriggers
+  };
+  },[])
   //-------------Horizontal scroll---------------
   const container_horizon = useRef(null);
   const sec1 = useRef(null);
@@ -266,45 +312,12 @@ const audi_A5_Couple = () => {
       markers: true,
     });
 
-    //box right section1
-    const tl = gsap.timeline();
-    tl.set([box_right_section1_h1.current, box_right_section1_p.current], {
-      x: 1000,
-      opacity: 0,
-    })
-      .to(box_right_section1_h1.current, {
-        x: 0,
-        opacity: 1,
-        duration: 0.7,
-      })
-      .to(
-        box_right_section1_p.current,
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1,
-        },
-        "-=0.5"
-      );
-    ScrollTrigger.create({
-      trigger: box_right_section1.current,
-      start: "top top",
-      end: "bottom center",
-      toggleActions: "restart none none none",
-      animation: tl,
-    });
 
-    gsap.to(box_left.current, {
-      xPercent: 100,
-      duration: 1,
-      scrollTrigger: {
-        trigger: box_right_section2.current,
-        start: "top top",
-        end: "bottom  bottom",
-        scrub: true,
-      },
-    });
   }, []);
+
+
+
+
 	useEffect(() => {
 		window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
 	}, []);
@@ -323,11 +336,11 @@ const audi_A5_Couple = () => {
           </div>
         </div>
 
-        <div ref={hero_section} className="hero relative">
-          <img className="object-cover w-screen h-screen" src={road} />
+        <div ref={container_hero} className="hero relative w-screen h-screen">
+          <img className="object-cover w-full h-screen" src={road} />
           <div
             ref={hero_txt}
-            className="absolute z-10 top-[5%]  text-slate-200 mx-[20px] my-[20px] sm:my-[80px] sm:mx-[50px]"
+            className="absolute top-[5%] left-0  text-slate-200 mx-[20px] my-[20px] sm:my-[80px] sm:mx-[50px]"
           >
             <div className="font-bold font-syncopate text-[40px] lg:text-[60px] ">
               2024 A5 Coupe
@@ -341,15 +354,13 @@ const audi_A5_Couple = () => {
             src={audi_thanXe}
             className="absolute w-[1500px] bottom-[10%] left-0  object-cover"
           />
-          <div className="bg-gradient-to-b from-slate-700   absolute top-0 left-0 h-[70%] w-screen backdrop-blur-md opacity-40  "></div>
-          <div className="bg-gradient-to-t from-slate-600   absolute bottom-0 left-0 h-[30%] w-screen backdrop-blur-sm opacity-40  z-50"></div>
         </div>
 
         <div
           ref={conAudiMn}
           className=" w-screen h-[300px] relative flex justify-center items-center "
         >
-          <p ref={conAudiMnTxt} className="font-kanit text-[50px]">
+          <p ref={conAudiMnTxt} className="font-syncopate text-[50px]">
             DO YOU WANT TO RIDE?
           </p>
         </div>
@@ -427,7 +438,7 @@ const audi_A5_Couple = () => {
             <div className="lg:text-[18px]">Full LED</div>
           </div>
         </div>
-
+        {/* Container-Horizontal */}
         <div
           ref={container_horizon}
           className="w-[200vw] flex flex-nowrap relative  h-screen bg-red-500"
@@ -445,10 +456,10 @@ const audi_A5_Couple = () => {
             <p className="text-[100px]">SECTION2</p>
           </div>
         </div>
-
+        {/* Container-Pin */}
         <div
           ref={container_pin}
-          className="overflow-x-hidden flex  w-screen h-[400%]"
+          className="overflow-x-hidden flex  w-screen h-[300%]"
         >
           <div ref={box_left} className="w-1/2  h-screen bg-red-500  ">
             <img src={audiA5_1} className="w-full h-screen object-cover" />

@@ -45,6 +45,9 @@ module.exports = {
     plugins: [
         require("tailwindcss-animate"),
         require('daisyui'),
+         require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
     ],
     daisyui: {
         themes: [

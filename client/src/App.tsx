@@ -11,11 +11,12 @@ import RightPanel from './components/social/ui/common/RightPanel';
 import NotificationPage from './pages/notification/NotificationPage';
 import ProfilePage from './pages/profile/ProfilePage';
 
-import {ProductLayout1, ProductLayout2, ProductLayout3} from './_productpage/layout/';
+import {ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5} from './_productpage/layout/';
 import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import { LuDivideCircle } from 'react-icons/lu';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
+
 const App = () => {
     const location = useLocation();
     const isSocialRoute = location.pathname.startsWith('/social');
@@ -57,9 +58,11 @@ const App = () => {
                     <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
                     <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
 
+
                     <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />
                     <Route path="/Mercedes-Benz-Maybach-2022" element={<ProductLayout2 />} />
                     <Route path="/Rolls-Royce-Ghost-2021" element={<ProductLayout3 />} />
+                    <Route path="/Roll-Royce-Phantom" element={<ProductLayout5 />} />
 
                     <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/social/login" />} />
                     <Route path="/social/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
