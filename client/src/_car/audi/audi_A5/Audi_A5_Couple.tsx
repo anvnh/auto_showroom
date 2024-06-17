@@ -4,7 +4,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger);
-import Lenis from '@studio-freight/lenis'
+import Lenis from "@studio-freight/lenis";
+//---------------------Asset-----------------------------
 import { bg_1 } from "@/assets/hplat_asset/img/background";
 import {
   banner,
@@ -25,27 +26,40 @@ import {
   mam1,
   backLight,
   light,
-  noiThat1,power,
-  a5rmbg,a5black,
-  audiMini,inside2,
-  audi_banhXeSau,audi_banhXeTruoc,
-  audi_thanXe,  road,
+  noiThat1,
+  power,
+  a5rmbg,
+  a5black,
+  audiMini,
+  inside2,
+  audi_banhXeSau,
+  audi_banhXeTruoc,
+  audi_thanXe,
+  road,
 } from "@/assets/audiA5/couple";
 import { audiA5_15, audiA5_1 } from "@/assets/audiA5";
+import "./style.css";
+//-------------------Component--------------
 import { Footer } from "@/_root/_homepage";
 import { useFollowPointer } from "./pointer";
 
-
 const audi_A5_Couple = () => {
-  //smooth scroll
-  const lenis = new Lenis()
-  function raf(time){
-    lenis.raf(time)
-    requestAnimationFrame(raf)
-  }
-  requestAnimationFrame(raf)
-  //-----------------------
+  //cuon dau trang
+  useEffect(() => {
+    window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
+  }, []);
+  //---------------------------------------
 
+  //smooth scroll
+  const lenis = new Lenis();
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+  //---------------------------
+
+  //cursor effect
   const ref = useRef(null);
   const { x, y } = useFollowPointer(ref);
 
@@ -155,14 +169,14 @@ const audi_A5_Couple = () => {
       .to(con2_h1.current, {
         opacity: 1,
         duration: 0.7,
-        x: 0
+        x: 0,
       })
       .to(
         con2_p.current,
         {
           opacity: 1,
           duration: 0.7,
-          x: 0
+          x: 0,
         },
         0.7
       );
@@ -218,60 +232,78 @@ const audi_A5_Couple = () => {
     });
   }, []);
 
-  const container_pin = useRef(null)
-  const box_left = useRef(null)
-  const box_right = useRef(null)
-  const box_right_section1 = useRef(null)
-  const box_right_section1_h1 = useRef(null)
-  const box_right_section1_p = useRef(null)
-  const box_right_section2 = useRef(null)
-  const box_right_section3 = useRef(null)
-  const box_right_section4 = useRef(null)
+  //-----------Pin Section------------------
+  const container_pin = useRef(null);
+  const box_left = useRef(null);
+  const box_right = useRef(null);
+  const box_right_section1 = useRef(null);
+  const box_right_section1_h1 = useRef(null);
+  const box_right_section1_p = useRef(null);
+  const box_right_section2 = useRef(null);
+  const box_right_section3 = useRef(null);
+  const box_right_section4 = useRef(null);
+  //-------------Horizontal scroll---------------
+  const container_horizon = useRef(null);
+  const sec1 = useRef(null);
+  const sec2 = useRef(null);
   useEffect(() => {
+    let sections = gsap.utils.toArray([sec1, sec2]);
+    let scrollTween = gsap.to(container_horizon.current, {
+      xPercent: -100 * (sections.length - 1),
+      x: () => window.innerWidth, //Hàm này được gọi mỗi khi cuộn để đảm bảo phần tử container_horizon luôn được căn chỉnh với cạnh trái của viewport (cửa sổ trình duyệt).
+      scrollTrigger: {
+        trigger: container_horizon.current,
+        scrub: 0.5,
+        pin: true,
+      },
+    });
+
     ScrollTrigger.create({
       trigger: container_pin.current,
       start: "top top",
       end: "bottom bottom",
       pin: box_left.current,
-      pinSpacing: true,
+      markers: true,
     });
 
     //box right section1
-    const tl = gsap.timeline()
-    tl 
-      .set([box_right_section1_h1.current, box_right_section1_p.current],{
-        x:1000,
-        opacity:0,
+    const tl = gsap.timeline();
+    tl.set([box_right_section1_h1.current, box_right_section1_p.current], {
+      x: 1000,
+      opacity: 0,
+    })
+      .to(box_right_section1_h1.current, {
+        x: 0,
+        opacity: 1,
+        duration: 0.7,
       })
-      .to(box_right_section1_h1.current,{
-        x:0,
-        opacity:1,
-        duration:0.7,
-      })
-      .to(box_right_section1_p.current,{
-        x:0,
-        opacity:1,
-        duration:1,
-      },"-=0.5")
-      ScrollTrigger.create({
-       trigger:box_right_section1.current,
-          start:"top center",
-          end:"bottom center",
-          toggleActions:"restart none none none",
-          animation:tl,
-      })
+      .to(
+        box_right_section1_p.current,
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+        },
+        "-=0.5"
+      );
+    ScrollTrigger.create({
+      trigger: box_right_section1.current,
+      start: "top top",
+      end: "bottom center",
+      toggleActions: "restart none none none",
+      animation: tl,
+    });
 
-      gsap.to(box_left.current,{
-        xPercent:100,
-        duration:1,
-        scrollTrigger:{
-          trigger:box_right_section2.current,
-          start:"top top",
-          end:"bottom  top",
-          scrub:true
-        }
-      })
-    
+    gsap.to(box_left.current, {
+      xPercent: 100,
+      duration: 1,
+      scrollTrigger: {
+        trigger: box_right_section2.current,
+        start: "top top",
+        end: "bottom  bottom",
+        scrub: true,
+      },
+    });
   }, []);
 	useEffect(() => {
 		window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
@@ -284,9 +316,9 @@ const audi_A5_Couple = () => {
         style={{ x, y }}
         className="z-50 cursor fixed top-1/2  left-1/2  bg-purple-700 opacity-50  border-slate-700 h-[100px] w-[100px] rounded-[50%]"
       />
-      <div className="overflow-x-hidden">
-        <div className="flex items-start justify-center">
-          <div className="w-screen bg-primary">
+      <div>
+        <div className="flex ">
+          <div className="w-full bg-primary">
             <Navbar />
           </div>
         </div>
@@ -396,7 +428,28 @@ const audi_A5_Couple = () => {
           </div>
         </div>
 
-        <div ref={container_pin} className="overflow-x-hidden flex  w-screen h-[400vh]">
+        <div
+          ref={container_horizon}
+          className="w-[200vw] flex flex-nowrap relative  h-screen bg-red-500"
+        >
+          <div
+            ref={sec1}
+            className="w-screen h-screen flex justify-center items-center bg-green-500"
+          >
+            <p className="text-[100px]">Section1</p>
+          </div>
+          <div
+            ref={sec2}
+            className="w-screen h-screen flex justify-center items-center bg-yellow-500"
+          >
+            <p className="text-[100px]">SECTION2</p>
+          </div>
+        </div>
+
+        <div
+          ref={container_pin}
+          className="overflow-x-hidden flex  w-screen h-[400%]"
+        >
           <div ref={box_left} className="w-1/2  h-screen bg-red-500  ">
             <img src={audiA5_1} className="w-full h-screen object-cover" />
           </div>
@@ -438,14 +491,13 @@ const audi_A5_Couple = () => {
             ></div>
           </div>
         </div>
- 
+        <div className="w-screen h-screen bg-black"></div>
+
         <div className="bg-primary">
           <Footer></Footer>
         </div>
       </div>
-
     </div>
-
   );
 };
 
