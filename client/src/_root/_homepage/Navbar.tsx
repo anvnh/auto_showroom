@@ -138,7 +138,7 @@ const Navbar = () => {
 
 					<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10">
 						<Link
-							to="/users"
+							to="/owners"
 							className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300"
 						>
 							<p> Owners </p>
