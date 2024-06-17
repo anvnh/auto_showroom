@@ -77,7 +77,7 @@ const Navbar = () => {
 								setDropdownSh(false);
 								setDropdownIn(false);
 							}}
-							className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300"
+							className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:text-gray-300 duration-300"
 						>
 							<p> Vehicles </p>
 							{dropdownVe ? (
@@ -100,7 +100,7 @@ const Navbar = () => {
 								setDropdownVe(false);
 								setDropdownIn(false);
 							}}
-							className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300"
+							className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:text-gray-300 duration-300"
 						>
 							<p> Shopping Assist </p>
 							{dropdownSh ? (
@@ -124,7 +124,7 @@ const Navbar = () => {
 								setDropdownSh(false);
 								setDropdownVe(false);
 							}}
-							className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300"
+							className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:text-gray-300 duration-300"
 						>
 							<p> Inventory </p>
 							{dropdownIn ? (
@@ -139,7 +139,7 @@ const Navbar = () => {
 					<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10">
 						<Link
 							to="/owners"
-							className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-gray-300 duration-300"
+							className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1  hover:text-gray-300 duration-300"
 						>
 							<p> Owners </p>
 							<MdOpenInNew className="ml-2 mt-1" />
@@ -202,28 +202,28 @@ const Navbar = () => {
 					<img className="w-[60px]  lg:w-[100px]  " src={kia} />
 				</div>
 				<div className='flex justify-evenly w-screen h-[150px] xs:h-[210px]'>
-					<div>
+					<div className="cursor-pointer">
 						<div>
 							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition ' src={kiaSoul} />
 						</div>
 						<p className='font-bold sm:text-[25px]  lg:text-[28px]'>Soul</p>
 						<p className='font-semibold text-[18px]'>$20,190</p>
 					</div>
-					<div>
+					<div className="cursor-pointer">
 						<div>
 							<img className=' sm:w-[190px] lg:w-[250px]  hover:scale-110 transition' src={kiaSeltos} />
 						</div>
 						<p className='font-bold xs:text-[25px] md:text-[28px]'>Seltos</p>
 						<p className='font-semibold text-[18px]'>$20,190</p>
 					</div>
-					<div>
+					<div className="cursor-pointer">
 						<div>
 							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={kiaSportage} />
 						</div>
 						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Soul</p>
 						<p className='font-semibold text-[18px]'>$20,190</p>
 					</div>
-					<div>
+					<div className="cursor-pointer">
 						<div>
 							<img className='sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={kiaSorento} />
 						</div>
@@ -232,31 +232,31 @@ const Navbar = () => {
 					</div>
 				</div>
 				<div className='rounded-[40px] border-t-[2px] border-slate-400 px-[10px] pt-[10px]'>
-					<img className="w-[60px] lg:w-[100px] hover:scale-110 transition" src={audi} />
+					<img className="w-[60px] lg:w-[100px]" src={audi} />
 				</div>
 				<div className='flex justify-evenly w-screen h-[150px] xs:h-[210px]'>
-					<div>
+				<div className="cursor-pointer">
 						<div>
 							<img className='sm:w-[190px] lg:w-[250px] hover:scale-110 transiton' src={audiA5} />
 						</div>
 						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A5</p>
 						<p className='font-semibold text-[18px]'>$22,190</p>
 					</div>
-					<div>
+					<div className="cursor-pointer">
 						<div>
 							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={audiA8} />
 						</div>
 						<p className='font-bold xs:text-[25px] lg:text-[28px]'>A8</p>
 						<p className='font-semibold text-[18px]'>$20,190</p>
 					</div>
-					<div>
+					<div className="cursor-pointer">
 						<div>
 							<img className=' sm:w-[190px]  lg:w-[250px] hover:scale-110 transition' src={audiEtron} />
 						</div>
 						<p className='font-bold xs:text-[25px] lg:text-[28px]'>Etron</p>
 						<p className='font-semibold text-[18px]'>$20,190</p>
 					</div>
-					<div>
+					<div className="cursor-pointer">
 						<div>
 							<img className=' sm:w-[190px] lg:w-[250px] hover:scale-110 transition' src={audiQ5} />
 						</div>
@@ -301,47 +301,47 @@ const Navbar = () => {
 				: null}
 			{section === "shoppingBar" ? <div className=" z-50 absolute top-[81px] w-screen h-[400px] rounded-b-[20px] xl:px-[100px] bg-white  pt-[40px]   ">
 				<div className='h-[200px]   flex justify-evenly  '>
-					<div className=' lg:w-[300px] xl:w-[400px]  flex-row items-center justify-center text-center '>
+					<div className='lg:w-[300px] xl:w-[400px] cursor-pointer hover:scale-110 transition duration-300 flex-row items-center justify-center text-center '>
 						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center  '>
-							<img className='w-[40px] sm:w-[50px] hover:scale-150 transition' src={money} />
+							<img className='w-[40px] sm:w-[50px] ' src={money} />
 						</div>
 						<p className='font-bold text-[15px] sm:text-[20px]'>Offer and Incentives</p>
 					</div>
-					<div className='  lg:w-[300px] xl:w-[400px]  text-center '>
+					<div className='cursor-pointer hover:scale-110 transition duration-300 lg:w-[300px] xl:w-[400px]  text-center '>
 						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px] hover:scale-150 transition' src={car} /></div>
+							<img className=' w-[40px] sm:w-[50px]' src={car} /></div>
 						<p className='font-bold text-[15px] sm:text-[20px]'>Build Your Car</p>
 					</div>
-					<div className='  lg:w-[300px] xl:w-[400px] text-center '>
+					<div className='cursor-pointer hover:scale-110 transition duration-300 lg:w-[300px] xl:w-[400px] text-center '>
 						<div className='  lg:w-[300px] xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px]  hover:scale-150 transition' src={calculation} /></div>
+							<img className=' w-[40px] sm:w-[50px] ' src={calculation} /></div>
 						<p className='font-bold text-[15px] sm:text-[20px]'>Payment Calculator</p>
 					</div>
-					<div className='  lg:w-[300px] xl:w-[400px] text-center '>
+					<div className='cursor-pointer hover:scale-110 transition duration-300  lg:w-[300px] xl:w-[400px] text-center '>
 						<div className='lg:w-[300px] xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px]  hover:scale-150 transition' src={note} /></div>
+							<img className=' w-[40px] sm:w-[50px]' src={note} /></div>
 						<p className='font-bold text-[15px] sm:text-[20px]'>Offer and Incentives</p>
 					</div>
 				</div>
 				<div className='h-[200px]   flex justify-evenly  '>
-					<div className=' lg:w-[300px]  xl:w-[400px]  flex-row items-center justify-center text-center'>
+					<div className='cursor-pointer hover:scale-110 transition duration-300 lg:w-[300px]  xl:w-[400px]  flex-row items-center justify-center text-center'>
 						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center '>
-							<img className=' w-[40px] sm:w-[50px]   hover:scale-150 transition' src={trade} /></div>
+							<img className=' w-[40px] sm:w-[50px]' src={trade} /></div>
 						<p className='font-bold text-[15px] sm:text-[20px]'>Trade In</p>
 					</div>
-					<div className='  lg:w-[300px] xl:w-[400px]  text-center '>
+					<div className='cursor-pointer hover:scale-110 transition duration-300 lg:w-[300px] xl:w-[400px]  text-center '>
 						<div className='  lg:w-[300px]  xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px] hover:scale-150 ' src={localPrice} /></div>
+							<img className=' w-[40px] sm:w-[50px]' src={localPrice} /></div>
 						<p className='font-bold text-[15px] sm:text-[20px]'>Get a Local Price</p>
 					</div>
-					<div className=' lg:w-[300px] xl:w-[400px] text-center '>
+					<div className='cursor-pointer hover:scale-110 transition duration-300 lg:w-[300px] xl:w-[400px] text-center '>
 						<div className='lg:w-[300px]  xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px] hover:scale-150' src={easyBuy} /></div>
+							<img className=' w-[40px] sm:w-[50px]' src={easyBuy} /></div>
 						<p className='font-bold text-[15px] sm:text-[20px]'>AAP EasyBuy</p>
 					</div>
-					<div className=' lg:w-[300px] xl:w-[400px] text-center '>
+					<div className='cursor-pointer hover:scale-110 transition duration-300 lg:w-[300px] xl:w-[400px] text-center '>
 						<div className=' lg:w-[300px] xl:w-[400px] flex justify-center'>
-							<img className=' w-[40px] sm:w-[50px] hover:scale-150' src={testDrive} /></div>
+							<img className=' w-[40px] sm:w-[50px]' src={testDrive} /></div>
 						<p className='font-bold text-[15px] sm:text-[20px]'>Test Drive</p>
 					</div>
 				</div>
@@ -352,22 +352,22 @@ const Navbar = () => {
 					<div className='w-screen font-bold text-[30px] text-center mb-[35px] border-b-[3px]'>Choose Your Brand</div>
 					<div className='w-screen h-[100px] flex items-center justify-evenly'>
 						<div>
-							<img className=' w-[80px] md:w-[100px] hover:scale-150 transition ' src={audi} />
+							<img className=' w-[80px] md:w-[100px] cursor-pointer hover:scale-110 transition duration-300 ' src={audi} />
 						</div>
 						<div>
-							<img className=' w-[80px] md:w-[100px] hover:scale-150 transition' src={bmwMoono} />
+							<img className=' w-[80px] md:w-[100px] cursor-pointer hover:scale-110 transition duration-300' src={bmwMoono} />
 						</div>
 						<div>
-							<img className='w-[80px] md:w-[100px]  hover:scale-150 transition' src={kia} />
+							<img className='w-[80px] md:w-[100px]  cursor-pointer hover:scale-110 transition duration-300' src={kia} />
 						</div>
 						<div>
-							<img className=' w-[80px] md:w-[100px]  hover:scale-150 transition' src={hyundai} />
+							<img className=' w-[80px] md:w-[100px]  cursor-pointer hover:scale-110 transition duration-300' src={hyundai} />
 						</div>
 						<div>
-							<img className=' w-[80px] md:w-[100px] hover:scale-150 transition' src={honda_black} />
+							<img className=' w-[80px] md:w-[100px] cursor-pointer hover:scale-110 transition duration-300' src={honda_black} />
 						</div>
 						<div>
-							<img className='w-[80px] md:w-[100px] hover:scale-150 transition' src={lambo} />
+							<img className='w-[80px] md:w-[100px] cursor-pointer hover:scale-110 transition duration-300' src={lambo} />
 						</div>
 					</div>
 				</div>

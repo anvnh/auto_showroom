@@ -123,7 +123,7 @@ const Product2 = () => {
 									{car.price}
 								</p>
 								<div className="pt-4 justify-center flex">
-									<div className="detail-button bg-white text-primary px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-9 justify-center flex group-hover:bg-black transition-all duration-300 ease-in-out group-hover:text-white group-hover:scale-110 font-bold text-sm md:text-base">
+									<div className="detail-button bg-white text-primary px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-9 justify-center flex group-hover:bg-black transition-all duration-300 ease-in-out group-hover:text-white group-hover:scale-110 font-bold text-sm md:text-base rounded-3xl text-center">
                                         Details
 									</div>
 								</div>

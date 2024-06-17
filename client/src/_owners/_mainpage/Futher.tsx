@@ -1,12 +1,26 @@
 import {about_1, futher_2} from '@/assets/user_about'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
-
+import AOS from 'aos';
+import { useEffect } from 'react';
 const Futher = () => {
+
+    useEffect(() => {
+		AOS.init({
+			duration: 900,
+
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-bottom",
+		});
+	}, []);
     return (
         <section className="py-16">
             <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center"> 
-                <div className="md:pb-20 pb-15">
+                <div
+                data-aos="fade-right"
+                className="md:pb-20 pb-15">
                     <h1 className="text-4xl font-bold mb-4">
                         AAP - More Than Just Cars, It's a Connected Experience.
                     </h1>
@@ -22,16 +36,22 @@ const Futher = () => {
                         </Button>
                     </Link>
                 </div>
-                <div> 
+                <div
+                data-aos="fade-left"
+                > 
                     <img src={about_1} alt="Car showcase" className="w-full rounded-lg shadow-md" />
                 </div>
             </div>
 
             <div className="container mx-auto hidden md:grid grid-cols-2 gap-8 items-center pt-10"> 
-                <div> 
+                <div
+                data-aos="fade-right"
+                > 
                     <img src={futher_2} alt="Car showcase" className="w-full rounded-lg shadow-md" />
                 </div>
-                <div className="pb-20 pl-20">
+                <div
+                data-aos="fade-left"
+                className="pb-20 pl-20">
                     <h1 className="text-4xl font-bold mb-4"> AAP Maintenance Plan™ </h1>
                     <p className="text-xl leading-relaxed mb-6">
                         Keeping your car running smoothly should be convenient, efficient, and easy. Now you can manage your maintenance costs with the prepaid AAP Maintenance Plan (AMP). This plan gives you access to our extensive network of AAP-trained technicians who use Genuine car parts. No longer will you need to worry about increasing labor and parts costs to maintain your vehicle.                    

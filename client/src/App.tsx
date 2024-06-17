@@ -6,8 +6,8 @@ import { Audi_A5_Couple, Audi_A5_Sportback } from "./_car/audi/audi_A5"
 import HomePage from './pages/auth/home/HomePage';
 import SignUpPage from './pages/auth/signup/SignUpPage';
 import LoginPage from './pages/auth/login/LoginPage';
+import {ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5} from './_productpage/layout/';
 
-import {ProductLayout1, ProductLayout2, ProductLayout3} from './_productpage/layout/';
 const App = () => {
     return (
         <main className="flex h-screen">
@@ -24,6 +24,7 @@ const App = () => {
                 <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />
                 <Route path="/Mercedes-Benz-Maybach-2022" element={<ProductLayout2 />} />
                 <Route path="/Rolls-Royce-Ghost-2021" element={<ProductLayout3 />} />
+                <Route path="/Roll-Royce-Phantom" element={<ProductLayout5 />} />
 
                 {/* Social pages */}
                 <Route path="/social" element={<HomePage />} />
