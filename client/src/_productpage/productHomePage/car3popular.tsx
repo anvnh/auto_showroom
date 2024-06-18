@@ -1,6 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import {
 	r1,
@@ -30,11 +28,11 @@ import {
 	b8,
 	b9,
 } from "../../assets";
-import { Button } from "@/components/ui/button";
 import Car3popular2 from "../productHomePage/car3popular2";
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../../_root/_homepage/Navbar";
 import NavbarSmall3 from "../navbarsmall/NavbarSmall3";
+import Car3reponsive from "../reponsive/car3reponsive"
 
 const Car3popular: React.FC = () => {
 	// sự kiện của navbar
@@ -44,11 +42,11 @@ const Car3popular: React.FC = () => {
 			prevSection === section ? "" : section
 		);
 	};
-	// hiệu hiển thị sau 2s
+	// hiệu hiển thị sau
 	const [isVisible, setIsVisible] = useState(false);
 
 	useEffect(() => {
-		const timer = setTimeout(() => setIsVisible(true), 2000);
+		const timer = setTimeout(() => setIsVisible(true), 4000);
 		return () => clearTimeout(timer);
 	}, []);
 
@@ -64,19 +62,6 @@ const Car3popular: React.FC = () => {
 	const buttonColors2 = ["bg-blue-300", "bg-orange-500", "bg-purple-500"];
 
 	const buttonsRef = useRef(null);
-
-	useEffect(() => {
-		AOS.init({
-			duration: 1000,
-			once: false,
-			mirror: true,
-			easing: "ease-in-out",
-			anchorPlacement: "top-center",
-			offset: 200,
-		});
-		AOS.refresh();
-	}, [activeImage, activeGroup]);
-
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setActiveImage(
@@ -84,7 +69,7 @@ const Car3popular: React.FC = () => {
 			);
 		}, 7000);
 		return () => clearInterval(interval);
-	}, [activeGroup, activeImage]); // Thêm activeImage vào mảng dependency
+	}, [activeGroup, activeImage]);
 
 	useEffect(() => {
 		if (buttonsRef.current) {
@@ -99,8 +84,11 @@ const Car3popular: React.FC = () => {
 
 	const parallaxRef = useRef(null); // Tạo ref cho Parallax
 	const parallaxLayerRefs = useRef([]);
+	
 	return (
-		<div className="parallax">
+		<div>
+			<div className="hidden xl:block">
+			<div className="parallax" style={{ overflow: "auto" }}>
 			<div>
 				<NavbarSmall3
 					onNavClick={handleNavClick}
@@ -110,16 +98,22 @@ const Car3popular: React.FC = () => {
 				/>
 			</div>
 			<Parallax
-				pages={9}
+				pages={8.5}
 				style={{ top: "0", left: "0" }}
 				className="bg-black"
 				ref={parallaxRef} // Gán ref vào Parallax
 			>
 				<div className="w-full z-10">
 					<Navbar onNavClick={handleNavClick} />
+					
 				</div>
 
-				<ParallaxLayer offset={0} speed={0.1} factor={4} ref={(ref) => parallaxLayerRefs.current[0] = ref}>
+				<ParallaxLayer
+					offset={0}
+					speed={0.1}
+					factor={4}
+					ref={(ref) => (parallaxLayerRefs.current[0] = ref)}
+				>
 					<video
 						autoPlay
 						muted
@@ -147,7 +141,6 @@ const Car3popular: React.FC = () => {
 					<div className="flex justify-start w-full h-full items-center bottom-64 sm:-left-20 relative md:left-11 left-0 ss:-left-52 ss:bottom-32 sm:bottom-24 xs:bottom-48">
 						{isVisible && (
 							<div
-								data-aos="fade-up"
 								className={`font-thin absolute text-white top-96 transform text-center shadow-xl
                   ss:w-[1200px] xs:w-[300px] w-[200px] p-2 md:p-5 
                   transition-opacity duration-1000 opacity-0 font-syncopate ${
@@ -166,16 +159,17 @@ const Car3popular: React.FC = () => {
 						)}
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={0.5} speed={0.7} factor={1}  ref={(ref) => parallaxLayerRefs.current[1] = ref}>
+				<ParallaxLayer
+					offset={0.5}
+					speed={0.7}
+					factor={1}
+					ref={(ref) => (parallaxLayerRefs.current[1] = ref)}
+				>
 					<div
-						data-aos="zoom-in-right"
 						id="Introduce"
 						className="text-center relative pt-[1px] md:pt-[460px] ss:pt-[100px]"
 					>
-						<h2
-							className="font-thin text-md md:first-line:text-2xl sm:text-3xl text-white px-12"
-							data-aos="slide-left"
-						>
+						<h2 className="font-thin text-md md:first-line:text-2xl sm:text-3xl text-white px-12">
 							<span className="font-bold md:text-4xl font-syncopate">
 								PURE EXPRESSION
 							</span>{" "}
@@ -191,7 +185,7 @@ const Car3popular: React.FC = () => {
 				</ParallaxLayer>
 				<ParallaxLayer offset={0.9} speed={0.9} factor={1}>
 					<h2 className="font-thin text-sm sm:text-3xl md:text-2xl text-white grid grid-cols-2 gap-2 md:gap-4 text-center pt-[100px] md:pt-[500px] relative px-4">
-						<div data-aos="slide-right">
+						<div>
 							<span className="font-bold font-syncopate">
 								NEDC * (combined):
 							</span>
@@ -206,7 +200,7 @@ const Car3popular: React.FC = () => {
 							<br />
 							<br />
 						</div>
-						<div data-aos="slide-left">
+						<div>
 							<span className="font-bold font-syncopate">
 								WLTP # (combined):
 							</span>
@@ -232,7 +226,7 @@ const Car3popular: React.FC = () => {
 				<ParallaxLayer offset={1.1} speed={0.4} factor={1}>
 					<div className="text-3xl md:text-[200px] text-white ss:text-6xl sm:text-8xl ss:bottom-56 animate-pulse text-center pt-28 md:pt-[300px] relative font-syncopate">
 						IN THE CAR
-					</div>	
+					</div>
 				</ParallaxLayer>
 				<ParallaxLayer offset={1.7} speed={0.8} factor={1}>
 					<div
@@ -254,7 +248,12 @@ const Car3popular: React.FC = () => {
 						></div>
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={2.3} speed={0.8} factor={1} ref={(ref) => parallaxLayerRefs.current[2] = ref}>
+				<ParallaxLayer
+					offset={2.3}
+					speed={0.8}
+					factor={1}
+					ref={(ref) => (parallaxLayerRefs.current[2] = ref)}
+				>
 					<div className="bottom-[400px] ss:-top-[600px] md:top-[1400px] relative">
 						<div className="md:text-6xl ss:text-6xl sm:text-7xl text-3xl text-center text-white animate-pulse font-syncopate ">
 							NEW COLOR
@@ -283,11 +282,6 @@ const Car3popular: React.FC = () => {
 											? "opacity-100"
 											: "opacity-0"
 									}`}
-									data-aos={
-										activeImage === index
-											? "fade-down-right"
-											: ""
-									}
 								/>
 							))}
 							<div
@@ -309,7 +303,6 @@ const Car3popular: React.FC = () => {
 									key={index}
 									onClick={() => {
 										setActiveImage(index);
-										AOS.refresh();
 									}}
 									className={`md:w-5 md:h-5 ss:w-6 ss:h-6 sm:w-8 sm:h-8 w-4 h-4 rounded-full focus:outline-none hover:scale-150 transition-all duration-500 ease-in-out ${buttonColors2[index]}`}
 								></button>
@@ -322,7 +315,6 @@ const Car3popular: React.FC = () => {
 								onClick={() => {
 									setActiveImage(0);
 									setActiveGroup(0);
-									AOS.refresh();
 								}}
 								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
 									activeGroup === 0
@@ -336,7 +328,6 @@ const Car3popular: React.FC = () => {
 								onClick={() => {
 									setActiveImage(0);
 									setActiveGroup(1);
-									AOS.refresh();
 								}}
 								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
 									activeGroup === 1
@@ -350,7 +341,6 @@ const Car3popular: React.FC = () => {
 								onClick={() => {
 									setActiveImage(0);
 									setActiveGroup(2);
-									AOS.refresh();
 								}}
 								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
 									activeGroup === 2
@@ -363,46 +353,58 @@ const Car3popular: React.FC = () => {
 						</div>
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={3} speed={0.8} factor={1}  ref={(ref) => parallaxLayerRefs.current[3] = ref}>
+				<ParallaxLayer
+					offset={3}
+					speed={0.8}
+					factor={1}
+					ref={(ref) => (parallaxLayerRefs.current[3] = ref)}
+				>
 					<div
 						id="Interiors"
-						className="flex justify-center bottom-[900px] md:-bottom-[1100px] bg-bla relative"
+						className="flex justify-center bottom-[900px] md:-bottom-[1160px] bg-bla relative"
 					>
 						<div className="w-full">
 							<Car3popular2 />
 						</div>
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={6} speed={1.2} factor={1}ref={(ref) => parallaxLayerRefs.current[4] = ref}>
-					<div
-						data-aos="zoom-in-right"
-						className="text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[900px]"
-					>
+				<ParallaxLayer
+					offset={5}
+					speed={1.2}
+					factor={1}
+					ref={(ref) => (parallaxLayerRefs.current[4] = ref)}
+				>
+					<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:-bottom-[1100px]">
 						Sophisticated, modern, classy
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={6} speed={1} factor={1}>
+				<ParallaxLayer offset={5} speed={1} factor={1}>
 					<div
-							style={{ backgroundImage: `url(${b5})` }}
-						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[50px] ss:top-[150px] sm:top-[350px] md:top-[1400px]"
+						style={{ backgroundImage: `url(${b5})` }}
+						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:top-[2600px]"
 					></div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
-					<div className="justify-end items-end flex"> 
-					<div
-						style={{ backgroundImage: `url(${b9})` }}
-							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[300px] ss:-top-[300px] sm:-top-[200px] md:top-[400px]"
-					></div>
+				<ParallaxLayer offset={5.2} speed={0.8} factor={1}>
+					<div className="justify-end items-end flex">
+						<div
+							style={{ backgroundImage: `url(${b9})` }}
+							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1050px] ss:-top-[300px] sm:-top-[200px] md:top-[1700px]"
+						></div>
 					</div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={6.4} speed={0.5} factor={1}>
-				<div
+				<ParallaxLayer offset={5.4} speed={0.5} factor={1}>
+					<div
 						style={{ backgroundImage: `url(${b6})` }}
-						className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[900px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[550px] ss:-top-[500px] xs:-top-[200px] md:-top-[550px]"
+						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[600px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[800px]"
 					></div>
 				</ParallaxLayer>
-				<ParallaxLayer offset={7.4} speed={0.5} factor={1} ref={(ref) => parallaxLayerRefs.current[5] = ref}>
-					<div className="article-tiles-container bg-black text-white p-6 bottom-[900px] relative md:bottom-0">
+				<ParallaxLayer
+					offset={6.9}
+					speed={0.5}
+					factor={1}
+					ref={(ref) => (parallaxLayerRefs.current[5] = ref)}
+				>
+					<div className="article-tiles-container bg-black text-white p-6 bottom-[1600px] relative md:-bottom-[520px]">
 						<div className="article-tiles-desc mb-6 text-center font-syncopate">
 							<h3 className="text-4xl ss:text-5xl mb-2">
 								Continue your journey
@@ -476,10 +478,16 @@ const Car3popular: React.FC = () => {
 						</div>
 					</div>
 				</ParallaxLayer>
-				<div className="z-10 w-full relative top-[5850px] md:top-[7995px]">
+				<div className="z-10 w-full relative top-[5850px] md:top-[6895px]">
 					<Footer />
+				
 				</div>
 			</Parallax>
+		</div>
+			</div>
+			<div className="block xl:hidden">
+					<Car3reponsive />
+			</div>
 		</div>
 	);
 };

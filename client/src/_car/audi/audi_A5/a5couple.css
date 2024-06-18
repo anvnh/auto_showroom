@@ -1,26 +1,26 @@
 body::-webkit-scrollbar {
-  display: none; /* Ẩn toàn bộ thanh cuộn */
+	display: none; /* Ẩn toàn bộ thanh cuộn */
 }
 
 body::-webkit-scrollbar:vertical {
-  display: block; /* Hiển thị lại thanh cuộn dọc */
+	display: block; /* Hiển thị lại thanh cuộn dọc */
 }
 
 body::-webkit-scrollbar {
-  width: 8px; /* Độ rộng thanh cuộn */
-  background-color: #f1f1f1; /* Màu nền */
+	width: 12px; /* Độ rộng thanh cuộn */
+	background-color: #f1f1f1; /* Màu nền */
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #888; /* Màu của thanh trượt */
-  border-radius: 4px; /* Bo tròn góc */
+	background-color: #888; /* Màu của thanh trượt */
+	border-radius: 4px; /* Bo tròn góc */
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Màu khi di chuột qua */
+	background-color: #505; /* Màu khi di chuột qua */
 }
 /* Đặt cho phần tử chứa nội dung cuộn ngang */
 .no-horizontal-scroll {
-  overscroll-behavior-x: contain; /* Ngăn chặn cuộn tràn */
-  touch-action: pan-y;              /* Chỉ cho phép cuộn dọc bằng chạm */
+	overscroll-behavior-x: contain; /* Ngăn chặn cuộn tràn */
+	touch-action: pan-y; /* Chỉ cho phép cuộn dọc bằng chạm */
 }
