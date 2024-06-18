@@ -64,7 +64,7 @@ const CreatePost = () => {
 	};
 
 	return (
-        <div className='flex p-4 items-start border gap-4 border-gray-800 rounded-3xl'>
+        <div className='flex p-4 items-start border gap-4 border-gray-800 rounded-3xl my-6'>
             <div className='avatar'>
                 <div className='w-9 rounded-full'>
                     <img 
