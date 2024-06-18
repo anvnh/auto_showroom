@@ -60,7 +60,7 @@ const Navbar = () => {
 				</li>
 			</ul>
 
-			<ul className="items-center justify-end flex-1 hidden list-none sm:flex">
+			<ul className="items-center justify-end flex-1 hidden list-none sm:flex mb-1">
                 <Button 
                     className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"
                 > 

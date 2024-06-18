@@ -141,7 +141,7 @@ const Post = ({ post }) => {
 
 	return (
 		<>
-			<div className='flex gap-2 items-start p-4 border-b border-gray-700'>
+			<div className='flex gap-2 items-start p-4 border border-gray-700 my-3 rounded-3xl bg-primary bg-opacity-55'>
 				<div className='avatar'>
 					<Link to={`/profile/${postOwner.username}`} className='w-8 h-8 rounded-full overflow-hidden'>
 						<img src={postOwner.profileImg || placeholder_img} />
@@ -155,7 +155,7 @@ const Post = ({ post }) => {
 						<span className='text-gray-700 flex gap-1 text-sm'>
 							<Link to={`/profile/${postOwner.username}`}>@{postOwner.username}</Link>
 							<span>·</span>
-							<span>{formattedDate}</span>
+							<span>{formattedDate}</span> {/* This is the date of the post */}
 						</span>
 						{isMyPost && (
 							<span className='flex justify-end flex-1'>
@@ -194,7 +194,7 @@ const Post = ({ post }) => {
 							</div>
 							{/* We're using Modal Component from DaisyUI */}
 							<dialog id={`comments_modal${post._id}`} className='modal border-none outline-none'>
-								<div className='modal-box rounded border border-gray-600'>
+								<div className='modal-box rounded-3xl border border-gray-700 bg-opacity-80'>
 									<h3 className='font-bold text-lg mb-4'>COMMENTS</h3>
 									<div className='flex flex-col gap-3 max-h-60 overflow-auto'>
 										{post.comments.length === 0 && (
@@ -205,7 +205,7 @@ const Post = ({ post }) => {
 										{post.comments.map((comment) => (
 											<div key={comment._id} className='flex gap-2 items-start'>
 												<div className='avatar'>
-													<div className='w-8 rounded-full'>
+													<div className='w-8 mt-2 rounded-full'>
 														<img
 															src={comment.user.profileImg || placeholder_img}
 														/>
@@ -215,7 +215,7 @@ const Post = ({ post }) => {
 													<div className='flex items-center gap-1'>
 														<span className='font-bold'>{comment.user.fullName}</span>
 														<span className='text-gray-700 text-sm'>
-															@{comment.user.username}
+															&nbsp; @{comment.user.username}
 														</span>
 													</div>
 													<div className='text-sm'>{comment.text}</div>
@@ -228,7 +228,7 @@ const Post = ({ post }) => {
 										onSubmit={handlePostComment}
 									>
 										<textarea
-											className='textarea w-full p-1 rounded text-md resize-none border focus:outline-none  border-gray-800'
+											className='textarea w-full p-2 rounded-2xl text-md resize-none border focus:outline-none border-gray-800'
 											placeholder='Add a comment...'
 											value={comment}
 											onChange={(e) => setComment(e.target.value)}
@@ -268,8 +268,8 @@ const Post = ({ post }) => {
 								</span>
 							</div>
 						</div>
-						<div className='flex w-1/3 justify-end gap-2 items-center'>
-							<FaRegBookmark className='w-4 h-4 text-slate-500 cursor-pointer' />
+						<div className='flex justify-end gap-2 items-center relative group'>
+							<FaRegBookmark className='w-4 h-4 text-slate-500 cursor-pointer group-hover:text-yellow-300' />
 						</div>
 					</div>
 				</div>

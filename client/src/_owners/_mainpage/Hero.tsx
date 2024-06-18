@@ -2,7 +2,8 @@ import { user_hero_1 } from "@/assets"
 import { Button } from '@/components/ui/button'
 import { useEffect } from "react";
 import AOS from 'aos';
-
+import { Link } from "react-router-dom";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const Hero = () => {
 
@@ -29,6 +30,13 @@ const Hero = () => {
                     <div className="absolute inset-0 flex flex-col justify-start items-start text-white ml-28 mt-36">
                         <h1 data-aos="zoom-out" className="text-5xl font-poppins font-bold mb-6"> Everything Your Car <br/> Needs, All in One Place </h1>
                         <p data-aos="zoom-out" className="text-3xl font-poppins"> Your personal portal to a world <br/> of car ownership resources. </p>
+                        <div className="flex mt-5 text-xl">
+                            If you interested in our social,&nbsp;
+                            <Link to="/social">
+                                <span className="underline"> click here </span>
+                            </Link>
+                            <FaArrowLeft className="mt-2 ml-3"/>
+                        </div>
                     </div>
                 </div>
                 <div className="md:hidden flex">
