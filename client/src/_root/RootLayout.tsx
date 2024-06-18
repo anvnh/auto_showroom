@@ -1,11 +1,10 @@
 import {Navbar, Hero, Product, Product2 ,Banner, Footer, CarBrand} from './_homepage'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Lenis from '@studio-freight/lenis'
 import {
     backgroundcar2
 } from "../assets";
-import React, { useEffect, useRef, useState} from "react"; // Import both useEffect and useRef
+import React, { useEffect, useRef, useState} from "react";
 
 const RootLayout = () => {
     useEffect(() => {
@@ -18,14 +17,6 @@ const RootLayout = () => {
 			anchorPlacement: "top-bottom",
 		});
 	}, []);
-//smooth scroll
-const lenis = new Lenis();
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-    
 
     return (
         <section className="w-full bg-gray-900">

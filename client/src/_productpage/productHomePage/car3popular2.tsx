@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { r1, r2, r3, r5, r7, r8, b1, b2, b4, b5, b6 } from "../../assets";
 import { gsap } from "gsap";
@@ -9,7 +8,7 @@ const car3popular2 = () => {
 		<div className="bg-black">
 			<div>
 				<div
-					data-aos="fade-right"
+					
 					style={{ backgroundImage: `url(${r3})` }}
 					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
@@ -23,7 +22,7 @@ const car3popular2 = () => {
 				<div className="relative flex w-screen h-screen">
 					<div className="h-screen w-1/2">
 						<img
-							data-aos="slide-left"
+						
 							src={b1}
 							className="h-screen w-screen object-cover"
 						/>
@@ -31,13 +30,12 @@ const car3popular2 = () => {
 					<div className="h-screen w-1/2 flex justify-center items-center bg-slate-800	 text-white">
 						<div className="w-[700px] h-[500px] flex justify-center items-center flex-col  border-purple-500 border-2">
 							<h1
-								data-aos="slide-right"
+								
 								className="font-syncopate text-center text-[55px] font-medium uppercase"
 							>
 								Interiors
 							</h1>
-							<p
-								data-aos="slide-right"
+							<p	
 								className="font-kanit text-center text-xl p-12"
 							>
 								Rolls-Royce has pulled out all the stops with
@@ -82,7 +80,7 @@ const car3popular2 = () => {
 				</div>
 				<div
                     id="Model"
-					data-aos="fade-right"
+					
 					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
 					<div className="flex justify-center pt-16 absolute inset-0">
@@ -96,7 +94,7 @@ const car3popular2 = () => {
 					<iframe
 						className="w-full md:h-[550px] h-[300px] scale-125 "
 						title="Rolls Royce Ghost 2021"
-						frameborder="0"
+						frameBorder="0"
 						allowfullscreen
 						mozallowfullscreen="true"
 						webkitallowfullscreen="true"

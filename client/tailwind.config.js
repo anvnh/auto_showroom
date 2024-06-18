@@ -23,7 +23,6 @@ module.exports = {
             lg: "1200px",
             'mlg': '1400px',
             xl: "1700px",
-
         },
         extend: {
             transitionDuration: {
