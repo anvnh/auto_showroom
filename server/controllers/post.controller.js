@@ -67,7 +67,7 @@ export const commentOnPost = async (req, res) => {
         const userId = req.user._id;
 
         if(!text) {
-            return res.status(400).json({ message: "Text filed is required" });
+            return res.status(400).json({ message: "Text field is required" });
         }
         const post = await Post.findById(postId);
 
@@ -107,7 +107,11 @@ export const likeUnlikePost = async (req, res) => {
             // Unlike post
             await Post.updateOne({_id: postId}, {$pull: {likes: userId}});
             await User.updateOne({_id: userId}, {$pull: {likedPosts: postId}});
-            res.status(200).json({ message: "Post unliked successfully" });
+
+
+            const updatedLikes = post.likes.filter((id) => id.toString() !== userId.toString());
+
+            res.status(200).json(updatedLikes);
         }
         else {
             // Like post
@@ -123,7 +127,9 @@ export const likeUnlikePost = async (req, res) => {
 
             await notification.save();
 
-            res.status(200).json({ message: "Post liked successfully" });
+            const updatedLikes = post.likes;
+
+            res.status(200).json(updatedLikes);
         }
 
     } catch(error) {
