@@ -55,7 +55,7 @@ const Navbar = () => {
 
 	return (
 		<div className={`z-50 fixed top-0 w-full bg-gray-800 transition-transform duration-300 ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}>
-			<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
+			<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-primary md:px-12.5 px-8 bg-opacity-70">
 				<Link to="/">
 					<img
 						src={logo}

@@ -46,7 +46,7 @@ const RootLayout = () => {
                         <Banner />
                     </div>
                 </div>   
-                <div className="flex items-start justify-center bg-gray-950 bg-opacity-50">
+                <div className="flex items-start justify-center bg-primary">
                     <div className="w-full">
                         <CarBrand />
                     </div>

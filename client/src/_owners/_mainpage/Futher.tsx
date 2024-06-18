@@ -16,7 +16,7 @@ const Futher = () => {
 		});
 	}, []);
     return (
-        <section className="py-16">
+        <section className="py-16 text-black">
             <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center"> 
                 <div
                 data-aos="fade-right"

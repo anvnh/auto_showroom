@@ -49,7 +49,7 @@ const App = () => {
     }
     return (
         <>
-            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'max-w-[75%] mx-auto') : 'h-screen'}`}> 
+            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'max-w-[65%] mx-auto') : 'h-screen'}`}> 
                 {location.pathname.startsWith('/social') && authUser && <Sidebar />}
                 <Routes>
                     <Route path="/" element={<RootLayout />} />
