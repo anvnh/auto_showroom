@@ -33,7 +33,9 @@ const HomePage = () => {
                     </div>
                 </div>
                 {/*  CREATE POST INPUT */}
-                <CreatePost />
+                <div className="mt-4">
+                    <CreatePost />
+                </div>
                 {/* POSTS */}
                 <Posts feedType={feedType} />
             </div>

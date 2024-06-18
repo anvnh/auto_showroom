@@ -7,16 +7,19 @@ import EditProfileModal from "./EditProfileModal";
 
 import { POSTS } from "../../utils/db/dummy";
 
+import placeholder_img from "../../assets/social/placeholder/placeholder.png";
+import placeholder_cover from "../../assets/social/placeholder/cover_placeholder.jpeg";
+
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FaLink, FaPlaceOfWorship } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
-import placeholder_img from "../../assets/social/placeholder/placeholder.png";
 import { formatMemberSinceDate } from "@/utils/date";
+import useFollow from "@/hooks/useFollow";
+import useUpdateUserProfile from "@/hooks/useUpdateUserProfile";
 
 const ProfilePage = () => {
-
 	const [coverImg, setCoverImg] = useState(null);
 	const [profileImg, setProfileImg] = useState(null);
 	const [feedType, setFeedType] = useState("posts");
@@ -26,7 +29,9 @@ const ProfilePage = () => {
 
 	const {username} = useParams();
 
-	const isMyProfile = true;
+	const{follow, isPending} = useFollow();
+
+	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
 	const {data: user, isLoading, refetch, isRefetching} = useQuery({
 		queryKey: ["userProfile"],
@@ -45,7 +50,12 @@ const ProfilePage = () => {
 		},
 	});
 
+	const {updateProfile, isUpdatingProfile} = useUpdateUserProfile();
+
+	const isMyProfile = authUser._id === user?._id;
 	const memberSinceDate = formatMemberSinceDate(user?.createdAt);
+
+	const amIFollowing = authUser?.following.includes(user?._id);
 
 	useEffect(() => {
 		refetch();
@@ -73,7 +83,7 @@ const ProfilePage = () => {
 					{!isLoading && !isRefetching && user && (
 						<>
 							<div className='flex gap-10 px-4 py-2 items-center'>
-								<Link to='/'>
+								<Link to='/social'>
 									<FaArrowLeft className='w-4 h-4' />
 								</Link>
 								<div className='flex flex-col'>
@@ -84,7 +94,7 @@ const ProfilePage = () => {
 							{/* COVER IMG */}
 							<div className='relative group/cover'>
 								<img
-									src={coverImg || user?.coverImg || "/cover.png"}
+									src={coverImg || user?.coverImg || placeholder_cover}
 									className='h-52 w-full object-cover'
 									alt='cover image'
 								/>
@@ -125,21 +135,27 @@ const ProfilePage = () => {
 								</div>
 							</div>
 							<div className='flex justify-end px-4 mt-5'>
-								{isMyProfile && <EditProfileModal />}
+								{isMyProfile && <EditProfileModal authUser={authUser}/>}
 								{!isMyProfile && (
 									<button
 										className='btn btn-outline rounded-full btn-sm'
-										onClick={() => alert("Followed successfully")}
+										onClick={() => follow(user?._id)}
 									>
-										Follow
+										{isPending && "Loading..."}
+										{!isPending && amIFollowing && "Unfollow"}
+										{!isPending && !amIFollowing && "Follow"}
 									</button>
 								)}
 								{(coverImg || profileImg) && (
 									<button
 										className='btn btn-primary rounded-full btn-sm text-white px-4 ml-2'
-										onClick={() => alert("Profile updated successfully")}
+										onClick={async () => {
+											await updateProfile({coverImg, profileImg})
+											setProfileImg(null);
+											setCoverImg(null);
+										}}
 									>
-										Update
+										{isUpdatingProfile ? "Updating..." : "Update"}
 									</button>
 								)}
 							</div>
@@ -156,14 +172,7 @@ const ProfilePage = () => {
 										<div className='flex gap-1 items-center '>
 											<>
 												<FaLink className='w-3 h-3 text-slate-500' />
-												<a
-													href='https://youtube.com/@asaprogrammer_'
-													target='_blank'
-													rel='noreferrer'
-													className='text-sm text-blue-500 hover:underline'
-												>
-													youtube.com/@asaprogrammer_
-												</a>
+												<a href={"https://" + user?.link}>{user?.link}</a>
 											</>
 										</div>
 									)}

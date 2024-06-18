@@ -9,7 +9,7 @@ const Navbar = () => {
 	const [toggle, setToggle] = useState(false);
 
     return (
-		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-50">
+		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar md:px-12.5 px-8 bg-primary">
 			<Link to="/">
 				<img
 					src={logo}

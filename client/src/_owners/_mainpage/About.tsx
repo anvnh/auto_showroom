@@ -16,7 +16,7 @@ const About = () => {
 	}, []);
 
     return (
-        <section className="py-12"> 
+        <section className="py-12 text-black"> 
             <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center"> 
                 <div
                 data-aos="fade-right"
