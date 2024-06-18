@@ -58,7 +58,7 @@ const Car3popular: React.FC = () => {
 		[change4, change5, change6],
 		[change10, change8, change9],
 	];
-	const buttonColors = ["bg-white", "bg-white", "bg-white"];
+	const buttonColors = ["bg-black", "bg-black", "bg-black"];
 	const buttonColors2 = ["bg-blue-300", "bg-orange-500", "bg-purple-500"];
 
 	const buttonsRef = useRef(null);
@@ -98,7 +98,7 @@ const Car3popular: React.FC = () => {
 				/>
 			</div>
 			<Parallax
-				pages={8.5}
+				pages={8.4}
 				style={{ top: "0", left: "0" }}
 				className="bg-black"
 				ref={parallaxRef} // Gán ref vào Parallax
@@ -294,8 +294,9 @@ const Car3popular: React.FC = () => {
 						</div>
 
 						{/* Nút chuyển ảnh */}
+						
 						<div
-							className="absolute md:top-1/2 md:right-4 top-[230px] ss:top-[430px] xs:top-[320px] sm:top-[580px] left-[290px] ss:left-[500px] xs:left-[370px] sm:left-[650px] md:left-[1820px] transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3"
+							className="z-20 pl-[1450px] absolute md:top-1/2 top-[230px] ss:top-[430px] xs:top-[320px] sm:top-[580px]  transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 "
 							ref={buttonsRef}
 						>
 							{imageGroups[activeGroup].map((__, index) => (
@@ -304,13 +305,14 @@ const Car3popular: React.FC = () => {
 									onClick={() => {
 										setActiveImage(index);
 									}}
-									className={`md:w-5 md:h-5 ss:w-6 ss:h-6 sm:w-8 sm:h-8 w-4 h-4 rounded-full focus:outline-none hover:scale-150 transition-all duration-500 ease-in-out ${buttonColors2[index]}`}
+									className={`md:w-5 md:h-5 ss:w-6 ss:h-6 sm:w-8 sm:h-8 w-4 h-4 rounded-full focus:outline-none hover:scale-150 transition-all duration-200 ease-in-out ${buttonColors2[index]}`}
 								></button>
 							))}
 						</div>
+						
 
 						{/* Nút chuyển nhóm ảnh */}
-						<div className="absolute flex justify-end md:pr-9 top-52 ss:top-[410px] xs:top-[300px] sm:top-[550px]  md:top-4 md:w-[1850px] ss:right-[400px] xs:right-[230px] md:right-0 sm:right-[370px] right-40 sm:h-[60px] sm:text-4xl text-sm md:text-xl md:h-[40px] h-[40[x]] md:space-x-4 md:gap-0 gap-2">
+						<div className="absolute flex justify-end pr-44 top-52 ss:top-[410px] xs:top-[300px] sm:top-[550px]  md:top-4 md:w-[1850px]  sm:h-[60px] sm:text-4xl text-sm md:text-xl md:h-[40px] h-[40[x]] md:space-x-4 md:gap-0 gap-2">
 							<button
 								onClick={() => {
 									setActiveImage(0);
@@ -399,7 +401,7 @@ const Car3popular: React.FC = () => {
 					></div>
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={6.9}
+					offset={7.4}
 					speed={0.5}
 					factor={1}
 					ref={(ref) => (parallaxLayerRefs.current[5] = ref)}
@@ -478,7 +480,7 @@ const Car3popular: React.FC = () => {
 						</div>
 					</div>
 				</ParallaxLayer>
-				<div className="z-10 w-full relative top-[5850px] md:top-[6895px]">
+				<div className="z-10 w-full relative top-[5850px] md:top-[7330px]">
 					<Footer />
 				
 				</div>

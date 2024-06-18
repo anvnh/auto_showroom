@@ -10,6 +10,7 @@ import ProductLayout2 from "./layout/ProductLayout2"
 import ProductLayout3 from "./layout/ProductLayout3"
 import ProductLayout5 from './layout/ProductLayout5'
 import car3reponsive from "./reponsive/car3reponsive"
+import car5reponsive from "./reponsive/car5reponsive"
 
 export {
     Car1popular,
@@ -23,5 +24,7 @@ export {
     ProductLayout3,
     ProductLayout5,
     car3reponsive,
+    car5reponsive,
+    
 }
 

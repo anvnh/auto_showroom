@@ -90,7 +90,7 @@ import VideoCar1Popular from "./Video/Mercedes-AMG CLS 53 4MATIC+.mov";
 import VideoCar2Popular from "./video2/Maybach S-Class.mov";
 import VideoCar3Popular from "./car_popular/car3popular/video/0609 (2).mp4";
 import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
-
+import Videohieuung12 from "./car_popular/car5popular/video1/0619.mp4";
 //car3 popular
 import r1 from "./car_popular/car3popular/behind1.jpg";
 import r2 from "./car_popular/car3popular/behind2.jpg";
@@ -178,6 +178,7 @@ export {
 	VideoCar2Popular,
 	VideoCar3Popular,
 	Videohieuung,
+	Videohieuung12,
 	merr,
 	merr1,
 	merr2,
