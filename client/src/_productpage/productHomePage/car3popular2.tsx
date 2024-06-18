@@ -8,11 +8,10 @@ const car3popular2 = () => {
 		<div className="bg-black">
 			<div>
 				<div
-					
 					style={{ backgroundImage: `url(${r3})` }}
-					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
+					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover z-20"
 				>
-					<div className="flex justify-center pt-16 absolute inset-0">
+					<div className="flex justify-center pt-16 md:pt-0 inset-0">
 						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate uppercase text-center">
 							Interiors & Technology
 						</h1>
@@ -24,10 +23,10 @@ const car3popular2 = () => {
 						<img
 						
 							src={b1}
-							className="h-screen w-screen object-cover"
+								className="h-screen w-screen object-cover"
 						/>
 					</div>
-					<div className="h-screen w-1/2 flex justify-center items-center bg-slate-800	 text-white">
+					<div className="z-20 h-screen w-1/2 flex justify-center items-center bg-slate-800 text-white">
 						<div className="w-[700px] h-[500px] flex justify-center items-center flex-col  border-purple-500 border-2">
 							<h1
 								
