@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import placeholder_img from "../../../../../public/avatars/placeholder/placeholder.png";
+import placeholder_img from "../../../../assets/social/placeholder/placeholder.png";
 
 const Sidebar = () => {
     const queryClient = useQueryClient();
