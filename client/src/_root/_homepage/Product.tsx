@@ -38,7 +38,7 @@ const Product = () => {
 				className="bg-cover bg-center h-24 sm:h-48 relative object-cover"
 			>
 				<div className="flex justify-center pt-16 absolute inset-0">
-					<h1 className="relative text-white font-extrabold md:text-5xl xs:text-4xl text-2xl animate-pulse bottom-9 sm:bottom-1 md:pb-0 transition-colors font-syncopate duration-500 ">
+					<h1 className="relative text-white font-extrabold md:text-5xl xs:text-4xl text-2xl animate-pulse bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate">
 						POPULAR PRODUCT
 					</h1>
 				</div>
@@ -63,7 +63,7 @@ const Product = () => {
 					<Link to="/Mercedes-AMG-CLS">
 						<div
 							style={{ backgroundImage: `url(${acc})` }}
-							data-aos="fade-right"
+							data-aos="zoom-out"
 							className="card group bg-cover bg-center xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500 "
 						>
 							<div className="car w-full flex justify-center sm:justify-end">
@@ -103,7 +103,7 @@ const Product = () => {
 					<Link to="Mercedes-Benz-Maybach-2022">
 						<div
 							style={{ backgroundImage: `url(${acc})` }}
-							data-aos="fade-left"
+							data-aos="zoom-out"
 							className="card group hidden bg-cover bg-center xl:block bg-white rounded-3xl p-6 w-full h-full group relative bottom-7"
 						>
 							<div className="car -mt-0 w-[300px] h-[200px]">
@@ -120,9 +120,7 @@ const Product = () => {
 									<img src={logomer} alt="" />
 								</div>
 								<div className="Product_text font-bold text-white text-xl">
-									<h2 className="font-syncopate">
-										Mercedes-Benz <br /> Maybach 2022
-									</h2>
+									<h2 className="font-syncopate">Mercedes-Benz <br /> Maybach 2022</h2>
 									<p className="text-center">$ 679 867</p>
 								</div>
 							</div>
@@ -131,34 +129,30 @@ const Product = () => {
 
 					{/*--------------Card3-------------------------------------*/}
 					<Link to="/Rolls-Royce-Ghost-2021">
-						<div
-							style={{ backgroundImage: `url(${acc})` }}
-							data-aos="fade-left"
-							className="card group bg-cover bg-center hidden xl:block bg-white rounded-3xl p-0 w-full h-full group relative bottom-7"
-						>
-							<div className="car -mt-0 w-[320px] h-[200px]">
-								<img
-									src={car3}
-									alt=""
-									className="w-full h-full left-10 object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
-									style={{ top: "50px" }}
-								/>
-								<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
+					<div
+						style={{ backgroundImage: `url(${acc})` }}
+						data-aos="zoom-out"
+						className="card group bg-cover bg-center hidden xl:block bg-white rounded-3xl p-0 w-full h-full group relative bottom-7"
+					>
+						<div className="car -mt-0 w-[320px] h-[200px]">
+							<img
+								src={car3}
+								alt=""
+								className="w-full h-full left-10 object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
+								style={{ top: "50px" }}
+							/>
+							<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
+						</div>
+						<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+							<div className="logo_Car">
+								<img src={logoroi} alt="" />
 							</div>
-							<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-								<div className="logo_Car">
-									<img src={logoroi} alt="" />
-								</div>
-								<div className="Product_text font-bold text-white text-xl">
-									<h2 className="font-syncopate">
-										Rolls Royce Ghost 2021
-									</h2>
-									<p className="text-center">
-										$ 1,65 million
-									</p>
-								</div>
+							<div className="Product_text font-bold text-white text-xl">
+								<h2 className="font-syncopate">Rolls Royce Ghost 2021</h2>
+								<p className="text-center">$ 1,65 million</p>
 							</div>
 						</div>
+					</div>
 					</Link>
 				</div>
 				{/*--------------hàng 2-------------------------------------*/}
@@ -166,7 +160,7 @@ const Product = () => {
 					{/*--------------Card4-------------------------------------*/}
 					<div
 						style={{ backgroundImage: `url(${acc})` }}
-						data-aos="fade-right"
+						data-aos="fade-up"
 						className="card group bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
 					>
 						<div className="car -mt-0 w-full h-full">
@@ -183,48 +177,41 @@ const Product = () => {
 								<img src={logo236} alt="" />
 							</div>
 							<div className="Product_text font-bold text-white text-xl">
-								<h2 className="font-syncopate">
-									Hyundai Sonata 2022
-								</h2>
+								<h2 className="font-syncopate">Hyundai Sonata 2022</h2>
 								<p className="text-center">$ 26 000</p>
 							</div>
 						</div>
 					</div>
 					{/*--------------Card5-------------------------------------*/}
-					<Link to="/Roll-Royce-Phantom">
-						<div
-							style={{ backgroundImage: `url(${acc})` }}
-							data-aos="fade-right"
-							className="card group bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
-						>
-							<div className="car -mt-0 w-full h-full">
-								<img
-									src={car6}
-									alt=""
-									className="w-full h-auto object-cover rounded-lg relative group-hover:scale-125 scale-100 transition-all ease-in-out duration-300"
-									style={{ top: "17px" }}
-								/>
-								<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
+					<div
+						style={{ backgroundImage: `url(${acc})` }}
+						data-aos="fade-up"
+						className="card group bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
+					>
+						<div className="car -mt-0 w-full h-full">
+							<img
+								src={car6}
+								alt=""
+								className="w-full h-full object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
+								style={{ top: "-20px" }}
+							/>
+							<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
+						</div>
+						<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+							<div className="logo_Car">
+								<img src={logo236} alt="" />
 							</div>
-							<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-								<div className="logo_Car">
-									<img src={logoroi} alt="" />
-								</div>
-								<div className="Product_text font-bold text-white text-xl">
-									<h2 className="font-syncopate text-center">
-											Roll Royce Phantom <br />
-											Extended Series II
-									</h2>
-									<p className="text-center">$ 638 000</p>
-								</div>
+							<div className="Product_text font-bold text-white text-xl">
+								<h2 className="font-syncopate">Hyundai Sonata 2022</h2>
+								<p className="text-center">$ 26 000</p>
 							</div>
 						</div>
-					</Link>
+					</div>
 
 					{/*--------------Card6-------------------------------------*/}
 					<div
 						style={{ backgroundImage: `url(${acc})` }}
-						data-aos="fade-left"
+						data-aos="fade-up"
 						className="card hidden md:block bg-cover bg-center group xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500"
 					>
 						<div className="car w-full flex justify-center sm:justify-end">
@@ -240,9 +227,7 @@ const Product = () => {
 								<img src={logo1} alt="" />
 							</div>
 							<div className="Product_text opacity-100 text-white font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-20 left-5 ">
-								<h2 className="font-syncopate">
-									Hyundai Sonata
-								</h2>
+								<h2 className="font-syncopate">Hyundai Sonata</h2>
 								<p className="text-center">$ 26 000</p>
 							</div>
 							<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
@@ -257,7 +242,7 @@ const Product = () => {
 				</div>
 				{/*--------------banner-------------------------------------*/}
 
-				{/*}
+                {/*}
 				<div data-aos="slide-up" className="w-screen bg-white ">
 					<div
 						style={{ backgroundImage: `url(${bannn})` }}
