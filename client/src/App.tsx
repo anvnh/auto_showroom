@@ -49,9 +49,10 @@ const App = () => {
     }
     return (
         <>
-            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'max-w-[65%] mx-auto') : 'h-screen'}`}> 
+            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'max-w-[80%] mx-auto') : 'h-screen'}`}> 
                 {location.pathname.startsWith('/social') && authUser && <Sidebar />}
                 <Routes>
+
                     <Route path="/" element={<RootLayout />} />
 
                     <Route path="/owners" element={<UserLayout />} />
@@ -69,6 +70,7 @@ const App = () => {
                     <Route path="/social/login" element={!authUser ? <LoginPage /> : <Navigate to="/social" />} />
                     <Route path="/social/notifications" element={authUser ? <NotificationPage /> : <Navigate to="/social/login" />} />
                     <Route path="/social/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/social/login" />} />
+
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
                 {location.pathname.startsWith('/social') && <Toaster />}

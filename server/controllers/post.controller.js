@@ -69,19 +69,35 @@ export const commentOnPost = async (req, res) => {
         if(!text) {
             return res.status(400).json({ message: "Text field is required" });
         }
+
         const post = await Post.findById(postId);
 
         if(!post) {
             return res.status(404).json({ message: "Post not found" });
         }
+        
+        // get the id of the user who created the post
+        const userToModify = await User.findById(post.user);
 
         const comment = {user: userId, text}
+
+        // 
+        const updatedComments = comment;
 
         post.comments.push(comment);
 
         await post.save();
 
-        res.status(201).json(post);
+        // save notification about comment to the creator of the post
+        const newNotification = new Notification({
+            type: "comment", 
+            from: req.user._id,
+            to: userToModify._id,
+        });
+
+        await newNotification.save();
+
+        res.status(201).json(updatedComments);
 
     } catch(error) {
         console.log("Error in commentOnPost controller: ", error);
