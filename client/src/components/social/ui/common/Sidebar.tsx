@@ -11,8 +11,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import placeholder_img from "../../../../assets/social/placeholder/placeholder.png";
 import { useState } from "react";
-import { log } from "console";
-
 
 const Sidebar = () => {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -51,7 +49,7 @@ const Sidebar = () => {
             <div className="md:flex hidden mr-5 w-18 max-w-56">
                 <div className="sticky top-0 left-0 h-screen flex flex-col w-20 md:w-full">
                     <Link
-                        to="/social"
+                        to="/owners"
                         className="flex justify-center md:justify-start"
                         >
                         <img

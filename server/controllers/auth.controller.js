@@ -1,6 +1,7 @@
 import { generateTokenAndSetCookie } from '../lib/utils/generateToken.js';
 import User from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
+import nodemailer from "nodemailer";
 
 
 export const signup = async (req, res) => {
@@ -39,6 +40,7 @@ export const signup = async (req, res) => {
 
         if(newUser) {
             generateTokenAndSetCookie(newUser._id, res);
+
             await newUser.save();
 
             res.status(200).json({
@@ -109,11 +111,6 @@ export const getMe = async (req, res) => {
         res.status(500).json({ error: "Something went wrong" });
     }
 }
-
-
-
-
-
 
 
 

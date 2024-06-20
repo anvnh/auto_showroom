@@ -12,7 +12,7 @@ import placeholder_cover from "../../assets/social/placeholder/cover_placeholder
 
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
-import { FaLink, FaPlaceOfWorship } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { formatMemberSinceDate } from "@/utils/date";
@@ -82,6 +82,7 @@ const ProfilePage = () => {
 				<div className='flex flex-col'>
 					{!isLoading && !isRefetching && user && (
 						<>
+                            {/* HEADER */}
 							<div className='flex gap-10 px-4 py-2 items-center sticky top-0 z-10 backdrop-blur-md border-gray-800'>
 								<Link to='/social'>
 									<FaArrowLeft className='w-4 h-4' />
@@ -91,6 +92,7 @@ const ProfilePage = () => {
 									<span className='text-sm text-slate-500'>{POSTS?.length} posts</span>
 								</div>
 							</div>
+
 							{/* COVER IMG */}
 							<div className='relative group/cover'>
 								<img
@@ -185,12 +187,16 @@ const ProfilePage = () => {
 								</div>
 								<div className='flex gap-2'>
 									<div className='flex gap-1 items-center'>
-										<span className='font-bold text-xs'>{user?.following.length}</span>
-										<span className='text-slate-500 text-xs'>Following</span>
+                                        <Link to={`/social/profile/following/${user?._id}`}>
+                                            <span className='font-bold text-xs'>{user?.following.length}&nbsp;</span>
+                                            <span className='text-slate-500 text-xs'>Following</span>
+                                        </Link>
 									</div>
 									<div className='flex gap-1 items-center'>
-										<span className='font-bold text-xs'>{user?.followers.length}</span>
-										<span className='text-slate-500 text-xs'>Followers</span>
+                                        <Link to={`/social/profile/followers/${user?._id}`}>
+                                            <span className='font-bold text-xs'>{user?.followers.length}&nbsp;</span>
+                                            <span className='text-slate-500 text-xs'>Followers</span>
+                                        </Link>
 									</div>
 								</div>
 							</div>
