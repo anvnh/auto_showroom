@@ -1,4 +1,5 @@
 {
+  "homepage": "https://anvnh.github.io/auto_showroom",
   "proxy": "http://localhost:4000",
   "name": "auto_showroom",
   "private": true,

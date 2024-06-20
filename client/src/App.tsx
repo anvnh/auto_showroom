@@ -14,13 +14,12 @@ import ProfilePage from './pages/profile/ProfilePage';
 import {ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5} from './_productpage/layout/';
 import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
-import { LuDivideCircle } from 'react-icons/lu';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
 
 const App = () => {
     const location = useLocation();
     const isSocialRoute = location.pathname.startsWith('/social');
-    const {data: authUser, isLoading, error, isError } = useQuery({
+    const {data: authUser, isLoading } = useQuery({
         // use queryKey to give a unique name to the query and refer to it later
         queryKey: ['authUser'],
         queryFn: async () => {
@@ -49,7 +48,7 @@ const App = () => {
     }
     return (
         <>
-            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'max-w-[80%] mx-auto') : 'h-screen'}`}> 
+            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'md:max-w-[80%] max-w-[90%] mx-auto') : 'h-screen'}`}> 
                 {location.pathname.startsWith('/social') && authUser && <Sidebar />}
                 <Routes>
 

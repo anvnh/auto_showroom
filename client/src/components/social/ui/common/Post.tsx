@@ -199,7 +199,7 @@ const Post = ({ post }) => {
 							</div>
 							{/* We're using Modal Component from DaisyUI */}
 							<dialog id={`comments_modal${post._id}`} className='modal border-none outline-none'>
-								<div className='modal-box rounded-3xl border border-gray-700 bg-opacity-80'>
+								<div className='modal-box rounded-3xl border border-gray-700 bg-opacity-80 backdrop-blur-md'>
 									<h3 className='font-bold text-lg mb-4'>COMMENTS</h3>
 									<div className='flex flex-col gap-3 max-h-60 overflow-auto'>
 										{post.comments.length === 0 && (
