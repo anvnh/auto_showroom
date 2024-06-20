@@ -17,7 +17,7 @@ export {
     Car3popular,
     Car3popular2,
     Car5popular,
-    Car5popular2
+    Car5popular2,
     ProductLayout1,
     ProductLayout2,
     ProductLayout3,
