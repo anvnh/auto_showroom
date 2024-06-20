@@ -1,23 +1,16 @@
 import { Navbar } from "@/_root/_homepage";
-import { mer, toyota, bmw, audi, audisport, lexus, lambo, hyundai, acura, ferari, } from "@/assets/hplat_asset/img/car_logo";
 import {
   s1,
-  s2,
   s3,
   s4,
   s5,
-  s6,
-  s7,
   s8,
   s9,
 } from "@/assets/hplat_asset/car/audiS6";
 import { bg_1 } from "@/assets/hplat_asset/img/background";
-import { Link } from "react-router-dom";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import Slider from "react-infinite-logo-slider";
 const Audi_A5_Sportback = () => {
-  const { scrollYProgress } = useScroll();
   return (
     <div>
       <Parallax pages={6}>
@@ -133,17 +126,17 @@ const Audi_A5_Sportback = () => {
         <ParallaxLayer offset={5} speed={0.3}>
           <div className="flex flex-col md:flex-row justify-center items-center px-[50px]   md:gap-x-[50px] lg:gap-x-[20px]">
             <div>
-                <p className="  w-[600px] text-center md:text-start md:w-[350px] lg:w-[400px] xl:w-[500px] font-bold text-[25px] mlg:text-[30px] xl:text-[33px] mb-[20px] text-white ss:text-red-500 sm:text-green-500 md:text-yellow-500 mlg:text-red-500 xl:text-blue-800">High performance chair set</p>
-                <p className=" hidden md:block font-semibold md:text-[18px] mlg:text-[20px] text-white">Brings an exciting experience to the driver, continuing on difficult roads and overcoming storms
-</p>
+                <p className="  w-[600px] text-center md:text-start md:w-[350px] lg:w-[400px] xl:w-[500px] font-bold text-[25px] mlg:text-[30px] xl:text-[33px] mb-[20px] text-white ss:text-red-500 sm:text-green-500 md:text-yellow-500 mlg:text-red-500 xl:text-blue-800">
+                  High performance chair set
+                </p>
+                <p className=" hidden md:block font-semibold md:text-[18px] mlg:text-[20px] text-white">
+                  Brings an exciting experience to the driver, continuing on difficult roads and overcoming storms
+                </p>
             </div>
             <img className="w-[1000px] md:w-[630px] lg:w-[700px] mlg:w-[900px] xl:w-[1100px] object-cover rounded-[40px]" src={s8}/>
             
           </div>
         </ParallaxLayer>
-          
-
-      
       </Parallax>
     </div>
   );

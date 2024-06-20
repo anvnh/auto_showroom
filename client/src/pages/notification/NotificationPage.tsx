@@ -56,7 +56,7 @@ const NotificationPage = () => {
 
 	return (
 		<>
-			<div className='flex-[4_4_0] mx-7 border-gray-700 min-h-screen bg-black'>
+			<div className='flex-[4_4_0] md:mx-7 border-gray-700 min-h-screen bg-black'>
 				<div className='flex justify-between items-center p-4 border-b border-gray-700'>
 					<p className='font-bold'>Notifications</p>
 					<div className='dropdown '>
