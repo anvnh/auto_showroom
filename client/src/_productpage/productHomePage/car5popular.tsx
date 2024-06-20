@@ -98,8 +98,28 @@ const Car5popular: React.FC = () => {
 		}
 	}, [activeImage, activeGroup]);
 
-	const parallaxRef = useRef(null); // Tạo ref cho Parallax
+	const parallaxRef = useRef(null); 
 	const parallaxLayerRefs = useRef([]);
+
+	const footerRef = useRef<HTMLElement>(null); // Ref cho phần tử footer
+
+	useEffect(() => {
+		const updateFooterPosition = () => {
+			if (parallaxRef.current && footerRef.current) {
+				// Kiểm tra cả hai ref
+				const totalHeight = getPageHeight();
+				footerRef.current.style.top = `${totalHeight}px`;
+			}
+		};
+
+		// Gọi khi trang load và khi viewport thay đổi kích thước
+		updateFooterPosition();
+		window.addEventListener("resize", updateFooterPosition);
+
+		return () => {
+			window.removeEventListener("resize", updateFooterPosition);
+		};
+	}, []); 
 	return (
 		<div>
 			<div className="hidden xl:block">
@@ -506,8 +526,8 @@ const Car5popular: React.FC = () => {
 								</div>
 							</div>
 						</ParallaxLayer>
-						<div className="z-10 w-full relative top-[5850px] md:top-[6975px]">
-							<Footer />
+						<div className="z-10 w-full bottom-0 absolute">
+							<Footer ref={(footerRef)} />
 						</div>
 					</Parallax>
 				</div>
