@@ -3,7 +3,7 @@ import {logo} from "@/assets";
 
 const Footer = () => {
     return (
-        <footer className="text-white">
+        <footer className="bg-gray-800 bg-opacity-50 text-white">
             <div className="c">
                 <div className="flex flex-wrap justify-between items-center">
                     {/* Logo */}
