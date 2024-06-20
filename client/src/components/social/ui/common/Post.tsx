@@ -148,7 +148,7 @@ const Post = ({ post }) => {
 		<>
 			<div className='hover:bg-gray-600 hover:bg-opacity-15 flex gap-2 items-start p-4 border border-gray-700 my-3 rounded-3xl bg-black bg-opacity-55'>
 				<div className='avatar'>
-					<Link to={`/profile/${postOwner.username}`} className='w-8 h-8 rounded-full overflow-hidden'>
+					<Link to={`/social/profile/${postOwner.username}`} className='w-8 h-8 rounded-full overflow-hidden'>
 						<img src={postOwner.profileImg || placeholder_img} />
 					</Link>
 				</div>

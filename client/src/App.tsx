@@ -10,6 +10,8 @@ import Sidebar from './components/social/ui/common/Sidebar';
 import RightPanel from './components/social/ui/common/RightPanel';
 import NotificationPage from './pages/notification/NotificationPage';
 import ProfilePage from './pages/profile/ProfilePage';
+import Following from './pages/profile/Following';
+import Followers from './pages/profile/Followers';
 
 import {ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5} from './_productpage/layout/';
 import { Toaster } from 'react-hot-toast';
@@ -69,6 +71,8 @@ const App = () => {
                     <Route path="/social/login" element={!authUser ? <LoginPage /> : <Navigate to="/social" />} />
                     <Route path="/social/notifications" element={authUser ? <NotificationPage /> : <Navigate to="/social/login" />} />
                     <Route path="/social/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/social/login" />} />
+                    <Route path="/social/profile/following/:id" element={authUser ? <Following /> : <Navigate to="/social/login" />} />
+                    <Route path="/social/profile/followers/:id" element={authUser ? <Followers /> : <Navigate to="/social/login" />} />
 
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
