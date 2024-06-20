@@ -31,11 +31,10 @@ const Hero = () => {
                         <h1 data-aos="zoom-out" className="text-5xl font-poppins font-bold mb-6"> Everything Your Car <br/> Needs, All in One Place </h1>
                         <p data-aos="zoom-out" className="text-3xl font-poppins"> Your personal portal to a world <br/> of car ownership resources. </p>
                         <div className="flex mt-5 text-xl">
-                            If you interested in our social,&nbsp;
+                            If you interested in our community,&nbsp;
                             <Link to="/social">
-                                <span className="underline"> click here </span>
+                                <span className="underline"> give it a try </span>
                             </Link>
-                            <FaArrowLeft className="mt-2 ml-3"/>
                         </div>
                     </div>
                 </div>

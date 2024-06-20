@@ -37,7 +37,7 @@ const CreatePost = () => {
             setText("");
             setImg(null);
             toast.success("Post created successfully");
-            queryClient.invalidateQueries('posts');
+            queryClient.invalidateQueries("posts");
         },
         onError: (error) => {
             toast.error(error.message);
@@ -64,7 +64,7 @@ const CreatePost = () => {
 	};
 
 	return (
-        <div className='flex p-4 items-start border gap-4 border-gray-800 rounded-3xl my-6'>
+        <div className='flex p-4 items-start border gap-4 border-gray-800 rounded-3xl my-6 bg-black bg-opacity-55'>
             <div className='avatar'>
                 <div className='w-9 rounded-full'>
                     <img 
@@ -72,9 +72,9 @@ const CreatePost = () => {
                     />
                 </div>
             </div>
-            <form className='flex flex-col gap-2 w-full ' onSubmit={handleSubmit}>
+            <form className='flex flex-col gap-2 w-full' onSubmit={handleSubmit}>
                 <textarea
-                    className='textarea w-full p-3 -mb-8 text-white text-lg resize-none border-none focus:outline-none'
+                    className='textarea w-full p-3 bg-transparent -mb-8 text-white text-lg resize-none border-none focus:outline-none'
                     placeholder='What is happening?!'
                     value={text}
                     onChange={(e) => setText(e.target.value)}
@@ -83,7 +83,7 @@ const CreatePost = () => {
                 {img && (
                     <div className='relative w-80 mx-auto'>
                         <IoCloseSharp
-                            className='absolute top-0 right-0 text-white bg-gray-800 rounded-full w-5 h-5 cursor-pointer'
+                            className='absolute top-0 right-0 text-white bg-black rounded-full w-5 h-5 cursor-pointer'
                             onClick={() => {
                                 setImg(null);
                                 imgRef.current.value = null;

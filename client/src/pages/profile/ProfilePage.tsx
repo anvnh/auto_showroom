@@ -75,14 +75,14 @@ const ProfilePage = () => {
 
 	return (
 		<>
-			<div className='flex-[4_4_0]  border-r border-gray-700 min-h-screen '>
+			<div className='flex-[4_4_0] min-h-screen mx-7 bg-black'>
 				{/* HEADER */}
 				{isLoading || isRefetching && <ProfileHeaderSkeleton />}
 				{!isLoading && !isRefetching && !user && <p className='text-center text-lg mt-4'>User not found</p>}
 				<div className='flex flex-col'>
 					{!isLoading && !isRefetching && user && (
 						<>
-							<div className='flex gap-10 px-4 py-2 items-center'>
+							<div className='flex gap-10 px-4 py-2 items-center sticky top-0 z-10 backdrop-blur-md border-gray-800'>
 								<Link to='/social'>
 									<FaArrowLeft className='w-4 h-4' />
 								</Link>
@@ -201,7 +201,7 @@ const ProfilePage = () => {
 								>
 									Posts
 									{feedType === "posts" && (
-										<div className='absolute bottom-0 w-10 h-1 rounded-full bg-primary' />
+										<div className='absolute bottom-0 w-10 h-1 rounded-full bg-[#2191d8]' />
 									)}
 								</div>
 								<div
@@ -210,7 +210,7 @@ const ProfilePage = () => {
 								>
 									Likes
 									{feedType === "likes" && (
-										<div className='absolute bottom-0 w-10  h-1 rounded-full bg-primary' />
+										<div className='absolute bottom-0 w-10  h-1 rounded-full bg-[#2191d8]' />
 									)}
 								</div>
 							</div>

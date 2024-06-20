@@ -92,7 +92,7 @@ const Post = ({ post }) => {
 	})
 
 	const { mutate: commentPost, isPending: isCommenting} = useMutation({
-		mutationFn: async (text) => {
+		mutationFn: async () => {
 			try {
 				const res = await fetch(`/api/posts/comment/${post._id}`, {
 					method: "POST",
@@ -114,10 +114,15 @@ const Post = ({ post }) => {
 				throw new Error(error);
 			}
 		},
-		onSuccess: () => {
+		onSuccess: (updatedComments) => {
 			toast.success("Comment posted successfully");
 			setComment("");
+
+			//invalidate the query to refetch the data
+			// This is not the best way to do it, but it works. Bc it will refetch all posts
+			// do it for me
 			queryClient.invalidateQueries({queryKey: ["posts"]});
+
 		},
 		onError: (error) => {
 			toast.error(error.message);
@@ -141,7 +146,7 @@ const Post = ({ post }) => {
 
 	return (
 		<>
-			<div className='flex gap-2 items-start p-4 border border-gray-700 my-3 rounded-3xl bg-primary bg-opacity-55'>
+			<div className='hover:bg-gray-600 hover:bg-opacity-15 flex gap-2 items-start p-4 border border-gray-700 my-3 rounded-3xl bg-black bg-opacity-55'>
 				<div className='avatar'>
 					<Link to={`/profile/${postOwner.username}`} className='w-8 h-8 rounded-full overflow-hidden'>
 						<img src={postOwner.profileImg || placeholder_img} />
@@ -149,7 +154,7 @@ const Post = ({ post }) => {
 				</div>
 				<div className='flex flex-col flex-1'>
 					<div className='flex gap-2 items-center'>
-						<Link to={`/profile/${postOwner.username}`} className='font-bold'>
+						<Link to={`/social/profile/${postOwner.username}`} className='font-bold'>
 							{postOwner.fullName}
 						</Link>
 						<span className='text-gray-700 flex gap-1 text-sm'>
