@@ -32,7 +32,7 @@ const App = () => {
                 }
                 console.log("authUser is here: ", data);
                 return data;
-            } catch (error) {
+            } catch (error: any) {
                 throw new Error(error.message);
             }
         },
