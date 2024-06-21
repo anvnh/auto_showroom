@@ -1,12 +1,8 @@
 {
-    "name": "server",
+    "name": "aap",
     "version": "1.0.0",
-    "type": "module",
-    "main": "server.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "NODE_ENV=development node server.js",
-        "dev": "NODE_ENV=development nodemon server.js"
+        "build": "npm install --prefix ./client && npm run build --prefix ./client && npm install --prefix ./server"
     },
     "keywords": [],
     "author": "",
