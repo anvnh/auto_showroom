@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { toast } from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { logo, bgSocial, gifSocial } from "../../../assets";
+import { Link } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
 	const [showSignUpForm, setShowSignUpForm] = useState(false);
@@ -140,11 +141,14 @@ const LoginPage: React.FC = () => {
 								data-aos="fade-right"
 								className="justify-center flex"
 							>
+							
+								<Link to="http://localhost:3000/">
 								<img
 									src={logo}
 									alt="logo"
 									className="md:w-[300px] w-[55px] md:h-[250px] h-[55px] bottom-12 flex relative"
 								/>
+								</Link>
 							</div>
 							<h1 className="text-sm md:text-7xl  text-center font-syncopate text-gray-300">
 								Welcome <br /> to Social AAP
@@ -374,11 +378,14 @@ const LoginPage: React.FC = () => {
 
 					<div className="relative flex flex-col items-center justify-center min-h-screen gap-8 px-4">
 						<div className="flex flex-col items-center">
+							
+							<Link to="http://localhost:3000/">
 							<img
 								src={logo}
 								alt="logo"
 								className="md:w-[300px] w-[80px] md:h-[200px] h-[70px]"
 							/>
+								</Link>
 							<h1 className="text-xl md:text-8xl text-center font-syncopate text-gray-300 shadow-2xl mt-1">
 								Welcome to Social AAP
 							</h1>

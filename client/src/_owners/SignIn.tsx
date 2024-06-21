@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { logo, bgLG, gif } from "../assets";
+import { Link } from "react-router-dom";
 const SignIn: React.FC = () => {
 	const [showSignUpForm, setShowSignUpForm] = useState(false);
 	const [showSignInForm, setShowSignInForm] = useState(false);
@@ -119,11 +120,14 @@ const SignIn: React.FC = () => {
 								data-aos="fade-right"
 								className="justify-center flex"
 							>
+								<Link to="http://localhost:3000/">
 								<img
 									src={logo}
 									alt="logo"
-									className="md:w-[300px] w-[55px] md:h-[250px] h-[55px] bottom-12 flex relative"
+									className="md:w-[300px] cursor-pointer w-[55px] md:h-[250px] h-[55px] bottom-12 flex relative"
 								/>
+								</Link>
+
 							</div>
 							<h1 className="text-sm md:text-8xl  text-center font-syncopate text-gray-300">
 								Wellcome to AAP
@@ -357,11 +361,14 @@ const SignIn: React.FC = () => {
 						<div className="relative flex flex-col items-center justify-center min-h-screen gap-8 px-4">
 							{/* Logo and Welcome Text */}
 							<div className="flex flex-col items-center">
+								
+								<Link to="http://localhost:3000/">
 								<img
 									src={logo}
 									alt="logo"
 									className="md:w-[300px] w-[80px] md:h-[200px] h-[70px]"
 								/>
+								</Link>
 								<h1 className="text-xl md:text-8xl text-center font-syncopate text-gray-300 shadow-2xl mt-1">
 									Welcome to AAP
 								</h1>
