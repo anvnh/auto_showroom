@@ -16,11 +16,9 @@ const About = () => {
 	}, []);
 
     return (
-        <section className="py-12 text-black"> 
+        <section data-aos="zoom-out" className="py-12"> 
             <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center"> 
-                <div
-                data-aos="fade-right"
-                className="md:pb-20 pb-15">
+                <div className="md:pb-20 pb-15">
                     <h1 className="text-4xl font-bold mb-4">Welcome, Car Enthusiasts!</h1>
                     <p className="text-xl leading-relaxed mb-6">
                         Your journey to finding your perfect car starts here. Our platform is your one-stop shop for everything automotive. Explore a vast selection of cars from every major brand, compare features and prices, and find the vehicle that matches your lifestyle and budget. 
@@ -29,21 +27,15 @@ const About = () => {
                         Create an account to unlock exclusive benefits: track your favorite models, receive personalized recommendations, and schedule test drives at your convenience. 
                     </p>
                 </div>
-                <div
-                data-aos="fade-left"
-                > 
+                <div> 
                     <img src={about_2} alt="Car showcase" className="w-full rounded-lg shadow-md" />
                 </div>
             </div>
             <div className="container mx-auto hidden md:grid grid-cols-2 gap-8 items-center pt-10"> 
-                <div
-                data-aos="fade-right"
-                > 
+                <div> 
                     <img src={about_3} alt="Car showcase" className="w-full rounded-lg shadow-md" />
                 </div>
-                <div
-                data-aos="fade-left"
-                className="pb-20 pl-20">
+                <div className="pb-20 pl-20">
                     <h1 className="text-4xl font-bold mb-4">But we're more than just a marketplace.</h1>
                     <p className="text-xl leading-relaxed mb-6">
                         We're a thriving community of car lovers. Connect with fellow enthusiasts, share your knowledge and experiences, and stay up-to-date on the latest industry trends.

@@ -18,8 +18,6 @@ import { LuDivideCircle } from 'react-icons/lu';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
 import  SignIn  from './_owners/SignIn';
 
-
-
 const App = () => {
     const location = useLocation();
     const isSocialRoute = location.pathname.startsWith('/social');

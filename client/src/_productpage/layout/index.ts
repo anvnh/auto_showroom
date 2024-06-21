@@ -9,6 +9,6 @@ export {
     ProductLayout1,
     ProductLayout2,
     ProductLayout3,
-    ProductLayout5,
+    ProductLayout5
 
 }

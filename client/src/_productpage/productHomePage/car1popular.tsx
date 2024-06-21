@@ -11,10 +11,9 @@ import {
 	mer3,
 	mer4,
 	mer5,
-	mer6,
-	mer7,
+
 	mer8,
-	mer9,
+	
 	mer10,
 	mer11,
 	mer12,

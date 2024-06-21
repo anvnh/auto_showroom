@@ -1,11 +1,10 @@
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../../_root/_homepage/Navbar";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import NavbarSmall2 from "../navbarsmall/NavbarSmall2";
 import Car2popular from "../productHomePage/car2popular";
 import React, { useEffect, useRef, useState } from "react";
-const ProductLayout = () => {
+const ProductLayout2 = () => {
 	const [selectedSection, setSelectedSection] = useState("");
 	const handleNavClick = (section) => {
 		setSelectedSection((prevSection) =>
@@ -28,7 +27,7 @@ const ProductLayout = () => {
 					</div>
 				</div>
                 <div
-					data-aos="zoom-out"
+					
 					className="flex items-start justify-center "
 				>
 					<div className="w-full">
@@ -36,7 +35,7 @@ const ProductLayout = () => {
 					</div>
 				</div>
 				<div
-					data-aos="fade"
+					
 					className="flex items-start justify-center "
 				>
 					<div className="w-full">
@@ -48,4 +47,4 @@ const ProductLayout = () => {
 	);
 };
 
-export default ProductLayout;
+export default ProductLayout2;

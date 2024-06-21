@@ -116,14 +116,14 @@ const Product2 = () => {
 								className="w-full max-w-xs md:max-w-sm group-hover:scale-125 transition-all ease-in-out duration-300 group-hover:rotate-2 translate-x-1 lg:max-w-md"
                                 style={{ top: "-10px" }} />
 							<div className="car-info px-6 py-1 rounded-3xl mt-4">
-								<h3 className="brand justify-center flex-col font-bold text-2xl md:text-4xl font-syncopate lg:text-4xl flex">
+								<h3 className="brand justify-center flex-col font-bold text-2xl md:text-4xl lg:text-5xl flex">
 									{car.brand}
 								</h3>
-								<p className="price pt-3 group-hover:scale-110 group-hover:text-gray-300 transition-all ease-in-out duration-300 justify-center text-white font-bold text-base md:text-lg lg:text-xl font-syncopate flex">
+								<p className="price pt-3 group-hover:scale-110 group-hover:text-gray-300 transition-all ease-in-out duration-300 justify-center text-white font-bold text-base md:text-lg lg:text-xl flex">
 									{car.price}
 								</p>
 								<div className="pt-4 justify-center flex">
-									<div className="detail-button bg-white text-primary px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[40px] justify-center flex group-hover:bg-black transition-all duration-300 ease-in-out group-hover:text-white group-hover:scale-110 font-bold font-syncopate text-sm md:text-base rounded-3xl text-center">
+									<div className="detail-button bg-white text-primary px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-9 justify-center flex group-hover:bg-black transition-all duration-300 ease-in-out group-hover:text-white group-hover:scale-110 font-bold text-sm md:text-base">
                                         Details
 									</div>
 								</div>

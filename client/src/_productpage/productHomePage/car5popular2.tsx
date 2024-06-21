@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { baner51, car51, car52, car56, r3 } from "../../assets";
 import { gsap } from "gsap";
 
