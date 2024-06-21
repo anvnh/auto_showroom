@@ -1,79 +1,117 @@
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'; 
+import { FaFacebook, FaTwitter, FaInstagram,   } from 'react-icons/fa'; 
+import { SiZalo } from "react-icons/si";
+import { ImGithub } from "react-icons/im";
+import { RiInstagramFill } from "react-icons/ri";
 import {logo} from "@/assets";
 
 const Footer = () => {
     return (
-        <footer className="text-white">
-            <div className="c">
-                <div className="flex flex-wrap justify-between items-center">
-                    {/* Logo */}
-                    <div className="w-screen flex justify-center mb-[10px] md:hidden">
-                        <img src={logo} alt="logo" className="h-12" />
-                    </div>
-                    {/* Navigation */}
-                    <nav className="w-screen">
-                        <ul className="  flex   justify-around mb-[20px] justify-between md:hidden text-[13px] ">
-                            <li className=""><a href="#">About Us</a></li>
-                            <li className=""><a href="#">Services</a></li>
-                            <li className=""><a href="#">Contact</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </nav>
-
-                    {/* Social Icons */}
-                    <div className="w-screen flex-row  flex justify-center md:hidden">
-                        <ul className='flex flex-row'>
-                        <a href="#" className="mr-4"><FaFacebook /></a>
-                        <a href="#" className="mr-4"><FaTwitter /></a>
-                        <a href="#"><FaInstagram /></a>
-                        </ul>
-                    </div>
+        <footer className="box-border text-white w-screen  md:h-[320px] bg-slate-primary border-t  flex flex-col  md:gap-y-[60px] px-[10px] md:py-[20px]  ">
+            <div className='w-screen hidden md:flex '>
+                <section className='w-[20%]  '>
+                <img src={logo} className='w-[80px] md:w-[90px] xl:w-[110px] object-cover bg-center'/> 
+            </section>
+            <section  className='w-[20%] flex flex-col gap-y-[35px] '>
+                <div className='text-[20px] md:text-[24px] lg:text-[26px] font-kanit'> 
+                    Vehicles
                 </div>
-                
+                <div className=' text-[14px] flex flex-col gap-y-[4px]'>
+                    <div>AMG CLS</div>
+                    <div>Maybach 2022</div>
+                    <div>A5 Couple</div>
+                    <div>A5 Limousin</div>
+                </div>
+            </section>
+            <section className='w-[20%] flex flex-col gap-y-[35px]'>
+                <div className='text-[20px] md:text-[24px] lg:text-[26px] font-kanit'>
+                    Shopping assist
+                 </div>
+                <div className='flex text-[14px] flex-col gap-y-[4px]'>
+                    <div>Offer and incentives</div>
+                    <div>Build your car</div>
+                    <div>Test drive</div>
+                </div>
+            </section>
+            <section className='w-[20%] flex flex-col gap-y-[35px] '>
+                <div className='text-[20px] md:text-[24px] lg:text-[29px] font-kanit'>
+                    Inventory
+                </div>
+                <div className='flex flex-col text-[14px] gap-y-[4px]'>
+                    <div>Audi</div>
+                    <div>Mercerdes</div>
+                    <div>Rolls Royce</div>
+                    <div>Porsche</div>
+                </div>
+            </section>
+            <section className='w-[20%] flex flex-col gap-y-[25px] '>
+                <div className='text-[20px] md:text-[24px] lg:text-[29px] font-kanit'>
+                    Owners
+                </div>
+                <div className='flex flex-col text-[14px] gap-y-[2px]'>
+                    <div >Connect</div>
+                    <div>Software update</div>
+                    <div>Maintenace plans</div>
+                    <div>Resources</div>
+                </div>
+            </section>
+            </div>
+            <div className=' w-screen hidden  md:flex justify-between h-full items-end border-t border-slate-300 '>
+               <div className='flex w-[600px] gap-x-[20px] text-[14px]'>
+                 <h1>@2024 AAP Company</h1>
+                 <h1>Privacy Policy</h1>
+                 <h1>Terms of Service</h1>
+                 <h1>Cookies Settings</h1>
+               </div>
+               <div className='flex justify-center w-[200px] gap-x-[20px]  text-white text-[30px]'>
+                    <FaFacebook/>
+                    <RiInstagramFill/>
+                    <ImGithub/>
+                </div> 
+            </div>
 
-                {/**footer medium 1064px */}
-                <div className='hidden md:flex justify-between w-screen h-[200px] '>
-                    <div className='w-[500px] flex flex-col gap-y-[20px] items-center justify-center pl-[100px]'>
-                            
-                    <div>Follow Us</div>
-                    <div className='flex '>
-                        <a href="#" className="mr-4 text-[25px]"><FaFacebook /></a>
-                        <a href="#" className="mr-4 text-[25px]"><FaTwitter /></a>
-                        <a href="#" className='text-[25px]'><FaInstagram /></a>
-                        </div>  
-
+            <div className='w-screen pt-[35px]   h-[525px]  md:hidden  ml-[20px] '> 
+                <section className='w-screen flex justify-center '>
+                    <div className='w-[40%] h-[225px]'>
+                        <h1 className=' text-[22px] sm:text-[25px] font-kanit mb-[15px]'>Vehicles</h1>
+                        <div className='w-full flex flex-col gap-y-[4px]'>
+                            <p className='text-[15px]'>AMG CLS</p>
+                        <p className='text-[15px]'>MayBach 2022</p>
+                        <p className='text-[15px]'>A5 Couple</p>
+                        <p className='text-[15px]'>A5 Limousin</p>
+                        </div>
                     </div>
-                        <div className='w-[500px] flex flex-col justify-center items-center'>
-                            <div className='flex justify-center items-center'>
-                                <img className='w-[100px]' src={logo} />
-                                <p className='font-bold text-[25px] '> AAP</p>
-                            </div>
-                            <div className='mt-[10px]'>
-                                <button className='w-[200px] rounded-[40px] border bg-slate-800 text-white mr-[20px]'>Try AAP</button>
-                                <button className='w-[200px] rounded-[40px] border bg-white text-slate-800'> Watch Demo</button>
-                            </div>
+                    <div className='w-[40%] h-[225px]'>
+                        <h1 className='text-[22px] sm:text-[25px] font-kanit mb-[15px]'>Shopping Assist</h1>
+                        <p className='text-[15px]'>Offer and Incentives</p>
+                        <p className='text-[15px]'>Build Your Car</p>
+                        <p className='text-[15px]'>Text Drive</p>
+                    </div>
+                </section>
+                <section className='w-screen flex justify-center'>
+                    <div className='w-[40%] '>
+                        <h1 className='  text-[22px] sm:text-[25px] font-kanit mb-[15px]'>Inventory</h1>
+                        <div className='w-full flex flex-col gap-y-[4px]'>
+                            <p className='text-[15px]'>Audi</p>
+                        <p className='text-[15px]'>Mercerdes</p>
+                        <p className='text-[15px]'>Rolls Royce</p>
+                        <p className='text-[15px]'>Porche</p>
                         </div>
-                    <div className='w-[500px] flex gap-x-[20px] justify-center items-center gap-y-[10px]'>
-                        <div className='flex flex-col gap-y-[3px]'>
-                            <p>Home</p>
-                            <p>Product</p>
-                            <p>Customer</p>
-                            <p>Pricing</p>
-                        </div>
-                        <div className='flex flex-col gap-y-[3px]'>
-                            <p>Vehicle</p>
-                            <p>Shopping Assist</p>
-                            <p>Inventory</p>
-                            <p>Owners</p>
-                        </div>
-                    </div> 
-
-                </div>
-
-                {/* Copyright */}
-                <div className=" mt-[20px] text-[12px] w-screen text-center">
-                    <p>&copy; 2023 APP Company Name. All rights reserved.</p>
-                </div>
+                    </div>
+                    <div className='w-[40%] '>
+                        <h1 className='text-[22px] sm:text-[25px] font-kanit mb-[15px]'>Owner</h1>
+                        <p className='text-[15px]'>Connect Store</p>
+                        <p className='text-[15px]'>Software Update</p>
+                        <p className='text-[15px]'>Maintenance Plans</p>
+                        <p className='text-[15px]'>Resource</p>
+                    </div>
+                      </section>
+                 {/* <section className='  w-screen flex justify-between   text-[30px]  mt-[30px] '>
+                    <FaFacebook/>
+                    <RiInstagramFill/>
+                    <FaTwitter/>
+                    <SiZalo/>
+                    <ImGithub/>
+                </section> */}
             </div>
         </footer>
     )
