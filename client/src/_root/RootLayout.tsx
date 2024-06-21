@@ -30,12 +30,13 @@ const RootLayout = () => {
                             <Navbar/>
                         </div>
                     </div>
+                    
                 <div className="flex items-start justify-center bg-primary">
                     <div className="w-full">
                         <Hero/>
                     </div>
                 </div>
-                <div className="flex items-start justify-center  bg-primary ">
+                <div className="flex items-start justify-center pt-12 bg-primary ">
                     <div className="w-full">
                         <Product />
                     </div>
@@ -50,12 +51,12 @@ const RootLayout = () => {
                         <Banner />
                     </div>
                 </div>   
-                <div className="flex items-start justify-center bg-primary">
+                <div className="flex items-start justify-center bg-gray-700">
                     <div className="w-full">
                         <CarBrand />
                     </div>
                 </div>
-                <div data-aos="fade" className="flex items-start justify-center bg-primary">
+                <div data-aos="fade" className="flex items-start justify-center bg-gray-950">
                     <div className="w-full">
                         <Footer />
                     </div>

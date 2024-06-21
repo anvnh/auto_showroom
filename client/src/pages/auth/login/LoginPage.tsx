@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {
-	MdOutlineMail,
-	MdPassword,
-	MdDriveFileRenameOutline,
-} from "react-icons/md";
-import { FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
-import { logo, bgSocial, bgLG } from "../../../assets";
+import { logo, bgSocial, gifSocial } from "../../../assets";
 
 const LoginPage: React.FC = () => {
 	const [showSignUpForm, setShowSignUpForm] = useState(false);
@@ -142,7 +134,7 @@ const LoginPage: React.FC = () => {
 						<div className="absolute top-0 left-0 w-full h-[670px] md:h-[923px] bg-gradient-to-r from-gray-800 to-transparent"></div>
 						<div
 							data-aos="fade-right"
-							className="pl-2 md:pl-[200px] text-center absolute top-24 w-[1000px] h-[300px] rounded-[20px] font-bold"
+							className="pl-2 md:pl-[10px] text-center absolute top-24 w-[1200px] h-[300px] rounded-[20px] font-bold"
 						>
 							<div
 								data-aos="fade-right"
@@ -154,8 +146,8 @@ const LoginPage: React.FC = () => {
 									className="md:w-[300px] w-[55px] md:h-[250px] h-[55px] bottom-12 flex relative"
 								/>
 							</div>
-							<h1 className="text-sm md:text-8xl  text-center font-syncopate text-gray-300">
-								Welcome to AAP
+							<h1 className="text-sm md:text-7xl  text-center font-syncopate text-gray-300">
+								Welcome <br /> to Social AAP
 							</h1>
 						</div>
 
@@ -218,6 +210,9 @@ const LoginPage: React.FC = () => {
 									data-aos="fade-left"
 									className={`relative z-10 w-[500px] p-20 bg-black bg-opacity-50 shadow-xl rounded-lg rounded-tr-[200px] rounded-bl-[200px] mr-10 `}
 								>
+									<div className="absolute w-[400px] h-[70px] -top-[220px] z-40 -left-[170px] transform scale-x-[-1]">
+									<img src={gifSocial}  />
+									</div>
 									<h2 className="text-center pb-12 text-4xl font-syncopate text-white mb-6">
 										Sign Up
 									</h2>
@@ -227,10 +222,10 @@ const LoginPage: React.FC = () => {
 										noValidate
 									>
 										{[
-											"email:",
-											"username:",
-											"fullName:",
-											"password:",
+											"email",
+											"username",
+											"fullName",
+											"password",
 										].map((placeholder, index) => (
 											<div
 												key={index}
@@ -295,6 +290,9 @@ const LoginPage: React.FC = () => {
 									data-aos="fade-left"
 									className={`relative z-10 w-[500px] p-20 bg-black bg-opacity-50 shadow-xl rounded-lg rounded-tr-[200px] rounded-bl-[200px] mr-10 `}
 								>
+										<div className="absolute w-[400px] h-[70px] -top-[220px] z-40 -left-[170px] transform scale-x-[-1]">
+										<img src={gifSocial}  />
+									</div>
 									<h2 className="text-center pb-12 text-4xl font-syncopate text-white mb-6">
 										Sign In
 									</h2>
@@ -303,7 +301,7 @@ const LoginPage: React.FC = () => {
 										onSubmit={handleSignInSubmit}
 										noValidate
 									>
-										{["username:", "password:"].map(
+										{["username", "password"].map(
 											(placeholder, index) => (
 												<div
 													key={index}

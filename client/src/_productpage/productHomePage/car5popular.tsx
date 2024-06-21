@@ -17,18 +17,17 @@ import {
 	inside51,
 	inside52,
 	inside53,
-	baner51,
-	car51,
-	car52,
+
 	car53,
 	car54,
 	car55,
-	car56,
+
 	car57,
 	car58,
 	car59,
 	car592,
 	car510,
+
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import Car5popular2 from "../productHomePage/car5popular2";
@@ -320,26 +319,19 @@ const Car5popular: React.FC = () => {
 									key={index}
 									src={image}
 									alt={`Image ${index + 1}`}
-									className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-5000 ${
+									className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-500 ${
 										activeImage === index
 											? "opacity-100"
 											: "opacity-0"
 									}`}
 								/>
 							))}
-							<div
-								className="overlay absolute inset-x-0 bottom-0 h-1/4"
-								style={{
-									backgroundImage:
-										"linear-gradient(to top, black, transparent)",
-								}}
-							></div>
+						
 						</div>
 
 						{/* Nút chuyển ảnh */}
-						
 						<div
-							className="z-20 pl-[1450px] absolute md:top-1/2 top-[230px] ss:top-[430px] xs:top-[320px] sm:top-[580px]  transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 "
+							className="z-20 pl-[1610px] absolute md:top-1/2 top-[230px] ss:top-[430px] xs:top-[320px] sm:top-[580px]  transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 "
 							ref={buttonsRef}
 						>
 							{imageGroups[activeGroup].map((__, index) => (
@@ -355,7 +347,7 @@ const Car5popular: React.FC = () => {
 						
 
 						{/* Nút chuyển nhóm ảnh */}
-						<div className="absolute flex justify-end pr-44 top-52 ss:top-[410px] xs:top-[300px] sm:top-[550px]  md:top-4 md:w-[1850px]  sm:h-[60px] sm:text-4xl text-sm md:text-xl md:h-[40px] h-[40[x]] md:space-x-4 md:gap-0 gap-2">
+						<div className="absolute flex justify-end pr-4 top-52 ss:top-[410px] xs:top-[300px] sm:top-[550px]  md:top-4 md:w-[1850px]  sm:h-[60px] sm:text-4xl text-sm md:text-xl md:h-[40px] h-[40[x]] md:space-x-4 md:gap-0 gap-2">
 							<button
 								onClick={() => {
 									setActiveImage(0);
@@ -406,9 +398,9 @@ const Car5popular: React.FC = () => {
 						>
 							<div
 						id="Interiors"
-						className="flex justify-center bottom-[900px] md:-bottom-[1160px] bg-bla relative"
+					className="flex justify-center bottom-[900px] md:-bottom-[990px] bg-black relative z-40"
 					>
-								<div className="w-full">
+								<div className="w-full z-20">
 									<Car5popular2 />
 								</div>
 							</div>

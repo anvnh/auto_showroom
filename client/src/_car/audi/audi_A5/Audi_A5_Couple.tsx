@@ -693,30 +693,30 @@ const Audi_A5_Couple = () => {
 
         {/* -------slogan----------- */}
         <div
-          ref={container_slogan}
+       
           className=" w-screen h-[300px]  flex justify-center items-center bg-slate-100 "
         >
-          <p ref={slogan_text} className="font-syncopate text-[24px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] text-slate-800">
+          <p className="font-syncopate text-[24px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] text-slate-800">
             DO YOU WANT TO RACE?
           </p>
         </div>
 
 
         {/*----------Split1------------------------ */}
-        <div ref={container_split1} className="relative hidden  lg:flex  w-screen h-screen">
+        <div  className="relative hidden  lg:flex  w-screen h-screen">
           <div className="h-full w-full flex flex-col justify-center items-center lg:w-[50%] bg-slate-900 ">
-            <img ref={split1_img} src={a5_10} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover" />
+            <img  src={a5_10} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover" />
             {/* <img src={a5_1} className="lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover"/> */}
           </div>
           <div className="h-full  w-full lg:w-[50%]  flex justify-center items-center bg-slate-100 ">
             <div className="w-full h-full mx-[5%] flex justify-center  flex-col text-slate-800">
               <h1
-                ref={split1_h1}
+                
                 className="opacity-0 font-syncopate  text-center xl:text-start    lg:text-[30px] mlg:text-[33px] xl:text-[50px] font-medium"
               >
                 POWER AND PRECISION
               </h1>
-              <p ref={split1_p} className="opacity-0 font-kanit   text-center xl:text-start    mlg:text-[20px]  xl:text-[25px]">
+              <p className="opacity-0 font-kanit   text-center xl:text-start    mlg:text-[20px]  xl:text-[25px]">
                 Audi's engines are renowned for their exceptional power delivery
                 and precision engineering.
               </p>
@@ -725,23 +725,23 @@ const Audi_A5_Couple = () => {
         </div>
 
         {/* ---------------Split2------------------- */}
-        <div ref={container_split2} className="relative hidden lg:flex  w-screen h-screen text-slate-800">
+        <div className="relative hidden lg:flex  w-screen h-screen text-slate-800">
           <div className="h-screen   w-[50%]  flex  justify-center items-center bg-slate-100 ">
             <div className="w-full mx-[5%]  h-full flex justify-center items-center flex-col  ">
               <h1
-                ref={split2_h1}
+                
                 className="opacity-0 w-full   font-syncopate text-center xl:text-start    lg:text-[30px] mlg:text-[33px] xl:text-[42px] font-medium"
               >
                 Quattro® All-Wheel Drive
               </h1>
-              <p ref={split2_p} className="opacity-0 font-kanit  text-center xl:text-start    mlg:text-[20px]  xl:text-[25px]">
+              <p className="opacity-0 font-kanit  text-center xl:text-start    mlg:text-[20px]  xl:text-[25px]">
                 Conquer any road, in any condition, with Audi's legendary
                 quattro® all-wheel drive system.
               </p>
             </div>
           </div>
           <div className="h-screen w-[50%] flex justify-center items-center bg-slate-900">
-            <img ref={split2_img} src={a5_13} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen  object-cover" />
+            <img src={a5_13} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen  object-cover" />
           </div>
         </div>
         {/* ------------------------mobile--------- */}
