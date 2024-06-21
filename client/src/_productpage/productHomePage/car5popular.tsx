@@ -339,7 +339,7 @@ const Car5popular: React.FC = () => {
 						{/* Nút chuyển ảnh */}
 						
 						<div
-							className="z-20 pl-[1450px] absolute md:top-1/2 top-[230px] ss:top-[430px] xs:top-[320px] sm:top-[580px]  transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 "
+							className="z-20 pl-[1490px] pt-[700px] transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 "
 							ref={buttonsRef}
 						>
 							{imageGroups[activeGroup].map((__, index) => (

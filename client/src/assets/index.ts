@@ -1,4 +1,3 @@
-import logo from "./logo.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -16,12 +15,6 @@ import car2 from "./car/xe2.png";
 import car4 from "./car/xe4.png";
 import car5 from "./car/xe5.png";
 import car6 from "./car_popular/car5popular/carinHomepage.png";
-
-import logo1 from "./logo_car1.png";
-import logo4 from "./logo_car4.png";
-import logo5 from "./logo_car5.png";
-import logo236 from "./logo_car236.png";
-import logoroi from "./car_popular/car3popular/logo.png";
 
 import user_hero_1 from "./user_hero_1.jpg";
 
@@ -67,7 +60,6 @@ import mer10 from "./car1_popular/mer10.jpg";
 import mer11 from "./car1_popular/mer11.jpg";
 import mer12 from "./car1_popular/mer12.avif";
 import sky from "./car1_popular/sky.jpg";
-import logomer from "./car1_popular/logomer.png";
 import banner1 from "./car1_popular/banner1.jpg";
 
 // car2 popular
@@ -135,7 +127,43 @@ import inside52 from "./car_popular/car5popular/inside52.webp";
 import inside53 from "./car_popular/car5popular/inside53.webp";
 import baner51 from "./car_popular/car5popular/baner51.jpg";
 
+// logo car
+import logo from "./logo.png";
+import logo1 from "./logo_car1.png";
+import logo4 from "./logo_car4.png";
+import logo5 from "./logo_car5.png";
+import logo236 from "./logo_car236.png";
+import logoroi from "./logo/logoroll.png";
+import logomer from "./logo/logomer.png";
+import logoaudi from "./logo/logoaudi.png";
+import logopos from "./logo/logopos.png";
+
+// navbar car
+// mer
+import carnb1 from "./car/carnavbar/MercedesAMGCLS.png";
+import carnb2 from "./car/carnavbar/MercedesbenZmaybach2022.png";
+
+// audi
+import carnb3 from "./car/carnavbar/A5coupe.png";
+
+//Owner------------------------------------
+import owner1 from "./owner/back.jpg";
+import owner2 from "./owner/back1.jpg";
+import owner3 from "./owner/back2.jpg";
+import gif from "./login/giphy.webp";
+import bgLG from "./login/backgroundlogin.png";
+
 export {
+	bgLG,
+	gif,
+	owner1,
+	owner2,
+	owner3,
+	carnb1,
+	carnb2,
+	carnb3,
+	logoaudi,
+	logopos,
 	inside51,
 	inside52,
 	inside53,

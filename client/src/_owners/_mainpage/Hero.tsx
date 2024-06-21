@@ -23,9 +23,9 @@ const Hero = () => {
             <div className="relative flex h-[650] overflow-hidden">
                 <div
                     style={{ backgroundImage: `url(${user_hero_1})` }}
-                    className="w-full h-[840px] bg-center bg-cover duration-500 "
+                    className="w-full h-[915px] bg-center bg-cover duration-500 "
                 ></div>
-                <div className="absolute left-0 top-100 h-[840px] w-[65%] bg-gradient-to-r from-gray-950"></div>
+                <div className="absolute left-0 top-100 h-[915px] w-[65%] bg-gradient-to-r from-gray-950"></div>
                 <div className="md:flex hidden">
                     <div className="absolute inset-0 flex flex-col justify-start items-start text-white ml-28 mt-36">
                         <h1 data-aos="zoom-out" className="text-5xl font-poppins font-bold mb-6"> Everything Your Car <br/> Needs, All in One Place </h1>

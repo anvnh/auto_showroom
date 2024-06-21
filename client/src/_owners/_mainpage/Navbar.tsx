@@ -14,7 +14,7 @@ const Navbar = () => {
 				<img
 					src={logo}
 					alt="logo"
-					className="md:w-[68px] w-[55px] md:h-[60px] h-[55px]"
+					className="md:w-[57px] w-[55px] md:h-[50px] h-[55px]"
 				/>
 			</Link>
 			<ul className="items-center justify-start flex-1 hidden list-none sm:flex">
@@ -61,17 +61,13 @@ const Navbar = () => {
 			</ul>
 
 			<ul className="items-center justify-end flex-1 hidden list-none sm:flex mb-1">
-                <Button 
-                    className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"
+              <Link to="/SignIn">
+			  <Button 
+                    className="text-white text-[18px] font-syncopate font-bold bg-gray-950 bg-opacity-0 hover:bg-gray-700"
                 > 
-                    Sign up 
+                    Sign in now
                 </Button>
-
-                <Button 
-                    className="text-white text-[18px] bg-gray-950 bg-opacity-0 hover:bg-gray-700"
-                > 
-                    Sign in 
-                </Button>
+			  </Link>
 			</ul>
 			<div className="flex sm:hidden">
 				<img
