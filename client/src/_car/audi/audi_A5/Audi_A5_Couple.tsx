@@ -1,5 +1,5 @@
 import { Navbar } from "../../../_root/_homepage";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
@@ -37,25 +37,105 @@ const Audi_A5_Couple = () => {
   },[] );
 
   //smooth scroll
-  const lenis = new Lenis();
+ useEffect(()=>{
+   const lenis = new Lenis();
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
   }
-  requestAnimationFrame(raf);
+  requestAnimationFrame(raf); 
+      return () => {
+      lenis.destroy();
+    };
+ },[])
 
   //cursor effect
   const ref = useRef(null);
   const { x, y } = useFollowPointer(ref);
 
+  //paralax hero
+const hero_section1 = useRef(null)
+  const sec1_txt = useRef(null)
+  const hero_section3 = useRef(null)
+  const sec3_img1 = useRef(null)
+  const sec3_img2 = useRef(null)
+  const hero_section4 = useRef(null)
+  const sec4_text = useRef(null)
+  const bg_sec1 = useRef(null)
+  useEffect(() => {
+    
+      const tl = gsap.timeline()
+      tl
+        .set(sec1_txt.current, {
+          opacity: 0,
+          y: 500,
+        })
+        .to(sec1_txt.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        })
+      ScrollTrigger.create({
+
+        trigger: hero_section1.current,
+        start: "top center",
+        end: "bottom 20%",
+        animation: tl, toggleActions: "restart none none reverse"
+      }
+      )
+    
+    
+      const tl1 = gsap.timeline()
+      tl1.set([sec3_img1.current, sec3_img2.current], {
+        y: 500,
+        opacity: 0,
+      })
+        .to([sec3_img1.current, sec3_img2.current], {
+          y: 0,
+          opacity: 1,
+        })
+
+      ScrollTrigger.create({
+        trigger: hero_section3.current,
+        start: "top 80%",
+        end: "bottom top",
+        scrub: true,
+        animation: tl1
+      })
+    
+
+    
+      const tl_sec4 = gsap.timeline()
+      tl_sec4
+        .set(sec4_text.current, {
+          opacity: 0,
+          y: 400
+        })
+        .to(sec4_text.current, {
+          opacity: 1,
+          y: 0
+        })
+      ScrollTrigger.create({
+        trigger: hero_section4.current,
+        start: "top 80%",
+        end: "bottom center",
+        //scrub:true,
+        toggleActions: "restart none none reverse",
+        animation: tl_sec4
+
+      })
+    
+
+  }, [])
   //hero
   const container_hero = useRef(null)
   const hero_car = useRef(null)
   const hero_txt = useRef(null)
   const container_slogan = useRef(null);
   const slogan_text = useRef(null);
+  
   useEffect(() => {
-    if (hero_txt.current) {
+    
       const textTimeline = gsap.timeline();
       textTimeline
         .set(hero_txt.current, {
@@ -67,7 +147,7 @@ const Audi_A5_Couple = () => {
           duration: 1,
           x: 0,
         });
-    }
+    
 
     if (container_slogan.current && slogan_text.current) {
       const sloganTimeline = gsap.timeline({
@@ -299,7 +379,6 @@ const Audi_A5_Couple = () => {
         trigger: section1.current,
         start: "top center",
         end: "bottom center",
-        markers: true,
         scrub: true,
         animation: timeline_section1
 
@@ -338,7 +417,6 @@ const Audi_A5_Couple = () => {
         trigger: section2.current,
         start: "top center",
         end: "bottom bottom",
-        markers: true,
         scrub: true,
         animation: tl_section2
       })
@@ -359,7 +437,6 @@ const Audi_A5_Couple = () => {
         trigger: section22.current,
         start: "top center",
         end: "bottom bottom",
-        markers: true,
         scrub: true,
         animation: timeline_section22
       })
@@ -518,88 +595,15 @@ const Audi_A5_Couple = () => {
   }, []);
 
 
-  const hero_section1 = useRef(null)
-  const sec1_txt = useRef(null)
-  const hero_section3 = useRef(null)
-  const sec3_img1 = useRef(null)
-  const sec3_img2 = useRef(null)
-  const sec3_img3 = useRef(null)
-  const hero_section4 = useRef(null)
-  const sec4_text = useRef(null)
-  useEffect(() => {
-    if (sec1_txt.current && hero_section1.current) {
-      const tl = gsap.timeline()
-      tl
-        .set(sec1_txt.current, {
-          opacity: 0,
-          y: 500,
-        })
-        .to(sec1_txt.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-        })
-      ScrollTrigger.create({
-
-        trigger: hero_section1.current,
-        start: "top center",
-        end: "bottom 20%",
-        animation: tl, toggleActions: "restart none none reverse"
-      }
-      )
-    }
-
-
-    if (sec3_img1.current && sec3_img2.current ) {
-      const tl1 = gsap.timeline()
-      tl1.set([sec3_img1.current, sec3_img2.current], {
-        y: 500,
-        opacity: 0,
-      })
-        .to([sec3_img1.current, sec3_img2.current], {
-          y: 0,
-          opacity: 1,
-        })
-
-      ScrollTrigger.create({
-        trigger: hero_section3.current,
-        start: "top 80%",
-        end: "bottom top",
-        scrub: true,
-        animation: tl1
-      })
-    }
-
-    if (sec4_text.current && hero_section4.current) {
-      const tl_sec4 = gsap.timeline()
-      tl_sec4
-        .set(sec4_text.current, {
-          opacity: 0,
-          y: 400
-        })
-        .to(sec4_text.current, {
-          opacity: 1,
-          y: 0
-        })
-      ScrollTrigger.create({
-        trigger: hero_section4.current,
-        start: "top 80%",
-        end: "bottom center",
-        //scrub:true,
-        toggleActions: "restart none none reverse",
-        animation: tl_sec4
-
-      })
-    }
-
-  }, [])
+  
   return (
 
     <div className="">
       <motion.div
         ref={ref}
         style={{ x, y }}
-        className=" z-50 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[200px] w-[200px] rounded-[50%] xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400"
+        className=" z-20 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[100px] w-[100px] rounded-[50%] bg-slate-800 "
+        //xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400
       />
       <div>
         <div className="flex ">
@@ -610,7 +614,7 @@ const Audi_A5_Couple = () => {
 
 
         <section className="relative h-screen w-screen flex justify-center items-center">
-          <div style={{ backgroundImage: `url(${a5_8})` }}
+          <div ref={bg_sec1} style={{ backgroundImage: `url(${a5_8})` }}
             className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover  
           "></div>
@@ -642,8 +646,8 @@ const Audi_A5_Couple = () => {
           bg-center bg-no-repeat   flex justify-center items-center gap-x-[6%]">
             <p
               ref={sec3_img1}
-              className="w-[25%] h-[70%] ">
-              <img src={a1} className="w-full h-full object-cover" />
+              className="w-[25%] h-[70%]  ">
+              <img src={a1} className="w-full h-full object-cover " />
             </p>
             <p
               ref={sec3_img2}
@@ -696,7 +700,9 @@ const Audi_A5_Couple = () => {
        
           className=" w-screen h-[300px]  flex justify-center items-center bg-slate-100 "
         >
-          <p className="font-syncopate text-[24px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] text-slate-800">
+
+          <p ref={slogan_text} className="opacity-0 font-syncopate text-[24px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] text-slate-800">
+
             DO YOU WANT TO RACE?
           </p>
         </div>
@@ -1040,7 +1046,7 @@ const Audi_A5_Couple = () => {
           <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
         </div>
 
-        <div className="bg-primary">
+        <div className="z-50 bg-primary">
           <Footer></Footer>
         </div>
       </div>

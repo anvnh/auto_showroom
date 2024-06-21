@@ -13,8 +13,8 @@ export function useFollowPointer(ref: RefObject<HTMLElement>) {
     const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
       const element = ref.current!;
       frame.read(() => {
-        xPoint.set(clientX - element.offsetLeft - element.offsetWidth / 2);
-        yPoint.set(clientY - element.offsetTop - element.offsetHeight / 2);
+        xPoint.set(clientX - element.offsetLeft - element.offsetWidth / 1);
+        yPoint.set(clientY - element.offsetTop - element.offsetHeight / 1);
       });
     };
 
