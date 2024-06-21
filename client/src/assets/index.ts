@@ -151,12 +151,12 @@ import carnb3 from "./car/carnavbar/A5coupe.png";
 import owner1 from "./owner/back.jpg";
 import owner2 from "./owner/back1.jpg";
 import owner3 from "./owner/back2.jpg";
-
+import gif from "./login/giphy.webp";
 import bgLG from "./login/backgroundlogin.png";
 
 export {
 	bgLG,
-
+	gif,
 	owner1,
 	owner2,
 	owner3,
