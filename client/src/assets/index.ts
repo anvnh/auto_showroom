@@ -14,7 +14,7 @@ import car2 from "./car/xe2.png";
 
 import car4 from "./car/xe4.png";
 import car5 from "./car/xe5.png";
-import car6 from "./car_popular/car5popular/carinHomepage.png";
+import car6 from "./car/xe6.png";
 
 import user_hero_1 from "./user_hero_1.jpg";
 
@@ -82,7 +82,7 @@ import VideoCar1Popular from "./Video/Mercedes-AMG CLS 53 4MATIC+.mov";
 import VideoCar2Popular from "./video2/Maybach S-Class.mov";
 import VideoCar3Popular from "./car_popular/car3popular/video/0609 (2).mp4";
 import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
-import Videohieuung12 from "./car_popular/car5popular/video1/0619.mp4";
+
 //car3 popular
 import r1 from "./car_popular/car3popular/behind1.jpg";
 import r2 from "./car_popular/car3popular/behind2.jpg";
@@ -109,6 +109,7 @@ import b7 from "./car_popular/car3popular/b7.webp";
 import b8 from "./car_popular/car3popular/b8.webp";
 import b9 from "./car_popular/car3popular/b9.webp";
 import toi from "./car_popular/car3popular/toi.png";
+
 
 //car5 popular
 import car51 from "./car_popular/car5popular/car51.jpg";
@@ -179,6 +180,7 @@ export {
 	car59,
 	car592,
 	car510,
+
 	b7,
 	b8,
 	b9,
@@ -200,13 +202,12 @@ export {
 	change5,
 	change6,
 	change10,
-	change8,
-	change9,
+change8 ,
+change9 ,
 	VideoCar1Popular,
 	VideoCar2Popular,
 	VideoCar3Popular,
 	Videohieuung,
-	Videohieuung12,
 	merr,
 	merr1,
 	merr2,

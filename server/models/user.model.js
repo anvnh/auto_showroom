@@ -20,6 +20,18 @@ const userSchema = new mongoose.Schema({
         require: true,
         unique: true
     },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    emailVerificationToken: {
+        type: String,
+        default: ""
+    },
+    emailVerificationTokenExpires: {
+        type: Date,
+        default: Date.now()
+    },
     followers: [
         {
             type: mongoose.Schema.Types.ObjectId, // 16 characters

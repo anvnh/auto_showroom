@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { r1, r2, r3, r5, r7, r8, b1, b2, b4, b5, b6 } from "../../assets";
 import { gsap } from "gsap";
@@ -8,11 +9,12 @@ const car3popular2 = () => {
 		<div className="bg-black">
 			<div>
 				<div
+					data-aos="fade-right"
 					style={{ backgroundImage: `url(${r3})` }}
-					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover z-20"
+					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
-					<div className="flex justify-center pt-16 md:pt-0 inset-0">
-						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate uppercase text-center pt-20">
+					<div className="flex justify-center pt-16 absolute inset-0">
+						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate uppercase text-center">
 							Interiors & Technology
 						</h1>
 					</div>
@@ -21,20 +23,21 @@ const car3popular2 = () => {
 				<div className="relative flex w-screen h-screen">
 					<div className="h-screen w-1/2">
 						<img
-						
+							data-aos="slide-left"
 							src={b1}
-								className="h-screen w-screen object-cover"
+							className="h-screen w-screen object-cover"
 						/>
 					</div>
-					<div className="z-20 h-screen w-1/2 flex justify-center items-center bg-slate-800 text-white">
+					<div className="h-screen w-1/2 flex justify-center items-center bg-slate-800	 text-white">
 						<div className="w-[700px] h-[500px] flex justify-center items-center flex-col  border-purple-500 border-2">
 							<h1
-								
+								data-aos="slide-right"
 								className="font-syncopate text-center text-[55px] font-medium uppercase"
 							>
 								Interiors
 							</h1>
-							<p	
+							<p
+								data-aos="slide-right"
 								className="font-kanit text-center text-xl p-12"
 							>
 								Rolls-Royce has pulled out all the stops with
@@ -79,7 +82,7 @@ const car3popular2 = () => {
 				</div>
 				<div
                     id="Model"
-					
+					data-aos="fade-right"
 					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
 					<div className="flex justify-center pt-16 absolute inset-0">
@@ -93,7 +96,7 @@ const car3popular2 = () => {
 					<iframe
 						className="w-full md:h-[550px] h-[300px] scale-125 "
 						title="Rolls Royce Ghost 2021"
-						frameBorder="0"
+						frameborder="0"
 						allowfullscreen
 						mozallowfullscreen="true"
 						webkitallowfullscreen="true"

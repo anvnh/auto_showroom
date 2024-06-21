@@ -148,7 +148,7 @@ const Post = ({ post }) => {
 		<>
 			<div className='hover:bg-gray-600 hover:bg-opacity-15 flex gap-2 items-start p-4 border border-gray-700 my-3 rounded-3xl bg-black bg-opacity-55'>
 				<div className='avatar'>
-					<Link to={`/profile/${postOwner.username}`} className='w-8 h-8 rounded-full overflow-hidden'>
+					<Link to={`/social/profile/${postOwner.username}`} className='w-8 h-8 rounded-full overflow-hidden'>
 						<img src={postOwner.profileImg || placeholder_img} />
 					</Link>
 				</div>
@@ -199,7 +199,7 @@ const Post = ({ post }) => {
 							</div>
 							{/* We're using Modal Component from DaisyUI */}
 							<dialog id={`comments_modal${post._id}`} className='modal border-none outline-none'>
-								<div className='modal-box rounded-3xl border border-gray-700 bg-opacity-80'>
+								<div className='modal-box rounded-3xl border border-gray-700 bg-opacity-80 backdrop-blur-md'>
 									<h3 className='font-bold text-lg mb-4'>COMMENTS</h3>
 									<div className='flex flex-col gap-3 max-h-60 overflow-auto'>
 										{post.comments.length === 0 && (
