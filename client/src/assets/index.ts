@@ -89,6 +89,9 @@ import r2 from "./car_popular/car3popular/behind2.jpg";
 import r3 from "./car_popular/car3popular/behind3.jpg";
 import r7 from "./car_popular/car3popular/ok.png";
 import r8 from "./car_popular/car3popular/pic.jpg";
+import new1 from "./car_popular/car5popular/new1.jpg";
+import new2 from "./car_popular/car5popular/new2.jpg";
+import new3 from "./car_popular/car5popular/new3.jpg";
 
 import change3 from "./car_popular/car3popular/change1.png";
 import change2 from "./car_popular/car3popular/change2.png";
@@ -109,7 +112,6 @@ import b7 from "./car_popular/car3popular/b7.webp";
 import b8 from "./car_popular/car3popular/b8.webp";
 import b9 from "./car_popular/car3popular/b9.webp";
 import toi from "./car_popular/car3popular/toi.png";
-
 
 //car5 popular
 import car51 from "./car_popular/car5popular/car51.jpg";
@@ -148,12 +150,18 @@ import carnb2 from "./car/carnavbar/MercedesbenZmaybach2022.png";
 import carnb3 from "./car/carnavbar/A5coupe.png";
 
 //Owner------------------------------------
-
+import gif from "./login/gif.webp";
+import gifSocial from "./owner/gif2.webp";
 import bgLG from "./login/backgroundlogin.png";
-
+import bgSocial from "./owner/bgsocial.png";
 export {
+	gifSocial,
+	new1,
+	new2,
+	new3,
+	bgSocial,
 	bgLG,
-
+	gif,
 	carnb1,
 	carnb2,
 	carnb3,
@@ -174,7 +182,6 @@ export {
 	car59,
 	car592,
 	car510,
-
 	b7,
 	b8,
 	b9,
@@ -196,8 +203,8 @@ export {
 	change5,
 	change6,
 	change10,
-change8 ,
-change9 ,
+	change8,
+	change9,
 	VideoCar1Popular,
 	VideoCar2Popular,
 	VideoCar3Popular,

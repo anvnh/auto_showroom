@@ -36,6 +36,7 @@ module.exports = {
                 kanit: ["Kanit", "sans-serif"],
                 syncopate: ["Syncopate","sans-serif"],
                 playwrite: ["Playwrite AU VIC", "sans-serif"],
+                embed:["Nunito", "sans-serif"]
             },
             colors: {
                 primary: '#33343E',

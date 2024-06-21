@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { logo, bgLG } from "../assets";
+import { logo, bgLG, gif } from "../assets";
+import { Link } from "react-router-dom";
 const SignIn: React.FC = () => {
 	const [showSignUpForm, setShowSignUpForm] = useState(false);
 	const [showSignInForm, setShowSignInForm] = useState(false);
@@ -89,7 +90,18 @@ const SignIn: React.FC = () => {
 			password: "",
 		});
 	};
+	const [signUpInputActive, setSignUpInputActive] = useState({
+		username: false,
+		fullName: false,
+		email: false,
+		password: false,
+	});
 
+	// State for Sign In form input activity
+	const [signInInputActive, setSignInInputActive] = useState({
+		username: false,
+		password: false,
+	});
 	return (
 		<div className="w-full">
 			<div className="hidden xl:block">
@@ -108,11 +120,14 @@ const SignIn: React.FC = () => {
 								data-aos="fade-right"
 								className="justify-center flex"
 							>
+								<Link to="http://localhost:3000/">
 								<img
 									src={logo}
 									alt="logo"
-									className="md:w-[300px] w-[55px] md:h-[250px] h-[55px] bottom-12 flex relative"
+									className="md:w-[300px] cursor-pointer w-[55px] md:h-[250px] h-[55px] bottom-12 flex relative"
 								/>
+								</Link>
+
 							</div>
 							<h1 className="text-sm md:text-8xl  text-center font-syncopate text-gray-300">
 								Wellcome to AAP
@@ -181,8 +196,9 @@ const SignIn: React.FC = () => {
 									data-aos="fade-left"
 									className={`relative z-10 w-[500px] p-20 bg-black bg-opacity-50 shadow-xl rounded-lg rounded-tr-[200px] rounded-bl-[200px] mr-10 `}
 								>
-									
-
+									<div className="absolute w-[450px] h-[70px] -top-[170px] z-40 -left-[140px]">
+										<img src={gif}  />
+									</div>
 									<h2 className="text-center pb-12 text-4xl font-syncopate text-white mb-6">
 										Sign Up
 									</h2>
@@ -192,14 +208,14 @@ const SignIn: React.FC = () => {
 										noValidate
 									>
 										{[
-											"username",
-											"fullName",
-											"email",
-											"password",
+											"username:",
+											"fullName:",
+											"email:",
+											"password:",
 										].map((placeholder, index) => (
 											<div
 												key={index}
-												className="relative"
+												className="relative pl-12"
 											>
 												<input
 													type={
@@ -227,7 +243,8 @@ const SignIn: React.FC = () => {
 													required
 												/>
 												<label
-													className={`absolute left-0 top-2 text-gray-400 text-base peer-focus:-top-3 peer-focus:text-sm transition-all duration-200 ${
+													className={`absolute -left-12 top-6 text-gray-400 text-base peer-focus:-top-3 
+													peer-focus:left-12	peer-focus:text-sm transition-all duration-300 ${
 														signUpData[
 															placeholder as keyof typeof signUpData
 														]
@@ -260,16 +277,18 @@ const SignIn: React.FC = () => {
 									data-aos="fade-left"
 									className={`relative z-10 w-[500px] p-20 bg-black bg-opacity-50 shadow-xl rounded-lg rounded-tr-[200px] rounded-bl-[200px] mr-10 `}
 								>
-									
+									<div className="absolute w-[450px] h-[70px] -top-[170px] z-40 -left-[140px]">
+										<img src={gif}  />
+									</div>
 									<h2 className="text-center pb-12 text-4xl font-syncopate text-white mb-6">
 										Sign In
 									</h2>
 									<form
-										className="space-y-6"
+										className="space-y-6 pl-12"
 										onSubmit={handleSignInSubmit}
 										noValidate
 									>
-										{["username", "password"].map(
+										{["username:", "password:"].map(
 											(placeholder, index) => (
 												<div
 													key={index}
@@ -298,13 +317,14 @@ const SignIn: React.FC = () => {
 														required
 													/>
 													<label
-														className={`absolute left-0 top-2 text-gray-400 text-base peer-focus:-top-3 peer-focus:text-sm transition-all duration-200 ${
-															signInData[
-																placeholder as keyof typeof signInData
-															]
-																? "-top-3 text-sm text-blue-500"
-																: ""
-														}`}
+														className={`absolute -left-24 top-6 text-gray-400 text-base peer-focus:-top-3 
+													peer-focus:left-0	peer-focus:text-sm transition-all duration-300 ${
+														signUpData[
+															placeholder as keyof typeof signUpData
+														]
+															? "-top-3 text-sm"
+															: ""
+													}`}
 													>
 														{placeholder
 															.charAt(0)
@@ -320,9 +340,7 @@ const SignIn: React.FC = () => {
 											<button
 												type="submit"
 												className="w-full h-[50px] p-2 text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md font-syncopate duration-500"
-											>
-												Sign In
-											</button>
+											></button>
 										</div>
 									</form>
 								</div>
@@ -331,8 +349,6 @@ const SignIn: React.FC = () => {
 					</div>
 				</div>
 			</div>
-
-
 
 			<div className="block xl:hidden w-full">
 				<div className="w-full">
@@ -344,15 +360,15 @@ const SignIn: React.FC = () => {
 
 						<div className="relative flex flex-col items-center justify-center min-h-screen gap-8 px-4">
 							{/* Logo and Welcome Text */}
-							<div
+							<div className="flex flex-col items-center">
 								
-								className="flex flex-col items-center"
-							>
+								<Link to="http://localhost:3000/">
 								<img
 									src={logo}
 									alt="logo"
 									className="md:w-[300px] w-[80px] md:h-[200px] h-[70px]"
 								/>
+								</Link>
 								<h1 className="text-xl md:text-8xl text-center font-syncopate text-gray-300 shadow-2xl mt-1">
 									Welcome to AAP
 								</h1>
@@ -362,26 +378,17 @@ const SignIn: React.FC = () => {
 							<div className="w-full max-w-md">
 								<div className="flex flex-col items-center space-y-4">
 									{showSignUpForm && (
-										<div
-											
-											className="text-center font-syncopate"
-										>
+										<div className="text-center font-syncopate">
 											<p>You have an account?</p>
 										</div>
 									)}
 									{showSignInForm && (
-										<div
-									
-											className="text-center font-syncopate"
-										>
+										<div className="text-center font-syncopate">
 											<p>You don't have an account?</p>
 										</div>
 									)}
 
-									<div
-										
-										className="flex justify-center space-x-4"
-									>
+									<div className="flex justify-center space-x-4">
 										<button
 											type="button"
 											onClick={() => toggleForm("signUp")}
@@ -409,16 +416,10 @@ const SignIn: React.FC = () => {
 							</div>
 
 							{/* Form Section */}
-							<div
-							
-								className="flex justify-center sm:px-12 w-full"
-							>
+							<div className="flex justify-center sm:px-12 w-full">
 								{/* Sign Up Form */}
 								{showSignUpForm && (
-									<div
-									
-										className="w-full p-8 bg-black bg-opacity-50 shadow-xl rounded-lg"
-									>
+									<div className="w-full p-8 bg-black bg-opacity-50 shadow-xl rounded-lg">
 										<form
 											className="space-y-6"
 											onSubmit={handleSignUpSubmit}
@@ -435,6 +436,12 @@ const SignIn: React.FC = () => {
 													className="relative"
 												>
 													<input
+														placeholder={
+															placeholder
+																.charAt(0)
+																.toUpperCase() +
+															placeholder.slice(1)
+														}
 														type={
 															placeholder ===
 															"password"
@@ -459,22 +466,6 @@ const SignIn: React.FC = () => {
 														className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
 														required
 													/>
-													<label
-														className={`absolute left-0 top-2 text-gray-400 text-base peer-focus:-top-3 peer-focus:text-sm transition-all duration-200 ${
-															signUpData[
-																placeholder as keyof typeof signUpData
-															]
-																? "-top-3 text-sm"
-																: ""
-														}`}
-													>
-														{placeholder
-															.charAt(0)
-															.toUpperCase() +
-															placeholder.slice(
-																1
-															)}
-													</label>
 												</div>
 											))}
 											<div className="pt-6">
@@ -491,10 +482,7 @@ const SignIn: React.FC = () => {
 
 								{/* Sign In Form */}
 								{showSignInForm && (
-									<div
-									
-										className="w-full max-w-md p-8 bg-black bg-opacity-50 shadow-xl rounded-lg"
-									>
+									<div className="w-full max-w-md p-8 bg-black bg-opacity-50 shadow-xl rounded-lg">
 										<form
 											className="space-y-6"
 											onSubmit={handleSignInSubmit}
@@ -507,6 +495,14 @@ const SignIn: React.FC = () => {
 														className="relative"
 													>
 														<input
+															placeholder={
+																placeholder
+																	.charAt(0)
+																	.toUpperCase() +
+																placeholder.slice(
+																	1
+																)
+															}
 															type={
 																placeholder ===
 																"password"
@@ -528,22 +524,6 @@ const SignIn: React.FC = () => {
 															className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
 															required
 														/>
-														<label
-															className={`absolute left-0 top-2 text-gray-400 text-base peer-focus:-top-3 peer-focus:text-sm transition-all duration-200 ${
-																signInData[
-																	placeholder as keyof typeof signInData
-																]
-																	? "-top-3 text-sm text-blue-500"
-																	: ""
-															}`}
-														>
-															{placeholder
-																.charAt(0)
-																.toUpperCase() +
-																placeholder.slice(
-																	1
-																)}
-														</label>
 													</div>
 												)
 											)}
@@ -552,7 +532,7 @@ const SignIn: React.FC = () => {
 													type="submit"
 													className="w-full h-[50px] p-2 text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md font-syncopate duration-500"
 												>
-													Sign In
+													Log in
 												</button>
 											</div>
 										</form>

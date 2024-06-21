@@ -36,6 +36,7 @@
     "jarallax": "^2.2.1",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.378.0",
+    "p5": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.5",
@@ -56,6 +57,7 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.165.0",
     "three-stdlib": "^2.30.3",
+    "tw": "^0.1.2",
     "webfontloader": "^1.6.28",
     "zod": "^3.23.8"
   },

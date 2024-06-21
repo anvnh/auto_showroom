@@ -1,14 +1,24 @@
 import {Navbar, Hero, Product, Product2 ,Banner, Footer, CarBrand} from './_homepage'
 import AOS from "aos";
+import Lenis from "@studio-freight/lenis"
 import "aos/dist/aos.css";
 import {
     backgroundcar2
 } from "../assets";
 import React, { useEffect, useRef, useState} from "react";
-import Lenis from "@studio-freight/lenis"
-
 const RootLayout = () => {
 
+useEffect(()=>{
+   const lenis = new Lenis();
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf); 
+      return () => {
+      lenis.destroy();
+    };
+ },[])
     useEffect(() => {
 		AOS.init({
 			duration: 800,
@@ -29,12 +39,13 @@ const RootLayout = () => {
                             <Navbar/>
                         </div>
                     </div>
+                    
                 <div className="flex items-start justify-center bg-primary">
                     <div className="w-full">
                         <Hero/>
                     </div>
                 </div>
-                <div className="flex items-start justify-center  bg-primary ">
+                <div className="flex items-start justify-center pt-12 bg-primary ">
                     <div className="w-full">
                         <Product />
                     </div>
@@ -49,12 +60,12 @@ const RootLayout = () => {
                         <Banner />
                     </div>
                 </div>   
-                <div className="flex items-start justify-center bg-primary">
+                <div className="flex items-start justify-center bg-gray-700">
                     <div className="w-full">
                         <CarBrand />
                     </div>
                 </div>
-                <div data-aos="fade" className="flex items-start justify-center bg-primary">
+                <div data-aos="fade" className="flex items-start justify-center bg-gray-950">
                     <div className="w-full">
                         <Footer />
                     </div>

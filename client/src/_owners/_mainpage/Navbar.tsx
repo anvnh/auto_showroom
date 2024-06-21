@@ -1,14 +1,40 @@
-import { useState } from "react";
-import { logo, menu, close } from "../../assets";
-import { Link } from "react-router-dom";
+import { useState,useEffect } from 'react';
+import {logo, menu, close} from '../../assets'
+import { Link } from 'react-router-dom';
 import { IoIosArrowDown } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
 	const [toggle, setToggle] = useState(false);
+	const [isHidden, setIsHidden] = useState(false);
+	let lastScrollTop = 0;
 
-	return (
-		<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 bg-opacity-50 backdrop-blur-md md:px-12.5 px-8">
+	useEffect(() => {
+		const handleScroll = () => {
+			let scrollTop =
+				window.pageYOffset || document.documentElement.scrollTop;
+
+			if (scrollTop > lastScrollTop) {
+				setIsHidden(true); // Cuộn xuống, ẩn navbar
+			} else {
+				setIsHidden(false); // Cuộn lên, hiện navbar
+			}
+
+			lastScrollTop = scrollTop;
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+    return (
+		<div	className={`z-50 fixed top-0 w-full font-poppins transition-transform duration-300 ${
+			isHidden ? "-translate-y-full" : "translate-y-0"
+		}`}
+	>
+			<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-70">
 			<Link to="/">
 				<img
 					src={logo}
@@ -60,11 +86,13 @@ const Navbar = () => {
 			</ul>
 
 			<ul className="items-center justify-end flex-1 hidden list-none sm:flex mb-1">
-				<Link to="/SignIn">
-					<Button className="text-white text-[18px] font-syncopate font-bold bg-gray-950 bg-opacity-0 hover:bg-gray-700">
-						Sign in now
-					</Button>
-				</Link>
+          <Link to="/SignIn">
+			        <Button 
+                    className="text-white text-[18px] font-poppins font-bold bg-gray-950 bg-opacity-0 hover:bg-gray-700"
+                > 
+                    Sign in now
+              </Button>
+			    </Link>
 			</ul>
 			<div className="flex sm:hidden">
 				<img
@@ -100,6 +128,8 @@ const Navbar = () => {
 				</div>
 			</div>
 		</nav>
+		
+		</div>
 	);
 };
 
