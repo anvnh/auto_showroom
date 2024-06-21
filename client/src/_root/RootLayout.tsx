@@ -5,8 +5,10 @@ import {
     backgroundcar2
 } from "../assets";
 import React, { useEffect, useRef, useState} from "react";
+import Lenis from "@studio-freight/lenis"
 
 const RootLayout = () => {
+
     useEffect(() => {
 		AOS.init({
 			duration: 800,
@@ -16,6 +18,7 @@ const RootLayout = () => {
 			mirror: true,
 			anchorPlacement: "top-bottom",
 		});
+
 	}, []);
 
     return (
