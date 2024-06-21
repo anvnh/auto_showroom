@@ -85,6 +85,15 @@ const RightPanel = () => {
                             ))}
                     </div>
                 </div>
+                <div className="mt-[570px] ml-[10px] flex">
+                        <Link
+                            to="/owners" 
+                            className="text-blue-500 hover:underline flex"
+                        >
+                            <FaArrowRight className="text-blue-500 ml-1 mt-1 w-9"/>
+                            Back to showroom
+                        </Link>
+                </div>
             </div>
         </>
 	);

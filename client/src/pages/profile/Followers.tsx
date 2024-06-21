@@ -52,13 +52,13 @@ const Following = () => {
 							</div>
 							<div className='flex w-full border-b border-gray-700 mt-0'>
 								<Link to={`/social/profile/following/${id}`}
-									className='flex justify-center flex-1 p-3 text-slate-500 hover:bg-secondary transition duration-300 relative cursor-pointer'
-								>
+                                    className='flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer' 
+                                >
                                     Following
 								</Link>
 								<Link to={`/social/profile/followers/${id}`}
-                                    className='flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer' 
-                                >
+									className='flex justify-center flex-1 p-3 text-slate-500 hover:bg-secondary transition duration-300 relative cursor-pointer'
+								>
                                     Followers
                                     <div className='absolute bottom-0 w-10 h-1 rounded-full bg-[#2191d8]' />
 								</Link>
@@ -67,7 +67,7 @@ const Following = () => {
 					)}
 				</div>
                 {user?.map((following) => (
-                    <div className='hover:bg-gray-600 hover:bg-opacity-15 bg-black bg-opacity-55 my-2 border border-gray-800 rounded-3xl' key={following._id}>
+                    <div className='bg-black bg-opacity-55 my-2 border border-gray-800 rounded-3xl' key={following._id}>
                         <Link to={`/social/profile/${following.username}`}>
                             <div className='gap-2 p-4'>
                                 <div className='avatar'>
