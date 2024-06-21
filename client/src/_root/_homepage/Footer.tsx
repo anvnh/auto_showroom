@@ -48,7 +48,7 @@ const Footer = () => {
                     Owners
                 </div>
                 <div className='flex flex-col text-[14px] gap-y-[2px]'>
-                    <div >Connect</div>
+                    <div>Connect</div>
                     <div>Software update</div>
                     <div>Maintenace plans</div>
                     <div>Resources</div>

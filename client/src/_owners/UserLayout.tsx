@@ -21,9 +21,12 @@ const OwnerLayout = () => {
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
     return (
         <section className="w-full">
-            <div className="bg-primary w-full overflow-hidden">
+            <div className="w-full overflow-hidden">
                 <div className="flex justify-center items-start">
                     <div className="w-full">
                         <Navbar />

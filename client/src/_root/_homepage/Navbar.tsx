@@ -82,11 +82,11 @@ const Navbar = () => {
 	return (
 
 		<div
-			className={`z-50 fixed top-0 w-full bg-gray-800 font-poppins transition-transform duration-300 ${
+			className={`z-50 fixed top-0 w-full font-poppins transition-transform duration-300 ${
 				isHidden ? "-translate-y-full" : "translate-y-0"
 			}`}
 		>
-			<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-primary md:px-12.5 px-8 bg-opacity-70 z-50">
+			<nav className="bg-gray-950 bg-opacity-50 backdrop-blur-md w-full flex pt-3 pb-2 justify-between items-center navbar md:px-12.5 px-8 z-50">
 
 				<Link to="/">
 					<img

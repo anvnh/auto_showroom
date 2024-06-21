@@ -22,8 +22,8 @@ const RootLayout = () => {
 	}, []);
 
     return (
-        <section className="w-full bg-gray-900">
-            <div className="w-full overflow-hidden bg-primary">
+        <section className="w-full bg-primary">
+            <div className="w-full overflow-hidden bg-gray-950">
                     <div className="flex items-start justify-center ">
                         <div className="w-full">
                             <Navbar/>

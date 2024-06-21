@@ -34,22 +34,10 @@ app.use(express.urlencoded({ extended: true })); // to parse form data(urlencode
 
 app.use(cookieParser()); // to parse cookies
 
-app.use("/", (req, res) => {
-    res.send("Welcome to Social Media API");
-});
 app.use("/api/auth", authRoutes); // auth routes
 app.use("/api/user", userRoutes); // user routes
 app.use("/api/posts", postRoutes); // post routes
 app.use("/api/notifications", nofiticationRoutes); // notification routes
-
-if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname, "/client/dist")));
-
-	app.get("*", (req, res) => {
-		res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
-	});
-}
-
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
