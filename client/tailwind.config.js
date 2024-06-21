@@ -23,7 +23,6 @@ module.exports = {
             lg: "1200px",
             'mlg': '1400px',
             xl: "1700px",
-
         },
         extend: {
             transitionDuration: {
@@ -35,7 +34,6 @@ module.exports = {
                 poppins: ["Poppins", "sans-serif"],
                 kanit: ["Kanit", "sans-serif"],
                 syncopate: ["Syncopate","sans-serif"],
-                playwrite: ["Playwrite AU VIC", "sans-serif"],
             },
             colors: {
                 primary: '#33343E',
@@ -46,9 +44,9 @@ module.exports = {
     plugins: [
         require("tailwindcss-animate"),
         require('daisyui'),
-        require('postcss-import'),
-        require('tailwindcss'),
-        require('autoprefixer'),
+         require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
     ],
     daisyui: {
         themes: [
