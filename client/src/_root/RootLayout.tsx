@@ -1,15 +1,24 @@
 import {Navbar, Hero, Product, Product2 ,Banner, Footer, CarBrand} from './_homepage'
 import AOS from "aos";
+import Lenis from "@studio-freight/lenis"
 import "aos/dist/aos.css";
 import {
     backgroundcar2
 } from "../assets";
 import React, { useEffect, useRef, useState} from "react";
-import Lenis from "@studio-freight/lenis"
-
 const RootLayout = () => {
 
-
+useEffect(()=>{
+   const lenis = new Lenis();
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf); 
+      return () => {
+      lenis.destroy();
+    };
+ },[])
     useEffect(() => {
 		AOS.init({
 			duration: 800,

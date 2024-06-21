@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect , useRef} from 'react';
 //assets
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 import { 
     hero_1, hero_2, hero_3, hero_4, hero_5, hero_6,
 } from '../../assets';
+import {  supra } from '@/assets/hplat_asset/video';
 //library
 import {gsap} from "gsap"
+import p5 from 'p5';
 import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger)
 
@@ -70,19 +72,61 @@ const Hero = () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, [])
+
+
+  //text effect
+   const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const sketch = (p) => {
+      let canvas;
+		  const calculateFontSize = () => {
+         const baseFontSize = 32; // Kích thước font cơ bản
+        const scaleFactor = p.windowWidth / 300;
+        return baseFontSize * scaleFactor;
+      };
+      p.setup = () => {
+        canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+        canvas.parent(canvasRef.current);
+        p.textAlign(p.CENTER, p.CENTER);
+		p.textFont('Kanit')
+          p.textSize(calculateFontSize());
+      };
+
+      p.draw = () => {
+        p.noFill(); // Loại bỏ phần tô bên trong của chữ
+        p.stroke('#FFFFFF'); // Thiết lập màu đường viền là màu đen
+        p.strokeWeight(2); // Thiết lập độ dày của đường viền
+        p.text('AAP', p.width / 2, p.height / 2);
+      };
+
+      p.windowResized = () => {
+        p.resizeCanvas(p.windowWidth, p.windowHeight);
+      };
+    };
+
+    const p5Instance = new p5(sketch);
+
+    return () => {
+      p5Instance.remove();
+    };
+  }, []);
 	
 	return (
 		
 		<div className={`  `}>
 			{/* ---------------Parallax-------- */}
         <section className="z-40 relative h-screen w-screen flex justify-center items-center">
-          <div style={{ backgroundImage: `url(${hero_1})` }}
-            className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
+          <div 
+            className="bg   absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover 
-          "></div>
-          <h1 className="text-center  text-[100px] md:text-[150px] mlg:text-[190px] font-kanit  w-full z-10 text-white   ">
-			AAP
-			</h1>
+          ">
+			<video className='w-full h-full object-cover' muted autoPlay loop>
+				<source src={supra}/>
+			</video>
+		  </div>
+          <div ref={canvasRef} className="text-center top-0 left-0  absolute text-[100px] md:text-[150px] mlg:text-[250px] font-embed font-bold  h-full w-full z-10 text-white   ">
+			</div>
         </section>
         <section className="z-40 relative h-screen w-screen flex justify-center items-center"  >
           <div
