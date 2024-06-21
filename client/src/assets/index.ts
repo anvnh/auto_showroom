@@ -148,12 +148,13 @@ import carnb2 from "./car/carnavbar/MercedesbenZmaybach2022.png";
 import carnb3 from "./car/carnavbar/A5coupe.png";
 
 //Owner------------------------------------
-
+import gif from "./login/gif.webp";
 import bgLG from "./login/backgroundlogin.png";
-
+import bgSocial from "./owner/bgsocial.png";
 export {
+	bgSocial,
 	bgLG,
-
+	gif,
 	carnb1,
 	carnb2,
 	carnb3,
