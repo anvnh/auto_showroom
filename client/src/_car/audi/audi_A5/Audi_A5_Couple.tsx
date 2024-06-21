@@ -34,7 +34,7 @@ const Audi_A5_Couple = () => {
   //cuon dau trang
   useEffect(() => {
     window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
-  }, []);
+  },[] );
 
   //smooth scroll
   const lenis = new Lenis();
@@ -52,8 +52,6 @@ const Audi_A5_Couple = () => {
   const container_hero = useRef(null)
   const hero_car = useRef(null)
   const hero_txt = useRef(null)
-  const container_char = useRef(null)
-  const audi_sec2 = useRef(null)
   const container_slogan = useRef(null);
   const slogan_text = useRef(null);
   useEffect(() => {
@@ -552,13 +550,13 @@ const Audi_A5_Couple = () => {
     }
 
 
-    if (sec3_img1.current && sec3_img2.current && sec3_img3.current) {
+    if (sec3_img1.current && sec3_img2.current ) {
       const tl1 = gsap.timeline()
-      tl1.set([sec3_img1.current, sec3_img2.current, sec3_img3.current], {
+      tl1.set([sec3_img1.current, sec3_img2.current], {
         y: 500,
         opacity: 0,
       })
-        .to([sec3_img1.current, sec3_img2.current, sec3_img3.current], {
+        .to([sec3_img1.current, sec3_img2.current], {
           y: 0,
           opacity: 1,
         })
@@ -707,7 +705,7 @@ const Audi_A5_Couple = () => {
         {/*----------Split1------------------------ */}
         <div ref={container_split1} className="relative hidden  lg:flex  w-screen h-screen">
           <div className="h-full w-full flex flex-col justify-center items-center lg:w-[50%] bg-slate-900 ">
-            <img ref={split1_img} src={a5_10} className="lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover" />
+            <img ref={split1_img} src={a5_10} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover" />
             {/* <img src={a5_1} className="lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover"/> */}
           </div>
           <div className="h-full  w-full lg:w-[50%]  flex justify-center items-center bg-slate-100 ">
@@ -743,7 +741,7 @@ const Audi_A5_Couple = () => {
             </div>
           </div>
           <div className="h-screen w-[50%] flex justify-center items-center bg-slate-900">
-            <img ref={split2_img} src={a5_13} className="lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen  object-cover" />
+            <img ref={split2_img} src={a5_13} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen  object-cover" />
           </div>
         </div>
         {/* ------------------------mobile--------- */}
