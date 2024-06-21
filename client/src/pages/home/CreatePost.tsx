@@ -74,7 +74,7 @@ const CreatePost = () => {
             </div>
             <form className='flex flex-col gap-2 w-full' onSubmit={handleSubmit}>
                 <textarea
-                    className='textarea w-full p-3 bg-transparent -mb-8 text-white text-lg resize-none border-none focus:outline-none'
+                    className='textarea w-full p-3 bg-transparent md:-mb-8 text-white text-lg resize-none border-none focus:outline-none'
                     placeholder='What is happening?!'
                     value={text}
                     onChange={(e) => setText(e.target.value)}

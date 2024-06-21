@@ -78,30 +78,29 @@ const NotificationPage = () => {
 						<LoadingSpinner size='lg' />
 					</div>
 				)}
-				{notifications?.length === 0 && <div className='text-center p-4 font-bold'>No notifications 🤔</div>}
+                {notifications?.length === 0 && <div className='text-center p-4 font-bold'>No notifications 🤔</div>}
+
 				{notifications?.map((notification) => (
-					<Link to="">
-						<div className='bg-black bg-opacity-55 my-2 border border-gray-800 rounded-3xl' key={notification._id}>
-							<div className='flex gap-2 p-4'>
-								<Link to="/social/notifications">
-									{notification.type === "follow" && <FaUser className='w-7 h-7 text-primary' />}
-									{notification.type === "like" && <FaHeart className='w-7 h-7 text-red-500' />}
-									{notification.type === "comment" && <FaComment className='w-7 h-7 text-blue-500' />}
-								</Link>
-								<Link to={`/social/profile/${notification.from.username}`}>
-									<div className='avatar'>
-										<div className='w-8 rounded-full'>
-											<img src={notification.from.profileImg || placeholder_img} />
-										</div>
-									</div>
-									<div className='flex gap-1'>
-										<span className='font-bold'>@{notification.from.username}</span>{" "}
-										{notification.type === "follow" ? "followed you" : (notification.type === "like" ? "liked your post" : "commented on your post")}
-									</div>
-								</Link>
-							</div>
-						</div>
-					</Link>
+                    <div className='bg-black bg-opacity-55 my-2 border border-gray-800 rounded-3xl' key={notification._id}>
+                        <div className='flex gap-2 p-4'>
+                            <Link to="/social/notifications">
+                                {notification.type === "follow" && <FaUser className='w-7 h-7 text-primary' />}
+                                {notification.type === "like" && <FaHeart className='w-7 h-7 text-red-500' />}
+                                {notification.type === "comment" && <FaComment className='w-7 h-7 text-blue-500' />}
+                            </Link>
+                            <Link to={`/social/profile/${notification.from.username}`}>
+                                <div className='avatar'>
+                                    <div className='w-8 rounded-full'>
+                                        <img src={notification.from.profileImg || placeholder_img} />
+                                    </div>
+                                </div>
+                                <div className='flex gap-1'>
+                                    <span className='font-bold'>@{notification.from.username}</span>{" "}
+                                    {notification.type === "follow" ? "followed you" : (notification.type === "like" ? "liked your post" : "commented on your post")}
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
 				))}
 			</div>
 		</>
