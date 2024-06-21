@@ -58,6 +58,7 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.165.0",
     "three-stdlib": "^2.30.3",
+    "tw": "^0.1.2",
     "webfontloader": "^1.6.28",
     "zod": "^3.23.8"
   },
