@@ -19,11 +19,8 @@ import a5_13 from "./a5_13.png"
 import a5_14 from "./a5_14.png"
 import noiThat1 from "./noiThat1.png"
 import light from "./light.png"
-import light2 from "./light2.png"
 import backLight from "./backLight.png"
-import backLight2 from "./backLight2.png"
 import mam1 from "./mam1.png"
-import mam2 from "./mam2.png"
 import power from "./power.png"
 import a5rmbg from "./a5-rmbg.png"
 import a5black from "./a5black.jpg"
@@ -32,27 +29,8 @@ import audi_thanXe from "./audi_thanXe.png"
 import audi_banhXeTruoc from "./audi_banhXeTruoc.png"
 import audi_banhXeSau from "./audi_banhXeSau.png"
 import road from "./road.jpg"
-import audiold1 from "./audiold1.jpg"
-import audiold2 from "./audiold2.jpg"
-import audiold3 from "./audiold3.jpg"
-import audiold4 from "./audiold4.jpg"
-import audiold5 from "./audiold5.jpg"
-import audiFront from "./audiFront.png"
-import volang from "./voLang.png"
-import noithat from "./noiThat.jpg"
-import calang from "./calang.jpg"
-import audiblack from "./audiblack.jpg"
-import a1 from "./a1.jpg"
-import a2 from "./a3.jpg"
-import a3 from "./a2.jpg"
 
 export {
-    a1,a2,a3,
-    audiblack,
-    noithat,
-    calang,
-    volang,
-    audiFront,
     power,
     banner,
     adap,
@@ -73,10 +51,9 @@ export {
     a5_12,
     a5_13,
     a5_14,
-    mam1, mam2,
-    light, light2,
+    mam1,
+    light,
     backLight,
-    backLight2,
     noiThat1,
     a5rmbg,
     a5black,
@@ -85,6 +62,5 @@ export {
     audi_banhXeSau,
     audi_banhXeTruoc,
     road,
-    audiold1, audiold2,  audiold3, audiold4, audiold5,
     
 }

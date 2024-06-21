@@ -6,7 +6,8 @@ import { LuFileSymlink } from "react-icons/lu";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { useState } from "react";
-
+import { useEffect } from 'react';
+import AOS from 'aos';
 
 const Benefit = () => {
     const benefits = [
@@ -52,22 +53,42 @@ const Benefit = () => {
         }
     ]
 
+    useEffect(() => {
+		AOS.init({
+			duration: 900,
+
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-bottom",
+		});
+	}, []);
+
+
     return (
         <div className="flex w-full mb-16">
             <div className="w-full">
-                <h1 className="text-white md:text-4xl text-3xl pt-10 w-full flex justify-center mb-10 font-bold">
+                <h1
+                 data-aos="fade-up"
+                className="text-white md:text-4xl text-3xl pt-10 w-full flex justify-center mb-10 font-bold">
                     Owner's Member Benefit
                 </h1>
                 <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center"> 
                     {benefits.map((benefit, index) => (
                         <div key={index} className="flex flex-col items-center">
-                            <div className="bg-gray-600 bg-opacity-90 p-4 rounded-full">
+                            <div 
+                             data-aos="fade-up"
+                            className="bg-gray-600 bg-opacity-90 p-4 rounded-full">
                                 {benefit.icon}
                             </div>
-                            <h1 className="text-white md:text-2xl text-lg font-bold pt-4">
+                            <h1
+                             data-aos="fade-up"
+                            className="text-white md:text-2xl text-lg font-bold pt-4">
                                 {benefit.title}
                             </h1>
-                            <p className="text-white text-center md:w-3/4 w-full">
+                            <p
+                             data-aos="fade-up"
+                            className="text-white text-center md:w-3/4 w-full">
                                 {benefit.description}
                             </p>
                         </div>
