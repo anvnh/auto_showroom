@@ -379,7 +379,6 @@ const hero_section1 = useRef(null)
         trigger: section1.current,
         start: "top center",
         end: "bottom center",
-        markers: true,
         scrub: true,
         animation: timeline_section1
 
@@ -418,7 +417,6 @@ const hero_section1 = useRef(null)
         trigger: section2.current,
         start: "top center",
         end: "bottom bottom",
-        markers: true,
         scrub: true,
         animation: tl_section2
       })
@@ -439,7 +437,6 @@ const hero_section1 = useRef(null)
         trigger: section22.current,
         start: "top center",
         end: "bottom bottom",
-        markers: true,
         scrub: true,
         animation: timeline_section22
       })
@@ -605,7 +602,7 @@ const hero_section1 = useRef(null)
       <motion.div
         ref={ref}
         style={{ x, y }}
-        className=" z-50 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[200px] w-[200px] rounded-[50%] xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400"
+        className=" z-20 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[200px] w-[200px] rounded-[50%] xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400"
       />
       <div>
         <div className="flex ">
@@ -1046,7 +1043,7 @@ const hero_section1 = useRef(null)
           <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
         </div>
 
-        <div className="bg-primary">
+        <div className="z-50 bg-primary">
           <Footer></Footer>
         </div>
       </div>
