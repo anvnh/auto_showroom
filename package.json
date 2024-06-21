@@ -2,7 +2,9 @@
     "name": "aap",
     "version": "1.0.0",
     "scripts": {
-        "build": "npm install --prefix ./client && npm run build --prefix ./client && npm install --prefix ./server"
+        "build": "npm install --prefix ./client && npm run build --prefix ./client && npm install --prefix ./server",
+        "start": "NODE_ENV=development node server/server.js",
+        "dev": "NODE_ENV=development nodemon server.js"
     },
     "keywords": [],
     "author": "",

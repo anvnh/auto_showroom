@@ -14,6 +14,7 @@ import cors from 'cors';
 
 dotenv.config();
 
+
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -25,11 +26,6 @@ const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
 app.use(cors(
-    {
-        origin: ["https://auto-showroom-zeta.vercel.app/"],
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        credentials: true,
-    }
 )); // to allow cross-origin requests
 
 app.use(express.json({limit:"5mb"})); // to parse req.body
@@ -46,13 +42,14 @@ app.use("/api/user", userRoutes); // user routes
 app.use("/api/posts", postRoutes); // post routes
 app.use("/api/notifications", nofiticationRoutes); // notification routes
 
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/client/dist')));
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static(path.join(__dirname, "/client/dist")));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
-    });
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+	});
 }
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
