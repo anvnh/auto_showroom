@@ -9,6 +9,7 @@ import {  supra } from '@/assets/hplat_asset/video';
 //library
 import {gsap} from "gsap"
 import p5 from 'p5';
+import SplitType from 'split-type';
 import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger)
 
@@ -111,6 +112,23 @@ const Hero = () => {
       p5Instance.remove();
     };
   }, []);
+
+  useEffect(()=>{
+      const split = document.querySelectorAll('.type')
+    split.forEach((char, i) => {
+      const text = new SplitType(char, { types: 'chars' })
+      gsap.from(text.chars, {
+        scrollTrigger: {
+          trigger: char,
+          start: "top 80%",
+          end: "bottom 30%",
+          scrub: 0.2,
+        },
+        opacity: 0.2,
+        stagger: 0.1
+      })
+    })
+  },[])
 	
 	return (
 		
@@ -134,14 +152,20 @@ const Hero = () => {
             className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover"></div>
           <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] 
-            font-kanit   w-full z-10  text-white">QUALITY</h1>
+            font-kanit   w-full z-10  text-white">Luxury</h1>
         </section>
         <section className="z-40 relative h-screen w-screen flex justify-center items-center">
-          <div style={{ backgroundImage: `url(${hero_3})` }} className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
-          bg-center bg-no-repeat  bg-cover"></div>
-          <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10 text-white">
-			Luxury
-			</h1>
+          <div className=" w-screen h-screen bg-primary relative">
+          <p className="type text-[38px]  ss:text-[47px] sm:text-[50px] md:text-[55px]  lg:text-[62px]  mlg:text-[70px] text-slate-200 font-syncopate">
+            AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP
+            AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP
+AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP AAP
+            AAP AAP AAP AAP AAP AAP AAP   AAP AAP AAP AAP AAP AAP AAP AAP
+            AAP AAP AAP AAP AAP AAP AAP   AAP AAP AAP AAP AAP AAP AAP AAP
+            AAP AAP AAP AAP AAP AAP AAP   AAP AAP AAP AAP AAP AAP AAP AAP
+            AAP AAP AAP AAP AAP AAP AAP   AAP AAP AAP AAP AAP AAP AAP AAP
+          </p>
+        </div>
         </section>
         <section className="z-40 relative h-screen w-screen flex justify-center items-center">
           <div style={{ backgroundImage: `url(${hero_4})` }} className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
@@ -150,6 +174,8 @@ const Hero = () => {
 			Discovery Now
 		  </h1>
         </section>
+
+  
 
 
 			<div
