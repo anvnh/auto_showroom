@@ -80,7 +80,6 @@ const Navbar = () => {
 			}`}
 		>
 			<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-70 z-50">
-
 				<Link to="/">
 					<img
 						src={logo}
