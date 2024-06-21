@@ -192,6 +192,9 @@ const SignIn: React.FC = () => {
 									data-aos="fade-left"
 									className={`relative z-10 w-[500px] p-20 bg-black bg-opacity-50 shadow-xl rounded-lg rounded-tr-[200px] rounded-bl-[200px] mr-10 `}
 								>
+									<div className="absolute w-[450px] h-[70px] -top-[170px] z-40 -left-[140px]">
+										<img src={gif}  />
+									</div>
 									<h2 className="text-center pb-12 text-4xl font-syncopate text-white mb-6">
 										Sign Up
 									</h2>
@@ -270,6 +273,9 @@ const SignIn: React.FC = () => {
 									data-aos="fade-left"
 									className={`relative z-10 w-[500px] p-20 bg-black bg-opacity-50 shadow-xl rounded-lg rounded-tr-[200px] rounded-bl-[200px] mr-10 `}
 								>
+									<div className="absolute w-[450px] h-[70px] -top-[170px] z-40 -left-[140px]">
+										<img src={gif}  />
+									</div>
 									<h2 className="text-center pb-12 text-4xl font-syncopate text-white mb-6">
 										Sign In
 									</h2>

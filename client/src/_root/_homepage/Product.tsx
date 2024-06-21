@@ -173,7 +173,7 @@ const Product = () => {
 								src={car4}
 								alt=""
 								className="w-full h-full object-cover rounded-lg relative group-hover:scale-110 scale-90 transition-all ease-in-out duration-300"
-								style={{ top: "-20px" }}
+								style={{ top: "-2px" }}
 							/>
 							<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
 						</div>
@@ -194,7 +194,7 @@ const Product = () => {
 						data-aos="fade-up"
 						className="card group bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
 					>
-							<div className="car -mt-0 w-[320px] h-[200px]">
+							<div className="car -mt-0 md:w-[320px] md:h-[200px]">
 							<img
 								src={car6}
 								alt=""
@@ -270,7 +270,7 @@ const Product = () => {
 					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
 					<div className="flex justify-center pt-16 absolute inset-0">
-						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate select-none">
+						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate select-none">
 							Discover the new AAP
 						</h1>
 					</div>

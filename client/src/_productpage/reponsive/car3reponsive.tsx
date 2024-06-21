@@ -1,14 +1,10 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from 'react';
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+
 import {
 	r1,
 	r2,
 	r3,
-	r4,
-	r5,
-	r6,
-	r7,
 	r8,
 	change1,
 	change2,
@@ -32,7 +28,6 @@ import {
 import Car3popular2 from "../productHomePage/car3popular2";
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../../_root/_homepage/Navbar";
-import NavbarSmall3 from "../navbarsmall/NavbarSmall3";
 import AOS from "aos";
 
 const car3reponsive: React.FC = () => {
@@ -248,13 +243,6 @@ const car3reponsive: React.FC = () => {
 								}`}
 							/>
 						))}
-						<div
-							className="overlay absolute inset-x-0 bottom-0 lg:-bottom-72 h-1/4"
-							style={{
-								backgroundImage:
-									"linear-gradient(to top, black, transparent)",
-							}}
-						></div>
 					</div>
 
 					<div className="relative top-1">
@@ -319,7 +307,7 @@ const car3reponsive: React.FC = () => {
 					</div>
 				</div>
 			</div>
-			<div  id="Interiors" className="flex justify-center relative ss:pt-72 pt-20 sm:pt-[500px]">
+			<div  id="Interiors" className="flex justify-center relative ss:pt-72 pt-20 z-50 sm:pt-[500px]">
 				<div className="w-full">
 					<Car3popular2 />
 				</div>

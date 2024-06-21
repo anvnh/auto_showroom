@@ -16,13 +16,6 @@ import { Link } from "react-router-dom";
 import { MdOpenInNew } from "react-icons/md";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-import {
-	audiA5,
-	audiA8,
-	audiEtron,
-	audiQ5,
-} from "@/assets/hplat_asset/img/dropdownNavBarImage/vehicle/audi";
-
 import { MdLocalOffer } from "react-icons/md";
 import { HiMiniWrenchScrewdriver } from "react-icons/hi2";
 import { GiSteeringWheel } from "react-icons/gi";
@@ -82,11 +75,11 @@ const Navbar = () => {
 	return (
 
 		<div
-			className={`z-50 fixed top-0 w-full bg-gray-800 font-poppins transition-transform duration-300 ${
+			className={`z-50 fixed top-0 w-full font-poppins transition-transform duration-300 ${
 				isHidden ? "-translate-y-full" : "translate-y-0"
 			}`}
 		>
-			<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-primary md:px-12.5 px-8 bg-opacity-70 z-50">
+			<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar bg-gray-950 md:px-12.5 px-8 bg-opacity-70 z-50">
 
 				<Link to="/">
 					<img
@@ -231,7 +224,7 @@ const Navbar = () => {
 				</div>
 
 				<ul className="list-none sm:flex hidden justify-end items-center flex-1">
-					<Link to="/profile">
+					<Link to="/SignIn">
 						<li className="relative group">
 							<FaUser className="text-white w-[27px] h-[27px] transform hover:scale-110 transition-transform duration-300 cursor-pointer" />
 						</li>
@@ -244,7 +237,7 @@ const Navbar = () => {
 			{section === "vehiclesBar" ? (
 				<div
 					data-aos="fade-right"
-					className={`z-1 absolute w-screen h-[580px] rounded-b-[20px] font-syncopate  px-[10px] lg:px-[50px] pt-[28px] bg-gray-600`}
+					className={`z-1 absolute w-screen h-[580px] rounded-b-[20px] font-syncopate  px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-600`}
 				>
 					<div className="rounded-[40px] border-t-[2px]">
 						<img className="w-[60px] lg:w-[150px] " src={logomer} />
@@ -311,7 +304,7 @@ const Navbar = () => {
 			{section === "shoppingBar" ? (
 				<div
 					data-aos="fade-right"
-					className=" z-50 absolute w-screen h-[200px] rounded-b-[20px] xl:px-[100px] bg-gray-600  pt-[50px]   "
+					className=" z-50 absolute w-screen h-[200px] rounded-b-[20px] bg-opacity-85 xl:px-[100px] bg-gray-600  pt-[50px]   "
 				>
 					<div className="h-[200px]   flex justify-evenly  ">
 						<div className="lg:w-[300px] xl:w-[400px] cursor-pointer hover:scale-110 transition duration-300 flex-row items-center justify-center text-center ">
@@ -349,7 +342,7 @@ const Navbar = () => {
 			{section === "inventoryBar" ? (
 				<div
 					data-aos="fade-right"
-					className="z-50 absolute w-screen h-[250px] rounded-b-[20px]  bg-gray-600 py-[20px]  "
+					className="z-50 absolute w-screen h-[250px] rounded-b-[20px] bg-opacity-85 bg-gray-600 py-[20px]  "
 				>
 					<div className="">
 						<div className="w-screen font-bold text-[30px] text-center mb-[35px] border-b-[3px]">

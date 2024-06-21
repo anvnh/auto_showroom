@@ -27,6 +27,7 @@ import {
 	b7,
 	b8,
 	b9,
+	new3,
 } from "../../assets";
 import Car3popular2 from "../productHomePage/car3popular2";
 import { Footer } from "@/_root/_homepage";
@@ -295,7 +296,7 @@ const Car3popular: React.FC = () => {
 						>
 							<div
 								id="Color"
-								className="relative overflow-hidden w-full h-[890px] bottom-[360px] ss:-top-[600px] md:top-[1500px]"
+								className="relative overflow-hidden w-full h-[990px] bottom-[360px] ss:-top-[600px] md:top-[1500px]"
 							>
 								{/* Vùng chứa ảnh */}
 								<div className="absolute top-0 left-0 w-full h-full">
@@ -305,7 +306,7 @@ const Car3popular: React.FC = () => {
 												key={index}
 												src={image}
 												alt={`Image ${index + 1}`}
-												className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-5000 ${
+												className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-500 ${
 													activeImage === index
 														? "opacity-100"
 														: "opacity-0"
@@ -313,19 +314,13 @@ const Car3popular: React.FC = () => {
 											/>
 										)
 									)}
-									<div
-										className="overlay absolute inset-x-0 bottom-0 h-1/4"
-										style={{
-											backgroundImage:
-												"linear-gradient(to top, black, transparent)",
-										}}
-									></div>
+								
 								</div>
 
 								{/* Nút chuyển ảnh */}
 
 								<div
-									className="z-20 pl-[1590px] absolute top-[230px] ss:top-[430px] xs:top-[320px] sm:top-[580px]  transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 "
+									className="z-20 pl-[1590px] absolute top-[230px] md:top-[500px] transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 "
 									ref={buttonsRef}
 								>
 									{imageGroups[activeGroup].map(
@@ -342,7 +337,7 @@ const Car3popular: React.FC = () => {
 								</div>
 
 								{/* Nút chuyển nhóm ảnh */}
-								<div className="absolute flex justify-end pr-44 top-52 ss:top-[410px] xs:top-[300px] sm:top-[550px]  md:top-4 md:w-[1850px]  sm:h-[60px] sm:text-4xl text-sm md:text-xl md:h-[40px] h-[40[x]] md:space-x-4 md:gap-0 gap-2">
+								<div className="absolute flex justify-end pr-4 top-52 ss:top-[410px] xs:top-[300px] sm:top-[550px]  md:top-4 md:w-[1850px]  sm:h-[60px] sm:text-4xl text-sm md:text-xl md:h-[40px] h-[40[x]] md:space-x-4 md:gap-0 gap-2">
 									<button
 										onClick={() => {
 											setActiveImage(0);
@@ -393,7 +388,7 @@ const Car3popular: React.FC = () => {
 						>
 							<div
 								id="Interiors"
-								className="flex justify-center bottom-[900px] md:-bottom-[1160px] bg-bla relative"
+								className="flex justify-center bottom-[900px] md:-bottom-[1030px] bg-bla relative"
 							>
 								<div className="w-full">
 									<Car3popular2 />
@@ -419,7 +414,7 @@ const Car3popular: React.FC = () => {
 						<ParallaxLayer offset={5.2} speed={0.8} factor={1}>
 							<div className="justify-end items-end flex">
 								<div
-									style={{ backgroundImage: `url(${b9})` }}
+									style={{ backgroundImage: `url(${new3})` }}
 									className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1050px] ss:-top-[300px] sm:-top-[200px] md:top-[1700px]"
 								></div>
 							</div>

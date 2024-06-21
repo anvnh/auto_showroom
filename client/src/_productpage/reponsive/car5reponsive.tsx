@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from 'react';
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+
 import {
 	change1,
 	change2,
@@ -16,23 +16,21 @@ import {
 	inside51,
 	inside52,
 	inside53,
-	baner51,
-	car51,
-	car52,
+
 	car53,
 	car54,
 	car55,
-	car56,
+
 	car57,
 	car58,
 	car59,
 	car592,
 	car510,
 } from "../../assets";
-import Car3popular2 from "../productHomePage/car3popular2";
+import Car5popular2 from "../productHomePage/car5popular2";
 import { Footer } from "@/_root/_homepage";
 import Navbar from "../../_root/_homepage/Navbar";
-import NavbarSmall3 from "../navbarsmall/NavbarSmall3";
+
 import AOS from "aos";
 
 const car5reponsive: React.FC = () => {
@@ -319,9 +317,9 @@ const car5reponsive: React.FC = () => {
 					</div>
 				</div>
 			</div>
-			<div  id="Interiors" className="flex justify-center relative ss:pt-72 pt-20 sm:pt-[500px]">
+			<div  id="Interiors" className="flex justify-center relative ss:pt-72 pt-20 z-50 sm:pt-[500px]">
 				<div className="w-full">
-					<Car3popular2 />
+					<Car5popular2 />
 				</div>
 			</div>
 			{/* // đẳng cấp */}
