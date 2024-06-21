@@ -30,6 +30,9 @@ app.use(express.urlencoded({ extended: true })); // to parse form data(urlencode
 
 app.use(cookieParser()); // to parse cookies
 
+app.use("/", (req, res) => {
+    res.send("Welcome to Social Media API");
+});
 app.use("/api/auth", authRoutes); // auth routes
 app.use("/api/user", userRoutes); // user routes
 app.use("/api/posts", postRoutes); // post routes
