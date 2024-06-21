@@ -4,7 +4,6 @@ import About from "./About"
 import Benefit from "./Benefit"
 import Futher from "./Futher"
 import Footer from "./Footer"
-import SignIn from "../SignIn"
 
 export {
     Navbar,
@@ -12,6 +11,5 @@ export {
     About,
     Benefit,
     Futher,
-    Footer,
-    SignIn,
+    Footer
 }
