@@ -237,23 +237,23 @@ const Navbar = () => {
 			{section === "vehiclesBar" ? (
 				<div
 					data-aos="fade-right"
-					className={`z-1 absolute w-screen h-[580px] rounded-b-[20px] font-syncopate  px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-600`}
+					className={`z-1 absolute w-screen h-[450px] ss:h-[600px] rounded-b-[20px] font-syncopate  px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-600`}
 				>
 					<div className="rounded-[40px] border-t-[2px]">
-						<img className="w-[60px] lg:w-[150px] " src={logomer} />
+						<img className="w-[80px] md:w-[150px] lg:w-[150px] " src={logomer} />
 					</div>
 
 					{/* // hàng 1 ----------------------*/}
-					<div className="flex pl-44 gap-[210px] bottom-10 relative w-screen h-[150px] xs:h-[180px]">
+					<div className="flex justify-center md:justify-evenly items-center gap-[100px] sm:gap-[210px] bottom-10 relative w-screen h-[150px] xs:h-[180px]">
 						<Link to="/Mercedes-AMG-CLS">
 							<div className="cursor-pointer">
 								<div>
 									<img
-										className=" sm:w-[190px] lg:w-[220px] hover:scale-110 transition "
+										className="  h-[70px] sm:h-[90px] lg:h-[100xp] w-[200px] sm:w-[260px] lg:w-[280px]  object-cover hover:scale-110 transition "
 										src={carnb1}
 									/>
 								</div>
-								<p className=" sm:text-[25px] lg:text-[28px]">
+								<p className=" text-[17px] ss:text-[23px] md:text-[28px]">
 									AMG CLS
 								</p>
 								<p className=" text-[18px]">$26 100</p>
@@ -263,12 +263,12 @@ const Navbar = () => {
 							<div className="cursor-pointer">
 								<div>
 									<img
-										className=" sm:w-[190px] -left-8 relative lg:w-[280px] hover:scale-110 transition"
+										className="   relative h-[70px] sm:h-[90px] lg:h-[100px]  bg-center  object-cover  w-[200px] sm:w-[260px] lg:w-[280px] hover:scale-110 transition"
 										src={carnb2}
 									/>
 								</div>
-								<p className="xs:text-[25px] md:text-[28px]">
-									maybach 2022
+								<p className=" text-[17px] ss:text-[23px] md:text-[28px]">
+									Maybach 2022
 								</p>
 								<p className="text-[18px]">$ 679 867</p>
 							</div>
@@ -278,24 +278,37 @@ const Navbar = () => {
 					{/* // audi ----------------------------*/}
 					<div className="rounded-[40px] border-t-[2px] border-slate-400px-[10px]">
 						<img
-							className="w-[60px] pl-12 lg:w-[160px]"
+							className="ml-[20px] w-[40px] ss:w-[70px]  md:w-[130px] lg:w-[140px]"
 							src={logoaudi}
 						/>
 					</div>
 					{/* hàng 2----------------------------------- */}
-					<div className="flex font-syncopate pl-44 gap-[210px] w-screen h-[150px] xs:h-[210px] bottom-10 relative">
+					<div className="flex justify-center md:justify-evenly items-center gap-[100px] sm:gap-[210px] bottom-10 relative w-screen h-[150px] xs:h-[180px]">
 					<Link to="/audi-A5-Couple">
 						<div className="cursor-pointer">
 							<div>
 								<img
-									className="sm:w-[190px] lg:w-[250px] hover:scale-110 transiton"
+									className=" h-[70px] sm:h-[90px] lg:h-[100xp] w-[200px] sm:w-[260px] lg:w-[280px]  object-cover hover:scale-110 transition"
 									src={carnb3}
 								/>
 							</div>
-							<p className="xs:text-[25px] lg:text-[28px]">A5 Coupe</p>
+							<p className=" text-[17px] ss:text-[23px] md:text-[28px]">A5 Coupe</p>
 							<p className="text-[18px]">$ 48 000</p>
 						</div>
 						</Link>
+							<Link to="/audi-s6-limousin">
+						<div className="cursor-pointer">
+							<div>
+								<img
+									className=" h-[70px] sm:h-[90px] lg:h-[100xp] w-[200px] sm:w-[260px] lg:w-[280px]  object-cover hover:scale-110 transition"
+									src={carnb3}
+								/>
+							</div>
+							<p className=" text-[17px] ss:text-[23px] md:text-[28px]">S6 Limousin</p>
+							<p className="text-[18px]">$ 58 000</p>
+						</div>
+						</Link>
+							
 					</div>
 				</div>
 			) : null}
