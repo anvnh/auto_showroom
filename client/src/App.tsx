@@ -7,31 +7,56 @@ import HomePage from './pages/auth/home/HomePage';
 import SignUpPage from './pages/auth/signup/SignUpPage';
 import LoginPage from './pages/auth/login/LoginPage';
 
+import Sidebar from './components/social/ui/common/Sidebar';
+import RightPanel from './components/social/ui/common/RightPanel';
+import NotificationPage from './pages/notification/NotificationPage';
+import ProfilePage from './pages/profile/ProfilePage';
+
+import {ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5} from './_productpage/layout/';
+import { Toaster } from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
+import { LuDivideCircle } from 'react-icons/lu';
+import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
+import  SignIn  from './_owners/SignIn';
+
 import {ProductLayout1, ProductLayout2, ProductLayout3} from './_productpage/layout/';
 const App = () => {
     return (
-        <main className="flex h-screen">
-            <Routes>
-                {/* Home Page */}
-                <Route index element={<RootLayout/>} />
+        <>
+            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'max-w-[80%] mx-auto') : 'h-screen'}`}> 
+                {location.pathname.startsWith('/social') && authUser && <Sidebar />}
+                <Routes>
 
-                {/* User Page */}
-                <Route path="/owners" element={<UserLayout />} />
-                <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
-                <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
+                    <Route path="/" element={<RootLayout />} />
 
-                {/* Introduce popular product */}
-                <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />
-                <Route path="/Mercedes-Benz-Maybach-2022" element={<ProductLayout2 />} />
-                <Route path="/Rolls-Royce-Ghost-2021" element={<ProductLayout3 />} />
+                    <Route path="/owners" element={<UserLayout />} />
+                    <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
+                    <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
 
-                {/* Social pages */}
-                <Route path="/social" element={<HomePage />} />
-                <Route path="/social/signup" element={<SignUpPage />} />
-                <Route path="/social/login" element={<LoginPage />} />
 
-            </Routes>
-        </main>
+
+                    {/* carpopular-------------------------------------- */}
+                    <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />
+                    <Route path="/Mercedes-Benz-Maybach-2022" element={<ProductLayout2 />} />
+                    <Route path="/Rolls-Royce-Ghost-2021" element={<ProductLayout3 />} />
+                    <Route path="/Roll-Royce-Phantom" element={<ProductLayout5 />} />
+
+
+                    {/* owners--------------------------------------- */}
+                    <Route path="/SignIn" element={<SignIn />} />
+
+                    {/* social------------------------------ */}
+                    <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/social/login" />} />
+                    <Route path="/social/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
+                    <Route path="/social/login" element={!authUser ? <LoginPage /> : <Navigate to="/social" />} />
+                    <Route path="/social/notifications" element={authUser ? <NotificationPage /> : <Navigate to="/social/login" />} />
+                    <Route path="/social/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/social/login" />} />
+
+                </Routes>
+                {location.pathname.startsWith('/social') && authUser && <RightPanel />}
+                {location.pathname.startsWith('/social') && <Toaster />}
+            </main>
+        </>
     )
 }
 

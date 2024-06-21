@@ -1,4 +1,3 @@
-import logo from "./logo.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -16,12 +15,6 @@ import car2 from "./car/xe2.png";
 import car4 from "./car/xe4.png";
 import car5 from "./car/xe5.png";
 import car6 from "./car/xe6.png";
-
-import logo1 from "./logo_car1.png";
-import logo4 from "./logo_car4.png";
-import logo5 from "./logo_car5.png";
-import logo236 from "./logo_car236.png";
-import logoroi from "./car_popular/car3popular/logo.png";
 
 import user_hero_1 from "./user_hero_1.jpg";
 
@@ -67,7 +60,6 @@ import mer10 from "./car1_popular/mer10.jpg";
 import mer11 from "./car1_popular/mer11.jpg";
 import mer12 from "./car1_popular/mer12.avif";
 import sky from "./car1_popular/sky.jpg";
-import logomer from "./car1_popular/logomer.png";
 import banner1 from "./car1_popular/banner1.jpg";
 
 // car2 popular
@@ -118,7 +110,77 @@ import b8 from "./car_popular/car3popular/b8.webp";
 import b9 from "./car_popular/car3popular/b9.webp";
 import toi from "./car_popular/car3popular/toi.png";
 
+
+//car5 popular
+import car51 from "./car_popular/car5popular/car51.jpg";
+import car52 from "./car_popular/car5popular/car52.jpg";
+import car53 from "./car_popular/car5popular/car53.jpg";
+import car54 from "./car_popular/car5popular/car54.jpg";
+import car55 from "./car_popular/car5popular/car55.webp";
+import car56 from "./car_popular/car5popular/car56.jpg";
+import car57 from "./car_popular/car5popular/car54.webp";
+import car58 from "./car_popular/car5popular/car58.webp";
+import car59 from "./car_popular/car5popular/car59.webp";
+import car592 from "./car_popular/car5popular/car59 - Copy.jpg";
+import car510 from "./car_popular/car5popular/car510.webp";
+import inside51 from "./car_popular/car5popular/inside51.webp";
+import inside52 from "./car_popular/car5popular/inside52.webp";
+import inside53 from "./car_popular/car5popular/inside53.webp";
+import baner51 from "./car_popular/car5popular/baner51.jpg";
+
+// logo car
+import logo from "./logo.png";
+import logo1 from "./logo_car1.png";
+import logo4 from "./logo_car4.png";
+import logo5 from "./logo_car5.png";
+import logo236 from "./logo_car236.png";
+import logoroi from "./logo/logoroll.png";
+import logomer from "./logo/logomer.png";
+import logoaudi from "./logo/logoaudi.png";
+import logopos from "./logo/logopos.png";
+
+// navbar car
+// mer
+import carnb1 from "./car/carnavbar/MercedesAMGCLS.png";
+import carnb2 from "./car/carnavbar/MercedesbenZmaybach2022.png";
+
+// audi
+import carnb3 from "./car/carnavbar/A5coupe.png";
+
+//Owner------------------------------------
+import owner1 from "./owner/back.jpg";
+import owner2 from "./owner/back1.jpg";
+import owner3 from "./owner/back2.jpg";
+import gif from "./login/giphy.webp";
+import bgLG from "./login/backgroundlogin.png";
+
 export {
+	bgLG,
+	gif,
+	owner1,
+	owner2,
+	owner3,
+	carnb1,
+	carnb2,
+	carnb3,
+	logoaudi,
+	logopos,
+	inside51,
+	inside52,
+	inside53,
+	baner51,
+	car51,
+	car52,
+	car53,
+	car54,
+	car55,
+	car56,
+	car57,
+	car58,
+	car59,
+	car592,
+	car510,
+
 	b7,
 	b8,
 	b9,

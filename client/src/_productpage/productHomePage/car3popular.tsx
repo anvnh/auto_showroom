@@ -97,8 +97,29 @@ const Car3popular: React.FC = () => {
 		}
 	}, [activeImage, activeGroup]);
 
-	const parallaxRef = useRef(null); // Tạo ref cho Parallax
+	const parallaxRef = useRef(null); 
 	const parallaxLayerRefs = useRef([]);
+
+	const footerRef = useRef<HTMLElement>(null); // Ref cho phần tử footer
+
+	useEffect(() => {
+		const updateFooterPosition = () => {
+			if (parallaxRef.current && footerRef.current) {
+				// Kiểm tra cả hai ref
+				const totalHeight = getPageHeight();
+				footerRef.current.style.top = `${totalHeight}px`;
+			}
+		};
+
+		// Gọi khi trang load và khi viewport thay đổi kích thước
+		updateFooterPosition();
+		window.addEventListener("resize", updateFooterPosition);
+
+		return () => {
+			window.removeEventListener("resize", updateFooterPosition);
+		};
+	}, []); 
+
 	return (
 		<div className="parallax">
 			<div>
@@ -291,13 +312,54 @@ const Car3popular: React.FC = () => {
 								/>
 							))}
 							<div
-								className="overlay absolute inset-x-0 bottom-0 h-1/4"
-								style={{
-									backgroundImage:
-										"linear-gradient(to top, black, transparent)",
-								}}
-							></div>
-						</div>
+
+								id="Color"
+								className="relative overflow-hidden w-full h-[890px] bottom-[360px] ss:-top-[600px] md:top-[1500px]"
+							>
+								{/* Vùng chứa ảnh */}
+								<div className="absolute top-0 left-0 w-full h-full">
+									{imageGroups[activeGroup].map(
+										(image, index) => (
+											<img
+												key={index}
+												src={image}
+												alt={`Image ${index + 1}`}
+												className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-5000 ${
+													activeImage === index
+														? "opacity-100"
+														: "opacity-0"
+												}`}
+											/>
+										)
+									)}
+									<div
+										className="overlay absolute inset-x-0 bottom-0 h-1/4"
+										style={{
+											backgroundImage:
+												"linear-gradient(to top, black, transparent)",
+										}}
+									></div>
+								</div>
+
+								{/* Nút chuyển ảnh */}
+
+								<div
+									className="z-20 pl-[1490px] pt-[700px] transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 "
+									ref={buttonsRef}
+								>
+									{imageGroups[activeGroup].map(
+										(__, index) => (
+											<button
+												key={index}
+												onClick={() => {
+													setActiveImage(index);
+												}}
+												className={`md:w-5 md:h-5 ss:w-6 ss:h-6 sm:w-8 sm:h-8 w-4 h-4 rounded-full focus:outline-none hover:scale-150 transition-all duration-200 ease-in-out ${buttonColors2[index]}`}
+											></button>
+										)
+									)}
+								</div>
+
 
 						{/* Nút chuyển ảnh */}
 						<div
