@@ -9,6 +9,7 @@ import postRoutes from './routes/post.route.js';
 import nofiticationRoutes from './routes/notification.route.js';
 
 import connectMongoDB from './db/connectMongoDB.js';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ cloudinary.config({
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(cors()); // to allow cross-origin requests
 
 app.use(express.json({limit:"5mb"})); // to parse req.body
 // limit shouldn't be too hight to prevent DOS
