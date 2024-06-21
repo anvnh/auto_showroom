@@ -2,7 +2,7 @@ import { generateTokenAndSetCookie } from '../lib/utils/generateToken.js';
 import User from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
 import nodemailer from "nodemailer";
-import jwt from "jsonwebtoken";
+
 
 export const signup = async (req, res) => {
     try {
