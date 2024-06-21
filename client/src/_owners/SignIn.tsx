@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { logo, bgLG } from "../assets";
+import { logo, gif, bgLG } from "../assets";
 const LoginForm: React.FC = () => {
 	const [showSignUpForm, setShowSignUpForm] = useState(false);
 	const [showSignInForm, setShowSignInForm] = useState(false);
@@ -181,7 +181,10 @@ const LoginForm: React.FC = () => {
 									data-aos="fade-left"
 									className={`relative z-10 w-[500px] p-20 bg-black bg-opacity-50 shadow-xl rounded-lg rounded-tr-[200px] rounded-bl-[200px] mr-10 `}
 								>
-									
+									<img
+										src={gif}
+										className="absolute md:w-[400px] w-[55px] md:h-[250px] h-[55px] bottom-[500px] flex -left-40"
+									/>
 
 									<h2 className="text-center pb-12 text-4xl font-syncopate text-white mb-6">
 										Sign Up
@@ -260,7 +263,10 @@ const LoginForm: React.FC = () => {
 									data-aos="fade-left"
 									className={`relative z-10 w-[500px] p-20 bg-black bg-opacity-50 shadow-xl rounded-lg rounded-tr-[200px] rounded-bl-[200px] mr-10 `}
 								>
-									
+									<img
+										src={gif}
+										className="absolute md:w-[400px] w-[55px] md:h-[250px] h-[55px] bottom-[390px] flex -left-40"
+									/>
 									<h2 className="text-center pb-12 text-4xl font-syncopate text-white mb-6">
 										Sign In
 									</h2>
