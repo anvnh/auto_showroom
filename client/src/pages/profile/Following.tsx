@@ -67,7 +67,7 @@ const Following = () => {
 					)}
 				</div>
                 {user?.map((following) => (
-                    <div className='bg-black bg-opacity-55 my-2 border border-gray-800 rounded-3xl' key={following._id}>
+                    <div className='hover:bg-gray-600 hover:bg-opacity-15 bg-black bg-opacity-55 my-2 border border-gray-800 rounded-3xl' key={following._id}>
                         <Link to={`/social/profile/${following.username}`}>
                             <div className='gap-2 p-4'>
                                 <div className='avatar'>
