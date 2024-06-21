@@ -704,9 +704,9 @@ const Audi_A5_Couple = () => {
         {/* -------slogan----------- */}
         <div
           ref={container_slogan}
-          className=" w-screen h-[300px]  flex justify-center items-center bg-slate-100 "
+          className=" w-screen h-[300px]  flex justify-center items-center "
         >
-          <p ref={slogan_text} className="font-syncopate text-[24px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] text-slate-800">
+          <p ref={slogan_text} className="font-syncopate text-[24px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px]">
             DO YOU WANT TO RACE?
           </p>
         </div>
@@ -719,7 +719,7 @@ const Audi_A5_Couple = () => {
             {/* <img src={a5_1} className="lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover"/> */}
           </div>
           <div className="h-full  w-full lg:w-[50%]  flex justify-center items-center bg-slate-100 ">
-            <div className="w-full h-full mx-[5%] flex justify-center  flex-col text-slate-800">
+            <div className="w-full h-full mx-[5%] flex justify-center  flex-col">
               <h1
                 ref={split1_h1}
                 className="opacity-0 font-syncopate  text-center xl:text-start    lg:text-[30px] mlg:text-[33px] xl:text-[50px] font-medium"
@@ -735,7 +735,7 @@ const Audi_A5_Couple = () => {
         </div>
 
         {/* ---------------Split2------------------- */}
-        <div ref={container_split2} className="relative hidden lg:flex  w-screen h-screen text-slate-800">
+        <div ref={container_split2} className="relative hidden lg:flex  w-screen h-screen">
           <div className="h-screen   w-[50%]  flex  justify-center items-center bg-slate-100 ">
             <div className="w-full mx-[5%]  h-full flex justify-center items-center flex-col  ">
               <h1
@@ -759,7 +759,7 @@ const Audi_A5_Couple = () => {
           <div className="w-screen h-[600px]">
             <img src={a5_10} className="w-screen h-full object-cover" />
           </div>
-          <div className="w-screen flex flex-col justify-center items-center h-[300px]  bg-slate-100 text-slate-800 ">
+          <div className="w-screen flex flex-col justify-center items-center h-[300px]  ">
             <h1
               className=" font-syncopate  text-[25px] ss:text-[35px]  "
             >
@@ -776,7 +776,7 @@ const Audi_A5_Couple = () => {
           <div className="w-screen h-[600px]">
             <img src={a5_13} className="w-full h-full object-cover" />
           </div>
-          <div className="w-screen flex flex-col justify-center items-center h-[300px]  bg-slate-100 text-slate-800 ">
+          <div className="w-screen flex flex-col justify-center items-center h-[300px]  ">
             <h1
               className=" font-syncopate  text-[20px] xs:text-[25px] ss:text-[35px]  "
             >
@@ -860,7 +860,7 @@ const Audi_A5_Couple = () => {
         {/* ----------history  ----- */}
         <div
           ref={section1}
-          className="w-screen h-screen  hidden sm:flex flex-col md:flex-row relative  bg-slate-100 text-slate-800 "
+          className="w-screen h-screen  hidden sm:flex flex-col md:flex-row relative  "
         >
           <div ref={sec1_text} className=" w-full md:w-[40%] px-[7%] md:px-[5%] h-[35%] md:h-full flex flex-col justify-center items-center ">
             <div className="flex justify-center items-center h-[20%] w-full text-[60px]  md:text-[70px] mlg:text-[100px] font-bold font-syncopate ">
@@ -878,7 +878,7 @@ const Audi_A5_Couple = () => {
         {/* medium -> */}
         <div
           ref={section2}
-          className="w-screen h-screen  hidden md:flex  relative bg-slate-100 text-slate-800   ">
+          className="w-screen h-screen  hidden md:flex  relative   ">
           <div className="w-[60%] h-full relative">
             <img ref={sec2_img1} src={a5_6} className=" absolute top-[20%] md:top-[15%] lg:top-[20%] mlg:top-[14%] left-[50px] w-[350px] md:w-[500px] mlg:w-[550px]   xl:w-[800px] h-[250px] md:h-[300px] lg:h-[320px] mlg:h-[370px] object-cover" />
             <img ref={sec2_img2} src={a5_3} className=" absolute bottom-[25%]  md:bottom-[25%] lg:bottom-[15%] mlg:bottom-[10%] right-[50px] w-[350px] md:w-[500px] mlg:w-[550px]  xl:w-[800px] h-[250px] md:h-[300px] lg:h-[320px] mlg:h-[370px] object-cover" />
@@ -895,7 +895,7 @@ const Audi_A5_Couple = () => {
         {/* sm->md */}
         <div
           ref={section22}
-          className="w-screen h-screen  hidden sm:flex md:hidden flex-col  relative bg-slate-100 text-slate-800   "
+          className="w-screen h-screen  hidden sm:flex md:hidden flex-col  relative  "
         >
           <div className=" w-full md:w-[40%] px-[7%] h-[35%] md:h-full flex flex-col justify-center items-center ">
             <div className="flex justify-center items-center h-[20%] w-full text-[60px]  md:text-[80px] mlg:text-[100px] font-bold font-syncopate ">
@@ -916,7 +916,7 @@ const Audi_A5_Couple = () => {
 
 
         {/* -----------mobile------- history */}
-        <div className="w-full h-screen flex sm:hidden flex-col bg-slate-100 text-slate-800 " >
+        <div className="w-full h-screen flex sm:hidden flex-col " >
           <div className="w-full px-[10%] h-full flex flex-col justify-center items-center ">
             <div className="flex justify-center items-center h-[20%] w-full text-[60px] font-bold font-syncopate ">
               1995
@@ -931,7 +931,7 @@ const Audi_A5_Couple = () => {
           </div>
         </div>
         <div
-          className="w-full h-screen flex sm:hidden flex-col  justify-center items-center bg-slate-100 text-slate-800"
+          className="w-full h-screen flex sm:hidden flex-col  justify-center items-center bg-slate-"
         >
           <div className="w-full  px-[10%] h-full flex flex-col justify-center items-center ">
             <div className="flex justify-center items-center h-[20%] w-full text-[60px]  font-bold font-syncopate ">
@@ -951,7 +951,7 @@ const Audi_A5_Couple = () => {
         {/* --------------desktop-----------Container-Pin-------- */}
         <div
           ref={container_pin}
-          className="overflow-x-hidden  hidden md:flex  w-screen h-[400%] bg-slate-100 text-slate-800"
+          className="overflow-x-hidden  hidden md:flex  w-screen h-[400%]"
         >
           <div ref={box_left} className="w-[40%]  h-screen  ">
             <div className="h-full w-full flex flex-col justify-center items-center border-r border-r-slate-800 ">
@@ -964,7 +964,7 @@ const Audi_A5_Couple = () => {
             </div>
           </div>
 
-          <div ref={box_right} className="h-[400%] w-[60%]  flex flex-col text-slate-800">
+          <div ref={box_right} className="h-[400%] w-[60%]  flex flex-col">
             <div ref={right_section1} className="w-full h-screen flex flex-row justify-evenly items-center">
               <img ref={section1_img1} src={audiA5_15} className="w-[25%] h-[80%] object-cover" />
               <img ref={section1_img2} src={audiA5_9} className="w-[25%] h-[80%] object-cover" />
@@ -1026,7 +1026,7 @@ const Audi_A5_Couple = () => {
         </div>
 
         {/* -----mobile pin */}
-        <div className=" w-screen h-screen px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-slate-100 text-slate-800">
+        <div className=" w-screen h-screen px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-slate-900 text-white">
           <h1 className="w-full text-[50px] font-syncopate text-center" >
             NEW ERA
           </h1>
