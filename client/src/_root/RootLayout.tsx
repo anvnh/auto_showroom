@@ -9,6 +9,7 @@ import Lenis from "@studio-freight/lenis"
 
 const RootLayout = () => {
 
+
     useEffect(() => {
 		AOS.init({
 			duration: 800,
