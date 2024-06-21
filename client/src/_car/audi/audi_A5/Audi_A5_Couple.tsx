@@ -602,7 +602,8 @@ const hero_section1 = useRef(null)
       <motion.div
         ref={ref}
         style={{ x, y }}
-        className=" z-20 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[200px] w-[200px] rounded-[50%] xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400"
+        className=" z-20 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[100px] w-[100px] rounded-[50%] bg-slate-800 "
+        //xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400
       />
       <div>
         <div className="flex ">
@@ -645,8 +646,8 @@ const hero_section1 = useRef(null)
           bg-center bg-no-repeat   flex justify-center items-center gap-x-[6%]">
             <p
               ref={sec3_img1}
-              className="w-[25%] h-[70%] ">
-              <img src={a1} className="w-full h-full object-cover" />
+              className="w-[25%] h-[70%]  ">
+              <img src={a1} className="w-full h-full object-cover " />
             </p>
             <p
               ref={sec3_img2}
