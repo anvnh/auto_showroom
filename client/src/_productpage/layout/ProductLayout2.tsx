@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 import NavbarSmall2 from "../navbarsmall/NavbarSmall2";
 import Car2popular from "../productHomePage/car2popular";
 import React, { useEffect, useRef, useState } from "react";
-const ProductLayout = () => {
+const ProductLayout2 = () => {
 	const [selectedSection, setSelectedSection] = useState("");
 	const handleNavClick = (section) => {
 		setSelectedSection((prevSection) =>
@@ -48,4 +48,4 @@ const ProductLayout = () => {
 	);
 };
 
-export default ProductLayout;
+export default ProductLayout2;
