@@ -596,6 +596,12 @@ const hero_section1 = useRef(null)
   }, []);
 
 
+  gsap.config({
+  autoSleep: 60,
+  force3D: false,
+  nullTargetWarn: false,
+  units: { left: "%", top: "%", rotation: "rad" },
+});
   
   return (
 
