@@ -1,35 +1,37 @@
-import {Navbar, Hero, Product, Product2 ,Banner, Footer, CarBrand} from './_homepage'
+import {Navbar, Hero, Product, Product2 ,Banner, CarBrand} from './_homepage'
+import Footer from '@/components/common/Footer'
 import AOS from "aos";
 import Lenis from "@studio-freight/lenis"
 import "aos/dist/aos.css";
 import {
     backgroundcar2
 } from "../assets";
-import React, { useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef } from "react";
 const RootLayout = () => {
 
+
 useEffect(()=>{
-   const lenis = new Lenis();
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf); 
-      return () => {
-      lenis.destroy();
-    };
- },[])
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf); 
+        return () => {
+            lenis.destroy();
+        };
+    },[])
     useEffect(() => {
-		AOS.init({
-			duration: 800,
+        AOS.init({
+            duration: 800,
 
-			easing: "ease-in-out",
-			once: false,
-			mirror: true,
-			anchorPlacement: "top-bottom",
-		});
+            easing: "ease-in-out",
+            once: false,
+            mirror: true,
+            anchorPlacement: "top-bottom",
+        });
 
-	}, []);
+        }, []);
 
     return (
         <section className="w-full bg-primary">
@@ -60,7 +62,7 @@ useEffect(()=>{
                         <Banner />
                     </div>
                 </div>   
-                <div className="flex items-start justify-center bg-gray-700">
+                <div className="flex items-start justify-center bg-gray-950">
                     <div className="w-full">
                         <CarBrand />
                     </div>

@@ -26,8 +26,8 @@ import {
 import { audiA5_15,  audiA5_9, } from "@/assets/audiA5";
 //-------------------Component--------------
 import "./style.css";
-import { Footer } from "@/_root/_homepage";
 import { useFollowPointer } from "./pointer";
+import Footer from "@/components/common/Footer";
 
 
 const Audi_A5_Couple = () => {

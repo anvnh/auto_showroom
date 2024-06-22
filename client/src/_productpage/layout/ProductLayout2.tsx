@@ -1,4 +1,4 @@
-import { Footer } from "@/_root/_homepage";
+import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 import AOS from "aos";
 import "aos/dist/aos.css";

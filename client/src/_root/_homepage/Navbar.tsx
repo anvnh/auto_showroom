@@ -212,7 +212,7 @@ const Navbar = () => {
 							</li>
 							<li className="relative group cursor-pointer text-[18px] text-white mb-2.5 select-none">
 
-								<Link to="/users">
+								<Link to="/owners">
 									<p className="transform group-hover:scale-110 group-hover:text-gray-300 transition-transform duration-300">
 										Owners
 									</p>
