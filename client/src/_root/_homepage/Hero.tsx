@@ -130,6 +130,12 @@ const Hero = () => {
     })
   },[])
 	
+gsap.config({
+  autoSleep: 60,
+  force3D: false,
+  nullTargetWarn: false,
+  units: { left: "%", top: "%", rotation: "rad" },
+});
 	return (
 		
 		<div className={`  `}>
