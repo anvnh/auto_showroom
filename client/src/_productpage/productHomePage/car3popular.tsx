@@ -30,7 +30,7 @@ import {
 	new3,
 } from "../../assets";
 import Car3popular2 from "../productHomePage/car3popular2";
-import { Footer } from "@/_root/_homepage";
+import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 import NavbarSmall3 from "../navbarsmall/NavbarSmall3";
 import Car3reponsive from "../reponsive/car3reponsive";

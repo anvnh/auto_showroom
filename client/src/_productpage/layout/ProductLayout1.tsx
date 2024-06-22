@@ -1,5 +1,5 @@
-import { Footer } from "@/_root/_homepage";
 import Navbar from "../../_root/_homepage/Navbar";
+import Footer from "@/components/common/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import NavbarSmall from "../navbarsmall/NavbarSmall";

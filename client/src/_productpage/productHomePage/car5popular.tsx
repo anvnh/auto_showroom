@@ -31,7 +31,7 @@ import {
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import Car5popular2 from "../productHomePage/car5popular2";
-import { Footer } from "@/_root/_homepage";
+import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 import NavbarSmall4 from "../navbarsmall/NavbarSmall4";
 import Car5reponsive from "../reponsive/car5reponsive";

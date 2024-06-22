@@ -27,8 +27,8 @@ import { sport1, sport2, sport3, sport4, sport5, sport6, sport7 ,sport8, sport9 
 import { audiA5_15,  audiA5_9, } from "@/assets/audiA5";
 //-------------------Component--------------
 import "./style.css";
-import { Footer } from "@/_root/_homepage";
 import { useFollowPointer } from "./pointer";
+import Footer from "@/components/common/Footer";
 
 
 const AudiS6Limousin = () => {

@@ -47,12 +47,12 @@ const Hero = () => {
                             
 						</div>
                         <Link to="/social" className="pt-10">
-								<button className="relative flex h-[50px] w-56 items-center rounded-3xl justify-center overflow-hidden bg-gray-600 text-xl font-poppins  text-white shadow-2xl transition-all ease-in-out duration-700 before:absolute before:inset-0 before:border-0 before:border-white before:duration-100 before:ease-linear hover:bg-white hover:text-gray-950 hover:shadow-gray-800 hover:before:border-[25px]">
-									<span className="relative z-10">
-										Give it a try
-									</span>
-								</button>
-							</Link>
+                            <button className="relative flex h-[50px] w-56 items-center rounded-3xl justify-center overflow-hidden bg-gray-600 text-xl font-poppins  text-white shadow-2xl transition-all ease-in-out duration-700 before:absolute before:inset-0 before:border-0 before:border-white before:duration-100 before:ease-linear hover:bg-white hover:text-gray-950 hover:shadow-gray-800 hover:before:border-[25px]">
+                                <span className="relative z-10">
+                                    Give it a try
+                                </span>
+                            </button>
+                        </Link>
 					</div>
 				</div>
 				<div className="md:hidden flex">
@@ -72,6 +72,9 @@ const Hero = () => {
 						<Button className="h-[45px] bg-transparent border-solid border-2 border-white font-poppins text-[23px] w-[320px]">
 							Create an account
 						</Button>
+                        <Link to="/social" className="pt-10 text-bold text-xl">
+                            Give our community a try
+                        </Link>
 					</div>
 				</div>
 			</div>
