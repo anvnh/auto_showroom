@@ -595,6 +595,12 @@ const hero_section1 = useRef(null)
   }, []);
 
 
+  gsap.config({
+  autoSleep: 60,
+  force3D: false,
+  nullTargetWarn: false,
+  units: { left: "%", top: "%", rotation: "rad" },
+});
   
   return (
 
@@ -697,7 +703,7 @@ const hero_section1 = useRef(null)
 
         {/* -------slogan----------- */}
         <div
-       
+          ref={container_slogan}
           className=" w-screen h-[300px]  flex justify-center items-center bg-slate-100 "
         >
 
