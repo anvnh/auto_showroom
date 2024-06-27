@@ -19,7 +19,7 @@ import {
 	logomer,
 	kiaposter,
 	banner1,
-	VideoCar1Popular,
+
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import Lenis from '@studio-freight/lenis'
@@ -76,7 +76,7 @@ const car1popular = () => {
 						playsInline
 						className="w-full h-auto relative top-20"
 					>
-						<source src={VideoCar1Popular} />
+						
 					</video>
 
 					<div

@@ -624,7 +624,7 @@ const hero_section1 = useRef(null)
             className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover  
           "></div>
-          <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold  ">AUDI A5 </h1>
+          <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold text-7xl ">AUDI A5 </h1>
           <p className="absolute font-syncopate md:text-[40px] lg:text-[50px] text-white top-[10%] left-[5%] hidden md:block">
             2024
           </p>

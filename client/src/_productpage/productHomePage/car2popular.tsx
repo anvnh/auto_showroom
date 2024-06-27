@@ -19,7 +19,7 @@ import {
 	merr12,
 	sky,
 	logomer,
-	VideoCar2Popular,
+
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import Lenis from '@studio-freight/lenis'
@@ -77,7 +77,7 @@ const car1popular = () => {
 						playsInline
 						className="w-full h-auto"
 					>
-						<source src={VideoCar2Popular} />
+					
 					</video>
 					<div
 						className="overlay absolute inset-x-0 bottom-0 h-1/4"
