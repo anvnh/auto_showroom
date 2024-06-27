@@ -78,9 +78,7 @@ import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
 
 // import video
-import VideoCar1Popular from "./Video/Mercedes-AMG CLS 53 4MATIC+.mov";
-import VideoCar2Popular from "./video2/Maybach S-Class.mov";
-import VideoCar3Popular from "./car_popular/car3popular/video/0609 (2).mp4";
+
 import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
 
 //car3 popular
@@ -205,9 +203,7 @@ export {
 	change10,
 	change8,
 	change9,
-	VideoCar1Popular,
-	VideoCar2Popular,
-	VideoCar3Popular,
+
 	Videohieuung,
 	merr,
 	merr1,
