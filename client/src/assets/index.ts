@@ -129,7 +129,7 @@ import inside53 from "./car_popular/car5popular/inside53.webp";
 import baner51 from "./car_popular/car5popular/baner51.jpg";
 
 // logo car
-import logo from "./logo.png";
+import logo from "./logo/logoMain.png";
 import logo1 from "./logo_car1.png";
 import logo4 from "./logo_car4.png";
 import logo5 from "./logo_car5.png";
@@ -138,6 +138,8 @@ import logoroi from "./logo/logoroll.png";
 import logomer from "./logo/logomer.png";
 import logoaudi from "./logo/logoaudi.png";
 import logopos from "./logo/logopos.png";
+import VideoLogo from "./logo/videologo.mp4"
+
 
 // navbar car
 // mer
@@ -163,6 +165,7 @@ export {
 	carnb1,
 	carnb2,
 	carnb3,
+	VideoLogo,
 	logoaudi,
 	logopos,
 	inside51,
