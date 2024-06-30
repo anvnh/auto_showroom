@@ -112,7 +112,7 @@ const Hero = () => {
 	const [isVisible, setIsVisible] = useState(true); // State để theo dõi trạng thái hiển thị của video
 	let lastScrollTop = 0;
 	useEffect(() => {
-		const animationDuration = 3900; // Thời gian hiệu ứng ban đầu
+		const animationDuration = 3700; // Thời gian hiệu ứng ban đầu
 		const scrollAnimationDuration = animationDuration / 2; // Thời gian khi cuộn được cuộn
 
 		const timer = setTimeout(() => {
@@ -154,7 +154,7 @@ const Hero = () => {
 	}, []);
 	// hiệu hiển thị sau
 	const [isVisibles, setIsVisibles] = useState(false);
-	const [timer, setTimer] = useState(null); // Thêm state để lưu trữ timer
+	const [timer, setTimer] = useState(null); 
 
 	useEffect(() => {
 		let scrollTop =
@@ -173,7 +173,7 @@ const Hero = () => {
 					clearTimeout(timer);
 				}
 
-				const newTimer = setTimeout(() => setIsVisibles(true), 100); // Timer 1 giây
+				const newTimer = setTimeout(() => setIsVisibles(true), 1000); // Timer 1 giây
 				setTimer(newTimer); // Lưu timer mới
 			}
 		};
@@ -181,7 +181,7 @@ const Hero = () => {
 		window.addEventListener("scroll", handleScroll);
 
 		// Timer ban đầu 4 giây
-		const initialTimer = setTimeout(() => setIsVisibles(true), 4000);
+		const initialTimer = setTimeout(() => setIsVisibles(true), 4200);
 		setTimer(initialTimer);
 
 		return () => {

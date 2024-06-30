@@ -63,14 +63,14 @@ const RootLayout = () => {
 						<Banner />
 					</div>
 				</div>
-				<div className="flex items-start justify-center bg-gray-950">
+				<div className="flex items-start justify-center ">
 					<div className="w-full">
 						<CarBrand />
 					</div>
 				</div>
 				<div
 					data-aos="fade"
-					className="flex items-start justify-center bg-gray-950"
+					className="flex items-start justify-center "
 				>
 					<div className="w-full">
 						<Footer />

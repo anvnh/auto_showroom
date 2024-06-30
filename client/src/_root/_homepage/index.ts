@@ -4,6 +4,7 @@ import Product from './Product';
 import Product2 from './Product2';
 import Banner from './Banner'
 import CarBrand from './CarBrand';
+import Vehicle from '../elementNavbar/Vehicle';
 export {
     Navbar, 
     Hero,
@@ -11,4 +12,5 @@ export {
     Product2,
     Banner,
     CarBrand,
+    Vehicle
 };
