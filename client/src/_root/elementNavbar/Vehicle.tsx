@@ -25,7 +25,6 @@ import {
 	carnb2,
 	carnb4,
 	carnb5,
-
 } from "../../assets";
 
 const Vehicle = () => {
@@ -213,13 +212,13 @@ const Vehicle = () => {
 									/>
 								</div>
 
-								<div data-aos="slide-left" 
-								data-aos-delay="1500" className="justify-end pr-24 items-center flex pt-3 ">
+								<div
+									data-aos="slide-left"
+									data-aos-delay="1500"
+									className="justify-end pr-24 items-center flex pt-3 "
+								>
 									<Link to="/Mercedes-AMG-CLS">
-										<Button
-											
-											className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl"
-										>
+										<Button className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl">
 											View
 										</Button>
 									</Link>
@@ -245,7 +244,7 @@ const Vehicle = () => {
 									data-aos="slide-left"
 									className=" absolute  justify-center items-center h-[250px] flex top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-[1520px]"
 								></div>
-									<div className="logo_Car w-[1000px] scale-150 pt-12 h-auto ml-[200px]">
+								<div className="logo_Car w-[1000px] scale-150 pt-12 h-auto ml-[200px]">
 									<img
 										data-aos="slide-left"
 										data-aos-delay="1000"
@@ -254,13 +253,13 @@ const Vehicle = () => {
 									/>
 								</div>
 
-								<div data-aos="slide-left" 
-								data-aos-delay="1500" className="justify-end pr-24 items-center flex">
+								<div
+									data-aos="slide-left"
+									data-aos-delay="1500"
+									className="justify-end pr-24 items-center flex"
+								>
 									<Link to="/Mercedes-Benz-Maybach-2022">
-										<Button
-											
-											className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl"
-										>
+										<Button className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl">
 											View
 										</Button>
 									</Link>
@@ -278,14 +277,15 @@ const Vehicle = () => {
 								<p
 									data-aos="slide-left"
 									className="animate-pulse pb-4 justify-center items-center pt-5 flex text-3xl"
-								>$ 48 000
+								>
+									$ 48 000
 								</p>
 								<hr data-aos="slide-right" />
 								<div
 									data-aos="slide-left"
 									className=" absolute  justify-center items-center h-[250px] flex top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-[1520px]"
 								></div>
-									<div className="logo_Car w-[1000px] scale-150 pt-20 h-auto ml-[300px]">
+								<div className="logo_Car w-[1000px] scale-150 pt-20 h-auto ml-[300px]">
 									<img
 										data-aos="slide-left"
 										data-aos-delay="1000"
@@ -294,12 +294,13 @@ const Vehicle = () => {
 									/>
 								</div>
 
-								<div data-aos="slide-left" 
-								data-aos-delay="1500" className="justify-end pr-24 items-center flex">
-									 <Link to="/audi-A5-Couple">
-										<Button
-											className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl"
-										>
+								<div
+									data-aos="slide-left"
+									data-aos-delay="1500"
+									className="justify-end pr-24 items-center flex"
+								>
+									<Link to="/audi-A5-Couple">
+										<Button className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl">
 											View
 										</Button>
 									</Link>
@@ -308,7 +309,7 @@ const Vehicle = () => {
 						)}
 						{selectedCar === "Audi S6 Limousine" && (
 							<>
-							<h1
+								<h1
 									data-aos="slide-left"
 									className="text-4xl justify-center items-center flex pt-12"
 								>
@@ -325,7 +326,7 @@ const Vehicle = () => {
 									data-aos="slide-left"
 									className=" absolute  justify-center items-center h-[250px] flex top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-[1520px]"
 								></div>
-									<div className="logo_Car w-[1000px] scale-150 pt-20 h-auto ml-[300px]">
+								<div className="logo_Car w-[1000px] scale-150 pt-20 h-auto ml-[300px]">
 									<img
 										data-aos="slide-left"
 										data-aos-delay="1000"
@@ -334,12 +335,13 @@ const Vehicle = () => {
 									/>
 								</div>
 
-								<div data-aos="slide-left" 
-								data-aos-delay="1500" className="justify-end pr-24 items-center flex">
-									 <Link to="/audi-A5-Couple">
-										<Button
-											className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl"
-										>
+								<div
+									data-aos="slide-left"
+									data-aos-delay="1500"
+									className="justify-end pr-24 items-center flex"
+								>
+									<Link to="/audi-A5-Couple">
+										<Button className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl">
 											View
 										</Button>
 									</Link>

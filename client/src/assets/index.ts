@@ -149,15 +149,21 @@ import VideoLogo from "./logo/videologo.mp4"
 import carnb1 from "./car/carnavbar/CB1.png";
 import carnb2 from "./car/carnavbar/CB2.png";
 import carnb4 from "./car/carnavbar/CB3.png";
-// audi
 import carnb3 from "./car/carnavbar/A5coupe.png";
 import carnb5 from "./car/carnavbar/CB5.png";
+import BuilCar from "./car/shopnavbar/BuilCar.png";
+import offer from "./car/shopnavbar/offer.jpg";
+import testdrive from "./car/shopnavbar/testdrive.webp";
+
 //Owner------------------------------------
 import gif from "./login/gif.webp";
 import gifSocial from "./owner/gif2.webp";
 import bgLG from "./login/backgroundlogin.png";
 import bgSocial from "./owner/bgsocial.png";
 export {
+	BuilCar,
+	offer,
+	testdrive,
 	carnb5,
 	mernavbar,
 	carnb4,

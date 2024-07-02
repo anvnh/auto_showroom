@@ -216,9 +216,9 @@ const Navbar: React.FC<SubNavbarProps> = ({
           className={`z-1 absolute w-screen h-[450px] ss:h-[900px] font-syncopate bg-opacity-85 bg-gray-900`}
         >
          
-          <p  data-aos="fade-up" data-aos-delay="1000">
+          <div  data-aos="fade-up" data-aos-delay="1000">
              <Vehicle />
-            </p>
+            </div>
         </div>
       )}
       {isExpanded && selectedSection === "shopping" && (
@@ -226,7 +226,9 @@ const Navbar: React.FC<SubNavbarProps> = ({
           data-aos="slide-up"
           className={`z-1 absolute w-screen h-[450px] ss:h-[900px] rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900`}
         >
+             <div>
              <ShoppingAssist />
+            </div>
         </div>
       )}
     </div>
