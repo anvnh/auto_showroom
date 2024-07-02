@@ -8,6 +8,7 @@ import {
 } from "../../assets";
 
 import Vehicle from '../elementNavbar/Vehicle';
+import ShoppingAssist from '../elementNavbar/ShoppingAssist';
 interface SubNavbarProps {
   selectedSection_element: string;
   onNavClick: (section: string) => void;
@@ -169,6 +170,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
               >
                 <div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
                   <p> Vehicles </p>
+                  <div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
                 </div>
               </li>
               <li
@@ -183,6 +185,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
               >
                 <div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
                   <p> Shopping Assist </p>
+                  <div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
                 </div>
               </li>
               <li
@@ -196,8 +199,9 @@ const Navbar: React.FC<SubNavbarProps> = ({
                 onClick={() => handleToggleSection("owners")}
               >
                 <div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
-                  <Link to="/owners">
+                  <Link to="/owners" >
                     <p> Owners </p>
+                    <div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
                   </Link>
                 </div>
               </li>
@@ -220,10 +224,9 @@ const Navbar: React.FC<SubNavbarProps> = ({
       {isExpanded && selectedSection === "shopping" && (
         <div
           data-aos="slide-up"
-          className={`z-1 absolute w-screen h-[450px] ss:h-[900px] rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-600`}
+          className={`z-1 absolute w-screen h-[450px] ss:h-[900px] rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900`}
         >
-       
-          <p>Shopping Assist content here...</p>
+             <ShoppingAssist />
         </div>
       )}
     </div>

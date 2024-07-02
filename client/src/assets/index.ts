@@ -79,6 +79,7 @@ import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
 
 
+
 // import video
 
 import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
@@ -145,19 +146,21 @@ import VideoLogo from "./logo/videologo.mp4"
 
 // navbar car
 // mer
-import carnb1 from "./car/carnavbar/MercedesAMGCLS.png";
-import carnb2 from "./car/carnavbar/MercedesbenZmaybach2022.png";
-
+import carnb1 from "./car/carnavbar/CB1.png";
+import carnb2 from "./car/carnavbar/CB2.png";
+import carnb4 from "./car/carnavbar/CB3.png";
 // audi
 import carnb3 from "./car/carnavbar/A5coupe.png";
-
+import carnb5 from "./car/carnavbar/CB5.png";
 //Owner------------------------------------
 import gif from "./login/gif.webp";
 import gifSocial from "./owner/gif2.webp";
 import bgLG from "./login/backgroundlogin.png";
 import bgSocial from "./owner/bgsocial.png";
 export {
+	carnb5,
 	mernavbar,
+	carnb4,
 	gifSocial,
 	new1,
 	new2,

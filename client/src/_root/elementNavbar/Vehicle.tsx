@@ -12,6 +12,7 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 import {
 	PresentationChartBarIcon,
 	ShoppingBagIcon,
@@ -20,12 +21,11 @@ import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import {
 	logomer,
 	logoaudi,
-	logopos,
-	logoroi,
-	mernavbar,
 	carnb1,
 	carnb2,
-	carnb3,
+	carnb4,
+	carnb5,
+
 } from "../../assets";
 
 const Vehicle = () => {
@@ -55,7 +55,8 @@ const Vehicle = () => {
 			<Card className="bg-gray-800 font-poppins text-white h-[calc(89vh-1rem)] w-full max-w-[380px] p-4 shadow-xl shadow-blue-gray-900/5">
 				<div className="mb-2 p-4 font-syncopate uppercase">
 					<Typography variant="h5" color="blue-gray">
-						<span className="text-2xl">car brands</span>
+						<p className="text-2xl pb-4">car brands</p>
+						<hr />
 					</Typography>
 				</div>
 				<List>
@@ -198,21 +199,30 @@ const Vehicle = () => {
 								>
 									$ 26 000
 								</p>
-                <hr 	data-aos="slide-right"/>
-                <div  data-aos="slide-left" className=" absolute  justify-center items-center h-[250px] flex top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-[1520px]"></div> 
-								<div className="logo_Car w-[1000px] scale-150 pt-28 h-auto ml-[600px]">
-									<img
+								<hr data-aos="slide-right" />
+								<div
 									data-aos="slide-left"
-                  data-aos-delay="1000"
-                  className=""
+									className=" absolute  justify-center items-center h-[250px] flex top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-[1520px]"
+								></div>
+								<div className="logo_Car w-[1000px] scale-150 pt-12 h-auto ml-[400px]">
+									<img
+										data-aos="slide-left"
+										data-aos-delay="1000"
+										className=""
 										src={carnb1}
 									/>
 								</div>
-								
-								<div className="justify-center items-center flex pt-32">
-									<Button 	data-aos="slide-left" className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl">
-										View
-									</Button>
+
+								<div data-aos="slide-left" 
+								data-aos-delay="1500" className="justify-end pr-24 items-center flex pt-3 ">
+									<Link to="/Mercedes-AMG-CLS">
+										<Button
+											
+											className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl"
+										>
+											View
+										</Button>
+									</Link>
 								</div>
 							</>
 						)}
@@ -230,40 +240,110 @@ const Vehicle = () => {
 								>
 									$ 679 867
 								</p>
-                <hr 	data-aos="slide-right"/>
-                <div  data-aos="slide-left" className=" absolute  justify-center items-center h-[250px] flex top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-[1520px]"></div> 
-								<div className="logo_Car w-[1000px] scale-150 pt-28 h-auto ml-[600px]">
-									<img
+								<hr data-aos="slide-right" />
+								<div
 									data-aos="slide-left"
-                  data-aos-delay="1000"
-                  className="w-00px] h-auto"
-										src={carnb3}
+									className=" absolute  justify-center items-center h-[250px] flex top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-[1520px]"
+								></div>
+									<div className="logo_Car w-[1000px] scale-150 pt-12 h-auto ml-[200px]">
+									<img
+										data-aos="slide-left"
+										data-aos-delay="1000"
+										className="w-[800px]"
+										src={carnb2}
 									/>
 								</div>
-								
-								<div className="justify-center items-center flex pt-32">
-									<Button 	data-aos="slide-left" className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl">
-										View
-									</Button>
+
+								<div data-aos="slide-left" 
+								data-aos-delay="1500" className="justify-end pr-24 items-center flex">
+									<Link to="/Mercedes-Benz-Maybach-2022">
+										<Button
+											
+											className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl"
+										>
+											View
+										</Button>
+									</Link>
 								</div>
 							</>
 						)}
 						{selectedCar === "Audi A5 Coupe" && (
 							<>
-								<p>Thông tin chi tiết về Audi A5 Coupe...</p>
-								<p>Động cơ: 2.0L I4 Turbo</p>
-								<p>Công suất: 261 mã lực</p>
-								<p>Thời gian tăng tốc 0-100 km/h: 5.6 giây</p>
+								<h1
+									data-aos="slide-left"
+									className="text-4xl justify-center items-center flex pt-12"
+								>
+									Audi A5 Coupe
+								</h1>
+								<p
+									data-aos="slide-left"
+									className="animate-pulse pb-4 justify-center items-center pt-5 flex text-3xl"
+								>$ 48 000
+								</p>
+								<hr data-aos="slide-right" />
+								<div
+									data-aos="slide-left"
+									className=" absolute  justify-center items-center h-[250px] flex top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-[1520px]"
+								></div>
+									<div className="logo_Car w-[1000px] scale-150 pt-20 h-auto ml-[300px]">
+									<img
+										data-aos="slide-left"
+										data-aos-delay="1000"
+										className="w-[840px]"
+										src={carnb4}
+									/>
+								</div>
+
+								<div data-aos="slide-left" 
+								data-aos-delay="1500" className="justify-end pr-24 items-center flex">
+									 <Link to="/audi-A5-Couple">
+										<Button
+											className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl"
+										>
+											View
+										</Button>
+									</Link>
+								</div>
 							</>
 						)}
 						{selectedCar === "Audi S6 Limousine" && (
 							<>
-								<p>
-									Thông tin chi tiết về Audi S6 Limousine...
+							<h1
+									data-aos="slide-left"
+									className="text-4xl justify-center items-center flex pt-12"
+								>
+									2024 S6 limousin
+								</h1>
+								<p
+									data-aos="slide-left"
+									className="animate-pulse pb-4 justify-center items-center pt-5 flex text-3xl"
+								>
+									$ 58 000
 								</p>
-								<p>Động cơ: 2.9L V6 Turbo</p>
-								<p>Công suất: 444 mã lực</p>
-								<p>Thời gian tăng tốc 0-100 km/h: 4.5 giây</p>
+								<hr data-aos="slide-right" />
+								<div
+									data-aos="slide-left"
+									className=" absolute  justify-center items-center h-[250px] flex top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-[1520px]"
+								></div>
+									<div className="logo_Car w-[1000px] scale-150 pt-20 h-auto ml-[300px]">
+									<img
+										data-aos="slide-left"
+										data-aos-delay="1000"
+										className="w-[740px]"
+										src={carnb5}
+									/>
+								</div>
+
+								<div data-aos="slide-left" 
+								data-aos-delay="1500" className="justify-end pr-24 items-center flex">
+									 <Link to="/audi-A5-Couple">
+										<Button
+											className="bg-gradient-to-b from-gray-900 to-gray-400 text-white w-56 h-16 text-3xl"
+										>
+											View
+										</Button>
+									</Link>
+								</div>
 							</>
 						)}
 					</Typography>
