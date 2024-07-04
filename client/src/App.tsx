@@ -18,6 +18,7 @@ import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
 import  SignIn  from './_owners/SignIn';
+import ShopLayout from './_shop/ShopLayout';
 
 const App = () => {
     const location = useLocation();
@@ -80,6 +81,8 @@ const App = () => {
                     <Route path="/social/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/social/login" />} />
                     <Route path="/social/profile/following/:id" element={authUser ? <Following /> : <Navigate to="/social/login" />} />
                     <Route path="/social/profile/followers/:id" element={authUser ? <Followers /> : <Navigate to="/social/login" />} />
+
+                    <Route path="/shop" element={<ShopLayout />} />
 
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}

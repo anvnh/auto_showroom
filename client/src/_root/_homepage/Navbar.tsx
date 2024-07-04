@@ -21,6 +21,7 @@ import { HiMiniWrenchScrewdriver } from "react-icons/hi2";
 import { GiSteeringWheel } from "react-icons/gi";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useQuery } from "@tanstack/react-query";
 const Navbar = () => {
 	useEffect(() => {
 		AOS.init({
@@ -71,6 +72,26 @@ const Navbar = () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
+
+	const {data: authUser, isLoading } = useQuery({
+        // use queryKey to give a unique name to the query and refer to it later
+        queryKey: ['authUser'],
+        queryFn: async () => {
+            try {
+                const res = await fetch('/api/auth/me');
+                const data = await res.json();
+                if(data.error) return null;
+                if (!res.ok) {
+                    throw new Error(data.message || 'Something went wrong');
+                }
+                console.log("authUser is here: ", data);
+                return data;
+            } catch (error) {
+                throw new Error(error.message);
+            }
+        },
+        retry: false,
+    })
 
 	return (
 
@@ -223,7 +244,7 @@ const Navbar = () => {
 				</div>
 
 				<ul className="list-none sm:flex hidden justify-end items-center flex-1">
-					<Link to="/SignIn">
+					<Link to={`${authUser ? "/social" : ""}`}>
 						<li className="relative group">
 							<FaUser className="text-white w-[27px] h-[27px] transform hover:scale-110 transition-transform duration-300 cursor-pointer" />
 						</li>
