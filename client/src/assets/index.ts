@@ -61,6 +61,7 @@ import mer11 from "./car1_popular/mer11.jpg";
 import mer12 from "./car1_popular/mer12.avif";
 import sky from "./car1_popular/sky.jpg";
 import banner1 from "./car1_popular/banner1.jpg";
+import mernavbar from "./car1_popular/navbar.jpg"
 
 // car2 popular
 import merr from "./car2_popular/2mer.avif";
@@ -76,6 +77,8 @@ import merr9 from "./car2_popular/2mer9.avif";
 import merr10 from "./car2_popular/2mer10.avif";
 import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
+
+
 
 // import video
 
@@ -129,7 +132,7 @@ import inside53 from "./car_popular/car5popular/inside53.webp";
 import baner51 from "./car_popular/car5popular/baner51.jpg";
 
 // logo car
-import logo from "./logo.png";
+import logo from "./logo/logoMain.png";
 import logo1 from "./logo_car1.png";
 import logo4 from "./logo_car4.png";
 import logo5 from "./logo_car5.png";
@@ -138,14 +141,19 @@ import logoroi from "./logo/logoroll.png";
 import logomer from "./logo/logomer.png";
 import logoaudi from "./logo/logoaudi.png";
 import logopos from "./logo/logopos.png";
+import VideoLogo from "./logo/videologo.mp4"
+
 
 // navbar car
 // mer
-import carnb1 from "./car/carnavbar/MercedesAMGCLS.png";
-import carnb2 from "./car/carnavbar/MercedesbenZmaybach2022.png";
-
-// audi
+import carnb1 from "./car/carnavbar/CB1.png";
+import carnb2 from "./car/carnavbar/CB2.png";
+import carnb4 from "./car/carnavbar/CB3.png";
 import carnb3 from "./car/carnavbar/A5coupe.png";
+import carnb5 from "./car/carnavbar/CB5.png";
+import BuilCar from "./car/shopnavbar/BuilCar.png";
+import offer from "./car/shopnavbar/offer.jpg";
+import testdrive from "./car/shopnavbar/testdrive.webp";
 
 //Owner------------------------------------
 import gif from "./login/gif.webp";
@@ -153,6 +161,12 @@ import gifSocial from "./owner/gif2.webp";
 import bgLG from "./login/backgroundlogin.png";
 import bgSocial from "./owner/bgsocial.png";
 export {
+	BuilCar,
+	offer,
+	testdrive,
+	carnb5,
+	mernavbar,
+	carnb4,
 	gifSocial,
 	new1,
 	new2,
@@ -163,6 +177,7 @@ export {
 	carnb1,
 	carnb2,
 	carnb3,
+	VideoLogo,
 	logoaudi,
 	logopos,
 	inside51,
