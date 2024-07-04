@@ -7,7 +7,8 @@ import { logo, menu, close } from "../../assets";
 
 import Vehicle from '../elementNavbar/Vehicle';
 import ShoppingAssist from '../elementNavbar/ShoppingAssist';
-
+import { FaAngleLeft } from "react-icons/fa6";
+import { Divide } from "lucide-react";
 interface SubNavbarProps {
   selectedSection_element: string;
   onNavClick: (section: string) => void;
@@ -28,24 +29,15 @@ const Navbar: React.FC<SubNavbarProps> = ({
   }, []);
 
   const [toggle, setToggle] = useState(false);
-  const [dropdownVe, setDropdownVe] = useState(false);
-  const [dropdownSh, setDropdownSh] = useState(false);
-  const [dropdownIn, setDropdownIn] = useState(false);
-
-  const [selectedSection, setSelectedSection] = useState("");
-  const handleNavClick = (section: string) => {
-    setSelectedSection((prevSection) =>
-      prevSection === section ? "" : section
-    );
-  };
-
   const [isHidden, setIsHidden] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentPage, setCurrentPage] = useState("main");
+
   let lastScrollTop = 0;
 
   useEffect(() => {
     const handleScroll = () => {
-      let scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
       if (scrollTop > lastScrollTop) {
         setIsHidden(true); // Cuộn xuống, ẩn navbar
@@ -63,61 +55,34 @@ const Navbar: React.FC<SubNavbarProps> = ({
     };
   }, []);
 
-  const [selectedP, setSelectedP] = useState("");
-
-  const handleMouseEnter = (section: string) => {
-    setSelectedP(section);
-  };
-
-  const handleMouseLeave = () => {
-    setSelectedP("");
-  };
-
-  const [isVisible, setIsVisible] = useState(false);
-  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
-
   useEffect(() => {
-    let scrollTop =
-      window.pageYOffset || document.documentElement.scrollTop;
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     const handleScroll = () => {
-      const newScrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
+      const newScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
       if (newScrollTop !== scrollTop) {
         scrollTop = newScrollTop;
-
-        if (timer) {
-          clearTimeout(timer);
-        }
-
-        const newTimer = setTimeout(() => setIsVisible(true), 100);
-        setTimer(newTimer);
+        setIsVisible(true);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
 
     const initialTimer = setTimeout(() => setIsVisible(true), 3800);
-    setTimer(initialTimer);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (timer) {
-        clearTimeout(timer);
-      }
+      clearTimeout(initialTimer);
     };
   }, []);
 
-  const [isExpanded, setIsExpanded] = useState(false);
+  const handleNavClick = (section: string) => {
+    setCurrentPage(section);
+  };
 
-  const handleToggleSection = (section: string) => {
-    if (selectedSection === section) {
-      setIsExpanded(!isExpanded);
-    } else {
-      setSelectedSection(section);
-      setIsExpanded(true);
-    }
+  const handleBackClick = () => {
+    setCurrentPage("main");
   };
 
   return (
@@ -150,16 +115,15 @@ const Navbar: React.FC<SubNavbarProps> = ({
               onClick={() => setToggle(!toggle)}
             >
               <img
-					src={toggle ? close : menu}
-					alt="menu"
-					className="w-[24px] h-[24px] object-contain"
-					onClick={() => setToggle(!toggle)}
-				/>
+                src={toggle ? close : menu}
+                alt="menu"
+                className="w-[24px] h-[24px] object-contain"
+              />
             </button>
           </div>
         </nav>
       )}
-      {isVisible && (
+      {isVisible && currentPage === "main" && (
         <div
           className={`z-50 md:top-12 w-full font-poppins transition-transform duration-300 sm:block ${
             isHidden ? "-translate-y-full" : "translate-y-0"
@@ -171,14 +135,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
           >
             <ul className="list-none sm:flex gap-10 justify-center items-center flex-1">
               <li
-                className={`cursor-pointer transition-opacity duration-300 ${
-                  selectedP && selectedP !== "vehicles"
-                    ? "opacity-50"
-                    : "opacity-100"
-                }`}
-                onMouseEnter={() => handleMouseEnter("vehicles")}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => handleToggleSection("vehicles")}
+                className="cursor-pointer transition-opacity duration-300"
+                onClick={() => handleNavClick("vehicles")}
               >
                 <div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
                   <p> Vehicles </p>
@@ -186,29 +144,17 @@ const Navbar: React.FC<SubNavbarProps> = ({
                 </div>
               </li>
               <li
-                className={`cursor-pointer transition-opacity duration-300 ${
-                  selectedP && selectedP !== "shopping"
-                    ? "opacity-50"
-                    : "opacity-100"
-                }`}
-                onMouseEnter={() => handleMouseEnter("shopping")}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => handleToggleSection("shopping")}
+                className="cursor-pointer transition-opacity duration-300"
+                onClick={() => handleNavClick("shopping")}
               >
-                <div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
+                <div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
                   <p> Shopping Assist </p>
                   <div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
                 </div>
               </li>
               <li
-                className={`cursor-pointer transition-opacity duration-300 ${
-                  selectedP && selectedP !== "owners"
-                    ? "opacity-50"
-                    : "opacity-100"
-                }`}
-                onMouseEnter={() => handleMouseEnter("owners")}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => handleToggleSection("owners")}
+                className="cursor-pointer transition-opacity duration-300"
+                onClick={() => handleNavClick("owners")}
               >
                 <div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
                   <Link to="/owners" >
@@ -222,86 +168,54 @@ const Navbar: React.FC<SubNavbarProps> = ({
         </div>
       )}
 
-      {isExpanded && selectedSection === "vehicles" && (
-        <div
-        data-aos="slide-up"
-        className={`z-1 absolute w-screen h-[450px] ss:h-[900px] font-syncopate bg-opacity-85 bg-gray-900 ${
-          isHidden ? 'hidden' : ''
-        }`}
-      >
-         
-          <div  data-aos="fade-up" data-aos-delay="1000"   className={`${
-          isHidden ? 'hidden' : ''
-        }`}
-      >
-             <Vehicle />
-            </div>
-        </div>
-      )}
-      {isExpanded && selectedSection === "shopping" && (
-        <div
-        data-aos="slide-up"
-        className={`z-1 absolute w-screen h-[450px] ss:h-[900px] rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900 ${isHidden ? 'hidden' : ''}`}
-      >
-            <div  data-aos="fade-up" data-aos-delay="1000"   className={`${
-          isHidden ? 'hidden' : ''
-        }`}
-      >
-             <ShoppingAssist />
-            </div>
-        </div>
-      )}
+    
 
       {toggle && (
-        <div data-aos="fade-up" className="sm:hidden opacity-90 h-[620px] relative w-full backdrop-blur-3xl bg-gray-950 bg-opacity-50 text-white">
-          <ul className="flex flex-col space-y-5 pt-52 items-center py-2">
-
-            <li
-              className={`cursor-pointer transition-opacity duration-300 w-full text-center ${
-                selectedP && selectedP !== "vehicles"
-                  ? "opacity-50"
-                  : "opacity-100"
-              }`}
-              onMouseEnter={() => handleMouseEnter("vehicles")}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleToggleSection("vehicles")}
-            >
-              <div data-aos="fade-up" 	data-aos-delay="1000" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none">
-                <p> Vehicles </p>
-       
-              </div>
-            </li>
-            <li
-              className={`cursor-pointer transition-opacity duration-300 w-full text-center ${
-                selectedP && selectedP !== "shopping"
-                  ? "opacity-50"
-                  : "opacity-100"
-              }`}
-              onMouseEnter={() => handleMouseEnter("shopping")}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleToggleSection("shopping")}
-            >
-              <div data-aos="fade-up" 	data-aos-delay="1200" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none">
-                <p> Shopping Assist </p>   
-                </div>    
-            </li>
-            <li
-              className={`cursor-pointer transition-opacity duration-300 w-full text-center ${
-                selectedP && selectedP !== "owners"
-                  ? "opacity-50"
-                  : "opacity-100"
-              }`}
-              onMouseEnter={() => handleMouseEnter("owners")}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleToggleSection("owners")}
-            >
-              <div data-aos="fade-up" 	data-aos-delay="1400" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none">
-                <Link to="/owners">
-                  <p> Owners </p>             
-                </Link>
-              </div>
-            </li>
-          </ul>
+        <div data-aos="fade" className="sm:hidden opacity-90 h-[620px] relative w-full backdrop-blur-3xl bg-gray-950 bg-opacity-50 text-white">
+          {currentPage === "main" ? (
+            <ul className="flex flex-col space-y-5 pt-52 items-center py-2">
+              <li
+                className="cursor-pointer transition-opacity duration-300 w-full text-center"
+                onClick={() => handleNavClick("vehicles")}
+              >
+                <div data-aos="fade-up" data-aos-delay="800" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none">
+                  <p> Vehicles </p>
+                </div>
+              </li>
+              <li
+                className="cursor-pointer transition-opacity duration-300 w-full text-center"
+                onClick={() => handleNavClick("shopping")}
+              >
+                <div  data-aos="fade-up" data-aos-delay="1000" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none">
+                  <p> Shopping Assist </p>
+                </div>
+              </li>
+              <li
+                className="cursor-pointer transition-opacity duration-300 w-full text-center"
+                onClick={() => handleNavClick("owners")}
+              >
+                <div  data-aos="fade-up" data-aos-delay="1200" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none">
+                  <Link to="/owners">
+                    <p> Owners </p>
+                  </Link>
+                </div>
+              </li>
+            </ul>
+          ) : (
+            <div className="pt-5 pl-4">
+              <button data-aos="fade-right" onClick={handleBackClick}>
+                <FaAngleLeft  className="w-6 h-auto"/>
+              </button>
+              {currentPage === "vehicles" && (<div data-aos="fade-right"> <Vehicle /></div>)}
+              {currentPage === "shopping" && (<div data-aos="fade-right"><ShoppingAssist /></div>)}
+              {currentPage === "owners" && (
+                <div className="text-center pt-20">
+               
+                  <p>Owner Content</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
