@@ -9,6 +9,7 @@ import { testDrive } from "@/assets/hplat_asset/img/dropdownNavBarImage/shopping
 const ShoppingAssist = () => {
 	return (
 		<div >
+			<div className="hidden md:block">
 			<div>
 				<div className="pt-20 h-auto relative justify-start flex">
 					<img
@@ -51,6 +52,10 @@ const ShoppingAssist = () => {
 					Test drive
 				</p>
       </div>
+			</div>
+			<div className="block md:hidden">
+
+			</div>
 		</div>
 	);
 };
