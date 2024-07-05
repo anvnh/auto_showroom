@@ -11,52 +11,52 @@ const ShoppingAssist = () => {
 		<div>
 			<div className="hidden md:block">
 				<div>
-					<div className="pt-20 h-auto relative justify-start flex">
+					<div className="pt-20 lg:pt-2 h-auto relative justify-start flex">
 						<img
 							data-aos="slide-right"
 							data-aos-delay="1200"
-							className="w-[640px] rounded-[25px]"
+							className="xl:w-[640px] lg:w-[400px] rounded-[25px]"
 							src={BuilCar}
 						/>
 					</div>
 					<p
 						data-aos="slide-left"
 						data-aos-delay="2000"
-						className="pt-6 relative flex pl-36 text-3xl"
+						className="pt-6 lg:pl-20 lg:text-2xl relative flex xl:pl-36 xl:text-3xl"
 					>
 						build your car
 					</p>
 				</div>
 				<div>
-					<div className="bottom-72 h-auto relative justify-center flex">
+					<div className="xl:bottom-72 lg:bottom-[10px] h-auto relative justify-center flex">
 						<img
 							data-aos="slide-up"
 							data-aos-delay="1000"
-							className="w-[680px] rounded-[25px]"
+							className="xl:w-[680px] lg:w-[400px] rounded-[25px]"
 							src={offer}
 						/>
 					</div>
 					<p
 						data-aos="slide-left"
 						data-aos-delay="1700"
-						className="z-20 pl-[850px] bottom-[810px] relative text-3xl"
+						className="z-20 xl:pl-[850px] lg:bottom-[340px] lg:pl-[550px] xl:bottom-[810px] relative xl:text-3xl lg:text-2xl"
 					>
 						Offer
 					</p>
 				</div>
 				<div>
-					<div className="bottom-[1100px] h-auto relative justify-end flex">
+					<div className="xl:bottom-[1000px] lg:bottom-[600px] h-auto relative justify-end flex">
 						<img
 							data-aos="slide-left"
 							data-aos-delay="1400"
-							className="w-[700px] rounded-[25px]"
+							className="xl:w-[700px] lg:w-[400px] rounded-[25px]"
 							src={testdrive}
 						/>
 					</div>
 					<p
 						data-aos="slide-right"
 						data-aos-delay="1500"
-						className="z-20 pl-[1400px] bottom-[1050px] relative text-3xl"
+						className="z-20 xl:pl-[1400px] lg:bottom-[580px] lg:pl-[900px] lg:text-2xl xl:bottom-[980px] relative xl:text-3xl"
 					>
 						Test drive
 					</p>
