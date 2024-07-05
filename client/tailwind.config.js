@@ -39,7 +39,8 @@ module.exports = {
                 embed:["Nunito", "sans-serif"]
             },
             colors: {
-                primary: '#33343E',
+                primary_backup: '#33343E',
+                primary: "#040A1F",
                 secondary: '#181818',
             },
         },

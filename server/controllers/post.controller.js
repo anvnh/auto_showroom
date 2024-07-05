@@ -178,6 +178,23 @@ export const getAllPosts = async (req, res) => {
 
 };
 
+export const getNewestPosts = async (req, res) => {
+    try {
+        const posts = await Post.find({
+            img : { $ne: null } // get posts with images only
+        })
+        .sort({ createdAt: -1 }).limit(3).populate({
+            path: "user",
+            select: "-password",
+        })
+
+        res.status(200).json(posts)
+    } catch(error) {
+        console.log("Error in getThreeNewestPosts controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
 export const getLikedPosts = async (req, res) => {
 
     const userId = req.params.id;
