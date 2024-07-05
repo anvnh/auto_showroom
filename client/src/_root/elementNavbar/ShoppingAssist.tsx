@@ -4,8 +4,7 @@ import { BuilCar, offer, testdrive } from "../../assets";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-import { testDrive } from "@/assets/hplat_asset/img/dropdownNavBarImage/shopping";
-
+import { Button } from "@material-tailwind/react";
 const ShoppingAssist = () => {
 	return (
 		<div>
@@ -15,17 +14,19 @@ const ShoppingAssist = () => {
 						<img
 							data-aos="slide-right"
 							data-aos-delay="1200"
-							className="xl:w-[640px] lg:w-[400px] rounded-[25px]"
+							className=" xl:w-[640px] lg:w-[400px] rounded-[25px]"
 							src={BuilCar}
 						/>
 					</div>
-					<p
+					<div
 						data-aos="slide-left"
 						data-aos-delay="2000"
-						className="pt-6 lg:pl-20 lg:text-2xl relative flex xl:pl-36 xl:text-3xl"
+						className="pt-6 lg:pl-20 z-50 lg:text-2xl relative flex xl:pl-36 xl:text-3xl"
 					>
-						build your car
-					</p>
+						<Button className="bg-gradient-to-b from-gray-800 to-gray-400 transition-all ease-in-out duration-300 w-72 cursor-pointer h-16 text-xl z-10 hover:text-gray-100 text-gray-900" >
+							build your car
+						</Button>
+					</div>
 				</div>
 				<div>
 					<div className="xl:bottom-72 lg:bottom-[10px] h-auto relative justify-center flex">
@@ -36,13 +37,16 @@ const ShoppingAssist = () => {
 							src={offer}
 						/>
 					</div>
-					<p
+					<div
 						data-aos="slide-left"
 						data-aos-delay="1700"
-						className="z-20 xl:pl-[850px] lg:bottom-[340px] lg:pl-[550px] xl:bottom-[810px] relative xl:text-3xl lg:text-2xl"
+						className="z-20 xl:pl-[750px] lg:bottom-[340px] lg:pl-[550px] xl:bottom-[840px] relative xl:text-3xl lg:text-2xl"
 					>
+						
+						<Button className="bg-gradient-to-b from-gray-800 to-gray-400 transition-all ease-in-out duration-300 w-72 cursor-pointer h-16 text-xl z-10 hover:text-gray-100 text-gray-900" >
 						Offer
-					</p>
+						</Button>
+					</div>
 				</div>
 				<div>
 					<div className="xl:bottom-[1000px] lg:bottom-[600px] h-auto relative justify-end flex">
@@ -56,9 +60,12 @@ const ShoppingAssist = () => {
 					<p
 						data-aos="slide-right"
 						data-aos-delay="1500"
-						className="z-20 xl:pl-[1400px] lg:bottom-[580px] lg:pl-[900px] lg:text-2xl xl:bottom-[980px] relative xl:text-3xl"
+						className="z-20 xl:pl-[1370px] lg:bottom-[580px] lg:pl-[900px] lg:text-2xl xl:bottom-[980px] relative xl:text-3xl"
 					>
-						Test drive
+							<Button className="bg-gradient-to-b from-gray-800 to-gray-400 transition-all ease-in-out duration-300 w-72 cursor-pointer h-16 text-xl z-10 hover:text-gray-100 text-gray-900" >
+							Test drive
+						</Button>
+						
 					</p>
 				</div>
 			</div>
@@ -67,22 +74,22 @@ const ShoppingAssist = () => {
 				<div className="pt-2 pr-2 h-auto sm:space-y-12">
 					<p
 						data-aos="slide-left"
-						data-aos-delay="1200"
-						className="pt-12 px-12  relative flex font-syncopate text-center text-md ss:text-3xl sm:text-3xl" 
+						data-aos-delay="300"
+						className="pt-12 px-12  relative flex font-syncopate text-center text-md ss:text-3xl sm:text-3xl"
 					>
 						build your car
 					</p>
 
 					<p
 						data-aos="slide-left"
-						data-aos-delay="1400"
+						data-aos-delay="500"
 						className="pt-12 px-12 relative flex font-syncopate text-center text-md ss:text-3xl sm:text-3xl"
 					>
 						Offer
 					</p>
 					<p
 						data-aos="slide-left"
-						data-aos-delay="1600"
+						data-aos-delay="700"
 						className="pt-12 px-12 relative flex font-syncopate text-center text-md ss:text-3xl sm:text-3xl"
 					>
 						Test drive

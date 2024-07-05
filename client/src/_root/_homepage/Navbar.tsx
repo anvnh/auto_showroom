@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FaUser, FaBars } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { logo, menu, close } from "../../assets";
 
-import Vehicle from '../elementNavbar/Vehicle';
-import ShoppingAssist from '../elementNavbar/ShoppingAssist';
+import Vehicle from "../elementNavbar/Vehicle";
+import ShoppingAssist from "../elementNavbar/ShoppingAssist";
 import { FaAngleLeft } from "react-icons/fa6";
-import { Divide } from "lucide-react";
 interface SubNavbarProps {
 	selectedSection_element: string;
 	onNavClick: (section: string) => void;
@@ -29,9 +28,6 @@ const Navbar: React.FC<SubNavbarProps> = ({
 	}, []);
 
 	const [toggle, setToggle] = useState(false);
-	const [dropdownVe, setDropdownVe] = useState(false);
-	const [dropdownSh, setDropdownSh] = useState(false);
-	const [dropdownIn, setDropdownIn] = useState(false);
 
 	const [selectedSection, setSelectedSection] = useState("");
 	const handleNavClick = (section: string) => {
@@ -149,15 +145,15 @@ const Navbar: React.FC<SubNavbarProps> = ({
 						</Link>
 					</div>
 					<div className="flex-1 flex justify-end items-center">
-					<div className="hidden md:block">
-          <ul className="list-none sm:flex hidden justify-end items-center flex-1">
-							<Link to="/SignIn">
-								<li className="relative group pr-5">
-									<FaUser className="text-white w-[27px] h-[27px] transform hover:scale-110 transition-transform duration-300 cursor-pointer" />
-								</li>
-							</Link>
-						</ul>
-          </div>
+						
+							<ul className="list-none sm:flex md:justify-end xl:pl-0 pl-4 items-center justify-start flex-1">
+								<Link to="/SignIn">
+									<li className="relative group pr-5">
+										<FaUser className="text-white w-[27px] h-[27px] transform hover:scale-110 transition-transform duration-300 cursor-pointer" />
+									</li>
+								</Link>
+							</ul>
+					
 						<button
 							className="md:hidden text-white pr-3 focus:outline-none"
 							onClick={() => setToggle(!toggle)}
@@ -181,7 +177,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 					>
 						<nav
 							data-aos="fade-up"
-							className="w-full pt-4 h-14 opacity-10 text-white md:px-12.5 z-50 relative backdrop-blur-3xl bg-gray-950 bg-opacity-50 sm:block hidden"
+							className="w-full pt-4 h-14 opacity-10 text-white md:px-12.5 z-50 relative backdrop-blur-3xl bg-gray-950 bg-opacity-45 sm:block hidden"
 						>
 							<ul className="list-none sm:flex gap-10 justify-center items-center flex-1">
 								<li
@@ -252,7 +248,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 				{isExpanded && selectedSection === "vehicles" && (
 					<div
 						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-85 bg-gray-900 ${
+						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-85 bg-gray-900  ${
 							isHidden ? "hidden" : ""
 						}`}
 					>
@@ -283,53 +279,73 @@ const Navbar: React.FC<SubNavbarProps> = ({
 				)}
 			</div>
 
-      {toggle && (
-        <div data-aos="fade" className="md:hidden opacity-90 h-screen relative w-full backdrop-blur-3xl bg-opacity-20 text-white">
-          {currentPage === "main" ? (
-            <ul className="flex flex-col space-y-5 sm:space-y-16 ss:space-y-10 pt-[50%] sm:pt-[20%] items-center py-2">
-              <li
-                className="cursor-pointer transition-opacity duration-300 w-full text-center"
-                onClick={() => handleNavClick_repon("vehicles")}
-              >
-                <div data-aos="fade-up" data-aos-delay="800" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
-                  <p> Vehicles </p>
-                </div>
-              </li>
-              <li
-                className="cursor-pointer transition-opacity duration-300 w-full text-center"
-                onClick={() => handleNavClick_repon("shopping")}
-              >
-                <div  data-aos="fade-up" data-aos-delay="1000" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
-                  <p> Shopping Assist </p>
-                </div>
-              </li>
-              <li
-                className="cursor-pointer transition-opacity duration-300 w-full text-center"
-                onClick={() => handleNavClick_repon("owners")}
-              >
-                <div  data-aos="fade-up" data-aos-delay="1200" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
-                  <Link to="/owners">
-                    <p> Owners </p>
-                  </Link>
-                </div>
-              </li>
-            </ul>
-          ) : (
-            <div className="pt-5 pl-4">
-              <button data-aos="fade-right" onClick={handleBackClick_repon}>
-                <FaAngleLeft  className="w-6 h-auto"/>
-              </button>
-              {currentPage === "vehicles" && (<div data-aos="fade-right"> <Vehicle />    
-              </div>)}
-              {currentPage === "shopping" && (<div data-aos="fade-right"><ShoppingAssist /></div>)}
-              {currentPage === "owners" && (
-                <div className="text-center pt-20">
-               
-                  <p>Owner Content</p>
-                </div>
-              )}
-            </div>
-          )}
+			{toggle && (
+				<div
+					data-aos="fade"
+					className="md:hidden opacity-90 h-screen relative w-full backdrop-blur-3xl bg-opacity-20 text-white"
+				>
+					{currentPage === "main" ? (
+						<ul className="flex flex-col space-y-5 sm:space-y-16 ss:space-y-10 pt-[50%] sm:pt-[20%] items-center py-2">
+							<li
+								className="cursor-pointer transition-opacity duration-300 w-full text-center"
+								onClick={() => handleNavClick_repon("vehicles")}
+							>
+								<div
+									data-aos="fade-up"
+									data-aos-delay="300"
+									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
+								>
+									<p> Vehicles </p>
+								</div>
+							</li>
+							<li
+								className="cursor-pointer transition-opacity duration-300 w-full text-center"
+								onClick={() => handleNavClick_repon("shopping")}
+							>
+								<div
+									data-aos="fade-up"
+									data-aos-delay="500"
+									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
+								>
+									<p> Shopping Assist </p>
+								</div>
+							</li>
+							<li
+								className="cursor-pointer transition-opacity duration-300 w-full text-center"
+								onClick={() => handleNavClick_repon("owners")}
+							>
+								<div
+									data-aos="fade-up"
+									data-aos-delay="700"
+									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
+								>
+									<Link to="/owners">
+										<p> Owners </p>
+									</Link>
+								</div>
+							</li>
+						</ul>
+					) : (
+						<div className="pt-5 pl-4">
+							<button
+								data-aos="fade-right"
+								onClick={handleBackClick_repon}
+							>
+								<FaAngleLeft className="w-6 h-auto" />
+							</button>
+							{currentPage === "vehicles" && (
+								<div data-aos="fade-right">
+									{" "}
+									<Vehicle />
+								</div>
+							)}
+							{currentPage === "shopping" && (
+								<div data-aos="fade-right">
+									<ShoppingAssist />
+								</div>
+							)}
+						</div>
+					)}
 				</div>
 			)}
 		</div>

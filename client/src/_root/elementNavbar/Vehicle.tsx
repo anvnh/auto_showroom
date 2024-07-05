@@ -13,10 +13,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import {
-	PresentationChartBarIcon,
-	ShoppingBagIcon,
-} from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import {
 	logomer,

@@ -27,7 +27,7 @@ import {
 	car592,
 	car510,
 } from "../../assets";
-import Car5popular2 from "../productHomePage/car5popular2";
+import Car5popular2 from "../productHomePage/Car5popular2";
 import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 

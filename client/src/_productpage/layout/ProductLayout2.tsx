@@ -3,7 +3,7 @@ import Navbar from "../../_root/_homepage/Navbar";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import NavbarSmall2 from "../navbarsmall/NavbarSmall2";
-import Car2popular from "../productHomePage/car2popular";
+import Car2popular from "../productHomePage/Car2popular";
 import React, { useEffect, useRef, useState } from "react";
 const ProductLayout = () => {
 	const [selectedSection, setSelectedSection] = useState("");

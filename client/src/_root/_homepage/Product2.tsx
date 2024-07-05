@@ -62,18 +62,17 @@ const Product2 = () => {
 	];
 
 	return (
-		<div className="container object-cover">
+		<div className="w-screen">
 			<Swiper
-		
 				effect={"coverflow"}
 				grabCursor={true}
 				centeredSlides={true}
-				loop={true}
+				loop={false}
 				slidesPerView={"auto"}
 				coverflowEffect={{
 					rotate: 0,
-					stretch: 3200,
-					depth: 1500,
+					stretch: 3290,
+					depth: 1900,
 					modifier: 1,
 					slideShadows: false,
 				}}
@@ -85,7 +84,6 @@ const Product2 = () => {
 					nextEl: ".swiper-button-next",
 					prevEl: ".swiper-button-prev",
 				}}
-				
 				className="swiper_container"
 				modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
 				autoplay={{
@@ -99,13 +97,11 @@ const Product2 = () => {
 				{carData.map((car, index) => (
 					<SwiperSlide
 						key={index}
-						className={
-							index === activeIndex ? "swiper-slide-active" : ""
-						}
+						className={index === activeIndex ? "swiper-slide-active" : ""}
 					>
 						<div
 							data-aos="flip-up"
-							className="slide-content object-cover bg-transparent group flex flex-col items-center pt-1 pb-12 text-white font-poppins justify-center text-2xl"
+							className="slide-content object-cover bg-transparent group flex flex-col items-center w-screen pt-1 sm:pt-12 pb-12 text-white font-poppins justify-center text-2xl"
 							style={{
 								width: "100%", 
 								boxSizing: "border-box", 
@@ -113,9 +109,9 @@ const Product2 = () => {
 							<img
 								src={car.image}
 								alt={car.brand}
-								className="w-full max-w-xs md:max-w-sm group-hover:scale-125 transition-all ease-in-out duration-300 group-hover:rotate-2 translate-x-1 lg:max-w-md"
-                                style={{ top: "-10px" }} />
-							<div className="car-info px-6 py-1 rounded-3xl mt-4">
+								className="w-full max-w-xs scale-100 sm:scale-150 md:max-w-sm sm:group-hover:scale-[1.7] group-hover:scale-[1.25] transition-all ease-in-out duration-300 group-hover:rotate-2 translate-x-1 lg:max-w-md"
+								style={{ top: "-10px" }} />
+							<div className={`car-info px-6 py-1 rounded-3xl mt-4 ${index !== activeIndex ? 'hidden' : ''}`}>
 								<h3 className="brand justify-center flex-col font-bold text-2xl md:text-4xl text-center font-syncopate lg:text-4xl flex">
 									{car.brand}
 								</h3>
@@ -133,14 +129,14 @@ const Product2 = () => {
 				))}
 
 				{/* Controls */}
-				<div className="slider_controler">
-					<div className="swiper-button-next slider-arrow text-white pl-10">
+				<div className="slider_controler ">
+					<div className="swiper-button-next text-white pr-12">
 						<FaChevronRight />
 					</div>
-					<div className="swiper-button-prev slider-arrow text-white pr-10">
+					<div className="swiper-button-prev text-white ">
 						<FaChevronLeft />
 					</div>
-					<div className="swiper-pagination"></div>
+					
 				</div>
 			</Swiper>
 		</div>

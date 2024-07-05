@@ -30,7 +30,7 @@ import {
 
 } from "../../assets";
 import { Button } from "@/components/ui/button";
-import Car5popular2 from "../productHomePage/car5popular2";
+import Car5popular2 from "./Car5popular2";
 import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 import NavbarSmall4 from "../navbarsmall/NavbarSmall4";
@@ -406,34 +406,66 @@ const Car5popular: React.FC = () => {
 							</div>
 						</ParallaxLayer>
 						<ParallaxLayer
-							offset={5}
+							offset={4}
+							speed={0.8}
+							factor={1}
+							ref={(ref) => (parallaxLayerRefs.current[3] = ref)}
+						>
+						<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1700px] z-10 relative">
+					{" "}
+					
+					
+					
+						<iframe
+						className="z-20 w-full md:h-[550px] h-[300px] scale-150 "
+						
+							frameborder="0"
+							allowfullscreen
+							mozallowfullscreen="true"
+							webkitallowfullscreen="true"
+							allow="autoplay; fullscreen; xr-spatial-tracking"
+							xr-spatial-tracking
+							execution-while-out-of-viewport
+							execution-while-not-rendered
+							web-share
+							src="https://sketchfab.com/models/1923bdcbc32f442e97dd49201aa2c928/embed?autospin=1&autostart=1&preload=1&ui_theme=dark"
+						>
+							{" "}
+						</iframe>{" "}
+						
+					
+		
+				</div>
+				</ParallaxLayer>
+						<ParallaxLayer
+							offset={6}
 							speed={1.2}
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[4] = ref)}
 						>
-							<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:-bottom-[1100px]">
+						<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[1400px]">
 								Sophisticated, modern, classy
 							</div>
 						</ParallaxLayer>
-						<ParallaxLayer offset={5} speed={1} factor={1}>
+						<ParallaxLayer offset={6} speed={1} factor={1}>
 						<div
 						style={{ backgroundImage: `url(${car54})` }}
-						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:top-[2600px]"
+						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[1000px]"
 					></div>
 						</ParallaxLayer>
-						<ParallaxLayer offset={5.2} speed={0.8} factor={1}>
+						<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
 						<div className="justify-end items-end flex">
 						<div
 							style={{ backgroundImage: `url(${car57})` }}
-							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1050px] ss:-top-[300px] sm:-top-[200px] md:top-[1700px]"
+							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1050px] ss:-top-[300px] sm:-top-[200px] md:-top-[400px]"
 						></div>
 					</div>
 						</ParallaxLayer>
-						<ParallaxLayer offset={5.4} speed={0.5} factor={1}>
+						<ParallaxLayer offset={6.4} speed={0.5} factor={1}>
 						<div
 						style={{ backgroundImage: `url(${car55})` }}
-						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[600px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[800px]"
-					></div>
+							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[700px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[100px]"
+							></div>
 						</ParallaxLayer>
 						<ParallaxLayer
 							offset={7.4}

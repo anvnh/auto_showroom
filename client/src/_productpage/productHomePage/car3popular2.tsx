@@ -5,7 +5,7 @@ import {
 } from "../../assets";
 import { useEffect } from "react";
 import AOS from "aos";
-const car3popular2 = () => {
+const Car3popular2 = () => {
 	useEffect(() => {
 		AOS.init({
 			duration: 900,
@@ -156,27 +156,10 @@ const car3popular2 = () => {
 						</h1>
 					</div>
 				</div>
-				<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] pt-12">
-					{" "}
-					<iframe
-						className="w-full md:h-[550px] h-[300px] scale-125 "
-						frameBorder="0"
-						allowfullscreen
-						mozallowfullscreen="true"
-						webkitallowfullscreen="true"
-						allow="autoplay; fullscreen; xr-spatial-tracking"
-						xr-spatial-tracking
-						execution-while-out-of-viewport
-						execution-while-not-rendered
-						web-share
-						src="https://sketchfab.com/models/f417013fd6ff422a83dea9650d1f840b/embed?autospin=1&autostart=1&preload=1&ui_theme=dark&dnt=1"
-					>
-						{" "}
-					</iframe>{" "}
-				</div>
+
 			</div>
 		</div>
 	);
 };
 
-export default car3popular2;
+export default Car3popular2;
