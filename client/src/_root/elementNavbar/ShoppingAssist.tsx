@@ -62,8 +62,32 @@ const ShoppingAssist = () => {
 					</p>
 				</div>
 			</div>
+
 			<div className="block md:hidden">
-				fsd
+				<div className="pt-2 pr-2 h-auto sm:space-y-12">
+					<p
+						data-aos="slide-left"
+						data-aos-delay="1200"
+						className="pt-12 px-12  relative flex font-syncopate text-center text-md ss:text-3xl sm:text-3xl" 
+					>
+						build your car
+					</p>
+
+					<p
+						data-aos="slide-left"
+						data-aos-delay="1400"
+						className="pt-12 px-12 relative flex font-syncopate text-center text-md ss:text-3xl sm:text-3xl"
+					>
+						Offer
+					</p>
+					<p
+						data-aos="slide-left"
+						data-aos-delay="1600"
+						className="pt-12 px-12 relative flex font-syncopate text-center text-md ss:text-3xl sm:text-3xl"
+					>
+						Test drive
+					</p>
+				</div>
 			</div>
 		</div>
 	);

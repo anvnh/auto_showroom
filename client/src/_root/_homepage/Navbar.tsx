@@ -252,7 +252,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 				{isExpanded && selectedSection === "vehicles" && (
 					<div
 						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-[450px] ss:h-[900px] font-syncopate bg-opacity-85 bg-gray-900 ${
+						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-85 bg-gray-900 ${
 							isHidden ? "hidden" : ""
 						}`}
 					>
@@ -286,12 +286,12 @@ const Navbar: React.FC<SubNavbarProps> = ({
       {toggle && (
         <div data-aos="fade" className="md:hidden opacity-90 h-screen relative w-full backdrop-blur-3xl bg-gray-950 bg-opacity-50 text-white">
           {currentPage === "main" ? (
-            <ul className="flex flex-col space-y-5 pt-52 items-center py-2">
+            <ul className="flex flex-col space-y-5 sm:space-y-16 ss:space-y-10 pt-[50%] sm:pt-[20%] items-center py-2">
               <li
                 className="cursor-pointer transition-opacity duration-300 w-full text-center"
                 onClick={() => handleNavClick_repon("vehicles")}
               >
-                <div data-aos="fade-up" data-aos-delay="800" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none">
+                <div data-aos="fade-up" data-aos-delay="800" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
                   <p> Vehicles </p>
                 </div>
               </li>
@@ -299,7 +299,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
                 className="cursor-pointer transition-opacity duration-300 w-full text-center"
                 onClick={() => handleNavClick_repon("shopping")}
               >
-                <div  data-aos="fade-up" data-aos-delay="1000" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none">
+                <div  data-aos="fade-up" data-aos-delay="1000" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
                   <p> Shopping Assist </p>
                 </div>
               </li>
@@ -307,7 +307,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
                 className="cursor-pointer transition-opacity duration-300 w-full text-center"
                 onClick={() => handleNavClick_repon("owners")}
               >
-                <div  data-aos="fade-up" data-aos-delay="1200" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none">
+                <div  data-aos="fade-up" data-aos-delay="1200" className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
                   <Link to="/owners">
                     <p> Owners </p>
                   </Link>
