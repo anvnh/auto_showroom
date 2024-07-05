@@ -61,7 +61,7 @@ const MostSearchedCars = () => {
 					!isRefetching &&
 					currentProducts &&
 					currentProducts.map((product) => (
-						<div className="w-[350px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-white hover:bg-gray-400 hover:bg-opacity-15">
+						<div key={product._id} className="w-[350px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-white hover:bg-gray-400 hover:bg-opacity-15">
 							<div className="relative">
 								<img
 									className="w-full h-48 object-cover"

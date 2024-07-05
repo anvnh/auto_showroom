@@ -5,6 +5,7 @@ import Footer from '@/components/common/Footer'
 import Features from './components/Features';
 import Testimonials from './components/Testimonials';
 import Cars from './components/Cars';
+import Blogs from './components/Blogs';
 
 const ShopLayout = () => {
     return (
@@ -35,12 +36,17 @@ const ShopLayout = () => {
 						<Cars />
 					</div>
 				</div>
-				<div className="items-start justify-center py-16 bg-white">
+				<div className="items-start justify-center pb-16 bg-white">
 					<div className="w-full bg-white">
 						<Testimonials />
 					</div>
 				</div>
-				<div className="items-start justify-center bg-white pt-12">
+				<div className="items-start justify-center py-16 bg-[#F9FBFC]">
+					<div className="w-full bg-[#F9FBFC]">
+                        <Blogs />
+					</div>
+				</div>
+				<div className="items-start justify-center bg-white">
 					<div className="w-full">
 						<Footer />
 					</div>
