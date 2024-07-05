@@ -14,9 +14,6 @@ const Hero = () => {
 					</p>
 				</div>
 			</div>
-			<div className="text-4xl text-white font-poppins font-bold px-36 pt-12">
-				The most searched car
-			</div>
 		</section>
 	);
 }

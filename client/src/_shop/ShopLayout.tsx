@@ -3,6 +3,7 @@ import Products from './components/Products';
 import Hero from './components/Hero';
 import Footer from '@/components/common/Footer'
 import Features from './components/Features';
+import Testimonials from './components/Testimonials';
 
 const ShopLayout = () => {
     return (
@@ -23,9 +24,14 @@ const ShopLayout = () => {
 						<Products />
 					</div>
 				</div>
-				<div className="items-start justify-center pt-12 bg-primary">
+				<div className="items-start justify-center py-16 bg-primary">
 					<div className="w-full bg-primary">
 						<Features />
+					</div>
+				</div>
+				<div className="items-start justify-center py-16 bg-primary">
+					<div className="w-full bg-primary">
+						<Testimonials />
 					</div>
 				</div>
 				<div className="items-start justify-center bg-primary pt-12">

@@ -15,12 +15,7 @@ const Products = () => {
 	const productsPerPage = 4;
 
 	// get all products
-	const {
-		data: products,
-		isLoading,
-		refetch,
-		isRefetching,
-	} = useQuery({
+	const { data: products, isLoading, refetch, isRefetching, } = useQuery({
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {
@@ -54,7 +49,10 @@ const Products = () => {
 
 	return (
 		<>
-			<div className="grid grid-cols-4 gap-4 w-full px-36">
+			<div className="text-4xl text-white font-poppins font-bold px-60 pb-12">
+				The most searched car
+			</div>
+			<div className="grid grid-cols-4 gap-6 px-60">
 				{/* Map through products */}
 				{!isLoading && !isRefetching && products?.length === 0 && (
 					<p className="text-center my-4">No products available</p>
@@ -63,7 +61,7 @@ const Products = () => {
 					!isRefetching &&
 					currentProducts &&
 					currentProducts.map((product) => (
-						<div className="w-[360px] rounded-3xl overflow-hidden shadow-lg bg-white hover:bg-opacity-85">
+						<div className="w-[350px] rounded-3xl overflow-hidden shadow-lg bg-white hover:bg-opacity-85">
 							<div className="relative">
 								<img
 									className="w-full h-48 object-cover"
@@ -82,15 +80,15 @@ const Products = () => {
 									{product.bio}
 								</p>
 								<div className="flex items-center justify-between mt-4 text-gray-700 mx-3">
-									<div className="items-center mr-4">
-										<RiSpeedUpFill className="w-5 h-5 mr-1" />
+									<div className="items-center mr-4 line-clamp-1">
+										<RiSpeedUpFill className="w-5 h-5 mr-1 " />
 										{product.performance.top_speed}
 									</div>
-									<div className="items-center mr-4">
+									<div className="items-center mr-4 line-clamp-1">
 										<FaGasPump className="w-5 h-5 mr-1" />
 										{product.fuel_type}
 									</div>
-									<div className="items-center">
+									<div className="items-center mr-4 line-clamp-1">
 										<FaCogs className="w-5 h-5 mr-1" />
 										{product.transmission}
 									</div>
@@ -115,10 +113,10 @@ const Products = () => {
 					<button
 						key={i}
 						onClick={() => paginate(i + 1)}
-						className={`mx-1 px-3 py-1 rounded ${
+						className={`mx-1 px-3 py-1 rounded transision-all duration-300 ${
 							currentPage === i + 1
-								? "bg-gray-600 text-white"
-								: "bg-gray-200"
+								? "bg-gray-600 text-white scale-110"
+								: "bg-gray-200 hover:bg-gray-300"
 						}`}
 					>
 						{i + 1}
