@@ -10,7 +10,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 
 
 
-const Products = () => {
+const MostSearchedCars = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const productsPerPage = 4;
 
@@ -48,8 +48,8 @@ const Products = () => {
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 	return (
-		<>
-			<div className="text-4xl text-white font-poppins font-bold px-60 pb-12">
+		<section>
+			<div className="text-4xl text-black font-poppins font-bold px-60 pb-12">
 				The most searched car
 			</div>
 			<div className="grid grid-cols-4 gap-6 px-60">
@@ -61,7 +61,7 @@ const Products = () => {
 					!isRefetching &&
 					currentProducts &&
 					currentProducts.map((product) => (
-						<div className="w-[350px] rounded-3xl overflow-hidden shadow-lg bg-white hover:bg-opacity-85">
+						<div className="w-[350px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-white hover:bg-gray-400 hover:bg-opacity-15">
 							<div className="relative">
 								<img
 									className="w-full h-48 object-cover"
@@ -123,8 +123,8 @@ const Products = () => {
 					</button>
 				))}
 			</div>
-		</>
+		</section>
 	);
 };
 
-export default Products;
+export default MostSearchedCars;

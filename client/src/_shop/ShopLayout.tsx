@@ -1,9 +1,10 @@
 import Navbar from './components/Navbar'
-import Products from './components/Products';
+import Products from './components/MostSearchedCars';
 import Hero from './components/Hero';
 import Footer from '@/components/common/Footer'
 import Features from './components/Features';
 import Testimonials from './components/Testimonials';
+import Cars from './components/Cars';
 
 const ShopLayout = () => {
     return (
@@ -19,22 +20,27 @@ const ShopLayout = () => {
 						<Hero />
 					</div>
 				</div>
-				<div className="pt-12 bg-primary">
-					<div className="w-full bg-primary">
+				<div className="py-12 bg-white">
+					<div className="w-full bg-white">
 						<Products />
 					</div>
 				</div>
-				<div className="items-start justify-center py-16 bg-primary">
-					<div className="w-full bg-primary">
+				<div className="items-start justify-center pb-16 bg-white">
+					<div className="w-full bg-white">
 						<Features />
 					</div>
 				</div>
 				<div className="items-start justify-center py-16 bg-primary">
-					<div className="w-full bg-primary">
+					<div className="w-full">
+						<Cars />
+					</div>
+				</div>
+				<div className="items-start justify-center py-16 bg-white">
+					<div className="w-full bg-white">
 						<Testimonials />
 					</div>
 				</div>
-				<div className="items-start justify-center bg-primary pt-12">
+				<div className="items-start justify-center bg-white pt-12">
 					<div className="w-full">
 						<Footer />
 					</div>

@@ -1,6 +1,7 @@
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import logo from "@/assets/logo.png";
 
 import "aos/dist/aos.css";
 import AOS from "aos";
@@ -44,9 +45,11 @@ const Navbar = () => {
 			<nav className="w-full flex pt-3 pb-2 justify-between items-center navbar md:px-12.5 px-8 bg-opacity-70 z-50">
 				<ul className="list-none sm:flex hidden justify-start items-center flex-1">
 					<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10 ml-5">
-						<div className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:text-gray-300 duration-300 select-none">
-							Home
-						</div>
+                        <Link to="/">
+                            <div className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:text-gray-300 duration-300 select-none">
+                                Home
+                            </div>
+                        </Link>
 						<div className="absolute -bottom-2 left-0 h-1 w-0 bg-gray-400 group-hover:w-full transition-all duration-300"></div>
 					</li>
 					<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10">
@@ -79,9 +82,7 @@ const Navbar = () => {
 				</ul>
 
 				<ul>
-					<li className="list-none justify-center font-syncopate text-5xl">
-						AAP
-					</li>
+                    <img src={logo} alt="logo" className="w-16" />
 				</ul>
 
 				<ul className="list-none sm:flex hidden justify-end items-center flex-1">
