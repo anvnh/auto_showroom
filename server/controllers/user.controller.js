@@ -20,6 +20,20 @@ export const getUserProfile = async (req, res) => {
     }
 };
 
+export const getUserProfileWithID = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const user = await User.findById(id).select("-password");
+        if(!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        console.log("Error in getUserProfileWithID: ", error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+
 export const followUnfollowUser = async (req, res) => {
     try {
         const { id } = req.params;

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import placeholder_img from "../../assets/social/placeholder/placeholder.png";
-import placeholder_cover from "../../assets/social/placeholder/cover_placeholder.jpeg";
+import placeholder_img from "@/assets/social/placeholder/placeholder.png";
+import placeholder_cover from "@/assets/social/placeholder/cover_placeholder.jpeg";
 
 import { FaArrowLeft } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
@@ -52,12 +52,12 @@ const Following = () => {
 							</div>
 							<div className='flex w-full border-b border-gray-700 mt-0'>
 								<Link to={`/social/profile/following/${id}`}
-                                    className='flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer' 
+                                    className='flex justify-center flex-1 p-3 text-slate-500 hover:bg-secondary transition duration-300 relative cursor-pointer' 
                                 >
                                     Following
 								</Link>
 								<Link to={`/social/profile/followers/${id}`}
-									className='flex justify-center flex-1 p-3 text-slate-500 hover:bg-secondary transition duration-300 relative cursor-pointer'
+									className='flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer'
 								>
                                     Followers
                                     <div className='absolute bottom-0 w-10 h-1 rounded-full bg-[#2191d8]' />

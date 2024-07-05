@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import Posts from "../../components/social/ui/common/Posts";
-import ProfileHeaderSkeleton from "../../components/social/ui/skeletons/ProfileHeaderSkeleton";
+import Posts from "@/components/social/ui/common/Posts";
+import ProfileHeaderSkeleton from "@/components/social/ui/skeletons/ProfileHeaderSkeleton";
 import EditProfileModal from "./EditProfileModal";
 
-import { POSTS } from "../../utils/db/dummy";
+import { POSTS } from "@/utils/db/dummy"
 
-import placeholder_img from "../../assets/social/placeholder/placeholder.png";
-import placeholder_cover from "../../assets/social/placeholder/cover_placeholder.jpeg";
+import placeholder_img from "@/assets/social/placeholder/placeholder.png";
+import placeholder_cover from "@/assets/social/placeholder/cover_placeholder.jpeg";
 
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";

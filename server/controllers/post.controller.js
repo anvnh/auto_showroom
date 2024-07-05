@@ -154,8 +154,22 @@ export const likeUnlikePost = async (req, res) => {
     }
 };
 
-export const getAllPosts = async (req, res) => {
+export const getPost = async (req, res) => {
+    try {
+        const {id:postId} = req.params;
+        const post = await Post.findById(postId).populate({
+            path: "user",
+            select: "-password",
+        })
 
+        res.status(200).json(post);
+    } catch(error) {
+        console.log("Error in getPost controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
+export const getAllPosts = async (req, res) => {
     try {
         const posts = await Post.find().sort({ createdAt: -1 }).populate({
             path: "user",
