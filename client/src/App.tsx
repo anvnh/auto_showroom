@@ -1,4 +1,4 @@
-import {Routes, Route, useLocation, Navigate} from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import RootLayout from './_root/RootLayout';
 import UserLayout from './_owners/UserLayout';
 import { Audi_A5_Couple, Audi_A5_Sportback } from "./_car/audi/audi_A5"
@@ -14,24 +14,23 @@ import Following from '@/_social/./pages/profile/Following';
 import Followers from '@/_social/pages/profile/Followers';
 import PostDetailed from '@/_social/pages/post/PostDetailed';
 
-import {ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5} from './_productpage/layout/';
+import { ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5 } from './_productpage/layout/';
 import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
-import  SignIn  from './_owners/SignIn';
+import SignIn from './_owners/SignIn';
 import ShopLayout from './_shop/ShopLayout';
-
+import React, { useEffect } from "react";
 const App = () => {
     const location = useLocation();
     const isSocialRoute = location.pathname.startsWith('/social');
-    const {data: authUser, isLoading } = useQuery({
-        // use queryKey to give a unique name to the query and refer to it later
+    const { data: authUser, isLoading } = useQuery({
         queryKey: ['authUser'],
         queryFn: async () => {
             try {
                 const res = await fetch('/api/auth/me');
                 const data = await res.json();
-                if(data.error) return null;
+                if (data.error) return null;
                 if (!res.ok) {
                     throw new Error(data.message || 'Something went wrong');
                 }
@@ -42,18 +41,24 @@ const App = () => {
             }
         },
         retry: false,
-    })
+    });
 
-    if(isLoading) {
+    // Scroll to top whenever location changes
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
+
+    if (isLoading) {
         return (
             <div className='h-screen flex justify-center items-center'>
                 <LoadingSpinner size='lg' />
             </div>
-        )
+        );
     }
+
     return (
         <>
-            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'md:max-w-[80%] max-w-[90%] mx-auto') : 'h-screen'}`}> 
+            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'md:max-w-[80%] max-w-[90%] mx-auto') : 'h-screen'}`}>
                 {location.pathname.startsWith('/social') && authUser && <Sidebar />}
                 <Routes>
 
@@ -63,16 +68,14 @@ const App = () => {
                     <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
                     <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
 
-                 {/* carpopular-------------------------------------- */} 
+                    {/* carpopular */}
                     <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />
                     <Route path="/Mercedes-Benz-Maybach-2022" element={<ProductLayout2 />} />
                     <Route path="/Rolls-Royce-Ghost-2021" element={<ProductLayout3 />} />
                     <Route path="/Roll-Royce-Phantom" element={<ProductLayout5 />} />
 
-
-                 {/* owners--------------------------------------- */}
+                    {/* owners */}
                     <Route path="/SignIn" element={<SignIn />} />
-
 
 
                     <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
@@ -94,4 +97,4 @@ const App = () => {
     )
 }
 
-export default App
+export default App;

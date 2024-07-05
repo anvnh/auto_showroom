@@ -3,7 +3,7 @@ import Footer from "@/components/common/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import NavbarSmall from "../navbarsmall/NavbarSmall";
-import Car1popular from "../productHomePage/car1popular";
+import Car1popular from "../productHomePage/Car1popular";
 import React, { useEffect, useRef, useState } from "react";
 const ProductLayout = () => {
 	const [selectedSection, setSelectedSection] = useState("");
@@ -16,7 +16,7 @@ const ProductLayout = () => {
 		<section className="w-full">
 			<div className="w-full overflow-hidden bg-primary">
 				<div className="flex items-start justify-center ">
-					<div className="w-full z-10">
+					<div  data-aos-duration="200" className="w-full z-10">
 						<Navbar onNavClick={handleNavClick} />
 					</div>
 				</div>

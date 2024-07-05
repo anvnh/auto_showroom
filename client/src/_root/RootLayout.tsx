@@ -17,23 +17,6 @@ const RootLayout = () => {
 			lenis.destroy();
 		};
 	}, []);
-	useEffect(() => {
-		AOS.init({
-			duration: 800,
-
-			easing: "ease-in-out",
-			once: false,
-			mirror: true,
-			anchorPlacement: "top-bottom",
-		});
-	}, []);
-	// hiệu hiển thị sau
-	const [isVisible, setIsVisible] = useState(false);
-
-	useEffect(() => {
-		const timer = setTimeout(() => setIsVisible(true), 4000);
-		return () => clearTimeout(timer);
-	}, []);
 
 	return (
 		<section className="w-full bg-black">
@@ -53,7 +36,7 @@ const RootLayout = () => {
 						<Product />
 					</div>
 				</div>
-				<div className="bg-primary flex items-start pt-24 pb-28">
+				<div className="bg-primary pt-24 pb-28 justify-center items-center flex" >
 					<div className="w-full">
 						<Product2 />
 					</div>
