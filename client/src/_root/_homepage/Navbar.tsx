@@ -284,7 +284,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 			</div>
 
       {toggle && (
-        <div data-aos="fade" className="md:hidden opacity-90 h-screen relative w-full backdrop-blur-3xl bg-gray-950 bg-opacity-50 text-white">
+        <div data-aos="fade" className="md:hidden opacity-90 h-screen relative w-full backdrop-blur-3xl bg-opacity-20 text-white">
           {currentPage === "main" ? (
             <ul className="flex flex-col space-y-5 sm:space-y-16 ss:space-y-10 pt-[50%] sm:pt-[20%] items-center py-2">
               <li
