@@ -25,14 +25,8 @@ import { Button } from "@/components/ui/button";
 import Lenis from '@studio-freight/lenis'
 
 
-const car1popular = () => {
-		//smooth scroll
-		const lenis = new Lenis();
-		function raf(time) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
+const Car2popular = () => {
+
 	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
 
@@ -59,7 +53,7 @@ const car1popular = () => {
 		setSelectedImage(image);
 	};
 	useEffect(() => {
-		window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
+		window.scrollTo(0,0);
 	}, []);
 
 	return (
@@ -419,4 +413,4 @@ const car1popular = () => {
 	);
 };
 
-export default car1popular;
+export default Car2popular;

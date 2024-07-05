@@ -22,25 +22,23 @@ const Hero = () => {
 			<div className="relative flex h-[650] overflow-hidden">
 				<div
 					style={{ backgroundImage: `url(${user_hero_1})` }}
-					className="w-full h-[840px] bg-center bg-cover duration-500 "
+					className="w-full h-screen bg-center bg-cover duration-500 "
 				></div>
-				<div className="absolute left-0 top-100 h-[840px] w-[65%] bg-gradient-to-r from-gray-950"></div>
-				<div className="md:flex hidden">
-					<div className="absolute inset-0 flex flex-col justify-start items-start text-white ml-28 mt-36">
+				<div className="absolute left-0 top-100 h-screen w-[65%] bg-gradient-to-r from-gray-950"></div>
+				<div className="md:flex hidden ">
+					<div className="absolute inset-0 flex flex-col justify-start items-start text-white ml-28 mt-64">
 						<h1
 							data-aos="zoom-out"
 							className="text-5xl font-poppins font-bold mb-6"
 						>
-							{" "}
-							Everything Your Car <br /> Needs, All in One Place{" "}
+							Everything Your Car <br /> Needs, All in One Place
 						</h1>
 						<p
 							data-aos="zoom-out"
 							className="text-3xl font-poppins"
 						>
-							{" "}
 							Your personal portal to a world <br /> of car
-							ownership resources.{" "}
+							ownership resources.
 						</p>
 						<div className="flex mt-16 font-bold borer-2px text-3xl">
 							If you interested in our community,&nbsp;
@@ -56,25 +54,33 @@ const Hero = () => {
 					</div>
 				</div>
 				<div className="md:hidden flex">
-					<div className="absolute inset-0 flex flex-col justify-end items-center text-center text-white ml-11 mb-24">
-						<h1 className="text-[30px] font-poppins font-bold mb-1 bg-slate-900 bg-opacity-45 rounded-3xl w-full">
-							{" "}
-							Everything Your Car <br /> Needs, All in One Place{" "}
-						</h1>
-						<p className="text-[21px] font-poppins mb-7 bg-slate-900 bg-opacity-45 rounded-xl w-full">
-							{" "}
-							Your personal portal to a world <br /> of car
-							ownership resources.{" "}
-						</p>
-						<Button className="h-[45px] bg-white text-black font-poppins text-[23px] w-[320px] mb-3">
-							Sign in
-						</Button>
-						<Button className="h-[45px] bg-transparent border-solid border-2 border-white font-poppins text-[23px] w-[320px]">
-							Create an account
-						</Button>
-                        <Link to="/social" className="pt-10 text-bold text-xl">
-                            Give our community a try
+					<div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-12">
+					<div className="bg-gray-950 bg-opacity-45  sm:h-[250px] h-[200px] pb-5 w-screen">
+					<h1 className="text-2xl font-poppins font-bold mb-5 pt-5 sm:text-3xl">
+						
+						Everything Your Car <br /> Needs, All in One Place
+					</h1>
+					<div className="justify-center items-center flex">
+					<hr className="w-[50%] "/>
+					</div>
+					<p className="text-md font-poppins pt-5 sm:text-2xl">
+					
+						Your personal portal to a world <br /> of car
+						ownership resources.
+					</p>
+					</div>
+						<div className="pt-12">
+					
+						<div className="pt-4 justify-center items-center flex ">
+						<Link to="/social" >
+                            <button className="relative flex sm:h-[70px] sm:w-[300px] h-[50px] w-[250px] items-center rounded-md justify-center overflow-hidden bg-gray-600 ss:text-2xl sm:text-3xl text-xl font-poppins  text-white shadow-2xl transition-all ease-in-out duration-700 before:absolute before:inset-0 before:border-0 before:border-white before:duration-100 before:ease-linear hover:bg-white hover:text-gray-950 hover:shadow-gray-800 hover:before:border-[25px]">
+                                <span className="relative z-10">
+                                    Give it a try
+                                </span>
+                            </button>
                         </Link>
+						</div>
+						</div>
 					</div>
 				</div>
 			</div>

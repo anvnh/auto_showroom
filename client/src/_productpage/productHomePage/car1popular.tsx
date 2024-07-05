@@ -19,12 +19,11 @@ import {
 	logomer,
 	kiaposter,
 	banner1,
-
 } from "../../assets";
 import { Button } from "@/components/ui/button";
-import Lenis from '@studio-freight/lenis'
+import Lenis from "@studio-freight/lenis";
 
-const car1popular = () => {
+const Car1popular = () => {
 	//smooth scroll
 	const lenis = new Lenis();
 	function raf(time) {
@@ -58,9 +57,8 @@ const car1popular = () => {
 		setSelectedImage(image);
 	};
 	useEffect(() => {
-		window.scrollTo(0, 0);
+		window.scrollTo(0, 0); 
 	}, []);
-
 	return (
 		<div>
 			<div style={{ backgroundImage: `url(${sky})` }} className="min-h">
@@ -75,9 +73,7 @@ const car1popular = () => {
 						loop
 						playsInline
 						className="w-full h-auto relative top-20"
-					>
-						
-					</video>
+					></video>
 
 					<div
 						className="overlay absolute inset-x-0 bottom-0 h-1/4"
@@ -418,4 +414,4 @@ const car1popular = () => {
 	);
 };
 
-export default car1popular;
+export default Car1popular;
