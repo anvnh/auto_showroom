@@ -44,7 +44,7 @@ const Cars = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <section className="px-60 text-white pt-14 pb-5">
+        <section className="px-60 text-white pt-10 pb-5">
             <div className="font-bold text-4xl w-full flex justify-between">
                 <div className="">
                     Popular Makes
@@ -65,7 +65,7 @@ const Cars = () => {
                     !isRefetching &&
                     currentProducts &&
                     currentProducts.map((product) => (
-                        <div className="w-[350px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-[#161B30]">
+                        <div key={product._id} className="w-[350px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-[#161B30]">
                             <div className="relative">
                                 <img
                                     className="w-full h-48 object-cover"
