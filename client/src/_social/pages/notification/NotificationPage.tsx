@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import LoadingSpinner from "../../components/social/ui/common/LoadingSpinner";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 
 import { IoSettingsOutline } from "react-icons/io5";
 import { FaUser, FaComment } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 
 
-import placeholder_img from "../../assets/social/placeholder/placeholder.png";
+import placeholder_img from "@/assets/social/placeholder/placeholder.png";
 
 
 const NotificationPage = () => {

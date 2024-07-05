@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import placeholder_img from "../../assets/social/placeholder/placeholder.png";
-import placeholder_cover from "../../assets/social/placeholder/cover_placeholder.jpeg";
+import placeholder_img from "@/assets/social/placeholder/placeholder.png";
+import placeholder_cover from "@/assets/social/placeholder/cover_placeholder.jpeg";
 
 import { FaArrowLeft } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";

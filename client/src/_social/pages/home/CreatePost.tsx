@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import placeholder_img from "../../assets/social/placeholder/placeholder.png"
+import placeholder_img from "@/assets/social/placeholder/placeholder.png"
 
 const CreatePost = () => {
 	const [text, setText] = useState("");

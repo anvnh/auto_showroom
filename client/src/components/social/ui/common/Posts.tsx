@@ -52,9 +52,9 @@ const Posts = ({feedType, username, userId}) => {
 					<PostSkeleton />
 				</div>
 			)}
-			{!isLoading && !isRefetching && posts?.length === 0 && <p className='text-center my-4'>
+			{!isLoading && !isRefetching && posts?.length === 0 && <div className='text-center my-4'>
 				There is nothing in this tab. Switch 👻
-			</p>}
+			</div>}
 			{!isLoading && !isRefetching && posts && (
 				<div>
 					{posts.map((post) => (

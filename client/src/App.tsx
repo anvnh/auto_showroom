@@ -3,15 +3,16 @@ import RootLayout from './_root/RootLayout';
 import UserLayout from './_owners/UserLayout';
 import { Audi_A5_Couple, Audi_A5_Sportback } from "./_car/audi/audi_A5"
 
-import HomePage from './pages/home/HomePage';
-import SignUpPage from './pages/auth/signup/SignUpPage';
-import LoginPage from './pages/auth/login/LoginPage';
-import Sidebar from './components/social/ui/common/Sidebar';
+import HomePage from '@/_social/pages/home/HomePage';
+import SignUpPage from '@/_social/./pages/auth/signup/SignUpPage';
+import LoginPage from '@/_social/pages/auth/login/LoginPage';
+import Sidebar from '@/components/social/ui/common/Sidebar';
 import RightPanel from './components/social/ui/common/RightPanel';
-import NotificationPage from './pages/notification/NotificationPage';
-import ProfilePage from './pages/profile/ProfilePage';
-import Following from './pages/profile/Following';
-import Followers from './pages/profile/Followers';
+import NotificationPage from '@/_social/./pages/notification/NotificationPage';
+import ProfilePage from '@/_social/./pages/profile/ProfilePage';
+import Following from '@/_social/./pages/profile/Following';
+import Followers from '@/_social/pages/profile/Followers';
+import PostDetailed from '@/_social/pages/post/PostDetailed';
 
 import {ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5} from './_productpage/layout/';
 import { Toaster } from 'react-hot-toast';
@@ -74,13 +75,14 @@ const App = () => {
 
 
 
-                    <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/social/login" />} />
-                    <Route path="/social/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
-                    <Route path="/social/login" element={!authUser ? <LoginPage /> : <Navigate to="/social" />} />
-                    <Route path="/social/notifications" element={authUser ? <NotificationPage /> : <Navigate to="/social/login" />} />
-                    <Route path="/social/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/social/login" />} />
-                    <Route path="/social/profile/following/:id" element={authUser ? <Following /> : <Navigate to="/social/login" />} />
-                    <Route path="/social/profile/followers/:id" element={authUser ? <Followers /> : <Navigate to="/social/login" />} />
+                    <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
+                    <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
+                    <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/social" />} />
+                    <Route path="/social/notifications" element={authUser ? <NotificationPage /> : <Navigate to="/login" />} />
+                    <Route path="/social/posts/:id" element={authUser ? <PostDetailed/> : <Navigate to="/login" />} />
+                    <Route path="/social/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
+                    <Route path="/social/profile/following/:id" element={authUser ? <Following /> : <Navigate to="/login" />} />
+                    <Route path="/social/profile/followers/:id" element={authUser ? <Followers /> : <Navigate to="/login" />} />
 
                     <Route path="/shop" element={<ShopLayout />} />
 

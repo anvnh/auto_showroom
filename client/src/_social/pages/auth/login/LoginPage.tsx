@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { toast } from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
-import { logo, bgSocial, gifSocial } from "../../../assets";
+import { logo, bgSocial, gifSocial } from "@/assets";
 import { Link } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
