@@ -18,7 +18,6 @@ import { ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5 } from '
 import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
-import SignIn from './_owners/SignIn';
 import ShopLayout from './_shop/ShopLayout';
 import React, { useEffect } from "react";
 const App = () => {
