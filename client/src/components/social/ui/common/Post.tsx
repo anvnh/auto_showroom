@@ -152,7 +152,7 @@ const Post = ({ post }) => {
             <div 
                 className='hover:bg-gray-600 hover:bg-opacity-15 flex gap-2 items-start p-4 border border-gray-700 my-3 rounded-3xl bg-black bg-opacity-55'
             >
-                <Link to={`/social/posts/${postId}`}>
+                <Link to={`/social/posts/${postOwner.username}/${postId}`}>
                     <BiMessageAltDetail 
                         className='w-6 h-6 text-slate-500' 
                     />
