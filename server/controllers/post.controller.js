@@ -161,6 +161,10 @@ export const getPost = async (req, res) => {
             path: "user",
             select: "-password",
         })
+        .populate({
+            path: "comments.user", 
+            select: "-password"
+        });
 
         res.status(200).json(post);
     } catch(error) {

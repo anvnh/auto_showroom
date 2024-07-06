@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AOS from "aos";
@@ -12,6 +12,9 @@ interface SubNavbarProps {
 	selectedSection_element: string;
 	onNavClick: (section: string) => void;
 }
+
+import GetMe from "@/components/common/auth/GetMe";
+import { useQuery } from "@tanstack/react-query";
 
 const Navbar: React.FC<SubNavbarProps> = ({
 	selectedSection_element,
@@ -127,6 +130,25 @@ const Navbar: React.FC<SubNavbarProps> = ({
 		setCurrentPage("main");
 	};
 
+	const { data: authUser, isLoading } = useQuery({
+        queryKey: ['authUser'],
+        queryFn: async () => {
+            try {
+                const res = await fetch('/api/auth/me');
+                const data = await res.json();
+                if (data.error) return null;
+                if (!res.ok) {
+                    throw new Error(data.message || 'Something went wrong');
+                }
+                console.log("authUser is here: ", data);
+                return data;
+            } catch (error) {
+                throw new Error(error.message);
+            }
+        },
+        retry: false,
+    });
+
 	return (
 		<div className="z-50 fixed top-0 w-full font-poppins transition-transform duration-300">
 			{isVisible && (
@@ -145,15 +167,27 @@ const Navbar: React.FC<SubNavbarProps> = ({
 						</Link>
 					</div>
 					<div className="flex-1 flex justify-end items-center">
-						
-							<ul className="list-none sm:flex md:justify-end xl:pl-0 pl-4 items-center justify-start flex-1">
-								<Link to="/SignIn">
-									<li className="relative group pr-5">
-										<FaUser className="text-white w-[27px] h-[27px] transform hover:scale-110 transition-transform duration-300 cursor-pointer" />
-									</li>
-								</Link>
-							</ul>
-					
+						<ul className="list-none sm:flex md:justify-end xl:pl-0 pl-4 items-center justify-start flex-1">
+							<Link to={`${authUser ? "/social" : "/login"}`}>
+								<li className="relative group pr-5">
+									{/* TODO */}
+									{authUser ? (
+										<div className="flex items-center">
+											<div className="avatar">
+												<div className="w-10 h-10 rounded-full object-cover">
+													<img
+														src={authUser?.profileImg}
+													/>
+												</div>
+											</div>
+										</div>
+									) : (
+										<FaUser className="text-white w-6 h-auto" />
+									)}
+								</li>
+							</Link>
+						</ul>
+
 						<button
 							className="md:hidden text-white pr-3 focus:outline-none"
 							onClick={() => setToggle(!toggle)}

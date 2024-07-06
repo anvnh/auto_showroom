@@ -65,10 +65,10 @@ const NotificationPage = () => {
 						</div>
 						<ul
 							tabIndex={0}
-							className='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'
+							className='dropdown-content z-[1] menu p-2 shadow rounded-2xl w-52 bg-gray-600 backdrop-blur-md bg-opacity-15'
 						>
 							<li>
-								<a onClick={deleteNotifications}>Delete all notifications</a>
+								<a onClick={deleteNotifications} className="rounded-xl">Delete all notifications</a>
 							</li>
 						</ul>
 					</div>

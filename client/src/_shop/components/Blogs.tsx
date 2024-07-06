@@ -40,7 +40,7 @@ const Blogs = () => {
                             key={post._id} 
                             className="w-[800px] rounded-lg overflow-hidden shadow-lg bg-white hover:bg-gray-500 hover:bg-opacity-15"
                         >
-                            <Link to="/social">
+                            <Link to={`/social/posts/${post.user.username}/${post._id}`}>
                                 <div className="relative">
                                     <img src={post.img} alt="" className="w-full h-52 object-cover" />
                                     <span className="absolute top-2 right-2 bg-white text-gray-800 text-xs font-medium px-2 py-1 rounded">
