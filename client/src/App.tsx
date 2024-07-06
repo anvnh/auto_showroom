@@ -75,12 +75,11 @@ const App = () => {
                     <Route path="/Roll-Royce-Phantom" element={<ProductLayout5 />} />
 
                     {/* owners */}
-                    <Route path="/SignIn" element={<SignIn />} />
-
 
                     <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
                     <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
                     <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/social" />} />
+                    <Route path="/social/posts/:username/:id" element={authUser ? <PostDetailed/> : <Navigate to="/login" />} />
                     <Route path="/social/notifications" element={authUser ? <NotificationPage /> : <Navigate to="/login" />} />
                     <Route path="/social/posts/:id" element={authUser ? <PostDetailed/> : <Navigate to="/login" />} />
                     <Route path="/social/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />

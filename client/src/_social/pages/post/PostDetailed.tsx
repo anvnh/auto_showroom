@@ -10,6 +10,7 @@ import { FaRegHeart } from "react-icons/fa";
 const PostDetailed = () => {
 
 	const {id} = useParams();
+    const {username} = useParams();
 	const queryClient = useQueryClient();
 	const {data:authUser} = useQuery({queryKey: ["authUser"]});
 
@@ -17,7 +18,7 @@ const PostDetailed = () => {
         queryKey: ["postDetailed"],
         queryFn: async () => {
             try {
-                const response = await fetch(`/api/posts/${id}`);
+                const response = await fetch(`/api/posts/${username}/${id}`);
                 const data = await response.json();
 
                 if (!response.ok) {
