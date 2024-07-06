@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 
 import { car51, r3, new3 } from "../../assets";
 
-const Car5popular2 = () => {
+const car5popular2 = () => {
 	useEffect(() => {
 		AOS.init({
 			duration: 1000,
@@ -154,4 +154,4 @@ const Car5popular2 = () => {
 	);
 };
 
-export default Car5popular2;
+export default car5popular2;

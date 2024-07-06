@@ -14,7 +14,7 @@ import Following from '@/_social/./pages/profile/Following';
 import Followers from '@/_social/pages/profile/Followers';
 import PostDetailed from '@/_social/pages/post/PostDetailed';
 
-import { ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout5 } from './_productpage/layout/';
+import { ProductLayout1, ProductLayout2, ProductLayout3,ProductLayout4 , ProductLayout5, ProductLayout6 } from './_productpage/layout/';
 import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
@@ -71,9 +71,10 @@ const App = () => {
                     <Route path="/Mercedes-AMG-CLS" element={<ProductLayout1 />} />
                     <Route path="/Mercedes-Benz-Maybach-2022" element={<ProductLayout2 />} />
                     <Route path="/Rolls-Royce-Ghost-2021" element={<ProductLayout3 />} />
+                    <Route path="/Audi-R8-coupe-2022" element={<ProductLayout4 />} />
                     <Route path="/Roll-Royce-Phantom" element={<ProductLayout5 />} />
-
-                    {/* owners */}
+                    <Route path="/Audi-e-tron-GT-2024" element={<ProductLayout6 />} />
+                    {/* owners */}s
 
                     <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
                     <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
