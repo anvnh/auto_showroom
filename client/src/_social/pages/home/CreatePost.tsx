@@ -1,10 +1,12 @@
 import { CiImageOn } from "react-icons/ci";
 import { BsEmojiSmileFill } from "react-icons/bs";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import placeholder_img from "@/assets/social/placeholder/placeholder.png"
+import Picker from "emoji-picker-react";
+import EmojiPicker from "emoji-picker-react";
 
 const CreatePost = () => {
 	const [text, setText] = useState("");
@@ -13,6 +15,8 @@ const CreatePost = () => {
 
     const { data: authUser } = useQuery({queryKey: ['authUser']});
     const queryClient = useQueryClient();
+
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
     const {mutate: createPost, isPending, error} = useMutation({
         mutationFn: async ({text, img}) => {
@@ -63,6 +67,11 @@ const CreatePost = () => {
 		}
 	};
 
+    const onEmojiClick = (emojiObject) => {
+        setText((prevContent) => prevContent + emojiObject.emoji);
+        setShowEmojiPicker(false);
+    };
+
 	return (
         <div className='flex p-4 items-start border gap-4 border-gray-800 rounded-3xl my-6 bg-black bg-opacity-55'>
             <div className='avatar'>
@@ -101,9 +110,15 @@ const CreatePost = () => {
                         />
                         <BsEmojiSmileFill 
                             className='fill-[#2191d8] w-5 h-5 cursor-pointer' 
+                            onClick={() => setShowEmojiPicker(!showEmojiPicker)}
                         />
                     </div>
-                    <input type='file' hidden ref={imgRef} onChange={handleImgChange} />
+                    {showEmojiPicker && (
+                        <div className="absolute mt-10">
+                            <EmojiPicker onEmojiClick={onEmojiClick} theme="dark"/>
+                        </div>
+                    )}
+                    <input type='file' hidden ref={imgRef} onChange={handleImgChange}/>
                     <button className='btn btn-primary bg-[#2191d8] rounded-full btn-sm text-white px-4'>
                         {isPending ? "Posting..." : "Post"}
                     </button>
