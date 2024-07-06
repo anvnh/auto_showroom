@@ -67,7 +67,7 @@ const Car5popular: React.FC = () => {
 
 	useEffect(() => {
 		AOS.init({
-			duration: 1000,
+			duration: 900,
 			once: false,
 			mirror: true,
 			easing: "ease-in-out",
