@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from 'react';
-
 import {
 	r1,
 	r2,
@@ -312,8 +311,27 @@ const car3reponsive: React.FC = () => {
 					<Car3popular2 />
 				</div>
 			</div>
-			{/* // đẳng cấp */}
-			<div className="bg-black">
+		
+						<div className="sketchfab-embed-wrapper w-[1000x]  h-[300px] z-10 relative">
+					{" "}
+					<iframe
+						className="w-full  h-[300px] scale-125 z-50"
+						frameBorder="0"
+						allowfullscreen
+						mozallowfullscreen="true"
+						webkitallowfullscreen="true"
+						allow="autoplay; fullscreen; xr-spatial-tracking"
+						xr-spatial-tracking
+						execution-while-out-of-viewport
+						execution-while-not-rendered
+						web-share
+						src="https://sketchfab.com/models/f417013fd6ff422a83dea9650d1f840b/embed?autospin=1&autostart=1&preload=1&ui_theme=dark&dnt=1"
+					>
+						{" "}
+					</iframe>{" "}
+				</div>
+
+			<div className="bg-black pt-24">
 				<div
 				data-aos="fade-right"
 				className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[0px] md:-bottom-[1100px] pb-12 lg:bottom-[100px] lg:text-5xl">

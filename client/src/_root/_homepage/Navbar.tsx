@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { logo, menu, close } from "../../assets";
-
 import Vehicle from "../elementNavbar/Vehicle";
 import ShoppingAssist from "../elementNavbar/ShoppingAssist";
 import { FaAngleLeft } from "react-icons/fa6";
@@ -199,6 +198,27 @@ const Navbar: React.FC<SubNavbarProps> = ({
 										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 									</div>
 								</li>
+								<Link to="/shop">
+								<li
+									className={`cursor-pointer transition-opacity duration-300 ${
+										selectedP && selectedP !== "shopping"
+											? "opacity-50"
+											: "opacity-100"
+									}`}
+									onMouseEnter={() =>
+										handleMouseEnter("shopping")
+									}
+									onMouseLeave={handleMouseLeave}
+									onClick={() =>
+										handleToggleSection("shopping")
+									}
+								>
+									<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
+										<p> Shop </p>
+										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
+									</div>
+								</li>
+								</Link>
 								<li
 									className={`cursor-pointer transition-opacity duration-300 ${
 										selectedP && selectedP !== "shopping"
@@ -298,6 +318,20 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									<p> Vehicles </p>
 								</div>
 							</li>
+							<Link to="/shop">
+							<li
+								className="cursor-pointer transition-opacity duration-300 w-full text-center"
+								onClick={() => handleNavClick_repon("shopping")}
+							>
+								<div
+									data-aos="fade-up"
+									data-aos-delay="500"
+									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
+								>
+									<p> Shop </p>
+								</div>
+							</li>
+							</Link>
 							<li
 								className="cursor-pointer transition-opacity duration-300 w-full text-center"
 								onClick={() => handleNavClick_repon("shopping")}

@@ -215,7 +215,7 @@ const Vehicle = () => {
 											data-aos="slide-left"
 											className="animate-pulse pb-4 justify-center items-center pt-5 flex text-3xl"
 										>
-											$ 26 000
+											$ 183 600 
 										</p>
 										<hr data-aos="slide-right" />
 										<div
@@ -525,7 +525,7 @@ const Vehicle = () => {
 										Mercedes AMG CLS
 									</h1>
 									<p className="animate-pulse justify-center items-center pt-2 flex text-3xl ss:text-3xl">
-										$ 26 000
+										$ 183 600 
 									</p>
 								</div>
 								<div

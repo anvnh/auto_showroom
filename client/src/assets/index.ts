@@ -61,7 +61,7 @@ import mer11 from "./car1_popular/mer11.jpg";
 import mer12 from "./car1_popular/mer12.avif";
 import sky from "./car1_popular/sky.jpg";
 import banner1 from "./car1_popular/banner1.jpg";
-import mernavbar from "./car1_popular/navbar.jpg"
+import mernavbar from "./car1_popular/navbar.jpg";
 
 // car2 popular
 import merr from "./car2_popular/2mer.avif";
@@ -77,8 +77,6 @@ import merr9 from "./car2_popular/2mer9.avif";
 import merr10 from "./car2_popular/2mer10.avif";
 import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
-
-
 
 // import video
 
@@ -114,6 +112,35 @@ import b8 from "./car_popular/car3popular/b8.webp";
 import b9 from "./car_popular/car3popular/b9.webp";
 import toi from "./car_popular/car3popular/toi.png";
 
+//car4 popular
+import car41 from "./car_popular/car4popular/audi1.jpg";
+import car42 from "./car_popular/car4popular/audi2.jpg";
+import car43 from "./car_popular/car4popular/audi3.jpg";
+import car44 from "./car_popular/car4popular/audi4.jpg";
+import car45 from "./car_popular/car4popular/audi5.jpg";
+import car46 from "./car_popular/car4popular/audi6.jpg";
+import car47 from "./car_popular/car4popular/audi7.jpg";
+import car48 from "./car_popular/car4popular/audi8.jpg";
+import car49 from "./car_popular/car4popular/audi9.jpg";
+import car410 from "./car_popular/car4popular/audi10.jpg";
+import car411 from "./car_popular/car4popular/audi11.jpg";
+import car412 from "./car_popular/car4popular/audi12.jpg";
+import car413 from "./car_popular/car4popular/audi13.jpg";
+import car414 from "./car_popular/car4popular/audi14.jpg";
+import car415 from "./car_popular/car4popular/audi15.webp";
+import car416 from "./car_popular/car4popular/audi16.jpg";
+import car417 from "./car_popular/car4popular/audi17.jpg";
+import car418 from "./car_popular/car4popular/audi18.jpg";
+import car419 from "./car_popular/car4popular/audi19.png";
+
+import carHero from "./car_popular/car4popular/hero.webp";
+
+
+import car4BH from "./car_popular/car4popular/audiBH.jpg";
+import car4BH2 from "./car_popular/car4popular/audiBH2.jpg";
+import car4BH3 from "./car_popular/car4popular/audiBH3.jpg";
+import car4BH4 from "./car_popular/car4popular/audiBH4.jpg";
+import carremove from "./car_popular/car4popular/removeaudi.png"
 //car5 popular
 import car51 from "./car_popular/car5popular/car51.jpg";
 import car52 from "./car_popular/car5popular/car52.jpg";
@@ -131,6 +158,32 @@ import inside52 from "./car_popular/car5popular/inside52.webp";
 import inside53 from "./car_popular/car5popular/inside53.webp";
 import baner51 from "./car_popular/car5popular/baner51.jpg";
 
+//car6 popular
+import car61 from "./car_popular/car6popular/61.jpg"
+import car62 from "./car_popular/car6popular/62.jpg"
+import car63 from "./car_popular/car6popular/63.jpg"
+import car64 from "./car_popular/car6popular/64.jpg"
+import car65 from "./car_popular/car6popular/65BH.jpg"
+import car66 from "./car_popular/car6popular/66BH.jpg"
+import car67 from "./car_popular/car6popular/67BH.jpg"
+import car68 from "./car_popular/car6popular/68.jpg"
+import car69 from "./car_popular/car6popular/69.jpg"
+import car610 from "./car_popular/car6popular/610.jpg"
+import car611 from "./car_popular/car6popular/611.jpg"
+import car612 from "./car_popular/car6popular/612.jpg"
+import car613 from "./car_popular/car6popular/613.jpg"
+import car614 from "./car_popular/car6popular/614.jpg"
+import car615 from "./car_popular/car6popular/615.jpg"
+import car616 from "./car_popular/car6popular/616.jpg"
+import car617 from "./car_popular/car6popular/617.jpg"
+import car618 from "./car_popular/car6popular/618.jpg"
+import car619 from "./car_popular/car6popular/619.jpg"
+import car620 from "./car_popular/car6popular/620.jpg"
+import car621 from "./car_popular/car6popular/621.jpg"
+import car622 from "./car_popular/car6popular/622doc.jpg"
+import car623 from "./car_popular/car6popular/623doc.jpg"
+import car624 from "./car_popular/car6popular/624doc.jpg"
+import carremove6 from "./car_popular/car6popular/remove.png"
 // logo car
 import logo from "./logo/logoMain.png";
 import logo1 from "./logo_car1.png";
@@ -141,8 +194,7 @@ import logoroi from "./logo/logoroll.png";
 import logomer from "./logo/logomer.png";
 import logoaudi from "./logo/logoaudi.png";
 import logopos from "./logo/logopos.png";
-import VideoLogo from "./logo/videologo.mp4"
-
+import VideoLogo from "./logo/videologo.mp4";
 
 // navbar car
 // mer
@@ -160,7 +212,58 @@ import gif from "./login/gif.webp";
 import gifSocial from "./owner/gif2.webp";
 import bgLG from "./login/backgroundlogin.png";
 import bgSocial from "./owner/bgsocial.png";
+
 export {
+	carremove6,
+	car61, 
+car62 ,
+car63 ,
+car64 ,
+car65 ,
+car66 ,
+car67 ,
+car68 ,
+car69 ,
+car610,
+car611,
+car612,
+car613,
+car614,
+car615,
+car616,
+car617,
+car618,
+car619,
+car620,
+car621,
+car622,
+car623,
+car624,
+	car4BH4,
+	carHero,
+	car48, 
+car49 ,
+car410,
+car411,
+car412,
+car413,
+car414,
+car415,
+car416,
+car417,
+car418,
+car419,
+	carremove,
+	car4BH,
+	car4BH2,
+	car4BH3,
+	car41,
+	car42,
+	car43,
+	car44,
+	car45,
+	car46,
+	car47,
 	BuilCar,
 	offer,
 	testdrive,
@@ -218,7 +321,6 @@ export {
 	change10,
 	change8,
 	change9,
-
 	Videohieuung,
 	merr,
 	merr1,
