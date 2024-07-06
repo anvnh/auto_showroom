@@ -25,7 +25,7 @@ import {
 	b8,
 	b9,
 } from "../../assets";
-import Car3popular2 from "../productHomePage/Car3popular2";
+import Car3popular2 from "../productHomePage/car3popular2";
 import Footer from "../../components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 import AOS from "aos";

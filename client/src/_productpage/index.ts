@@ -1,10 +1,10 @@
 
-import Car1popular  from "./productHomePage/Car1popular"
-import Car2popular from "./productHomePage/Car2popular"
-import Car3popular from "./productHomePage/Car3popular"
-import Car3popular2 from "./productHomePage/Car3popular2"
-import Car5popular from "./productHomePage/Car5popular"
-import Car5popular2 from "./productHomePage/Car5popular2"
+import car1popular  from "./productHomePage/car1popular"
+import car2popular from "./productHomePage/car2popular"
+import car3popular from "./productHomePage/car3popular"
+import car3popular2 from "./productHomePage/car3popular2"
+import car5popular from "./productHomePage/car5popular"
+import car5popular2 from "./productHomePage/car5popular2"
 import ProductLayout1 from "./layout/ProductLayout1"
 import ProductLayout2 from "./layout/ProductLayout2"
 import ProductLayout3 from "./layout/ProductLayout3"
@@ -13,12 +13,12 @@ import Car3reponsive from "./reponsive/car3reponsive"
 import Car5reponsive from "./reponsive/car5reponsive"
 
 export {
-    Car1popular,
-    Car2popular,
-    Car3popular,
-    Car3popular2,
-    Car5popular,
-    Car5popular2,
+    car1popular,
+    car2popular,
+    car3popular,
+    car3popular2,
+    car5popular,
+    car5popular2,
     ProductLayout1,
     ProductLayout2,
     ProductLayout3,

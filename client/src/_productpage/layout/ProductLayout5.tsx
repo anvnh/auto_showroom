@@ -1,4 +1,4 @@
-import Car5popular from "../productHomePage/Car5popular";
+import Car5popular from "../productHomePage/car5popular";
 const ProductLayout5 = () => {
 	return (
 		<section className="w-full">

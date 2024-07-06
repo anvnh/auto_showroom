@@ -3,7 +3,7 @@ import Footer from "@/components/common/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import NavbarSmall from "../navbarsmall/NavbarSmall";
-import Car1popular from "../productHomePage/Car1popular";
+import Car1popular from "../productHomePage/car1popular";
 import React, { useEffect, useRef, useState } from "react";
 const ProductLayout = () => {
 	const [selectedSection, setSelectedSection] = useState("");

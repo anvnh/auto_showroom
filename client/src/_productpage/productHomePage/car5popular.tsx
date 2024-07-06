@@ -30,7 +30,7 @@ import {
 
 } from "../../assets";
 import { Button } from "@/components/ui/button";
-import Car5popular2 from "./Car5popular2";
+import Car5popular2 from "./car5popular2";
 import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 import NavbarSmall4 from "../navbarsmall/NavbarSmall4";
