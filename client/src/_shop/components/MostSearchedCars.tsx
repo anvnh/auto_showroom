@@ -49,10 +49,10 @@ const MostSearchedCars = () => {
 
 	return (
 		<section>
-			<div className="text-4xl text-black font-poppins font-bold px-60 pb-12">
+			<div className="text-4xl text-black font-poppins px-12 font-bold md:px-60 pb-12">
 				The most searched car
 			</div>
-			<div className="grid grid-cols-4 gap-6 px-60">
+			<div className="grid md:grid-cols-4 gap-6 md:px-60 px-10">
 				{/* Map through products */}
 				{!isLoading && !isRefetching && products?.length === 0 && (
 					<p className="text-center my-4">No products available</p>
@@ -61,7 +61,7 @@ const MostSearchedCars = () => {
 					!isRefetching &&
 					currentProducts &&
 					currentProducts.map((product) => (
-						<div key={product._id} className="w-[350px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-white hover:bg-gray-400 hover:bg-opacity-15">
+						<div key={product._id} className="md:w-[350px] w-[300px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-white hover:bg-gray-400 hover:bg-opacity-15">
 							<div className="relative">
 								<img
 									className="w-full h-48 object-cover"

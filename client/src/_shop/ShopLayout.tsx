@@ -16,7 +16,7 @@ const ShopLayout = () => {
 						<Navbar />
 					</div>
 				</div>
-				<div className="items-start justify-center pt-3 bg-primary">
+				<div className="items-start justify-center bg-primary">
 					<div className="w-full bg-primary">
 						<Hero />
 					</div>

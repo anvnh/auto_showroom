@@ -201,16 +201,16 @@ const Navbar: React.FC<SubNavbarProps> = ({
 								<Link to="/shop">
 								<li
 									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "shopping"
+										selectedP && selectedP !== "shop"
 											? "opacity-50"
 											: "opacity-100"
 									}`}
 									onMouseEnter={() =>
-										handleMouseEnter("shopping")
+										handleMouseEnter("shop")
 									}
 									onMouseLeave={handleMouseLeave}
 									onClick={() =>
-										handleToggleSection("shopping")
+										handleToggleSection("shop")
 									}
 								>
 									<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
