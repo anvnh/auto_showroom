@@ -130,10 +130,10 @@ const Product2 = () => {
 
 				{/* Controls */}
 				<div className="slider_controler ">
-					<div className="swiper-button-next text-white pr-12">
+					<div className="swiper-button-prev text-white pl-12">
 						<FaChevronRight />
 					</div>
-					<div className="swiper-button-prev text-white ">
+					<div className="swiper-button-next text-white pr-12">
 						<FaChevronLeft />
 					</div>
 					

@@ -86,7 +86,7 @@ const Car1popular = () => {
 						{isVisible && (
 							<div
 								data-aos="zoom-in"
-								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-24 transform text-center shadow-xl
+								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-48 transform text-center shadow-xl
            	 ss:w-[550px] w-[200px] p-2 md:p-5 
             transition-opacity duration-1000 opacity-0 font-syncopate ${
 				isVisible ? "opacity-100" : ""
@@ -98,7 +98,7 @@ const Car1popular = () => {
 								<h2 className="text-xs ss:text-2xl lg:text-3xl font-thin animate-pulse duration-1000 ease-in-out transition-all">
 									CLS 53 4MATIC+ <br />
 									<span className="font-bold text-red-100 ">
-										26 000 $
+									183 600 $
 									</span>
 								</h2>
 							</div>
@@ -387,7 +387,7 @@ const Car1popular = () => {
 						<span>
 							For only{" "}
 							<span className="text-red-100 font-bold">
-								26 000 $
+							183 600 $
 							</span>{" "}
 							you can own this car
 						</span>

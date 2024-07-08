@@ -84,7 +84,7 @@ const Car2popular = () => {
 						{isVisible && (
 							<div
 								data-aos="zoom-in"
-								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-24 transform text-center shadow-xl
+								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-48 transform text-center shadow-xl
 								ss:w-[550px] w-[200px] p-2 md:p-5 
 							transition-opacity duration-1000 opacity-0 font-syncopate ${isVisible ? "opacity-100" : ""}`}
 							>

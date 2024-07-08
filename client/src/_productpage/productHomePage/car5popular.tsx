@@ -33,7 +33,7 @@ import { Button } from "@/components/ui/button";
 import Car5popular2 from "./car5popular2";
 import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
-import NavbarSmall4 from "../navbarsmall/NavbarSmall4";
+import NavbarSmall5 from "../navbarsmall/NavbarSmall5";
 import Car5reponsive from "../reponsive/car5reponsive";
 
 const Car5popular: React.FC = () => {
@@ -124,7 +124,7 @@ const Car5popular: React.FC = () => {
 			<div className="hidden xl:block">
 				<div className="parallax">
 					<div>
-						<NavbarSmall4
+						<NavbarSmall5
 							onNavClick={handleNavClick}
 							selectedSection={selectedSection}
 							parallaxLayerRefs={parallaxLayerRefs}

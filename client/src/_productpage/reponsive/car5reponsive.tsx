@@ -322,8 +322,32 @@ const car5reponsive: React.FC = () => {
 					<Car5popular2 />
 				</div>
 			</div>
-			{/* // đẳng cấp */}
-			<div className="bg-black">
+			<div className="sketchfab-embed-wrapper w-[1000x] h-[500px] z-10 relative">
+					{" "}
+					
+					
+					
+						<iframe
+						className="z-20 w-full h-[300px] scale-150 "
+						
+							frameborder="0"
+							allowfullscreen
+							mozallowfullscreen="true"
+							webkitallowfullscreen="true"
+							allow="autoplay; fullscreen; xr-spatial-tracking"
+							xr-spatial-tracking
+							execution-while-out-of-viewport
+							execution-while-not-rendered
+							web-share
+							src="https://sketchfab.com/models/1923bdcbc32f442e97dd49201aa2c928/embed?autospin=1&autostart=1&preload=1&ui_theme=dark"
+						>
+							{" "}
+						</iframe>{" "}
+						
+					
+		
+				</div>
+			<div className="bg-black pt-12">
 				<div
 				data-aos="fade-right"
 				className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[0px] md:-bottom-[1100px] pb-12 lg:bottom-[100px] lg:text-5xl">
