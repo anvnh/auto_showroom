@@ -5,10 +5,14 @@ import { useState } from "react";
 import { CiBookmark } from "react-icons/ci";
 import { RiSpeedUpFill } from "react-icons/ri";
 import { FaCogs, FaGasPump } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Cars = () => {
-	const [currentPage, setCurrentPage] = useState(1);
-	const productsPerPage = 4;
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 4;
+    const navigate = useNavigate();
+
 
 	// get all products
 	const {
@@ -139,6 +143,8 @@ const Cars = () => {
 			</div>
 		</section>
 	);
+
 };
+
 
 export default Cars;
