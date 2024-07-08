@@ -29,6 +29,8 @@ const Post = ({ post }) => {
 
 	const formattedDate = formatPostDate(post.createdAt);
 
+    const [isImageEnlarged, setIsImageEnlarged] = useState(false);
+
 	const { mutate: deletePost, isPending: isDeleting} = useMutation({
 		mutationFn: async () => {
 			try {
@@ -147,16 +149,15 @@ const Post = ({ post }) => {
 		likePost();
 	};
 
+    const toggleImageEnlarge = () => {
+        setIsImageEnlarged(!isImageEnlarged);
+    };
+
 	return (
 		<>
             <div 
                 className='hover:bg-gray-600 hover:bg-opacity-15 flex gap-2 items-start p-4 border border-gray-700 my-3 rounded-3xl bg-black bg-opacity-55'
             >
-                <Link to={`/social/posts/${postOwner.username}/${postId}`}>
-                    <BiMessageAltDetail 
-                        className='w-6 h-6 text-slate-500' 
-                    />
-                </Link>
                 <div className='avatar'>
                     <Link to={`/social/profile/${postOwner.username}`} className='w-8 h-8 rounded-full overflow-hidden'>
                         <img src={postOwner.profileImg || placeholder_img} />
@@ -170,7 +171,9 @@ const Post = ({ post }) => {
                         <span className='text-gray-700 flex gap-1 text-sm'>
                             <Link to={`/social/profile/${postOwner.username}`}>@{postOwner.username}</Link>
                             <span>·</span>
-                            <span>{formattedDate}</span> {/* This is the date of the post */}
+                            <Link to={`/social/posts/${postOwner.username}/${postId}`}>
+                                <span className="hover:text-sky-400">{formattedDate}</span> {/* This is the date of the post */}
+                            </Link>
                         </span>
                         {isMyPost && (
                             <span className='flex justify-end flex-1'>
@@ -193,7 +196,20 @@ const Post = ({ post }) => {
                                 src={post.img}
                                 className='h-80 object-contain rounded-lg border border-gray-700'
                                 alt=''
+                                onClick={toggleImageEnlarge}
                             />
+                        )}
+                        {isImageEnlarged && (
+                            <div 
+                                className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+                                onClick={toggleImageEnlarge}
+                            >
+                                <img
+                                    src={post.img}
+                                    className="max-h-[90vh] max-w-[90vw] object-contain"
+                                    alt=""
+                                />
+                            </div>
                         )}
                     </div>
                     <div className='flex justify-between mt-3'>

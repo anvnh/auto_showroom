@@ -7,6 +7,7 @@ import { MdArrowOutward } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { FaCartPlus } from "react-icons/fa";
 
 
 
@@ -98,7 +99,10 @@ const MostSearchedCars = () => {
 									<span className="text-2xl font-bold text-gray-900">
 										{product.price + "$"}
 									</span>
-									<Link to="" className="text-blue-500 flex">
+									<Link
+										to={`/shop/product/${product._id}`}
+										className="text-blue-500 flex"
+									>
 										View Details
 										<MdArrowOutward className="w-5 h-5 ml-1" />
 									</Link>

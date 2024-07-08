@@ -13,14 +13,17 @@ import ProfilePage from '@/_social/./pages/profile/ProfilePage';
 import Following from '@/_social/./pages/profile/Following';
 import Followers from '@/_social/pages/profile/Followers';
 import PostDetailed from '@/_social/pages/post/PostDetailed';
+import ProductViewLayout from './_shop/ProductViewLayout';
 
 import { ProductLayout1, ProductLayout2, ProductLayout3,ProductLayout4 , ProductLayout5, ProductLayout6 } from './_productpage/layout/';
 import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
-import SignIn from './_owners/SignIn';
 import ShopLayout from './_shop/ShopLayout';
 import React, { useEffect } from "react";
+
+
+
 const App = () => {
     const location = useLocation();
     const isSocialRoute = location.pathname.startsWith('/social');
@@ -88,6 +91,7 @@ const App = () => {
                     <Route path="/social/profile/followers/:id" element={authUser ? <Followers /> : <Navigate to="/login" />} />
 
                     <Route path="/shop" element={<ShopLayout />} />
+                    <Route path="/shop/product/:id" element={<ProductViewLayout />} />
 
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
