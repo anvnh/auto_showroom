@@ -11,21 +11,23 @@ import {
   abstract1, abstract2,
 } from "@/assets/background/index"
 import {
-  noithat, calang, 
+  noithat, calang, a1, a2, 
    a5_3,  
   a5_5,
-  a5_6,  
+  a5_6,
+  a5_7,
+  a5_8, 
   a5_10, 
   a5_13, 
   light2, backLight2, mam2, 
   audi_thanXe,banner,
-   audiold1,  audiold4, 
+  road, audiold1,  audiold4, 
 } from "@/assets/audiA5/couple";
-import {  sport3, sport4, sport5, sport6, sport7 ,sport8, sport9 ,sport10 } from "@/assets/audiA5/sportback";
+import { sport1, sport2, sport3, sport4, sport5, sport6, sport7 ,sport8, sport9 ,sport10 } from "@/assets/audiA5/sportback";
 import { audiA5_15,  audiA5_9, } from "@/assets/audiA5";
 //-------------------Component--------------
-import "./Effect/style.css";
-import { useFollowPointer } from "./Effect/pointer";
+import "./style.css";
+import { useFollowPointer } from "./pointer";
 import Footer from "@/components/common/Footer";
 
 
