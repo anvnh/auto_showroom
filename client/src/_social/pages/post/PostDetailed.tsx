@@ -94,7 +94,7 @@ const PostDetailed = () => {
         },
         onSuccess: () => {
             toast.success("Post deleted successfully");
-            <Navigate to="/social" />;
+            handleDeleteInDetailed();
             // invalidate the query to refetch the data
             queryClient.invalidateQueries({queryKey: ["postDetailed"]});
         }
@@ -165,10 +165,12 @@ const PostDetailed = () => {
 		commentPost();
 	};
 
-
     const handleIconClick = () => {
         navigate('/social');
     };
+    const handleDeleteInDetailed = () => {
+        navigate('/social');
+    }
 
 	const isLiked = postDetailed.likes.includes(authUser._id);
 
