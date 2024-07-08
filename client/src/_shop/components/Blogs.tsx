@@ -24,21 +24,23 @@ const Blogs = () => {
 	});
 
     return (
-        <section className="px-60 text-black bg-[#F9FBFC]">
+     <div>
+         <hr className="w-1/2 border-black mx-auto relative top-1 pt-10 pb-12" /> 
+           <section className="md:px-60 px-12 ss:px-32 sm:px-44 text-black bg-[#F9FBFC]">
             <div className="font-bold text-4xl font-poppins pb-12">
                 Latest Blogs
             </div>
             {!isLoading && !isRefetching && newestPosts?.length === 0 && (
                 <p className="text-center my-4">No products available</p>
             )}
-            <div className="flex w-full justify-between gap-4">
+            <div className="md:flex w-full md:gap-4 space-y-12 md:space-y-0 ">
                 {!isLoading && 
                     !isRefetching && 
                     newestPosts && 
                     newestPosts.map((post) => (
                         <div 
                             key={post._id} 
-                            className="w-[800px] rounded-lg overflow-hidden shadow-lg bg-white hover:bg-gray-500 hover:bg-opacity-15"
+                            className="w-full  rounded-lg overflow-hidden shadow-lg bg-white hover:bg-gray-500 hover:bg-opacity-15"
                         >
                             <Link to={`/social/posts/${post.user.username}/${post._id}`}>
                                 <div className="relative">
@@ -63,6 +65,7 @@ const Blogs = () => {
 
 
         </section>
+     </div>
     )
 }
 

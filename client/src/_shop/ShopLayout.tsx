@@ -21,7 +21,7 @@ const ShopLayout = () => {
 						<Hero />
 					</div>
 				</div>
-				<div className="py-12 bg-white">
+				<div className="py-20 bg-white">
 					<div className="w-full bg-white">
 						<Products />
 					</div>
