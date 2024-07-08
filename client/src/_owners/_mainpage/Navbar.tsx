@@ -89,7 +89,6 @@ const Navbar: React.FC<SubNavbarProps> = ({
 
 	return (
 		<div className="z-50 fixed top-0 w-full font-poppins transition-transform duration-300">
-			
 				<nav
 					data-aos="fade-down"
 					className="w-full pt-3 h-14 md:h-16 flex pb-2 bg-gray-950 md:px-12.5 z-50 relative"

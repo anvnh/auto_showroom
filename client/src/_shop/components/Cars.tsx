@@ -5,10 +5,12 @@ import { useState } from "react";
 import { CiBookmark } from "react-icons/ci";
 import { RiSpeedUpFill } from "react-icons/ri";
 import { FaCogs, FaGasPump } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Cars = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 4;
+    const navigate = useNavigate();
 
     // get all products
     const { data: products, isLoading, refetch, isRefetching, } = useQuery({
@@ -43,74 +45,77 @@ const Cars = () => {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+
     return (
-        <section className="px-60 text-white pt-10 pb-5">
-            <div className="font-bold text-4xl w-full flex justify-between">
-                <div className="">
-                    Popular Makes
-                </div>
-                <div className="text-[15px] font-normal flex items-center hover:underline">
-                    <Link to="">
-                        View All Products
-                    </Link>
-                    <MdArrowOutward className="w-6 h-5 ml-1" /> 
-                </div>
-            </div>
-            <div className="grid grid-cols-4 gap-6 mt-14">
-                {/* Map through products */}
-                {!isLoading && !isRefetching && products?.length === 0 && (
-                    <p className="text-center my-4">No products available</p>
-                )}
-                {!isLoading &&
-                    !isRefetching &&
-                    currentProducts &&
-                    currentProducts.map((product) => (
-                        <div key={product._id} className="w-[350px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-[#161B30]">
-                            <div className="relative">
-                                <img
-                                    className="w-full h-48 object-cover"
-                                    src={product.image}
-                                    alt="Car"
-                                />
-                                <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
-                                    <CiBookmark className="text-xl text-gray-700" />
-                                </button>
-                            </div>
-                            <div className="p-4 text-white">
-                                <h2 className="text-xl font-bold">
-                                    {product.brand} {product.car_model}
-                                </h2>
-                                <p className="text-sm line-clamp-1">
-                                    {product.bio}
-                                </p>
-                                <div className="flex items-center justify-between mt-4 text-white mx-3">
-                                    <div className="items-center mr-4 line-clamp-1">
-                                        <RiSpeedUpFill className="w-5 h-5 mr-1 " />
-                                        {product.performance.top_speed}
-                                    </div>
-                                    <div className="items-center mr-4 line-clamp-1">
-                                        <FaGasPump className="w-5 h-5 mr-1" />
-                                        {product.fuel_type}
-                                    </div>
-                                    <div className="items-center mr-4 line-clamp-1">
-                                        <FaCogs className="w-5 h-5 mr-1" />
-                                        {product.transmission}
-                                    </div>
-                                </div>
-                                <div className="mt-4 flex justify-between items-center">
-                                    <span className="text-2xl font-bold text-white">
-                                        {product.price + "$"}
-                                    </span>
-                                    <Link to="" className="text-blue-500 flex">
-                                        View Details
-                                        <MdArrowOutward className="w-5 h-5 ml-1" />
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-            </div>
-            {/* Pagination */}
+		<section className="px-60 text-white pt-10 pb-5">
+			<div className="font-bold text-4xl w-full flex justify-between">
+				<div className="">Popular Makes</div>
+				<div className="text-[15px] font-normal flex items-center hover:underline">
+					<Link to="">View All Products</Link>
+					<MdArrowOutward className="w-6 h-5 ml-1" />
+				</div>
+			</div>
+			<div className="grid grid-cols-4 gap-6 mt-14">
+				{/* Map through products */}
+				{!isLoading && !isRefetching && products?.length === 0 && (
+					<p className="text-center my-4">No products available</p>
+				)}
+				{!isLoading &&
+					!isRefetching &&
+					currentProducts &&
+					currentProducts.map((product) => (
+						<div
+							key={product._id}
+							className="hover:bg-gray-300 hover:bg-opacity-20 w-[350px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-[#161B30]"
+						>
+							<div className="relative">
+								<img
+									className="w-full h-48 object-cover"
+									src={product.image}
+									alt="Car"
+								/>
+								<button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
+									<CiBookmark className="text-xl text-gray-700" />
+								</button>
+							</div>
+							<div className="p-4 text-white">
+								<h2 className="text-xl font-bold">
+									{product.brand} {product.car_model}
+								</h2>
+								<p className="text-sm line-clamp-1">
+									{product.bio}
+								</p>
+								<div className="flex items-center justify-between mt-4 text-white mx-3">
+									<div className="items-center mr-4 line-clamp-1">
+										<RiSpeedUpFill className="w-5 h-5 mr-1 " />
+										{product.performance.top_speed}
+									</div>
+									<div className="items-center mr-4 line-clamp-1">
+										<FaGasPump className="w-5 h-5 mr-1" />
+										{product.fuel_type}
+									</div>
+									<div className="items-center mr-4 line-clamp-1">
+										<FaCogs className="w-5 h-5 mr-1" />
+										{product.transmission}
+									</div>
+								</div>
+								<div className="mt-4 flex justify-between items-center">
+									<span className="text-2xl font-bold text-white">
+										{product.price + "$"}
+									</span>
+									<Link
+										to={`/shop/product/${product._id}`}
+										className="text-blue-500 flex"
+									>
+										View Details
+										<MdArrowOutward className="w-5 h-5 ml-1" />
+									</Link>
+								</div>
+							</div>
+						</div>
+					))}
+			</div>
+			{/* Pagination */}
 			<div className="flex justify-center mt-8">
 				{Array.from({ length: totalPages }, (_, i) => (
 					<button
@@ -126,8 +131,8 @@ const Cars = () => {
 					</button>
 				))}
 			</div>
-        </section>
-    )
+		</section>
+	);
 }
 
 export default Cars

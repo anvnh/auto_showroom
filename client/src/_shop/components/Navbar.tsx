@@ -67,13 +67,6 @@ const Navbar = () => {
 					</li>
 
 					<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10">
-						<div className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1 hover:text-gray-300 duration-300 select-none">
-							About
-						</div>
-						<div className="absolute -bottom-2 left-0 h-1 w-0 bg-gray-400 group-hover:w-full transition-all duration-300"></div>
-					</li>
-
-					<li className="relative group font-poppins font-normal cursor-pointer text-[17px] text-white mr-10">
 						<div className="relative group flex transition ease-in-out delay-100 hover:-translate-y-1  hover:text-gray-300 duration-300 select-none">
 							About Us
 						</div>
