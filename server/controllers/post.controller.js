@@ -105,11 +105,43 @@ export const commentOnPost = async (req, res) => {
     }
 };
 
+export const deleteComment = async (req, res) => {
+    try {
+        const {postId, commentId} = req.params;
+
+        const post = await Post.findById(postId);
+
+        if(!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+        
+        const comments = post.comments;
+
+        const ifCommentExists = comments.find((comment) => comment._id.toString() === commentId.toString());
+
+        if(!ifCommentExists) {
+            return res.status(404).json({ message: "Comment not found" });
+        }
+
+        const updatedComments = comments.filter((comment) => comment._id.toString() !== commentId.toString());
+
+        post.comments = updatedComments;
+
+        post.save();
+
+        res.status(200).json({message: "Comment deleted"});
+
+    } catch(error) {
+        console.log("Error in deleteComment controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
 
 export const likeUnlikePost = async (req, res) => {
     try {
-        const userId = req.user._id;
-        const {id:postId} = req.params;
+        const postId = req.params._id;
+        const userId = req.params.user._id;
 
         const post = await Post.findById(postId);
 
@@ -163,7 +195,7 @@ export const getPost = async (req, res) => {
         })
         .populate({
             path: "comments.user", 
-            select: "-password"
+            select: "-password",
         });
 
         res.status(200).json(post);
