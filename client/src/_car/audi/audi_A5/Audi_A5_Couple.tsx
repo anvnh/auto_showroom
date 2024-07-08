@@ -1,120 +1,357 @@
-import { Link } from "react-router-dom"
 import { Navbar } from "../../../_root/_homepage";
 import { useState, useEffect, useRef, } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
+import SplitType from 'split-type'
 gsap.registerPlugin(ScrollTrigger);
+import Lenis from "@studio-freight/lenis";
 //---------------------Asset-----------------------------
 import {
   abstract1, abstract2,
 } from "@/assets/background/index"
 import {
-  noithat, calang, a1, a2,
-  a5_3,
+  noithat, calang, a1, a2, 
+   a5_3,  
   a5_5,
   a5_6,
   a5_7,
-  a5_8,
-  a5_10,
-  a5_13,
-  light2, backLight2, mam2,
+  a5_8, 
+  a5_10, 
+  a5_13, 
+  light2, backLight2, mam2, 
   audi_thanXe,
-  road, audiold1, audiold4,
+  road, audiold1,  audiold4, 
 } from "@/assets/audiA5/couple";
-import { audiA5_15, audiA5_9, } from "@/assets/audiA5";
+import { audiA5_15,  audiA5_9, } from "@/assets/audiA5";
 //-------------------Component--------------
-import {
-  bubbleText_fromBottomToTop,
-  imgAppear1, contentAppear1, imgAppear2, contentAppear2, textAppear,
-  history_imgAppear1, history_contentAppear1, history_imgAppear2,
-  split_txt,
-  smoothScroll_lenis,
-  paraHero_section1, paraHero_section2, paraHero_section4,
-  price_section,
-  slogan_section,
-  pin_pinElement, pin_imgAppear, pin_imgOpacity,
-} from "./Effect";
-import { Split_mobile, History_mobile } from "./Reponsive/index"
-import "./Effect/style.css";
-import { useFollowPointer } from "./Effect/pointer";
+import "./style.css";
+import { useFollowPointer } from "./pointer";
 import Footer from "@/components/common/Footer";
 
 
 const Audi_A5_Couple = () => {
-
-  
+  //cuon dau trang
   useEffect(() => {
-    //cuon dau trang
-     setTimeout(() => {
-    window.scrollTo(0, 0)
-  }, 0)
-    //smooth scroll
-    smoothScroll_lenis()
-    //scroll char 
-    const split_char = document.querySelectorAll('.type')
-    split_txt(split_char)
-  }, []);
+    window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
+  },[] );
+
+  //smooth scroll
+ useEffect(()=>{
+   const lenis = new Lenis();
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf); 
+      return () => {
+      lenis.destroy();
+    };
+ },[])
 
   //cursor effect
   const ref = useRef(null);
   const { x, y } = useFollowPointer(ref);
 
   //paralax hero
-  const hero_section2 = useRef(null)
-  const sec2_txt = useRef(null)
+const hero_section1 = useRef(null)
+  const sec1_txt = useRef(null)
   const hero_section3 = useRef(null)
   const sec3_img1 = useRef(null)
   const sec3_img2 = useRef(null)
   const hero_section4 = useRef(null)
-  const sec4_txt = useRef(null)
+  const sec4_text = useRef(null)
   const bg_sec1 = useRef(null)
   useEffect(() => {
-    paraHero_section1(hero_section2.current, sec2_txt.current);
-    paraHero_section2(hero_section3.current, sec3_img1.current, sec3_img2.current);
-    paraHero_section4(hero_section4.current, sec4_txt.current);
-  }, [])
+    
+      const tl = gsap.timeline()
+      tl
+        .set(sec1_txt.current, {
+          opacity: 0,
+          y: 500,
+        })
+        .to(sec1_txt.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+        })
+      ScrollTrigger.create({
 
+        trigger: hero_section1.current,
+        start: "top center",
+        end: "bottom 20%",
+        animation: tl, toggleActions: "restart none none reverse"
+      }
+      )
+    
+    
+      const tl1 = gsap.timeline()
+      tl1.set([sec3_img1.current, sec3_img2.current], {
+        y: 500,
+        opacity: 0,
+      })
+        .to([sec3_img1.current, sec3_img2.current], {
+          y: 0,
+          opacity: 1,
+        })
+
+      ScrollTrigger.create({
+        trigger: hero_section3.current,
+        start: "top 80%",
+        end: "bottom top",
+        scrub: true,
+        animation: tl1
+      })
+    
+
+    
+      const tl_sec4 = gsap.timeline()
+      tl_sec4
+        .set(sec4_text.current, {
+          opacity: 0,
+          y: 400
+        })
+        .to(sec4_text.current, {
+          opacity: 1,
+          y: 0
+        })
+      ScrollTrigger.create({
+        trigger: hero_section4.current,
+        start: "top 80%",
+        end: "bottom center",
+        //scrub:true,
+        toggleActions: "restart none none reverse",
+        animation: tl_sec4
+
+      })
+    
+
+  }, [])
   //hero
   const container_hero = useRef(null)
   const hero_car = useRef(null)
   const hero_txt = useRef(null)
   const container_slogan = useRef(null);
-  const slogan_txt = useRef(null);
+  const slogan_text = useRef(null);
+  
   useEffect(() => {
-    price_section(container_hero.current, hero_txt.current)
-    slogan_section(container_slogan.current, slogan_txt.current)
+    
+      const textTimeline = gsap.timeline();
+      textTimeline
+        .set(hero_txt.current, {
+          opacity: 0,
+          x: -200,
+        })
+        .to(hero_txt.current, {
+          opacity: 1,
+          duration: 1,
+          x: 0,
+        });
+    
+
+    if (container_slogan.current && slogan_text.current) {
+      const sloganTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: container_slogan.current,
+          start: "top center",
+          end: "bottom center",
+          toggleActions: "play none none none",
+        }
+      }
+      );
+      sloganTimeline.set(slogan_text.current, {
+        opacity: 0,
+        x: -100,
+      }).to(slogan_text.current, {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+      });
+    }
+
+
+    //scroll char
+    const split = document.querySelectorAll('.type')
+    split.forEach((char, i) => {
+      const text = new SplitType(char, { types: 'chars' })
+      gsap.from(text.chars, {
+        scrollTrigger: {
+          trigger: char,
+          start: "top 80%",
+          end: "bottom 30%",
+          scrub: 0.2,
+        },
+        opacity: 0.2,
+        stagger: 0.1
+      })
+    })
   }, []);
 
-  //-----split1-------
+  //-----split1
   const container_split1 = useRef(null)
   const split1_h1 = useRef(null)
   const split1_p = useRef(null)
   const split1_img = useRef(null)
   useEffect(() => {
-    imgAppear1(container_split1.current, split1_img.current)
-    contentAppear1(container_split1.current, split1_h1.current, split1_p.current)
+
+
+    if (container_split1.current && split1_img.current) {
+      const imgTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: container_split1.current,
+          start: "top 70%",
+          end: "bottom bottom",
+          scrub: true,
+        }
+      })
+      imgTimeline.set(split1_img.current, {
+        opacity: 0,
+        y: 700,
+      })
+        .to(split1_img.current, {
+          opacity: 1,
+          id: "split",
+          y: 0,
+        })
+    }
+    //const id = gsap.getById("split") --test hàm gsap.getById
+    if (split1_h1.current && split1_p.current && container_split1) {
+      const tl = gsap.timeline();
+      tl.set([split1_h1.current, split1_p.current], {
+        opacity: 0,
+        x: 1000,
+      })
+        .to(split1_h1.current, {
+          opacity: 1,
+          duration: 0.5,
+          x: 0,
+        })
+        .to(
+          split1_p.current,
+          {
+            opacity: 1,
+            duration: 0.5,
+            x: 0,
+          },
+          "-=0.3"
+        );
+      ScrollTrigger.create({
+        trigger: container_split1.current,
+        start: "top center",
+        end: "bottom center",
+        toggleActions: "restart none none reverse",
+        animation: tl,
+      });
+    }
+
+
   }, []);
 
-  //------split2--------
+  //split2
   const container_split2 = useRef(null)
   const split2_img = useRef(null)
   const split2_h1 = useRef(null)
   const split2_p = useRef(null)
   useEffect(() => {
-    imgAppear2(container_split2.current, split2_img.current)
-    contentAppear2(container_split2.current, split2_h1.current, split2_p.current)
+    if (container_split2.current && split2_img.current) {
+      const imgTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: container_split2.current,
+          start: "top 70%",
+          end: "bottom bottom",
+          scrub: true,
+        }
+      })
+      imgTimeline.set(split2_img.current, {
+        opacity: 0,
+        y: 700,
+      })
+        .to(split2_img.current, {
+          opacity: 1,
+          y: 0,
+        })
+    }
+
+    if (split2_h1.current && split2_p.current && container_split2.current) {
+      const tl = gsap.timeline();
+      tl.set([split2_h1.current, split2_p.current], {
+        opacity: 0,
+        x: -1000,
+      })
+        .to(split2_h1.current, {
+          opacity: 1,
+          duration: 0.5,
+          x: 0,
+        })
+        .to(
+          split2_p.current,
+          {
+            opacity: 1,
+            duration: 0.5,
+            x: 0,
+          },
+          "-=0.2"
+        );
+      ScrollTrigger.create({
+        trigger: container_split2.current,
+        start: "top center",
+        end: "bottom center",
+        toggleActions: "restart none none reverse",
+        animation: tl,
+      });
+    }
+
+
   }, []);
-  // -------text------
+  // ----------------text--------------
   const txt1 = useRef(null);
   const txt2 = useRef(null);
   const txt3 = useRef(null);
   const txtbox = useRef(null);
   useEffect(() => {
-    textAppear(txtbox.current, txt1.current, txt2.current, txt3.current)
+    if (txtbox.current && txt1.current && txt2.current && txt3.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: txtbox.current,
+          start: "top center",
+          end: "bottom center",
+          toggleActions: "restart none none reverse  ",
+        }
+      });
+      tl.set([txt1.current, txt2.current, txt3.current], {
+        opacity: 0,
+        x: -1000,
+      })
+        .to(
+          txt1.current,
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.3,
+          },
+        )
+        .to(
+          txt2.current,
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.5
+          },
+          "-=0.3"
+        )
+        .to(
+          txt3.current,
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.5,
+          },
+          "-=0.3"
+        )
+    }
   }, []);
 
-  //----Hisstory --------
+  //-------------Hisstory ---------------
   const section1 = useRef(null)
   const sec1_img1 = useRef(null)
   const sec1_img2 = useRef(null)
@@ -126,19 +363,96 @@ const Audi_A5_Couple = () => {
   const sec2_img22 = useRef(null)
   const sec2_img11 = useRef(null)
   useEffect(() => {
-    history_imgAppear1(section1.current, sec1_img1.current, sec1_img2.current)
-    history_contentAppear1(section1.current, sec1_text.current)
-    history_imgAppear2(section2.current, sec2_img1.current, sec2_img2.current)
-    history_imgAppear1(section22.current, sec2_img22.current, sec2_img11.current)
+    if (sec1_img1.current && sec1_img2.current && section1.current) {
+      const timeline_section1 = gsap.timeline()
+      timeline_section1
+        .set([sec1_img1.current, sec1_img2.current], {
+          yPercent: 100,
+          opacity: 0
+        })
+        .to([sec1_img1.current, sec1_img2.current], {
+          yPercent: 0,
+          opacity: 1,
+        })
+      ScrollTrigger.create({
+
+        trigger: section1.current,
+        start: "top center",
+        end: "bottom center",
+        scrub: true,
+        animation: timeline_section1
+
+      })
+    }
+    if (sec1_text.current && section1.current) {
+      const tl_sec1_text = gsap.timeline()
+      tl_sec1_text.set(sec1_text.current, {
+        opacity: 0,
+
+      })
+      tl_sec1_text.to(sec1_text.current, {
+        opacity: 1,
+        duration: 1,
+
+      })
+      ScrollTrigger.create({
+        trigger: section1.current,
+        start: "top center",
+        end: "bottom bottom",
+        animation: tl_sec1_text
+      })
+    }
+
+    if (sec2_img1.current && sec2_img2.current && section2.current) {
+      const tl_section2 = gsap.timeline()
+      tl_section2
+        .set([sec2_img1.current, sec2_img2.current], {
+          yPercent: 100,
+        })
+        .to([sec2_img1.current, sec2_img2.current], {
+          opacity: 1,
+          yPercent: 0,
+        })
+      ScrollTrigger.create({
+        trigger: section2.current,
+        start: "top center",
+        end: "bottom bottom",
+        scrub: true,
+        animation: tl_section2
+      })
+    }
+
+    if (sec2_img11.current && sec2_img22.current && section22.current) {
+      const timeline_section22 = gsap.timeline(
+      )
+      timeline_section22
+        .set([sec2_img11.current, sec2_img22.current], {
+          yPercent: 100,
+        })
+        .to([sec2_img11.current, sec2_img22.current], {
+          opacity: 1,
+          yPercent: 0,
+        })
+      ScrollTrigger.create({
+        trigger: section22.current,
+        start: "top center",
+        end: "bottom bottom",
+        scrub: true,
+        animation: timeline_section22
+      })
+    }
+
 
     const handleResize = () => {
       ScrollTrigger.refresh();
     };
+
     window.addEventListener('resize', handleResize);
-    //component unmount thi se thuc thi 
+
+    // Dọn dẹp khi component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Dọn dẹp ScrollTriggers
     };
 
   }, []);
@@ -155,25 +469,78 @@ const Audi_A5_Couple = () => {
   const right_section3 = useRef(null)
   const section3_img = useRef(null)
   const right_section4 = useRef(null)
-  const section4_txt = useRef(null)
   const right_section5 = useRef(null)
-  const section5_img = useRef(null)
   const right_section6 = useRef(null)
-  const section6_img = useRef(null)
   const right_section7 = useRef(null)
-  const section7_img = useRef(null)
   useEffect(() => {
-    pin_pinElement(container_pin.current, box_left.current)
-    const section1_imgs = gsap.utils.toArray([section1_img1.current, section1_img2.current])
-    pin_imgOpacity(right_section1.current, section1_imgs)
-    const sec2_content = gsap.utils.toArray([section2_h1.current, section2_p.current])
-    bubbleText_fromBottomToTop(right_section2.current, sec2_content)
+    if (container_pin.current) {
+      ScrollTrigger.create({
+        trigger: container_pin.current,
+        start: "top top",
+        end: "bottom bottom",
+        pin: box_left.current,
+      });
+    }
 
-    pin_imgAppear(right_section3.current, section3_img.current)
-    pin_imgAppear(right_section5.current, section5_img.current)
-    pin_imgAppear(right_section7.current, section7_img.current)
-    bubbleText_fromBottomToTop(right_section4.current, section4_txt.current)
-    bubbleText_fromBottomToTop(right_section6.current, section6_img.current)
+    const section1_imgs = gsap.utils.toArray([section1_img1.current, section1_img2.current])
+    if (right_section1.current) {
+      gsap.set(section1_imgs, {
+        opacity: 0,
+      })
+      gsap.to(section1_imgs, {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: right_section1.current,
+          start: "top center",
+          end: "bottom bottom",
+          scrub: true,
+          invalidateOnRefresh: true
+        }
+      })
+    }
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: right_section2.current,
+        start: "top 80%",
+        end: "bottom bottom",
+        scrub: true,
+      }
+    });
+    const sec2_content = gsap.utils.toArray([section2_h1.current, section2_p.current])
+    tl.set(sec2_content, {
+      x: 500,
+      opacity: 0,
+    })
+      .to(section2_h1.current, {
+        x: 0,
+        opacity: 1,
+      })
+      .to(
+        section2_p.current,
+        {
+          x: 0,
+          opacity: 1,
+        },
+        "-=0.4"
+      );
+
+    // right section 3  
+    gsap.set(section3_img.current, {
+      opacity: 0,
+    })
+    gsap.set(section3_img.current, {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: right_section3.current,
+        start: "top center",
+        scrub: true,
+        invalidateOnRefresh: true
+      }
+    })
+
+
+
   }, []);
 
 
@@ -210,6 +577,9 @@ const Audi_A5_Couple = () => {
     height: window.innerHeight,
   });
   useEffect(() => {
+
+
+
     const handleResize = () => {
       const newSize = {
         width: window.innerWidth,
@@ -226,28 +596,27 @@ const Audi_A5_Couple = () => {
 
 
   gsap.config({
-    autoSleep: 60,
-    force3D: false,
-    nullTargetWarn: false,
-    units: { left: "%", top: "%", rotation: "rad" },
-  });
-
+  autoSleep: 60,
+  force3D: false,
+  nullTargetWarn: false,
+  units: { left: "%", top: "%", rotation: "rad" },
+});
   
   return (
-    <div className="">
-      <Link to="/test"><div className="h-screen w-screen bg-red-500"></div></Link>
 
+    <div className="">
       <motion.div
         ref={ref}
         style={{ x, y }}
         className=" z-20 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[100px] w-[100px] rounded-[50%] bg-slate-800 "
-      //xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400
+        //xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400
       />
       <div>
-        
-          <div className="w-full flex bg-primary">
+        <div className="flex ">
+          <div className="w-full bg-primary">
             <Navbar />
           </div>
+        </div>
 
 
         <section className="relative h-screen w-screen flex justify-center items-center">
@@ -255,7 +624,7 @@ const Audi_A5_Couple = () => {
             className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover  
           "></div>
-          <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold  ">AUDI A5 </h1>
+          <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold text-7xl ">AUDI A5 </h1>
           <p className="absolute font-syncopate md:text-[40px] lg:text-[50px] text-white top-[10%] left-[5%] hidden md:block">
             2024
           </p>
@@ -268,11 +637,11 @@ const Audi_A5_Couple = () => {
 
         <section className="relative h-screen w-screen flex justify-center items-center bg-slate-50"  >
           <div
-            ref={hero_section2}
+            ref={hero_section1}
             //style={{ backgroundImage: `url(${a5_6})` }}
             className="bg z-40 absolute top-0 left-0 w-screen h-screen object-cover
           bg-center bg-no-repeat  bg-cover flex justify-center items-center">
-            <p ref={sec2_txt} className="w-full text-[30px] ss:text-[40px]  sm:text-[50px] md:text-[60px] xl:text-[80px] text-center font-kanit text-slate-700">Dynamic down to the last curve</p>
+            <p ref={sec1_txt} className="w-full text-[30px] ss:text-[40px]  sm:text-[50px] md:text-[60px] xl:text-[80px] text-center font-kanit text-slate-700">Dynamic down to the last curve</p>
           </div>
         </section>
 
@@ -301,9 +670,9 @@ const Audi_A5_Couple = () => {
           <div
             ref={hero_section4}
             style={{ backgroundImage: `url(${a5_7})` }}
-            className=" bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
+            className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover flex justify-center items-center ">
-            <h1 ref={sec4_txt} className="text-center  text-[70px] ss:text-[80px] sm:text-[115px] md:text-[130px] lg:text-[170px] mlg:text-[210px] xl:text-[250px] font-kanit  w-full z-10 text-slate-50 font-bold   ">
+            <h1 ref={sec4_text} className="text-center  text-[70px] ss:text-[80px] sm:text-[115px] md:text-[130px] lg:text-[170px] mlg:text-[210px] xl:text-[250px] font-kanit  w-full z-10 text-slate-50 font-bold   ">
               Discover Now </h1>
           </div>
         </section>
@@ -314,12 +683,12 @@ const Audi_A5_Couple = () => {
           <img className="object-cover w-full h-screen bg-no-repeat opacity-90" src={abstract2} />
           <div
             ref={hero_txt}
-            className=" z-10 absolute top-[5%]  left-0  text-slate-200 mx-[20px] my-[20px] sm:my-[80px] sm:mx-[50px]"
+            className="z-10 absolute top-[5%]  left-0  text-slate-200 mx-[20px] my-[20px] sm:my-[80px] sm:mx-[50px]"
           >
-            <div className=" font-bold font-syncopate text-[40px] md:text-[60px] ">
+            <div className="font-bold font-syncopate text-[40px] md:text-[60px] ">
               2024 A5 Coupe
             </div>
-            <div className=" font-medium font-kanit text-[22px] md:text-[27px]">
+            <div className="font-medium font-kanit text-[22px] md:text-[27px]">
               Starting at $48,000
             </div>
           </div>
@@ -338,7 +707,7 @@ const Audi_A5_Couple = () => {
           className=" w-screen h-[300px]  flex justify-center items-center bg-slate-100 "
         >
 
-          <p ref={slogan_txt} className=" font-syncopate text-[24px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] text-slate-800">
+          <p ref={slogan_text} className="opacity-0 font-syncopate text-[24px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] text-slate-800">
 
             DO YOU WANT TO RACE?
           </p>
@@ -348,13 +717,13 @@ const Audi_A5_Couple = () => {
         {/*----------Split1------------------------ */}
         <div ref={container_split1} className="relative hidden  lg:flex  w-screen h-screen">
           <div className="h-full w-full flex flex-col justify-center items-center lg:w-[50%] bg-slate-900 ">
-            <img ref={split1_img} src={a5_10} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover" />
+            <img  ref={split1_img} src={a5_10} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover" />
             {/* <img src={a5_1} className="lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover"/> */}
           </div>
           <div className="h-full  w-full lg:w-[50%]  flex justify-center items-center bg-slate-100 ">
             <div className="w-full h-full mx-[5%] flex justify-center  flex-col text-slate-800">
               <h1
-                ref={split1_h1}
+               ref={split1_h1}
                 className="opacity-0 font-syncopate  text-center xl:text-start    lg:text-[30px] mlg:text-[33px] xl:text-[50px] font-medium"
               >
                 POWER AND PRECISION
@@ -372,7 +741,7 @@ const Audi_A5_Couple = () => {
           <div className="h-screen   w-[50%]  flex  justify-center items-center bg-slate-100 ">
             <div className="w-full mx-[5%]  h-full flex justify-center items-center flex-col  ">
               <h1
-                ref={split2_h1}
+                ref={split2_h1} 
                 className="opacity-0 w-full   font-syncopate text-center xl:text-start    lg:text-[30px] mlg:text-[33px] xl:text-[42px] font-medium"
               >
                 Quattro® All-Wheel Drive
@@ -388,12 +757,42 @@ const Audi_A5_Couple = () => {
           </div>
         </div>
         {/* ------------------------mobile--------- */}
-        <div className="w-screen h-screen block mb-[1000px] lg:hidden">
-          <Split_mobile />
+        <div className=" w-full h-full flex flex-col lg:hidden">
+          <div className="w-screen h-[600px]">
+            <img src={a5_10} className="w-screen h-full object-cover" />
+          </div>
+          <div className="w-screen flex flex-col justify-center items-center h-[300px]  bg-slate-100 text-slate-800 ">
+            <h1
+              className=" font-syncopate  text-[25px] ss:text-[35px]  "
+            >
+              POWER AND PRECISION
+            </h1>
+            <p className=" font-kanit  text-center text-[18px] xs:text-[20px] px-[7%] ">
+              Audi's engines are renowned for their exceptional power delivery
+              and precision engineering.
+            </p>
+          </div>
+        </div>
+
+        <div className="w-screen h-full flex lg:hidden flex-col ">
+          <div className="w-screen h-[600px]">
+            <img src={a5_13} className="w-full h-full object-cover" />
+          </div>
+          <div className="w-screen flex flex-col justify-center items-center h-[300px]  bg-slate-100 text-slate-800 ">
+            <h1
+              className=" font-syncopate  text-[20px] xs:text-[25px] ss:text-[35px]  "
+            >
+              Quattro® All-Wheel Drive
+            </h1>
+            <p className=" font-kanit  text-center text-[18px] xs:text-[20px] px-[7%] ">
+              Conquer any road, in any condition, with Audi's legendary
+              quattro® all-wheel drive system.
+            </p>
+          </div>
         </div>
 
         {/* ---------------------text effect------------------ */}
-        <div className=" w-screen h-screen bg-primary relative -z-10">
+        <div className=" w-screen h-screen bg-primary relative">
           <p className="type text-[38px]  ss:text-[47px] sm:text-[50px] md:text-[55px]  lg:text-[62px]  mlg:text-[70px] text-slate-200 font-syncopate">
             Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5
             Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5
@@ -515,13 +914,43 @@ const Audi_A5_Couple = () => {
         </div>
 
 
+
+
+
         {/* -----------mobile------- history */}
-        <div className=" flex sm:hidden">
-          <History_mobile />
+        <div className="w-full h-screen flex sm:hidden flex-col bg-slate-100 text-slate-800 " >
+          <div className="w-full px-[10%] h-full flex flex-col justify-center items-center ">
+            <div className="flex justify-center items-center h-[20%] w-full text-[60px] font-bold font-syncopate ">
+              1995
+            </div>
+            <div className="h-[20%] w-full text-[20px]  text-center font-playwrite " >
+              Step inside an Audi and experience a world of refined luxury. Premium materials, meticulous craftsmanship
+            </div>
+          </div>
+          <div className="w-full h-full relative bg-slate-500">
+            <img src={audiold1} className="absolute  w-[350px]  h-[250px] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]  object-cover" />
+
+          </div>
+        </div>
+        <div
+          className="w-full h-screen flex sm:hidden flex-col  justify-center items-center bg-slate-100 text-slate-800"
+        >
+          <div className="w-full  px-[10%] h-full flex flex-col justify-center items-center ">
+            <div className="flex justify-center items-center h-[20%] w-full text-[60px]  font-bold font-syncopate ">
+              2025
+            </div>
+            <div className="h-[20%] w-full text-[20px]  text-center font-playwrite " >
+              Ergonomic design create an inviting and comfortable environment for both drivers and passengers.
+            </div>
+          </div>
+          <div className="w-full  h-full relative bg-green-800">
+            <img src={a5_6} className="absolute w-[350px]  h-[250px]  object-cover left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]" />
+
+          </div>
         </div>
 
 
-        {/* ------desktop----Container-Pin-------- */}
+        {/* --------------desktop-----------Container-Pin-------- */}
         <div
           ref={container_pin}
           className="overflow-x-hidden  hidden md:flex  w-screen h-[400%] bg-slate-100 text-slate-800"
@@ -571,7 +1000,7 @@ const Audi_A5_Couple = () => {
               ref={right_section4}
               className=" w-full h-[400px] md:h-[600px] flex justify-center items-center "
             >
-              <p ref={section4_txt} className="font-syncopate text-[40px] md:text-[50px]">
+              <p className="font-syncopate text-[40px] md:text-[50px]">
                 Back Light
               </p>
             </div>
@@ -579,13 +1008,13 @@ const Audi_A5_Couple = () => {
               ref={right_section5}
               className=" w-full h-[400px] mlg:h-[600px] xl:h-[700px] flex justify-center items-center "
             >
-              <img ref={section5_img} src={backLight2} className="w-[80%] h-[80%] object-cover" />
+              <img src={backLight2} className="w-[80%] h-[80%] object-cover" />
             </div>
             <div
               ref={right_section6}
               className="w-full h-[400px] md:h-[600px] flex justify-center items-center"
             >
-              <p ref={section6_img} className="font-syncopate text-[40px] md:text-[50px]">
+              <p className="font-syncopate text-[40px] md:text-[50px]">
                 Sharp Wheels
               </p>
             </div>
@@ -593,40 +1022,38 @@ const Audi_A5_Couple = () => {
               ref={right_section7}
               className="w-full h-[400px] md:h-[600px] flex justify-center items-center"
             >
-              <img ref={section7_img} src={mam2} className="w-[80%] h-[80%" />
+              <img src={mam2} className="w-[80%] h-[80%" />
             </div>
           </div>
         </div>
 
         {/* -----mobile pin */}
-        <div className="  block md:hidden">
-          <div className=" w-screen h-screen px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-slate-100 text-slate-800">
-            <h1 className="w-full text-[50px] font-syncopate text-center" >
-              NEW ERA
-            </h1>
-            <p className="w-full text-[25px] sm:text-[28px] font-thin text-center">
-              This suite of advanced safety technologies helps to prevent accidents and protect occupants in the event of a collision.
-            </p>
-          </div>
-
-          <div className=" flex md:hidden justify-center items-center w-screen h-screen gap-x-[5%]    ">
-            <img src={audiA5_15} className="object-cover w-[170px] xs:w-[200px] sm:w-[270px] h-[60%] xs:h-[70%]" />
-            <img src={audiA5_9} className="object-cover w-[170px] xs:w-[200px]  sm:w-[270px] h-[60%] xs:h-[70%]" />
-          </div>
-
-          <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center bg-slate-900">
-            <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate  text-white">Back Light</h1>
-            <img src={backLight2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
-          </div>
-
-          <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center">
-            <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate ">Sharp Wheels</h1>
-            <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
-          </div>
+        <div className=" w-screen h-screen px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-slate-100 text-slate-800">
+          <h1 className="w-full text-[50px] font-syncopate text-center" >
+            NEW ERA
+          </h1>
+          <p className="w-full text-[25px] sm:text-[28px] font-thin text-center">
+            This suite of advanced safety technologies helps to prevent accidents and protect occupants in the event of a collision.
+          </p>
         </div>
 
-        <div className=" block bg-primary">
-          <Footer />
+        <div className=" flex md:hidden justify-center items-center w-screen h-screen gap-x-[5%]    ">
+          <img src={audiA5_15} className="object-cover w-[170px] xs:w-[200px] sm:w-[270px] h-[60%] xs:h-[70%]" />
+          <img src={audiA5_9} className="object-cover w-[170px] xs:w-[200px]  sm:w-[270px] h-[60%] xs:h-[70%]" />
+        </div>
+
+        <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center bg-slate-900">
+          <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate  text-white">Back Light</h1>
+          <img src={backLight2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
+        </div>
+
+        <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center">
+          <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate ">Sharp Wheels</h1>
+          <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
+        </div>
+
+        <div className="z-50 bg-primary">
+          <Footer></Footer>
         </div>
       </div>
     </div>
