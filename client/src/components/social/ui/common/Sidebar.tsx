@@ -11,8 +11,13 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import placeholder_img from "../../../../assets/social/placeholder/placeholder.png";
 import { useState } from "react";
+import { log } from "console";
+
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+    const navigate = useNavigate();
+
     const [isMenuVisible, setIsMenuVisible] = useState(false);
 
     const queryClient = useQueryClient();
@@ -41,6 +46,7 @@ const Sidebar = () => {
             toast.error("Logout failed");
         }
     })
+
 
     const { data: authUser } = useQuery<{ username?: string; profileImg?: string; fullName?: string }>({queryKey: ['authUser']});
 
@@ -147,15 +153,27 @@ const Sidebar = () => {
                                                     onClick={(e) => {
                                                         e.preventDefault();
                                                         //TODO: Add an existing account
+                                                        logout();
                                                     }}
                                                 >
                                                     Add an existing account
                                                 </div>
                                                 <div className="hover:bg-gray-600 hover:bg-opacity-25 transition-all rounded-full duration-300 py-2 pl-2 pr-4 max-w-fit cursor-pointer" onClick={(e) => {
                                                     e.preventDefault();
+                                                    // TODO
                                                     logout();
                                                 }}>
                                                     Logout @{authUser.username}
+                                                </div>
+                                                <div className="hover:bg-gray-600 hover:bg-opacity-25 transition-all rounded-full duration-300 py-2 pl-2 pr-4 max-w-fit cursor-pointer"
+                                                    onClick={() => navigate('/')}
+                                                >
+                                                    Back to homepage 
+                                                </div>
+                                                <div className="hover:bg-gray-600 hover:bg-opacity-25 transition-all rounded-full duration-300 py-2 pl-2 pr-4 max-w-fit cursor-pointer"
+                                                    onClick={() => navigate('/shop')}
+                                                >
+                                                    Back to shop
                                                 </div>
                                             </div>
                                         </div>  

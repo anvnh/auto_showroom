@@ -15,12 +15,7 @@ const Cars = () => {
 
 
 	// get all products
-	const {
-		data: products,
-		isLoading,
-		refetch,
-		isRefetching,
-	} = useQuery({
+	const { data: products, isLoading, refetch, isRefetching} = useQuery({
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {
@@ -57,8 +52,8 @@ const Cars = () => {
 			<div className="font-bold md:text-4xl text-3xl md:pl-48 pl-12 w-full flex pb-12">
 				<div className="">Popular Makes</div>
 			</div>
-			<div className="text-[15px] pb-4 font-normal flex items-center justify-end pr-12 md:pr-56 hover:underline ss:pr-16 sm:pr-32 lg:pr-20 xl:pr-48">
-				<Link to="">View All</Link>
+			<div className="text-[18px] hover:text-blue-500 pb-4 font-normal flex items-center justify-end pr-12 md:pr-56 hover:underline ss:pr-16 sm:pr-32 lg:pr-20 xl:pr-48">
+				<Link to="/shop/product">View All</Link>
 				<MdArrowOutward className="w-6 h-5 ml-1" />
 			</div>
 			<div className="justify-center items-center flex">

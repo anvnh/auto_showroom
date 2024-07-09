@@ -5,7 +5,7 @@ const Testimonials = () => {
         <div className="grid sm:grid-cols-2 grid-cols-1">
             <div className="text-black">
                 <div className="md:px-60 px-12 pt-20">
-                    <div className="text-3xl md:text-5xl font-bold font-poppins">
+                    <div className="text-3xl md:text-4xl font-bold font-poppins">
                         What Our <br /> Customers Say
                     </div>
 
