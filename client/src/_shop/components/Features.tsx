@@ -12,7 +12,7 @@ const Features = () => {
   
       <div className="w-full flex px-12 sm:px-20 md:pl-60 justify-between gap-16 h-auto pt-10 font-poppins">
           <div className="bg-opacity-50 rounded-2xl flex items-start justify-start text-black ">
-              <div className="md:text-5xl text-2xl sm:text-4xl font-bold">
+              <div className="md:text-4xl text-2xl sm:text-4xl font-bold">
                   We're BIG on <br/> what matters to you
               </div>
           </div>

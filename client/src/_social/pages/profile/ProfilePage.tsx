@@ -5,8 +5,6 @@ import Posts from "@/components/social/ui/common/Posts";
 import ProfileHeaderSkeleton from "@/components/social/ui/skeletons/ProfileHeaderSkeleton";
 import EditProfileModal from "./EditProfileModal";
 
-import { POSTS } from "@/utils/db/dummy"
-
 import placeholder_img from "@/assets/social/placeholder/placeholder.png";
 import placeholder_cover from "@/assets/social/placeholder/cover_placeholder.jpeg";
 
@@ -89,7 +87,9 @@ const ProfilePage = () => {
 								</Link>
 								<div className='flex flex-col'>
 									<p className='font-bold text-lg'>{user?.fullName}</p>
-									<span className='text-sm text-slate-500'>{POSTS?.length} posts</span>
+									<span>
+										{formatMemberSinceDate(user?.createdAt)}
+									</span>
 								</div>
 							</div>
 

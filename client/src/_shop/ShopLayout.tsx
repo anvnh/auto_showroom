@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar'
+import Navbar from './common/Navbar'
 import Products from './components/MostSearchedCars';
 import Hero from './components/Hero';
 import Footer from '@/components/common/Footer'
