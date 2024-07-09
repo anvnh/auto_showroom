@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { car41, car42, car43 } from "../../assets";
+import { car41, car42, car43, car51, car615, car53 } from "../../assets";
 
 const SomeProduct = () => {
   const [activeIndex, setActiveIndex] = useState(1); // Thiết lập slide thứ 2 là slide ban đầu
@@ -30,11 +30,29 @@ const SomeProduct = () => {
       detailUrl: "/cars/3",
       image: car43,
     },
+    {
+      brand: "911 Carrera S",
+      price: "$335.165,02",
+      detailUrl: "/cars/3",
+      image: car53,
+    },
+    {
+      brand: "911 Carrera S",
+      price: "$335.165,02",
+      detailUrl: "/cars/3",
+      image: car615,
+    },
+    {
+      brand: "718 Cayman S",
+      price: "$187,353.20",
+      detailUrl: "/cars/1",
+      image: car51,
+    },
   ];
 
   return (
     <div className="pt-48 px-10 pb-60">
-      <h1 className="text-black text-center font-syncopate text-4xl font-bold">
+      <h1 className="text-black text-center font-syncopate text-5xl font-bold">
         SOME OTHERS PRODUCT
       </h1>
       <p className="text-black text-center font-syncopate text-xl pt-2">
@@ -46,7 +64,7 @@ const SomeProduct = () => {
           effect={"slide"}
           grabCursor={true}
           centeredSlides={true}
-          loop={false}
+          loop={true}
           slidesPerView={2} // Hiển thị 2 slide cùng lúc
           spaceBetween={1} // Khoảng cách giữa các slide
           coverflowEffect={{
@@ -92,7 +110,7 @@ const SomeProduct = () => {
                   <img
                     src={car.image}
                     alt={car.brand}
-                    className="rounded-md w-[900px] h-auto transform transition-transform duration-300 hover:scale-110"
+                    className="rounded-md w-[900px] h-[380px] transform transition-transform duration-300 hover:scale-110"
                   />
                   </figure>
                   <div className="text-black p-3 ">
