@@ -273,7 +273,7 @@ const Product = () => {
 				>
 					<div className="flex justify-center pt-16 absolute inset-0">
 						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate select-none">
-							Discover the new AAP
+						Products coming soon
 						</h1>
 					</div>
 				</div>

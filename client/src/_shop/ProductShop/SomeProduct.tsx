@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { car41, car42, car43 } from "../../assets";
+import { car41, car42, car43, car51, car615, car53 } from "../../assets";
 
 const SomeProduct = () => {
 	const [activeIndex, setActiveIndex] = useState(1); // Thiết lập slide thứ 2 là slide ban đầu
