@@ -72,6 +72,8 @@ const Product = () => {
 						</div>
 
 						<hr className="w-1/2 border-black mx-auto relative top-3 pb-12" />
+
+
 						{/* Các thumbnail */}
 						<div className="w-[1100px] h-auto p-4 flex items-center justify-center relative px-32 pb-6">
 							<button
@@ -98,11 +100,13 @@ const Product = () => {
 												handleThumbnailClick(image)
 											}
 										>
+											  <figure className="hover01 overflow-hidden">
 											<img
 												src={image}
 												alt=""
-												className="w-full h-full object-cover hover:scale-110 transition-all ease-in-out duration-400 rounded-xl"
+												className="w-full h-full object-cover rounded-md transform transition-transform duration-300 hover:scale-110"
 											/>
+											</figure>
 										</div>
 									)
 								)}
@@ -148,15 +152,7 @@ const Product = () => {
 								<div>Category:</div>
                                 <div className="flex">
                                     <p>Color:</p>
-                                    <div>
-
-                                    </div>
-                                    <div>
-
-                                    </div>
-                                    <div>
-                                        
-                                    </div>
+                                 
                                 </div>
 								<div className="flex">
 									<div>Quantity:</div>
@@ -176,7 +172,7 @@ const Product = () => {
 								</div>
 							</div>
 						</div>
-						<div className="justify-end items-end pr-12 pt-[250px] flex text-white gap-5">
+						<div className="justify-end items-end pr-12 pt-[200px] flex text-white gap-5">
                         <button className="flex bg-gray-800 w-[180px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out">
 								<HiMiniViewfinderCircle className="h-auto w-[30px]" />
 								<p className="pl-4 text-xl"> View details</p>

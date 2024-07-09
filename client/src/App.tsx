@@ -78,7 +78,7 @@ const App = () => {
                     <Route path="/Audi-R8-coupe-2022" element={<ProductLayout4 />} />
                     <Route path="/Roll-Royce-Phantom" element={<ProductLayout5 />} />
                     <Route path="/Audi-e-tron-GT-2024" element={<ProductLayout6 />} />
-                    {/* owners */}s
+                    {/* owners */}
 
                     <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
                     <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
@@ -91,6 +91,8 @@ const App = () => {
                     <Route path="/social/profile/followers/:id" element={authUser ? <Followers /> : <Navigate to="/login" />} />
 
                     <Route path="/shop" element={<ShopLayout />} />
+
+                    
                     <Route path="/shop/product/:id" element={<ProductViewLayout />} />
 
                 </Routes>
