@@ -5,7 +5,7 @@ import { FaBookmark } from "react-icons/fa";
 const Products = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
-    const productsPerPage = 2;
+    const productsPerPage = 4;
 
     // get all products
 	const { data: products, isLoading, refetch, isRefetching} = useQuery({
@@ -45,8 +45,8 @@ const Products = () => {
 			<div>
 				{!isLoading &&
 					!isRefetching &&
-					products &&
-					products.map((product) => (
+					currentProducts &&
+					currentProducts.map((product) => (
 						<div
 							key={product._id}
 							className="flex bg-white p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
