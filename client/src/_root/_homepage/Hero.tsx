@@ -230,7 +230,7 @@ const Hero = () => {
             className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover"></div>
           <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] 
-            font-kanit   w-full z-10  text-white">APP</h1>
+            font-syncopate font-bold   w-full z-10  text-white">APP</h1>
         </section>
 		</div>
 	);
