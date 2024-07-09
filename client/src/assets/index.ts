@@ -183,6 +183,7 @@ import car621 from "./car_popular/car6popular/621.jpg"
 import car622 from "./car_popular/car6popular/622doc.jpg"
 import car623 from "./car_popular/car6popular/623doc.jpg"
 import car624 from "./car_popular/car6popular/624doc.jpg"
+import car625 from "./car_popular/car6popular/car625.webp"
 import carremove6 from "./car_popular/car6popular/remove.png"
 // logo car
 import logo from "./logo/logoMain.png";
@@ -214,6 +215,7 @@ import bgLG from "./login/backgroundlogin.png";
 import bgSocial from "./owner/bgsocial.png";
 
 export {
+	car625,
 	carremove6,
 	car61, 
 car62 ,

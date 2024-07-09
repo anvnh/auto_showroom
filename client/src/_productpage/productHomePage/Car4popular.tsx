@@ -803,9 +803,12 @@ const hero_section1 = useRef(null)
         {/* ---------------------text effect------------------ */}
         <div className=" w-screen h-screen bg-primary relative">
           <p className="type text-[38px]  ss:text-[47px] sm:text-[50px] md:text-[55px]  lg:text-[62px]  mlg:text-[70px] text-slate-200 font-syncopate">
-            Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5
-            Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5
-            Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi  A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5 Audi A5
+          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
           </p>
           <img src={carremove} className="absolute w-3/4 top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%] " />
         </div>
@@ -813,7 +816,7 @@ const hero_section1 = useRef(null)
         {/* ---------------Parallax-------- */}
         <section className="relative h-screen w-screen flex justify-center items-center">
           <div style={{ backgroundImage: `url(${car411})` }}
-            className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
+            className="bg  absolute top-0 left-0 w-screen h-screen z-10 object-cover
           bg-center bg-no-repeat  bg-cover 
           "></div>
           <h1 className="text-center  text-[100px] md:text-[150px] mlg:text-[190px] font-kanit  w-full z-10 text-white   ">SPORTS </h1>
