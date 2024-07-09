@@ -1,8 +1,31 @@
+import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom";
 
 const LinkHeader = () => {
     const LinkProduct = useParams();
+
+	// get single car
+	const { data: car, isLoading, refetch, isRefetching } = useQuery({
+		queryKey: ["car", LinkProduct.id],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/car/${LinkProduct.id}`);
+				const data = await response.json();
+
+				console.log(data);
+
+				if (!response.ok) {
+					throw new Error(data.message || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
+
     return (
 		<>
 			{/* Link */}
@@ -17,7 +40,7 @@ const LinkHeader = () => {
 					</Link>
 					<span> &nbsp; / </span>
 					<li className="hover:text-blue-500">
-						&nbsp; {LinkProduct.id}
+						&nbsp;{car?.brand}&nbsp;{car?.car_model}
 					</li>
 				</ul>
 			</div>

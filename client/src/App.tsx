@@ -47,10 +47,13 @@ const App = () => {
         retry: false,
     });
 
-    // Scroll to top whenever location changes
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [location]);
+
+    const { pathname } = useLocation();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [pathname]);
+
 
     if (isLoading) {
         return (

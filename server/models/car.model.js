@@ -94,6 +94,10 @@ const carSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		quantity: {
+			type: Number,
+			required: true,
+		},
 		warranty: {
 			type: String,
 			required: true,

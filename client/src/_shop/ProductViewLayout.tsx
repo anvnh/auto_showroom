@@ -5,6 +5,7 @@ import SomeProduct from "./ProductShop/SomeProduct";
 import Footer from "@/components/common/Footer";
 import LinkHeader from "./common/LinkHeader";
 
+
 const ProductViewLayout = () => {
 	return (
 		<section className="w-full bg-primary">
@@ -15,30 +16,33 @@ const ProductViewLayout = () => {
 					</div>
 				</div>
 
+				<div className="items-start justify-center pt-28">
+					<div className="w-full bg-primary">
+						<LinkHeader />
+					</div>
+				</div>
+
 				<div className="items-start justify-center">
-					<div className="w-full bg-gray-400">
+					<div className="w-full bg-primary">
 						<Product />
 					</div>
 				</div>
+
 				<div className="items-start justify-center">
-					<div className="w-full bg-gray-400">
+					<div className="w-full bg-primary">
 						<OverView />
 					</div>
 				</div>
+
 				<div className="items-start justify-center">
-					<div className="w-full bg-gray-400">
+					<div className="w-full bg-primary">
 						<SomeProduct />
 					</div>
 				</div>
+        
 				<div className="items-start justify-center">
-					<div className="w-full bg-gray-400">
+					<div className="w-full bg-primary">
 						<Footer />
-
-						<div className="items-start justify-center pt-28">
-							<div className="w-full bg-primary">
-								<LinkHeader />
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
