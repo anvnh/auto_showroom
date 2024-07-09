@@ -1,5 +1,5 @@
 
-import Navbar from './components/Navbar'
+import Navbar from './common/Navbar';
 import Product from './ProductShop/Product';
 import OverView from './ProductShop/OverView';
 import SomeProduct from './ProductShop/SomeProduct';
@@ -43,8 +43,11 @@ const ProductViewLayout = () => {
 					</div>
 				</div>
 			</div>
+			
+			</div>
+			</div>
 		</section>
 	);
-}
+};
 
-export default ProductViewLayout
+export default ProductViewLayout;
