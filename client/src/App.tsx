@@ -21,6 +21,7 @@ import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
 import ShopLayout from './_shop/ShopLayout';
 import React, { useEffect } from "react";
+import AllProductViewLayout from './_shop/AllProductViewLayout';
 
 
 
@@ -92,7 +93,8 @@ const App = () => {
 
                     <Route path="/shop" element={<ShopLayout />} />
 
-                    
+                    <Route path="/shop/product" element={<AllProductViewLayout />} />
+
                     <Route path="/shop/product/:id" element={<ProductViewLayout />} />
 
                 </Routes>

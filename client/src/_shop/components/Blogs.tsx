@@ -26,7 +26,7 @@ const Blogs = () => {
     return (
      <div>
          <hr className="w-1/2 border-black mx-auto relative top-1 pt-10 pb-12" /> 
-           <section className="md:px-60 px-12 ss:px-32 sm:px-44 text-black bg-[#F9FBFC]">
+           <section className="md:px-60 px-12 ss:px-32 sm:px-44 text-black bg-[#F9FBFC] font-poppins">
             <div className="font-bold text-4xl font-poppins pb-12">
                 Latest Blogs
             </div>
