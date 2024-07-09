@@ -15,10 +15,7 @@ interface SubNavbarProps {
 import GetMe from "@/components/common/auth/GetMe";
 import { useQuery } from "@tanstack/react-query";
 
-const Navbar: React.FC<SubNavbarProps> = ({
-	selectedSection_element,
-	onNavClick,
-}) => {
+const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick }) => {
 	useEffect(() => {
 		AOS.init({
 			duration: 900,

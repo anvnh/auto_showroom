@@ -19,7 +19,7 @@ const RootLayout = () => {
 	}, []);
 
 	return (
-		<section className="w-full bg-black">
+		<section className="w-full bg-primary">
 			<div className="w-full overflow-hidden bg-black">
 				<div className="flex items-start justify-center ">
 					<div className="w-full">
@@ -31,7 +31,7 @@ const RootLayout = () => {
 						<Hero />
 					</div>
 				</div>
-				<div className="flex items-start justify-center ">
+				<div className="bg-primary flex items-start justify-center ">
 					<div className="w-full">
 						<Product />
 					</div>

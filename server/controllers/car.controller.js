@@ -19,13 +19,13 @@ export const addCar = async (req, res) => {
     try {
         const {bio, brand, car_model, production_year, 
             body_style, engine, transmission, drive_type, exterior_color, interior_color,
-            fuel_type, performance, seat_capacity, cargo_space, audio_system, price, warranty, image
+            fuel_type, performance, seat_capacity, cargo_space, audio_system, price, quantity, warranty, image
         } = req.body;
 
         const newCar = new Car({
             bio, brand, car_model, production_year, 
             body_style, engine, transmission, drive_type, exterior_color, interior_color,
-            fuel_type, performance, seat_capacity, cargo_space, audio_system, price, warranty, image
+            fuel_type, performance, seat_capacity, cargo_space, audio_system, price, quantity, warranty, image
         });
 
         // check if any car with the same brand and model already exists
@@ -46,5 +46,21 @@ export const addCar = async (req, res) => {
         console.log("Error in login controller", error.message);
         res.status(500).json({ error: "Something went wrong" });
     }
-    
+}
+
+export const getCar = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const car = await Car.findById(id);
+
+        if(car) {
+            res.status(200).json(car);
+        } else {
+            res.status(404).json({ error: "Car not found" });
+        }
+    } catch {
+        console.log("Error in login controller", error.message);
+        res.status(500).json({ error: "Something went wrong" });
+    }
+
 }

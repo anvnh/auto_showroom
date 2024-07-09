@@ -140,8 +140,8 @@ export const deleteComment = async (req, res) => {
 
 export const likeUnlikePost = async (req, res) => {
     try {
-        const postId = req.params._id;
-        const userId = req.params.user._id;
+        const postId = req.params.id;
+        const userId = req.user._id;
 
         const post = await Post.findById(postId);
 
@@ -188,8 +188,8 @@ export const likeUnlikePost = async (req, res) => {
 
 export const getPost = async (req, res) => {
     try {
-        const {id:postId} = req.params;
-        const post = await Post.findById(postId).populate({
+        const postid = req.params.id;
+        const post = await Post.findById(postid).populate({
             path: "user",
             select: "-password",
         })

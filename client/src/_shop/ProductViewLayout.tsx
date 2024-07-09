@@ -1,5 +1,5 @@
 
-import Navbar from './components/Navbar'
+import Navbar from './common/Navbar'
 import Product from './ProductShop/Product';
 import OverView from './ProductShop/OverView';
 import SomeProduct from './ProductShop/SomeProduct';
@@ -17,29 +17,33 @@ const ProductViewLayout = () => {
 					</div>
 				</div>
 
-				<div className="items-start justify-center">
-					<div className="w-full bg-gray-400">
-						<Product />
-					</div>
-				</div>
-				<div className="items-start justify-center">
-					<div className="w-full bg-gray-400">
-						<OverView />
-					</div>
-				</div>
-				<div className="items-start justify-center">
-					<div className="w-full bg-gray-400">
-						<SomeProduct />
-					</div>
-				</div>
-				<div className="items-start justify-center">
-					<div className="w-full bg-gray-400">
-						<Footer />
-
 				<div className="items-start justify-center pt-28">
 					<div className="w-full bg-primary">
 						<LinkHeader />
+					</div>
+				</div>
 
+				<div className="items-start justify-center">
+					<div className="w-full bg-primary">
+						<Product />
+					</div>
+				</div>
+
+				<div className="items-start justify-center">
+					<div className="w-full bg-primary">
+						<OverView />
+					</div>
+				</div>
+
+				<div className="items-start justify-center">
+					<div className="w-full bg-primary">
+						<SomeProduct />
+					</div>
+				</div>
+
+				<div className="items-start justify-center">
+					<div className="w-full bg-primary">
+						<Footer />
 					</div>
 				</div>
 			</div>

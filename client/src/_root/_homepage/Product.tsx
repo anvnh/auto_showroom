@@ -33,7 +33,7 @@ const Product = () => {
 		});
 	}, []);
 	return (
-		<div className="bg-gray-700">
+		<div className="bg-primary">
 			<div
 				style={{ backgroundImage: `url(${aa})` }}
 				className="bg-cover bg-center h-24 sm:h-48 relative object-cover"
