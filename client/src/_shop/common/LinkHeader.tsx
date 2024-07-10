@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom";
 
-const LinkHeader = () => {
+const LinkHeader = ({ isViewProduct }) => {
     const LinkProduct = useParams();
 
 	// get single car
@@ -24,6 +24,7 @@ const LinkHeader = () => {
 				throw new Error(error);
 			}
 		},
+		enabled: isViewProduct,
 	});
 
     return (
@@ -38,10 +39,14 @@ const LinkHeader = () => {
 					<Link to="/shop/product">
 						<li className="hover:text-blue-500">&nbsp; Product</li>
 					</Link>
-					<span> &nbsp; / </span>
-					<li className="hover:text-blue-500">
-						&nbsp;{car?.brand}&nbsp;{car?.car_model}
-					</li>
+					<span> &nbsp; /&nbsp; </span>
+					{isViewProduct ? (
+						<div>
+							<li className="hover:text-blue-500">
+								&nbsp;{car?.brand}&nbsp;{car?.car_model}
+							</li>
+						</div>
+					) : null}
 				</ul>
 			</div>
 		</>

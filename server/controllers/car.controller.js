@@ -50,15 +50,15 @@ export const addCar = async (req, res) => {
 
 export const getCar = async (req, res) => {
     try {
-        const { id } = req.params;
-        const car = await Car.findById(id);
+        const carId = req.params.id;
+        const existingCar = await Car.findById(carId);
 
-        if(car) {
-            res.status(200).json(car);
+        if(existingCar) {
+            res.status(200).json(existingCar);
         } else {
             res.status(404).json({ error: "Car not found" });
         }
-    } catch {
+    } catch(error) {
         console.log("Error in login controller", error.message);
         res.status(500).json({ error: "Something went wrong" });
     }

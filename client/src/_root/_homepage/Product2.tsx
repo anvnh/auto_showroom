@@ -253,7 +253,6 @@ const Product2 = () => {
 					delay: 1500,
 					disableOnInteraction: false,
 				}}
-				autoplay={autoplayEnabled ? { delay: 1500 } : false} // Control autoplay based on state
 				speed={500}
 				onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
 			>
