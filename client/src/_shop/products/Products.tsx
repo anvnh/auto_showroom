@@ -2,6 +2,7 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { FaBookmark } from "react-icons/fa";
+import SearchBar from "../common/SearchBar";
 
 const Products = () => {
 
@@ -41,8 +42,16 @@ const Products = () => {
 
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+	const handleSearch = (searchTerm: string) => {
+		console.log("Searching for:", searchTerm);
+		// Implement your search logic here
+	};
+
     return (
-		<section>
+		<section className="p-4">
+			<div className="flex w-full justify-end mb-6">
+				<SearchBar onSearch={handleSearch} />
+			</div>
 			<div>
 				{isLoading && products && products.length === 0 && (
 					<div className="text-center text-2xl font-bold text-gray-700">
@@ -59,7 +68,8 @@ const Products = () => {
 						>
 							<div className="relative w-1/3 mr-4 overflow-hidden">
 								<img
-									src="https://t4.ftcdn.net/jpg/04/51/65/87/240_F_451658744_Bm9QLAj1D0nluOkPHDKVXKTSZ6jRBOOS.jpg"
+									// src={product.images}
+									src="https://via.placeholder.com/400x300"
 									className="w-full h-[300px] rounded"
 								/>
 								<span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
@@ -68,7 +78,7 @@ const Products = () => {
 							</div>
 							<div className="w-2/3">
 								<h2 className="text-xl font-bold mb-2 text-black">
-									{product.brand}
+									{product.brand}&nbsp;{product.car_model}
 								</h2>
 								<div className="flex items-center mb-2">
 									<div className="flex text-yellow-400">
@@ -88,7 +98,7 @@ const Products = () => {
 								</div>
 								<div className="mb-2">
 									<span className="text-2xl font-bold text-blue-600">
-										${product.price}
+										$&nbsp;{product.price}
 									</span>
 									{/* <span className="text-gray-500 line-through ml-2">
 							${oldPrice}

@@ -17,7 +17,7 @@ const AllProductViewLayout = () => {
 						<LinkHeader isViewProduct={false} />
 					</div>
 				</div>
-				<div className='flex px-32'>
+				<div className='flex px-32 bg-primary'>
 					<div className="items-start justify-center">
 						<Sidebar />
 					</div>
