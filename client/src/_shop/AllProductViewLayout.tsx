@@ -18,9 +18,6 @@ const AllProductViewLayout = () => {
 					</div>
 				</div>
 				<div className='flex px-32 bg-primary'>
-					<div className="items-start justify-center">
-						<Sidebar />
-					</div>
 					<div className="w-full items-start justify-center px-10">
 						<Products />
 					</div>
