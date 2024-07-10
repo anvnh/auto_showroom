@@ -3,7 +3,6 @@ import Footer from "@/components/common/Footer";
 import AOS from "aos";
 import Lenis from "@studio-freight/lenis";
 import "aos/dist/aos.css";
-import { backgroundcar2 } from "../assets";
 import React, { useEffect, useRef, useState } from "react";
 const RootLayout = () => {
 	useEffect(() => {
