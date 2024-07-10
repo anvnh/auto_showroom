@@ -95,7 +95,7 @@ const Product = () => {
 			{/* {isLoading && <LoadingSpinner />} */}
 			{!isLoading && !isRefetching && (
 				<div>
-					<div className="flex text-white text-center z-10 pt-5 text-5xl fon/rount-syncopate font-bold justify-center">
+					<div className="flex text-white text-center z-10 pt-5 text-5xl font-syncopate font-bold justify-center">
 						<h1>{car.brand}</h1>
 						<h1>&nbsp;{car.car_model}</h1>
 					</div>
@@ -185,8 +185,8 @@ const Product = () => {
 										{car.brand}
 										&nbsp;{car.car_model}
 									</h1>
-									<p className=" text-2xl font-bold my-3">
-										${car.price}
+									<p className=" text-2xl font-bold my-3 text-blue-500">
+										$&nbsp;{car.price}
 									</p>
 
 									<hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
