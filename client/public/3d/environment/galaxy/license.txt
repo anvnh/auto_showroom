@@ -1,0 +1,11 @@
+Model Information:
+* title:	The Hitchhiker's Guide to the Galaxy
+* source:	https://sketchfab.com/3d-models/the-hitchhikers-guide-to-the-galaxy-03ff8b8ec77c41f1981011167622f837
+* author:	vslite (https://sketchfab.com/vslite)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "The Hitchhiker's Guide to the Galaxy" (https://sketchfab.com/3d-models/the-hitchhikers-guide-to-the-galaxy-03ff8b8ec77c41f1981011167622f837) by vslite (https://sketchfab.com/vslite) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

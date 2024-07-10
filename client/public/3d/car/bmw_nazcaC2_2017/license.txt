@@ -1,0 +1,11 @@
+Model Information:
+* title:	2017 BMW Nazca C2
+* source:	https://sketchfab.com/3d-models/2017-bmw-nazca-c2-457f804d862a4caeaee18518a6875ccc
+* author:	RBLXSupercars (https://sketchfab.com/RBLXSupercars)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "2017 BMW Nazca C2" (https://sketchfab.com/3d-models/2017-bmw-nazca-c2-457f804d862a4caeaee18518a6875ccc) by RBLXSupercars (https://sketchfab.com/RBLXSupercars) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
