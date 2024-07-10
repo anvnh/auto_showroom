@@ -54,7 +54,7 @@ const Product2 = () => {
 				<div>
 					{" "}
 					<iframe
-						className="w-[900px] h-[400px] rounded-xl"
+						className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[300px] sm:w-[680px] sm:h-[340px] rounded-xl"
 						title="Porsche 911 Sport Classic 2023"
 						frameborder="0"
 						allowfullscreen
@@ -86,7 +86,7 @@ const Product2 = () => {
 				<div>
 					{" "}
 					<iframe
-					className="w-[900px] h-[400px] rounded-xl"
+				className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
 					title="Porsche 911 Sport Classic 2023"
 					frameborder="0"
 					allowfullscreen
@@ -117,7 +117,7 @@ const Product2 = () => {
 				<div >
 					{" "}
 					<iframe
-						className="w-[900px] h-[400px] rounded-xl"
+					className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
 						title="Porsche 911 Sport Classic 2023"
 						frameborder="0"
 						allowfullscreen
@@ -148,7 +148,7 @@ const Product2 = () => {
 				<div>
 					{" "}
 					<iframe
-						className="w-[900px] h-[400px] rounded-xl"
+					className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
 						title="Porsche 911 Sport Classic 2023"
 						frameborder="0"
 						allowfullscreen
@@ -179,7 +179,7 @@ const Product2 = () => {
 				<div>
 					{" "}
 					<iframe
-						className="w-[900px] h-[400px] rounded-xl"
+					className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
 						title="Porsche 911 Sport Classic 2023"
 						frameborder="0"
 						allowfullscreen
@@ -266,7 +266,7 @@ const Product2 = () => {
 						}
 					>
 						<div
-							data-aos="flip-up"
+						
 							className="slide-content object-cover bg-transparent group flex flex-col items-center w-screen pt-1 sm:pt-12 pb-12 text-white font-poppins justify-center text-2xl"
 							style={{
 								width: "100%",
@@ -274,6 +274,7 @@ const Product2 = () => {
 							}}
 						>
 							<img
+								data-aos="fade-left"
 								src={car.image}
 								alt={car.brand}
 								className="w-full max-w-xs scale-100 sm:scale-150 md:max-w-sm sm:group-hover:scale-[1.7] group-hover:scale-[1.25] transition-all ease-in-out duration-300 group-hover:rotate-2 translate-x-1 lg:max-w-md"
@@ -318,7 +319,7 @@ const Product2 = () => {
 			{selectedCar && showModal && (
 				<div className="selected-car-info fixed top-12 left-0 w-full h-full flex justify-center items-center z-50 text-white ">
 					<div
-						className="p-4 w-[1200px] h-[800px] bg-gray-900 backdrop-blur-3xl bg-opacity-20 rounded-2xl shadow-lg "
+						className="p-4 w-[340px] h-[550px] ss:w-[600px] ss:h-[700px] sm:w-[750px] sm:h-[700px] lg:w-[1100px] lg:h-[600px] xl:w-[1200px] xl:h-[800px] bg-gray-900 backdrop-blur-3xl bg-opacity-20 rounded-2xl shadow-lg "
 					>
 						<div className="justify-end items-end flex">
 							<button onClick={closeModal}>
@@ -327,17 +328,17 @@ const Product2 = () => {
 						</div>
 						<div className="justify-center items-center text-center flex pb-12">
 							<div>
-								<h2 className="text-3xl font-syncopate font-bold ">
+								<h2 className="md:text-3xl font-syncopate font-bold">
 									{selectedCar.brand}
 								</h2>
-								<p className="text-lg font-syncopate">
+								<p className="md:text-lg font-syncopate">
 									{selectedCar.price}
 								</p>
 								<div className="justify-center items-center flex">
-									<hr className="pb-12 top-4 w-1/2 relative" />
+									<hr className="pb-12 top-4 w-[20%] md:w-1/2 relative" />
 								</div>
-								<div>{selectedCar.introduction}</div>
-								<div className=" pt-5 gap-8 text-md flex justify-center items-center">
+								<div className="px-4 md:px-0">{selectedCar.introduction}</div>
+								<div className=" pt-5 gap-4 md:gap-8 text-md flex justify-center items-center">
 									<div className="flex">
 										<MdDateRange className="w-7 h-auto" />
 										<p className="pl-5 relative">
@@ -360,7 +361,7 @@ const Product2 = () => {
 										</p>
 									</div>
 								</div>
-								<div className=" justify-center items-center flex pt-12 ">
+								<div className=" justify-center items-center flex pt-12">
 									{selectedCar.model}
 								</div>
 							</div>

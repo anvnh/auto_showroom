@@ -38,8 +38,8 @@ const Product = () => {
 				style={{ backgroundImage: `url(${aa})` }}
 				className="bg-cover bg-center h-24 sm:h-48 relative object-cover"
 			>
-				<div className="flex justify-center pt-16 absolute inset-0">
-					<h1 className="relative text-white font-extrabold md:text-5xl xs:text-4xl text-2xl animate-pulse bottom-9 sm:bottom-1 md:pb-0 transition-colors font-syncopate duration-500  select-none">
+				<div className="flex justify-center absolute inset-0">
+					<h1 className="relative text-white font-extrabold md:text-5xl xs:text-3xl sm:text-4xl text-2xl animate-pulse justify-center items-center flex transition-colors font-syncopate duration-500  select-none">
 						POPULAR PRODUCT
 					</h1>
 				</div>
@@ -47,7 +47,7 @@ const Product = () => {
 
 			{/*--------------Card-------------------------------------*/}
 			<div className="contrainer pt-20 md:pt-12 ">
-				<div className="relative Product grid grid-cols-1 md:grid-cols-[2fr]  xl:grid-cols-[2fr_1fr_1fr] gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer -mb-14 ">
+				<div className="relative Product grid grid-cols-1 md:grid-cols-[2fr]  xl:grid-cols-[2fr_1fr_1fr] gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer -mb-24 ">
 					{/*--------------Card1-------------------------------------*/}
 					<Link to="/Mercedes-AMG-CLS">
 						<div
@@ -154,7 +154,7 @@ const Product = () => {
 					</Link>
 				</div>
 				{/*--------------hàng 2-------------------------------------*/}
-				<div className="relative  Product grid grid-cols-1 md:grid-cols-2 sm:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_2fr] mt-20 gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer xl:mt-2 xs:py-20 xs:mt-1 ">
+				<div className="relative  Product grid grid-cols-1 md:grid-cols-2 sm:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_2fr] mt-20 gap-4 md:p-9 mx-5 md:mx-14 cursor-pointer xl:mt-12 xs:py-20 xs:mt-1">
 					{/*--------------Card4-------------------------------------*/}
 					<Link to="/Audi-R8-coupe-2022">
 						<div
@@ -162,7 +162,7 @@ const Product = () => {
 							data-aos="fade-up"
 							className="card group bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
 						>
-							<div className="car -mt-0 w-[350px] h-[200px]">
+							<div className="car -mt-0 nd:w-[350px] h-auto justify-center items-center flex">
 								<img
 									src={carremove}
 									alt=""
@@ -172,10 +172,10 @@ const Product = () => {
 								<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
 							</div>
 							<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bottom-12">
-								<div className="logo_Car w-[150px] h-auto ">
+								<div className="logo_Car w-[100px] sm:w-[150px] h-auto ">
 									<img src={logoaudi} alt="" />
 								</div>
-								<div className="Product_text font-bold text-white text-xl">
+								<div className="Product_text font-bold text-white sm:text-xl">
 									<h2 className="font-syncopate">
 										Audi R8 Coupe 2022
 									</h2>
@@ -191,7 +191,7 @@ const Product = () => {
 							data-aos="fade-up"
 							className="card group bg-cover bg-center bg-white rounded-3xl p-9 w-full h-full group relative bottom-7"
 						>
-							<div className="car -mt-0 md:w-[350px] md:h-[200px]">
+							<div className="car -mt-0 xl:w-[350px] h-auto justify-center items-center flex">
 								<img
 									src={car6}
 									alt=""
@@ -201,12 +201,12 @@ const Product = () => {
 								<div className="overlay absolute inset-0 bg-primary opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-3xl"></div>
 							</div>
 							<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-								<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bottom-12">
-									<div className="logo_Car w-[150px] h-auto ">
+								<div className="content absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 dm:bottom-12">
+									<div className="logo_Car w-[100px] sm:w-[150px] h-auto ">
 										<img src={logoroi} alt="" />
 									</div>
-									<div className="Product_text font-bold text-white text-xl">
-										<h2 className="font-syncopate text-center">
+									<div className="Product_text font-bold text-white sm:text-xl">
+										<h2 className="font-syncopate  text-center">
 											Roll Royce Phantom <br />
 											Extended Series II
 										</h2>
@@ -221,7 +221,7 @@ const Product = () => {
 					<div
 						style={{ backgroundImage: `url(${acc})` }}
 						data-aos="fade-up"
-						className="card hidden md:block bg-cover bg-center group xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500"
+						className="card hidden xl:block bg-cover bg-center group xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500"
 					>
 						<div className="car w-full flex justify-center sm:justify-end">
 							<img
@@ -271,9 +271,9 @@ const Product = () => {
 					style={{ backgroundImage: `url(${ditme})` }}
 					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
-					<div className="flex justify-center pt-16 absolute inset-0">
-						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate select-none">
-						Products coming soon
+					<div className="flex justify-center absolute inset-0">
+						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse sm:text-4xl xs:text-3xl text-xl justify-center items-center flex text-center transition-colors duration-500 font-syncopate select-none uppercase">
+						Upcoming product
 						</h1>
 					</div>
 				</div>
