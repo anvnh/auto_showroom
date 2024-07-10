@@ -102,14 +102,15 @@ const carSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		image: {
-			type: String,
-			required: true,
-		},
+		images: [
+			{
+				type: String,
+			}
+		],
 	},
 	{ timestamps: true }
 ); 
 
-const Car = mongoose.model("Car", carSchema); // Corrected model name
+const Car = mongoose.model("Car", carSchema); 
 
 export default Car;

@@ -1,3 +1,4 @@
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { FaBookmark } from "react-icons/fa";
@@ -43,6 +44,11 @@ const Products = () => {
     return (
 		<section>
 			<div>
+				{isLoading && products && products.length === 0 && (
+					<div className="text-center text-2xl font-bold text-gray-700">
+						There are no products available at the moment.
+					</div>
+				)}
 				{!isLoading &&
 					!isRefetching &&
 					currentProducts &&
