@@ -1,0 +1,11 @@
+Model Information:
+* title:	Toyota GR Supra
+* source:	https://sketchfab.com/3d-models/toyota-gr-supra-9231f2d5e71a43dd87603dc0b339d99d
+* author:	thelightning (https://sketchfab.com/thelightning)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Toyota GR Supra" (https://sketchfab.com/3d-models/toyota-gr-supra-9231f2d5e71a43dd87603dc0b339d99d) by thelightning (https://sketchfab.com/thelightning) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

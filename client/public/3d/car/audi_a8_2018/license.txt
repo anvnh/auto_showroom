@@ -1,0 +1,11 @@
+Model Information:
+* title:	Audi A8 Custom 2018
+* source:	https://sketchfab.com/3d-models/audi-a8-custom-2018-cd094d03f7684809900a929a9c88c8db
+* author:	everhard (https://sketchfab.com/everhard)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Audi A8 Custom 2018" (https://sketchfab.com/3d-models/audi-a8-custom-2018-cd094d03f7684809900a929a9c88c8db) by everhard (https://sketchfab.com/everhard) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

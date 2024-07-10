@@ -1,0 +1,11 @@
+Model Information:
+* title:	Toyota Celica
+* source:	https://sketchfab.com/3d-models/toyota-celica-61dd3dc3c803421f9006102571ce3ffa
+* author:	Car2022 (https://sketchfab.com/Car2022)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Toyota Celica" (https://sketchfab.com/3d-models/toyota-celica-61dd3dc3c803421f9006102571ce3ffa) by Car2022 (https://sketchfab.com/Car2022) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
