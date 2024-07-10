@@ -22,7 +22,7 @@ import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
 import ShopLayout from './_shop/ShopLayout';
 import React, { useEffect } from "react";
 import AllProductViewLayout from './_shop/AllProductViewLayout';
-
+import AdminBrandLayout from './_shop/AdminBrandLayout';
 
 
 const App = () => {
@@ -99,6 +99,7 @@ const App = () => {
                     <Route path="/shop/product" element={<AllProductViewLayout />} />
 
                     <Route path="/shop/product/:id" element={<ProductViewLayout />} />
+                    <Route path="/shop/:brand/admin" element={<AdminBrandLayout />} />
 
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
