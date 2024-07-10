@@ -6,21 +6,19 @@ const Sidebar = () => {
 
     // TODO: Make this sidebar dynamic
 	const cars_brand = [
-		{ name: "Toyota", count: 2 },
-		{ name: "Audi", count: 48 },
-		{ name: "BMW", count: 14 },
-		{ name: "Mercedes", count: 15 },
-		{ name: "Nissan", count: 23 },
-		{ name: "Porche", count: 1 },
+		{ name: "Toyota", count: "_" },
+		{ name: "Audi", count: "_" },
+		{ name: "BMW", count: "_" },
+		{ name: "Mercedes", count: "_"},
+		{ name: "Nissan", count: "_"},
+		{ name: "Porche", count: "_"},
 	];
 
-
-	const colors = ["blue", "red", "white", "yellow", "pink", "gray"];
 
 	return (
 		<div className="w-64 text-black font-poppins p-4 shadow-md text-m">
 			<div className="bg-[#F5F6F7] p-4 rounded-2xl">
-				<h2 className="text-lg font-bold mb-4">Products</h2>
+				<h2 className="text-lg font-bold mb-4"> Brands </h2>
 				<ul className="mb-6">
 					{cars_brand.map((deal, index) => (
 						<li
@@ -46,16 +44,6 @@ const Sidebar = () => {
 
 			<div className="bg-[#F5F6F7] p-4 rounded-2xl mt-6">
 				<h3 className="font-bold mb-2">COLOR</h3>
-				<div className="flex space-x-2">
-					{colors.map((color, index) => (
-						<div
-							key={index}
-							className={`w-6 h-6 rounded-full border border-black bg-${color}-${
-								color === "white" ? "" : 500
-							}`}
-						></div>
-					))}
-				</div>
 			</div>
 		</div>
 	);

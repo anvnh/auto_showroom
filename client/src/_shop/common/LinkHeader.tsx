@@ -39,13 +39,15 @@ const LinkHeader = ({ isViewProduct }) => {
 					<Link to="/shop/product">
 						<li className="hover:text-blue-500">&nbsp; Product</li>
 					</Link>
-					<span> &nbsp; /&nbsp; </span>
 					{isViewProduct ? (
-						<div>
-							<li className="hover:text-blue-500">
-								&nbsp;{car?.brand}&nbsp;{car?.car_model}
-							</li>
-						</div>
+						<>
+							<span> &nbsp; /&nbsp; </span>
+							<div>
+								<li className="hover:text-blue-500">
+									&nbsp;{car?.brand}&nbsp;{car?.car_model}
+								</li>
+							</div>
+						</>
 					) : null}
 				</ul>
 			</div>
