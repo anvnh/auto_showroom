@@ -46,7 +46,7 @@ const ProductManagement = () => {
 
 	return (
 		<div className="text-white p-5 space-y-5">
-			<div className="w-[1210px] rounded-xl h-[50px] bg-white text-black items-center gap-12 flex justify-start pl-12 font-bold">
+			<div 	data-aos="fade-left" 	data-aos-delay="700"	 className="w-[1210px] rounded-xl h-[50px] bg-white text-black items-center gap-12 flex justify-start pl-12 font-bold">
 				<div className="flex gap-32">
 					<div>quantity</div>
 					<div className="flex gap-4 items-center">
@@ -64,7 +64,7 @@ const ProductManagement = () => {
 					/>
 				</div>
 			</div>
-			<div>
+			<div data-aos="fade-up" 	data-aos-delay="1200">
 				{!isLoading &&
 					!isRefetching &&
 					currentProducts &&
@@ -128,7 +128,7 @@ const ProductManagement = () => {
 						</div>
 					))}
 			</div>
-			<div>
+			<div >
 				{/* Pagination */}
 				<div className="flex justify-center mt-8">
 					{Array.from({ length: totalPages }, (_, i) => (

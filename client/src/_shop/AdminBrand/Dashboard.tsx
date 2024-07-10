@@ -8,6 +8,7 @@ import ProductManagement from "./ProductManagement";
 import ButtonManagement from "./ButtonManagement";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import DashBoardRepon from "../AdminBranchRepon/DashBoardRepon";
 const Dashboard = () => {
 	const [currentPage, setCurrentPage] = useState("");
 	const [selectedSection, setSelectedSection] = useState("");
@@ -26,7 +27,9 @@ const Dashboard = () => {
 		});
 	}, []);
 	return (
-		<div className="w-full h-full flex pl-7">
+		<div className="w-full h-auto xl:pl-7">
+			<div className="hidden xl:block"> 
+			<div className="flex">
 			<div className="bg-gray-700 w-[300px] h-[600px] rounded-xl p-5 space-y-3 font-bold shadow-md shadow-gray-500">
 				<div
 					onClick={() => handleNavClick_repon("Product_Management")}
@@ -101,7 +104,7 @@ const Dashboard = () => {
 				{currentPage === "Order_Management" && (
 					<div
 						data-aos="slide-left"
-						className="w-[400px] h-[500px] bg-gray-500 rounded-xl shadow-md shadow-gray-500"
+						className="w-[1250px] h-full bg-gray-500 rounded-xl shadow-md shadow-gray-500"
 					>
 						Order Management
 					</div>
@@ -109,7 +112,7 @@ const Dashboard = () => {
 				{currentPage === "Statistics" && (
 					<div
 						data-aos="slide-left"
-						className="w-[400px] h-[500px] bg-gray-500 rounded-xl shadow-md shadow-gray-500"
+						className="w-[1250px] h-full bg-gray-500 rounded-xl shadow-md shadow-gray-500"
 					>
 						Statistics
 					</div>
@@ -117,7 +120,7 @@ const Dashboard = () => {
 				{currentPage === "Voucher" && (
 					<div
 						data-aos="slide-left"
-						className="w-[400px] h-[500px] bg-gray-500 rounded-xl shadow-md shadow-gray-500"
+						className="w-[1250px] h-full bg-gray-500 rounded-xl shadow-md shadow-gray-500"
 					>
 						Voucher
 					</div>
@@ -125,11 +128,18 @@ const Dashboard = () => {
 				{currentPage === "Help" && (
 					<div
 						data-aos="slide-left"
-						className="w-[400px] h-[500px] bg-gray-500 rounded-xl shadow-md shadow-gray-500"
+						className="w-[1250px] h-full bg-gray-500 rounded-xl shadow-md shadow-gray-500"
 					>
 						Help
 					</div>
 				)}
+			</div>
+			</div>
+			</div>
+			<div className="justify-center flex items-center">
+			<div className="block xl:hidden " >
+					<DashBoardRepon />
+			</div>
 			</div>
 		</div>
 	);

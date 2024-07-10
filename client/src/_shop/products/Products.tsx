@@ -27,7 +27,7 @@ const Products = () => {
 			}
 		},
 	});
-
+ 
     // calculate
     const indexOfLastProduct = currentPage * productsPerPage;
 	const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
