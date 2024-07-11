@@ -25,13 +25,9 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    emailVerificationToken: {
-      type: String,
-      default: "",
-    },
-    emailVerificationTokenExpires: {
-      type: Date,
-      default: Date.now(),
+    isShopOwner: {
+      type: Boolean,
+      default: false,
     },
     followers: [
       {
