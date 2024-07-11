@@ -8,10 +8,28 @@ import ProductManagement from "./ProductManagement";
 import ButtonManagement from "./ButtonManagement";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Button } from "@material-tailwind/react";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { CiCircleMinus } from "react-icons/ci";
+import { FiRefreshCw } from "react-icons/fi";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+
 import DashBoardRepon from "../AdminBranchRepon/DashBoardRepon";
+
 const Dashboard = () => {
 	const [currentPage, setCurrentPage] = useState("");
 	const [selectedSection, setSelectedSection] = useState("");
+	const [openDialog, setOpenDialog] = useState(false);
 
 	const handleNavClick_repon = (section: string) => {
 		setCurrentPage(section);
@@ -27,10 +45,8 @@ const Dashboard = () => {
 		});
 	}, []);
 	return (
-		<div className="w-full h-auto xl:pl-7">
-			<div className="hidden xl:block"> 
-			<div className="flex">
-			<div className="bg-gray-700 w-[300px] h-[600px] rounded-xl p-5 space-y-3 font-bold shadow-md shadow-gray-500">
+		<div className="w-full h-full flex pl-7">
+			<div className="bg-gray-700 w-[300px] h-[600px] rounded-xl p-5 space-y-3 font-bold shadow-md">
 				<div
 					onClick={() => handleNavClick_repon("Product_Management")}
 					className={`flex hover:bg-gray-300 hover:text-black transition-all duration-300 ease-in-out items-center cursor-pointer p-2 rounded ${
@@ -93,18 +109,36 @@ const Dashboard = () => {
 						data-aos="slide-left"
 						className="grid grid-cols-2 gap-[980px]"
 					>
-						<div className="w-[1250px] h-full bg-gray-700 rounded-xl shadow-md shadow-gray-500">
+						<div className="w-[1250px] h-full bg-gray-700 rounded-xl shadow-md ">
 							<ProductManagement />
 						</div>
-						<div className="w-[260px] h-[250px] bg-gray-700 rounded-xl shadow-md shadow-gray-500">
-              <ButtonManagement />
-            </div>
+						<div className="w-[260px] h-[200px] bg-gray-700 rounded-xl shadow-md flex items-center">
+							<div className="p-5 space-y-3">
+								<Button
+									className="bg-primary bg-opacity-50 text-white w-56 h-10 text-md items-center flex justify-start"
+									onClick={() => setOpenDialog(true)}
+								>
+									<IoIosAddCircleOutline />
+									<p className="pl-4">Add product</p>
+								</Button>
+
+								<Button className="bg-primary bg-opacity-50 text-white w-56 h-10 text-md items-center flex justify-start">
+									<CiCircleMinus />
+									<p className="pl-4"> Delete product </p>
+								</Button>
+
+								<Button className="bg-primary bg-opacity-50 text-white w-56 h-10 text-md items-center flex justify-start">
+									<FiRefreshCw />
+									<p className="pl-4">Update product</p>
+								</Button>
+							</div>
+						</div>
 					</div>
 				)}
 				{currentPage === "Order_Management" && (
 					<div
 						data-aos="slide-left"
-						className="w-[1250px] h-full bg-gray-500 rounded-xl shadow-md shadow-gray-500"
+						className="w-[400px] h-[500px] bg-gray-500 rounded-xl shadow-md"
 					>
 						Order Management
 					</div>

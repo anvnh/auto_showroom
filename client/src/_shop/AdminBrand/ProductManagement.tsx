@@ -48,7 +48,7 @@ const ProductManagement = () => {
 		<div className="text-white p-5 space-y-5">
 			<div 	data-aos="fade-left" 	data-aos-delay="700"	 className="w-[1210px] rounded-xl h-[50px] bg-white text-black items-center gap-12 flex justify-start pl-12 font-bold">
 				<div className="flex gap-32">
-					<div>quantity</div>
+					<div>Quantity</div>
 					<div className="flex gap-4 items-center">
 						<p>Color:</p>
 						<div className="bg-red-500 w-[20px] h-[20px] rounded-full cursor-pointer hover:scale-110 duration-300 transition-all ease-in-out"></div>
@@ -60,7 +60,7 @@ const ProductManagement = () => {
 					<div>Search:</div>
 					<input
 						type="text"
-						className="bg-white border-2 border-gray-400 rounded-md"
+						className="bg-white border-2 border-gray-400 rounded-md font-normal px-2"
 					/>
 				</div>
 			</div>
