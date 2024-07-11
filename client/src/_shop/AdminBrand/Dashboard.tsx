@@ -168,8 +168,6 @@ const Dashboard = () => {
 					</div>
 				)}
 			</div>
-			</div>
-			</div>
 			<div className="justify-center flex items-center">
 			<div className="block xl:hidden " >
 					<DashBoardRepon />
