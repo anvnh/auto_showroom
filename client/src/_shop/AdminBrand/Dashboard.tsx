@@ -24,6 +24,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
+import DashBoardRepon from "../AdminBranchRepon/DashBoardRepon";
 
 const Dashboard = () => {
 	const [currentPage, setCurrentPage] = useState("");
@@ -145,7 +146,7 @@ const Dashboard = () => {
 				{currentPage === "Statistics" && (
 					<div
 						data-aos="slide-left"
-						className="w-[400px] h-[500px] bg-gray-500 rounded-xl shadow-md shadow-gray-500"
+						className="w-[1250px] h-full bg-gray-500 rounded-xl shadow-md shadow-gray-500"
 					>
 						Statistics
 					</div>
@@ -153,7 +154,7 @@ const Dashboard = () => {
 				{currentPage === "Voucher" && (
 					<div
 						data-aos="slide-left"
-						className="w-[400px] h-[500px] bg-gray-500 rounded-xl shadow-md shadow-gray-500"
+						className="w-[1250px] h-full bg-gray-500 rounded-xl shadow-md shadow-gray-500"
 					>
 						Voucher
 					</div>
@@ -161,11 +162,18 @@ const Dashboard = () => {
 				{currentPage === "Help" && (
 					<div
 						data-aos="slide-left"
-						className="w-[400px] h-[500px] bg-gray-500 rounded-xl shadow-md shadow-gray-500"
+						className="w-[1250px] h-full bg-gray-500 rounded-xl shadow-md shadow-gray-500"
 					>
 						Help
 					</div>
 				)}
+			</div>
+			</div>
+			</div>
+			<div className="justify-center flex items-center">
+			<div className="block xl:hidden " >
+					<DashBoardRepon />
+			</div>
 			</div>
 		</div>
 	);
