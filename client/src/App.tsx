@@ -99,7 +99,7 @@ const App = () => {
                     <Route path="/shop/product" element={<AllProductViewLayout />} />
 
                     <Route path="/shop/product/:id" element={<ProductViewLayout />} />
-                    <Route path="/shop/:brand/admin" element={<AdminBrandLayout />} />
+                    <Route path="/admin" element={<AdminBrandLayout />} />
 
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}

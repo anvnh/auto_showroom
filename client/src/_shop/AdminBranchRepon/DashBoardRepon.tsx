@@ -35,7 +35,7 @@ const DashBoardRepon = () => {
   };
 
   return (
-    <div className="px-3 lg:pt-12 ">
+    <div className="lg:pt-12 ">
       {toggle && (
         <div
           data-aos="fade"

@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { FaBookmark } from "react-icons/fa";
+import { Button } from "@material-tailwind/react";
 
 const ProductManagement = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -46,25 +47,7 @@ const ProductManagement = () => {
 
 	return (
 		<div className="text-white p-5 space-y-5">
-			<div 	data-aos="fade-left" 	data-aos-delay="700"	 className="w-[1210px] rounded-xl h-[50px] bg-white text-black items-center gap-12 flex justify-start pl-12 font-bold">
-				<div className="flex gap-32">
-					<div>Quantity</div>
-					<div className="flex gap-4 items-center">
-						<p>Color:</p>
-						<div className="bg-red-500 w-[20px] h-[20px] rounded-full cursor-pointer hover:scale-110 duration-300 transition-all ease-in-out"></div>
-						<div className="bg-blue-400 w-[20px] h-[20px] rounded-full cursor-pointer hover:scale-110 duration-300 transition-all ease-in-out"></div>
-						<div className="bg-black w-[20px] h-[20px] rounded-full cursor-pointer hover:scale-110 duration-300 transition-all ease-in-out"></div>
-					</div>
-				</div>
-				<div className="flex w-full gap-2 justify-end items-center pr-5">
-					<div>Search:</div>
-					<input
-						type="text"
-						className="bg-white border-2 border-gray-400 rounded-md font-normal px-2"
-					/>
-				</div>
-			</div>
-			<div data-aos="fade-up" 	data-aos-delay="1200">
+			<div data-aos="fade-up" data-aos-delay="1200">
 				{!isLoading &&
 					!isRefetching &&
 					currentProducts &&
@@ -82,10 +65,27 @@ const ProductManagement = () => {
 									HOT
 								</span>
 							</div>
+
 							<div className="w-2/3">
+								<div className="w-auto h-[30px] flex justify-end items-end">
+									<div className="w-auto h-auto flex justify-end items-end gap-3">
+										<Button className="bg-red-700 text-white w-32 h-8 text-md items-center justify-center flex ]">
+											<p>
+												Delete
+											</p>
+										</Button>
+
+										<Button className="bg-primary text-white w-32 h-8 text-md items-center justify-center flex ">
+											<p>
+												Update
+											</p>
+										</Button>
+									</div>
+								</div>
 								<h2 className="text-xl font-bold mb-2 text-black">
 									{product.brand}
 								</h2>
+
 								<div className="flex items-center mb-2">
 									<div className="flex text-yellow-400">
 										{/* TODO */}
@@ -106,12 +106,6 @@ const ProductManagement = () => {
 									<span className="text-2xl font-bold text-blue-600">
 										${product.price}
 									</span>
-									{/* <span className="text-gray-500 line-through ml-2">
-							${oldPrice}
-						</span> */}
-									{/* <span className="text-red-500 ml-2">
-							{discount}% OFF
-						</span> */}
 								</div>
 								<p className="text-gray-700 mb-4">
 									{product.bio}
@@ -128,7 +122,7 @@ const ProductManagement = () => {
 						</div>
 					))}
 			</div>
-			<div >
+			<div>
 				{/* Pagination */}
 				<div className="flex justify-center mt-8">
 					{Array.from({ length: totalPages }, (_, i) => (
