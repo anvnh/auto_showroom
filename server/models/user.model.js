@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    isShopOwner: {
+    isAdmin: {
       type: Boolean,
       default: false,
     },

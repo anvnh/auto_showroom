@@ -1,10 +1,17 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaPen } from "react-icons/fa";
 import { Button } from "@material-tailwind/react";
+import { MdDelete } from "react-icons/md";
+import toast, { Toaster } from "react-hot-toast";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+
 
 const ProductManagement = () => {
+
+	const queryClient = useQueryClient();
+
 	const [currentPage, setCurrentPage] = useState(1);
 
 	// get all products
@@ -40,9 +47,38 @@ const ProductManagement = () => {
 
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+	const { mutate: deleteCar, isPending: isDeleting} = useMutation({
+		mutationFn: async (ID) => {
+			try {
+				const res = await fetch(`/api/car/${ID}`, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+				const data = await res.json();
+
+				if(!res.ok){
+					throw new Error(data.error || "Something went wrong");
+				}
+
+				return data;
+			}
+			catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			toast.success("Car deleted successfully");
+			// invalidate the query to refetch the data
+			queryClient.invalidateQueries({queryKey: ["products"]});
+		}
+	});
+
 	return (
 		<div className="text-white p-5 space-y-5">
 			<div data-aos="fade-up" data-aos-delay="1200">
+				<Toaster position="top-center" reverseOrder={false} />
 				{!isLoading &&
 					!isRefetching &&
 					currentProducts &&
@@ -51,10 +87,10 @@ const ProductManagement = () => {
 							key={product._id}
 							className="flex bg-white p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
 						>
-							<div className="relative w-1/3 mr-4 overflow-hidden">
+							<div className="relative w-1/3 mr-4 overflow-hidden flex items-center">
 								<img
-									src="https://t4.ftcdn.net/jpg/04/51/65/87/240_F_451658744_Bm9QLAj1D0nluOkPHDKVXKTSZ6jRBOOS.jpg"
-									className="w-full h-[300px] rounded"
+									src={product.images[0]}
+									className="w-auto h-[250px] rounded"
 								/>
 								<span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
 									HOT
@@ -63,22 +99,26 @@ const ProductManagement = () => {
 
 							<div className="w-2/3">
 								<div className="w-auto h-[30px] flex justify-end items-end">
-									<div className="w-auto h-auto flex justify-end items-end gap-3">
-										<Button className="bg-red-700 text-white w-32 h-8 text-md items-center justify-center flex ]">
-											<p>
-												Delete
-											</p>
-										</Button>
-
-										<Button className="bg-primary text-white w-32 h-8 text-md items-center justify-center flex ">
-											<p>
-												Update
-											</p>
-										</Button>
+									<div className="w-auto h-auto flex justify-end items-center gap-3 bg-black p-2 bg-opacity-20 rounded-2xl">
+										<div className="flex items-center space-x-3">
+											{isDeleting ? (
+												<LoadingSpinner />
+											) : (
+												<MdDelete
+													className="w-5 h-5 text-red-500 cursor-pointer"
+													onClick={() =>
+														deleteCar(product._id)
+													}
+												/>
+											)}
+										</div>
+										<div className="flex">
+											<FaPen className="w-4 h-4 text-blue-500 cursor-pointer" />
+										</div>
 									</div>
 								</div>
 								<h2 className="text-xl font-bold mb-2 text-black">
-									{product.brand}
+									{product.brand}&nbsp;{product.car_model}
 								</h2>
 
 								<div className="flex items-center mb-2">
@@ -103,7 +143,10 @@ const ProductManagement = () => {
 									</span>
 								</div>
 								<p className="text-gray-700 mb-4">
-									{product.bio}
+									{/* {product.bio} */}
+									{product.bio.length > 200
+										? `${product.bio.substring(0, 200)}...`
+										: product.bio}
 								</p>
 								<div className="flex">
 									<button className="bg-blue-500 text-white px-4 py-2 rounded mr-2">

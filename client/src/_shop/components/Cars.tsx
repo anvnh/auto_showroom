@@ -75,7 +75,7 @@ const Cars = () => {
 								<div className="relative">
 									<img
 										className="w-full h-48 object-cover"
-										src={product.image}
+										src={product.images[0]}
 										alt="Car"
 									/>
 									<button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
@@ -92,7 +92,7 @@ const Cars = () => {
 									<div className="flex items-center justify-between mt-4 text-white mx-3">
 										<div className="items-center mr-4 line-clamp-1">
 											<RiSpeedUpFill className="w-5 h-5 mr-1 " />
-											{product.performance.top_speed}
+											{product.top_speed}
 										</div>
 										<div className="items-center mr-4 line-clamp-1">
 											<FaGasPump className="w-5 h-5 mr-1" />

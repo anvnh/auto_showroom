@@ -48,6 +48,26 @@ const ProfilePage = () => {
 		},
 	});
 
+	const{data: posts } = useQuery({
+		queryKey: ['posts'],
+		queryFn: async () => {
+			try {
+				const response = await fetch("/api/posts/all");
+				const data = await response.json();
+
+				if(!response.ok){
+					throw new Error(data.message || 'Something went wrong!');
+				}
+
+				console.log(data);
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
+
 	const {updateProfile, isUpdatingProfile} = useUpdateUserProfile();
 
 	const isMyProfile = authUser._id === user?._id;
@@ -78,7 +98,7 @@ const ProfilePage = () => {
 				{isLoading || isRefetching && <ProfileHeaderSkeleton />}
 				{!isLoading && !isRefetching && !user && <p className='text-center text-lg mt-4'>User not found</p>}
 				<div className='flex flex-col'>
-					{!isLoading && !isRefetching && user && (
+					{!isLoading && !isRefetching && user && posts && (
 						<>
                             {/* HEADER */}
 							<div className='flex gap-10 px-4 py-2 items-center sticky top-0 z-10 backdrop-blur-md border-gray-800'>
@@ -87,9 +107,7 @@ const ProfilePage = () => {
 								</Link>
 								<div className='flex flex-col'>
 									<p className='font-bold text-lg'>{user?.fullName}</p>
-									<span>
-										{formatMemberSinceDate(user?.createdAt)}
-									</span>
+									<span>{posts.filter(post => post.user._id === user._id).length} posts</span>
 								</div>
 							</div>
 
