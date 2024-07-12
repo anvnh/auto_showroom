@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 const carSchema = new mongoose.Schema(
 	{
-        bio: {
-            type: String,
-            required: true,
-        },
+		bio: {
+			type: String,
+			required: true,
+		},
 		brand: {
 			type: String,
 			required: true,
@@ -46,26 +46,24 @@ const carSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		performance: {
-			horsepower: {
-				type: String,
-				required: true,
-			},
-			torque: {
-				type: String,
-				required: true,
-			},
-			top_speed: {
-				type: String,
-				required: true,
-			},
-			acceleration: {
-				type: String,
-				required: true,
-			},
+		horsepower: {
+			type: String,
+			required: true,
+		},
+		torque: {
+			type: String,
+			required: true,
+		},
+		top_speed: {
+			type: String,
+			required: true,
+		},
+		acceleration: {
+			type: String,
+			required: true,
 		},
 		seat_capacity: {
-			type: Number,
+			type: String,
 			required: true,
 		},
 		cargo_space: {
@@ -79,7 +77,7 @@ const carSchema = new mongoose.Schema(
 		user_review: [
 			{
 				rating: {
-					type: Number,
+					type: String,
 				},
 				text: {
 					type: String,
@@ -88,14 +86,14 @@ const carSchema = new mongoose.Schema(
 					type: mongoose.Schema.Types.ObjectId,
 					ref: "User",
 				},
-			}
+			},
 		],
 		price: {
 			type: String,
 			required: true,
 		},
 		quantity: {
-			type: Number,
+			type: String,
 			required: true,
 		},
 		warranty: {
@@ -105,8 +103,9 @@ const carSchema = new mongoose.Schema(
 		images: [
 			{
 				type: String,
+				required: true,
 			}
-		],
+		]
 	},
 	{ timestamps: true }
 ); 

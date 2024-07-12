@@ -14,6 +14,7 @@ interface SubNavbarProps {
 
 import GetMe from "@/components/common/auth/GetMe";
 import { useQuery } from "@tanstack/react-query";
+import { useAuthUser } from "@/hooks/useAuthUser";
 
 const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick }) => {
 	useEffect(() => {
@@ -172,7 +173,9 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 											<div className="avatar">
 												<div className="w-10 h-10 rounded-full object-cover">
 													<img
-														src={authUser?.profileImg}
+														src={
+															authUser?.profileImg
+														}
 													/>
 												</div>
 											</div>
@@ -230,25 +233,25 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									</div>
 								</li>
 								<Link to="/shop">
-								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "shop"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
-									onMouseEnter={() =>
-										handleMouseEnter("shop")
-									}
-									onMouseLeave={handleMouseLeave}
-									onClick={() =>
-										handleToggleSection("shop")
-									}
-								>
-									<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
-										<p> Shop </p>
-										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
-									</div>
-								</li>
+									<li
+										className={`cursor-pointer transition-opacity duration-300 ${
+											selectedP && selectedP !== "shop"
+												? "opacity-50"
+												: "opacity-100"
+										}`}
+										onMouseEnter={() =>
+											handleMouseEnter("shop")
+										}
+										onMouseLeave={handleMouseLeave}
+										onClick={() =>
+											handleToggleSection("shop")
+										}
+									>
+										<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
+											<p> Shop </p>
+											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
+										</div>
+									</li>
 								</Link>
 								<li
 									className={`cursor-pointer transition-opacity duration-300 ${
@@ -290,6 +293,29 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 										</Link>
 									</div>
 								</li>
+								{authUser.isAdmin === true && (
+									<li
+										className={`cursor-pointer transition-opacity duration-300 ${
+											selectedP && selectedP !== "Admin"
+												? "opacity-50"
+												: "opacity-100"
+										}`}
+										onMouseEnter={() =>
+											handleMouseEnter("Admin")
+										}
+										onMouseLeave={handleMouseLeave}
+										onClick={() =>
+											handleToggleSection("Admin")
+										}
+									>
+										<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
+											<Link to="/admin">
+												<p> Admin </p>
+											</Link>
+											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
+										</div>
+									</li>
+								)}
 							</ul>
 						</nav>
 					</div>
@@ -349,7 +375,6 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									<p> Vehicles </p>
 								</div>
 							</li>
-							<Link to="/shop">
 							<li
 								className="cursor-pointer transition-opacity duration-300 w-full text-center"
 								onClick={() => handleNavClick_repon("shopping")}
@@ -359,10 +384,11 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									data-aos-delay="500"
 									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
 								>
-									<p> Shop </p>
+									<Link to="/shop">
+										<p> Shop </p>
+									</Link>
 								</div>
 							</li>
-							</Link>
 							<li
 								className="cursor-pointer transition-opacity duration-300 w-full text-center"
 								onClick={() => handleNavClick_repon("shopping")}
@@ -389,6 +415,24 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									</Link>
 								</div>
 							</li>
+							{authUser.isAdmin === true && (
+								<li
+									className="cursor-pointer transition-opacity duration-300 w-full text-center"
+									onClick={() =>
+										handleNavClick_repon("Admin")
+									}
+								>
+									<div
+										data-aos="fade-up"
+										data-aos-delay="700"
+										className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
+									>
+										<Link to="/admin">
+											<p> Admin </p>
+										</Link>
+									</div>
+								</li>
+							)}
 						</ul>
 					) : (
 						<div className="pt-5 pl-4">

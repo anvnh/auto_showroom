@@ -2,17 +2,6 @@ import { useState, useRef } from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { HiMiniViewfinderCircle } from "react-icons/hi2";
 import { FaCartPlus } from "react-icons/fa6";
-import {
-	car41,
-	car42,
-	car43,
-	car44,
-	car45,
-	car46,
-	car47,
-	car418,
-	car49,
-} from "../../assets";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
@@ -20,7 +9,6 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 const Product = () => {
 	const ID = useParams();
 	const carId = ID.id;
-	const [selectedImage, setSelectedImage] = useState(car42); 
 	const [isModalOpen, setIsModalOpen] = useState(false); 
 	const thumbnailRef = useRef(null); 
 
@@ -89,10 +77,13 @@ const Product = () => {
 	const increaseQuantity = () => {
 		setQuantity((prev) => (car.quantity > prev ? prev + 1 : prev));
 	};
+	
+	const [selectedImage, setSelectedImage] = useState(car && car.images[0] ? car.images[0] : "https://placehold.co/600x400");
 
 	return (
 		<section>
 			{/* {isLoading && <LoadingSpinner />} */}
+			{isLoading && <LoadingSpinner />}
 			{!isLoading && !isRefetching && (
 				<div>
 					<div className="flex text-white text-center z-10 pt-5 text-5xl font-syncopate font-bold justify-center">
@@ -100,10 +91,9 @@ const Product = () => {
 						<h1>&nbsp;{car.car_model}</h1>
 					</div>
 					<div className="w-full h-screen pt-12 px-24">
-						<div className="flex gap-12">
+						<div className="flex gap-6">
 							<div className="bg-white shadow-md rounded-xl shadow-black w-[1800px] h-[750px] flex flex-col">
 								<div className="w-full h-[80%] relative p-6 flex justify-center items-center px-12">
-									{/* TODO */}
 									<div
 										className="bg-cover bg-center w-full h-full object-cover rounded-3xl cursor-pointer"
 										style={{
@@ -126,17 +116,10 @@ const Product = () => {
 										className="flex overflow-hidden space-x-4"
 										ref={thumbnailRef}
 									>
-										{[
-											car42,
-											car44,
-											car43,
-											car45,
-											car46,
-											car47,
-										].map((image, index) => (
+										{car.images.map((image, index) => (
 											<div
 												key={index}
-												className="w-[100px] h-[100px] md:w-[250px] md:h-[150px] object-cover cursor-pointer flex-shrink-0"
+												className="flex w-[100px] h-[100px] md:w-[300px] md:h-[150px] object-cover cursor-pointer flex-shrink-0"
 												onClick={() =>
 													handleThumbnailClick(image)
 												}

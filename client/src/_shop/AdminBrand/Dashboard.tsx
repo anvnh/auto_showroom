@@ -14,8 +14,8 @@ import DashBoardRepon from "../AdminBranchRepon/DashBoardRepon";
 import { useDropzone } from 'react-dropzone'; // If using react-dropzone
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Button } from "@/components/ui/button"
-import { useMutation } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast, { Toaster } from "react-hot-toast";
 import { IoCloseSharp } from "react-icons/io5";
 import { CiImageOn } from "react-icons/ci";
 import { Input } from "@/components/ui/input"
@@ -29,9 +29,10 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 
 const Dashboard = () => {
 
-    const [img, setImg] = useState(null);
+	const [imgs, setImgs] = useState([]);
 	const imgRef = useRef(null);
-	const [success, setSuccess] = useState(false);
+
+	const queryClient = useQueryClient();
     
     const [formData, setFormData] = useState({
 		horsepower: "",
@@ -55,7 +56,7 @@ const Dashboard = () => {
 		price: "",
 		quantity: "",
 		warranty: "",
-		image: "",
+		images: [],
 	});
 
     const { mutate: addCar, isError, error, isPending } = useMutation({
@@ -79,7 +80,6 @@ const Dashboard = () => {
 			}
 		},
 		onSuccess: () => {
-			toast.success("Car created successfully");
 			setFormData({
 				horsepower: "",
 				torque: "",
@@ -102,9 +102,12 @@ const Dashboard = () => {
 				price: "",
 				quantity: "",
 				warranty: "",
-				image: "",
+				images: [],
 			});
-			
+			closeModal();
+			toast.success("Car created successfully");
+			// reload 
+			queryClient.invalidateQueries(["products"]);
 		},
 		onError: (error) => {
 			toast.error(error.message);
@@ -121,8 +124,8 @@ const Dashboard = () => {
     
     const handleSubmit = () => {
         // Send formData to the server
-        formData.image = img;
-        console.log(formData);
+        formData.images = imgs;
+        // console.log(formData);
         addCar(formData);
     }
 
@@ -147,17 +150,52 @@ const Dashboard = () => {
 
     const closeModal = () => {
         setShowDiv(false);
+		// set form data to null
+		setFormData({
+			horsepower: "",
+			torque: "",
+			top_speed: "",
+			acceleration: "",
+			bio: "",
+			brand: "",
+			car_model: "",
+			production_year: "",
+			body_style: "",
+			engine: "",
+			transmission: "",
+			drive_type: "",
+			exterior_color: "",
+			interior_color: "",
+			fuel_type: "",
+			seat_capacity: "",
+			cargo_space: "",
+			audio_system: "",
+			price: "",
+			quantity: "",
+			warranty: "",
+			image: "",
+		});
+		// set images to null
+		setImgs([]);
     };
 
-    const handleImgChange = (e) => {
-		const file = e.target.files[0];
-		if (file) {
+	const handleImgChange = (e) => {
+		const files = Array.from(e.target.files);
+		const updatedImgs = [...imgs];
+	
+		files.forEach(file => {
 			const reader = new FileReader();
 			reader.onload = () => {
-				setImg(reader.result);
+				updatedImgs.push(reader.result);
+				// setImgs(updatedImgs);
+				setImgs((prevImgs) => [...prevImgs, reader.result]);
 			};
 			reader.readAsDataURL(file);
-		}
+		});
+	};
+
+	const handleRemoveImg = (indexToRemove) => {
+		setImgs(imgs.filter((_, index) => index !== indexToRemove));
 	};
 
     return (
@@ -324,70 +362,85 @@ const Dashboard = () => {
 							</button>
 						</div>
 						<h2 className="text-xl text-white p-3 grid grid-cols-2 gap-2">
+							<Toaster
+								position="top-center"
+								reverseOrder={false}
+							/>
 							<textarea
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Bio"
 								name="bio"
+								value={formData.bio}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Brand"
 								name="brand"
+								value={formData.brand}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered  h-[10px]"
 								placeholder="Model"
 								name="car_model"
+								value={formData.car_model}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered  h-[10px]"
 								placeholder="Production year"
 								name="production_year"
+								value={formData.production_year}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered  h-[10px]"
 								placeholder="Body style"
 								name="body_style"
+								value={formData.body_style}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered  h-[10px]"
 								placeholder="Engine"
 								name="engine"
+								value={formData.engine}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Transmission"
 								name="transmission"
+								value={formData.transmission}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered  h-[10px]"
 								placeholder="Drive type"
 								name="drive_type"
+								value={formData.drive_type}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Exterior color"
 								name="exterior_color"
+								value={formData.exterior_color}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Interior color"
 								name="interior_color"
+								value={formData.interior_color}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Fuel type"
 								name="fuel_type"
+								value={formData.fuel_type}
 								onChange={handleInputChange}
 							></textarea>
 							<Popover>
@@ -413,6 +466,7 @@ const Dashboard = () => {
 													defaultValue=""
 													className="col-span-2 h-8"
 													name="horsepower"
+													value={formData.horsepower}
 													onChange={handleInputChange}
 												/>
 											</div>
@@ -425,6 +479,7 @@ const Dashboard = () => {
 													defaultValue=""
 													className="col-span-2 h-8"
 													name="torque"
+													value={formData.torque}
 													onChange={handleInputChange}
 												/>
 											</div>
@@ -437,6 +492,7 @@ const Dashboard = () => {
 													defaultValue=""
 													className="col-span-2 h-8"
 													name="top_speed"
+													value={formData.top_speed}
 													onChange={handleInputChange}
 												/>
 											</div>
@@ -449,6 +505,9 @@ const Dashboard = () => {
 													defaultValue=""
 													className="col-span-2 h-8"
 													name="acceleration"
+													value={
+														formData.acceleration
+													}
 													onChange={handleInputChange}
 												/>
 											</div>
@@ -493,23 +552,30 @@ const Dashboard = () => {
 								onChange={handleInputChange}
 							></textarea>
 						</h2>
-						{/* Input for manual selection */}
 						<div className="w-full bg-black p-4 h-[200px] rounded-2xl bg-opacity-20">
-							{img && (
-								<div className="relative w-auto mx-auto">
-									<IoCloseSharp
-										className="absolute top-0 right-0 text-white bg-black rounded-full w-5 h-5 cursor-pointer"
-										onClick={() => {
-											setImg(null);
-											imgRef.current.value = null;
-										}}
-									/>
-									<img
-										src={img}
-										className="w-full mx-auto h-28 object-contain rounded"
-									/>
+							<ScrollArea>
+								<div className="flex space-x-3">
+									{imgs.map((img, index) => (
+										<div>
+											<IoIosClose 
+												className="w-6 h-6 cursor-pointer"
+												onClick={() => handleRemoveImg(index)}
+											/>
+											<img
+												key={index}
+												src={img}
+												alt={`img-${index}`}
+												className="w-auto h-20 object-cover rounded-xl"
+											/>
+										</div>
+									))}
 								</div>
-							)}
+								<ScrollBar
+									orientation="horizontal"
+									className="bg-white bg-opacity-20"
+								/>
+							</ScrollArea>
+
 							<div className="flex justify-between border-t py-2 border-t-gray-700">
 								<div className="flex gap-1 items-center">
 									<CiImageOn
@@ -522,6 +588,8 @@ const Dashboard = () => {
 									hidden
 									ref={imgRef}
 									onChange={handleImgChange}
+									accept="image/*"
+									multiple
 								/>
 							</div>
 						</div>
