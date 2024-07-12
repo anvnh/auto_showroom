@@ -9,7 +9,6 @@ import { MdPassword } from "react-icons/md";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast"
-import { sign } from "crypto";
 
 const SignUpPage = () => {
     const [formData, setFormData] = useState({

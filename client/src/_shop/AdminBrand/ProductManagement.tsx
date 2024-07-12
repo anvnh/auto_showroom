@@ -8,12 +8,7 @@ const ProductManagement = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 
 	// get all products
-	const {
-		data: products,
-		isLoading,
-		refetch,
-		isRefetching,
-	} = useQuery({
+	const { data: products, isLoading, refetch, isRefetching, } = useQuery({
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {
