@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { MdOpenInNew } from "react-icons/md";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-const Navbar = ({ onNavClick }) => {
+const Navbar = ({ onNavClick }: { onNavClick: (section: string) => void }) => {
 	const [toggle, setToggle] = useState(false);
 
 	const [dropdownVe, setDropdownVe] = useState(false);
@@ -13,7 +13,7 @@ const Navbar = ({ onNavClick }) => {
 	const [dropdownIn, setDropdownIn] = useState(false);
 
 	/*code for navbar event */
-	const handleClick = (section) => {
+	const handleClick = (section: string) => {
 		onNavClick(section);
 	};
 	
