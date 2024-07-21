@@ -1,0 +1,15 @@
+{
+    "name": "auto_showroom",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon server/server.js",
+        "start": "node server/server.js",
+        "build": "npm i && npm install --prefix client && npm install --prefix server && npm run build --prefix client",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "nodemon": "^3.1.4"
+    }
+}

@@ -10,6 +10,8 @@ import "aos/dist/aos.css";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
 
+import { HexColorPicker } from "react-colorful";
+
 import DashBoardRepon from "../AdminBranchRepon/DashBoardRepon";
 import { useDropzone } from 'react-dropzone'; // If using react-dropzone
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
@@ -30,10 +32,12 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 const Dashboard = () => {
 
 	const [imgs, setImgs] = useState([]);
+    const [colors, setColors] = useState([]);
+
 	const imgRef = useRef(null);
 
 	const queryClient = useQueryClient();
-    
+
     const [formData, setFormData] = useState({
 		horsepower: "",
 		torque: "",
@@ -47,8 +51,7 @@ const Dashboard = () => {
 		engine: "",
 		transmission: "",
 		drive_type: "",
-		exterior_color: "",
-		interior_color: "",
+        colors: [],
 		fuel_type: "",
 		seat_capacity: "",
 		cargo_space: "",
@@ -93,8 +96,7 @@ const Dashboard = () => {
 				engine: "",
 				transmission: "",
 				drive_type: "",
-				exterior_color: "",
-				interior_color: "",
+                colors: [],
 				fuel_type: "",
 				seat_capacity: "",
 				cargo_space: "",
@@ -125,6 +127,7 @@ const Dashboard = () => {
     const handleSubmit = () => {
         // Send formData to the server
         formData.images = imgs;
+        formData.colors = colors;
         // console.log(formData);
         addCar(formData);
     }
@@ -164,8 +167,7 @@ const Dashboard = () => {
 			engine: "",
 			transmission: "",
 			drive_type: "",
-			exterior_color: "",
-			interior_color: "",
+            colors: [],
 			fuel_type: "",
 			seat_capacity: "",
 			cargo_space: "",
@@ -173,7 +175,7 @@ const Dashboard = () => {
 			price: "",
 			quantity: "",
 			warranty: "",
-			image: "",
+            images: []
 		});
 		// set images to null
 		setImgs([]);
@@ -351,7 +353,7 @@ const Dashboard = () => {
 				</div>
 			</div>
 			{showDiv && (
-				<div className="fixed top-0 w-full h-full flex justify-center items-center bg-gray-700 bg-opacity-25 z-50">
+				<div className="fixed top-10 w-full h-full flex justify-center items-center bg-gray-700 bg-opacity-25 z-50">
 					<div
 						data-aos="fade-in"
 						className="backdrop-blur-3xl bg-gray-950 bg-opacity-45 p-5 rounded-lg shadow-lg w-[700px]"
@@ -361,18 +363,20 @@ const Dashboard = () => {
 								<IoIosClose className="w-[30px] h-[30px]" />
 							</button>
 						</div>
-						<h2 className="text-xl text-white p-3 grid grid-cols-2 gap-2">
-							<Toaster
-								position="top-center"
-								reverseOrder={false}
-							/>
+                        <h2 className="text-xl text-white p-3">
 							<textarea
-								className="textarea textarea-bordered h-[10px]"
+								className="textarea textarea-bordered h-[10px] w-full"
 								placeholder="Bio"
 								name="bio"
 								value={formData.bio}
 								onChange={handleInputChange}
 							></textarea>
+                        </h2>
+						<h2 className="text-xl text-white p-3 grid grid-cols-2 gap-2">
+							<Toaster
+								position="top-center"
+								reverseOrder={false}
+							/>
 							<textarea
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Brand"
@@ -420,20 +424,6 @@ const Dashboard = () => {
 								placeholder="Drive type"
 								name="drive_type"
 								value={formData.drive_type}
-								onChange={handleInputChange}
-							></textarea>
-							<textarea
-								className="textarea textarea-bordered h-[10px]"
-								placeholder="Exterior color"
-								name="exterior_color"
-								value={formData.exterior_color}
-								onChange={handleInputChange}
-							></textarea>
-							<textarea
-								className="textarea textarea-bordered h-[10px]"
-								placeholder="Interior color"
-								name="interior_color"
-								value={formData.interior_color}
 								onChange={handleInputChange}
 							></textarea>
 							<textarea
@@ -549,11 +539,11 @@ const Dashboard = () => {
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Warranty"
 								name="warranty"
-								onChange={handleInputChange}
-							></textarea>
-						</h2>
-						<div className="w-full bg-black p-4 h-[200px] rounded-2xl bg-opacity-20">
-							<ScrollArea>
+                                onChange={handleInputChange}
+                            ></textarea>
+                        </h2>
+                        <div className="w-full bg-black p-4 h-[200px] rounded-2xl bg-opacity-20">
+                            <ScrollArea>
 								<div className="flex space-x-3">
 									{imgs.map((img, index) => (
 										<div>
