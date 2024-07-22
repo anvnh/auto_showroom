@@ -127,25 +127,6 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 		setCurrentPage("main");
 	};
 
-	const { data: authUser, isLoading } = useQuery({
-        queryKey: ['authUser'],
-        queryFn: async () => {
-            try {
-                const res = await fetch('/api/auth/me');
-                const data = await res.json();
-                if (data.error) return null;
-                if (!res.ok) {
-                    throw new Error(data.message || 'Something went wrong');
-                }
-                console.log("authUser is here: ", data);
-                return data;
-            } catch (error) {
-                throw new Error(error.message);
-            }
-        },
-        retry: false,
-    });
-
 	return (
 		<div className="z-50 fixed top-0 w-full font-poppins transition-transform duration-300">
 			{isVisible && (
@@ -165,26 +146,6 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 					</div>
 					<div className="flex-1 flex justify-end items-center">
 						<ul className="list-none sm:flex md:justify-end xl:pl-0 pl-4 items-center justify-start flex-1">
-							<Link to={`${authUser ? "/social" : "/login"}`}>
-								<li className="relative group pr-5">
-									{/* TODO */}
-									{authUser ? (
-										<div className="flex items-center">
-											<div className="avatar">
-												<div className="w-10 h-10 rounded-full object-cover">
-													<img
-														src={
-															authUser?.profileImg
-														}
-													/>
-												</div>
-											</div>
-										</div>
-									) : (
-										<FaUser className="text-white w-6 h-auto" />
-									)}
-								</li>
-							</Link>
 						</ul>
 
 						<button
@@ -293,7 +254,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 										</Link>
 									</div>
 								</li>
-								{authUser.isAdmin === true && (
+								{/* {authUser?.isAdmin === true && (
 									<li
 										className={`cursor-pointer transition-opacity duration-300 ${
 											selectedP && selectedP !== "Admin"
@@ -315,7 +276,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 										</div>
 									</li>
-								)}
+								)} */}
 							</ul>
 						</nav>
 					</div>
@@ -415,7 +376,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									</Link>
 								</div>
 							</li>
-							{authUser.isAdmin === true && (
+							{/* {authUser.isAdmin === true && (
 								<li
 									className="cursor-pointer transition-opacity duration-300 w-full text-center"
 									onClick={() =>
@@ -432,7 +393,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 										</Link>
 									</div>
 								</li>
-							)}
+							)} */}
 						</ul>
 					) : (
 						<div className="pt-5 pl-4">

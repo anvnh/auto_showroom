@@ -26,6 +26,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
+
+
+
 app.use(cors(
 )); // to allow cross-origin requests
 
@@ -40,6 +43,13 @@ app.use("/api/user", userRoutes); // user routes
 app.use("/api/posts", postRoutes); // post routes
 app.use("/api/notifications", nofiticationRoutes); // notification routes
 app.use("/api/car", carRoutes); // car routes
+
+if(process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "/dist")));
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+    })
+}
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
