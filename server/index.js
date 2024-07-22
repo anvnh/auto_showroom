@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true })); // to parse form data(urlencode
 app.use(cookieParser()); // to parse cookies
 
 app.get("/", (req, res) => {
-	res.json("Hello");
+	res.json("AAP api");
 });
 
 app.use("/api/auth", authRoutes); // auth routes
