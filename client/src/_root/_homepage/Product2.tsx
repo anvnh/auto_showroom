@@ -273,7 +273,7 @@ const Product2 = () => {
 							}}
 						>
 							<img
-								data-aos="fade-left"
+								
 								src={car.image}
 								alt={car.brand}
 								className="w-full max-w-xs scale-100 sm:scale-150 md:max-w-sm sm:group-hover:scale-[1.7] group-hover:scale-[1.25] transition-all ease-in-out duration-300 group-hover:rotate-2 translate-x-1 lg:max-w-md"
