@@ -35,7 +35,7 @@ const RightPanel = () => {
 
 	return (
         <>
-            <div className='hidden lg:block my-4 mx-3'>
+            <div className='hidden lg:block mb-4 mx-3'>
                 <div className='hover:bg-gray-600 hover:bg-opacity-15 bg-black border backdrop-blur-md border-gray-600 bg-opacity-55 p-4 sticky top-2 rounded-3xl'>
                     <p className='font-bold mb-4'>
                         You may know

@@ -246,11 +246,9 @@ export const getNewestPosts = async (req, res) => {
 }
 
 export const getLikedPosts = async (req, res) => {
-
-    const userId = req.params.id;
-
+    // const userId = "666d5d96173cae7b3726985f";
     try {
-
+        const userId = req.params.id;
         const user = await User.findById(userId);
         if(!user) {
             return res.status(404).json({ message: "User not found" });
@@ -266,7 +264,6 @@ export const getLikedPosts = async (req, res) => {
         })
 
         res.status(200).json(likedPosts);
-
     } catch(error) {
         console.log("Error in getLikedPosts controller: ", error);
         res.status(500).json({ message: "Internal Server error" });
@@ -327,13 +324,6 @@ export const getUserPosts = async (req, res) => {
     }
 };
 
-
-
-
-
-
-
-
-
-
-
+export const getTests = async (req, res) => {
+    res.status(200).json({message: "TEST"})
+}
