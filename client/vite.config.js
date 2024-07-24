@@ -12,7 +12,7 @@ export default defineConfig({
         port: 3000,
         proxy: {
             "/api": {
-                target: "https://auto-showroom-backend.vercel.app",
+                target: "https://auto-showroom-backend.onrender.com",
                 changeOrigin: true,
             },
         },
