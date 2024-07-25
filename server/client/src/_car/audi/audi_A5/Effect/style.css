@@ -1,0 +1,19 @@
+body{
+	overflow-x: hidden;
+}
+tr{
+
+	width:100%;
+	display: flex;
+	justify-items:start;
+	align-items: flex-start;
+	td,th{
+		width:200px
+	}
+}
+td,th{
+	text-align: start;
+}
+th{
+	padding-left: 10px;
+}
