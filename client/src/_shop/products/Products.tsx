@@ -117,7 +117,11 @@ const Products = () => {
 										</div>
 										<p className="text-gray-700 mb-4">
 											{product.bio.length > 320
-												? `${product.bio.substring( 0, 310)}...` : product.bio}
+												? `${product.bio.substring(
+														0,
+														310
+												  )}...`
+												: product.bio}
 										</p>
 										<div className="flex">
 											<button className="bg-blue-500 text-white px-4 py-2 rounded mr-2">

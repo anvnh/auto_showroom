@@ -11,11 +11,11 @@ const ShopLayout = () => {
     return (
 		<section className="w-full bg-primary">
 			<div className="w-full overflow-hidden">
-				{/* <div className="items-start justify-center">
+				<div className="items-start justify-center">
 					<div className="w-full bg-primary">
 						<Navbar />
 					</div>
-				</div> */}
+				</div>
 				<div className="items-start justify-center bg-primary">
 					<div className="w-full bg-primary">
 						<Hero />
@@ -26,7 +26,7 @@ const ShopLayout = () => {
 						<Products />
 					</div>
 				</div>
-				{/* <div className="items-start justify-center pb-16 bg-white">
+				<div className="items-start justify-center pb-16 bg-white">
 					<div className="w-full bg-white">
 						<Features />
 					</div>
@@ -50,7 +50,7 @@ const ShopLayout = () => {
 					<div className="w-full">
 						<Footer />
 					</div>
-				</div> */}
+				</div>
 			</div>
 		</section>
 	);

@@ -7,7 +7,7 @@ const useFollow = () => {
     const{mutate: follow, isPending } = useMutation({
         mutationFn: async (userId) => {
             try {
-                const res = await fetch(`/api/user/follow/${userId}`, {
+                const res = await fetch(`https://auto-showroom-backend.onrender.com/api/user/follow/${userId}`, {
                     method: 'POST',
                 });
 

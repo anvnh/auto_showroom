@@ -7,7 +7,7 @@ const Blogs = () => {
         queryKey: ['posts'],
         queryFn: async () => {
             try {
-                const response = await fetch("/api/posts/newest")
+                const response = await fetch("https://auto-showroom-backend.onrender.com/api/posts/newest")
                 const data = await response.json();
                 
                 console.log(data);

@@ -542,29 +542,23 @@ const Dashboard = () => {
                                 onChange={handleInputChange}
                             ></textarea>
                         </h2>
-                        <div className="w-full bg-black p-4 h-[200px] rounded-2xl bg-opacity-20">
-                            <ScrollArea>
-								<div className="flex space-x-3">
-									{imgs.map((img, index) => (
-										<div>
-											<IoIosClose 
-												className="w-6 h-6 cursor-pointer"
-												onClick={() => handleRemoveImg(index)}
-											/>
-											<img
-												key={index}
-												src={img}
-												alt={`img-${index}`}
-												className="w-auto h-20 object-cover rounded-xl"
-											/>
-										</div>
-									))}
-								</div>
-								<ScrollBar
-									orientation="horizontal"
-									className="bg-white bg-opacity-20"
-								/>
-							</ScrollArea>
+                        <div className="w-full bg-black p-4 h-[140px] rounded-2xl bg-opacity-20">
+							<div className="flex space-x-3">
+								{imgs.map((img, index) => (
+									<div>
+										<IoIosClose 
+											className="w-6 h-6 cursor-pointer"
+											onClick={() => handleRemoveImg(index)}
+										/>
+										<img
+											key={index}
+											src={img}
+											alt={`img-${index}`}
+											className="w-auto h-20 object-cover rounded-xl"
+										/>
+									</div>
+								))}
+							</div>
 
 							<div className="flex justify-between border-t py-2 border-t-gray-700">
 								<div className="flex gap-1 items-center">

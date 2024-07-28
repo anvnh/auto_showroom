@@ -24,7 +24,7 @@ const PostDetailed = () => {
         queryKey: ["postDetailed"],
         queryFn: async () => {
             try {
-                const response = await fetch(`/api/posts/${username}/${id}`);
+                const response = await fetch(`https://auto-showroom-backend.onrender.com/api/posts/${username}/${id}`);
                 const data = await response.json();
 
                 if (!response.ok) {

@@ -65,6 +65,76 @@ export const getCar = async (req, res) => {
     }
 }
 
+export const getCarReview = async (req, res) => {
+    try {
+        const carId = req.params.id;
+        const existingCar = await Car.findById(carId);
+
+        if(existingCar) {
+            res.status(200).json(existingCar.user_review);
+        }
+
+        else {
+            res.status(404).json({ error: "Car not found" });
+        }
+    } catch(error) {
+        console.log("Error in login controller", error.message);
+        res.status(500).json({ error: "Something went wrong" });
+    }
+}
+
+export const getBestReview = async (req, res) => {
+    try {
+		const cars = await Car.find();
+		let bestReview = null;
+		let highestSingleReview = null;
+
+		cars.forEach((car) => {
+			if (car.user_review && car.user_review.length > 0) {
+				const highRatings = car.user_review.filter(
+					(review) => review.rating >= 4
+				);
+				const lowRatings = car.user_review.filter(
+					(review) => review.rating < 4
+				);
+
+				if (highRatings.length > lowRatings.length) {
+					const bestCarReview = highRatings.sort(
+						(a, b) => b.rating - a.rating
+					)[0];
+					if (
+						!bestReview ||
+						bestCarReview.rating > bestReview.rating
+					) {
+						bestReview = bestCarReview;
+					}
+				}
+
+				const bestSingleReview = car.user_review.sort(
+					(a, b) => b.rating - a.rating
+				)[0];
+				if (
+					!highestSingleReview ||
+					bestSingleReview.rating > highestSingleReview.rating
+				) {
+					highestSingleReview = bestSingleReview;
+				}
+			}
+		});
+
+		if (bestReview) {
+			res.status(200).json(bestReview);
+		} else if (highestSingleReview) {
+			res.status(200).json(highestSingleReview);
+		} else {
+			res.status(404).json({ error: "There is not reviewed yet!!" });
+		}
+	} catch (error) {
+		console.log("Error in login controller", error.message);
+		res.status(500).json({ error: "Something went wrong" });
+	}   
+}
+
 export const deleteCar = async (req, res) => {
     try {
         const car = await Car.findById(req.params.id);
@@ -87,4 +157,49 @@ export const deleteCar = async (req, res) => {
         console.log("Error in deletePost controller: ", error);
         res.status(500).json({ message: "Internal Server error" });
     }   
+};
+
+export const reviewCar = async (req, res) => {
+    try {
+
+        const {text, rating} = req.body;
+        const carId = req.params.id;
+        const userId = req.user._id;
+
+        if(!text) {
+            return res.status(400).json({ message: "Text field is required" });
+        }
+
+        if(!rating) {
+            return res.status(400).json({ message: "Rating field is required" });
+        }
+
+        const car = await Car.findById(carId);
+
+        if(!car) {
+            return res.status(404).json({ message: "Car not found" });
+        }
+
+        const comment = {rating, text, user: userId }
+        const updatedComments = comment;
+
+        car.user_review.push(comment);
+
+        await car.save();
+
+        // save notification about comment to the creator of the post
+        // const newNotification = new Notification({
+        //     type: "comment", 
+        //     from: req.user._id,
+        //     to: userToModify._id,
+        // });
+
+        // await newNotification.save();
+
+        res.status(201).json(updatedComments);
+
+    } catch(error) {
+        console.log("Error in commentOnPost controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
 };

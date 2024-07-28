@@ -32,15 +32,13 @@ const carSchema = new mongoose.Schema(
 		},
 		drive_type: {
 			type: String,
-			required: true,
+			required: false,
 		},
 		exterior_color: {
 			type: String,
-			required: true,
 		},
 		interior_color: {
 			type: String,
-			required: true,
 		},
 		fuel_type: {
 			type: String,
@@ -77,15 +75,21 @@ const carSchema = new mongoose.Schema(
 		user_review: [
 			{
 				rating: {
-					type: String,
+					type: Number,
+					required: true,
 				},
 				text: {
 					type: String,
+					required: true,
 				},
 				user: {
 					type: mongoose.Schema.Types.ObjectId,
 					ref: "User",
 				},
+				createdAt: {
+					type: Date,
+					default: Date.now,
+				}
 			},
 		],
 		price: {

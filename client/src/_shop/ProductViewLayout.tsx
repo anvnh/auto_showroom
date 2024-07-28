@@ -4,6 +4,7 @@ import OverView from "./ProductShop/OverView";
 import SomeProduct from "./ProductShop/SomeProduct";
 import Footer from "@/components/common/Footer";
 import LinkHeader from "./common/LinkHeader";
+import Reviews from "./ProductShop/Reviews";
 
 
 const ProductViewLayout = () => {
@@ -31,6 +32,12 @@ const ProductViewLayout = () => {
 				<div className="items-start justify-center">
 					<div className="w-full bg-primary">
 						<OverView />
+					</div>
+				</div>
+
+				<div className="items-start justify-center">
+					<div className="w-full bg-primary">
+						<Reviews />
 					</div>
 				</div>
 

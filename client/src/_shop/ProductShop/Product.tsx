@@ -20,7 +20,7 @@ const Product = () => {
 				const response = await fetch(`/api/car/${carId}`);
 				const data = await response.json();
 
-				console.log(data);
+				// console.log(data);
 
 				if (!response.ok) {
 					throw new Error(data.message || "Something went wrong!");
@@ -78,7 +78,7 @@ const Product = () => {
 		setQuantity((prev) => (car.quantity > prev ? prev + 1 : prev));
 	};
 	
-	const [selectedImage, setSelectedImage] = useState(car && car.images[0] ? car.images[0] : "https://placehold.co/600x400");
+	const [selectedImage, setSelectedImage] = useState(car?.images[0]);
 
 	return (
 		<section>

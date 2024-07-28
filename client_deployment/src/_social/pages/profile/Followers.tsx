@@ -14,7 +14,7 @@ const Following = () => {
 		queryKey: ["followingUsers"],
 		queryFn: async () => {
 			try {
-				const res = await fetch(`/api/user/followers/${id}`);
+				const res = await fetch(`https://auto-showroom-backend.onrender.com/api/user/followers/${id}`);
 				const data = await res.json();
 				if(!res.ok) {
 					throw new Error(data.error || "Something went wrong");

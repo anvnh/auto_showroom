@@ -25,7 +25,7 @@ const Sidebar = () => {
     const{ mutate: logout ,isError, error }= useMutation({
         mutationFn: async () => {
             try {
-                const res = await fetch('/api/auth/logout', {
+                const res = await fetch('https://auto-showroom-backend.onrender.com/api/auth/logout', {
                     method: 'POST',
                 });
 

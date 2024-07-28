@@ -19,7 +19,7 @@ const NotificationPage = () => {
 		queryKey: ["notifications"],
 		queryFn: async () => {
 			try {
-				const res = await fetch("/api/notifications");
+				const res = await fetch("https://auto-showroom-backend.onrender.com/api/notifications");
 				const data = await res.json();
 				if(!res.ok) {
 					throw new Error(data.error || "Something went wrong");

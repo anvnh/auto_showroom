@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { FaUser } from "react-icons/fa";
+import { useState, useEffect } from "react";
+// import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -105,11 +105,11 @@ const Navbar: React.FC<SubNavbarProps> = ({
 					</div>
 					<div className="flex-1 flex justify-end items-center">
 					<ul className="list-none sm:flex md:justify-end xl:pl-0 pl-4 items-center justify-start flex-1">
-								<Link to="/SignIn">
+								{/* <Link to="/SignIn">
 									<li className="relative group pr-5">
 										<FaUser className="text-white w-[27px] h-[27px] transform hover:scale-110 transition-transform duration-300 cursor-pointer" />
 									</li>
-								</Link>
+								</Link> */}
 							</ul>
 						<button
 							className="md:hidden text-white pr-3 focus:outline-none"

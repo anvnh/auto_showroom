@@ -6,7 +6,7 @@ const useUpdateUserProfile = () => {
     const { mutateAsync: updateProfile, isPending: isUpdatingProfile } = useMutation({
 		mutationFn: async (formData) => {
 			try {
-				const res = await fetch(`/api/user/update`, {
+				const res = await fetch(`https://auto-showroom-backend.onrender.com/api/user/update`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",

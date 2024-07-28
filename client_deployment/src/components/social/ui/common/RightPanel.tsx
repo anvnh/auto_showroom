@@ -12,7 +12,7 @@ const RightPanel = () => {
         queryKey: ['suggestedUsers'],
         queryFn: async () => {
             try {
-                const res = await fetch('/api/user/suggested');
+                const res = await fetch('https://auto-showroom-backend.onrender.com/api/user/suggested');
                 const data = await res.json();
 
                 if(!res.ok) {

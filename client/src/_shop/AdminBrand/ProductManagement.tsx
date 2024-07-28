@@ -34,7 +34,7 @@ const ProductManagement = () => {
 			}
 		},
 	});
-	const productsPerPage = 4;
+	const productsPerPage = 3;
 	// calculate
 	const indexOfLastProduct = currentPage * productsPerPage;
 	const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -134,7 +134,7 @@ const ProductManagement = () => {
 										href="#"
 										className="text-blue-500 text-sm ml-2"
 									>
-										Submit a review
+										Reviews
 									</a>
 								</div>
 								<div className="mb-2">

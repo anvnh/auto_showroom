@@ -21,7 +21,7 @@ const SignUpPage = () => {
     const { mutate: signup, isError, error, isPending } = useMutation({
         mutationFn: async (formData) => {
             try {
-                const res = await fetch("/api/auth/signup", {
+                const res = await fetch("https://auto-showroom-backend.onrender.com/api/auth/signup", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

@@ -23,7 +23,7 @@ const MostSearchedCars = () => {
 				const response = await fetch("/api/car/all");
 				const data = await response.json();
 
-				console.log(data);
+				// console.log(data);
 
 				if (!response.ok) {
 					throw new Error(data.message || "Something went wrong!");

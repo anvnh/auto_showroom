@@ -20,7 +20,7 @@ const MostSearchedCars = () => {
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {
-				const response = await fetch("/api/car/all");
+				const response = await fetch("https://auto-showroom-backend.onrender.com/api/car/all");
 				const data = await response.json();
 
 				console.log(data);

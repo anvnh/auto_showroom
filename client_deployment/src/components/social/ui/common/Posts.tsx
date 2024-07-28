@@ -7,15 +7,15 @@ const Posts = ({feedType, username, userId}) => {
 	const getPostEndpoint = () => {
 		switch (feedType) {
 			case 'forYou':
-				return '/api/posts/all';
+				return 'https://auto-showroom-backend.onrender.com/api/posts/all';
 			case 'following':
-				return '/api/posts/following';
+				return 'https://auto-showroom-backend.onrender.com/api/posts/following';
 			case 'posts':
-				return `/api/posts/user/posted/${username}`;
+				return `https://auto-showroom-backend.onrender.com/api/posts/user/posted/${username}`;
 			case 'likes':
-				return `/api/posts/liked/${username}/${userId}`;
+				return `https://auto-showroom-backend.onrender.com/api/posts/liked/${username}/${userId}`;
 			default:
-				return '/api/posts/all';
+				return 'https://auto-showroom-backend.onrender.com/api/posts/all';
 		}
 	}
 

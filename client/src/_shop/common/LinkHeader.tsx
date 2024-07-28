@@ -13,7 +13,7 @@ const LinkHeader = ({ isViewProduct }) => {
 				const response = await fetch(`/api/car/${LinkProduct.id}`);
 				const data = await response.json();
 
-				console.log(data);
+				// console.log(data);
 
 				if (!response.ok) {
 					throw new Error(data.message || "Something went wrong!");

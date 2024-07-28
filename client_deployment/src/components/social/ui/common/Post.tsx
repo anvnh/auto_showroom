@@ -34,7 +34,7 @@ const Post = ({ post }) => {
 	const { mutate: deletePost, isPending: isDeleting} = useMutation({
 		mutationFn: async () => {
 			try {
-				const res = await fetch(`/api/posts/${post._id}`, {
+				const res = await fetch(`https://auto-showroom-backend.onrender.com/api/posts/${post._id}`, {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json",
