@@ -135,6 +135,23 @@ export const getBestReview = async (req, res) => {
 	}   
 }
 
+export const getCountReview = async (req, res) => {
+    try {
+        const cars = await Car.find();
+        let count = 0;
+        for(let i = 0; i < cars.length; i++) {
+            if(cars[i].user_review && cars[i].user_review.length > 0) {
+                count += cars[i].user_review.length;
+            }
+        }
+        res.status(200).json({ count });
+    } catch(error) {
+        console.log("Error in login controller", error.message);
+        res.status(500).json({ error: "Something went wrong" });
+    }
+}
+
+
 export const deleteCar = async (req, res) => {
     try {
         const car = await Car.findById(req.params.id);
@@ -201,5 +218,21 @@ export const reviewCar = async (req, res) => {
     } catch(error) {
         console.log("Error in commentOnPost controller: ", error);
         res.status(500).json({ message: "Internal Server error" });
+    }
+};
+
+export const getSuggestedCars = async (req, res) => {
+    try {
+        const cars = await Car.find(); 
+        const carsWithReviews = cars.filter(
+            (car) => car.user_review && car.user_review.length > 0
+        );
+        const suggestedCars = carsWithReviews
+            .sort((a, b) => b.user_review.length - a.user_review.length)
+            .slice(0, 5);
+        res.status(200).json(suggestedCars);
+    } catch (error) {
+        console.log("Error in getSuggestedCars controller", error.message); 
+        res.status(500).json({ error: "Something went wrong" });
     }
 };

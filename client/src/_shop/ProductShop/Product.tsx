@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { HiMiniViewfinderCircle } from "react-icons/hi2";
 import { FaCartPlus } from "react-icons/fa6";
@@ -80,11 +80,17 @@ const Product = () => {
 	
 	const [selectedImage, setSelectedImage] = useState(car?.images[0]);
 
+	useEffect(() => {
+		if (car && car.images && car.images.length > 0) {
+			setSelectedImage(car.images[0]);
+		}
+	}, [car]);
+
 	return (
 		<section>
 			{/* {isLoading && <LoadingSpinner />} */}
 			{isLoading && <LoadingSpinner />}
-			{!isLoading && !isRefetching && (
+			{!isLoading && !isRefetching && car && (
 				<div>
 					<div className="flex text-white text-center z-10 pt-5 text-5xl font-syncopate font-bold justify-center">
 						<h1>{car.brand}</h1>
