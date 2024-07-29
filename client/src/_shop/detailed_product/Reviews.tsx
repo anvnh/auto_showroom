@@ -110,10 +110,9 @@ const Reviews = () => {
 			<div>
 				{isLoading && <LoadingSpinner />}
 				<div className="flex overflow-hidden mb-3 ml-2">
-					{[...Array(5)].map((star, index) => {
-						const ratingValue = index + 1;
-						return (
-							<>
+						{[...Array(5)].map((star, index) => {
+							const ratingValue = index + 1;
+							return (
 								<label className="cursor-pointer flex flex-col items-center space-x-1 justify-center">
 									<input
 										type="radio"
@@ -131,9 +130,8 @@ const Reviews = () => {
 										}
 									/>
 								</label>
-							</>
-						);
-					})}
+							);
+						})}
 				</div>
 				<form className="" onSubmit={handleSubmit}>
 					<textarea

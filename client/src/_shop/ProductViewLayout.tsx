@@ -1,10 +1,10 @@
 import Navbar from "./common/Navbar";
-import Product from "./ProductShop/Product";
-import OverView from "./ProductShop/OverView";
-import SomeProduct from "./ProductShop/SomeProduct";
+import Product from "./detailed_product/Product";
+import OverView from "./detailed_product/OverView";
+import SomeProduct from "./detailed_product/SomeProduct";
 import Footer from "@/components/common/Footer";
 import LinkHeader from "./common/LinkHeader";
-import Reviews from "./ProductShop/Reviews";
+import Reviews from "./detailed_product/Reviews";
 
 
 const ProductViewLayout = () => {

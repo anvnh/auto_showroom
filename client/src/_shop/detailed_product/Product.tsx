@@ -3,7 +3,7 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { HiMiniViewfinderCircle } from "react-icons/hi2";
 import { FaCartPlus } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 
 const Product = () => {
@@ -253,7 +253,8 @@ const Product = () => {
 										<HiMiniViewfinderCircle className="h-auto w-[30px]" />
 										<p className="pl-4 text-xl">
 											{" "}
-											View details
+											{/* TODO */}
+											<Link to={""}>Buy now</Link>
 										</p>
 									</button>
 									<button className="flex bg-gray-800 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out">

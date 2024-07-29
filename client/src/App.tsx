@@ -23,6 +23,7 @@ import ShopLayout from './_shop/ShopLayout';
 import React, { useEffect } from "react";
 import AllProductViewLayout from './_shop/AllProductViewLayout';
 import AdminBrandLayout from './_shop/AdminBrandLayout';
+import CartLayout from './_shop/CartLayout';
 
 
 const App = () => {
@@ -99,6 +100,8 @@ const App = () => {
                     <Route path="/shop/product" element={<AllProductViewLayout />} />
 
                     <Route path="/shop/product/:id" element={<ProductViewLayout />} />
+                    <Route path="/shop/cart" element={authUser ? <CartLayout isLogin={Number(true)} /> : <CartLayout isLogin={false} />} />
+
                     <Route path="/admin" element={<AdminBrandLayout />} />
 
                 </Routes>
