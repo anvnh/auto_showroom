@@ -23,7 +23,7 @@ import ShopLayout from './_shop/ShopLayout';
 import React, { useEffect } from "react";
 import AllProductViewLayout from './_shop/AllProductViewLayout';
 import AdminBrandLayout from './_shop/AdminBrandLayout';
-
+import ChatAI from './api_Chat/ChatAI';
 
 const App = () => {
     const location = useLocation();
@@ -101,6 +101,9 @@ const App = () => {
                     <Route path="/shop/product/:id" element={<ProductViewLayout />} />
                     <Route path="/admin" element={<AdminBrandLayout />} />
 
+
+
+                    <Route path="/chatAI" element={<ChatAI />} />
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
                 {location.pathname.startsWith('/social') && <Toaster />}
