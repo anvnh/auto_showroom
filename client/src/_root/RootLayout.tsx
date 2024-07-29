@@ -4,6 +4,9 @@ import AOS from "aos";
 import Lenis from "@studio-freight/lenis";
 import "aos/dist/aos.css";
 import React, { useEffect, useRef, useState } from "react";
+import ChatAI from "@/api_Chat/ChatAI";
+
+
 const RootLayout = () => {
 	useEffect(() => {
 		const lenis = new Lenis();
@@ -23,6 +26,11 @@ const RootLayout = () => {
 				<div className="flex items-start justify-center ">
 					<div className="w-full">
 						<Navbar />
+					</div>
+				</div>
+				<div className="flex items-start justify-center">
+					<div className="w-full z-50">
+						<ChatAI />
 					</div>
 				</div>
 				<div className="flex items-start z-50 justify-center ">
