@@ -42,44 +42,39 @@ const Hero = () => {
 						</p>
 						<div className="flex mt-16 font-bold borer-2px text-3xl">
 							If you interested in our community,&nbsp;
-                            
 						</div>
-                        <Link to="/social" className="pt-10">
-                            <button className="relative flex h-[50px] w-56 items-center rounded-3xl justify-center overflow-hidden bg-gray-600 text-xl font-poppins  text-white shadow-2xl transition-all ease-in-out duration-700 before:absolute before:inset-0 before:border-0 before:border-white before:duration-100 before:ease-linear hover:bg-white hover:text-gray-950 hover:shadow-gray-800 hover:before:border-[25px]">
-                                <span className="relative z-10">
-                                    Give it a try
-                                </span>
-                            </button>
-                        </Link>
+						<Link to="/social" className="pt-10">
+							<button className="before:ease relative h-12 rounded-xl w-40 overflow-hidden border-gray-600 border bg-gray-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 hover:before:-translate-x-40">
+								Give it a try
+							</button>
+						</Link>
 					</div>
 				</div>
 				<div className="md:hidden flex">
 					<div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-12">
-					<div className="bg-gray-950 bg-opacity-45  sm:h-[250px] h-[200px] pb-5 w-screen">
-					<h1 className="text-2xl font-poppins font-bold mb-5 pt-5 sm:text-3xl">
-						
-						Everything Your Car <br /> Needs, All in One Place
-					</h1>
-					<div className="justify-center items-center flex">
-					<hr className="w-[50%] "/>
-					</div>
-					<p className="text-md font-poppins pt-5 sm:text-2xl">
-					
-						Your personal portal to a world <br /> of car
-						ownership resources.
-					</p>
-					</div>
-						<div className="pt-12">
-					
-						<div className="pt-4 justify-center items-center flex ">
-						<Link to="/social" >
-                            <button className="relative flex sm:h-[70px] sm:w-[300px] h-[50px] w-[250px] items-center rounded-md justify-center overflow-hidden bg-gray-600 ss:text-2xl sm:text-3xl text-xl font-poppins  text-white shadow-2xl transition-all ease-in-out duration-700 before:absolute before:inset-0 before:border-0 before:border-white before:duration-100 before:ease-linear hover:bg-white hover:text-gray-950 hover:shadow-gray-800 hover:before:border-[25px]">
-                                <span className="relative z-10">
-                                    Give it a try
-                                </span>
-                            </button>
-                        </Link>
+						<div className="bg-gray-950 bg-opacity-45  sm:h-[250px] h-[200px] pb-5 w-screen">
+							<h1 className="text-2xl font-poppins font-bold mb-5 pt-5 sm:text-3xl">
+								Everything Your Car <br /> Needs, All in One
+								Place
+							</h1>
+							<div className="justify-center items-center flex">
+								<hr className="w-[50%] " />
+							</div>
+							<p className="text-md font-poppins pt-5 sm:text-2xl">
+								Your personal portal to a world <br /> of car
+								ownership resources.
+							</p>
 						</div>
+						<div className="pt-12">
+							<div className="pt-4 justify-center items-center flex ">
+								<Link to="/social">
+								<button className="before:ease relative h-12 rounded-xl w-40 overflow-hidden border-gray-600 border bg-gray-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-gray-500 hover:before:-translate-x-40">
+										<span className="relative z-10">
+											Give it a try
+										</span>
+									</button>
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -42,7 +42,7 @@ const Product2 = () => {
 	const carData = [
 		{
 			brand: "718 Cayman S",
-			price: "$187,353.20",
+			price: "$187.353.20",
 			year: 2021,
 			image: pos1,
 			introduction:
@@ -75,7 +75,7 @@ const Product2 = () => {
 
 		{
 			brand: "911 Carrera S",
-			price: "$335.165,02",
+			price: "$335.165.02",
 			year: 2023,
 			image: pos3,
 			introduction:
@@ -106,7 +106,7 @@ const Product2 = () => {
 		},
 		{
 			brand: "911 Dakar",
-			price: "$600.782,33",
+			price: "$600.782.33",
 			year: 2024,
 			image: pos4,
 			introduction:
@@ -137,7 +137,7 @@ const Product2 = () => {
 		},
 		{
 			brand: "911 Sport Classic",
-			price: "$755.201,85",
+			price: "$755.201.85",
 			year: 2023,
 			image: pos5,
 			introduction:
@@ -168,7 +168,7 @@ const Product2 = () => {
 		},
 		{
 			brand: "911 Targa 4",
-			price: "$350.096,18",
+			price: "$350.096.18",
 			year: 2022,
 			image: pos6,
 			introduction:
@@ -202,7 +202,7 @@ const Product2 = () => {
 	const showDetails = (index) => {
 		setSelectedCar(carData[index]);
 		setShowModal(true);
-		setAutoplayEnabled(false); // Disable autoplay when showing details
+		setAutoplayEnabled(false); // Disable autoplay when showing detailsa
 		if (swiperRef.current && swiperRef.current.swiper) {
 			swiperRef.current.swiper.autoplay.stop(); // Stop autoplay explicitly
 		}
@@ -234,9 +234,10 @@ const Product2 = () => {
 				slidesPerView={"auto"}
 				coverflowEffect={{
 					rotate: 0,
-					stretch: 3290,
-					depth: 980,
-					modifier: 1,
+					stretch: 210,
+					depth: 1800,
+	
+					modifier: -1, // Đảo ngược chiều
 					slideShadows: false,
 				}}
 				pagination={{
@@ -290,9 +291,11 @@ const Product2 = () => {
 								<p className="price pt-3 group-hover:scale-110 group-hover:text-gray-300 transition-all ease-in-out duration-300 justify-center text-white font-bold text-base md:text-lg lg:text-xl font-syncopate flex">
 									{car.price}
 								</p>
-								<div className="pt-4 justify-center flex">
+								<div className="pt-4 justify-center flex" >
 									<div
-										className="detail-button bg-white text-primary px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white hover:scale-110 font-bold font-syncopate text-sm md:text-base rounded-3xl text-center"
+										className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 hover:before:-translate-x-40
+										"
 										onClick={() => showDetails(index)}
 									>
 										Details
@@ -305,22 +308,24 @@ const Product2 = () => {
 
 				{/* Controls */}
 				<div className="slider_controler ">
-					<div className="swiper-button-prev text-white pl-12">
-						<FaChevronRight />
+					<div className="swiper-button-next scale-90 hover:scale-110 text-white pr-8 duration-300 transition-all hover:pr-10 font-bold">
 					</div>
-					<div className="swiper-button-next text-white pr-12">
-						<FaChevronLeft />
+					<div className="swiper-button-prev scale-90 hover:scale-110 duration-300 transition-all text-white pl-1 hover:pl-6 font-bold">
+
 					</div>
 				</div>
 			</Swiper>
 
+
 			{/* Selected Car Details Modal */}
 			{selectedCar && showModal && (
+			
 				<div className="selected-car-info fixed top-12 left-0 w-full h-full flex justify-center items-center z-50 text-white ">
+			
 					<div
 						className="p-4 w-[340px] h-[550px] ss:w-[600px] ss:h-[700px] sm:w-[750px] sm:h-[700px] lg:w-[1100px] lg:h-[600px] xl:w-[1200px] xl:h-[800px] bg-gray-900 backdrop-blur-3xl bg-opacity-20 rounded-2xl shadow-lg "
 					>
-						<div className="justify-end items-end flex">
+				<div className="justify-end items-end flex">
 							<button onClick={closeModal}>
 								<IoIosClose className="w-[30px] h-[30px]" />
 							</button>
@@ -366,7 +371,9 @@ const Product2 = () => {
 							</div>
 						</div>
 					</div>
+				
 				</div>
+			
 			)}
 		</div>
 	);
