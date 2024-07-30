@@ -24,6 +24,7 @@ import React, { useEffect } from "react";
 import AllProductViewLayout from './_shop/AllProductViewLayout';
 import AdminBrandLayout from './_shop/AdminBrandLayout';
 import CartLayout from './_shop/CartLayout';
+import ChatAI from './api_Chat/ChatAI';
 
 
 const App = () => {
@@ -103,7 +104,7 @@ const App = () => {
                     <Route path="/shop/cart" element={authUser ? <CartLayout isLogin={Number(true)} /> : <CartLayout isLogin={false} />} />
 
                     <Route path="/admin" element={<AdminBrandLayout />} />
-
+                    <Route path="/chatAI" element={<ChatAI />} />
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
                 {location.pathname.startsWith('/social') && <Toaster />}
