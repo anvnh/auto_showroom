@@ -45,11 +45,11 @@ const SomeProduct = () => {
 						centeredSlides={true}
 						loop={false}
 						slidesPerView={2} // Hiển thị 2 slide cùng lúc
-						spaceBetween={1} // Khoảng cách giữa các slide
+						spaceBetween={15} // Khoảng cách giữa các slide
 						coverflowEffect={{
 							rotate: 0,
-							stretch: 100,
-							depth: 100,
+							stretch: 0,
+							depth: 0,
 							modifier: 1,
 							slideShadows: false,
 						}}
@@ -65,7 +65,7 @@ const SomeProduct = () => {
 						modules={[EffectCoverflow, Pagination, Navigation]}
 						autoplay={{
 							delay: 0,
-							disableOnInteraction: false,
+							disableOnInteraction: true,
 						}}
 						speed={1500}
 						initialSlide={1} 
@@ -90,12 +90,12 @@ const SomeProduct = () => {
 										boxSizing: "border-box",
 									}}
 								>
-									<div className="w-[700px] h-[550px] bg-white rounded-md p-3">
+									<div className="w-[700px] h-[580px] bg-white rounded-md p-3">
 										<figure className="hover01 overflow-hidden">
 											<img
 												src={car.images[0]}
 												alt={car.brand}
-												className="rounded-md w-[900px] h-auto transform transition-transform duration-300 hover:scale-110"
+												className="rounded-xl w-[900px] h-[400px] transform transition-transform duration-300 hover:scale-110"
 											/>
 										</figure>
 										<div className="text-black p-3 ">
@@ -106,7 +106,7 @@ const SomeProduct = () => {
 												{car.price}
 											</p>
 											<div className="justify-center items-center flex pt-5">
-												<button className="bg-gray-700 w-[150px] h-[40px] rounded-md hover:bg-slate-300 hover:text-black transition-all duration-300 ease-in-out text-white">
+												<button className="bg-gray-700 w-[150px] h-[40px] rounded-md hover:bg-gray-400 hover:text-black transition-all duration-300 ease-in-out text-white">
 													View
 												</button>
 											</div>
