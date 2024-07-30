@@ -217,7 +217,71 @@ export const getFollowerUsers = async (req, res) => {
 
 }
 
+export const addCart = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const userId = req.user._id;
+        const userToModify = await User.findById(userId);
 
+        if(!userToModify) {
+            return res.status(404).json({ message: "User not found" });
+        }
 
+        const isAlreadyInCart = userToModify.cart.includes(id);
 
+        if(isAlreadyInCart) {
+            return res.status(404).json({ message: "Item already in cart" });
+        }
 
+        await User.findByIdAndUpdate(userId, { $push: { cart: id } });
+
+        res.status(200).json({ message: "Item added to cart successfully" });
+
+    } catch(error) {
+        console.log("Error in addCart: ", error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+
+export const getCart = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const user = await User.findById(userId).populate("cart");
+
+        if(!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json(user.cart);
+    }
+    catch(error) {
+        console.log("Error in getCart: ", error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+
+export const deleteCart = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const userId = req.user._id;
+        const userToModify = await User.findById(userId );
+
+        if(!userToModify) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const isAlreadyInCart = userToModify.cart.includes(id);
+
+        if(!isAlreadyInCart) {
+            return res.status(404).json({ message: "Item not in cart" });
+        }
+
+        await User.findByIdAndUpdate(userId, { $pull: { cart: id } });
+
+        res.status(200).json({ message: "Item removed from cart successfully" });
+
+    } catch(error) {
+        console.log("Error in deleteCart: ", error.message)
+        res.status(500).json({error: error.message})
+    }
+}

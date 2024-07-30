@@ -14,10 +14,7 @@ interface SubNavbarProps {
 	onNavClick: (section: string) => void;
 }
 
-const Navbar: React.FC<SubNavbarProps> = ({
-	selectedSection_element,
-	onNavClick,
-}) => {
+const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick, }) => {
 	useEffect(() => {
 		AOS.init({
 			duration: 1200,
@@ -179,8 +176,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 					</button>
 				</div>
 				<ul className="list-none flex pr-3 justify-end items-center flex-1">
-						<Link to="">
-							<MdOutlineShoppingCart className="text-white w-[30px] xl:w-[35px] h-auto text-3xl xl:mr-4 mr-2" />
+						<Link to="/shop/cart">
+							<MdOutlineShoppingCart className="text-white w-[30px] xl:w-[35px] h-auto text-3xl xl:mr-4 mr-2" title="Go to your cart" />
 						</Link>
 						{isLoading && (
 							<LoadingSpinner />
