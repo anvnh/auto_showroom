@@ -66,6 +66,13 @@ const userSchema = new mongoose.Schema(
         default: [],
       },
     ],
+    cart: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Car",
+        default: [],
+      },
+    ],
   },
   { timestamps: true },
 );
