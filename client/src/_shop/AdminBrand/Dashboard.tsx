@@ -9,19 +9,14 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
-
-import { HexColorPicker } from "react-colorful";
-
 import DashBoardRepon from "../AdminBranchRepon/DashBoardRepon";
-import { useDropzone } from 'react-dropzone'; // If using react-dropzone
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { Button } from "@/components/ui/button"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
-import { IoCloseSharp } from "react-icons/io5";
 import { CiImageOn } from "react-icons/ci";
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
 	Popover,
 	PopoverContent,
@@ -30,15 +25,14 @@ import {
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 
 const Dashboard = () => {
-
 	const [imgs, setImgs] = useState([]);
-    const [colors, setColors] = useState([]);
+	const [colors, setColors] = useState([]);
 
 	const imgRef = useRef(null);
 
 	const queryClient = useQueryClient();
 
-    const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState({
 		horsepower: "",
 		torque: "",
 		top_speed: "",
@@ -51,7 +45,7 @@ const Dashboard = () => {
 		engine: "",
 		transmission: "",
 		drive_type: "",
-        colors: [],
+		colors: [],
 		fuel_type: "",
 		seat_capacity: "",
 		cargo_space: "",
@@ -62,7 +56,12 @@ const Dashboard = () => {
 		images: [],
 	});
 
-    const { mutate: addCar, isError, error, isPending } = useMutation({
+	const {
+		mutate: addCar,
+		isError,
+		error,
+		isPending,
+	} = useMutation({
 		mutationFn: async (formData) => {
 			try {
 				const res = await fetch("/api/car/add", {
@@ -96,7 +95,7 @@ const Dashboard = () => {
 				engine: "",
 				transmission: "",
 				drive_type: "",
-                colors: [],
+				colors: [],
 				fuel_type: "",
 				seat_capacity: "",
 				cargo_space: "",
@@ -108,84 +107,50 @@ const Dashboard = () => {
 			});
 			closeModal();
 			toast.success("Car created successfully");
-			// reload 
+			// reload
 			queryClient.invalidateQueries(["products"]);
 		},
 		onError: (error) => {
 			toast.error(error.message);
-		}
+		},
 	});
 
-    const [currentPage, setCurrentPage] = useState("");
-    const [selectedSection, setSelectedSection] = useState("");
-    const [showDiv, setShowDiv] = useState(false);
-    
-    const handleInputChange = (e) => {
+	const [currentPage, setCurrentPage] = useState("");
+	const [selectedSection, setSelectedSection] = useState("");
+	const [showDiv, setShowDiv] = useState(false);
+
+	const handleInputChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
-    
-    const handleSubmit = () => {
-        // Send formData to the server
-        formData.images = imgs;
-        formData.colors = colors;
-        // console.log(formData);
-        addCar(formData);
-    }
 
-    const handleNavClick_repon = (section: string) => {
-        setCurrentPage(section);
-        setSelectedSection(section);
-    };
+	const handleSubmit = () => {
+		// Send formData to the server
+		formData.images = imgs;
+		formData.colors = colors;
+		// console.log(formData);
+		addCar(formData);
+	};
 
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            easing: "ease-in-out",
-            once: false,
-            mirror: true,
-            anchorPlacement: "top-bottom",
-        });
-    }, []);
+	const handleNavClick_repon = (section: string) => {
+		setCurrentPage(section);
+		setSelectedSection(section);
+	};
 
-    const openModal = () => {
-        setShowDiv(true);
-    };
-
-    const closeModal = () => {
-        setShowDiv(false);
-		// set form data to null
-		setFormData({
-			horsepower: "",
-			torque: "",
-			top_speed: "",
-			acceleration: "",
-			bio: "",
-			brand: "",
-			car_model: "",
-			production_year: "",
-			body_style: "",
-			engine: "",
-			transmission: "",
-			drive_type: "",
-            colors: [],
-			fuel_type: "",
-			seat_capacity: "",
-			cargo_space: "",
-			audio_system: "",
-			price: "",
-			quantity: "",
-			warranty: "",
-            images: []
+	useEffect(() => {
+		AOS.init({
+			duration: 1000,
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-bottom",
 		});
-		// set images to null
-		setImgs([]);
-    };
+	}, []);
 
 	const handleImgChange = (e) => {
 		const files = Array.from(e.target.files);
 		const updatedImgs = [...imgs];
-	
-		files.forEach(file => {
+
+		files.forEach((file) => {
 			const reader = new FileReader();
 			reader.onload = () => {
 				updatedImgs.push(reader.result);
@@ -200,11 +165,17 @@ const Dashboard = () => {
 		setImgs(imgs.filter((_, index) => index !== indexToRemove));
 	};
 
-    return (
+	const closeModal = () => {
+		const modal = document.getElementById("Add_Car");
+		if (modal) {
+			modal.close();
+		}
+	};
+	return (
 		<div className="w-full h-full flex">
 			<div className="hidden xl:block">
 				<div className="flex">
-					<div className="bg-gray-700 w-[300px] h-[600px] rounded-xl p-5 space-y-3 font-bold shadow-md">
+					<div className="bg-gray-700 w-[300px] h-[600px] rounded-tr-xl rounded-br-xl p-5 space-y-3 font-bold shadow-md">
 						<div
 							onClick={() =>
 								handleNavClick_repon("Product_Management")
@@ -278,7 +249,11 @@ const Dashboard = () => {
 									<div className="p-5 space-y-3">
 										<Button
 											className="bg-primary bg-opacity-50 text-white w-56 h-10 text-md items-center flex justify-start"
-											onClick={openModal}
+											onClick={() =>
+												document
+													.getElementById("Add_Car")
+													.showModal()
+											}
 										>
 											<IoIosAddCircleOutline />
 											<p className="pl-4">Add product</p>
@@ -352,18 +327,11 @@ const Dashboard = () => {
 					</div>
 				</div>
 			</div>
-			{showDiv && (
-				<div className="fixed top-10 w-full h-full flex justify-center items-center bg-gray-700 bg-opacity-25 z-50">
-					<div
-						data-aos="fade-in"
-						className="backdrop-blur-3xl bg-gray-950 bg-opacity-45 p-5 rounded-lg shadow-lg w-[700px]"
-					>
-						<div className="flex justify-end">
-							<button onClick={closeModal}>
-								<IoIosClose className="w-[30px] h-[30px]" />
-							</button>
-						</div>
-                        <h2 className="text-xl text-white p-3">
+
+			<dialog id="Add_Car" className="modal">
+				<div className="modal-box backdrop-blur-3xl bg-gray-950 bg-opacity-45 w-full h-full flex ">
+					<div className=" rounded-lg shadow-lg w-full">
+						<h2 className="text-xl text-white px-3">
 							<textarea
 								className="textarea textarea-bordered h-[10px] w-full"
 								placeholder="Bio"
@@ -371,7 +339,7 @@ const Dashboard = () => {
 								value={formData.bio}
 								onChange={handleInputChange}
 							></textarea>
-                        </h2>
+						</h2>
 						<h2 className="text-xl text-white p-3 grid grid-cols-2 gap-2">
 							<Toaster
 								position="top-center"
@@ -433,19 +401,27 @@ const Dashboard = () => {
 								value={formData.fuel_type}
 								onChange={handleInputChange}
 							></textarea>
-							<Popover>
-								<PopoverTrigger asChild>
-									<Button
-										variant="outline"
-										className="bg-black border-none h-[48px]"
-									>
-										<div className="w-full flex justify-start text-gray-400">
-											Performance
-										</div>
-									</Button>
-								</PopoverTrigger>
-								<PopoverContent className="w-80 bg-black bg-opacity-50 backdrop-blur-md">
-									<div className="grid gap-4">
+
+							<Button
+								variant="outline"
+								className="bg-black border-none h-[48px]"
+								onClick={() =>
+									document
+										.getElementById("Add_Performance")
+										.showModal()
+								}
+							>
+								<div className="w-full flex justify-start text-gray-400">
+									Performance
+								</div>
+							</Button>
+
+							<dialog
+								id="Add_Performance"
+								className="modal w-full"
+							>
+								<div className="w-[500px] bg-gray-700 rounded-xl p-3 bg-opacity-20 backdrop-blur-sm z-5 relative top-10">
+									<div className="grid gap-4ss">
 										<div className="grid gap-2">
 											<div className="grid grid-cols-3 items-center gap-4">
 												<Label htmlFor="width">
@@ -503,8 +479,15 @@ const Dashboard = () => {
 											</div>
 										</div>
 									</div>
-								</PopoverContent>
-							</Popover>
+								</div>
+								<form
+									method="dialog"
+									className="modal-backdrop w-full absolute h-screen"
+								>
+									<button className="">Close</button>
+								</form>
+							</dialog>
+
 							<textarea
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Seat capacity"
@@ -539,26 +522,34 @@ const Dashboard = () => {
 								className="textarea textarea-bordered h-[10px]"
 								placeholder="Warranty"
 								name="warranty"
-                                onChange={handleInputChange}
-                            ></textarea>
-                        </h2>
-                        <div className="w-full bg-black p-4 h-[140px] rounded-2xl bg-opacity-20">
-							<div className="flex space-x-3">
-								{imgs.map((img, index) => (
-									<div>
-										<IoIosClose 
-											className="w-6 h-6 cursor-pointer"
-											onClick={() => handleRemoveImg(index)}
-										/>
-										<img
-											key={index}
-											src={img}
-											alt={`img-${index}`}
-											className="w-auto h-20 object-cover rounded-xl"
-										/>
-									</div>
-								))}
-							</div>
+								onChange={handleInputChange}
+							></textarea>
+						</h2>
+						<div className="w-full bg-black p-4 h-[200px] rounded-2xl bg-opacity-20">
+							<ScrollArea>
+								<div className="flex space-x-3">
+									{imgs.map((img, index) => (
+										<div>
+											<IoIosClose
+												className="w-6 h-6 cursor-pointer"
+												onClick={() =>
+													handleRemoveImg(index)
+												}
+											/>
+											<img
+												key={index}
+												src={img}
+												alt={`img-${index}`}
+												className="w-auto h-20 object-cover rounded-xl"
+											/>
+										</div>
+									))}
+								</div>
+								<ScrollBar
+									orientation="horizontal"
+									className="bg-white bg-opacity-20"
+								/>
+							</ScrollArea>
 
 							<div className="flex justify-between border-t py-2 border-t-gray-700">
 								<div className="flex gap-1 items-center">
@@ -567,6 +558,7 @@ const Dashboard = () => {
 										onClick={() => imgRef.current.click()}
 									/>
 								</div>
+
 								<input
 									type="file"
 									hidden
@@ -584,6 +576,7 @@ const Dashboard = () => {
 									variant="secondary"
 									className="bg-opacity-40 rounded-xl"
 									onClick={handleSubmit}
+									
 								>
 									{isPending ? <LoadingSpinner /> : "Add"}
 								</Button>
@@ -591,7 +584,10 @@ const Dashboard = () => {
 						</div>
 					</div>
 				</div>
-			)}
+				<form method="dialog" className="modal-backdrop">
+					<button className="outline-none">Close</button>
+				</form>
+			</dialog>
 			<div className="block xl:hidden w-full ss:pt-12">
 				<div className="justify-center w-full flex">
 					<DashBoardRepon />
