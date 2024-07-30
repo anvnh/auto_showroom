@@ -103,7 +103,7 @@ function ChatAI() {
               className="relative w-16 h-16 bg-gray-800 shadow-md shadow-white rounded-full flex items-center justify-center animate-bounce text-black mb-2 group"
             >
               <img src={logo} alt="" className="h-auto w-[40px]" />
-              <p className="absolute bottom-full mb-2 left-1 transform px-2 py-1 bg-white text-black tex`t-xs w-[60px] rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-bold">APP AI</p>
+              <p className="absolute bottom-full mb-4 transform px-2 py-1 bg-white text-black tex`t-xs w-[80px] rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-bold">APP AI</p>
               {showAutoMessage && (
                 <div  className="absolute w-[170px] font-poppins right-full mr-4 bottom-1/2 transform translate-y-1/2 px-3 py-2 bg-white text-black text-sm rounded-xl">
                   How can I help you?

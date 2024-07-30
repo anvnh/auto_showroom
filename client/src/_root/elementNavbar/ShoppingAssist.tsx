@@ -23,7 +23,7 @@ const ShoppingAssist = () => {
 						data-aos-delay="2000"
 						className="pt-6 lg:pl-20 z-50 lg:text-2xl relative flex xl:pl-36 xl:text-3xl"
 					>
-						<Button className="bg-gradient-to-b from-gray-800 to-gray-400 transition-all ease-in-out duration-300 w-72 cursor-pointer h-16 text-xl z-10 hover:text-gray-100 text-gray-900" >
+				<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 left-16">
 							build your car
 						</Button>
 					</div>
@@ -43,7 +43,7 @@ const ShoppingAssist = () => {
 						className="z-20 xl:pl-[750px] lg:bottom-[340px] lg:pl-[550px] xl:bottom-[840px] relative xl:text-3xl lg:text-2xl"
 					>
 						
-						<Button className="bg-gradient-to-b from-gray-800 to-gray-400 transition-all ease-in-out duration-300 w-72 cursor-pointer h-16 text-xl z-10 hover:text-gray-100 text-gray-900" >
+						<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700 left-12 hover:before:-translate-x-64">
 						Offer
 						</Button>
 					</div>
@@ -62,7 +62,7 @@ const ShoppingAssist = () => {
 						data-aos-delay="1500"
 						className="z-20 xl:pl-[1370px] lg:bottom-[580px] lg:pl-[900px] lg:text-2xl xl:bottom-[980px] relative xl:text-3xl"
 					>
-							<Button className="bg-gradient-to-b from-gray-800 to-gray-400 transition-all ease-in-out duration-300 w-72 cursor-pointer h-16 text-xl z-10 hover:text-gray-100 text-gray-900" >
+						<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700 left-16 hover:before:-translate-x-64">
 							Test drive
 						</Button>
 						

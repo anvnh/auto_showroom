@@ -6,7 +6,6 @@ import Footer from "@/components/common/Footer";
 import LinkHeader from "./common/LinkHeader";
 import Reviews from "./detailed_product/Reviews";
 
-
 const ProductViewLayout = () => {
 	return (
 		<section className="w-full bg-primary">
@@ -46,7 +45,7 @@ const ProductViewLayout = () => {
 						<SomeProduct />
 					</div>
 				</div>
-        
+
 				<div className="items-start justify-center">
 					<div className="w-full bg-primary">
 						<Footer />
