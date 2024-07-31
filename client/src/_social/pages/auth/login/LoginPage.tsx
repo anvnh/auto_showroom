@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
+
 import "aos/dist/aos.css";
 import { toast } from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
-import { logo, bgSocial, gif, ngoisao } from "@/assets";
+import { logo, gif, ngoisao } from "@/assets";
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import { FcGoogle } from "react-icons/fc";
 import LoginRepon from "./LoginRepon";
-
-
+import { useMutation } from "@tanstack/react-query";
 const LoginPage: React.FC = () => {
 	const [showSignUpForm, setShowSignUpForm] = useState(false);
 	const [showSignInForm, setShowSignInForm] = useState(true);
@@ -39,6 +39,44 @@ const LoginPage: React.FC = () => {
 		});
 	}, []);
 
+	const {
+		mutate: signup,
+		isError,
+		error,
+	} = useMutation({
+		mutationFn: async (formData) => {
+			try {
+				const res = await fetch("/api/auth/signup", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(formData),
+				});
+
+				const data = await res.json();
+				if (!res.ok)
+					throw new Error(data.error || "Failed to create account.");
+				console.log(data);
+				return data;
+			} catch (error) {
+				throw new Error(error.message);
+			}
+		},
+		onSuccess: () => {
+			console.log("ok")
+			toast.success("Account created successfully");
+		},
+	});
+
+	const handleSubmit = (e) => {
+		e.preventDefault(); // page won't reload
+		console.log(signUpData);
+		// signup(formData);
+		// send verification email
+		signup(signUpData);
+	};
+
 	const toggleForm = (form: string) => {
 		if (form === "signUp") {
 			setShowSignUpForm(true);
@@ -65,30 +103,6 @@ const LoginPage: React.FC = () => {
 			setSignUpData({ ...signUpData, [name]: value });
 		} else if (form === "signIn") {
 			setSignInData({ ...signInData, [name]: value });
-		}
-	};
-
-	const handleSignUpSubmit = async (
-		event: React.FormEvent<HTMLFormElement>
-	) => {
-		event.preventDefault();
-		try {
-			const res = await fetch("/api/auth/signup", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(signUpData),
-			});
-
-			const data = await res.json();
-			if (!res.ok)
-				throw new Error(data.error || "Failed to create account.");
-			console.log(data);
-			toast.success("Account created successfully");
-			resetFormInputs();
-		} catch (error) {
-			toast.error(error.message);
 		}
 	};
 
@@ -182,7 +196,7 @@ const LoginPage: React.FC = () => {
 									</h2>
 									<form
 										className="space-y-6"
-										onSubmit={handleSignUpSubmit}
+										onSubmit={handleSubmit}
 										noValidate
 									>
 										{[
@@ -201,7 +215,7 @@ const LoginPage: React.FC = () => {
 														"password"
 															? "password"
 															: placeholder ===
-															  "email"
+															"email"
 															? "email"
 															: "text"
 													}
@@ -239,14 +253,25 @@ const LoginPage: React.FC = () => {
 										))}
 
 										<div className="pt-10 relative flex justify-center">
-											<Button className="w-[300px] h-[50px] p-2 text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500">
-												C<span className="lowercase">reate Account</span>
+											<Button
+												type="submit"
+												className="w-[300px] h-[50px] p-2 text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500"
+											>
+												C
+												<span className="lowercase">
+													reate Account
+												</span>
 											</Button>
 										</div>
+										<div className="w-full justify-center flex">
+											{isError && (
+												<p className="text-red-500">
+													{error.message}
+												</p>
+											)}
+										</div>
 										<div className="flex pt-12 justify-center items-center text-center">
-											<p>
-												You have an account
-											</p>
+											<p>You have an account</p>
 											<div className="w-[70px]">
 												<a
 													onClick={() =>
@@ -384,7 +409,7 @@ const LoginPage: React.FC = () => {
 			</div>
 
 			<div className="xl:hidden">
-					<LoginRepon />		
+				<LoginRepon />
 			</div>
 		</div>
 	);
