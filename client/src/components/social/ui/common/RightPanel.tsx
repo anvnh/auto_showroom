@@ -5,8 +5,10 @@ import placeholder_img from "../../../../assets/social/placeholder/placeholder.p
 import useFollow from "@/hooks/useFollow";
 import LoadingSpinner from "./LoadingSpinner";
 import { FaArrowRight } from "react-icons/fa";
+import { useState } from "react";
 
 const RightPanel = () => {
+
 
     const {data: suggestedUsers, isLoading} = useQuery({
         queryKey: ['suggestedUsers'],

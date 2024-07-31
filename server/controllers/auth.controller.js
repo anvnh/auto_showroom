@@ -2,7 +2,10 @@ import { generateTokenAndSetCookie } from '../lib/utils/generateToken.js';
 import User from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
 import nodemailer from "nodemailer";
+import dotenv from 'dotenv';
+import crypto from "crypto";
 
+dotenv.config();
 
 export const signup = async (req, res) => {
     try {
@@ -23,9 +26,12 @@ export const signup = async (req, res) => {
             return res.status(400).json({ error: "Email is already taken "})
         }
 
-        if(password.length < 6) {
-            return res.status(400).json({ error: "Password must be at least 6 characters long" });
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+        if(!passwordRegex.test(password)) {
+            return res.status(400).json({ error: "Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number" });
         }
+
         // hash password
         // 123456 -> aooiwjdo@_AWD!@__ASD>A??^!@(#j
         const salt = await bcrypt.genSalt(10);
@@ -112,10 +118,66 @@ export const getMe = async (req, res) => {
     }
 }
 
+export const sendConfirmationMail = async (req, res) => {
+	const { email } = req.body;
+
+    // get user fullname
+
+    const user = await User.findOne({ email });
+
+    if(!user) {
+        return res.status(404).json({ error: "User not found" });
+    }
 
 
+	if (!email) {
+		return res.status(400).json({ message: "Email is required" });
+	}
 
+	// Generate a 6-digit OTP
+	const otp = crypto.randomInt(100000, 999999).toString();
 
+	// Configure the email transport using nodemailer
+	const transporter = nodemailer.createTransport({
+		service: "gmail", // Use your email service
+		auth: {
+			user: process.env.EMAIL_USER, // Replace with your email
+			pass: process.env.EMAIL_PASSWORD, // Replace with your email password
+		},
+	});
 
+	const mailOptions = {
+		from: "AAP", 
+		to: email,
+		subject: "Verification of Your Account Deletion Request",
+		html: `
+            <h2> Dear ${user.fullName} </h2>
+            <p> We have received your request to delete your account on AAP </p>
+            <p> To confirm that this request is coming from you and to proceed with the deletion of your account, please enter the following One-Time Password (OTP) into the designated field on our website: </p>
+            <div style="text-align: center;">
+                <h2> ${otp} </h2>
+            </div>
+            <p style="font-weight: bold;"> Please note that once your account is deleted, all associated data, including but not limited to: </p>
+            <ul>
+                <li>
+                    Your personal information
+                </li>
+                <li>
+                    Your saved preferences
+                </li>
+                <li>
+                    Your purchase history
+                </li>
+            </ul>
+            <p style="font-weight: bold;"> will be permanently removed from our servers and cannot be recovered. </p>
+            <p> If you did not request to delete your account, please ignore this email. </p>
+        `,
+	};
 
-
+	try {
+		await transporter.sendMail(mailOptions);
+		res.status(200).json({ message: "OTP sent successfully", otp });
+	} catch (error) {
+		res.status(500).json({ message: "Failed to send OTP", error });
+	}
+};

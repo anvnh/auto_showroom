@@ -105,7 +105,6 @@ const LoginPage: React.FC = () => {
 			setSignInData({ ...signInData, [name]: value });
 		}
 	};
-
 	const handleSignInSubmit = async (
 		event: React.FormEvent<HTMLFormElement>
 	) => {

@@ -1,17 +1,54 @@
 import { Link } from "react-router-dom";
-import { MdArrowOutward } from "react-icons/md";
-import { useQuery } from "@tanstack/react-query";
+import { MdAddShoppingCart, MdArrowOutward, MdShoppingCart } from "react-icons/md";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { CiBookmark } from "react-icons/ci";
 import { RiSpeedUpFill } from "react-icons/ri";
 import { FaCogs, FaGasPump } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 
 const Cars = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
+	const [loadingProductId, setLoadingProductId] = useState(null);
     const productsPerPage = 4;
     const navigate = useNavigate();
+
+	const {mutate: addToCart, isPending,} = useMutation({
+		mutationFn: async (productId) => {
+			try {
+				const response = await fetch(`/api/user/add/cart/${productId}`, {
+					method: "POST",
+				});
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			toast.success("Product added to cart", {
+				duration: 2000, 
+			});
+
+			setTimeout(() => { setLoadingProductId (null) });
+		},
+		onError: (error) => {
+			// TODO
+			toast.error("Item already in cart", {
+				duration: 2000,
+			});
+
+			setTimeout(() => { setLoadingProductId (null) });
+		}
+    });
 
 
 	// get all products
@@ -35,6 +72,11 @@ const Cars = () => {
 		},
 	});
 
+	const handleAddToCart = (productId) => {
+		setLoadingProductId(productId);
+		addToCart(productId);
+	}
+
 	// calculate
 	const indexOfLastProduct = currentPage * productsPerPage;
 	const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -49,10 +91,9 @@ const Cars = () => {
 
 	return (
 		<section>
+			<Toaster position="top-center" reverseOrder={false} />
 			<div className="font-bold md:text-4xl text-3xl md:pl-48 pl-12 w-full flex pb-12">
-				<div className="">
-                    Most rated cars
-                </div>
+				<div className="">Most rated cars</div>
 			</div>
 			<div className="text-[18px] hover:text-blue-500 pb-4 font-normal flex items-center justify-end pr-12 md:pr-56 hover:underline ss:pr-16 sm:pr-32 lg:pr-20 xl:pr-48">
 				<Link to="/shop/product">View All</Link>
@@ -80,8 +121,19 @@ const Cars = () => {
 										src={product.images[0]}
 										alt="Car"
 									/>
-									<button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
-										<CiBookmark className="text-xl text-gray-700" />
+									<button
+										className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-opacity-40 cursor-pointer"
+										onClick={() =>
+											handleAddToCart(product._id)
+										}
+									>
+										<div className="flex">
+											{loadingProductId === product._id ? (
+												<LoadingSpinner size="xs" />
+											) : (
+												<MdAddShoppingCart className="text-2xl text-gray-700" />
+											)}
+										</div>
 									</button>
 								</div>
 								<div className="p-4 text-white">
@@ -107,10 +159,10 @@ const Cars = () => {
 									</div>
 									<div className="mt-4 flex justify-between items-center">
 										<span className="text-2xl font-bold text-white">
-											{product.price + "$"}
+											${product.price}
 										</span>
 										<Link
-											to=""
+											to={`/shop/product/${product._id}`}
 											className="text-blue-500 flex"
 										>
 											View Details

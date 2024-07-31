@@ -18,7 +18,7 @@ const ProductViewLayout = () => {
 
 				<div className="items-start justify-center pt-28">
 					<div className="w-full bg-primary">
-						<LinkHeader isViewProduct={true} />
+						<LinkHeader isViewProduct={true} isCart={false}/>
 					</div>
 				</div>
 

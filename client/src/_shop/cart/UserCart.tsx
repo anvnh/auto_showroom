@@ -11,6 +11,8 @@ const UserCart = () => {
 
     const queryClient = useQueryClient();
 
+	const [deletingItems, setDeletingItems] = useState<{ [key: string]: boolean }>({});
+
     const {data: cart, isLoading, refetch, isRefetching} = useQuery({
         queryKey: ["cart"],
         queryFn: async () => {
@@ -50,11 +52,16 @@ const UserCart = () => {
 				throw new Error(error);
 			}
 		},
-		onSuccess: () => {
+		onSuccess: (data, variables) => {
 			toast.success("Car removed successfully");
 			// invalidate the query to refetch the data
+			setDeletingItems((prev) => ({ ...prev, [variables.item_id]: false }));
 			queryClient.invalidateQueries({queryKey: ["cart"]});
-		}
+		},
+		onError: (error, variables) => {
+            setDeletingItems((prev) => ({ ...prev, [variables.item_id]: false }));
+            toast.error("Failed to remove item");
+        },
 	});
 
     const [quantities, setQuantities] = useState({});
@@ -73,41 +80,44 @@ const UserCart = () => {
         }));
     };
 
-    const handleDelete = (item_id) => {
-        deleteItem({item_id});
-    }
+  
+	// const handleDelete = async (itemId) => {
+	// 	deleteItem({item_id: itemId});
+	// };
+	const handleDelete = async (itemId) => {
+        setDeletingItems((prev) => ({ ...prev, [itemId]: true }));
+        deleteItem({ item_id: itemId });
+    };
+
 
     return (
 		<section>
 			<Toaster position="top-center" reverseOrder={false} />
-			<div className="bg-primary pt-12 md:px-0 px-5">
-				<h1 className="sm:text-4xl ss:text-4xl text-3xl font-bold mb-4 md:pt-32 pt-10">
+			<div className="bg-primary pt-0 md:px-0 px-5">
+				<h1 className="sm:text-4xl ss:text-4xl text-3xl font-bold mb-6 md:pt-9 pt-10">
 					Your cart
 				</h1>
-				<h2 className="sm:text-xl ss:text-xl text-md mb-4 md:pt-2 pt-2">
+				<h2 className="sm:text-xl ss:text-xl text-md mb-4">
 					Remember to apply the coupon code if you have one !!!
 				</h2>
-                
-                <div className="flex space-x-44 text-white text-xl w-full justify-center ml-64">
-                    <ul className="li">
-                        Price
-                    </ul>
-                    <ul className="li">
-                        Quantity
-                    </ul>
-                    <ul className="li">
-                        Total
-                    </ul>
-                </div>
-
 				{isLoading && isRefetching && <LoadingSpinner />}
+				{!isLoading && !isRefetching && cart && cart.length === 0 && (
+					<div className="text-center text-xl text-white mt-24">
+						Your cart is empty 🙄. Add some cars to your cart 
+					</div>
+				)}
 				{!isLoading &&
                     !isRefetching &&
                     cart &&
                     cart.map((item) => {
                         const averageRating = calculateAvgRating({reviews: item.user_review});
                         return (
-							<>
+							<section className="mb-4" key={item._id}>
+								<div className="flex space-x-44 text-white text-xl w-full justify-center ml-64 mb-2">
+									<ul className="li">Price</ul>
+									<ul className="li">Quantity</ul>
+									<ul className="li">Total</ul>
+								</div>
 								<div
 									key={item._id}
 									className="flex bg-white p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
@@ -151,20 +161,17 @@ const UserCart = () => {
 
 											<div className="ml-40 mb-2 w-[100px]">
 												<span className="text-[18px] font-bold text-blue-600">
-													$ {Number( item.price.replace( /,/g, "")) * (quantities[item._id] || 1)} </span>
+													${(Number(item.price.replace( /,/g, "")) * 
+													(quantities[item._id] || 1)).toLocaleString()}
+												</span>
 											</div>
 										</div>
 
 										<h2 className="text-2xl font-bold mb-2 text-black">
 											{item.brand}&nbsp;{item.car_model}
 										</h2>
-										<h3>
-											{item.bio.length > 200
-												? `${item.bio.substring(
-														0,
-														200
-												  )}...`
-												: item.bio}
+										<h3 className="line-clamp-2">
+											{item.bio}
 										</h3>
 
 										<div className="flex text-2xl text-yellow-600 cursor-pointer">
@@ -176,17 +183,20 @@ const UserCart = () => {
 											)}
 										</div>
 									</div>
-									<div className="flex h-[30px] hover:bg-opacity-50 cursor-pointer" title="Remove from cart">
-                                        {isDeleting && <LoadingSpinner />}
-                                        {!isDeleting && (
-                                            <MdDelete 
-                                                className="text-red-500 text-xl" 
-                                                onClick={() => handleDelete(item._id)}
-                                            />
-                                        )}
+									<div
+										className="flex h-[30px] hover:bg-opacity-50 cursor-pointer"
+										title="Remove from cart"
+									>
+										{deletingItems[item._id] && <LoadingSpinner />}
+										{!deletingItems[item._id] && (
+											<MdDelete
+												className="text-red-500 text-xl"
+												onClick={() => handleDelete(item._id)}
+											/>
+										)}
 									</div>
 								</div>
-							</>
+							</section>
 						);
                     })}
                     <div className="flex justify-end py-20">

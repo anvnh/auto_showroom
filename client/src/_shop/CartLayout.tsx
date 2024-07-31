@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './common/Navbar';
 import UserCart from './cart/UserCart';
 import Footer from '@/components/common/Footer';
+import LinkHeader from './common/LinkHeader';
 
 const CartLayout = ({ isLogin }) => {
     return (
@@ -12,7 +13,12 @@ const CartLayout = ({ isLogin }) => {
                         <Navbar />
                     </div>
                 </div>
-                <div className='md:px-64 bg-primary'>
+                <div className="items-start justify-center pt-28">
+					<div className="w-full bg-primary">
+						<LinkHeader isViewProduct={false} isCart={true}/>
+					</div>
+				</div>
+                <div className='items-start md:px-64 bg-primary'>
                     <div className="items-start justify-center">
                         <div className="w-full bg-primary">
                             <UserCart />

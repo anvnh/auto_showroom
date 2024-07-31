@@ -3,6 +3,7 @@ import {v2 as cloudinary} from "cloudinary";
 
 //models
 import User from "../models/user.model.js";
+import Post from "../models/post.model.js";
 import Notification from "../models/notification.model.js";
 
 export const getUserProfile = async (req, res) => {
@@ -282,6 +283,30 @@ export const deleteCart = async (req, res) => {
 
     } catch(error) {
         console.log("Error in deleteCart: ", error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+
+export const deleteUser = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const user = await User.findById(userId);
+
+        if(!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // find and delete all notifications related to the user
+        await Notification.deleteMany({ $or: [{ from: userId }, { to: userId }] });
+        
+        // find and delete all posts related to the user
+        await Post.deleteMany({ user: userId });
+
+        await User.findByIdAndDelete(userId);
+
+        res.status(200).json({ message: "User deleted successfully "});
+    } catch(error) {
+        console.log("Error in deleteUser: ", error.message)
         res.status(500).json({error: error.message})
     }
 }

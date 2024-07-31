@@ -65,9 +65,7 @@ const Reviews = () => {
 			}
 		},
 		onSuccess: () => {
-			//invalidate the query to refetch the data
-			// This is not the best way to do it, but it works. Bc it will refetch all posts
-			queryClient.invalidateQueries({queryKey: ["view"]});
+			queryClient.invalidateQueries({queryKey: ["review"]});
 			toast.success("Review added successfully");
 			setText("");
 			setRating(null);
