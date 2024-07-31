@@ -177,7 +177,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 				</div>
 				<ul className="list-none flex pr-3 justify-end items-center flex-1">
 						<Link to="/shop/cart">
-							<MdOutlineShoppingCart className="text-white w-[30px] xl:w-[35px] h-auto text-3xl xl:mr-4 mr-2" title="Go to your cart" />
+							<MdOutlineShoppingCart className="text-white w-[30px] xl:w-[35px] h-[27px] text-3xl xl:mr-4 mr-2" title="Go to your cart" />
 						</Link>
 						{isLoading && (
 							<LoadingSpinner />

@@ -68,9 +68,7 @@ const LoginPage: React.FC = () => {
 		}
 	};
 
-	const handleSignUpSubmit = async (
-		event: React.FormEvent<HTMLFormElement>
-	) => {
+	const handleSignUpSubmit = async ( event: React.FormEvent<HTMLFormElement> ) => {
 		event.preventDefault();
 		try {
 			const res = await fetch("/api/auth/signup", {
@@ -92,9 +90,7 @@ const LoginPage: React.FC = () => {
 		}
 	};
 
-	const handleSignInSubmit = async (
-		event: React.FormEvent<HTMLFormElement>
-	) => {
+	const handleSignInSubmit = async ( event: React.FormEvent<HTMLFormElement> ) => {
 		event.preventDefault();
 		try {
 			const res = await fetch("/api/auth/login", {
@@ -201,7 +197,7 @@ const LoginPage: React.FC = () => {
 														"password"
 															? "password"
 															: placeholder ===
-															  "email"
+															"email"
 															? "email"
 															: "text"
 													}

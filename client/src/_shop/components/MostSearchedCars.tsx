@@ -16,6 +16,7 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 
 const MostSearchedCars = () => {
 	const [currentPage, setCurrentPage] = useState(1);
+	const [loadingProductId, setLoadingProductId] = useState(null);
 	const productsPerPage = 4;
 
 	const queryClient = useQueryClient();
@@ -38,11 +39,17 @@ const MostSearchedCars = () => {
 			}
 		},
 		onSuccess: () => {
-			toast.success("Product added to cart");
+			toast.success("Product added to cart", {
+				duration: 2000, 
+			});
+			setTimeout(() => { setLoadingProductId(null) });
 		},
 		onError: (error) => {
 			// TODO
-			toast.error("Item already in cart");
+			toast.error("Item already in cart", {
+				duration: 2000,
+			});
+			setTimeout(() => { setLoadingProductId(null) });
 		}
     });
 
@@ -68,6 +75,7 @@ const MostSearchedCars = () => {
 	});
 
 	const handleAddToCart = (productId) => {
+		setLoadingProductId(productId);
 		addToCart(productId);
 	}
 
@@ -118,7 +126,7 @@ const MostSearchedCars = () => {
 										}
 									>
 										<div className="flex">
-											{isPending ? (
+											{loadingProductId === product._id ? (
 												<LoadingSpinner size="xs" />
 											) : (
 												<MdAddShoppingCart className="text-2xl text-gray-700" />
@@ -150,7 +158,7 @@ const MostSearchedCars = () => {
 										</div>
 										<div className="mt-4 flex justify-between items-center">
 											<span className="text-2xl font-bold text-gray-900">
-												{product.price + "$"}
+												${product.price}
 											</span>
 											<Link
 												to={`/shop/product/${product._id}`}

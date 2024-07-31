@@ -12,6 +12,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import LoadingSpinner from "./LoadingSpinner";
 import { formatPostDate } from "@/utils/date";
+import logoMain from '@/assets/logo/logoMain.png'
 
 const Post = ({ post }) => {
 	const [comment, setComment] = useState("");
@@ -165,8 +166,8 @@ const Post = ({ post }) => {
                 </div>
                 <div className='flex flex-col flex-1'>
                     <div className='flex gap-2 items-center'>
-                        <Link to={`/social/profile/${postOwner.username}`} className='font-bold'>
-                            {postOwner.fullName}
+                        <Link to={`/social/profile/${postOwner.username}`} className='font-bold flex'>
+                            {postOwner.fullName} &nbsp; {postOwner.isAdmin ? <img src={logoMain} className="flex h-[25px] w-[25px] justify-center items-center transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg" title='Admin' /> : ""}
                         </Link>
                         <span className='text-gray-700 flex gap-1 text-sm'>
                             <Link to={`/social/profile/${postOwner.username}`}>@{postOwner.username}</Link>

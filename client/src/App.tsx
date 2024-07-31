@@ -25,6 +25,7 @@ import AllProductViewLayout from './_shop/AllProductViewLayout';
 import AdminBrandLayout from './_shop/AdminBrandLayout';
 import CartLayout from './_shop/CartLayout';
 import ChatAI from './api_Chat/ChatAI';
+import ConfirmationLayout from './_auth/ConfirmationLayout';
 
 
 const App = () => {
@@ -105,6 +106,8 @@ const App = () => {
 
                     <Route path="/admin" element={<AdminBrandLayout />} />
                     <Route path="/chatAI" element={<ChatAI />} />
+
+                    <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login"/>} />
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
                 {location.pathname.startsWith('/social') && <Toaster />}

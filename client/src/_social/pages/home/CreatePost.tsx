@@ -109,7 +109,7 @@ const CreatePost = () => {
                             onClick={() => imgRef.current.click()}
                         />
                         <BsEmojiSmileFill 
-                            className='fill-[#2191d8] w-5 h-5 cursor-pointer' 
+                            className='fill-[#2191d8] w-5 h-5 cursor-pointer z-50' 
                             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
                         />
                     </div>

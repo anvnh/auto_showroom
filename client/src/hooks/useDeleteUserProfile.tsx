@@ -1,12 +1,12 @@
 import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-const useUpdateUserProfile = () => {
+const useDeleteUserProfile = ({userId}) => {
     const queryClient = useQueryClient();
-    const { mutateAsync: updateProfile, isPending: isUpdatingProfile } = useMutation({
+    const { mutateAsync: deleteProfile, isPending: isDeletingProfile } = useMutation({
 		mutationFn: async (formData) => {
 			try {
-				const res = await fetch(`/api/user/update`, {
+				const res = await fetch(`/api/user/delete/confirm/${userId}`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -25,7 +25,7 @@ const useUpdateUserProfile = () => {
 			}
 		},
 		onSuccess: () => {
-			toast.success("Profile updated successfully");
+			toast.success("Profile deleted successfully");
 			Promise.all([
 				queryClient.invalidateQueries({queryKey: ["authUser"]}),
 				queryClient.invalidateQueries({queryKey: ["userProfile"]}),
@@ -35,7 +35,7 @@ const useUpdateUserProfile = () => {
 			toast.error(error.message);
 		},
 	});
-    return {updateProfile, isUpdatingProfile}
+    return {deleteProfile, isDeletingProfile}
 }
 
-export default useUpdateUserProfile;
+export default useDeleteUserProfile;

@@ -31,7 +31,9 @@ const Blogs = () => {
                 Latest Blogs
             </div>
             {!isLoading && !isRefetching && newestPosts?.length === 0 && (
-                <p className="text-center my-4">No products available</p>
+                <p className="text-center my-4">
+                    There is no blog post yet. Be the first one to create a blog post.
+                </p>
             )}
             <div className="md:flex w-full md:gap-4 space-y-12 md:space-y-0 ">
                 {!isLoading && 
