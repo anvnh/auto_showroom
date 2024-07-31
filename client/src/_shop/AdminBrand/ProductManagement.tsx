@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import calculateAvgRating from "@/utils/calculateAvgRating";
 import { motion } from "framer-motion";
-
+import ProductRepon from "../AdminBranchRepon/ProductRepon";
 const ProductManagement = () => {
 
 	const queryClient = useQueryClient();
@@ -83,7 +83,7 @@ const ProductManagement = () => {
 		animate={{ opacity: 1, y: 0 }}
 		transition={{ delay: 0.4 }}
 	>
-		<div className="text-white p-5 space-y-5 ">
+		<div className="text-white p-5 space-y-5 md:block hidden">
 			<div data-aos="fade-up" data-aos-delay="1200">
 				<Toaster position="top-center" reverseOrder={false} />
 				{!isLoading &&
@@ -191,6 +191,9 @@ const ProductManagement = () => {
 					))}
 				</div>
 			</div>
+		</div>
+		<div className="md:hidden block">
+		<ProductRepon />
 		</div>
 		</motion.div>
 	);

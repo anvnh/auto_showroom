@@ -49,36 +49,7 @@ const ProductRepon = () => {
 	return (
 		<div className="pt-5 h-full">
 			<div className="text-white p-1 space-y-5">
-				<div
-					data-aos="fade-up"
-					className="w-full rounded-xl h-[80px] ss:h-[50px] bg-white text-black items-center gap-12 flex justify-start font-bold"
-				>
-					<div className="grid grid-cols-2 ss:flex ss:gap-24 p-2 w-full">
-						<div>quantity</div>
-
-						<div className="flex gap-4 items-center">
-							<p>Color:</p>
-							<div className="bg-red-500 w-[20px] h-[20px] rounded-full cursor-pointer hover:scale-110 duration-300 transition-all ease-in-out"></div>
-							<div className="bg-blue-400 w-[20px] h-[20px] rounded-full cursor-pointer hover:scale-110 duration-300 transition-all ease-in-out"></div>
-							<div className="bg-black w-[20px] h-[20px] rounded-full cursor-pointer hover:scale-110 duration-300 transition-all ease-in-out"></div>
-						</div>
-						<div className="w-full justify-end items-center flex">
-							<div className="flex w-full gap-2 items-center pt-3 ss:pt-0 ">
-								<div>Search:</div>
-								<input
-									type="text"
-									className="bg-white border-2 border-gray-400 rounded-md"
-								/>
-							</div>
-						</div>
-					</div>
-				</div>
-        <div
-					data-aos="fade-up"
-					className="w-full rounded-xl h-[80px] ss:h-[60px] bg-white text-black items-center gap-12 flex justify-start font-bold"
-				>
-              <ButtonManagement/>
-				</div>
+				
 				<div>
 					{!isLoading &&
 						!isRefetching &&
@@ -87,7 +58,7 @@ const ProductRepon = () => {
 							<div
 								data-aos="fade-up"
 								key={product._id}
-								className=" bg-white p-4 mb-4 rounded-2xl shadow-md w-full h-auto"
+								className=" bg-white p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
 							>
 								<div className="relative w-full">
 									<img
@@ -130,12 +101,7 @@ const ProductRepon = () => {
 											${product.price}
 										</span>
 									</div>
-									<p
-										data-aos="fade-up"
-										className="text-gray-700 mb-4"
-									>
-										{product.bio}
-									</p>
+							
 									<div
 										data-aos="fade-up"
 										className="flex justify-end items-center "

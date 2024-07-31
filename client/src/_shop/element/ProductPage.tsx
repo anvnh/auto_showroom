@@ -556,6 +556,7 @@ const ProductPage = () => {
 						</form>
 					</dialog>
 			</main>
+		
 		</div>
 	);
 };
