@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import OverviewPage from "../element/OverviewPage";
 import ProductPage from "../element/ProductPage";
+import Users from "../element/Users";
 
 
 const slidebar_items = [
@@ -129,7 +130,7 @@ const NavbarAdmin = () => {
 									
 									className=""
 								>
-									Users
+									<Users/>
 								</div>
 							)}
 							{currentPage === "Sales" && (
