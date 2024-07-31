@@ -7,7 +7,7 @@ import { MdDelete } from "react-icons/md";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import calculateAvgRating from "@/utils/calculateAvgRating";
-
+import { motion } from "framer-motion";
 
 const ProductManagement = () => {
 
@@ -77,7 +77,13 @@ const ProductManagement = () => {
 	});
 
 	return (
-		<div className="text-white p-5 space-y-5">
+		<motion.div
+		className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 lg:col-span-4 border border-gray-700'
+		initial={{ opacity: 0, y: 20 }}
+		animate={{ opacity: 1, y: 0 }}
+		transition={{ delay: 0.4 }}
+	>
+		<div className="text-white p-5 space-y-5 ">
 			<div data-aos="fade-up" data-aos-delay="1200">
 				<Toaster position="top-center" reverseOrder={false} />
 				{!isLoading &&
@@ -91,7 +97,7 @@ const ProductManagement = () => {
 						return (
 							<div
 								key={product._id}
-								className="flex bg-white p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
+								className="flex bg-gray-700 p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
 							>
 								<div className="relative w-1/3 mr-4 overflow-hidden flex items-center">
 									<img
@@ -125,7 +131,7 @@ const ProductManagement = () => {
 											</div>
 										</div>
 									</div>
-									<h2 className="text-xl font-bold mb-2 text-black">
+									<h2 className="text-xl font-bold mb-2 text-white">
 										{product.brand}&nbsp;{product.car_model}
 									</h2>
 
@@ -138,7 +144,7 @@ const ProductManagement = () => {
 												5 - Math.round(averageRating)
 											)}
 										</div>
-										<span className="text-gray-600 text-sm ml-2">
+										<span className="text-white text-sm ml-2">
 											{product.user_review.length} reviews
 										</span>
 										<a
@@ -153,7 +159,7 @@ const ProductManagement = () => {
 											${product.price}
 										</span>
 									</div>
-									<p className="text-gray-700 mb-4">
+									<p className="text-white mb-4">
 										{/* {product.bio} */}
 										{product.bio.length > 200
 											? `${product.bio.substring(
@@ -186,6 +192,7 @@ const ProductManagement = () => {
 				</div>
 			</div>
 		</div>
+		</motion.div>
 	);
 };
 
