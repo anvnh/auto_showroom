@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 
 const userData = [
-    { id: 1, name: "Hoàng An", email: "an@gmail.com", role: "Customer", status: "Active" },
-    { id: 2, name: "Tuấn Anh", email: "anh@gmail.com", role: "Admin", status: "Active" },
-    { id: 3, name: "Hoàng Phát", email: "phat@gmail.com", role: "Customer", status: "Inactive" },
-    { id: 4, name: "Lâm", email: "lam@gmal.com", role: "Customer", status: "Active" },
-    { id: 5, name: "Phong", email: "phong@gmail.com", role: "Moderator", status: "Active" },
-    { id: 6, name: "Hy", email: "hy@gmail.com", role: "Moderator", status: "Active" },
+    { id: 1, name: "Hoàng An", email: "an@gmail.com", role: "Customer", status: "Active", amountUsed:"$200" },
+    { id: 2, name: "Tuấn Anh", email: "anh@gmail.com", role: "Admin", status: "Active", amountUsed:"$65466000"  },
+    { id: 3, name: "Hoàng Phát", email: "phat@gmail.com", role: "Customer", status: "Inactive", amountUsed:"$2340"  },
+    { id: 4, name: "Lâm", email: "lam@gmal.com", role: "Customer", status: "Active", amountUsed:"$20000"  },
+    { id: 5, name: "Phong", email: "phong@gmail.com", role: "Moderator", status: "Active", amountUsed:"$234500"  },
+    { id: 6, name: "Hy", email: "hy@gmail.com", role: "Moderator", status: "Active", amountUsed:"$34500"  },
 ];
 
 const UsersTable = () => {
@@ -63,7 +63,7 @@ const UsersTable = () => {
                                     Status
                                 </th>
                                 <th className='px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider'>
-                                    Actions
+                                Amount used
                                 </th>
                             </tr>
                         </thead>
@@ -109,9 +109,9 @@ const UsersTable = () => {
                                             {user.status}
                                         </span>
                                     </td>
-
-                                    <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-300'>
-                                        <button className='text-red-400 hover:text-red-300'>Delete</button>
+                                 
+                                    <td className='px-6 py-4 whitespace-nowrap'>
+                                        <div className='text-sm text-gray-300'>{user.amountUsed}</div>
                                     </td>
                                 </motion.tr>
                             ))}
