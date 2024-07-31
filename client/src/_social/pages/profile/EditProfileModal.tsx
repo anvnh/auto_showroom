@@ -63,6 +63,9 @@ const EditProfileModal = ({ authUser }) => {
 			</button> */}
 			<Button
 				className="w-[130px] rounded-full h-[30px] mt-4 font-bold"
+				onClick={() => {
+					document.getElementById("edit_profile_modal").showModal();
+				}}
 				variant="secondary"
 			>
 				Edit Profile
