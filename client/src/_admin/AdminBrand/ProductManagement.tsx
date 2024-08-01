@@ -2,7 +2,7 @@ import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { FaBookmark, FaPen } from "react-icons/fa";
-import { Button } from "@material-tailwind/react";
+
 import { MdDelete } from "react-icons/md";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
@@ -78,7 +78,7 @@ const ProductManagement = () => {
 
 	return (
 		<motion.div
-		className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 lg:col-span-4 border border-gray-700'
+		className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 md:col-span-5 border border-gray-700'
 		initial={{ opacity: 0, y: 20 }}
 		animate={{ opacity: 1, y: 0 }}
 		transition={{ delay: 0.4 }}

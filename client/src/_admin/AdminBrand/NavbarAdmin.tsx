@@ -29,7 +29,7 @@ const slidebar_items = [
 
 const pageHeights = {
 	Overview: "1550px",
-	Product: "1500px",
+	Product: "1800px",
 	Users: "1200px",
 	Sales: "1200px",
 	Orders: "1450px",
