@@ -22,7 +22,7 @@ import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
 import ShopLayout from './_shop/ShopLayout';
 import React, { useEffect } from "react";
 import AllProductViewLayout from './_shop/AllProductViewLayout';
-import AdminBrandLayout from './_shop/AdminBrandLayout';
+import AdminBrandLayout from './_admin/AdminBrandLayout';
 import CartLayout from './_shop/CartLayout';
 import ChatAI from './api_Chat/ChatAI';
 import ConfirmationLayout from './_auth/ConfirmationLayout';

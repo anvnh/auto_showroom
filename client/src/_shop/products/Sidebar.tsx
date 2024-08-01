@@ -15,9 +15,9 @@ const Sidebar = () => {
 				data.forEach((car) => {
 					const { brand, quantity } = car;
 					if (brandTotals[brand]) {
-						brandTotals[brand] += quantity;
+						brandTotals[brand] += Number(quantity);
 					} else {
-						brandTotals[brand] = quantity;
+						brandTotals[brand] = Number(quantity);
 					}
 				});
 
