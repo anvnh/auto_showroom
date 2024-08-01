@@ -2,9 +2,10 @@ import { useState, useRef, useEffect } from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { HiMiniViewfinderCircle } from "react-icons/hi2";
 import { FaCartPlus } from "react-icons/fa6";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import toast, { Toaster } from "react-hot-toast";
 
 const Product = () => {
 	const ID = useParams();
@@ -32,6 +33,43 @@ const Product = () => {
 			}
 		},
 	});
+
+	const {mutate: addToCart, isPending: isAddingToCart,} = useMutation({
+		mutationFn: async (productId) => {
+			try {
+				const response = await fetch(`/api/user/add/cart/${productId}`, {
+					method: "POST",
+				});
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			toast.success("Product added to cart", {
+				duration: 2000, 
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+		onError: (error) => {
+			// TODO
+			toast.error("Item already in cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		}
+    });
+
+	const handleAddToCart = (productId) => {
+		// setLoadingProductId(productId);
+		addToCart(productId);
+	}
 
 	const handleThumbnailClick = (image) => {
 		setSelectedImage(image);
@@ -88,6 +126,7 @@ const Product = () => {
 
 	return (
 		<section>
+			<Toaster position="top-center" reverseOrder={false} />
 			{/* {isLoading && <LoadingSpinner />} */}
 			{isLoading && <LoadingSpinner />}
 			{!isLoading && !isRefetching && car && (
@@ -249,7 +288,7 @@ const Product = () => {
 								</div>
 
 								<div className="justify-evenly items-end flex text-white mt-auto">
-									<button className="flex bg-gray-800 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out">
+									<button className="flex bg-gray-800 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out justify-center">
 										<HiMiniViewfinderCircle className="h-auto w-[30px]" />
 										<p className="pl-4 text-xl">
 											{" "}
@@ -257,12 +296,20 @@ const Product = () => {
 											<Link to={""}>Buy now</Link>
 										</p>
 									</button>
-									<button className="flex bg-gray-800 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out">
+									<button 
+										className="flex bg-gray-800 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out justify-center"
+										onClick={() => handleAddToCart(car._id)}
+									>
 										<FaCartPlus className="h-auto w-[30px]" />
-										<p className="pl-4 text-xl">
-											{" "}
-											Add to cart
-										</p>
+										<div className="pl-4 text-xl">
+											{isAddingToCart ? (
+												<LoadingSpinner />
+											) : (
+												<p>
+													Add to cart
+												</p>
+											) }
+										</div>
 									</button>
 								</div>
 							</div>

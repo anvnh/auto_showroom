@@ -92,7 +92,7 @@ const Cars = () => {
 	return (
 		<section>
 			<Toaster position="top-center" reverseOrder={false} />
-			<div className="font-bold md:text-4xl text-3xl md:pl-48 pl-12 w-full flex pb-12">
+			<div className="font-bold md:text-4xl text-3xl md:pl-48 pl-12 w-full flex pb-12 text-white">
 				<div className="">Most rated cars</div>
 			</div>
 			<div className="text-[18px] hover:text-blue-500 pb-4 font-normal flex items-center justify-end pr-12 md:pr-56 hover:underline ss:pr-16 sm:pr-32 lg:pr-20 xl:pr-48">
@@ -136,7 +136,7 @@ const Cars = () => {
 										</div>
 									</button>
 								</div>
-								<div className="p-4 text-white">
+								<div className="p-4 text-white hover:bg-white hover:bg-opacity-10">
 									<h2 className="text-xl font-bold">
 										{product.brand} {product.car_model}
 									</h2>
