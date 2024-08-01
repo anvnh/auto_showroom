@@ -6,9 +6,6 @@ const userData = [
     { id: 1, name: "Hoàng An", email: "an@gmail.com", role: "Customer", status: "Active", amountUsed:"$200" },
     { id: 2, name: "Tuấn Anh", email: "anh@gmail.com", role: "Admin", status: "Active", amountUsed:"$65466000"  },
     { id: 3, name: "Hoàng Phát", email: "phat@gmail.com", role: "Customer", status: "Inactive", amountUsed:"$2340"  },
-    { id: 4, name: "Lâm", email: "lam@gmal.com", role: "Customer", status: "Active", amountUsed:"$20000"  },
-    { id: 5, name: "Phong", email: "phong@gmail.com", role: "Moderator", status: "Active", amountUsed:"$234500"  },
-    { id: 6, name: "Hy", email: "hy@gmail.com", role: "Moderator", status: "Active", amountUsed:"$34500"  },
 ];
 
 const UsersTable = () => {
@@ -26,13 +23,13 @@ const UsersTable = () => {
 
     return (
         <motion.div
-            className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700'
+            className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-12'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
         >
             <div className='flex justify-between items-center mb-6'>
-                <h2 className='text-xl font-semibold text-gray-100'>Users</h2>
+                <h2 className='text-xl font-semibold text-gray-100'>Admin APP </h2>
                 <div className='relative'>
                     <input
                         type='text'
@@ -46,7 +43,7 @@ const UsersTable = () => {
             </div>
 
             <div className='overflow-x-auto'>
-                <div className='max-h-60 overflow-y-auto'> {/* Thêm lớp này để kích hoạt cuộn dọc */}
+                <div className='max-h-72 overflow-y-auto'> {/* Thêm lớp này để kích hoạt cuộn dọc */}
                     <table className='min-w-full divide-y divide-gray-700'>
                         <thead>
                             <tr>

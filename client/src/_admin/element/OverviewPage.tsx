@@ -1,13 +1,15 @@
 import React from "react";
-import Header from "./Header";
 import { motion } from "framer-motion";
 import { BarChart2 } from "lucide-react";
-import SalesChannelChart from "./elementOverview/SalesChannelChart";
-import SalesOverviewChart from "./elementOverview/SalesOverviewChart";
-import CategoryDistributionChart from "./elementOverview/CategoryDistributionChart ";
+import BarOverviewChart from "./elementOverview/BarOverviewChart";
+import LineOverviewChart from "./elementOverview/LineOverviewChart";
+import PieOverviewChart  from "./elementOverview/PieOverviewChart ";
+import Header from "./comon/Header";
+import UsersTable from "./elementUsers/UsersTable";
+import AdminTable from "./elementOverview/AdminTable";
 const OverviewPage = () => {
 	return (
-		<div className="flex-1 overflow-x-auto w-full relative z-10">
+		<div className="flex-1 w-full relative z-10">
 			<Header title="Overview" />
 
 			<main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
@@ -89,11 +91,13 @@ const OverviewPage = () => {
 				</motion.div>
 
 				{/* CHARTS */}
-
+						
+						<AdminTable/>
+						
 				<div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-					<SalesOverviewChart />
-					<CategoryDistributionChart />
-					<SalesChannelChart />
+					<LineOverviewChart />
+					<PieOverviewChart  />
+					<BarOverviewChart />
 				</div>
 			</main>
 		</div>

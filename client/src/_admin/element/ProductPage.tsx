@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Header from "./Header";
+
 import { BarChart2 } from "lucide-react";
 import { IoAddCircle } from "react-icons/io5";
 
@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import ProductManagement from "../AdminBrand/ProductManagement";
+import Header from "./comon/Header";
 const ProductPage = () => {
 	const [imgs, setImgs] = useState([]);
 	const [colors, setColors] = useState([]);
