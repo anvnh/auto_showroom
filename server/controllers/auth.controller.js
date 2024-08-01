@@ -4,6 +4,8 @@ import bcrypt from 'bcryptjs';
 import nodemailer from "nodemailer";
 import dotenv from 'dotenv';
 import crypto from "crypto";
+import jsonwebtoken from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
@@ -45,9 +47,10 @@ export const signup = async (req, res) => {
         });
 
         if(newUser) {
-            generateTokenAndSetCookie(newUser._id, res);
 
             await newUser.save();
+            
+            // send confirmation email
 
             res.status(200).json({
                 _id: newUser._id,
@@ -58,6 +61,7 @@ export const signup = async (req, res) => {
                 following: newUser.following,
                 profileImg: newUser.profileImg,
                 coverImg: newUser.coverImg,
+                isVerified: newUser.isVerified,
             });
 
         } else {
@@ -79,19 +83,25 @@ export const login = async (req, res) => {
         if(!user || !isPasswordCorrect) {
             return res.status(400).json({error:"Invalid username or password"})
         }
+        
+        if(!user.isVerified) {
+            return res.status(400).json({ error: "Please verify your email to login" });
+        }
 
-        generateTokenAndSetCookie(user._id, res);
-
-        res.status(200).json({
-            _id: user._id,
-            fullName: user.fullName,
-            username: user.username,
-            email: user.email,
-            followers: user.followers,
-            following: user.following,
-            profileImg: user.profileImg,
-            coverImg: user.coverImg,
-        });
+        else {
+            generateTokenAndSetCookie(user._id, res);
+            res.status(200).json({
+                _id: user._id,
+                fullName: user.fullName,
+                username: user.username,
+                email: user.email,
+                followers: user.followers,
+                following: user.following,
+                profileImg: user.profileImg,
+                coverImg: user.coverImg,
+                isVerified: user.isVerified,
+            });
+        }
     } catch (error) {
         console.log("Error in login controller", error.message);
         res.status(500).json({ error: "Something went wrong" });
@@ -181,3 +191,84 @@ export const sendConfirmationMail = async (req, res) => {
 		res.status(500).json({ message: "Failed to send OTP", error });
 	}
 };
+
+export const sendConfirmationToken = async (req, res) => {
+    const { email } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if(!user) {
+        return res.status(404).json({ error: "User not found" });
+    }
+
+    try {
+		const token = jsonwebtoken.sign({ email }, process.env.JWT_SECRET, {
+            expiresIn: "1d",
+		});
+
+		const user = await User.findOneAndUpdate(
+			{ email },
+			{ confirmationToken: token },
+		);
+
+		if (!user) {
+			return res.status(404).json({ message: "User not found" });
+		}
+
+		const confirmationLink = `${process.env.CLIENT_URL}/verified/${token}`;
+
+		// Configure the email transport using nodemailer
+		const transporter = nodemailer.createTransport({
+			service: "gmail", // Use your email service
+			auth: {
+				user: process.env.EMAIL_USER, // Replace with your email
+				pass: process.env.EMAIL_PASSWORD, // Replace with your email password
+			},
+		});
+
+		const mailOptions = {
+			from: "AAP",
+			to: email,
+			subject: "Welcome to the AAP",
+			html: `
+                <h2> Dear ${user.fullName} </h2>
+                <p> We're excited to have you join us. To complete your registration, please click on the link below to verify your email address: </p>
+                <h4> ${confirmationLink} </h4>
+                <p> Once verified, you'll have access to all of our amazing features. </p>
+                <p> Thanks for joining our showroom, as well as our community. </p>
+            `,
+		};
+
+		await transporter.sendMail(mailOptions);
+
+		res.status(200).json({ message: "Confirmation email sent" });
+	} catch (error) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+export const confirmEmail = async (req, res) => {
+    const { token } = req.params;
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const email = decoded.email;
+
+        const user = await User.findOne({ email });
+
+        // res.status(200).json({decoded, email, user});
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        user.isVerified = true;
+
+        generateTokenAndSetCookie(user._id, res);
+
+        await user.save();
+        res.status(200).json({ message: "Email verified successfully" });
+    } catch (error) {
+        res.status(400).json({ message: "Invalid or expired token" });
+    }
+}

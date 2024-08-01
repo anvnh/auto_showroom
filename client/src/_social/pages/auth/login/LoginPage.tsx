@@ -43,6 +43,30 @@ const LoginPage: React.FC = () => {
 		});
 	}, []);
 
+	// send verification email
+	const { mutate: sendToken, isPending: isSendingToken } = useMutation({
+		mutationFn: async (email: string) => {
+			try {
+				const res = await fetch("/api/auth/confirm/sendToken", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ email }),
+				});
+				const data = await res.json();
+				if (!res.ok)
+					throw new Error(data.error || "Failed to send token.");
+				return data;
+			} catch (error) {
+				throw new Error(error.message);
+			}
+		},
+		onSuccess: () => {
+			toast.success("Please check your email for verification link.");
+		},
+	});
+
 	const { mutate: signup, isError, error, isPending: isSigningup} = useMutation({
 		mutationFn: async (formData) => {
 			try {
@@ -57,18 +81,15 @@ const LoginPage: React.FC = () => {
 				const data = await res.json();
 				if (!res.ok)
 					throw new Error(data.error || "Failed to create account.");
-				console.log(data);
+				// console.log(data);
 				return data;
 			} catch (error) {
 				throw new Error(error.message);
 			}
 		},
 		onSuccess: () => {
-			// wait for 2 seconds before redirecting to login page
-			setTimeout(() => {
-				toast.success("Account created successfully");
-				queryClient.invalidateQueries({ queryKey: ["authUser"] });
-			} , 2000);
+			toast.success("Account created successfully.");
+			sendToken(signUpData.email);
 		},
 	});
 
@@ -121,10 +142,8 @@ const LoginPage: React.FC = () => {
 				},
 				body: JSON.stringify(signInData),
 			});
-
 			const data = await res.json();
 			if (!res.ok) throw new Error(data.error || "Failed to login.");
-			console.log(data);
 			queryClient.invalidateQueries({ queryKey: ["authUser"] });
 			resetFormInputs();
 		} catch (error) {
@@ -282,7 +301,7 @@ const LoginPage: React.FC = () => {
 											)}
 										</div>
 										<div className="flex pt-12 justify-center items-center text-center">
-											<p>You have an account</p>
+											<p>You have an account ?</p>
 											<div className="w-[70px]">
 												<a
 													onClick={() =>

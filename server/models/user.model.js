@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    confirmationToken: {
+      type: String,
+      default: "",
+    },
     isAdmin: {
       type: Boolean,
       default: false,

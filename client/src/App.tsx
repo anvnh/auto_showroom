@@ -26,6 +26,7 @@ import AdminBrandLayout from './_admin/AdminBrandLayout';
 import CartLayout from './_shop/CartLayout';
 import ChatAI from './api_Chat/ChatAI';
 import ConfirmationLayout from './_auth/ConfirmationLayout';
+import TokenConfirmation from './_auth/TokenConfirmation';
 
 
 const App = () => {
@@ -71,6 +72,9 @@ const App = () => {
             <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'md:max-w-[80%] max-w-[90%] mx-auto') : 'h-screen'}`}>
                 {location.pathname.startsWith('/social') && authUser && <Sidebar />}
                 <Routes>
+
+                    {/* Confirmation email */}
+                    <Route path="/verified/:token" element={<TokenConfirmation />} />
 
                     <Route path="/" element={<RootLayout />} />
 

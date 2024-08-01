@@ -1,11 +1,23 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 
-async function fetchAuthUser() {
-    const res = await fetch('/api/auth/me');
-    if (!res.ok) throw new Error('Network response was not ok');
-    return res.json();
-}
+const useAuthUser = () => {
+    return useQuery({
+        queryKey: ['authUser'],
+        queryFn: async () => {
+            try {
+                const res = await fetch('/api/auth/me');
+                const data = await res.json();
+                if (data.error) return null;
+                if (!res.ok) {
+                    throw new Error(data.message || 'Something went wrong');
+                }
+                return data;
+            } catch (error) {
+                throw new Error(error.message);
+            }
+        },
+        retry: false,
+    });
+};
 
-export function useAuthUser() {
-    return useQuery(['authUser'], fetchAuthUser);
-}
+export default useAuthUser;

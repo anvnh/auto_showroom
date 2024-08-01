@@ -14,7 +14,7 @@ interface SubNavbarProps {
 
 import GetMe from "@/components/common/auth/GetMe";
 import { useQuery } from "@tanstack/react-query";
-import { useAuthUser } from "@/hooks/useAuthUser";
+import useAuthUser from "@/hooks/useAuthUser";
 
 const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick }) => {
 	useEffect(() => {
@@ -35,6 +35,9 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 			prevSection === section ? "" : section
 		);
 	};
+
+	const { data: authUser, error, isLoading } = useAuthUser();
+
 
 	const [isHidden, setIsHidden] = useState(false);
 	let lastScrollTop = 0;
@@ -254,7 +257,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 										</Link>
 									</div>
 								</li>
-								{/* {authUser?.isAdmin === true && (
+								{authUser.isAdmin === true && (
 									<li
 										className={`cursor-pointer transition-opacity duration-300 ${
 											selectedP && selectedP !== "Admin"
@@ -276,7 +279,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 										</div>
 									</li>
-								)} */}
+								)}
 							</ul>
 						</nav>
 					</div>
@@ -376,7 +379,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									</Link>
 								</div>
 							</li>
-							{/* {authUser.isAdmin === true && (
+							{authUser.isAdmin === true && (
 								<li
 									className="cursor-pointer transition-opacity duration-300 w-full text-center"
 									onClick={() =>
@@ -393,7 +396,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 										</Link>
 									</div>
 								</li>
-							)} */}
+							)}
 						</ul>
 					) : (
 						<div className="pt-5 pl-4">

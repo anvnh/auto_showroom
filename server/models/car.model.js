@@ -104,6 +104,10 @@ const carSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		sell: {
+			type: Number,
+			default: 0,
+		},
 		images: [
 			{
 				type: String,
