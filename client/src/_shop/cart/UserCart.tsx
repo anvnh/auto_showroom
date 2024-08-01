@@ -5,6 +5,8 @@ import { useState } from "react";
 import { MdAddShoppingCart, MdDelete } from "react-icons/md";
 import QuantityCounter from "@/utils/QuantityCounter";
 import { toast, Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import OverviewCart from "../payment/OverviewCart";
 
 
 const UserCart = () => {
@@ -12,6 +14,8 @@ const UserCart = () => {
     const queryClient = useQueryClient();
 
 	const [deletingItems, setDeletingItems] = useState<{ [key: string]: boolean }>({});
+
+	const [cartInfo, setCartInfo] = useState({ items: [], total: 0 });
 
     const {data: cart, isLoading, refetch, isRefetching} = useQuery({
         queryKey: ["cart"],
@@ -64,6 +68,14 @@ const UserCart = () => {
         },
 	});
 
+	const calculateTotalPrice = () => {
+        if (!cart) return 0;
+        return cart.reduce((total, item) => {
+            const itemTotal = Number(item.price.replace(/,/g, "")) * (quantities[item._id] || 1);
+            return total + itemTotal;
+        }, 0).toLocaleString();
+    };
+
     const [quantities, setQuantities] = useState({});
 
     const increaseQuantity = (item) => {
@@ -90,6 +102,7 @@ const UserCart = () => {
     };
 
 
+
     return (
 		<section>
 			<Toaster position="top-center" reverseOrder={false} />
@@ -103,15 +116,17 @@ const UserCart = () => {
 				{isLoading && isRefetching && <LoadingSpinner />}
 				{!isLoading && !isRefetching && cart && cart.length === 0 && (
 					<div className="text-center text-xl text-white mt-24">
-						Your cart is empty 🙄. Add some cars to your cart 
+						Your cart is empty 🙄. Add some cars to your cart
 					</div>
 				)}
 				{!isLoading &&
-                    !isRefetching &&
-                    cart &&
-                    cart.map((item) => {
-                        const averageRating = calculateAvgRating({reviews: item.user_review});
-                        return (
+					!isRefetching &&
+					cart &&
+					cart.map((item) => {
+						const averageRating = calculateAvgRating({
+							reviews: item.user_review,
+						});
+						return (
 							<section className="mb-4" key={item._id}>
 								<div className="flex space-x-44 text-white text-xl w-full justify-center ml-64 mb-2">
 									<ul className="li">Price</ul>
@@ -120,7 +135,7 @@ const UserCart = () => {
 								</div>
 								<div
 									key={item._id}
-									className="flex bg-white p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
+									className="flex bg-white p-4 mb-4 rounded-2xl shadow-md w-full h-[300px] hover:bg-opacity-90"
 								>
 									<div className="relative w-1/3 overflow-hidden flex items-center">
 										<img
@@ -138,7 +153,7 @@ const UserCart = () => {
 											</div>
 
 											<div className="ml-32 mb-2 text-black">
-												<div className="flex items-center bg-gray-100 rounded-lg overflow-hidden w-24">
+												<div className="flex items-center hover:bg-gray-100 hover:bg-opacity-15 rounded-lg overflow-hidden w-24">
 													<QuantityCounter
 														quantity={
 															quantities[
@@ -161,8 +176,17 @@ const UserCart = () => {
 
 											<div className="ml-40 mb-2 w-[100px]">
 												<span className="text-[18px] font-bold text-blue-600">
-													${(Number(item.price.replace( /,/g, "")) * 
-													(quantities[item._id] || 1)).toLocaleString()}
+													$
+													{(
+														Number(
+															item.price.replace(
+																/,/g,
+																""
+															)
+														) *
+														(quantities[item._id] ||
+															1)
+													).toLocaleString()}
 												</span>
 											</div>
 										</div>
@@ -187,23 +211,32 @@ const UserCart = () => {
 										className="flex h-[30px] hover:bg-opacity-50 cursor-pointer"
 										title="Remove from cart"
 									>
-										{deletingItems[item._id] && <LoadingSpinner />}
+										{deletingItems[item._id] && (
+											<LoadingSpinner />
+										)}
 										{!deletingItems[item._id] && (
 											<MdDelete
 												className="text-red-500 text-xl"
-												onClick={() => handleDelete(item._id)}
+												onClick={() =>
+													handleDelete(item._id)
+												}
 											/>
 										)}
 									</div>
 								</div>
 							</section>
 						);
-                    })}
-                    <div className="flex justify-end py-20">
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Proceed to Payment
-                        </button>
-                    </div>
+					})}
+				<div className="flex justify-end pt-10 text-white font-bold text-2xl">
+					Total Price: ${calculateTotalPrice()}
+				</div>
+				<div className="flex justify-end py-10">
+					<Link to="/shop/payment">
+						<div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+							Proceed to Payment
+						</div>
+					</Link>
+				</div>
 			</div>
 		</section>
 	);
