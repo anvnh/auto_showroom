@@ -1,34 +1,33 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
 
-const salesData = [
-	{ name: "Jul", sales: 4200 },
-	{ name: "Aug", sales: 3800 },
-	{ name: "Sep", sales: 5100 },
-	{ name: "Oct", sales: 4600 },
-	{ name: "Nov", sales: 5400 },
-	{ name: "Dec", sales: 7200 },
-	{ name: "Jan", sales: 6100 },
-	{ name: "Feb", sales: 5900 },
-	{ name: "Mar", sales: 6800 },
-	{ name: "Apr", sales: 6300 },
-	{ name: "May", sales: 7100 },
-	{ name: "Jun", sales: 7500 },
-];
-
-const NumberUsersChart = () => {
+const campaignData = [
+	{ name: "Jul", campaign: 5 },
+	{ name: "Aug", campaign: 8 },
+	{ name: "Sep", campaign: 5 },
+	{ name: "Oct", campaign: 5 },
+	{ name: "Nov", campaign: 8 },
+	{ name: "Dec", campaign: 1 },
+	{ name: "Jan", campaign: 3 },
+	{ name: "Feb", campaign: 6 },
+	{ name: "Mar", campaign: 8 },
+	{ name: "Apr", campaign: 10 },
+	{ name: "May", campaign: 4 },
+	{ name: "Jun", campaign: 12 },
+]
+const LineOverviewChart = () => {
 	return (
 		<motion.div
-			className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700'
+			className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl md:p-6 border p-4 border-gray-700'
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: 0.2 }}
 		>
-			<h2 className='text-lg font-medium mb-4 text-gray-100'>Number of products sold per month</h2>
+			<h2 className='text-lg font-medium mb-4 text-gray-100'>Number of campaigns created</h2>
 
 			<div className='h-80'>
 				<ResponsiveContainer width={"100%"} height={"100%"}>
-					<LineChart data={salesData}>
+					<LineChart data={campaignData}>
 						<CartesianGrid strokeDasharray='3 3' stroke='#4B5563' />
 						<XAxis dataKey={"name"} stroke='#9ca3af' />
 						<YAxis stroke='#9ca3af' />
@@ -41,7 +40,7 @@ const NumberUsersChart = () => {
 						/>
 						<Line
 							type='monotone'
-							dataKey='sales'
+							dataKey='campaign'
 							stroke='#6366F1'
 							strokeWidth={2}
 							dot={{ fill: "#6366F1", strokeWidth: 2, r: 6 }}
@@ -53,4 +52,4 @@ const NumberUsersChart = () => {
 		</motion.div>
 	);
 };
-export default NumberUsersChart;
+export default LineOverviewChart;

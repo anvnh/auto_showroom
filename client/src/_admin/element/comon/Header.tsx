@@ -1,5 +1,5 @@
 import React from "react";
-import { logo } from "../../assets";
+import { logo } from "../../../assets";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { FaUser } from "react-icons/fa";

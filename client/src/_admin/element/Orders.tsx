@@ -1,17 +1,19 @@
-import React from 'react'
-
+import React from "react";
+import Header from "./comon/Header";
 import { motion } from "framer-motion";
-import { BarChart2 } from "lucide-react";
-import LineUsersChart from './elementUsers/LineUsersChart';
-import PieUsersChart  from './elementUsers/PieUsersChart ';
-import UsersTable from './elementUsers/UsersTable';
-import Header from './comon/Header';
-const Users = () => {
-  return (
-    <div>
-        <Header title="Users" />
-        <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
-				{/* STATS */}
+import { IoLockClosedOutline } from "react-icons/io5";
+import LineOrdersChart from "./elementOrder/LineOrdersChart";
+
+import OrdersTable from "./elementOrder/OrdersTable";
+import { FaBox } from "react-icons/fa";
+import { GrMoney } from "react-icons/gr";
+import { LiaShippingFastSolid } from "react-icons/lia";
+import { MdOutlineDownloadDone } from "react-icons/md";
+const Orders = () => {
+	return (
+		<div>
+			<Header title="Orders" />
+			<main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
 				<motion.div
 					className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8"
 					initial={{ opacity: 0, y: 20 }}
@@ -27,11 +29,11 @@ const Users = () => {
 					>
 						<div className="px-4 py-5 sm:p-6">
 							<span className="flex items-center text-sm font-medium text-gray-400">
-								<BarChart2 size={20} className="mr-2" />
-                                Total Users
+								<FaBox size={20} className="mr-2" />
+								Order
 							</span>
 							<p className="mt-1 text-3xl font-semibold text-gray-100">
-								1000
+								250
 							</p>
 						</div>
 					</motion.div>
@@ -44,11 +46,14 @@ const Users = () => {
 					>
 						<div className="px-4 py-5 sm:p-6">
 							<span className="flex items-center text-sm font-medium text-gray-400">
-								<BarChart2 size={20} className="mr-2" />
-                                New Users
+								<LiaShippingFastSolid
+									size={20}
+									className="mr-2"
+								/>
+								undelivered order
 							</span>
 							<p className="mt-1 text-3xl font-semibold text-gray-100">
-								1000
+								20
 							</p>
 						</div>
 					</motion.div>
@@ -61,11 +66,14 @@ const Users = () => {
 					>
 						<div className="px-4 py-5 sm:p-6">
 							<span className="flex items-center text-sm font-medium text-gray-400">
-								<BarChart2 size={20} className="mr-2" />
-                                 Active Users
+								<MdOutlineDownloadDone
+									size={20}
+									className="mr-2"
+								/>
+								Order Delivered
 							</span>
 							<p className="mt-1 text-3xl font-semibold text-gray-100">
-								1000
+								200
 							</p>
 						</div>
 					</motion.div>
@@ -78,30 +86,26 @@ const Users = () => {
 					>
 						<div className="px-4 py-5 sm:p-6">
 							<span className="flex items-center text-sm font-medium text-gray-400">
-								<BarChart2 size={20} className="mr-2" />
-                                Churn Rate
+								<GrMoney size={20} className="mr-2" />
+								the total amount
 							</span>
 							<p className="mt-1 text-3xl font-semibold text-gray-100">
-								0.5%
+								$99200
 							</p>
 						</div>
 					</motion.div>
 				</motion.div>
-             <motion.div className='mb-8'>
-             <UsersTable />
-             </motion.div>
 
-				{/* CHARTS */}
-
-				<div className='grid grid-cols-1 lg:grid-cols-2 gap-8' >
-					<LineUsersChart/>
-                    <PieUsersChart />
+				<div className="mb-8">
+					<OrdersTable />
 				</div>
+			
+					<LineOrdersChart />
+				
+			
 			</main>
+		</div>
+	);
+};
 
-    
-    </div>
-  )
-}
-
-export default Users
+export default Orders;
