@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Header from "./Header";
+
 import { BarChart2 } from "lucide-react";
 import { IoAddCircle } from "react-icons/io5";
 
@@ -17,6 +17,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import ProductManagement from "../AdminBrand/ProductManagement";
+import Header from "./comon/Header";
+import UsersTable from "./elementUsers/UsersTable";
+import AdminTable from "./elementOverview/AdminTable";
+import AnalyticsTable from "./elementAnalytics/AnalyticsTable";
 const ProductPage = () => {
 	const [imgs, setImgs] = useState([]);
 	const [colors, setColors] = useState([]);
@@ -216,7 +220,7 @@ const ProductPage = () => {
 			<main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
 				{/* STATS */}
 				<motion.div
-					className="grid grid-cols-1 gap-5 sm:grid-cols-4 lg:grid-cols-5 mb-8 w-full"
+					className="grid grid-cols-1 gap-5 sm:grid-cols-4 md:grid-cols-5 mb-8 w-full"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1 }}
@@ -245,7 +249,7 @@ const ProductPage = () => {
 							boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
 						}}
 					>
-						<div className="px-4 py-5 sm:p-6">
+						<div className="px-4 py-5 sm:p-6">	
 							<span className="flex items-center text-sm font-medium text-gray-400">
 								<BarChart2 size={20} className="mr-2" />
 								Sold
@@ -300,7 +304,7 @@ const ProductPage = () => {
 					)}
 
 					<motion.div
-						className="bg-gray-800 bg-opacity-50 backdrop-blur-md overflow-hidden shadow-lg rounded-xl border border-gray-700"
+						className="bg-gray-800 sm:col-span-4 md:col-span-1 bg-opacity-50 backdrop-blur-md overflow-hidden shadow-lg rounded-xl border border-gray-700 h-16 md:h-full"
 						whileHover={{
 							y: -5,
 							boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
@@ -319,10 +323,11 @@ const ProductPage = () => {
 						</div>
 					</motion.div>
 
-					<div className="col-span-5 w-full">
+					<div className="md:col-span-5 sm:col-span-4 w-full">
 						<ProductManagement />
 					</div>
 				</motion.div>
+				
 				<dialog id="Add_Car" className="modal">
 					<div className="modal-box backdrop-blur-3xl bg-gray-700 bg-opacity-45 w-full h-full flex ">
 						<div className=" rounded-lg shadow-lg w-full">
@@ -596,6 +601,7 @@ const ProductPage = () => {
 						<button className="outline-none">Close</button>
 					</form>
 				</dialog>
+				<AnalyticsTable />
 			</main>
 		</div>
 	);

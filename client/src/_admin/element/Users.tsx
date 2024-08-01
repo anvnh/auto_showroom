@@ -1,10 +1,11 @@
 import React from 'react'
-import Header from './Header'
+
 import { motion } from "framer-motion";
 import { BarChart2 } from "lucide-react";
-import NumberUsersChart from './elementUsers/NumberUsersChart';
-import UsersChart from './elementUsers/UsersChart ';
+import LineUsersChart from './elementUsers/LineUsersChart';
+import PieUsersChart  from './elementUsers/PieUsersChart ';
 import UsersTable from './elementUsers/UsersTable';
+import Header from './comon/Header';
 const Users = () => {
   return (
     <div>
@@ -12,7 +13,7 @@ const Users = () => {
         <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
 				{/* STATS */}
 				<motion.div
-					className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8"
+					className="grid grid-cols-2 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1 }}
@@ -93,8 +94,8 @@ const Users = () => {
 				{/* CHARTS */}
 
 				<div className='grid grid-cols-1 lg:grid-cols-2 gap-8' >
-					<NumberUsersChart/>
-                    <UsersChart/>
+					<LineUsersChart/>
+                    <PieUsersChart />
 				</div>
 			</main>
 

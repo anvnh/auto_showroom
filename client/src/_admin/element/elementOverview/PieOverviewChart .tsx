@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
-const categoryData  = [
-	{ name: "Current users", value: 5200 },
-	{ name: "New user", value: 3200 },
-	{ name: "Users have purchased", value: 2800 },
+const categoryData = [
+	{ name: "products left", value: 1200 },
+	{ name: "cars sold", value: 3200 },
+	{ name: "Mercedes", value: 2800 },
+	{ name: "Audi", value: 2100 },
+	{ name: "Poscher", value: 1900 },
 ];
 
 const COLORS = ["#6366F1", "#8B5CF6", "#EC4899", "#10B981", "#F59E0B"];
 
-const UsersChart  = () => {
+const PieOverviewChart  = () => {
 	return (
 		<motion.div
 			className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700'
@@ -49,4 +51,4 @@ const UsersChart  = () => {
 		</motion.div>
 	);
 };
-export default UsersChart ;
+export default PieOverviewChart ;
