@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { logo, gif, ngoisao } from "@/assets";
 import { Link } from "react-router-dom";
@@ -10,7 +10,11 @@ import { Button } from "@material-tailwind/react";
 import { FcGoogle } from "react-icons/fc";
 import LoginRepon from "./LoginRepon";
 import { useMutation } from "@tanstack/react-query";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 const LoginPage: React.FC = () => {
+
+	const [isPending, setIsPending] = useState(false);
+
 	const [showSignUpForm, setShowSignUpForm] = useState(false);
 	const [showSignInForm, setShowSignInForm] = useState(true);
 	const [activeForm, setActiveForm] = useState<string>("");
@@ -39,11 +43,7 @@ const LoginPage: React.FC = () => {
 		});
 	}, []);
 
-	const {
-		mutate: signup,
-		isError,
-		error,
-	} = useMutation({
+	const { mutate: signup, isError, error, isPending: isSigningup} = useMutation({
 		mutationFn: async (formData) => {
 			try {
 				const res = await fetch("/api/auth/signup", {
@@ -64,14 +64,17 @@ const LoginPage: React.FC = () => {
 			}
 		},
 		onSuccess: () => {
-			console.log("ok")
-			toast.success("Account created successfully");
+			// wait for 2 seconds before redirecting to login page
+			setTimeout(() => {
+				toast.success("Account created successfully");
+				queryClient.invalidateQueries({ queryKey: ["authUser"] });
+			} , 2000);
 		},
 	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault(); // page won't reload
-		console.log(signUpData);
+		// console.log(signUpData);
 		// signup(formData);
 		// send verification email
 		signup(signUpData);
@@ -106,9 +109,10 @@ const LoginPage: React.FC = () => {
 		}
 	};
 	const handleSignInSubmit = async (
-		event: React.FormEvent<HTMLFormElement>
+		event: React.FormEvent<HTMLFormElement>, 
 	) => {
 		event.preventDefault();
+		setIsPending(true);
 		try {
 			const res = await fetch("/api/auth/login", {
 				method: "POST",
@@ -125,6 +129,8 @@ const LoginPage: React.FC = () => {
 			resetFormInputs();
 		} catch (error) {
 			toast.error(error.message);
+		} finally {
+			setIsPending(false);
 		}
 	};
 
@@ -143,6 +149,7 @@ const LoginPage: React.FC = () => {
 
 	return (
 		<div className="w-full bg-primary">
+			<Toaster position="top-center" reverseOrder={false} />
 			<video
 				autoPlay
 				muted
@@ -256,10 +263,15 @@ const LoginPage: React.FC = () => {
 												type="submit"
 												className="w-[300px] h-[50px] p-2 text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500"
 											>
-												C
-												<span className="lowercase">
-													reate Account
-												</span>
+												{isSigningup ? (
+													<LoadingSpinner />
+												) : (
+													<div>
+														C<span className="lowercase">
+															reate Account
+														</span>
+													</div>
+												)}
 											</Button>
 										</div>
 										<div className="w-full justify-center flex">
@@ -363,10 +375,16 @@ const LoginPage: React.FC = () => {
 												type="submit"
 												className="w-[300px] h-[50px] text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500"
 											>
-												S
-												<span className="lowercase">
-													ign In
-												</span>
+												{isPending ? (
+													<LoadingSpinner />
+												) : (
+													<div>
+														S
+														<span className="lowercase">
+															ign In
+														</span>
+													</div>
+												)}
 											</Button>
 										</div>
 										<div className="relative flex justify-center">
