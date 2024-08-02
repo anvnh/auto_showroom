@@ -8,17 +8,21 @@ import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import calculateAvgRating from "@/utils/calculateAvgRating";
 import axios from "axios";
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
 
 const Products = () => {
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const productsPerPage = 4;
+	const [currentPage, setCurrentPage] = useState(1);
+	const productsPerPage = 4;
 
 	const [loadingProductId, setLoadingProductId] = useState(null);
 
-    // get all products
-	const { data: products, isLoading, refetch, isRefetching} = useQuery({
+	// get all products
+	const {
+		data: products,
+		isLoading,
+		refetch,
+		isRefetching,
+	} = useQuery({
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {
@@ -38,12 +42,15 @@ const Products = () => {
 		},
 	});
 	// add to cart
-	const {mutate: addToCart, isPending,} = useMutation({
+	const { mutate: addToCart, isPending } = useMutation({
 		mutationFn: async (productId) => {
 			try {
-				const response = await fetch(`/api/user/add/cart/${productId}`, {
-					method: "POST",
-				});
+				const response = await fetch(
+					`/api/user/add/cart/${productId}`,
+					{
+						method: "POST",
+					}
+				);
 				const data = await response.json();
 
 				if (!response.ok) {
@@ -57,10 +64,12 @@ const Products = () => {
 		},
 		onSuccess: () => {
 			toast.success("Product added to cart", {
-				duration: 2000, 
+				duration: 2000,
 			});
 
-			setTimeout(() => { setLoadingProductId (null) });
+			setTimeout(() => {
+				setLoadingProductId(null);
+			});
 		},
 		onError: (error) => {
 			// TODO
@@ -68,55 +77,90 @@ const Products = () => {
 				duration: 2000,
 			});
 
-			setTimeout(() => { setLoadingProductId (null) });
-		}
-    });
+			setTimeout(() => {
+				setLoadingProductId(null);
+			});
+		},
+	});
 
 	const [cars, setCars] = useState([]);
 
-	const handleSearch = async ( searchTerm: string) => {
-        try {
-            const response = await axios.get(`/api/car/?search=${searchTerm}`);
-            setCars(response.data);
+	const handleSearch = async (searchTerm: string) => {
+		try {
+			const response = await axios.get(`/api/car/?search=${searchTerm}`);
+			setCars(response.data);
 			// console.log(response.data);
-        } catch (error) {
-            console.error("Error fetching cars:", error);
-        }
-    };
+		} catch (error) {
+			console.error("Error fetching cars:", error);
+		}
+	};
 
 	const handleAddToCart = (productId) => {
 		setLoadingProductId(productId);
 		addToCart(productId);
-	}
- 
-    // calculate
-    const indexOfLastProduct = currentPage * productsPerPage;
+	};
+
+	// calculate
+	const indexOfLastProduct = currentPage * productsPerPage;
 	const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 	// const currentProducts = products ? products.slice(indexOfFirstProduct, indexOfLastProduct) : [];
-	const currentProducts = cars.length > 0 ? cars.slice(indexOfFirstProduct, indexOfLastProduct) : (products ? products.slice(indexOfFirstProduct, indexOfLastProduct) : []);
+	const currentProducts =
+		cars.length > 0
+			? cars.slice(indexOfFirstProduct, indexOfLastProduct)
+			: products
+			? products.slice(indexOfFirstProduct, indexOfLastProduct)
+			: [];
 	// const totalPages = products ? Math.ceil(products.length / productsPerPage) : 0;
-	const totalPages = cars.length > 0 ? Math.ceil(cars.length / productsPerPage) : (products ? Math.ceil(products.length / productsPerPage) : 0);
+	const totalPages =
+		cars.length > 0
+			? Math.ceil(cars.length / productsPerPage)
+			: products
+			? Math.ceil(products.length / productsPerPage)
+			: 0;
 
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    return (
-		<section className="p-4">
-			<div className="flex w-full justify-end mb-3 px-3">
-				<div className="text-[16px] flex border border-white justify-between items-center p-2 space-x-0 rounded-xl">
-					<input 
-						placeholder="Search" className="ml-2 bg-primary w-[220px] border-none focus:outline-none focus:border-none focus:ring-0"
-						onChange={(e) => handleSearch(e.target.value)}
-					/>
-					<FaSearch className="w-4 h-4 text-white cursor-pointer" title="Search"/>
+	return (
+		<section className="xl:p-4 w-full sm:px-32">
+			<div className="md:block hidden">
+				<div className="flex w-full justify-end px-3">
+					<div className="text-[16px] flex border border-white justify-between items-center p-2  rounded-xl">
+						<input
+							placeholder="Search"
+							className="ml-2 bg-primary w-[220px] border-none focus:outline-none focus:border-none focus:ring-0"
+							onChange={(e) => handleSearch(e.target.value)}
+						/>
+						<FaSearch
+							className="w-4 h-4 text-white cursor-pointer"
+							title="Search"
+						/>
+					</div>
 				</div>
 			</div>
-			<div className="flex">
+			<div className="grid md:grid-cols-5 md:gap-32">
+				<div className="w-full justify-center flex">
 				<div className="">
 					<Sidebar />
 				</div>
-				<div 
-					className="p-3"
-				>
+				</div>
+				<div className="md:col-span-4 pt-12 md:pt-3 ss:px-32 sm:px-0">
+					<div className="md:hidden block">
+						<div className="flex w-full justify-center ss:justify-end md:justify-end mb-3">
+							<div className="text-[16px] flex border mb-4 border-white justify-between items-center p-2 rounded-xl">
+								<input
+									placeholder="Search"
+									className="ml-2 bg-primary w-[200px] border-none focus:outline-none focus:border-none focus:ring-0"
+									onChange={(e) =>
+										handleSearch(e.target.value)
+									}
+								/>
+								<FaSearch
+									className="w-4 h-4 text-white cursor-pointer"
+									title="Search"
+								/>
+							</div>
+						</div>
+					</div>
 					{isLoading && products && products.length === 0 && (
 						<div className="text-center text-2xl font-bold text-gray-700">
 							There are no products available at the moment.
@@ -130,28 +174,30 @@ const Products = () => {
 							});
 							return (
 								<>
-									<Toaster position="top-center" reverseOrder={false} />
+									<Toaster
+										position="top-center"
+										reverseOrder={false}
+									/>
 									<div
 										key={product._id}
-										className="flex bg-white hover:bg-opacity-90 p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
-									>
-										<div className="w-1/3 mr-4 overflow-hidden items-center flex">
+										className="md:flex  bg-white hover:bg-opacity-90 p-3 md:p-4 mb-7 rounded-2xl shadow-md w-full h-auto">
+										<div className="relative w-full md:w-1/3 md:mr-4 overflow-hidden mb-4 items-center flex">
 											<Link
 												to={`/shop/product/${product._id}`}
-												className="w-full h-[250px] rounded"
+												className="w-full sm:h-[300px] md:h-[250px] ss:h-[400px] h-[180px] rounded"
 											>
 												<img
-													src={product.images[0]}
-													className="w-full h-[250px] rounded"
-												/>
+											src={product.images[0]}
+											className="w-full ss:h-[400px] md:h-[250px] rounded"
+										/>
 											</Link>
 										</div>
-										<div className="w-2/3">
-											<h2 className="text-xl font-bold mb-2 text-black">
+										<div className="w-full md:w-2/3">
+											<h2 className="text-xl ss:text-2xl font-bold mb-2 text-black">
 												{product.brand}&nbsp;
 												{product.car_model}
 											</h2>
-											<div className="flex items-center mb-1">
+											<div className="md:flex items-center mb-2">
 												<div className="flex text-xl text-yellow-400">
 													{"★".repeat(
 														Math.round(
@@ -175,12 +221,29 @@ const Products = () => {
 													$&nbsp;{product.price}
 												</span>
 											</div>
-											<p className="text-gray-700 mb-4 line-clamp-4">
-												{product.bio}
+											<div className="xl:block hidden">
+											<p className="text-gray-700 mb-4">
+												{product.bio.length > 320
+													? `${product.bio.substring(
+															0,
+															310
+													  )}...`
+													: product.bio}
 											</p>
-											<div className="flex">
+										</div>
+										<div className="block xl:hidden">
+											<p className="text-gray-700 mb-4">
+												{product.bio.length > 320
+													? `${product.bio.substring(
+															0,
+															100
+													  )}...`
+													: product.bio}
+											</p>
+										</div>
+											<div className="flex gap-4 pb-5">
 												<button
-													className="h-[40px] bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
+													className="detail-button bg-gray-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-xl text-center relative h-9  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] "
 													onClick={() =>
 														handleAddToCart(
 															product._id
@@ -228,6 +291,6 @@ const Products = () => {
 			</div>
 		</section>
 	);
-}
+};
 
-export default Products
+export default Products;
