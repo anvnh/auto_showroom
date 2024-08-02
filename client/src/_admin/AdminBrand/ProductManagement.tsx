@@ -9,14 +9,19 @@ import calculateAvgRating from "@/utils/calculateAvgRating";
 import { motion } from "framer-motion";
 import ProductRepon from "../AdminBranchRepon/ProductRepon";
 import EditCarModal from "./EditCarModal";
+import EditProduct from "../element/elementProduct/EditProduct";
 
 const ProductManagement = () => {
-
 	const queryClient = useQueryClient();
 	const [currentPage, setCurrentPage] = useState(1);
 
 	// get all products
-	const { data: products, isLoading, refetch, isRefetching, } = useQuery({
+	const {
+		data: products,
+		isLoading,
+		refetch,
+		isRefetching,
+	} = useQuery({
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {
@@ -48,7 +53,7 @@ const ProductManagement = () => {
 
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-	const { mutate: deleteCar, isPending: isDeleting} = useMutation({
+	const { mutate: deleteCar, isPending: isDeleting } = useMutation({
 		mutationFn: async (ID) => {
 			try {
 				const res = await fetch(`/api/car/${ID}`, {
@@ -59,21 +64,20 @@ const ProductManagement = () => {
 				});
 				const data = await res.json();
 
-				if(!res.ok){
+				if (!res.ok) {
 					throw new Error(data.error || "Something went wrong");
 				}
 
 				return data;
-			}
-			catch (error) {
+			} catch (error) {
 				throw new Error(error);
 			}
 		},
 		onSuccess: () => {
 			toast.success("Car deleted successfully");
 			// invalidate the query to refetch the data
-			queryClient.invalidateQueries({queryKey: ["products"]});
-		}
+			queryClient.invalidateQueries({ queryKey: ["products"] });
+		},
 	});
 
 	return (
@@ -126,10 +130,17 @@ const ProductManagement = () => {
 														/>
 													)}
 												</div>
-												<div className="flex">
-													<FaPen 
-														className="w-4 h-4 text-blue-500 cursor-pointer" 
-													/>
+												<div
+													className="flex"
+													onClick={() =>
+														document
+															.getElementById(
+																"Edit_Car"
+															)
+															.showModal()
+													}
+												>
+													<FaPen className="w-4 h-4 text-blue-500 cursor-pointer" />
 												</div>
 											</div>
 										</div>
@@ -193,6 +204,14 @@ const ProductManagement = () => {
 					</div>
 				</div>
 			</div>
+			<dialog id="Edit_Car" className="modal">
+				<div className="modal-box pl-16 backdrop-blur-3xl bg-opacity-0 flex justify-center">
+				<EditProduct />
+				</div>
+				<form method="dialog" className="modal-backdrop">
+					<button className="outline-none">Close</button>
+				</form>
+			</dialog>
 			<div className="md:hidden block">
 				<ProductRepon />
 			</div>
