@@ -52,7 +52,7 @@ const Payment = () => {
         <section className="text-black mt-10 md:mt-36">
             <div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
                 <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">Payment Information</h2>
-                <div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.4] xl:hover:scale-[1.5] md:pb-12 md:pt-12 duration-300 ease-in-out">
+                <div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-1 xl:hover:scale-[1.5] md:pb-12 md:pt-12 duration-300 ease-in-out">
                     <Cards
                         number={state.number}
                         expiry={state.expiry}

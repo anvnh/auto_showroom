@@ -156,7 +156,7 @@ const UserCart = () => {
 											<div className="relative  flex items-center">
 												<img
 													src={item.images[0]}
-													className="xl:w-[700px] w-full h-full xl:h-[300px] rounded"
+													className="xl:w-[700px] w-full h-full xl:h-[280px] rounded"
 												/>
 											</div>
 
@@ -211,12 +211,12 @@ const UserCart = () => {
 													</div>
 												</div>
 
-												<h2 className="md:text-4xl text-xl pl-3 md:pt-0 pt-5 font-bold mb-2 text-black">
+												<h2 className="md:text-2xl text-xl pl-4 md:pt-0 pt-5 font-bold text-black">
 													{item.brand}&nbsp;
 													{item.car_model}
 												</h2>
 
-												<div className="flex pl-3 text-2xl text-yellow-600 cursor-pointer">
+												<div className="flex pl-4 text-xl text-yellow-600 cursor-pointer">
 													{"★".repeat(
 														Math.round(
 															averageRating
@@ -230,7 +230,7 @@ const UserCart = () => {
 													)}
 												</div>
 
-												<h3 className="line-clamp-2 pl-3 md:px-5 md:text-xl mb-5">
+												<h3 className="line-clamp-3 md:px-5 md:text-[18px] mb-5">
 													{item.bio}
 												</h3>
 											</div>
