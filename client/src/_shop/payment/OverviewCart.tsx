@@ -102,7 +102,7 @@ const OverviewCart = () => {
 
 	return (
 		<section className="text-white relative md:mt-36 mt-12">
-			<div className="container p-2 bg-gray-600 bg-opacity-30 backdrop-blur-md rounded-3xl">
+			<div className="container p-2 bg-gray-600  bg-opacity-30 backdrop-blur-md rounded-3xl">
 				<h2 className="text-3xl font-bold mb-8 p-4">Your Cart</h2>
 				<Toaster position="top-center" reverseOrder={false} />
 				<div className="pt-0 px-5">
@@ -113,7 +113,7 @@ const OverviewCart = () => {
 						</div>
 					)}
 					{!isLoading && !isRefetching && cart && (
-						<div className="max-h-[700px] overflow-y-auto overflow-x-hidden">
+						<div className="max-h-[700px]  overflow-y-auto overflow-x-hidden">
 							{cart.map((item, index) => {
 								const averageRating = calculateAvgRating({
 									reviews: item.user_review,
@@ -138,7 +138,7 @@ const OverviewCart = () => {
 
 											<div className="w-full md:w-2/3 text-black">
 												<div className="hidden md:block">
-												<div className="ml-0 md:ml-12 flex flex-col md:flex-row">
+												<div className="ml-0 md:ml-16 flex flex-col md:flex-row">
 													<div className="mb-2 w-full md:w-[100px]">
 														<span className="text-[18px] font-bold text-blue-600">
 															${item.price}

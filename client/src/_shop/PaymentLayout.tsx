@@ -11,16 +11,16 @@ const PaymentLayout = () => {
 						<Navbar />
 					</div>
 				</div>
-				<div className="md:grid p-5 pt-12 md:grid-cols-2 md:px-12 xl:px-96 md:gap-10">
-					
+				
+					<div className="md:grid p-5 pt-12 md:grid-cols-2 md:px-12 xl:px-[170px] md:gap-10">
 						<div className=" bg-primary">
 							<Payment />
 						</div>
-						<div className=" bg-primary">
+						<div className=" bg-primary ">
 							<OverviewCart />
 						</div>
-				
-				</div>
+					</div>
+			
 			</div>
 		</section>
 	);

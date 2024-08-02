@@ -9,14 +9,14 @@ import Reviews from "./detailed_product/Reviews";
 const ProductViewLayout = () => {
 	return (
 		<section className="w-full bg-primary">
-			<div className="w-full ">
+			<div className="w-full overflow-x-hidden">
 				<div className="items-start justify-center">
 					<div className="w-full bg-primary">
 						<Navbar />
 					</div>
 				</div>
 
-				<div className="items-start justify-center pt-28">
+				<div className="items-start justify-center pt-28 ">
 					<div className="w-full bg-primary">
 						<LinkHeader isViewProduct={true} isCart={false}/>
 					</div>
@@ -28,7 +28,7 @@ const ProductViewLayout = () => {
 					</div>
 				</div>
 
-				<div className="items-start justify-center">
+				<div className="items-start  justify-center">
 					<div className="w-full bg-primary">
 						<OverView />
 					</div>
@@ -40,7 +40,7 @@ const ProductViewLayout = () => {
 					</div>
 				</div>
 
-				<div className="items-start justify-center">
+				<div className="items-start justify-center ">
 					<div className="w-full bg-primary">
 						<SomeProduct />
 					</div>
