@@ -1,9 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-
 import { BarChart2 } from "lucide-react";
 import { IoAddCircle } from "react-icons/io5";
-
 import { useState, useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -21,6 +19,7 @@ import Header from "./comon/Header";
 import UsersTable from "./elementUsers/UsersTable";
 import AdminTable from "./elementOverview/AdminTable";
 import AnalyticsTable from "./elementAnalytics/AnalyticsTable";
+
 const ProductPage = () => {
 	const [imgs, setImgs] = useState([]);
 	const [colors, setColors] = useState([]);

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import axios from "axios";
 
 interface SearchBarProps {
 	onSearch: (searchTerm: string) => void;
@@ -7,6 +8,9 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 	const [searchTerm, setSearchTerm] = useState("");
+
+	// handle search 
+
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
