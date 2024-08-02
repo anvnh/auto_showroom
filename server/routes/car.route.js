@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 import { protectRoute } from '../middleware/protectRoute.js';
 import { getAllCar, addCar, getCar, deleteCar, reviewCar, getCarReview, getBestReview, getCountReview,
-    getSuggestedCars
+    getSuggestedCars, findCar
  } from '../controllers/car.controller.js';
 
 router.post("/add", addCar);
@@ -14,6 +14,7 @@ router.get("/reviewed/:id", getCarReview);
 router.get("/other/suggested", getSuggestedCars);
 router.delete("/:id", protectRoute, deleteCar);
 router.post('/comment/:id', protectRoute, reviewCar);
+router.get("/", findCar);
 
 
 export default router;

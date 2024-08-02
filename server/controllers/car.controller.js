@@ -68,7 +68,11 @@ export const getCar = async (req, res) => {
 export const getCarReview = async (req, res) => {
     try {
         const carId = req.params.id;
-        const existingCar = await Car.findById(carId);
+        const existingCar = await Car.findById(carId)
+        .populate({
+            path: "user_review.user",
+            select: "-password",
+        })
 
         if(existingCar) {
             res.status(200).json(existingCar.user_review);
@@ -236,3 +240,18 @@ export const getSuggestedCars = async (req, res) => {
         res.status(500).json({ error: "Something went wrong" });
     }
 };
+
+export const findCar = async (req, res) => {
+    try {
+        const searchTerm = req.query.search.toLowerCase(); 
+        const cars = await Car.find();
+
+        const filteredCars = cars.filter(car => 
+            car.brand.toLowerCase().includes(searchTerm)
+        );
+
+        res.status(200).json(filteredCars);
+    } catch (error) {
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+}

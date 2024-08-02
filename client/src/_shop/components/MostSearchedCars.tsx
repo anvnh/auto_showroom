@@ -126,7 +126,8 @@ const MostSearchedCars = () => {
 										}
 									>
 										<div className="flex">
-											{loadingProductId === product._id ? (
+											{loadingProductId ===
+											product._id ? (
 												<LoadingSpinner size="xs" />
 											) : (
 												<MdAddShoppingCart className="text-2xl text-gray-700" />
@@ -142,16 +143,16 @@ const MostSearchedCars = () => {
 										<p className="text-sm line-clamp-1">
 											{product.bio}
 										</p>
-										<div className="flex items-center justify-between mt-4 text-gray-700 mx-3">
-											<div className="items-center mr-4 line-clamp-1">
+										<div className="flex items-center justify-between mt-4 text-black mx-3">
+											<div className="items-center mr-4 w-1/3 line-clamp-1" title="Speed">
 												<RiSpeedUpFill className="w-5 h-5 mr-1 " />
-												{product.top_speed}
+												{product.top_speed}km/h
 											</div>
-											<div className="items-center mr-4 line-clamp-1">
+											<div className="items-center w-1/3 mr-4 line-clamp-1" title="Fuel type">
 												<FaGasPump className="w-5 h-5 mr-1" />
 												{product.fuel_type}
 											</div>
-											<div className="items-center mr-4 line-clamp-1">
+											<div className="items-center w-1/3 mr-4 line-clamp-1" title="Transmission">
 												<FaCogs className="w-5 h-5 mr-1" />
 												{product.transmission}
 											</div>

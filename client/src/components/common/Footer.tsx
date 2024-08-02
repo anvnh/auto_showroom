@@ -66,7 +66,7 @@ const Footer = () => {
                     <h1>Cookies Settings</h1>
                 </div>
                 <div className='flex justify-center w-[200px] gap-x-[20px]  text-white text-[30px]'>
-                    <Link to="https://www.facebook.com/mhang.0801/"><FaFacebook /></Link>
+                    <Link to="https://www.facebook.com/aanvnh/"><FaFacebook /></Link>
                     <Link to="<RiInstagramFill/>"><RiInstagramFill /></Link>
                     <Link to="https://github.com/anvnh"><ImGithub /></Link>
                 </div>

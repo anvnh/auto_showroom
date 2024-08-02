@@ -52,7 +52,7 @@ const EditProfileModal = ({ authUser }) => {
 
 
 	return (
-		<section className="justify-center items-center">
+		<section className="justify-center items-center flex space-x-3">
 			{/* <button
 				className="btn btn-outline rounded-full btn-sm"
 				onClick={() => {

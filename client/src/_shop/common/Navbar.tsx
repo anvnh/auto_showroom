@@ -121,10 +121,6 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 		setCurrentPage(section);
 	};
 
-	const handleBackClick_repon = () => {
-		setCurrentPage("main");
-	};
-
 	const { data: authUser, isLoading } = useQuery({
 		// use queryKey to give a unique name to the query and refer to it later
 		queryKey: ["authUser"],
@@ -176,26 +172,27 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 					</button>
 				</div>
 				<ul className="list-none flex pr-3 justify-end items-center flex-1">
-						<Link to="/shop/cart">
-							<MdOutlineShoppingCart className="text-white w-[30px] xl:w-[35px] h-[27px] text-3xl xl:mr-4 mr-2" title="Go to your cart" />
-						</Link>
-						{isLoading && (
-							<LoadingSpinner />
-						)}
-						{!isLoading && (
-							<Link to={`${authUser ? "/social" : "/social/login"}`}>
-								<div className="avatar placeholder w-[30px] xl:w-full h-auto">
-									<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black">
-										{authUser ? (
-											<img src={authUser.profileImg} />
-										) : (
-											<FaUser />
-										)}
-									</div>
+					<Link to="/shop/cart">
+						<MdOutlineShoppingCart
+							className="text-white w-[30px] xl:w-[35px] h-[27px] text-3xl xl:mr-4 mr-2"
+							title="Go to your cart"
+						/>
+					</Link>
+					{isLoading && <LoadingSpinner />}
+					{!isLoading && (
+						<Link to={`${authUser ? "/social" : "/social/login"}`}>
+							<div className="avatar placeholder w-[30px] xl:w-full h-auto">
+								<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black">
+									{authUser ? (
+										<img src={authUser.profileImg} />
+									) : (
+										<FaUser />
+									)}
 								</div>
-							</Link>
-						)}
-					</ul>
+							</div>
+						</Link>
+					)}
+				</ul>
 			</nav>
 
 			<div className="hidden md:block">
@@ -211,87 +208,28 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 					>
 						<ul className="list-none sm:flex gap-10 justify-center items-center flex-1">
 							<Link to="/">
-								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "vehicles"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
-									onMouseEnter={() =>
-										handleMouseEnter("vehicles")
-									}
-									onMouseLeave={handleMouseLeave}
-									onClick={() =>
-										handleToggleSection("vehicles")
-									}
-								>
+								<li className="cursor-pointer">
 									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
 										<p> Home </p>
 										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 									</div>
 								</li>
 							</Link>
-							<Link to="/shop">
-								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "shopping"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
-									onMouseEnter={() =>
-										handleMouseEnter("shopping")
-									}
-									onMouseLeave={handleMouseLeave}
-									onClick={() =>
-										handleToggleSection("shopping")
-									}
-								>
+							<Link to="/shop/product">
+								<li className="cursor-pointer">
 									<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
-										<p> Listings </p>
+										<p> All products </p>
 										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 									</div>
 								</li>
 							</Link>
-							<li
-								className={`cursor-pointer transition-opacity duration-300 ${
-									selectedP && selectedP !== "Service"
-										? "opacity-50"
-										: "opacity-100"
-								}`}
-								onMouseEnter={() => handleMouseEnter("Service")}
-								onMouseLeave={handleMouseLeave}
-								onClick={() => handleToggleSection("Service")}
-							>
-								<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
+							<li className="cursor-pointer">
+								<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none cursor-pointer">
 									<p> Service </p>
 									<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 								</div>
 							</li>
-							<li
-								className={`cursor-pointer transition-opacity duration-300 ${
-									selectedP && selectedP !== "About"
-										? "opacity-50"
-										: "opacity-100"
-								}`}
-								onMouseEnter={() => handleMouseEnter("About")}
-								onMouseLeave={handleMouseLeave}
-								onClick={() => handleToggleSection("About")}
-							>
-								<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
-									<p> About </p>
-									<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
-								</div>
-							</li>
-							<li
-								className={`cursor-pointer transition-opacity duration-300 ${
-									selectedP && selectedP !== "Aboutus"
-										? "opacity-50"
-										: "opacity-100"
-								}`}
-								onMouseEnter={() => handleMouseEnter("Aboutus")}
-								onMouseLeave={handleMouseLeave}
-								onClick={() => handleToggleSection("Aboutus")}
-							>
+							<li className="cursor-pointer">
 								<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
 									<p> About Us </p>
 									<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
@@ -341,39 +279,30 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 					{currentPage === "main" ? (
 						<ul className="flex flex-col space-y-5 sm:space-y-16 ss:space-y-10 pt-[50%] sm:pt-[20%] items-center py-2">
 							<Link to="/">
-							<li
-								className="cursor-pointer transition-opacity duration-300 w-full text-center"
-								onClick={() => handleNavClick_repon("vehicles")}
-							>
-								<div
-									data-aos="fade-up"
-									data-aos-delay="300"
-									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
-								>
-									<p> Home </p>
-								</div>
-							</li>
+								<li className="cursor-pointer transition-opacity duration-300 w-full text-center">
+									<div
+										data-aos="fade-up"
+										data-aos-delay="300"
+										className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
+									>
+										<p> Home </p>
+									</div>
+								</li>
 							</Link>
-						
-								<li
-									className="cursor-pointer transition-opacity duration-300 w-full text-center"
-									onClick={() =>
-										handleNavClick_repon("shopping")
-									}
-								>
+
+							<Link to="/shop/product">
+								<li className="cursor-pointer transition-opacity duration-300 w-full text-center">
 									<div
 										data-aos="fade-up"
 										data-aos-delay="500"
 										className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
 									>
-										<p> Listings </p>
+										<p> All products </p>
 									</div>
 								</li>
-							
-							<li
-								className="cursor-pointer transition-opacity duration-300 w-full text-center"
-								onClick={() => handleNavClick_repon("shopping")}
-							>
+							</Link>
+
+							<li className="cursor-pointer transition-opacity duration-300 w-full text-center">
 								<div
 									data-aos="fade-up"
 									data-aos-delay="500"
@@ -382,17 +311,15 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 									<p> Service </p>
 								</div>
 							</li>
-							<li
-								className="cursor-pointer transition-opacity duration-300 w-full text-center"
-								onClick={() => handleNavClick_repon("owners")}
-							>
+							<li className="cursor-pointer transition-opacity duration-300 w-full text-center">
 								<div
 									data-aos="fade-up"
 									data-aos-delay="700"
 									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
 								>
-									<Link to="/owners">
-										<p> About </p>
+									{/* TODO */}
+									<Link to="/">
+										<p> About us </p>
 									</Link>
 								</div>
 							</li>
