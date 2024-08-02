@@ -98,9 +98,10 @@ const Reviews = () => {
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 	return (
-		<section className="w-full h-full justify-center items-center px-56 text-white pt-14">
+		<section className="w-full h-full justify-center ss:px-20 sm:px-32 items-center px-5 xl:px-56 text-white pt-14">
+			
 			<div>
-				<h1 className="text-4xl text-center font-syncopate font-bold">
+				<h1 className="xl:text-4xl text-2xl   text-center font-syncopate font-bold">
 					Reviews
 				</h1>
 				<hr className="border-white border-opacity-30 relative top-3 py-3" />
@@ -139,7 +140,7 @@ const Reviews = () => {
 						onChange={(e) => setText(e.target.value)}
 					/>
 					<div className="w-full justify-end items-end flex mt-12">
-						<button className="btn btn-primary bg-[#2191d8] rounded-full btn-sm text-white mb-10">
+						<button className="detail-button bg-gray-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-xl text-center relative h-9  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] mb-12">
 							{isReviewing ? <LoadingSpinner /> : "Review"}
 						</button>
 					</div>
@@ -194,6 +195,7 @@ const Reviews = () => {
 					))}
 				</div>
 			</div>
+		
 		</section>
 	);
 };

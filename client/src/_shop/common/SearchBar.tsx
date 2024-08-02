@@ -19,10 +19,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
 	return (
 		<form onSubmit={handleSubmit} className="flex items-center">
-			<div className="w-full flex items-center space-x-3">
+			<div className="w-full flex items-center md:space-x-4 space-x-1">
 				<input
 					type="text"
-					className="w-full px-4 py-2 text-gray-900 bg-white border rounded-xl cbg-gray-50"
+					className="w-[210px] md:w-full px-4 py-2 text-gray-900 bg-white border rounded-xl cbg-gray-50"
 					placeholder="Search..."
 					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
