@@ -1,12 +1,14 @@
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaSearch } from "react-icons/fa";
 import SearchBar from "../common/SearchBar";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import calculateAvgRating from "@/utils/calculateAvgRating";
+import axios from "axios";
+import { Input } from "@/components/ui/input"
 
 const Products = () => {
 
@@ -70,39 +72,51 @@ const Products = () => {
 		}
     });
 
+	const [cars, setCars] = useState([]);
+
+	const handleSearch = async ( searchTerm: string) => {
+        try {
+            const response = await axios.get(`/api/car/?search=${searchTerm}`);
+            setCars(response.data);
+			// console.log(response.data);
+        } catch (error) {
+            console.error("Error fetching cars:", error);
+        }
+    };
+
 	const handleAddToCart = (productId) => {
 		setLoadingProductId(productId);
 		addToCart(productId);
 	}
-
  
     // calculate
     const indexOfLastProduct = currentPage * productsPerPage;
 	const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-	const currentProducts = products
-		? products.slice(indexOfFirstProduct, indexOfLastProduct)
-		: [];
-	const totalPages = products
-		? Math.ceil(products.length / productsPerPage)
-		: 0;
+	// const currentProducts = products ? products.slice(indexOfFirstProduct, indexOfLastProduct) : [];
+	const currentProducts = cars.length > 0 ? cars.slice(indexOfFirstProduct, indexOfLastProduct) : (products ? products.slice(indexOfFirstProduct, indexOfLastProduct) : []);
+	// const totalPages = products ? Math.ceil(products.length / productsPerPage) : 0;
+	const totalPages = cars.length > 0 ? Math.ceil(cars.length / productsPerPage) : (products ? Math.ceil(products.length / productsPerPage) : 0);
 
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-	const handleSearch = (searchTerm: string) => {
-		console.log("Searching for:", searchTerm);
-		// Implement your search logic here
-	};
-
     return (
 		<section className="p-4">
-			<div className="flex w-full justify-end mb-6">
-				<SearchBar onSearch={handleSearch} />
+			<div className="flex w-full justify-end mb-3 px-3">
+				<div className="text-[16px] flex border border-white justify-between items-center p-2 space-x-0 rounded-xl">
+					<input 
+						placeholder="Search" className="ml-2 bg-primary w-[220px] border-none focus:outline-none focus:border-none focus:ring-0"
+						onChange={(e) => handleSearch(e.target.value)}
+					/>
+					<FaSearch className="w-4 h-4 text-white cursor-pointer" title="Search"/>
+				</div>
 			</div>
 			<div className="flex">
 				<div className="">
 					<Sidebar />
 				</div>
-				<div className="p-3">
+				<div 
+					className="p-3"
+				>
 					{isLoading && products && products.length === 0 && (
 						<div className="text-center text-2xl font-bold text-gray-700">
 							There are no products available at the moment.

@@ -255,3 +255,53 @@ export const findCar = async (req, res) => {
         res.status(500).json({ error: 'Something went wrong' });
     }
 }
+
+export const updateCar = async (req, res) => {
+    const {horsepower, torque, top_speed, acceleration, bio, 
+        brand, car_model, production_year, body_style, engine, transmission, 
+        drive_type, exterior_color, interior_color, fuel_type, seat_capacity, 
+        cargo_space, audio_system, price, quantity, warranty} = req.body;
+    const {images} = req.body;
+    const carId = req.params.id;
+    try {
+        let car = await Car.findById(carId);
+        if(!car) {
+            return res.status(404).json({ message: "Car not found" });
+        }
+
+        if(images) {
+            const promises = images.map(image => cloudinary.uploader.upload(image));
+            const results = await Promise.all(promises);
+            req.body.images = results.map(result => result.secure_url);
+        }
+
+        car.horsepower = horsepower || car.horsepower;
+        car.torque = torque || car.torque;
+        car.top_speed = top_speed || car.top_speed;
+        car.acceleration = acceleration || car.acceleration;
+        car.bio = bio || car.bio;
+        car.brand = brand || car.brand;
+        car.car_model = car_model || car.car_model;
+        car.production_year = production_year || car.production_year;
+        car.body_style = body_style || car.body_style;
+        car.engine = engine || car.engine;
+        car.transmission = transmission || car.transmission;
+        car.drive_type = drive_type || car.drive_type;
+        car.exterior_color = exterior_color || car.exterior_color;
+        car.interior_color = interior_color || car.interior_color;
+        car.fuel_type = fuel_type || car.fuel_type;
+        car.seat_capacity = seat_capacity || car.seat_capacity;
+        car.cargo_space = cargo_space || car.cargo_space;
+        car.audio_system = audio_system || car.audio_system;
+        car.price = price || car.price;
+        car.quantity = quantity || car.quantity;
+        car.warranty = warranty || car.warranty;
+
+        await car.save();
+
+        res.status(200).json(car);
+    } catch(error) {
+        console.log("Error in updateCar controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
