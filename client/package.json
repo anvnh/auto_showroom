@@ -52,6 +52,7 @@
     "p5": "^1.9.4",
     "react": "^18.2.0",
     "react-colorful": "^5.6.1",
+    "react-credit-cards-2": "^1.0.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.5",
     "react-hot-toast": "^2.4.1",
