@@ -328,7 +328,7 @@ const ProductPage = () => {
 				</motion.div>
 				
 				<dialog id="Add_Car" className="modal">
-					<div className="modal-box backdrop-blur-3xl bg-gray-700 bg-opacity-45 w-full h-full flex ">
+					<div className="modal-box backdrop-blur-3xl bg-gray-700 bg-opacity-0 w-full h-full flex ">
 						<div className=" rounded-lg shadow-lg w-full">
 							<h2 className="text-xl text-white px-3">
 								<textarea
