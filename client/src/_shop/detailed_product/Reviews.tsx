@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useState } from "react";
@@ -50,7 +50,7 @@ const Reviews = () => {
 					body: JSON.stringify({text: text, rating: rating}),
 				});
 
-				console.log(res);
+				// console.log(res);
 
 				const data = await res.json();
 
@@ -155,12 +155,22 @@ const Reviews = () => {
 						</div>
 					) : (
 						<div>
-							{currentReviewed.map((review) => (
+							{currentReviewed && currentReviewed.map((review) => (
 								// TODO: User avatar
 								<div
 									key={review._id}
 									className="hover:bg-white hover:bg-opacity-10 flex flex-col items-start space-y-1 border-b border-white border-opacity-30 p-3"
 								>
+									<Link to={`/social/profile/${review.user.username}`}>
+										<div className="flex justify-start items-center space-x-3">
+											<img 
+												src={review.user.profileImg} 
+												alt="user" 
+												className="w-10 h-10 rounded-full" 
+											/>
+											<p className="text-md font-bold"> {review.user.username} </p>
+										</div>
+									</Link>
 									<StarRating rating={review.rating} />{" "}
 									<p>{review.text}</p>{" "}
 								</div>

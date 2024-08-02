@@ -92,7 +92,7 @@ const Cars = () => {
 	return (
 		<section>
 			<Toaster position="top-center" reverseOrder={false} />
-			<div className="font-bold md:text-4xl text-3xl md:pl-48 pl-12 w-full flex pb-12 text-white">
+			<div className="font-bold md:text-5xl text-3xl md:pl-48 pl-12 w-full flex pb-12 text-white">
 				<div className="">Most rated cars</div>
 			</div>
 			<div className="text-[18px] hover:text-blue-500 pb-4 font-normal flex items-center justify-end pr-12 md:pr-56 hover:underline ss:pr-16 sm:pr-32 lg:pr-20 xl:pr-48">
@@ -144,15 +144,15 @@ const Cars = () => {
 										{product.bio}
 									</p>
 									<div className="flex items-center justify-between mt-4 text-white mx-3">
-										<div className="items-center mr-4 line-clamp-1">
+										<div className="items-center mr-4 w-1/3 line-clamp-1" title="Speed">
 											<RiSpeedUpFill className="w-5 h-5 mr-1 " />
-											{product.top_speed}
+											{product.top_speed}km/h
 										</div>
-										<div className="items-center mr-4 line-clamp-1">
+										<div className="items-center w-1/3 mr-4 line-clamp-1" title="Fuel type">
 											<FaGasPump className="w-5 h-5 mr-1" />
 											{product.fuel_type}
 										</div>
-										<div className="items-center mr-4 line-clamp-1">
+										<div className="items-center w-1/3 mr-4 line-clamp-1" title="Transmission">
 											<FaCogs className="w-5 h-5 mr-1" />
 											{product.transmission}
 										</div>

@@ -39,8 +39,8 @@ const Sidebar = () => {
 		<section>
 			{isLoading && <LoadingSpinner/>}
 			{!isLoading && carsData && (
-				<div className="w-64 text-black font-poppins p-3 shadow-md text-m">
-					<div className="bg-[#F5F6F7] p-4 rounded-2xl">
+				<div className="w-64 text-black font-poppins p-3 shadow-md text-md">
+					<div className="bg-[#F5F6F7] p-4 rounded-3xl">
 						<h2 className="text-lg font-bold mb-4"> Brands </h2>
 						<ul className="mb-6">
 							{carsData.map((car) => (
@@ -56,7 +56,7 @@ const Sidebar = () => {
 							))}
 						</ul>
 					</div>
-					<div className="bg-[#F5F6F7] p-4 rounded-2xl mt-6">
+					<div className="bg-[#F5F6F7] p-4 rounded-3xl mt-6">
 						<h3 className="font-bold mb-2">Prices</h3>
 						<div className="flex justify-between text-sm text-gray-600 mb-2">
 							<span>Range:</span>
@@ -65,7 +65,7 @@ const Sidebar = () => {
 						<input type="range" className="w-full" />
 					</div>
 
-					<div className="bg-[#F5F6F7] p-4 rounded-2xl mt-6">
+					<div className="bg-[#F5F6F7] p-4 rounded-3xl mt-6">
 						<h3 className="font-bold mb-2">COLOR</h3>
 					</div>
 				</div>

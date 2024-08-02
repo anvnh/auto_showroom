@@ -181,7 +181,7 @@ const ProfilePage = () => {
 								)}
 							</div>
 
-							<div className='flex flex-col gap-4 mt-14 px-4'>
+							<div className='flex flex-col gap-4 mt-5 px-4'>
 								<div className='flex flex-col'>
 									<span className='font-bold text-lg flex'>
 										{user.fullName} &nbsp; {user.isAdmin ? <img src={logoMain} className="flex h-[30px] w-[30px] justify-center items-center transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg" title='Admin' /> : ""}

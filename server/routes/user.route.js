@@ -9,7 +9,7 @@ import { get } from 'mongoose';
 const router = express.Router();
 
 router.get("/profile/:username", protectRoute, getUserProfile);
-router.get("/profile/:id", protectRoute, getUserProfileWithID);
+router.get("/info/:id", protectRoute, getUserProfileWithID);
 router.get("/suggested", protectRoute, getSuggestedUsers);
 router.post("/follow/:id", protectRoute, followUnfollowUser);
 router.post("/update", protectRoute, updateUser);

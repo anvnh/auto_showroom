@@ -189,7 +189,8 @@ export const likeUnlikePost = async (req, res) => {
 export const getPost = async (req, res) => {
     try {
         const postid = req.params.id;
-        const post = await Post.findById(postid).populate({
+        const post = await Post.findById(postid)
+        .populate({
             path: "user",
             select: "-password",
         })

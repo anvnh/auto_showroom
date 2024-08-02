@@ -1,15 +1,19 @@
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { FaBookmark } from "react-icons/fa";
 import SearchBar from "../common/SearchBar";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import calculateAvgRating from "@/utils/calculateAvgRating";
 
 const Products = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 4;
+
+	const [loadingProductId, setLoadingProductId] = useState(null);
 
     // get all products
 	const { data: products, isLoading, refetch, isRefetching} = useQuery({
@@ -31,6 +35,46 @@ const Products = () => {
 			}
 		},
 	});
+	// add to cart
+	const {mutate: addToCart, isPending,} = useMutation({
+		mutationFn: async (productId) => {
+			try {
+				const response = await fetch(`/api/user/add/cart/${productId}`, {
+					method: "POST",
+				});
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			toast.success("Product added to cart", {
+				duration: 2000, 
+			});
+
+			setTimeout(() => { setLoadingProductId (null) });
+		},
+		onError: (error) => {
+			// TODO
+			toast.error("Item already in cart", {
+				duration: 2000,
+			});
+
+			setTimeout(() => { setLoadingProductId (null) });
+		}
+    });
+
+	const handleAddToCart = (productId) => {
+		setLoadingProductId(productId);
+		addToCart(productId);
+	}
+
  
     // calculate
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -66,75 +110,88 @@ const Products = () => {
 					)}
 					{!isLoading &&
 						!isRefetching &&
-						currentProducts &&
-						currentProducts.map((product) => (
-							<Link to={`/shop/product/${product._id}`}>
-								<div
-									key={product._id}
-									className="flex bg-white hover:bg-opacity-90 p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
-								>
-									<div className="relative w-1/3 mr-4 overflow-hidden items-center flex">
-										<img
-											// src={product.images}
-											src={product.images[0]}
-											className="w-full h-[250px] rounded"
-										/>
-										<span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-											HOT
-										</span>
-									</div>
-									<div className="w-2/3">
-										<h2 className="text-xl font-bold mb-2 text-black">
-											{product.brand}&nbsp;
-											{product.car_model}
-										</h2>
-										<div className="flex items-center mb-2">
-											<div className="flex text-yellow-400">
-												{/* TODO */}
-												{"★".repeat(5)}
-												{"☆".repeat(5 - 5)}
-											</div>
-											<span className="text-gray-600 text-sm ml-2">
-												{/* TODO */}0 reviews
-											</span>
-											<a
-												href="#"
-												className="text-blue-500 text-sm ml-2"
+						currentProducts?.map((product) => {
+							const averageRating = calculateAvgRating({
+								reviews: product.user_review,
+							});
+							return (
+								<>
+									<Toaster position="top-center" reverseOrder={false} />
+									<div
+										key={product._id}
+										className="flex bg-white hover:bg-opacity-90 p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
+									>
+										<div className="w-1/3 mr-4 overflow-hidden items-center flex">
+											<Link
+												to={`/shop/product/${product._id}`}
+												className="w-full h-[250px] rounded"
 											>
-												Submit a review
-											</a>
+												<img
+													src={product.images[0]}
+													className="w-full h-[250px] rounded"
+												/>
+											</Link>
 										</div>
-										<div className="mb-2">
-											<span className="text-2xl font-bold text-blue-600">
-												$&nbsp;{product.price}
-											</span>
-											{/* <span className="text-gray-500 line-through ml-2">
-							${oldPrice}
-						</span> */}
-											{/* <span className="text-red-500 ml-2">
-							{discount}% OFF
-						</span> */}
-										</div>
-										<p className="text-gray-700 mb-4">
-											{product.bio.length > 320
-												? `${product.bio.substring(
-														0,
-														310
-												  )}...`
-												: product.bio}
-										</p>
-										<div className="flex">
-											<button className="bg-blue-500 text-white px-4 py-2 rounded mr-2">
-												Add To Cart
-											</button>
-											<button className="border border-gray-300 text-gray-700 px-4 py-2 rounded">
-												<FaBookmark />
-											</button>
+										<div className="w-2/3">
+											<h2 className="text-xl font-bold mb-2 text-black">
+												{product.brand}&nbsp;
+												{product.car_model}
+											</h2>
+											<div className="flex items-center mb-1">
+												<div className="flex text-xl text-yellow-400">
+													{"★".repeat(
+														Math.round(
+															averageRating
+														)
+													)}
+													{"☆".repeat(
+														5 -
+															Math.round(
+																averageRating
+															)
+													)}
+												</div>
+												<span className="text-gray-600 text-sm ml-2">
+													{product.user_review.length}{" "}
+													reviews
+												</span>
+											</div>
+											<div className="mb-2">
+												<span className="text-2xl font-bold text-blue-600">
+													$&nbsp;{product.price}
+												</span>
+											</div>
+											<p className="text-gray-700 mb-4 line-clamp-4">
+												{product.bio}
+											</p>
+											<div className="flex">
+												<button
+													className="h-[40px] bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
+													onClick={() =>
+														handleAddToCart(
+															product._id
+														)
+													}
+												>
+													{loadingProductId ===
+													product._id ? (
+														<LoadingSpinner />
+													) : (
+														<span>
+															{" "}
+															Add to cart{" "}
+														</span>
+													)}
+												</button>
+												<button className="border border-gray-300 text-gray-700 px-4 py-2 rounded">
+													<FaBookmark />
+												</button>
+											</div>
 										</div>
 									</div>
-								</div>
-							</Link>
-						))}
+								</>
+							);
+						})}
 					<div>
 						{/* Pagination */}
 						<div className="flex justify-center mt-8">

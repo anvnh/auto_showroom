@@ -90,7 +90,7 @@ const SomeProduct = () => {
 										boxSizing: "border-box",
 									}}
 								>
-									<div className="w-[700px] h-[580px] bg-white rounded-md p-3">
+									<div className="w-[680px] h-[520px] bg-white rounded-md p-3">
 										<figure className="hover01 overflow-hidden">
 											<img
 												src={car.images[0]}
@@ -100,10 +100,10 @@ const SomeProduct = () => {
 										</figure>
 										<div className="text-black p-3 ">
 											<h1 className="text-black text-3xl text-center font-syncopate font-bold">
-												{car.brand}
+												{car.brand}&nbsp;{car.car_model}
 											</h1>
 											<p className="text-black text-xl text-center font-syncopate font-bold">
-												{car.price}
+												${car.price}
 											</p>
 											<div className="justify-center items-center flex pt-5">
 												<button className="bg-gray-700 w-[150px] h-[40px] rounded-md hover:bg-gray-400 hover:text-black transition-all duration-300 ease-in-out text-white">
