@@ -257,7 +257,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 										</Link>
 									</div>
 								</li>
-								{authUser.isAdmin === true && (
+								{authUser?.isAdmin === true && (
 									<li
 										className={`cursor-pointer transition-opacity duration-300 ${
 											selectedP && selectedP !== "Admin"
@@ -379,7 +379,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									</Link>
 								</div>
 							</li>
-							{authUser.isAdmin === true && (
+							{authUser?.isAdmin === true && (
 								<li
 									className="cursor-pointer transition-opacity duration-300 w-full text-center"
 									onClick={() =>

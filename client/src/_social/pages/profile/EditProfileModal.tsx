@@ -62,7 +62,7 @@ const EditProfileModal = ({ authUser }) => {
 				Edit profile
 			</button> */}
 			<Button
-				className="w-[130px] rounded-full h-[30px] mt-4 font-bold"
+				className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-white hover:bg-opacity-40"
 				onClick={() => {
 					document.getElementById("edit_profile_modal").showModal();
 				}}
@@ -75,7 +75,7 @@ const EditProfileModal = ({ authUser }) => {
 					<AlertDialogTrigger asChild>
 						<Button
 							variant="secondary"
-							className="w-[130px] rounded-full h-[30px] mt-4 font-bold hover:bg-red-500 hover:shadow-lg"
+							className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-red-500 hover:shadow-lg"
 						>
 							Delete account
 						</Button>

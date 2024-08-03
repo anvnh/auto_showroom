@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import toast from "react-hot-toast";
 import StarRating from "./StarRating";
+import { formatPostDate } from "@/utils/date";
 
 const Reviews = () => {
 
@@ -168,7 +169,12 @@ const Reviews = () => {
 												alt="user" 
 												className="w-10 h-10 rounded-full" 
 											/>
-											<p className="text-md font-bold"> {review.user.username} </p>
+											<div>
+												<p className="text-md font-bold"> {review.user.username} </p>
+												<p className="text-[14px]">  
+													{formatPostDate(review.createdAt)}
+												</p>
+											</div>
 										</div>
 									</Link>
 									<StarRating rating={review.rating} />{" "}
