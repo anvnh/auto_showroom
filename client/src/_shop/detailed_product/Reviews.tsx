@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useState } from "react";
@@ -6,6 +6,7 @@ import { FaStar } from "react-icons/fa";
 import toast from "react-hot-toast";
 import StarRating from "./StarRating";
 import { formatPostDate } from "@/utils/date";
+import useAuthUser from "@/hooks/useAuthUser";
 
 const Reviews = () => {
 
@@ -18,6 +19,8 @@ const Reviews = () => {
 
     const [rating, setRating] = useState(null);
     const [rateColor, setRateColor] = useState(null);
+
+	const {data: authUser, isError}= useAuthUser();
 
 
 	const { data: reviewed, isLoading, refetch, isRefetching } = useQuery({
@@ -100,7 +103,6 @@ const Reviews = () => {
 
 	return (
 		<section className="w-full h-full justify-center ss:px-20 sm:px-32 items-center px-5 xl:px-56 text-white pt-14">
-			
 			<div>
 				<h1 className="xl:text-4xl text-2xl   text-center font-syncopate font-bold">
 					Reviews
@@ -109,7 +111,8 @@ const Reviews = () => {
 			</div>
 			<div>
 				{isLoading && <LoadingSpinner />}
-				<div className="flex overflow-hidden mb-3 ml-2">
+				{authUser ? (
+					<div className="flex overflow-hidden mb-3 ml-2">
 						{[...Array(5)].map((star, index) => {
 							const ratingValue = index + 1;
 							return (
@@ -132,18 +135,59 @@ const Reviews = () => {
 								</label>
 							);
 						})}
-				</div>
+					</div>
+				) : (
+					<div className="flex overflow-hidden mb-3 ml-2">
+						{[...Array(5)].map((star, index) => {
+							const ratingValue = index + 1;
+							return (
+								<label className="cursor-pointer flex flex-col items-center space-x-1 justify-center">
+									<input
+										type="radio"
+										name="rate"
+										value={ratingValue}
+										className="hidden"
+									/>
+									<FaStar
+										size={29}
+										color={"#131313"} 
+										className="cursor-not-allowed"
+									/>
+								</label>
+							);
+						})}
+					</div>
+				)}
 				<form className="" onSubmit={handleSubmit}>
 					<textarea
 						className="textarea w-full p-3 bg-white md:-mb-8 text-black text-base resize-none border-none focus:outline-none border rounded-3xl"
 						placeholder="Write your review here..."
 						value={text}
 						onChange={(e) => setText(e.target.value)}
+						disabled={!authUser}
 					/>
+					{!authUser && (
+						<div className="flex justify-center items-center -mt-5 cursor-not-allowed">
+							<p className="text-red-500">
+								You must be logged in to review
+							</p>
+						</div>
+					)}
 					<div className="w-full justify-end items-end flex mt-12">
-						<button className="detail-button bg-gray-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-xl text-center relative h-9  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] mb-12">
-							{isReviewing ? <LoadingSpinner /> : "Review"}
-						</button>
+						{authUser ? (
+							<button 
+								className="detail-button bg-gray-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-xl text-center relative h-9  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] mb-12"
+							>
+								{isReviewing ? <LoadingSpinner /> : "Review"}
+							</button>
+						) : (
+							<button 
+								className="detail-button cursor-not-allowed bg-red-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex font-bold text-sm md:text-base rounded-xl text-center relative h-9 overflow-hidden border-gray-600 border shadow-2xl mb-12"
+								disabled
+							>
+								Review
+							</button>
+						)}
 					</div>
 				</form>
 				<hr className="border-white border-opacity-30" />
@@ -163,17 +207,24 @@ const Reviews = () => {
 									key={review._id}
 									className="hover:bg-white hover:bg-opacity-10 flex flex-col items-start space-y-1 border-b border-white border-opacity-30 p-3"
 								>
-									<Link to={`/social/profile/${review.user.username}`}>
+									<Link
+										to={`/social/profile/${review.user.username}`}
+									>
 										<div className="flex justify-start items-center space-x-3">
-											<img 
-												src={review.user.profileImg} 
-												alt="user" 
-												className="w-10 h-10 rounded-full" 
+											<img
+												src={review.user.profileImg}
+												alt="user"
+												className="w-10 h-10 rounded-full"
 											/>
 											<div>
-												<p className="text-md font-bold"> {review.user.username} </p>
-												<p className="text-[14px]">  
-													{formatPostDate(review.createdAt)}
+												<p className="text-md font-bold">
+													{" "}
+													{review.user.username}{" "}
+												</p>
+												<p className="text-[14px]">
+													{formatPostDate(
+														review.createdAt
+													)}
 												</p>
 											</div>
 										</div>
@@ -201,7 +252,6 @@ const Reviews = () => {
 					))}
 				</div>
 			</div>
-		
 		</section>
 	);
 };

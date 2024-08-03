@@ -28,6 +28,7 @@ import ChatAI from './api_Chat/ChatAI';
 import ConfirmationLayout from './_auth/ConfirmationLayout';
 import TokenConfirmation from './_auth/TokenConfirmation';
 import PaymentLayout from './_shop/PaymentLayout';
+import NotAuthenticated from './_auth/NotAuthenticated';
 
 
 const App = () => {
@@ -109,7 +110,8 @@ const App = () => {
                     <Route path="/shop/product/:id" element={<ProductViewLayout />} />
                     <Route path="/shop/cart" element={authUser ? <CartLayout isLogin={Number(true)} /> : <CartLayout isLogin={false} />} />
 
-                    <Route path="/admin" element={<AdminBrandLayout />} />
+                    {/* TODO */}
+                    <Route path="/admin" element={authUser && authUser.isAdmin ? <AdminBrandLayout /> : <NotAuthenticated />} />
                     <Route path="/chatAI" element={<ChatAI />} />
 
                     <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login"/>} />

@@ -11,13 +11,13 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { FaCartPlus } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import useAuthUser from "@/hooks/useAuthUser";
 
 
 
 const MostSearchedCars = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [loadingProductId, setLoadingProductId] = useState(null);
-	const productsPerPage = 4;
 
 	const queryClient = useQueryClient();
 
@@ -54,11 +54,11 @@ const MostSearchedCars = () => {
     });
 
 	// get all products
-	const { data: products, isLoading, refetch, isRefetching, } = useQuery({
+	const { data: suggestedProducts, isLoading, refetch, isRefetching, } = useQuery({
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {
-				const response = await fetch("/api/car/all");
+				const response = await fetch("/api/car/other/suggested");
 				const data = await response.json();
 
 				// console.log(data);
@@ -74,22 +74,12 @@ const MostSearchedCars = () => {
 		},
 	});
 
+	const {data: authUser} = useAuthUser();
+
 	const handleAddToCart = (productId) => {
 		setLoadingProductId(productId);
 		addToCart(productId);
 	}
-
-	// calculate 
-	const indexOfLastProduct = currentPage * productsPerPage;
-	const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-	const currentProducts = products
-		? products.slice(indexOfFirstProduct, indexOfLastProduct)
-		: [];
-	const totalPages = products
-		? Math.ceil(products.length / productsPerPage)
-		: 0;
-
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 	return (
 		<section>
@@ -100,15 +90,15 @@ const MostSearchedCars = () => {
 			<div className="justify-center items-center flex">
 				<div className="grid xl:grid-cols-4 md:grid-cols-3 gap-10 md:px-20  ss:grid-cols-2 ">
 					{/* Map through products */}
-					{!isRefetching && products?.length === 0 && (
+					{!isRefetching && suggestedProducts?.length === 0 && (
 						<p className="text-center my-4">
 							No products available
 						</p>
 					)}
 					{!isLoading &&
 						!isRefetching &&
-						currentProducts &&
-						currentProducts.map((product) => (
+						suggestedProducts &&
+						suggestedProducts.map((product) => (
 							<div
 								key={product._id}
 								className="md:w-[350px] sm:w-[350px] w-[300px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-white"
@@ -119,21 +109,30 @@ const MostSearchedCars = () => {
 										src={product.images[0]}
 										alt="Car"
 									/>
-									<button
-										className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-opacity-40 cursor-pointer"
-										onClick={() =>
-											handleAddToCart(product._id)
-										}
-									>
-										<div className="flex">
-											{loadingProductId ===
-											product._id ? (
-												<LoadingSpinner size="xs" />
-											) : (
-												<MdAddShoppingCart className="text-2xl text-gray-700" />
-											)}
-										</div>
-									</button>
+									{authUser ? (
+										<button
+											className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-opacity-40 cursor-pointer"
+											onClick={() =>
+												handleAddToCart(product._id)
+											}
+										>
+											<div className="flex">
+												{loadingProductId ===
+												product._id ? (
+													<LoadingSpinner size="xs" />
+												) : (
+													<MdAddShoppingCart className="text-2xl text-gray-700" />
+												)}
+											</div>
+										</button>
+									) : (
+										<button
+											className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-opacity-40 cursor-pointer"
+											onClick={() => toast.error("You need to login to add to your cart")}
+										>
+											<MdAddShoppingCart className="text-2xl text-gray-700" />
+										</button>
+									)}
 								</div>
 								<div className="hover:bg-gray-400 hover:bg-opacity-15">
 									<div className="p-4 text-black">
@@ -177,7 +176,7 @@ const MostSearchedCars = () => {
 			</div>
 
 			{/* Pagination */}
-			<div className="flex justify-center mt-8">
+			{/* <div className="flex justify-center mt-8">
 				{Array.from({ length: totalPages }, (_, i) => (
 					<button
 						key={i}
@@ -191,7 +190,7 @@ const MostSearchedCars = () => {
 						{i + 1}
 					</button>
 				))}
-			</div>
+			</div> */}
 		</section>
 	);
 };

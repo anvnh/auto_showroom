@@ -1,5 +1,7 @@
+import useAuthUser from "@/hooks/useAuthUser";
 import { formatPostDate } from "@/utils/date";
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const Blogs = () => {
@@ -23,6 +25,8 @@ const Blogs = () => {
         },
 	});
 
+    const {data: authUser} = useAuthUser();
+
     return (
      <div>
          <hr className="w-1/2 border-black mx-auto relative top-1 pt-10 pb-12" /> 
@@ -43,6 +47,7 @@ const Blogs = () => {
                         <div 
                             key={post._id} 
                             className="w-full  rounded-lg overflow-hidden shadow-lg bg-white hover:bg-gray-500 hover:bg-opacity-15"
+                            onClick={() => !authUser && toast.error('You need to login to view this post.')}
                         >
                             <Link to={`/social/posts/${post.user.username}/${post._id}`}>
                                 <div className="relative">

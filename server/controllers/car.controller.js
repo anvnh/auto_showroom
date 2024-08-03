@@ -233,7 +233,7 @@ export const getSuggestedCars = async (req, res) => {
         );
         const suggestedCars = carsWithReviews
             .sort((a, b) => b.user_review.length - a.user_review.length)
-            .slice(0, 5);
+            .slice(0, 8);
         res.status(200).json(suggestedCars);
     } catch (error) {
         console.log("Error in getSuggestedCars controller", error.message); 
