@@ -17,6 +17,7 @@ import { formatMemberSinceDate } from "@/utils/date";
 import useFollow from "@/hooks/useFollow";
 import useUpdateUserProfile from "@/hooks/useUpdateUserProfile";
 import logoMain from '@/assets/logo/logoMain.png'
+import { Button } from "@/components/ui/button";
 
 const ProfilePage = () => {
 	const [coverImg, setCoverImg] = useState(null);
@@ -94,158 +95,234 @@ const ProfilePage = () => {
 
 	return (
 		<>
-			<div className='flex-[4_4_0] min-h-screen md:mx-7 bg-black'>
+			<div className="flex-[4_4_0] min-h-screen md:mx-7 bg-black">
 				{/* HEADER */}
-				{isLoading || isRefetching && <ProfileHeaderSkeleton />}
-				{!isLoading && !isRefetching && !user && <p className='text-center text-lg mt-4'>User not found</p>}
-				<div className='flex flex-col'>
+				{isLoading || (isRefetching && <ProfileHeaderSkeleton />)}
+				{!isLoading && !isRefetching && !user && (
+					<p className="text-center text-lg mt-4">User not found</p>
+				)}
+				<div className="flex flex-col">
 					{!isLoading && !isRefetching && user && posts && (
 						<>
-                            {/* HEADER */}
-							<div className='flex gap-10 px-4 py-2 items-center sticky top-0 z-10 backdrop-blur-md border-gray-800'>
-								<Link to='/social'>
-									<FaArrowLeft className='w-4 h-4' />
+							{/* HEADER */}
+							<div className="flex gap-10 px-4 py-2 items-center sticky top-0 z-10 backdrop-blur-md border-gray-800">
+								<Link to="/social">
+									<FaArrowLeft className="w-4 h-4" />
 								</Link>
-								<div className='flex flex-col'>
-									<p className='font-bold text-lg'>{user?.fullName}</p>
-									<span>{posts.filter(post => post.user._id === user._id).length} posts</span>
+								<div className="flex flex-col">
+									<p className="font-bold text-lg">
+										{user?.fullName}
+									</p>
+									<span>
+										{
+											posts.filter(
+												(post) =>
+													post.user._id === user._id
+											).length
+										}{" "}
+										posts
+									</span>
 								</div>
 							</div>
 
 							{/* COVER IMG */}
-							<div className='relative group/cover'>
+							<div className="relative group/cover">
 								<img
-									src={coverImg || user?.coverImg || placeholder_cover}
-									className='h-52 w-full object-cover'
-									alt='cover image'
+									src={
+										coverImg ||
+										user?.coverImg ||
+										placeholder_cover
+									}
+									className="h-52 w-full object-cover"
+									alt="cover image"
 								/>
 								{isMyProfile && (
 									<div
-										className='absolute top-2 right-2 rounded-full p-2 bg-gray-800 bg-opacity-75 cursor-pointer opacity-0 group-hover/cover:opacity-100 transition duration-200'
-										onClick={() => coverImgRef.current.click()}
+										className="absolute top-2 right-2 rounded-full p-2 bg-gray-800 bg-opacity-75 cursor-pointer opacity-0 group-hover/cover:opacity-100 transition duration-200"
+										onClick={() =>
+											coverImgRef.current.click()
+										}
 									>
-										<MdEdit className='w-5 h-5 text-white' />
+										<MdEdit className="w-5 h-5 text-white" />
 									</div>
 								)}
 
 								<input
-									type='file'
+									type="file"
 									hidden
 									ref={coverImgRef}
-									onChange={(e) => handleImgChange(e, "coverImg")}
+									onChange={(e) =>
+										handleImgChange(e, "coverImg")
+									}
 								/>
 								<input
-									type='file'
+									type="file"
 									hidden
 									ref={profileImgRef}
-									onChange={(e) => handleImgChange(e, "profileImg")}
+									onChange={(e) =>
+										handleImgChange(e, "profileImg")
+									}
 								/>
 								{/* USER AVATAR */}
-								<div className='avatar absolute -bottom-16 left-4'>
-									<div className='w-32 rounded-full relative group/avatar'>
-										<img src={profileImg || user?.profileImg || placeholder_img} />
-										<div className='absolute top-5 right-3 p-1 bg-primary rounded-full group-hover/avatar:opacity-100 opacity-0 cursor-pointer'>
+								<div className="avatar absolute -bottom-16 left-4">
+									<div className="w-32 rounded-full relative group/avatar">
+										<img
+											src={
+												profileImg ||
+												user?.profileImg ||
+												placeholder_img
+											}
+										/>
+										<div className="absolute top-5 right-3 p-1 bg-primary rounded-full group-hover/avatar:opacity-100 opacity-0 cursor-pointer">
 											{isMyProfile && (
 												<MdEdit
-													className='w-4 h-4 text-white'
-													onClick={() => profileImgRef.current.click()}
+													className="w-4 h-4 text-white"
+													onClick={() =>
+														profileImgRef.current.click()
+													}
 												/>
 											)}
 										</div>
 									</div>
 								</div>
 							</div>
-							<div className='flex justify-end px-4 mt-5'>
-								{isMyProfile && <EditProfileModal authUser={authUser}/>}
+							<div className="flex justify-end px-4 mt-5">
+								{isMyProfile && (
+									<EditProfileModal authUser={authUser} />
+								)}
 								{!isMyProfile && (
 									<button
-										className='btn btn-outline rounded-full btn-sm'
+										className="btn btn-outline rounded-full btn-sm"
 										onClick={() => follow(user?._id)}
 									>
 										{isPending && "Loading..."}
-										{!isPending && amIFollowing && "Unfollow"}
-										{!isPending && !amIFollowing && "Follow"}
+										{!isPending &&
+											amIFollowing &&
+											"Unfollow"}
+										{!isPending &&
+											!amIFollowing &&
+											"Follow"}
 									</button>
 								)}
+							</div>
+							<div className="flex justify-end mr-3">
 								{(coverImg || profileImg) && (
-									<button
-										className='btn btn-primary rounded-full btn-sm text-white px-4 ml-2'
+									<Button
+										className="w-[130px] bg-blue-500 rounded-full h-[30px] mt-4 font-bold hover:bg-blue-600"
+										variant="secondary"
 										onClick={async () => {
-											await updateProfile({coverImg, profileImg})
+											await updateProfile({ coverImg, profileImg,});
 											setProfileImg(null);
 											setCoverImg(null);
 										}}
 									>
-										{isUpdatingProfile ? "Updating..." : "Update"}
-									</button>
+										{isUpdatingProfile
+											? "Updating..."
+											: "Update"}
+									</Button>
 								)}
 							</div>
 
-							<div className='flex flex-col gap-4 mt-5 px-4'>
-								<div className='flex flex-col'>
-									<span className='font-bold text-lg flex'>
-										{user.fullName} &nbsp; {user.isAdmin ? <img src={logoMain} className="flex h-[30px] w-[30px] justify-center items-center transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg" title='Admin' /> : ""}
+							<div className="flex flex-col gap-4 mt-5 px-4">
+								<div className="flex flex-col">
+									<span className="font-bold text-lg flex">
+										{user.fullName} &nbsp;{" "}
+										{user.isAdmin ? (
+											<img
+												src={logoMain}
+												className="flex h-[30px] w-[30px] justify-center items-center transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg"
+												title="Admin"
+											/>
+										) : (
+											""
+										)}
 									</span>
 
-									<span className='text-sm text-slate-500'>@{user?.username}</span>
-									<span className='text-sm my-1'>{user?.bio}</span>
+									<span className="text-sm text-slate-500">
+										@{user?.username}
+									</span>
+									<span className="text-sm my-1">
+										{user?.bio}
+									</span>
 								</div>
 
-								<div className='flex gap-2 flex-wrap'>
+								<div className="flex gap-2 flex-wrap">
 									{user?.link && (
-										<div className='flex gap-1 items-center '>
+										<div className="flex gap-1 items-center ">
 											<>
-												<FaLink className='w-3 h-3 text-slate-500' />
-												<a href={"https://" + user?.link}>{user?.link}</a>
+												<FaLink className="w-3 h-3 text-slate-500" />
+												<a
+													href={
+														"https://" + user?.link
+													}
+												>
+													{user?.link}
+												</a>
 											</>
 										</div>
 									)}
-									<div className='flex gap-2 items-center'>
-										<IoCalendarOutline className='w-4 h-4 text-slate-500' />
-										<span className='text-sm text-slate-500'>
+									<div className="flex gap-2 items-center">
+										<IoCalendarOutline className="w-4 h-4 text-slate-500" />
+										<span className="text-sm text-slate-500">
 											{memberSinceDate}
 										</span>
 									</div>
 								</div>
-								<div className='flex gap-2'>
-									<div className='flex gap-1 items-center'>
-                                        <Link to={`/social/profile/following/${user?._id}`}>
-                                            <span className='font-bold text-xs'>{user?.following.length}&nbsp;</span>
-                                            <span className='text-slate-500 text-xs'>Following</span>
-                                        </Link>
+								<div className="flex gap-2">
+									<div className="flex gap-1 items-center">
+										<Link
+											to={`/social/profile/following/${user?._id}`}
+										>
+											<span className="font-bold text-xs">
+												{user?.following.length}&nbsp;
+											</span>
+											<span className="text-slate-500 text-xs">
+												Following
+											</span>
+										</Link>
 									</div>
-									<div className='flex gap-1 items-center'>
-                                        <Link to={`/social/profile/followers/${user?._id}`}>
-                                            <span className='font-bold text-xs'>{user?.followers.length}&nbsp;</span>
-                                            <span className='text-slate-500 text-xs'>Followers</span>
-                                        </Link>
+									<div className="flex gap-1 items-center">
+										<Link
+											to={`/social/profile/followers/${user?._id}`}
+										>
+											<span className="font-bold text-xs">
+												{user?.followers.length}&nbsp;
+											</span>
+											<span className="text-slate-500 text-xs">
+												Followers
+											</span>
+										</Link>
 									</div>
 								</div>
 							</div>
-							<div className='flex w-full border-b border-gray-700 mt-4'>
+							<div className="flex w-full border-b border-gray-700 mt-4">
 								<div
-									className='flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer'
+									className="flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer"
 									onClick={() => setFeedType("posts")}
 								>
 									Posts
 									{feedType === "posts" && (
-										<div className='absolute bottom-0 w-10 h-1 rounded-full bg-[#2191d8]' />
+										<div className="absolute bottom-0 w-10 h-1 rounded-full bg-[#2191d8]" />
 									)}
 								</div>
 								<div
-									className='flex justify-center flex-1 p-3 text-slate-500 hover:bg-secondary transition duration-300 relative cursor-pointer'
+									className="flex justify-center flex-1 p-3 text-slate-500 hover:bg-secondary transition duration-300 relative cursor-pointer"
 									onClick={() => setFeedType("likes")}
 								>
 									Likes
 									{feedType === "likes" && (
-										<div className='absolute bottom-0 w-10  h-1 rounded-full bg-[#2191d8]' />
+										<div className="absolute bottom-0 w-10  h-1 rounded-full bg-[#2191d8]" />
 									)}
 								</div>
 							</div>
 						</>
 					)}
 					<div className="mb-5">
-						<Posts feedType={feedType} username={username} userId={user?._id} />
+						<Posts
+							feedType={feedType}
+							username={username}
+							userId={user?._id}
+						/>
 					</div>
 				</div>
 			</div>

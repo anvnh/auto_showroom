@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import toast from "react-hot-toast";
 import StarRating from "./StarRating";
+import { formatPostDate } from "@/utils/date";
 
 const Reviews = () => {
 
@@ -162,6 +163,21 @@ const Reviews = () => {
 									key={review._id}
 									className="hover:bg-white hover:bg-opacity-10 flex flex-col items-start space-y-1 border-b border-white border-opacity-30 p-3"
 								>
+									<Link to={`/social/profile/${review.user.username}`}>
+										<div className="flex justify-start items-center space-x-3">
+											<img 
+												src={review.user.profileImg} 
+												alt="user" 
+												className="w-10 h-10 rounded-full" 
+											/>
+											<div>
+												<p className="text-md font-bold"> {review.user.username} </p>
+												<p className="text-[14px]">  
+													{formatPostDate(review.createdAt)}
+												</p>
+											</div>
+										</div>
+									</Link>
 									<StarRating rating={review.rating} />{" "}
 									<p>{review.text}</p>{" "}
 								</div>
