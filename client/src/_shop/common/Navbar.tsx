@@ -8,6 +8,8 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaAngleLeft } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import useAuthUser from "@/hooks/useAuthUser";
+import toast from "react-hot-toast";
 
 interface SubNavbarProps {
 	selectedSection_element: string;
@@ -26,6 +28,8 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 	}, []);
 
 	const [toggle, setToggle] = useState(false);
+
+	const {data: authUser, isLoading} = useAuthUser();
 
 	const [selectedSection, setSelectedSection] = useState("");
 	const handleNavClick = (section: string) => {
@@ -121,25 +125,6 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 		setCurrentPage(section);
 	};
 
-	const { data: authUser, isLoading } = useQuery({
-		// use queryKey to give a unique name to the query and refer to it later
-		queryKey: ["authUser"],
-		queryFn: async () => {
-			try {
-				const res = await fetch("/api/auth/me");
-				const data = await res.json();
-				if (data.error) return null;
-				if (!res.ok) {
-					throw new Error(data.message || "Something went wrong");
-				}
-				// console.log("authUser is here: ", data);
-				return data;
-			} catch (error) {
-				throw new Error(error.message);
-			}
-		},
-		retry: false,
-	});
 	return (
 		<div className="z-50 fixed top-0 w-full font-poppins transition-transform duration-300">
 			<nav
@@ -172,25 +157,50 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 					</button>
 				</div>
 				<ul className="list-none flex pr-3 justify-end items-center flex-1">
-					<Link to="/shop/cart">
-						<MdOutlineShoppingCart
-							className="text-white w-[30px] xl:w-[35px] h-[27px] text-3xl xl:mr-4 mr-2"
-							title="Go to your cart"
-						/>
-					</Link>
-					{isLoading && <LoadingSpinner />}
-					{!isLoading && (
-						<Link to={`${authUser ? "/social" : "/social/login"}`}>
-							<div className="avatar placeholder w-[30px] xl:w-full h-auto">
-								<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black">
-									{authUser ? (
-										<img src={authUser.profileImg} />
-									) : (
-										<FaUser />
-									)}
-								</div>
-							</div>
-						</Link>
+					{authUser ? (
+						<>
+							<Link to="/shop/cart">
+								<MdOutlineShoppingCart
+									className="text-white w-[30px] xl:w-[35px] h-[27px] text-3xl xl:mr-4 mr-2"
+									title="Go to your cart"
+								/>
+							</Link>
+							{isLoading && <LoadingSpinner />}
+							{!isLoading && (
+								<Link to={`${authUser ? "/social" : "/social/login"}`}>
+									<div className="avatar placeholder w-[30px] xl:w-full h-auto">
+										<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black">
+											{authUser ? (
+												<img src={authUser.profileImg} />
+											) : (
+												<FaUser />
+											)}
+										</div>
+									</div>
+								</Link>
+							)}
+						</>
+					) : (
+						<>
+							<MdOutlineShoppingCart
+								className="text-white w-[30px] xl:w-[35px] h-[27px] text-3xl xl:mr-4 mr-2 cursor-pointer"
+								title="Go to your cart"
+								onClick={() => toast.error("Please login to view your cart")}
+							/>
+							{!isLoading && (
+								<Link to={`${authUser ? "/social" : "/login"}`}>
+									<div className="avatar placeholder w-[30px] xl:w-full h-auto">
+										<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black">
+											{authUser ? (
+												<img src={authUser.profileImg} />
+											) : (
+												<FaUser />
+											)}
+										</div>
+									</div>
+								</Link>
+							)}
+						</>
 					)}
 				</ul>
 			</nav>
