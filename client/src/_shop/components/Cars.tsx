@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom";
 import { MdAddShoppingCart, MdArrowOutward, MdShoppingCart } from "react-icons/md";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CiBookmark } from "react-icons/ci";
 import { RiSpeedUpFill } from "react-icons/ri";
 import { FaCogs, FaGasPump } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Cars = () => {
 
+	useEffect(() => {
+		AOS.init({
+			duration: 1000,
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-center",
+		});
+	}, []);
     const [currentPage, setCurrentPage] = useState(1);
 	const [loadingProductId, setLoadingProductId] = useState(null);
     const productsPerPage = 4;
@@ -93,9 +103,9 @@ const Cars = () => {
 		<section>
 			<Toaster position="top-center" reverseOrder={false} />
 			<div className="font-bold md:text-5xl text-3xl md:pl-48 pl-12 w-full flex pb-12 text-white">
-				<div className="">Most rated cars</div>
+				<div data-aos="fade-up" className="">Most rated cars</div>
 			</div>
-			<div className="text-[18px] hover:text-blue-500 pb-4 font-normal flex items-center justify-end pr-12 md:pr-56 hover:underline ss:pr-16 sm:pr-32 lg:pr-20 xl:pr-48">
+			<div data-aos="fade-left" className="text-[18px] hover:text-blue-500 pb-4 duration-200 transition-all ease-in-out font-normal flex items-center justify-end pr-12 md:pr-56 hover:underline ss:pr-16 sm:pr-32 lg:pr-20 xl:pr-48">
 				<Link to="/shop/product">View All</Link>
 				<MdArrowOutward className="w-6 h-5 ml-1" />
 			</div>
@@ -112,6 +122,7 @@ const Cars = () => {
 						currentProducts &&
 						currentProducts.map((product) => (
 							<div
+							data-aos="fade-left"
 								key={product._id}
 								className="md:w-[350px] sm:w-[350px] w-[300px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-[#161B30]"
 							>
@@ -163,7 +174,7 @@ const Cars = () => {
 										</span>
 										<Link
 											to={`/shop/product/${product._id}`}
-											className="text-blue-500 flex"
+											className="text-blue-500 flex "
 										>
 											View Details
 											<MdArrowOutward className="w-5 h-5 ml-1" />
@@ -175,7 +186,7 @@ const Cars = () => {
 				</div>
 			</div>
 			{/* Pagination */}
-			<div className="flex justify-center mt-8">
+			<div data-aos="fade-up" className="flex justify-center mt-8">
 				{Array.from({ length: totalPages }, (_, i) => (
 					<button
 						key={i}

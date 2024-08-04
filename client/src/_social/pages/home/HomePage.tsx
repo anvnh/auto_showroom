@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Posts from "@/components/social/ui/common/Posts";
 import CreatePost from "./CreatePost";
+import Lenis from "@studio-freight/lenis";
 
 const HomePage = () => {
 	const [feedType, setFeedType] = useState("forYou");
-
+	useEffect(() => {
+		const lenis = new Lenis();
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+		requestAnimationFrame(raf);
+		return () => {
+			lenis.destroy();
+		};
+	}, []);
 	return (
 		<>
 			<div className="flex-[4_4_0] md:mx-7 mx-0 min-h-screen bg-black border-gray-800">

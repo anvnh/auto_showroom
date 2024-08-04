@@ -12,10 +12,19 @@ import { FaCartPlus } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import useAuthUser from "@/hooks/useAuthUser";
-
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const MostSearchedCars = () => {
+	useEffect(() => {
+		AOS.init({
+			duration: 900,
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-center",
+		});
+	}, []);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [loadingProductId, setLoadingProductId] = useState(null);
 
@@ -84,7 +93,7 @@ const MostSearchedCars = () => {
 	return (
 		<section>
 			<Toaster position="top-center" reverseOrder={false} />
-			<div className="text-4xl text-black font-poppins font-bold justify-start w-[300px] ss:w-full pl-12 sm:pl-48 xl:pl-52 md:pl-24 md:text-5xl items-center flex pb-12">
+			<div data-aos="fade-up" className="text-4xl text-black font-poppins font-bold justify-start w-[300px] ss:w-full pl-12 sm:pl-48 xl:pl-52 md:pl-24 md:text-5xl items-center flex pb-12">
 				<h1>The most searched car</h1>
 			</div>
 			<div className="justify-center items-center flex">
@@ -100,6 +109,7 @@ const MostSearchedCars = () => {
 						suggestedProducts &&
 						suggestedProducts.map((product) => (
 							<div
+							data-aos="zoom-out"
 								key={product._id}
 								className="md:w-[350px] sm:w-[350px] w-[300px] rounded-3xl overflow-hidden border border-gray-900 shadow-lg bg-white"
 							>

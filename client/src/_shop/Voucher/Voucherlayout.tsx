@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import LinkHeader from '../common/LinkHeader'
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Navbar from '../common/Navbar'
-import Vocher from './element/Vocher'
+import Voucher from './element/Voucher'
+import Lenis from '@studio-freight/lenis'
 
 const Voucherlayout = () => {
+	useEffect(() => {
+		const lenis = new Lenis();
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+		requestAnimationFrame(raf);
+		return () => {
+			lenis.destroy();
+		};
+	}, []);
   return (
     <section className='bg-primary w-full h-full'>
         		<div className="w-full overflow-hidden">
@@ -21,7 +34,7 @@ const Voucherlayout = () => {
 				</div>
 				<div className='flex px-12 ss:px-0 md:px-[120px] bg-primary'>
 					<div className="w-full justify-center">
-						<Vocher />
+						<Voucher />
 					</div>
 				</div>
 			</div>
