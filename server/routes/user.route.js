@@ -2,12 +2,13 @@ import express from 'express';
 import { protectRoute } from '../middleware/protectRoute.js';
 import { getUserProfile, followUnfollowUser, 
     getSuggestedUsers, updateUser, getFollowingUsers, getFollowerUsers, getUserProfileWithID, addCart, getCart, deleteCart, 
-    deleteUser 
+    deleteUser, getAllUserProfile
 } from '../controllers/user.controller.js';
 import { get } from 'mongoose';
 
 const router = express.Router();
 
+router.get("/profile/all", protectRoute, getAllUserProfile);
 router.get("/profile/:username", protectRoute, getUserProfile);
 router.get("/info/:id", protectRoute, getUserProfileWithID);
 router.get("/suggested", protectRoute, getSuggestedUsers);

@@ -90,6 +90,7 @@ export const login = async (req, res) => {
 
         else {
             generateTokenAndSetCookie(user._id, res);
+            user.lastLogin = new Date();
             res.status(200).json({
                 _id: user._id,
                 fullName: user.fullName,
@@ -100,6 +101,7 @@ export const login = async (req, res) => {
                 profileImg: user.profileImg,
                 coverImg: user.coverImg,
                 isVerified: user.isVerified,
+                lastLogin: user.lastLogin,
             });
         }
     } catch (error) {

@@ -6,6 +6,19 @@ import User from "../models/user.model.js";
 import Post from "../models/post.model.js";
 import Notification from "../models/notification.model.js";
 
+export const getAllUserProfile = async (req, res) => {
+    try {
+        const users = await User.find().select("-password");
+        if(!users) {
+            return res.status(404).json({ message: "No users found" });
+        }
+        res.status(200).json(users);
+    } catch (error) {
+        console.log("Error in getAllUserProfile: ", error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+
 export const getUserProfile = async (req, res) => {
     const { username } = req.params;
 

@@ -35,6 +35,72 @@ export const createPost = async (req, res) => {
     }
 };
 
+export const getUserRepostedPosts = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+        if(!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const repostedPosts = await Post.find({ reposts: { $elemMatch: { user: user._id } } })
+        .populate({
+            path: "user",
+            select: "-password",
+        })
+
+        res.status(200).json(repostedPosts);
+    } catch(error) {
+        console.log("Error in getUserRepostedPosts controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+};
+
+export const repostPost = async (req, res) => {
+    try {
+        const postId = req.params.id;
+        const userId = req.user._id;
+        const post = await Post.findById(postId);
+        if(!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+        // Retweet post
+        const newRepost = {user: userId}
+        post.reposts.push(newRepost);
+        await post.save();
+        const updatedReposts = post.reposts;
+        res.status(200).json(updatedReposts);
+    } catch(error) {
+        console.log("Error in retweetPost controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+};
+
+export const deleteRepostPost = async (req, res) => {
+    try {
+        const postId = req.params.id;
+        const repostId = req.params.repostId;
+        const post = await Post.findById(postId);
+        if(!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+        const reposts = post.reposts;
+
+        const ifPostExist = reposts.find((post) => post._id.toString() === repostId.toString());
+        if(!ifPostExist) {
+            return res.status(404).json({ message: "Tweet not found" });
+        }
+
+        const updatedReposts = reposts.filter((post) => post._id.toString() !== repostId.toString());
+        post.reposts = updatedReposts;
+        await post.save();
+        res.status(200).json({message: "Tweet deleted"});
+    } catch(error) {
+        console.log("Error in deleteTweetedPost controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+};
+
 export const deletePost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
@@ -197,6 +263,10 @@ export const getPost = async (req, res) => {
         .populate({
             path: "comments.user", 
             select: "-password",
+        })
+        .populate({
+            path: "reposts.user",
+            select: "-password",
         });
 
         res.status(200).json(post);
@@ -215,6 +285,10 @@ export const getAllPosts = async (req, res) => {
         .populate({
             path: "comments.user", 
             select: "-password"
+        })
+        .populate({
+            path: "reposts.user",
+            select: "-password",
         });
 
         if(posts.length === 0) {
