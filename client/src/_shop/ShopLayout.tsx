@@ -6,8 +6,21 @@ import Features from './components/Features';
 import Testimonials from './components/Testimonials';
 import Cars from './components/Cars';
 import Blogs from './components/Blogs';
+import { useEffect } from 'react';
+import Lenis from '@studio-freight/lenis';
 
 const ShopLayout = () => {
+	useEffect(() => {
+		const lenis = new Lenis();
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+		requestAnimationFrame(raf);
+		return () => {
+			lenis.destroy();
+		};
+	}, []);
     return (
 		<section className="w-full bg-primary">
 			<div className="w-full overflow-hidden">

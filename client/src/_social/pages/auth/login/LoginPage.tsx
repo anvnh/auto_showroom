@@ -187,7 +187,7 @@ const LoginPage: React.FC = () => {
 						>
 							<div
 								data-aos="fade-right"
-								className="justify-center flex pt-5"
+								className="justify-center flex pt-5 "
 							>
 								<Link to="/">
 									<img
@@ -197,7 +197,7 @@ const LoginPage: React.FC = () => {
 									/>
 								</Link>
 							</div>
-							<h1 className="text-sm md:text-8xl text-center font-syncopate text-gray-300">
+							<h1 className="text-sm md:text-8xl text-center font-syncopate text-gray-300 animate-pulse duration-500 transition-all ease-in-out">
 								Welcome <br /> to AAP
 							</h1>
 						</div>
@@ -280,13 +280,15 @@ const LoginPage: React.FC = () => {
 										<div className="pt-10 relative flex justify-center">
 											<Button
 												type="submit"
-												className="w-[300px] h-[50px] p-2 text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500"
+												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-72 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-xl
+										before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80
+										"
 											>
 												{isSigningup ? (
 													<LoadingSpinner />
 												) : (
-													<div>
-														C<span className="lowercase">
+													<div className="text-xl ">
+														C<span className="lowercase text-center text-xl">
 															reate Account
 														</span>
 													</div>
@@ -392,7 +394,8 @@ const LoginPage: React.FC = () => {
 										<div className="pt-2 relative flex justify-center">
 											<Button
 												type="submit"
-												className="w-[300px] h-[50px] text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500"
+												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-[300px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-xl
+										before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80"
 											>
 												{isPending ? (
 													<LoadingSpinner />
@@ -409,7 +412,8 @@ const LoginPage: React.FC = () => {
 										<div className="relative flex justify-center">
 											<Button
 												type="submit"
-												className="flex items-center justify-center w-[300px] h-[50px] text-white bg-gray-900 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500"
+												className="flex items-center justify-center w-[300px] h-[50px] text-white bg-gray-900 hover:bg-gray-700 transition-all ease-in-out text-md font-poppins duration-500 md:text-base rounded-xl text-center text-xl
+										before:ease relative overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80"
 											>
 												<FcGoogle className="mr-2 h-auto w-[25px]" />
 												<div className="flex items-center">

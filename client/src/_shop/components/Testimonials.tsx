@@ -50,12 +50,12 @@ const Testimonials = () => {
 		<div className="grid sm:grid-cols-2 grid-cols-1">
 			<div className="text-black">
 				<div className="md:px-60 px-12 pt-20">
-					<div className="text-3xl md:text-4xl font-bold font-poppins">
+					<div data-aos="fade-up" className="text-3xl md:text-4xl font-bold font-poppins">
 						What Our <br /> Customers Say
 					</div>
 
 					{!isLoading && bestReviewed && (
-						<div className="py-12">
+						<div data-aos="fade-up" className="py-12">
 							<h1 className="font-bold md:text-2xl pb-3">
 								{bestReviewed?.text}
 							</h1>
@@ -75,7 +75,7 @@ const Testimonials = () => {
 					)}
 				</div>
 			</div>
-			<div className="pt-12 md:pt-20 px-12">
+			<div data-aos="fade-up" className="pt-12 md:pt-20 px-12">
 				<div className="flex text-green-400 text-3xl items-center">
 					<IoIosStar className="" />
 					<IoIosStar className="" />
@@ -97,7 +97,7 @@ const Testimonials = () => {
 					</p>
 				</div>
 
-				<div className="pt-5">
+				<div data-aos="fade-up" className="pt-5">
 					<div className="avatar placeholder space-x-4">
 						<div className="bg-black w-12 rounded-3xl text-black">
 							<img src={ceo1} alt="ceo" className="rounded-3xl" />

@@ -31,7 +31,7 @@ const Blogs = () => {
      <div>
          <hr className="w-1/2 border-black mx-auto relative top-1 pt-10 pb-12" /> 
            <section className="md:px-60 px-12 ss:px-32 sm:px-44 text-black bg-[#F9FBFC] font-poppins">
-            <div className="font-bold text-4xl font-poppins pb-12">
+            <div data-aos="fade-up" className="font-bold text-4xl font-poppins pb-12">
                 Latest Blogs
             </div>
             {!isLoading && !isRefetching && newestPosts?.length === 0 && (
@@ -39,7 +39,7 @@ const Blogs = () => {
                     There is no blog post yet. Be the first one to create a blog post.
                 </p>
             )}
-            <div className="md:flex w-full md:gap-4 space-y-12 md:space-y-0 ">
+            <div data-aos="zoom-out" className="md:flex w-full md:gap-4 space-y-12 md:space-y-0 ">
                 {!isLoading && 
                     !isRefetching && 
                     newestPosts && 

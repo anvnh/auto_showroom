@@ -69,7 +69,6 @@ const App = () => {
             </div>
         );
     }
-
     return (
         <>
             <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'md:max-w-[80%] max-w-[90%] mx-auto') : 'h-screen'}`}>

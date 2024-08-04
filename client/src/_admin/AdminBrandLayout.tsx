@@ -2,6 +2,7 @@ import React from "react";
 import NavbarAdmin from "./AdminBrand/NavbarAdmin";
 
 const AdminBrandLayout = () => {
+
 	return (
 		<section className="w-full bg-gray-900 text-white overflow-hidden">
 			<div className="w-full h-screen overflow-auto">

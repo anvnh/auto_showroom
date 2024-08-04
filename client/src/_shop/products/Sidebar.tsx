@@ -39,10 +39,10 @@ const Sidebar = () => {
 		<section>
 			{isLoading && <LoadingSpinner/>}
 			{!isLoading && carsData && (
-				<div className="w-64 ss:w-[500px] sm:w-[600px] md:w-64 text-black font-poppins p-3 shadow-md text-md grid ss:grid-cols-2 md:grid-cols-1 ss:space-x-5 md:space-x-0">
-					<div className="bg-[#F5F6F7] p-4 rounded-xl">
-						<h2 className="text-lg font-bold mb-4"> Brands </h2>
-						<ul className="mb-6">
+				<div data-aos="fade-right" className="w-64 ss:w-[500px] sm:w-[600px] md:w-64 text-black font-poppins p-3 shadow-md text-md grid ss:grid-cols-2 md:grid-cols-1 ss:space-x-5 md:space-x-0">
+					<div  className="bg-[#F5F6F7] p-4 rounded-xl">
+						<h2 data-aos="fade-right" data-aos-delay="300" className="text-lg font-bold mb-4"> Brands </h2>
+						<ul data-aos="fade-right" data-aos-delay="300" className="mb-6">
 							{carsData.map((car) => (
 								<li
 									key={car.brand}
@@ -56,14 +56,14 @@ const Sidebar = () => {
 							))}
 						</ul>
 					</div>
-					<div className="bg-[#F5F6F7] p-4 h-full rounded-xl ss:mt-0 md:mt-6 mt-6">
-						<h3 className="font-bold mb-2">Prices</h3>
-						<div className="flex justify-between text-sm text-gray-600 mb-2">
+					<div data-aos="fade-right"  className="bg-[#F5F6F7] p-4 h-full rounded-xl ss:mt-0 md:mt-6 mt-6">
+						<h3 data-aos="fade-right" data-aos-delay="300" className="font-bold mb-2">Prices</h3>
+						<div data-aos="fade-right" data-aos-delay="300" className="flex justify-between text-sm text-gray-600 mb-2">
 							<span>Range:</span>
 						
 							
 						</div>
-						<div className="flex justify-between text-sm text-gray-600 mb-2">
+						<div data-aos="fade-right" data-aos-delay="300" className="flex justify-between text-sm text-gray-600 mb-2">
 						<span>$13.99 - $25.99</span>
 						</div>
 						<input type="range" className="w-full" />

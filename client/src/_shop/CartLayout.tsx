@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './common/Navbar';
 import UserCart from './cart/UserCart';
 import Footer from '@/components/common/Footer';
 import LinkHeader from './common/LinkHeader';
+import Lenis from '@studio-freight/lenis';
 
 const CartLayout = ({ isLogin }) => {
+    useEffect(() => {
+		const lenis = new Lenis();
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+		requestAnimationFrame(raf);
+		return () => {
+			lenis.destroy();
+		};
+	}, []);
     return (
         <section className="w-full bg-primary">
             <div className="w-full overflow-hidden">

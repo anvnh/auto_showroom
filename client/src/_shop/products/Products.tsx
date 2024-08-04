@@ -1,6 +1,6 @@
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBookmark, FaSearch } from "react-icons/fa";
 import SearchBar from "../common/SearchBar";
 import Sidebar from "./Sidebar";
@@ -9,8 +9,18 @@ import toast, { Toaster } from "react-hot-toast";
 import calculateAvgRating from "@/utils/calculateAvgRating";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Products = () => {
+	useEffect(() => {
+		AOS.init({
+			duration: 1000,
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-center",
+		});
+	}, []);
 	const [currentPage, setCurrentPage] = useState(1);
 	const productsPerPage = 4;
 
@@ -124,7 +134,7 @@ const Products = () => {
 		<section className="xl:p-4 w-full sm:px-32">
 			<div className="md:block hidden">
 				<div className="flex w-full justify-end px-3">
-					<div className="text-[16px] flex border border-white justify-between items-center p-2  rounded-xl">
+					<div 	data-aos="fade-left" className="text-[16px] flex border border-white justify-between items-center p-2  rounded-xl">
 						<input
 							placeholder="Search"
 							className="ml-2 bg-primary w-[220px] border-none focus:outline-none focus:border-none focus:ring-0"
@@ -144,7 +154,7 @@ const Products = () => {
 				</div>
 				</div>
 				<div className="md:col-span-4 pt-12 md:pt-3 ss:px-32 sm:px-0">
-					<div className="md:hidden block">
+					<div 	data-aos="fade-left"  className="md:hidden block">
 						<div className="flex w-full justify-center ss:justify-end md:justify-end mb-3">
 							<div className="text-[16px] flex border mb-4 border-white justify-between items-center p-2 rounded-xl">
 								<input
@@ -179,6 +189,7 @@ const Products = () => {
 										reverseOrder={false}
 									/>
 									<div
+									data-aos="fade-left"
 										key={product._id}
 										className="md:flex  bg-white hover:bg-opacity-90 p-3 md:p-4 mb-7 rounded-2xl shadow-md w-full h-auto">
 										<div className="relative w-full md:w-1/3 md:mr-4 overflow-hidden mb-4 items-center flex">
