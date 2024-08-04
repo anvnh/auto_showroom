@@ -260,9 +260,7 @@ const Products = () => {
 														</span>
 													)}
 												</button>
-												<button className="border border-gray-300 text-gray-700 px-4 py-2 rounded">
-													<FaBookmark />
-												</button>
+											
 											</div>
 										</div>
 									</div>

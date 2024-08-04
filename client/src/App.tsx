@@ -29,6 +29,7 @@ import ConfirmationLayout from './_auth/ConfirmationLayout';
 import TokenConfirmation from './_auth/TokenConfirmation';
 import PaymentLayout from './_shop/PaymentLayout';
 import NotAuthenticated from './_auth/NotAuthenticated';
+import Voucherlayout from './_shop/Voucher/Voucherlayout';
 
 
 const App = () => {
@@ -117,6 +118,7 @@ const App = () => {
                     <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login"/>} />
 
                     <Route path="/shop/payment" element={ authUser ? <PaymentLayout/> : <Navigate to="/login" /> } />
+                    <Route path="/voucher" element={<Voucherlayout />} />
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
                 {location.pathname.startsWith('/social') && <Toaster />}
