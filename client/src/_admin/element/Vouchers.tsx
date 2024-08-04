@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { BarChart2 } from "lucide-react";
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import Header from "./comon/Header";
 import { IoAddCircle } from "react-icons/io5";
-import { Button } from "@/components/ui/button";
+
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { CiImageOn } from "react-icons/ci";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
@@ -13,10 +13,21 @@ import { Label } from "recharts";
 import { ScrollBar } from "@/components/ui/scroll-area";
 import { Toaster } from "react-hot-toast";
 import VouchersManagement from "./elementVoucher/VouchersManagement";
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/ui/popover";
 
 const Vouchers = () => {
-    const imgRef = useRef(null);
-    const [imgs, setImgs] = useState([]);
+	const imgRef = useRef(null);
+	const [imgs, setImgs] = useState([]);
 
 	const handleImgChange = (e) => {
 		const files = Array.from(e.target.files);
@@ -34,18 +45,35 @@ const Vouchers = () => {
 			reader.readAsDataURL(file);
 		});
 	};
-    const handleRemoveImg = (indexToRemove) => {
+	const handleRemoveImg = (indexToRemove) => {
 		setImgs(imgs.filter((_, index) => index !== indexToRemove));
 	};
 
 	const [formData, setFormData] = useState({
-        TermsOfUse: "",
-        discount: "",
-        DateOfManufacture: "",
-        ExpiryDate: "",
-        quantity: "",
-        images: [],
+		TermsOfUse: "",
+		discount: "",
+		DateOfManufacture: "",
+		ExpiryDate: "",
+		quantity: "",
+		images: [],
 	});
+	const [dateManufacture, setDateManufacture] = React.useState<Date>();
+	const [dateExpiry, setDateExpiry] = React.useState<Date>();
+
+	const resetForm = () => {
+		setFormData({
+			TermsOfUse: "",
+			discount: "",
+			DateOfManufacture: "",
+			ExpiryDate: "",
+			quantity: "",
+			images: [],
+		});
+		setDate(undefined);
+		setDates(undefined);
+		setImgs([]);
+	};
+
 	return (
 		<div>
 			<Header title="Voucher" />
@@ -145,15 +173,14 @@ const Vouchers = () => {
 							</div>
 						</div>
 					</motion.div>
-                    
+
 					<div className="md:col-span-5 sm:col-span-4 w-full">
 						<VouchersManagement />
 					</div>
-
 				</motion.div>
 
 				{/* CHARTS */}
-                <dialog id="Add_Car" className="modal">
+				<dialog id="Add_Car" className="modal">
 					<div className="modal-box backdrop-blur-3xl bg-gray-100  shadow-gray-500 shadow-md bg-opacity-0 w-full h-[430px] flex rounded-xl">
 						<div className=" rounded-lg shadow-lg w-full">
 							<h2 className="text-xl text-white px-3">
@@ -161,7 +188,12 @@ const Vouchers = () => {
 									className="textarea textarea-bordered h-[10px] w-full"
 									placeholder="Terms of Use"
 									name="TermsOfUse"
-								
+									value={formData.TermsOfUse}
+									onChange={(e) =>
+										setFormData({
+											...formData,
+											TermsOfUse: e.target.value,
+										})}
 								></textarea>
 							</h2>
 							<h2 className="text-xl text-white p-3 grid grid-cols-2 gap-2">
@@ -173,29 +205,120 @@ const Vouchers = () => {
 									className="textarea textarea-bordered h-[10px]"
 									placeholder="discount"
 									name="discount"
-						
+									value={formData.discount}
+									onChange={(e) =>
+										setFormData({
+											...formData,
+											discount: e.target.value,
+										})}
 								></textarea>
-								<textarea
-									className="textarea textarea-bordered  h-[10px]"
-									placeholder="Date Of Manufacture"
-									name="DateOfManufacture"
-								
-								></textarea>
-								<textarea
-									className="textarea textarea-bordered  h-[10px]"
-									placeholder="Expiry Date"
-									name="ExpiryDate"
-							
-								></textarea>
-				
-								<textarea
+										<textarea
 									className="textarea textarea-bordered h-[10px]"
-									placeholder="Quantity"
+									placeholder="Quanity"
 									name="quantity"
-
+									value={formData.quantity}
+									onChange={(e) =>
+										setFormData({
+											...formData,
+											quantity: e.target.value,
+										})}
 								></textarea>
+								<Popover>
+									<PopoverTrigger asChild>
+										<Button
+											variant={"outline"}
+											className={cn(
+												"justify-start text-left bg-black border-black z-50 font-normal",
+												!dateManufacture && "text-muted-foreground"
+											)}
+											onClick={() =>
+												document
+													.getElementById(
+														"Add_Performances"
+													)
+													.showModal()
+											}
+										>
+											<CalendarIcon className="mr-2 h-4 w-4" />
+											{dateManufacture ? (
+												format(dateManufacture, "PPP")
+											) : (
+												<span className="opacity-50">Date Manufacture</span>
+											)}
+										</Button>
+									</PopoverTrigger>
+									<dialog
+										id="Add_Performances"
+										className="modal "
+									>
+										<div className="w-auto shadow-md rounded-xl bg-opacity-0 backdrop-blur-xl relative top-36 mr-52">
+											
+												<Calendar
+													mode="single"
+													selected={dateManufacture}
+													onSelect={setDateManufacture}
+													initialFocus
+													className=" z-50 bg-black"
+												/>
+											
+										</div>
+										<form
+											method="dialog"
+											className="modal-backdrop w-full absolute h-screen"
+										>
+											<button className="">Close</button>
+										</form>
+									</dialog>
+								</Popover>
+								<Popover>
+									<PopoverTrigger asChild>
+										<Button
+											variant={"outline"}
+											className={cn(
+												" justify-start text-left bg-black border-black z-50 font-normal",
+												!dateExpiry && "text-muted-foreground"
+											)}
+											onClick={() =>
+												document
+													.getElementById(
+														"Add_Performance"
+													)
+													.showModal()
+											}
+										>
+											<CalendarIcon className="mr-2 h-4 w-4" />
+											{dateExpiry ? (
+												format(dateExpiry, "PPP")
+											) : (
+												<span className="opacity-50">Date Expiry</span>
+											)}
+										</Button>
+									</PopoverTrigger>
+									<dialog
+										id="Add_Performance"
+										className="modal "
+									>
+										<div className="w-auto shadow-md rounded-xl bg-opacity-0 backdrop-blur-xl relative top-36 ml-60">
+											
+												<Calendar
+													mode="single"
+													selected={dateExpiry}
+													onSelect={setDateExpiry}
+													initialFocus
+													className=" z-50 bg-black"
+												/>
+											
+										</div>
+										<form
+											method="dialog"
+											className="modal-backdrop w-full absolute h-screen"
+										>
+											<button className="">Close</button>
+										</form>
+									</dialog>
+								</Popover>
 							</h2>
-                            <div className="w-full bg-black p-4 h-[150px] rounded-2xl bg-opacity-20">
+							<div className="w-full bg-black p-4 h-[160px]  rounded-2xl bg-opacity-20">
 								<ScrollArea>
 									<div className="flex space-x-3">
 										{imgs.map((img, index) => (
@@ -246,16 +369,17 @@ const Vouchers = () => {
 								<div className="mt-4 flex w-full justify-end">
 									<Button
 										variant="secondary"
-										className="bg-opacity-40 rounded-xl"					
-									>
-									Add
+										className="bg-opacity-40 rounded-xl">
+									
+										Add
 									</Button>
 								</div>
 							</div>
 						</div>
 					</div>
 					<form method="dialog" className="modal-backdrop">
-						<button className="outline-none">Close</button>
+						<button className="outline-none"
+							onClick={() => resetForm()}>Close</button>
 					</form>
 				</dialog>
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8"></div>
@@ -263,5 +387,4 @@ const Vouchers = () => {
 		</div>
 	);
 };
-
 export default Vouchers;

@@ -417,10 +417,10 @@ const ProductPage = () => {
 
 								<dialog
 									id="Add_Performance"
-									className="modal w-full"
+									className="modal "
 								>
-									<div className="w-[500px] bg-gray-700 shadow-gray-500 shadow-md rounded-xl p-3 bg-opacity-100 backdrop-blur-xl z-5 relative top-10">
-										<div className="grid gap-4ss">
+									<div className="w-[500px] bg-gray-700 shadow-gray-500 shadow-md rounded-xl p-3 bg-opacity-100 backdrop-blur-xl relative top-10">
+										<div className="grid gap-4">
 											<div className="grid gap-2">
 												<div className="grid grid-cols-3 items-center gap-4">
 													<Label htmlFor="width">
