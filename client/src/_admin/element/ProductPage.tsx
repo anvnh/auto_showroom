@@ -328,7 +328,7 @@ const ProductPage = () => {
 				</motion.div>
 				
 				<dialog id="Add_Car" className="modal">
-					<div className="modal-box backdrop-blur-3xl bg-gray-700 bg-opacity-0 w-full h-full flex ">
+					<div className="modal-box backdrop-blur-3xl bg-gray-700 shadow-gray-500 shadow-md bg-opacity-0 w-full h-full flex ">
 						<div className=" rounded-lg shadow-lg w-full">
 							<h2 className="text-xl text-white px-3">
 								<textarea
@@ -419,7 +419,7 @@ const ProductPage = () => {
 									id="Add_Performance"
 									className="modal w-full"
 								>
-									<div className="w-[500px] bg-gray-700 rounded-xl p-3 bg-opacity-20 backdrop-blur-sm z-5 relative top-10">
+									<div className="w-[500px] bg-gray-700 shadow-gray-500 shadow-md rounded-xl p-3 bg-opacity-100 backdrop-blur-xl z-5 relative top-10">
 										<div className="grid gap-4ss">
 											<div className="grid gap-2">
 												<div className="grid grid-cols-3 items-center gap-4">

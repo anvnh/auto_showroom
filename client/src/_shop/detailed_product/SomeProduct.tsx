@@ -91,7 +91,7 @@ const SomeProduct = () => {
 										boxSizing: "border-box",
 									}}
 								>
-									<div className="w-[680px] h-[520px] bg-white rounded-md p-3">
+									<div className="w-[680px] h-[580px] bg-white rounded-md p-3">
 										<figure className="hover01 overflow-hidden">
 											<img
 												src={car.images[0]}

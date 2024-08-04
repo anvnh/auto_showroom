@@ -214,7 +214,10 @@ import gifSocial from "./owner/gif2.webp";
 import bgLG from "./login/backgroundlogin.png";
 import bgSocial from "./owner/bgsocial.png";
 
+
+import Voucher15do from "./voucher/15do.png"
 export {
+	Voucher15do,
 	ngoisao,
 	car625,
 	carremove6,

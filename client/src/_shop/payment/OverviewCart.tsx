@@ -294,7 +294,10 @@ const OverviewCart = () => {
 					<div className="flex justify-end pt-10 text-white font-bold text-2xl">
 						Total Price: ${calculateTotalPrice()}
 					</div>
-					<div className="flex justify-end pb-4 pt-6">
+					<div className="flex justify-end pb-4 pt-6 gap-3">
+					<div className="detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 w-full lg:w-[150px] cursor-pointer lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
+								Voucher
+							</div>
 						<Link
 							to={{
 								pathname: "/shop/payment",
@@ -304,7 +307,7 @@ const OverviewCart = () => {
 								}).toString(),
 							}}
 						>
-							<div className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full lg:w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
+							<div className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
 								Proceed to Payment
 							</div>
 						</Link>

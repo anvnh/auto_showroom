@@ -17,12 +17,15 @@ import Sales from "../element/Sales";
 import Orders from "../element/Orders";
 import Analytics from "../element/Analytics";
 import { Scene } from "three";
-
+import { count } from "console";
+import { RiCoupon2Fill } from "react-icons/ri";
+import Vouchers from "../element/Vouchers";
 const slidebar_items = [
 	{ name: "Overview", icon: BarChart2, color: "white" },
 	{ name: "Product", icon: ShoppingBag, color: "white" },
 	{ name: "Users", icon: User, color: "white" },
 	{ name: "Sales", icon: DollarSign, color: "white" },
+	{ name: "Voucher", icon: RiCoupon2Fill , color: "white" },
 	{ name: "Orders", icon: ShoppingCart, color: "white" },
 	{ name: "Analytics", icon: TrendingUp, color: "white" },
 ];
@@ -32,6 +35,7 @@ const pageHeights = {
 	Product: "1800px",
 	Users: "1200px",
 	Sales: "1200px",
+	Voucher: "1600px",
 	Orders: "1450px",
 	Analytics: "1900px",
 };
@@ -108,6 +112,7 @@ const NavbarAdmin = () => {
 				{currentPage === "Overview" && <OverviewPage />}
 				{currentPage === "Product" && <ProductPage />}
 				{currentPage === "Users" && <Users />}
+				{currentPage === "Voucher" && <Vouchers />}
 				{currentPage === "Sales" && <Sales />}
 				{currentPage === "Orders" && <Orders />}
 				{currentPage === "Analytics" && <Analytics />}
