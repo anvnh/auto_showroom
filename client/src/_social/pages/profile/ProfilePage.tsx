@@ -211,7 +211,10 @@ const ProfilePage = () => {
 										className="w-[130px] bg-blue-500 rounded-full h-[30px] mt-4 font-bold hover:bg-blue-600"
 										variant="secondary"
 										onClick={async () => {
-											await updateProfile({ coverImg, profileImg,});
+											await updateProfile({
+												coverImg,
+												profileImg,
+											});
 											setProfileImg(null);
 											setCoverImg(null);
 										}}
@@ -298,18 +301,33 @@ const ProfilePage = () => {
 							<div className="flex w-full border-b border-gray-700 mt-4">
 								<div
 									className="flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer"
+									onClick={() => setFeedType("reposts")}
+								>
+									<p className={`${feedType === "reposts" ? "text-white" : "text-slate-500"}`}>
+										Reposts
+									</p>
+									{feedType === "reposts" && (
+										<div className="absolute bottom-0 w-10 h-1 rounded-full bg-[#2191d8]" />
+									)}
+								</div>
+								<div
+									className="flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer"
 									onClick={() => setFeedType("posts")}
 								>
-									Posts
+									<p className={`${feedType === "posts" ? "text-white" : "text-slate-500"}`}>
+										Posts
+									</p>
 									{feedType === "posts" && (
 										<div className="absolute bottom-0 w-10 h-1 rounded-full bg-[#2191d8]" />
 									)}
 								</div>
 								<div
-									className="flex justify-center flex-1 p-3 text-slate-500 hover:bg-secondary transition duration-300 relative cursor-pointer"
+									className="flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer"
 									onClick={() => setFeedType("likes")}
 								>
-									Likes
+									<p className={`${feedType === "likes" ? "text-white" : "text-slate-500"}`}>
+										Likes
+									</p>
 									{feedType === "likes" && (
 										<div className="absolute bottom-0 w-10  h-1 rounded-full bg-[#2191d8]" />
 									)}
