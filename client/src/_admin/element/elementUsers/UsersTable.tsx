@@ -48,7 +48,6 @@ const UsersTable = () => {
         return [...admins, ...nonAdmins];
     };
 
-    const sortedUsers = sortUsers(filteredUsers);
 
     return (
 		<motion.div
@@ -98,15 +97,15 @@ const UsersTable = () => {
 						</thead>
 
 						<tbody className="divide-y divide-gray-700">
-							{userData && sortedUsers &&
-								sortedUsers.map((user) => (
+							{userData && sortUsers(userData) &&
+								sortUsers(userData).map((user) => (
 									<motion.tr
 										key={user.id}
 										initial={{ opacity: 0 }}
 										animate={{ opacity: 1 }}
 										transition={{ duration: 0.3 }}
 									>
-										<td className="px-6 py-4 whitespace-nowrap">
+										<td key={user.id} className="px-6 py-4 whitespace-nowrap">
 											<div className="flex items-center">
 												<div className="flex-shrink-0 h-10 w-10">
 													<div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
