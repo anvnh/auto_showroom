@@ -314,7 +314,7 @@ const Post = ({ post }) => {
 											<div className="flex items-center hover:text-green-200 cursor-pointer">
 												<div className="flex w-full justify-start space-x-1">
 													<div>
-														Retweeted by{" "}
+														Reposted by{" "}
 													</div>
 													<Link to={`/social/profile/${repost.user.username}`}> 
 														@{repost.user.username} 

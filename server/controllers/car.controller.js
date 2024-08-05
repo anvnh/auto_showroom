@@ -1,6 +1,6 @@
 import Car from "../models/car.model.js";
 import {v2 as cloudinary} from "cloudinary";
-
+import axios from "axios";
 
 export const getAllCar = async (req, res) => {
     try {
@@ -182,10 +182,9 @@ export const deleteCar = async (req, res) => {
 
 export const reviewCar = async (req, res) => {
     try {
-
-        const {text, rating} = req.body;
+        const {text, rating, rated} = req.body;
         const carId = req.params.id;
-        const userId = req.user._id;
+        const userId = req.params.userId;
 
         if(!text) {
             return res.status(400).json({ message: "Text field is required" });
@@ -204,20 +203,16 @@ export const reviewCar = async (req, res) => {
         const comment = {rating, text, user: userId }
         const updatedComments = comment;
 
+
+        const numberRatings = car.user_review.length;
+        const avgRating = (car.overall_rating * numberRatings + rated) / (numberRatings + 1);
+
         car.user_review.push(comment);
+        car.overall_rating = Number(avgRating);
 
         await car.save();
 
-        // save notification about comment to the creator of the post
-        // const newNotification = new Notification({
-        //     type: "comment", 
-        //     from: req.user._id,
-        //     to: userToModify._id,
-        // });
-
-        // await newNotification.save();
-
-        res.status(201).json(updatedComments);
+        res.status(201).json({updatedComments, avgRating});
 
     } catch(error) {
         console.log("Error in commentOnPost controller: ", error);
@@ -303,5 +298,18 @@ export const updateCar = async (req, res) => {
     } catch(error) {
         console.log("Error in updateCar controller: ", error);
         res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
+export const getPhobertPrediction = async (req, res) => {
+    try{
+        const {text, rating} = req.body;
+        const response = await axios.post('http://localhost:5001/api/v1/phobert/get_predict', { content: text });
+        const prediction = response.data.prediction[0][1];
+        const overallRating = rating * prediction;
+        res.status(200).json({ prediction, overallRating });
+    } catch (error) {
+        console.log("Error in phobert middleware", error.message);
+        res.status(500).json({ error: "Internal server error. Please try again later!" });
     }
 }

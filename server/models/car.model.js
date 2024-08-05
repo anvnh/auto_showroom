@@ -115,7 +115,11 @@ const carSchema = new mongoose.Schema(
 				type: String,
 				required: true,
 			}
-		]
+		],
+		overall_rating: {
+			type: Number,
+			default: 0,
+		},
 	},
 	{ timestamps: true }
 ); 

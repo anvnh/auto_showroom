@@ -2,7 +2,7 @@ import XSvg from "../../../svgs/X";
 import logo from "../../../../assets/logo.png";
 
 import { MdHomeFilled } from "react-icons/md";
-import { IoNotifications } from "react-icons/io5";
+import { IoChatboxEllipsesSharp, IoNotifications } from "react-icons/io5";
 import { GoHome, GoHomeFill } from "react-icons/go";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -14,6 +14,7 @@ import { useState } from "react";
 import { log } from "console";
 
 import { useNavigate } from "react-router-dom";
+import { CiChat1 } from "react-icons/ci";
 
 const Sidebar = () => {
     const navigate = useNavigate();
@@ -47,6 +48,9 @@ const Sidebar = () => {
         }
     })
 
+    const handleChatClick = () => {
+        navigate('/chat');
+    }
 
     const { data: authUser } = useQuery<{ username?: string; profileImg?: string; fullName?: string }>({queryKey: ['authUser']});
 
@@ -96,6 +100,18 @@ const Sidebar = () => {
                                 <FaUser className="w-8 h-8" />
                                 <span className="text-lg hidden md:block">
                                     Profile
+                                </span>
+                            </Link>
+                        </li>
+
+                        <li className="flex justify-center md:justify-start">
+                            <Link
+                                to="/chat"
+                                className="flex gap-3 items-center hover:bg-gray-600 hover:bg-opacity-25 transition-all rounded-full duration-300 py-2 pl-2 pr-4 max-w-fit cursor-pointer"
+                                >
+                                <IoChatboxEllipsesSharp className="w-8 h-8" />
+                                <span className="text-lg hidden md:block">
+                                    Message
                                 </span>
                             </Link>
                         </li>

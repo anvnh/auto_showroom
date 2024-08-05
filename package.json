@@ -10,6 +10,8 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "nodemon": "^3.1.4"
+        "nodemon": "^3.1.4",
+        "socket.io": "^4.7.5",
+        "socket.io-client": "^4.7.5"
     }
 }
