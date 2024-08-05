@@ -31,7 +31,6 @@ import PaymentLayout from './_shop/PaymentLayout';
 import NotAuthenticated from './_auth/NotAuthenticated';
 import Voucherlayout from './_shop/Voucher/Voucherlayout';
 
-
 const App = () => {
     const location = useLocation();
     const isSocialRoute = location.pathname.startsWith('/social');
@@ -111,7 +110,6 @@ const App = () => {
                     <Route path="/shop/product/:id" element={<ProductViewLayout />} />
                     <Route path="/shop/cart" element={authUser ? <CartLayout isLogin={Number(true)} /> : <CartLayout isLogin={false} />} />
 
-                    {/* TODO */}
                     <Route path="/admin" element={authUser && authUser.isAdmin ? <AdminBrandLayout /> : <NotAuthenticated />} />
                     <Route path="/chatAI" element={<ChatAI />} />
 

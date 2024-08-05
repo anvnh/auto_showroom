@@ -16,8 +16,9 @@ const Reviews = () => {
 	const carId = ID.id;
 
 	const [text, setText] = useState("");
-
     const [rating, setRating] = useState(null);
+	const [rated, setRated] = useState(null);
+
     const [rateColor, setRateColor] = useState(null);
 
 	const {data: authUser, isError}= useAuthUser();
@@ -44,14 +45,14 @@ const Reviews = () => {
 	});
 
 	const { mutate: reviewing, isPending: isReviewing } = useMutation({
-		mutationFn: async () => {
+		mutationFn: async ({text, rating, rated}) => {
 			try {
-				const res = await fetch(`/api/car/comment/${carId}`, {
+				const res = await fetch(`/api/car/comment/${carId}/${authUser._id}`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({text: text, rating: rating}),
+					body: JSON.stringify({text: text, rating: rating, rated: rated}),
 				});
 
 				console.log(res);
@@ -79,11 +80,47 @@ const Reviews = () => {
 		}
 	})
 
+	const {mutate: ratingCar, isPending: isRatingCar} = useMutation({
+		mutationFn: async () => {
+			try {
+				const res = await fetch(`/api/car/phobert`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({text: text, rating: rating, rated: rated}),
+				});
+
+				const data = await res.json();
+
+				if(!res.ok) {
+					throw new Error(data.error || "Something went wrong");
+				}
+
+				return data;
+
+			} catch(error) {
+				throw new Error(error.message);
+			}
+		},
+		onSuccess: (data) => {
+			queryClient.invalidateQueries({queryKey: ["review"]});
+			// setRating(null);
+			// console.log(data.overallRating);
+			// console.log(data);
+			reviewing({text, rating, rated: data.overallRating});
+		},
+		onError: (error) => {
+			toast.error(error.message);
+		}
+	})
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// TODO
 		// console.log(text, rating);
-		reviewing({text, rating});
+		// reviewing({text, rating});
+		ratingCar({text, rating})
 	};
 
 	const [currentPage, setCurrentPage] = useState(1);
