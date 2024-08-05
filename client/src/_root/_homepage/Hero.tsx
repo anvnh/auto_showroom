@@ -5,9 +5,10 @@ import { supra } from "@/assets/hplat_asset/video";
 import { gsap } from "gsap";
 
 import SplitType from "split-type";
+import { Canvas } from "@react-three/fiber"
 import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
-
+import { Car, Bmw, Honda, View } from "@/components/3d";
 const Hero = () => {
 	//----Parallax-------//
 	useEffect(() => {
@@ -117,9 +118,8 @@ const Hero = () => {
 
 		const timer = setTimeout(() => {
 			if (videoRef.current) {
-				videoRef.current.style.transition = `transform ${
-					scrollAnimationDuration / 1000
-				}s, opacity ${scrollAnimationDuration / 1000}s`;
+				videoRef.current.style.transition = `transform ${scrollAnimationDuration / 1000
+					}s, opacity ${scrollAnimationDuration / 1000}s`;
 				videoRef.current.style.transform =
 					"scale(0.75) translateY(-125%)";
 				videoRef.current.style.opacity = "0";
@@ -154,7 +154,7 @@ const Hero = () => {
 	}, []);
 	// hiệu hiển thị sau
 	const [isVisibles, setIsVisibles] = useState(false);
-	const [timer, setTimer] = useState(null); 
+	const [timer, setTimer] = useState(null);
 
 	useEffect(() => {
 		let scrollTop =
@@ -191,6 +191,46 @@ const Hero = () => {
 			}
 		};
 	}, []);
+
+	const [data, setData] = useState(1.5)
+	const handleDataFromView = (data) => {
+		setData(data)
+	}
+	useEffect(() => {
+
+		handleDataFromView
+		// window.addEventListener("resize",handleDataFromView)
+	}, [])
+	// herro
+	useEffect(() => {
+		const tl = gsap.timeline()
+		tl.to(".overley", {
+			delay: 0.5,
+			yPercent: -100,
+			duration: 1,
+			ease: "circ.inOut"
+		})
+			.from(".txt1", {
+				yPercent: 100,
+				duration: 0.5
+			})
+			.from(".txt2", {
+				yPercent: 100,
+				duration: 0.5
+			}, "-=0.5")
+			.from(".txt3", {
+				yPercent: 100,
+				duration: 0.5
+			}, "-=0.5")
+			.from(".btn2", {
+				xPercent: -300,
+				duration: 0.5
+			}, "-=0.5")
+			.from(".btn1", {
+				xPercent: -300,
+				duration: 0.5
+			}, "-=0.5")
+	}, [])
 	return (
 		<div className={`  `}>
 			{/* ---------------Parallax-------- */}
@@ -200,7 +240,7 @@ const Hero = () => {
 						<div className="relative z-50 w-screen h-screen flex justify-center items-start">
 							<video
 								ref={videoRef}
-								className="w-[700px] h-[800px] object-cover"
+								className="w-screen h-screen object-cover"
 								muted
 								autoPlay
 								loop
@@ -224,14 +264,16 @@ const Hero = () => {
 				</div>
 			</section>
 
-			<section className="z-40 relative h-screen w-screen flex justify-center items-center"  >
-          <div
-            style={{ backgroundImage: `url(${bannn})` }}
-            className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
+
+
+			{/* <section className="z-40 relative h-screen w-screen flex justify-center items-center"  >
+				<div
+					style={{ backgroundImage: `url(${bannn})` }}
+					className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover"></div>
-          <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] 
+				<h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] 
             font-syncopate font-bold   w-full z-10  text-white">APP</h1>
-        </section>
+			</section> */}
 		</div>
 	);
 };
