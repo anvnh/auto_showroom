@@ -235,12 +235,6 @@ const Audi_A5_Couple = () => {
   
   return (
     <div className="">
-      <motion.div
-        ref={ref}
-        style={{ x, y }}
-        className=" z-20 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[100px] w-[100px] rounded-[50%] bg-slate-800 "
-      //xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400
-      />
       <div>
         
           <div className="w-full flex bg-primary">
