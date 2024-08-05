@@ -3,20 +3,10 @@ import Navbar from './common/Navbar';
 import UserCart from './cart/UserCart';
 import Footer from '@/components/common/Footer';
 import LinkHeader from './common/LinkHeader';
-import Lenis from '@studio-freight/lenis';
+
 
 const CartLayout = ({ isLogin }) => {
-    useEffect(() => {
-		const lenis = new Lenis();
-		function raf(time) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
-		return () => {
-			lenis.destroy();
-		};
-	}, []);
+
     return (
         <section className="w-full bg-primary">
             <div className="w-full overflow-hidden">
@@ -30,8 +20,8 @@ const CartLayout = ({ isLogin }) => {
 						<LinkHeader isViewProduct={false} isCart={true}/>
 					</div>
 				</div>
-                <div className='items-start md:px-64 bg-primary'>
-                    <div className="items-start justify-center">
+                <div className='items-start  bg-primary'>
+                    <div className="items-center justify-center">
                         <div className="w-full bg-primary">
                             <UserCart />
                         </div>
