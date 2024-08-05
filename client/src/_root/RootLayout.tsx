@@ -1,9 +1,9 @@
-import { Navbar, Hero, Product, Product2, Banner, CarBrand } from "./_homepage";
+import { Navbar, Hero, Product, Product2, Banner, CarBrand, TopBrand, Story, Story2, GallaryAlbum, AboutUs, MarqueText,} from "./_homepage";
 import Footer from "@/components/common/Footer";
 import AOS from "aos";
 import Lenis from "@studio-freight/lenis";
 import "aos/dist/aos.css";
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import ChatAI from "@/api_Chat/ChatAI";
 const RootLayout = () => {
 	useEffect(() => {
@@ -35,6 +35,24 @@ const RootLayout = () => {
 					<div className="w-full">
 						<Hero />
 					</div>
+				</div>
+				<div className="w-full">
+					<AboutUs/>
+				</div>
+				<div className="w-full">
+					<MarqueText/>
+				</div>
+				<div className="w-full">
+					<GallaryAlbum/>
+				</div>	
+				<div className="w-full">
+					<TopBrand/>
+				</div>
+				<div className="w-full">
+					<Story2/>
+				</div>
+				<div className="w-full">
+					<Story/>
 				</div>
 				<div className="bg-primary flex items-start justify-center ">
 					<div className="w-full">
