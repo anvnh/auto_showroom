@@ -15,7 +15,6 @@ export function bubbleText_fromBottomToTop(container, text) {
             trigger: container,
             start: "top 60%",
             end: "bottom bottom",
-            markers: true
         }
     })
     timeline

@@ -604,11 +604,7 @@ const hero_section1 = useRef(null)
   return (
 
     <div className="">
-      <motion.div
-        ref={ref}
-        style={{ x, y }}
-        className=" z-50 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[200px] w-[200px] rounded-[50%] xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400"
-      />
+     
       <div>
         <div className="flex ">
           <div className="w-full bg-primary">
