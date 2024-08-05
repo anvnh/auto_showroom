@@ -20,7 +20,10 @@ const Voucher = () => {
 		<section className="xl:p-4 w-full sm:px-32">
 			<div className="md:block hidden">
 				<div className="flex w-full justify-end px-3">
-					<div data-aos="fade-left" className="text-[16px] flex border border-white justify-between items-center p-2  rounded-xl">
+					<div
+						data-aos="fade-left"
+						className="text-[16px] flex border border-white justify-between items-center p-2  rounded-xl"
+					>
 						<input
 							placeholder="Search"
 							className="ml-2 bg-primary w-[220px] border-none focus:outline-none focus:border-none focus:ring-0"
@@ -42,7 +45,10 @@ const Voucher = () => {
 				<div className="md:col-span-4 pt-12 md:pt-0 ss:px-32 sm:px-0">
 					<div className="md:hidden block">
 						<div className="flex w-full justify-center ss:justify-end md:justify-end mb-3">
-							<div  data-aos="fade-left" className="text-[16px] flex border mb-4 border-white justify-between items-center p-2 rounded-xl">
+							<div
+								data-aos="fade-left"
+								className="text-[16px] flex border mb-4 border-white justify-between items-center p-2 rounded-xl"
+							>
 								<input
 									placeholder="Search"
 									className="ml-2 bg-primary w-[200px] border-none focus:outline-none focus:border-none focus:ring-0"
@@ -54,10 +60,7 @@ const Voucher = () => {
 							</div>
 						</div>
 					</div>
-				
-				
 
-			
 					<div className="text-white p-5 space-y-5 md:block hidden">
 						<div>
 							<Toaster
@@ -65,7 +68,10 @@ const Voucher = () => {
 								reverseOrder={false}
 							/>
 
-							<div data-aos="fade-left" className="flex bg-gray-300 text-black p-4 mb-4 rounded-2xl shadow-md w-full h-[390px]">
+							<div
+								data-aos="fade-left"
+								className="flex bg-gray-300 text-black p-4 mb-4 rounded-2xl shadow-md w-full h-[390px]"
+							>
 								<div className="relative w-2/3 p-1 mr-4 flex items-center">
 									<img
 										src={Voucher15do}
@@ -108,7 +114,10 @@ const Voucher = () => {
 								</div>
 							</div>
 
-							<div data-aos="fade-left" className="flex  bg-gray-300 text-black p-4 mb-4 rounded-2xl shadow-md w-full h-[390px]">
+							<div
+								data-aos="fade-left"
+								className="flex  bg-gray-300 text-black p-4 mb-4 rounded-2xl shadow-md w-full h-[390px]"
+							>
 								<div className="relative w-2/3 p-1 mr-4 flex items-center">
 									<img
 										src={Voucher15do}
@@ -151,7 +160,10 @@ const Voucher = () => {
 								</div>
 							</div>
 
-							<div  data-aos="fade-left" className="flex  bg-gray-300 text-black p-4 mb-4 rounded-2xl shadow-md w-full h-[390px]">
+							<div
+								data-aos="fade-left"
+								className="flex  bg-gray-300 text-black p-4 mb-4 rounded-2xl shadow-md w-full h-[390px]"
+							>
 								<div className="relative w-2/3 p-1 mr-4 flex items-center">
 									<img
 										src={Voucher15do}
@@ -196,8 +208,7 @@ const Voucher = () => {
 						</div>
 					</div>
 				</div>
-				</div>
-			
+			</div>
 		</section>
 	);
 };

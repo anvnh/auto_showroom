@@ -1,13 +1,26 @@
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import calculateAvgRating from "@/utils/calculateAvgRating";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import QuantityCounter from "@/utils/QuantityCounter";
 import { toast, Toaster } from "react-hot-toast";
 import { Link, createSearchParams } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const UserCart = () => {
+	
+	useEffect(() => {
+		AOS.init({
+			duration: 1200,
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-bottom",
+		});
+	}, []);
+
 	const queryClient = useQueryClient();
 
 	const [deletingItems, setDeletingItems] = useState<{
@@ -117,13 +130,15 @@ const UserCart = () => {
 		<section className="pb-24 pt-12 xl:px-0 px-3 text-white">
 			<Toaster position="top-center" reverseOrder={false} />
 
-			<div className="container xl:w-[1500px] pb-12 p-4 bg-gray-600 bg-opacity-30 backdrop-blur-md rounded-3xl">
+			<div className="container xl:w-[1500px] pb-12 p-4 bg-gray-600 bg-opacity-15 backdrop-blur-xl rounded-3xl">
+				<div data-aos="fade-in">
 				<h1 className="text-5xl text-center font-bold mb-8 px-12 pt-12">
 					Your Cart
 				</h1>
 				<h2 className="sm:text-xl text-center ss:text-xl px-12 text-md mb-12">
 					Remember to apply the coupon code if you have one !!!
 				</h2>
+				</div>
 				<Toaster position="top-center" reverseOrder={false} />
 				<div className="pt-0 px-5">
 					{isLoading && isRefetching && <LoadingSpinner />}
@@ -143,8 +158,8 @@ const UserCart = () => {
 									reviews: item.user_review,
 								});
 								return (
-									<section className="mb-4" key={item._id}>
-										<div className="hidden md:block">
+									<section  className="mb-4" key={item._id}>
+										<div  data-aos="fade-right" className="hidden md:block">
 											<div className="flex flex-col md:flex-row space-x-24 text-white text-xl w-full pr-20 justify-end  mb-2">
 												<ul className="li">Price</ul>
 												<ul className="li">Quantity</ul>
@@ -152,7 +167,7 @@ const UserCart = () => {
 											</div>
 										</div>
 
-										<div className="flex flex-col  md:flex-row bg-white p-4 mb-4 rounded-2xl shadow-md h-full hover:bg-opacity-90">
+										<div  data-aos="fade-left" className="flex flex-col  md:flex-row bg-white p-4 mb-4 rounded-2xl shadow-md h-full hover:bg-opacity-90">
 											<div className="relative  flex items-center">
 												<img
 													src={item.images[0]}
@@ -316,6 +331,7 @@ const UserCart = () => {
 							})}
 						</div>
 					)}
+					<div data-aos="fade-down">
 					<div className="flex justify-end pt-10 text-white font-bold text-2xl">
 						Total Price: ${calculateTotalPrice()}
 					</div>
@@ -330,13 +346,14 @@ const UserCart = () => {
 							}}
 						>
 							<div
-								className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[300px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+								className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-md md:text-base rounded-3xl text-center
 						  before:ease relative h-12 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[220px]
 						  "
 							>
 								Proceed to Payment
 							</div>
 						</Link>
+					</div>
 					</div>
 				</div>
 			</div>

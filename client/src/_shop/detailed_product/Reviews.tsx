@@ -200,7 +200,7 @@ const Reviews = () => {
 							</p>
 						</div>
 					) : (
-						<div>
+						<div className="max-h-[600px] min-h-[600px]">
 							{currentReviewed.map((review) => (
 								// TODO: User avatar
 								<div
@@ -244,7 +244,7 @@ const Reviews = () => {
 							className={`mx-1 px-3 py-1 rounded transision-all duration-300 ${
 								currentPage === i + 1
 									? "bg-gray-600 text-white scale-110"
-									: "bg-gray-200 hover:bg-gray-300"
+									: "bg-gray-200 hover:bg-gray-300 text-black"
 							}`}
 						>
 							{i + 1}

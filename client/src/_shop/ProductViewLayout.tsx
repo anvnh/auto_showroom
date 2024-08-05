@@ -9,20 +9,10 @@ import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 
 const ProductViewLayout = () => {
-	useEffect(() => {
-		const lenis = new Lenis();
-		function raf(time) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
-		return () => {
-			lenis.destroy();
-		};
-	}, []);
+
 	return (
 		<section className="w-full bg-primary">
-			<div className="w-full overflow-x-hidden">
+			<div className="w-full overflow-hidden">
 				<div className="items-start justify-center">
 					<div className="w-full bg-primary">
 						<Navbar />

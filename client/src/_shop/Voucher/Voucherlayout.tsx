@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 
 import LinkHeader from '../common/LinkHeader'
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import Navbar from '../common/Navbar'
 import Voucher from './element/Voucher'
 import Lenis from '@studio-freight/lenis'
