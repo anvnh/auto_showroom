@@ -77,7 +77,7 @@ const OverView = () => {
 												</p>
 											</div>
 											<div className="flex ">
-												<IoIosSpeedometer className="w-7 h-auto" />
+												<IoIosSpeedometer className="w-5 h-auto" />
 												<p className="pl-5 relative">
 													{car.top_speed} km/h
 												</p>
@@ -90,7 +90,7 @@ const OverView = () => {
 												</p>
 											</div>
 											<div className="flex ">
-												<TbRosetteDiscountCheckFilled className="w-10 h-auto" />
+												<TbRosetteDiscountCheckFilled className="w-5 h-auto" />
 												<p className="pl-5 relative">
 													Warranting in {car.warranty}
 												</p>

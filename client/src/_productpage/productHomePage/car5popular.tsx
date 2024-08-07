@@ -3,6 +3,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import {
+	news2,
+news3,
+news4,
+news5,
+news6,
+	news1,
 	change1,
 	change2,
 	change3,
@@ -12,16 +18,13 @@ import {
 	change10,
 	change8,
 	change9,
-
 	Videohieuung,
 	inside51,
 	inside52,
 	inside53,
-
 	car53,
 	car54,
 	car55,
-
 	car57,
 	car58,
 	car59,
@@ -310,84 +313,16 @@ const Car5popular: React.FC = () => {
 						>
 							<div
 						id="Color"
-						className="relative overflow-hidden w-full h-[900px] bottom-[360px] ss:-top-[600px] md:top-[1500px]"
+						className="relative  w-full h-[900px] bottom-[360px] ss:-top-[600px] md:top-[1500px]"
 					>
-						{/* Vùng chứa ảnh */}
-						<div className="absolute top-0 left-0 w-full h-full">
-							{imageGroups[activeGroup].map((image, index) => (
-								<img
-									key={index}
-									src={image}
-									alt={`Image ${index + 1}`}
-									className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-500 ${
-										activeImage === index
-											? "opacity-100"
-											: "opacity-0"
-									}`}
-								/>
-							))}
-						
-						</div>
+							<div
+  style={{ backgroundImage: `url(${news4})` }}
+  className="relative w-full h-full bg-center bg-cover"
+>
+  <div className=" inset-0  bg-gradient-to-t from-blue-300 to-transparent   flex h-1/2 opacity-50 top-1/2 bg-opacity-35  relative"></div>
+</div>
 
-						{/* Nút chuyển ảnh */}
-						<div
-							className="z-20 pl-[1610px] absolute md:top-1/2 top-[230px] ss:top-[430px] xs:top-[320px] sm:top-[580px]  transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 "
-							ref={buttonsRef}
-						>
-							{imageGroups[activeGroup].map((__, index) => (
-								<button
-									key={index}
-									onClick={() => {
-										setActiveImage(index);
-									}}
-									className={`md:w-5 md:h-5 ss:w-6 ss:h-6 sm:w-8 sm:h-8 w-4 h-4 rounded-full focus:outline-none hover:scale-150 transition-all duration-200 ease-in-out ${buttonColors2[index]}`}
-								></button>
-							))}
-						</div>
-						
-
-						{/* Nút chuyển nhóm ảnh */}
-						<div className="absolute flex justify-end pr-4 top-52 ss:top-[410px] xs:top-[300px] sm:top-[550px]  md:top-4 md:w-[1850px]  sm:h-[60px] sm:text-4xl text-sm md:text-xl md:h-[40px] h-[40[x]] md:space-x-4 md:gap-0 gap-2">
-							<button
-								onClick={() => {
-									setActiveImage(0);
-									setActiveGroup(0);
-								}}
-								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
-									activeGroup === 0
-										? buttonColors[0]
-										: "bg-gray-900 bg-opacity-50 text-white"
-								}`}
-							>
-								Front
-							</button>
-							<button
-								onClick={() => {
-									setActiveImage(0);
-									setActiveGroup(1);
-								}}
-								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
-									activeGroup === 1
-										? buttonColors[1]
-										: "bg-gray-900 bg-opacity-50 text-white"
-								}`}
-							>
-								Side
-							</button>
-							<button
-								onClick={() => {
-									setActiveImage(0);
-									setActiveGroup(2);
-								}}
-								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
-									activeGroup === 2
-										? buttonColors[1]
-										: "bg-gray-900 bg-opacity-50 text-white"
-								}`}
-							>
-								Behind
-							</button>
-						</div>
+					
 					</div>
 						</ParallaxLayer>
 						<ParallaxLayer
@@ -398,7 +333,7 @@ const Car5popular: React.FC = () => {
 						>
 							<div
 						id="Interiors"
-					className="flex justify-center bottom-[900px] md:-bottom-[990px] bg-black relative z-40"
+					className="flex justify-center bottom-[900px] md:-bottom-[1100px] bg-black relative z-40"
 					>
 								<div className="w-full z-20">
 									<Car5popular2 />
@@ -411,7 +346,7 @@ const Car5popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[3] = ref)}
 						>
-						<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1700px] z-10 relative">
+						<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1800px] z-10 relative">
 					{" "}
 					
 					
@@ -443,29 +378,30 @@ const Car5popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[4] = ref)}
 						>
-						<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[1400px]">
+						<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[800px]">
 								Sophisticated, modern, classy
 							</div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6} speed={1} factor={1}>
 						<div
-						style={{ backgroundImage: `url(${car54})` }}
-						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[1000px]"
+						style={{ backgroundImage: `url(${news2})` }}
+						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[500px]"
 					></div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
 						<div className="justify-end items-end flex">
 						<div
-							style={{ backgroundImage: `url(${car57})` }}
-							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1050px] ss:-top-[300px] sm:-top-[200px] md:-top-[400px]"
+							style={{ backgroundImage: `url(${news3})` }}
+							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1050px] ss:-top-[300px] sm:-top-[200px] md:-top-[0px]"
 						></div>
 					</div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6.4} speed={0.5} factor={1}>
 						<div
-						style={{ backgroundImage: `url(${car55})` }}
-							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[700px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[100px]"
+						style={{ backgroundImage: `url(${news6})` }}
+							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[700px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[600px]"
 							></div>
+
 						</ParallaxLayer>
 						<ParallaxLayer
 							offset={7.4}

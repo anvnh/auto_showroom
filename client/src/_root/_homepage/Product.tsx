@@ -245,11 +245,7 @@ const Product = () => {
 								<p className="text-center">$ 106 500</p>
 							</div>
 							<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
-								Lorem ipsum dolor sit ame secte <br />{" "}
-								adipisicing elit. Cumque facilis <br /> earum,
-								facere deleniti a, um dolor <br /> sit, amet
-								consectetur adg elit <br /> Quisquam eum quasi
-								sequi fuga{" "}
+							The 2024 Audi e-tron GT is a luxury electric <br /> sedan that combines stunning <br /> design with impressive performance. <br /> It features a sleek, aerodynamic exterior, <br /> a high-quality interior with advanced <br /> technology, and a powerful electric <br /> powertrain that delivers up <br /> to 522 horsepower in the RS model. 
 							</div>
 						</div>
 					</div>

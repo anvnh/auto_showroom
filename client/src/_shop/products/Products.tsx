@@ -199,7 +199,7 @@ const Products = () => {
 											>
 												<img
 											src={product.images[0]}
-											className="w-full ss:h-[400px] md:h-[250px] rounded"
+											className="w-full ss:h-[400px] bg-center bg-cover md:h-[250px] rounded"
 										/>
 											</Link>
 										</div>

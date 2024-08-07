@@ -10,94 +10,94 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 import { Car, Bmw, Honda, View } from "@/components/3d";
 const Hero = () => {
-	//----Parallax-------//
-	useEffect(() => {
-		let getRatio = (el) =>
-			window.innerHeight / (window.innerHeight + el.offsetHeight);
-		gsap.utils.toArray("section").forEach((section, i) => {
-			section.bg = section.querySelector(".bg");
-			gsap.fromTo(
-				section.bg,
-				{
-					backgroundPosition: () =>
-						i
-							? `50% ${-window.innerHeight * getRatio(section)}px`
-							: "50% 0px",
-				},
-				{
-					backgroundPosition: () =>
-						`50% ${window.innerHeight * (1 - getRatio(section))}px`,
-					ease: "none",
-					scrollTrigger: {
-						trigger: section,
-						start: () => (i ? "top bottom" : "top top"),
-						end: "bottom top",
-						scrub: true,
-						invalidateOnRefresh: true, // to make it responsive
-					},
-				}
-			);
-		});
+	// //----Parallax-------//
+	// useEffect(() => {
+	// 	let getRatio = (el) =>
+	// 		window.innerHeight / (window.innerHeight + el.offsetHeight);
+	// 	gsap.utils.toArray("section").forEach((section, i) => {
+	// 		section.bg = section.querySelector(".bg");
+	// 		gsap.fromTo(
+	// 			section.bg,
+	// 			{
+	// 				backgroundPosition: () =>
+	// 					i
+	// 						? `50% ${-window.innerHeight * getRatio(section)}px`
+	// 						: "50% 0px",
+	// 			},
+	// 			{
+	// 				backgroundPosition: () =>
+	// 					`50% ${window.innerHeight * (1 - getRatio(section))}px`,
+	// 				ease: "none",
+	// 				scrollTrigger: {
+	// 					trigger: section,
+	// 					start: () => (i ? "top bottom" : "top top"),
+	// 					end: "bottom top",
+	// 					scrub: true,
+	// 					invalidateOnRefresh: true, // to make it responsive
+	// 				},
+	// 			}
+	// 		);
+	// 	});
 
-		return () => {
-			ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-		};
-	}, []);
+	// 	return () => {
+	// 		ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+	// 	};
+	// }, []);
 
-	//text effect
-	const canvasRef = useRef(null);
+	// //text effect
+	// const canvasRef = useRef(null);
 
-	useEffect(() => {
-		const sketch = (p) => {
-			let canvas;
-			const calculateFontSize = () => {
-				const baseFontSize = 32; // Kích thước font cơ bản
-				const scaleFactor = p.windowWidth / 300;
-				return baseFontSize * scaleFactor;
-			};
-			p.setup = () => {
-				canvas = p.createCanvas(p.windowWidth, p.windowHeight);
-				canvas.parent(canvasRef.current);
-				p.textAlign(p.CENTER, p.CENTER);
-				p.textFont("Kanit");
-				p.textSize(calculateFontSize());
-			};
+	// useEffect(() => {
+	// 	const sketch = (p) => {
+	// 		let canvas;
+	// 		const calculateFontSize = () => {
+	// 			const baseFontSize = 32; // Kích thước font cơ bản
+	// 			const scaleFactor = p.windowWidth / 300;
+	// 			return baseFontSize * scaleFactor;
+	// 		};
+	// 		p.setup = () => {
+	// 			canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+	// 			canvas.parent(canvasRef.current);
+	// 			p.textAlign(p.CENTER, p.CENTER);
+	// 			p.textFont("Kanit");
+	// 			p.textSize(calculateFontSize());
+	// 		};
 
-			p.draw = () => {
-				p.noFill(); // Loại bỏ phần tô bên trong của chữ
-				p.stroke("#FFFFFF"); // Thiết lập màu đường viền là màu đen
-				p.strokeWeight(2); // Thiết lập độ dày của đường viền
-				p.text("AAP", p.width / 2, p.height / 2);
-			};
-			p.windowResized = () => {
-				p.resizeCanvas(p.windowWidth, p.windowHeight);
-			};
-		};
-	}, []);
+	// 		p.draw = () => {
+	// 			p.noFill(); // Loại bỏ phần tô bên trong của chữ
+	// 			p.stroke("#FFFFFF"); // Thiết lập màu đường viền là màu đen
+	// 			p.strokeWeight(2); // Thiết lập độ dày của đường viền
+	// 			p.text("AAP", p.width / 2, p.height / 2);
+	// 		};
+	// 		p.windowResized = () => {
+	// 			p.resizeCanvas(p.windowWidth, p.windowHeight);
+	// 		};
+	// 	};
+	// }, []);
 
-	useEffect(() => {
-		const split = document.querySelectorAll(".type");
-		split.forEach((char, i) => {
-			const text = new SplitType(char, { types: "chars" });
-			gsap.from(text.chars, {
-				scrollTrigger: {
-					trigger: char,
-					start: "top 80%",
-					end: "bottom 30%",
-					scrub: 0.2,
-				},
-				opacity: 0.2,
-				stagger: 0.1,
-			});
-		});
-	}, []);
+	// useEffect(() => {
+	// 	const split = document.querySelectorAll(".type");
+	// 	split.forEach((char, i) => {
+	// 		const text = new SplitType(char, { types: "chars" });
+	// 		gsap.from(text.chars, {
+	// 			scrollTrigger: {
+	// 				trigger: char,
+	// 				start: "top 80%",
+	// 				end: "bottom 30%",
+	// 				scrub: 0.2,
+	// 			},
+	// 			opacity: 0.2,
+	// 			stagger: 0.1,
+	// 		});
+	// 	});
+	// }, []);
 
-	gsap.config({
-		autoSleep: 60,
-		force3D: false,
-		nullTargetWarn: false,
-		units: { left: "%", top: "%", rotation: "rad" },
-	});
+	// gsap.config({
+	// 	autoSleep: 60,
+	// 	force3D: false,
+	// 	nullTargetWarn: false,
+	// 	units: { left: "%", top: "%", rotation: "rad" },
+	// });
 
 	// hiệu ứng cho video------------------------------
 	const [selectedP, setSelectedP] = useState("");
@@ -113,7 +113,7 @@ const Hero = () => {
 	const [isVisible, setIsVisible] = useState(true); // State để theo dõi trạng thái hiển thị của video
 	let lastScrollTop = 0;
 	useEffect(() => {
-		const animationDuration = 3700; // Thời gian hiệu ứng ban đầu
+		const animationDuration = 3800; // Thời gian hiệu ứng ban đầu
 		const scrollAnimationDuration = animationDuration / 2; // Thời gian khi cuộn được cuộn
 
 		const timer = setTimeout(() => {
@@ -240,7 +240,7 @@ const Hero = () => {
 						<div className="relative z-50 w-screen h-screen flex justify-center items-start">
 							<video
 								ref={videoRef}
-								className="w-screen h-screen object-cover"
+								className="w-[800px] h-[900px] object-cover"
 								muted
 								autoPlay
 								loop
