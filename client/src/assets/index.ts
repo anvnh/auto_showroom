@@ -157,6 +157,14 @@ import inside51 from "./car_popular/car5popular/inside51.webp";
 import inside52 from "./car_popular/car5popular/inside52.webp";
 import inside53 from "./car_popular/car5popular/inside53.webp";
 import baner51 from "./car_popular/car5popular/baner51.jpg";
+import news1 from "./car_popular/car5popular/news1.jpg"
+import news2 from "./car_popular/car5popular/news2.png"
+import news3 from "./car_popular/car5popular/news3.png"
+import news4 from "./car_popular/car5popular/news4.webp"
+import news5 from "./car_popular/car5popular/news5.webp"
+import news6 from "./car_popular/car5popular/news6.png"
+
+
 
 //car6 popular
 import car61 from "./car_popular/car6popular/61.jpg";
@@ -217,6 +225,12 @@ import bgSocial from "./owner/bgsocial.png";
 
 import Voucher15do from "./voucher/15do.png"
 export {
+	news2,
+news3,
+news4,
+news5,
+news6,
+	news1,
 	Voucher15do,
 	ngoisao,
 	car625,

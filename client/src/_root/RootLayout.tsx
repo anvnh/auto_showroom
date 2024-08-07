@@ -75,7 +75,6 @@ const RootLayout = () => {
 					</div>
 				</div>
 				<div
-					data-aos="fade"
 					className="flex items-start justify-center "
 				>
 					<div className="w-full">

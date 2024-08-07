@@ -155,7 +155,7 @@ const LoginRepon = () => {
 									className="md:w-[300px] sm:w-[200px] w-[100px] h-auto"
 								/>
 							</Link>
-							<h1    data-aos="fade-down" className="text-3xl md:text-8xl text-center font-poppins sm:text-5xl font-bold text-gray-300 shadow-2xl mt-1">
+							<h1    data-aos="fade-down" className="text-3xl md:text-8xl text-center font-poppins sm:text-5xl font-bold text-gray-300 animate-pulse duration-500 transition-all ease-in-out shadow-2xl mt-1">
 								Welcome to Social AAP
 							</h1>
 						</div>
@@ -222,7 +222,9 @@ const LoginRepon = () => {
 										<div className="pt-10 relative flex justify-center">
 											<Button 
 												type="submit"
-											className="w-[300px] ss:w-[400px] h-[50px] p-2 text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500">
+												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-72 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-md
+										before:ease relative h-12 w-full overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-44
+										">
 												C<span className="lowercase">reate Account</span>
 											</Button>
 										</div>
@@ -310,8 +312,9 @@ const LoginRepon = () => {
 										<div className="pt-2 relative flex justify-center">
 											<Button
 												type="submit"
-												className="w-[300px] ss:w-[400px] h-[50px] text-white bg-gray-500 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500"
-											>
+												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-72 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-md
+												before:ease relative h-12 w-full overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-44
+												">
 												S
 												<span className="lowercase">
 													ign In
@@ -321,8 +324,9 @@ const LoginRepon = () => {
 										<div className="relative flex justify-center">
 											<Button
 												type="submit"
-												className="flex ss:w-[400px] items-center justify-center w-[300px] h-[50px] text-white bg-gray-900 hover:bg-gray-700 transition-all ease-in-out rounded-md text-md font-poppins duration-500"
-											>
+												className="flex items-center justify-center w-[300px] h-[50px] text-white bg-gray-900 hover:bg-gray-700 transition-all ease-in-out text-md font-poppins duration-500 md:text-base rounded-xl text-center text-md
+										before:ease relative overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80">
+											
 												<FcGoogle className="mr-2 h-auto w-[25px]" />
 												<div className="flex items-center">
 													<span className="lowercase font-bold">
