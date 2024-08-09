@@ -8,7 +8,7 @@ import Cars from './components/Cars';
 import Blogs from './components/Blogs';
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
-
+import NavbarSmallShop from "./NavbarSmallShop"
 const ShopLayout = () => {
 	useEffect(() => {
 		const lenis = new Lenis();
@@ -29,13 +29,18 @@ const ShopLayout = () => {
 						<Navbar />
 					</div>
 				</div>
+				<div className="items-start justify-center">
+					<div className="w-full bg-primary z-50">
+						<NavbarSmallShop />
+					</div>
+				</div>
 				<div className="items-start justify-center bg-primary">
-					<div className="w-full bg-primary">
+					<div id="Home" className="w-full bg-primary">
 						<Hero />
 					</div>
 				</div>
 				<div className="py-20 bg-white">
-					<div className="w-full bg-white">
+					<div  id="Shop"  className="w-full bg-white">
 						<Products />
 					</div>
 				</div>
@@ -45,16 +50,16 @@ const ShopLayout = () => {
 					</div>
 				</div>
 				<div className="items-start justify-center py-16 bg-primary">
-					<div className="w-full">
+					<div id="Most_Rated_Cars" className="w-full">
 						<Cars />
 					</div>
 				</div>
-				<div className="items-start justify-center pb-16 bg-white">
+				<div  id="Reviews" className="items-start justify-center pb-16 bg-white">
 					<div className="w-full bg-white">
 						<Testimonials />
 					</div>
 				</div>
-				<div className="items-start justify-center py-16 bg-[#F9FBFC]">
+				<div  id="Blogs" className="items-start justify-center py-16 bg-[#F9FBFC]">
 					<div className="w-full bg-[#F9FBFC]">
                         <Blogs />
 					</div>

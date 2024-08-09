@@ -21,16 +21,8 @@ import {
 	banner1,
 } from "../../assets";
 import { Button } from "@/components/ui/button";
-import Lenis from "@studio-freight/lenis";
 
 const Car1popular = () => {
-	//smooth scroll
-	const lenis = new Lenis();
-	function raf(time) {
-		lenis.raf(time);
-		requestAnimationFrame(raf);
-	}
-	requestAnimationFrame(raf);
 	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
 
