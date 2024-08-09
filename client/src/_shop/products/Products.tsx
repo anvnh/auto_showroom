@@ -288,7 +288,7 @@ const Products = () => {
 									className={`mx-1 px-3 py-1 rounded transision-all duration-300 ${
 										currentPage === i + 1
 											? "bg-gray-600 text-white scale-110"
-											: "bg-gray-200 hover:bg-gray-300"
+											: "bg-gray-200 hover:bg-gray-300 text-black"
 									}`}
 								>
 									{i + 1}

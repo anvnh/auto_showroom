@@ -56,7 +56,7 @@ const Testimonials = () => {
 
 					{!isLoading && bestReviewed && (
 						<div data-aos="fade-up" className="py-12">
-							<h1 className="font-bold md:text-2xl pb-3">
+							<h1 className="font-poppins md:text-2xl pb-3">
 								{bestReviewed?.text}
 							</h1>
 							<div className="flex text-green-400">
@@ -90,7 +90,7 @@ const Testimonials = () => {
 						<br />
 						<span>CEO at Audi</span>
 					</p>
-					<p className="pt-5 pr-28">
+					<p className="pt-5 pr-28 font-poppins">
 						"I'm truly impressed by the AAP website. 
 						Its intuitive interface and advanced technology features create a truly unique and convenient car shopping experience. 
 						This perfectly aligns with Audi's relentless pursuit of innovation."
