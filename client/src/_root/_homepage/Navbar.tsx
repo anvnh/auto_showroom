@@ -174,7 +174,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 					>
 						<nav
 							data-aos="fade-up"
-							className="w-full pt-4 h-14 opacity-10 text-white md:px-12.5 z-50 relative backdrop-blur-3xl bg-gray-950 bg-opacity-45 sm:block hidden"
+							className="w-full pt-4 h-14 opacity-10 text-white md:px-12.5 z-50 relative backdrop-blur-3xl  bg-gray-950 bg-opacity-45 sm:block hidden"
 						>
 							<ul className="list-none sm:flex gap-10 justify-center items-center flex-1">
 								<li
@@ -305,7 +305,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 				{isExpanded && selectedSection === "shopping" && (
 					<div
 						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-[450px] ss:h-[900px] rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900 ${
+						className={`z-1 absolute w-screen h-screen rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900 ${
 							isHidden ? "hidden" : ""
 						}`}
 					>
@@ -407,13 +407,13 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 								<FaAngleLeft className="w-6 h-auto" />
 							</button>
 							{currentPage === "vehicles" && (
-								<div data-aos="fade-right">
+								<div data-aos="fade-right" className="z-auto">
 									{" "}
 									<Vehicle />
 								</div>
 							)}
 							{currentPage === "shopping" && (
-								<div data-aos="fade-right">
+								<div data-aos="fade-right" >
 									<ShoppingAssist />
 								</div>
 							)}

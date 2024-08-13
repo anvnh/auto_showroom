@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 const ShoppingAssist = () => {
 	return (
-		<div>
-			<div className="hidden md:block">
+		<div className="">
+			<div className="hidden md:block ">
 				<div>
 					<div className="pt-20 lg:pt-2 h-auto relative justify-start flex">
 						<img

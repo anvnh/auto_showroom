@@ -28,7 +28,7 @@ const RootLayout = () => {
 					</div>
 				</div>
 				<div className="flex items-start justify-center ">
-					<div className="w-full z-50">
+					<div className="w-full z">
 						<NavbarSmallHomePage />
 					</div>
 				</div>
@@ -37,7 +37,7 @@ const RootLayout = () => {
 						<ChatAI />
 					</div>
 				</div>
-				<div id="Home" className="flex items-start z-50 justify-center ">
+				<div id="Home" className="flex items-start justify-center ">
 					<div className="w-full">
 						<Hero />
 					</div>

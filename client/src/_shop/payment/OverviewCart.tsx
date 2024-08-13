@@ -149,32 +149,49 @@ const OverviewCart = () => {
 								});
 								return (
 									<section className="mb-4" key={item._id}>
-										<div className="hidden md:block">
-											<div className="flex flex-col md:flex-row md:space-x-14 text-white text-xl w-full justify-center md:ml-24 mb-2">
-												<ul className="li">Price</ul>
-												<ul className="li">Quantity</ul>
-												<ul className="li">Total</ul>
-											</div>
-										</div>
+									
 
-										<div className="flex flex-col md:flex-row bg-white p-3 mb-4 rounded-2xl shadow-md h-full w-full hover:bg-opacity-90">
+										<div className="flex flex-col md:flex-row bg-white p-3 mb-4 rounded-2xl  shadow-md h-full w-full hover:bg-opacity-90">
 											<div className="relative w-full flex items-center">
 												<img
 													src={item.images[0]}
-													className="w-full h-auto md:h-[150px] rounded"
+													className="w-full h-auto md:h-[200px] bg-cover object-cover bg-center bg- rounded"
 												/>
 											</div>
 
-											<div className="w-full md:w-2/3 text-black">
+											<div className="w-full md:w-1/2 text-black">
 												<div className="hidden md:block">
-													<div className="ml-0 md:ml-16 flex flex-col md:flex-row">
+												<h2 className="text-2xl pl-3 md:pt-0 pt-5 font-bold mb-2 text-black">
+													{item.brand}&nbsp;
+													{item.car_model}
+												</h2>
+
+												<div className="flex pl-3 text-2xl text-yellow-600 cursor-pointer">
+													{"★".repeat(
+														Math.round(
+															averageRating
+														)
+													)}
+													{"☆".repeat(
+														5 -
+															Math.round(
+																averageRating
+															)
+													)}
+												</div>
+
+												<h3 className="line-clamp-2 pl-3 md:px-5 mb-5">
+													{item.bio}
+												</h3>l
+													<div className="ml-0 md:ml-7 flex flex-col md:flex-row">
+														
 														<div className="mb-2 w-full md:w-[100px]">
 															<span className="text-[18px] font-bold text-blue-600">
 																${item.price}
 															</span>
 														</div>
 
-														<div className="ml-0 md:ml-7 mb-2 text-black">
+														<div className="ml-0 md:ml-1 mb-2 text-black">
 															<div className="flex items-center hover:bg-gray-100 hover:bg-opacity-15 rounded-lg overflow-hidden w-full md:w-24">
 																<QuantityCounter
 																	quantity={
@@ -197,7 +214,7 @@ const OverviewCart = () => {
 															</div>
 														</div>
 
-														<div className="ml-0 md:ml-12 mb-2 w-full md:w-[100px]">
+														<div className="ml-0 md:ml-2 mb-2 w-full md:w-[100px]">
 															<span className="text-[18px] font-bold text-blue-600">
 																$
 																{(
@@ -215,29 +232,6 @@ const OverviewCart = () => {
 														</div>
 													</div>
 												</div>
-
-												<h2 className="text-2xl pl-3 md:pt-0 pt-5 font-bold mb-2 text-black">
-													{item.brand}&nbsp;
-													{item.car_model}
-												</h2>
-
-												<div className="flex pl-3 text-2xl text-yellow-600 cursor-pointer">
-													{"★".repeat(
-														Math.round(
-															averageRating
-														)
-													)}
-													{"☆".repeat(
-														5 -
-															Math.round(
-																averageRating
-															)
-													)}
-												</div>
-
-												<h3 className="line-clamp-2 pl-3 md:px-5 mb-5">
-													{item.bio}
-												</h3>
 											</div>
 											<div className="xl:hidden block">
 												<div className="w-full justify-center flex">
