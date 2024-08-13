@@ -80,11 +80,10 @@ const Payment = () => {
 				</div>
 				<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
 					<input
-						data-aos="fade-left"
-						data-aos-delay="100"
 						type="text"
 						name="number"
-						className="form-control bg-gray-100 p-2 rounded-lg"
+						className="form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
+
 						placeholder="Card Number"
 						value={state.number}
 						maxLength={16}
@@ -92,12 +91,13 @@ const Payment = () => {
 						onFocus={handleInputFocus}
 						required
 					/>
+
 					<input
 						data-aos="fade-left"
 						data-aos-delay="200"
 						type="text"
 						name="name"
-						className="form-control bg-gray-100 p-2 rounded-lg"
+					className="form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
 						placeholder="Name on Card"
 						value={state.name}
 						onChange={handleInputChange}
@@ -110,7 +110,7 @@ const Payment = () => {
 							data-aos-delay="300"
 							type="text"
 							name="expiry"
-							className="form-control bg-gray-100 p-2 rounded-lg"
+							className="form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
 							placeholder="Valid Thru (MM/YY)"
 							pattern="\d\d/\d\d"
 							value={state.expiry}
@@ -124,7 +124,7 @@ const Payment = () => {
 							data-aos-delay="400"
 							type="text"
 							name="cvc"
-							className="form-control bg-gray-100 p-2 rounded-lg"
+						className="form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
 							placeholder="CVC"
 							pattern="\d{3,4}"
 							maxLength={3}
@@ -136,7 +136,7 @@ const Payment = () => {
 						<select
 							data-aos="fade-left"
 							data-aos-delay="500"
-							className="select col-span-2 bg-white select-bordered w-full rounded-lg border-gray-300"
+							className=" select col-span-2 form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
 						>
 							{countries.map((country) => (
 								<option
