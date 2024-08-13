@@ -234,7 +234,7 @@ const Hero = () => {
 	return (
 		<div className={`  `}>
 			{/* ---------------Parallax-------- */}
-			<section className="z-40 relative h-screen w-screen flex justify-center items-center">
+			<section className="z-10 relative h-screen w-screen flex justify-center items-center">
 				<div className="bg absolute top-0 left-0 w-screen h-screen -z-10 object-cover bg-center bg-cover flex">
 					{isVisible && (
 						<div className="relative z-50 w-screen h-screen flex justify-center items-start">
