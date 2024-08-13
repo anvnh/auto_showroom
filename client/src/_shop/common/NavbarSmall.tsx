@@ -22,9 +22,9 @@ const NavbarSmall: React.FC<SubNavbarProps> = ({
 
 	const navItems = [
 		{ id: "Home", label: "Home" },
-		{ id: "Introduce", label: "Introduce" },
-		{ id: "Popular_Cars", label: "Popular Cars" },
-		{ id: "Upcoming_Cars", label: "Upcoming Cars" },
+		{ id: "Overview", label: "Overview" },
+		{ id: "Reviews", label: "Reviews" },
+		{ id: "Others_Product", label: "Others Product" },
         { id: "Footer", label: "Footer" },
 	];
 

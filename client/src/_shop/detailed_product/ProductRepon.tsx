@@ -136,7 +136,7 @@ const ProductRepon = () => {
 	return (
 		<section className="mt-12">
 			<div className="block xl:hidden">
-				<Toaster position="top-center" reverseOrder={false} />
+			
 				{/* {isLoading && <LoadingSpinner />} */}
 				{isLoading && <LoadingSpinner />}
 				{!isLoading && !isRefetching && car && (

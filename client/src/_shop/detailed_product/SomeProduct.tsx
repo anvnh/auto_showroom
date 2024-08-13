@@ -7,7 +7,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
-
+import { Link } from "react-router-dom";
 const SomeProduct = () => {
 	const [activeIndex, setActiveIndex] = useState(1); 
 
@@ -92,6 +92,7 @@ const SomeProduct = () => {
 									}}
 								>
 									<div className="w-[680px] h-[580px] bg-white rounded-md p-3">
+							
 										<figure className="hover01 overflow-hidden">
 											<img
 												src={car.images[0]}
@@ -99,6 +100,7 @@ const SomeProduct = () => {
 												className="rounded-xl w-[900px] h-[400px] transform transition-transform duration-300 hover:scale-110"
 											/>
 										</figure>
+
 										<div className="text-black p-3 ">
 											<h1 className="text-black text-3xl text-center font-syncopate font-bold">
 												{car.brand}&nbsp;{car.car_model}
@@ -106,11 +108,15 @@ const SomeProduct = () => {
 											<p className="text-black text-xl text-center font-syncopate font-bold">
 												${car.price}
 											</p>
+											<Link
+												to={`/shop/product/${car._id}`}
+											>
 											<div className="justify-center items-center flex pt-5">
 												<button className="detail-button bg-gray-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-xl text-center relative h-9  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] ">
 													View
 												</button>
 											</div>
+											</Link>
 										</div>
 									</div>
 								</div>
@@ -199,11 +205,15 @@ const SomeProduct = () => {
 											<p className="text-black  ss:text-xl text-sm text-center font-syncopate font-bold">
 												{car.price}
 											</p>
+											<Link
+												to={`/shop/product/${car._id}`}
+											>
 											<div className="justify-center items-center flex pt-5">
 												<button className="detail-button bg-gray-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-xl text-center relative h-9  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black font-poppins hover:before:-translate-x-[210px] ">
 													View
 												</button>
 											</div>
+											</Link>
 										</div>
 									</div>
 								</div>
