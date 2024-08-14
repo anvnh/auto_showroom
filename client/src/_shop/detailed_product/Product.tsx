@@ -137,12 +137,13 @@ const Product = () => {
 
 	return (
 		<section className="pb-44">
+					<Toaster position="top-center" reverseOrder={false} />
 			<div className="hidden xl:block">
-				<Toaster position="top-center" reverseOrder={false} />
 				{/* {isLoading && <LoadingSpinner />} */}
 				{isLoading && <LoadingSpinner />}
 				{!isLoading && !isRefetching && car && (
 					<div>
+						
 						<div className="flex text-white text-center z-10 pt-5 text-5xl font-syncopate font-bold justify-center">
 							<h1>{car.brand}</h1>
 							<h1>&nbsp;{car.car_model}</h1>

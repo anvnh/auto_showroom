@@ -7,6 +7,7 @@ import LinkHeader from "./common/LinkHeader";
 import Reviews from "./detailed_product/Reviews";
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
+import NavbarSmall from "./common/NavbarSmall";
 
 const ProductViewLayout = () => {
 
@@ -18,38 +19,42 @@ const ProductViewLayout = () => {
 						<Navbar />
 					</div>
 				</div>
-
+				<div className="items-start justify-center">
+					<div className="w-full bg-primary">
+						<NavbarSmall />
+					</div>
+				</div>
 				<div className="items-start justify-center pt-28 ">
 					<div className="w-full bg-primary">
 						<LinkHeader isViewProduct={true} isCart={false}/>
 					</div>
 				</div>
 
-				<div className="items-start justify-center">
+				<div id="Home" className="items-start justify-center">
 					<div className="w-full bg-primary">
 						<Product />
 					</div>
 				</div>
 
-				<div className="items-start  justify-center">
+				<div id="Overview" className="items-start  justify-center">
 					<div className="w-full bg-primary">
 						<OverView />
 					</div>
 				</div>
 
-				<div className="items-start justify-center">
+				<div  id="Reviews" className="items-start justify-center">
 					<div className="w-full bg-primary">
 						<Reviews />
 					</div>
 				</div>
 
-				<div className="items-start justify-center ">
+				<div id="Others_Product" className="items-start justify-center ">
 					<div className="w-full bg-primary">
 						<SomeProduct />
 					</div>
 				</div>
 
-				<div className="items-start justify-center">
+				<div id="Footer" className="items-start justify-center">
 					<div className="w-full bg-primary">
 						<Footer />
 					</div>

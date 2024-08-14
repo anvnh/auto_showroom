@@ -146,7 +146,6 @@ const UserCart = () => {
 						Remember to apply the coupon code if you have one !!!
 					</h2>
 				</div>
-				<Toaster position="top-center" reverseOrder={false} />
 				<div className="pt-0 px-5">
 					{isLoading && isRefetching && <LoadingSpinner />}
 					{!isLoading &&
@@ -166,46 +165,52 @@ const UserCart = () => {
 								});
 								return (
 									<section className="mb-4" key={item._id}>
-									<div
-    data-aos="fade-left"
-    className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 shadow-2xl shadow-black p-7 mb-7 rounded-2xl h-full hover:bg-gradient-to-r hover:from-gray-100 hover:to-white duration-500 transition-all ease-in-out"
->
+										<div
+											data-aos="fade-left"
+											className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 shadow-2xl shadow-black p-7 mb-7 rounded-2xl h-full hover:bg-gradient-to-r hover:from-gray-100 hover:to-white duration-500 transition-all ease-in-out"
+										>
 											<div className="relative  flex items-center">
-												<img
-													src={item.images[0]}
-													className="xl:w-[700px] shadow-xl shadow-black w-full h-full xl:h-[280px] rounded"
-												/>
+												<Link
+													to={`/shop/product/${item._id}`}
+												>
+													<img
+														src={item.images[0]}
+														className="xl:w-[700px] shadow-xl shadow-black w-full h-full xl:h-[280px] rounded"
+													/>
+												</Link>
 											</div>
 
-											<div className="w-full text-black ">
+											<div className="w-full text-black pt-5 md:pt-0">
 												<div className="flex">
 													<h2 className="md:text-2xl w-full text-xl  pl-4 md:pt-0 pt-5 font-bold text-black">
 														{item.brand}&nbsp;
 														{item.car_model}
 													</h2>
-													<div className="flex w-full justify-end">
-														<div
-															className="flex  items-center justify-end w-[40px] h-[40px] rounded-full hover:bg-opacity-70 cursor-pointer bg-white p-3 shadow-md shadow-black text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
+													<div className="hidden md:block ">
+														<div className="flex w-full justify-end">
+															<div
+																className="flex  items-center justify-end w-[40px] h-[40px] rounded-full hover:bg-opacity-70 cursor-pointer bg-white p-3 shadow-md shadow-black text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
 						  before:ease relative overflow-hidden border-gray-600 border  before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-red-500 before:opacity-50 before:duration-700 hover:shadow-red-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[39px]"
-															title="Remove from cart"
-														>
-															{deletingItems[
-																item._id
-															] && (
-																<LoadingSpinner />
-															)}
-															{!deletingItems[
-																item._id
-															] && (
-																<MdDelete
-																	className="text-red-600 text-xl scale-125"
-																	onClick={() =>
-																		handleDelete(
-																			item._id
-																		)
-																	}
-																/>
-															)}
+																title="Remove from cart"
+															>
+																{deletingItems[
+																	item._id
+																] && (
+																	<LoadingSpinner />
+																)}
+																{!deletingItems[
+																	item._id
+																] && (
+																	<MdDelete
+																		className="text-red-600 text-xl scale-125"
+																		onClick={() =>
+																			handleDelete(
+																				item._id
+																			)
+																		}
+																	/>
+																)}
+															</div>
 														</div>
 													</div>
 												</div>
@@ -224,7 +229,7 @@ const UserCart = () => {
 													)}
 												</div>
 
-												<h3 className="line-clamp-3  md:px-5 mr-24 md:text-[18px] mb-5">
+												<h3 className="line-clamp-3 w-full ml-4 md:ml-0 md:px-5 md:mr-24 md:text-[18px] mb-5">
 													{item.bio}
 												</h3>
 												<div className="hidden md:block">
@@ -245,45 +250,45 @@ const UserCart = () => {
 														</span>
 													</div>
 												</div>
-												<div className="mt-14 items-end w-full justify-end flex text-black gap-7">
-													<div className="flex items-center hover:bg-gray-100 hover:bg-opacity-15 rounded-lg overflow-hidden w-full md:w-24 top-[7px] scale-110 relative">
-														<QuantityCounter
-															quantity={
-																quantities[
-																	item._id
-																] || 1
-															}
-															onIncrease={() =>
-																increaseQuantity(
-																	item
-																)
-															}
-															onDecrease={() =>
-																decreaseQuantity(
-																	item
-																)
-															}
-														/>
-													</div>
-
-													<div
-														className="w-[36px] h-[36px] cursor-pointer rounded-full bg-white shadow-md shadow-black flex items-center justify-center   text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
+												<div className="md:block hidden">
+													<div className="xl:mt-14 md:mt-52 items-end w-full justify-end  flex text-black gap-7">
+														<div className="flex items-center hover:bg-gray-100 hover:bg-opacity-15 rounded-lg overflow-hidden w-full md:w-24 top-[7px] scale-110 relative">
+															<QuantityCounter
+																quantity={
+																	quantities[
+																		item._id
+																	] || 1
+																}
+																onIncrease={() =>
+																	increaseQuantity(
+																		item
+																	)
+																}
+																onDecrease={() =>
+																	decreaseQuantity(
+																		item
+																	)
+																}
+															/>
+														</div>
+														<div
+															className="w-[36px] h-[36px] cursor-pointer rounded-full bg-white shadow-md shadow-black flex items-center justify-center   text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
 						  before:ease relative overflow-hidden border-gray-600 border  before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-green-500 before:opacity-50 before:duration-700 hover:shadow-green-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[39px]"
-														onClick={() =>
-															handleClick(
+															onClick={() =>
+																handleClick(
+																	item._id
+																)
+															}
+														>
+															{checkedItems[
 																item._id
-															)
-														}
-													>
-														{checkedItems[
-															item._id
-														] && (
-															<MdCheck className="text-green-500 rounded-full w-full h-full text-4xl font-bold" />
-														)}
+															] && (
+																<MdCheck className="text-green-500 rounded-full w-full h-full text-4xl font-bold" />
+															)}
+														</div>
 													</div>
 												</div>
 											</div>
-
 											<div className="xl:hidden block">
 												<div className="w-full justify-center flex">
 													<hr className=" border-black w-1/2 border-1" />
@@ -292,13 +297,6 @@ const UserCart = () => {
 
 											<div className="block md:hidden">
 												<div className="ml-3 mt-4 md:ml-12 ">
-													<div className="mb-2 w-full text-black md:w-[100px]">
-														Price:
-														<span className="text-[18px] ml-20 font-bold text-blue-600">
-															${item.price}
-														</span>
-													</div>
-
 													<div className="ml-0 md:ml-7 mb-2 text-black">
 														<div className="flex items-center hover:bg-gray-100 hover:bg-opacity-15 rounded-lg overflow-hidden w-full md:w-24">
 															<div className="pr-12">
@@ -341,6 +339,47 @@ const UserCart = () => {
 															).toLocaleString()}
 														</span>
 													</div>
+												</div>
+												<div className="w-full justify-end flex gap-4">
+												<div
+																className="flex  items-center justify-end w-[40px] h-[40px] rounded-full hover:bg-opacity-70 cursor-pointer bg-white p-3 shadow-md shadow-black text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
+						  before:ease relative overflow-hidden border-gray-600 border  before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-red-500 before:opacity-50 before:duration-700 hover:shadow-red-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[39px]"
+																title="Remove from cart"
+															>
+																{deletingItems[
+																	item._id
+																] && (
+																	<LoadingSpinner />
+																)}
+																{!deletingItems[
+																	item._id
+																] && (
+																	<MdDelete
+																		className="text-red-600 text-xl scale-125"
+																		onClick={() =>
+																			handleDelete(
+																				item._id
+																			)
+																		}
+																	/>
+																)}
+															</div>
+													<div
+														className="w-[40px] h-[40px] cursor-pointer rounded-full bg-white shadow-md shadow-black text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
+						  before:ease relative overflow-hidden border-gray-600 border  before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-green-500 before:opacity-50 before:duration-700 hover:shadow-green-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[39px]"
+														onClick={() =>
+															handleClick(
+																item._id
+															)
+														}
+													>
+														{checkedItems[
+															item._id
+														] && (
+															<MdCheck className="text-green-500 rounded-full w-full h-full text-4xl font-bold" />
+														)}
+													</div>
+													
 												</div>
 											</div>
 										</div>

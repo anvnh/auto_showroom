@@ -115,6 +115,10 @@ const App = () => {
                     <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login"/>} />
 
                     <Route path="/shop/payment" element={ authUser ? <PaymentLayout/> : <Navigate to="/login" /> } />
+                  
+
+
+                    
                     <Route path="/voucher" element={<Voucherlayout />} />
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}

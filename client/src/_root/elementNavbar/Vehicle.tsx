@@ -15,6 +15,7 @@ import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import {
+	logoroi,
 	logomer,
 	logoaudi,
 	carnb1,
@@ -113,7 +114,7 @@ const Vehicle = () => {
 													className="h-3 w-5"
 												/>
 											</ListItemPrefix>
-											Mercedes AMG CLS
+											AMG CLS
 										</ListItem>
 										<ListItem
 											onClick={() =>
@@ -128,7 +129,7 @@ const Vehicle = () => {
 													className="h-3 w-5"
 												/>
 											</ListItemPrefix>
-											Mercedes Benz Maybach 2022
+											Benz Maybach 2022
 										</ListItem>
 									</List>
 								</AccordionBody>
@@ -176,7 +177,7 @@ const Vehicle = () => {
 													className="h-3 w-5"
 												/>
 											</ListItemPrefix>
-											Audi A5 Coupe
+											A5 Coupe
 										</ListItem>
 										<ListItem
 											onClick={() =>
@@ -191,7 +192,72 @@ const Vehicle = () => {
 													className="h-3 w-5"
 												/>
 											</ListItemPrefix>
-											Audi S6 Limousine
+											S6 Limousine
+										</ListItem>
+									</List>
+								</AccordionBody>
+							</Accordion>
+							<Accordion
+								open={open === 3}
+								icon={
+									<ChevronDownIcon
+										strokeWidth={2.5}
+										className={`mx-auto h-4 w-4 transition-transform ${
+											open === 1 ? "rotate-180" : ""
+										}`}
+									/>
+								}
+							>
+								<ListItem className="p-0" selected={open === 3}>
+									<AccordionHeader
+										onClick={() => handleOpen(3)}
+										className="border-b-0 p-3"
+									>
+										<Typography
+											color="blue-white"
+											className="mr-auto text-xl font-syncopate uppercase"
+										>
+											rolls-royce
+										</Typography>
+										<div className="logo_Car w-[90px] h-auto ">
+											<img
+												src={logoroi}
+												alt="Mercedes Logo"
+											/>
+										</div>
+									</AccordionHeader>
+								</ListItem>
+								<AccordionBody className="py-1">
+									<List className="p-0 text-white">
+										<ListItem
+											onClick={() =>
+												handleCarClick(
+													"Mercedes AMG CLS"
+												)
+											}
+										>
+											<ListItemPrefix>
+												<ChevronRightIcon
+													strokeWidth={3}
+													className="h-3 w-5"
+												/>
+											</ListItemPrefix>
+											Ghost 2021
+										</ListItem>
+										<ListItem
+											onClick={() =>
+												handleCarClick(
+													"Mercedes Benz Maybach 2022"
+												)
+											}
+										>
+											<ListItemPrefix>
+												<ChevronRightIcon
+													strokeWidth={3}
+													className="h-3 w-5"
+												/>
+											</ListItemPrefix>
+										Phantom Extended series II
 										</ListItem>
 									</List>
 								</AccordionBody>
@@ -279,7 +345,7 @@ const Vehicle = () => {
 											className="justify-end pr-24 items-center flex"
 										>
 											<Link to="/Mercedes-Benz-Maybach-2022">
-											<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+												<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
 													View
 												</Button>
 											</Link>
@@ -303,7 +369,7 @@ const Vehicle = () => {
 										<hr data-aos="slide-right" />
 										<div
 											data-aos="slide-left"
-											className=" absolute  justify-center items-center h-[250px] flex xl: top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
+											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
 										></div>
 										<div className="logo_Car xl:w-[1000px] lg:w-[550px] lg:ml-[100px] scale-150 pt-20 h-auto xl: xl:ml-[300px]">
 											<img
@@ -320,7 +386,7 @@ const Vehicle = () => {
 											className="justify-end pr-24 items-center flex"
 										>
 											<Link to="/audi-A5-Couple">
-											<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+												<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
 													View
 												</Button>
 											</Link>
@@ -350,7 +416,7 @@ const Vehicle = () => {
 											<img
 												data-aos="slide-left"
 												data-aos-delay="1000"
-												className="w-[740px] w-screen"
+
 												src={carnb5}
 											/>
 										</div>
@@ -361,7 +427,7 @@ const Vehicle = () => {
 											className="justify-end pr-24 items-center flex"
 										>
 											<Link to="/audi-A5-Couple">
-											<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+												<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
 													View
 												</Button>
 											</Link>
@@ -534,9 +600,9 @@ const Vehicle = () => {
 									className="pt-5"
 								>
 									<Link to="/Mercedes-AMG-CLS">
-									<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
-													View
-												</Button>
+										<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											View
+										</Button>
 									</Link>
 								</div>
 							</div>
@@ -571,9 +637,9 @@ const Vehicle = () => {
 									className="items-center flex pt-5 "
 								>
 									<Link to="/Mercedes-Benz-Maybach-2022">
-									<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
-													View
-												</Button>
+										<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											View
+										</Button>
 									</Link>
 								</div>
 							</div>
@@ -608,9 +674,9 @@ const Vehicle = () => {
 									className="flex pt-5 "
 								>
 									<Link to="/audi-A5-Couple">
-									<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
-													View
-												</Button>
+										<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											View
+										</Button>
 									</Link>
 								</div>
 							</div>
@@ -645,9 +711,9 @@ const Vehicle = () => {
 									className="flex pt-5 "
 								>
 									<Link to="/audi-A5-Couple">
-									<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
-													View
-												</Button>
+										<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											View
+										</Button>
 									</Link>
 								</div>
 							</div>
