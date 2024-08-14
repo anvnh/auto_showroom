@@ -21,10 +21,7 @@ const Cars = () => {
 			anchorPlacement: "top-center",
 		});
 	}, []);
-    const [currentPage, setCurrentPage] = useState(1);
 	const [loadingProductId, setLoadingProductId] = useState(null);
-    const productsPerPage = 4;
-    const navigate = useNavigate();
 
 	const {mutate: addToCart, isPending,} = useMutation({
 		mutationFn: async (productId) => {
@@ -52,9 +49,10 @@ const Cars = () => {
 		},
 		onError: (error) => {
 			// TODO
-			toast.error("Item already in cart", {
-				duration: 2000,
-			});
+			// toast.error("Item already in cart", {
+			// 	duration: 2000,
+			// });
+            toast.error(error.message);
 
 			setTimeout(() => { setLoadingProductId (null) });
 		}
@@ -66,10 +64,8 @@ const Cars = () => {
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {
-				const response = await fetch("/api/car/all");
+				const response = await fetch("/api/car/find/mostRated");
 				const data = await response.json();
-
-				// console.log(data);
 
 				if (!response.ok) {
 					throw new Error(data.message || "Something went wrong!");
@@ -87,23 +83,13 @@ const Cars = () => {
 		addToCart(productId);
 	}
 
-	// calculate
-	const indexOfLastProduct = currentPage * productsPerPage;
-	const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-	const currentProducts = products
-		? products.slice(indexOfFirstProduct, indexOfLastProduct)
-		: [];
-	const totalPages = products
-		? Math.ceil(products.length / productsPerPage)
-		: 0;
-
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 	return (
 		<section>
 			<Toaster position="top-center" reverseOrder={false} />
 			<div className="font-bold md:text-5xl text-3xl md:pl-48 pl-12 w-full flex pb-12 text-white">
-				<div data-aos="fade-up" className="">Most rated cars</div>
+				<div data-aos="fade-up" className="">
+                    Most rated cars
+                </div>
 			</div>
 			<div data-aos="fade-left" className="text-[18px] hover:text-blue-500 pb-4 duration-200 transition-all ease-in-out font-normal flex items-center justify-end pr-12 md:pr-56 hover:underline ss:pr-16 sm:pr-32 lg:pr-20 xl:pr-48">
 				<Link to="/shop/product">View All</Link>
@@ -119,8 +105,8 @@ const Cars = () => {
 					)}
 					{!isLoading &&
 						!isRefetching &&
-						currentProducts &&
-						currentProducts.map((product) => (
+						products &&
+						products.map((product) => (
 							<div
 							data-aos="fade-left"
 								key={product._id}
@@ -184,22 +170,6 @@ const Cars = () => {
 							</div>
 						))}
 				</div>
-			</div>
-			{/* Pagination */}
-			<div data-aos="fade-up" className="flex justify-center mt-8">
-				{Array.from({ length: totalPages }, (_, i) => (
-					<button
-						key={i}
-						onClick={() => paginate(i + 1)}
-						className={`mx-1 px-3 py-1 rounded transision-all duration-300 ${
-							currentPage === i + 1
-								? "bg-gray-600 text-white scale-110"
-								: "bg-gray-200 hover:bg-gray-300"
-						}`}
-					>
-						{i + 1}
-					</button>
-				))}
 			</div>
 		</section>
 	);

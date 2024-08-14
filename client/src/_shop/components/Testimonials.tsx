@@ -55,8 +55,8 @@ const Testimonials = () => {
 					</div>
 
 					{!isLoading && bestReviewed && (
-						<div data-aos="fade-up" className="py-12">
-							<h1 className="font-poppins md:text-2xl pb-3">
+						<div data-aos="fade-up" className="py-6">
+							<h1 className="md:text-xl line-clamp-3 overflow-hidden">
 								{bestReviewed?.text}
 							</h1>
 							<div className="flex text-green-400">
@@ -66,7 +66,7 @@ const Testimonials = () => {
 									<IoIosStar key={index} className="" />
 								))}
 							</div>
-							<div className="pt-3 md:text-xl">
+							<div className="pt-4 md:text-xl">
 								{countReview && (
 									<p>Based on {countReview.count} reviews</p>
 								)}
