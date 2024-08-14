@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import { car51, r3, new3 } from "../../assets";
+import { car51, r3, new3, moi1, moi2 } from "../../assets";
 
 const car5popular2 = () => {
 	useEffect(() => {
@@ -48,11 +48,11 @@ const car5popular2 = () => {
 				<div className="relative hidden lg:flex  w-screen h-screen">
 					<div className="h-screen w-1/2">
 						<img
-							src={car51}
+							src={moi1}
 							className="lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover"
 						/>
 					</div>
-					<div className="z-20 h-screen w-1/2 flex justify-center items-center bg-slate-800 text-white">
+					<div className="z-20 h-screen w-1/2 flex justify-center items-center bg-gray-900 text-white">
 						<div className="w-[700px] h-[500px] flex justify-center items-center flex-col  border-purple-500 border-2">
 							<h1 className="font-syncopate text-center text-[55px] font-medium uppercase">
 								Interiors
@@ -81,7 +81,7 @@ const car5popular2 = () => {
 					</div>
 					<div className="h-screen w-1/2 bg-yellow-200">
 						<img
-							src={new3}
+							src={moi2}
 							className="h-screen w-screen object-cover"
 						/>
 					</div>
@@ -91,7 +91,7 @@ const car5popular2 = () => {
 					<div className="w-screen h-full">
 						<img
 							data-aos="fade"
-							src={car51}
+							src={moi1}
 							className="w-screen h-full object-cover"
 						/>
 					</div>
@@ -115,7 +115,7 @@ const car5popular2 = () => {
 				<div className="z-50 w-screen h-full flex lg:hidden flex-col ">
 					<div className="w-screen h-[600px]">
 						<img
-							src={new3}
+							src={moi2}
 							className="w-full h-full object-cover"
 						/>
 					</div>
