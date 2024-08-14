@@ -29,7 +29,7 @@ import ConfirmationLayout from './_auth/ConfirmationLayout';
 import TokenConfirmation from './_auth/TokenConfirmation';
 import PaymentLayout from './_shop/PaymentLayout';
 import NotAuthenticated from './_auth/NotAuthenticated';
-import Voucherlayout from './_shop/Voucher/Voucherlayout';
+import Voucherlayout from './_shop/voucher/VoucherLayout';
 
 const App = () => {
     const location = useLocation();

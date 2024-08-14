@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useState } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaTrash } from "react-icons/fa";
 import toast from "react-hot-toast";
 import StarRating from "./StarRating";
 import { formatPostDate } from "@/utils/date";
@@ -187,7 +187,7 @@ const Reviews = () => {
 									/>
 									<FaStar
 										size={29}
-										color={"#131313"} 
+										color={"#131313"}
 										className="cursor-not-allowed"
 									/>
 								</label>
@@ -212,13 +212,11 @@ const Reviews = () => {
 					)}
 					<div className="w-full justify-end items-end flex mt-12">
 						{authUser ? (
-							<button 
-								className="detail-button bg-gray-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-xl text-center relative h-9  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] mb-12"
-							>
+							<button className="detail-button bg-gray-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-xl text-center relative h-9  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] mb-12">
 								{isReviewing ? <LoadingSpinner /> : "Review"}
 							</button>
 						) : (
-							<button 
+							<button
 								className="detail-button cursor-not-allowed bg-red-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex font-bold text-sm md:text-base rounded-xl text-center relative h-9 overflow-hidden border-gray-600 border shadow-2xl mb-12"
 								disabled
 							>
@@ -246,6 +244,7 @@ const Reviews = () => {
 								>
 									<Link
 										to={`/social/profile/${review.user.username}`}
+										className="flex justify-start items-center space-x-3"
 									>
 										<div className="flex justify-start items-center space-x-3">
 											<img
@@ -266,8 +265,18 @@ const Reviews = () => {
 											</div>
 										</div>
 									</Link>
-									<StarRating rating={review.rating} />{" "}
-									<p>{review.text}</p>{" "}
+									<StarRating rating={review.rating} />
+									<div className="w-full flex justify-between">
+										<p className="max-w-[1400px]">
+											{review.text}
+										</p>
+										{authUser && authUser._id === review.user._id && (
+											<FaTrash
+												className="cursor-pointer hover:text-red-500" 
+												onClick={() => {console.log(review._id)}}
+											/>
+										)}
+									</div>
 								</div>
 							))}
 						</div>
