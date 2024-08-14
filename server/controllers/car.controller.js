@@ -236,6 +236,18 @@ export const getSuggestedCars = async (req, res) => {
     }
 };
 
+export const getMinMax = async (req, res) => {
+    try {
+        const cars = await Car.find();
+        const minPrice = cars.reduce((min, car) => Math.min(min, Number(car.price.replace( /,/g, ""))), Number(cars[0].price.replace( /,/g, "")));
+        const maxPrice = cars.reduce((max, car) => Math.max(max, Number(car.price.replace( /,/g, ""))), Number(cars[0].price.replace( /,/g, "")));
+        res.status(200).json({ minPrice, maxPrice });
+    } catch (error) {
+        console.log("Error in getMinMax controller", error.message);
+        res.status(500).json({ error: "Something went wrong" });
+    }
+};
+
 export const findCar = async (req, res) => {
     try {
         const searchTerm = req.query.search.toLowerCase(); 
@@ -313,3 +325,17 @@ export const getPhobertPrediction = async (req, res) => {
         res.status(500).json({ error: "Internal server error. Please try again later!" });
     }
 }
+
+export const getMostRatedCar = async (req, res) => {
+    try {
+        const cars = await Car.find();
+        // get 8 cars with highest overall rating
+        const mostRatedCar = cars
+            .sort((a, b) => b.overall_rating - a.overall_rating)
+            .slice(0, 8);
+        res.status(200).json(mostRatedCar);
+    } catch (error) {
+        console.log("Error in getMostRatedCar controller", error.message);
+        res.status(500).json({ error: "Something went wrong" });
+    }
+};

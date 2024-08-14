@@ -212,6 +212,13 @@ const UserCart = () => {
 																)}
 															</div>
 														</div>
+														<div className=" mb-2 w-full md:w-[100px]">
+															<span className="text-[18px] font-bold text-blue-600">
+																$
+																{( Number( item.price.replace( /,/g, "")) * (quantities[ item._id ] || 1)
+																).toLocaleString()}
+															</span>
+														</div>
 													</div>
 												</div>
 
