@@ -4,11 +4,10 @@ import "aos/dist/aos.css";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import {
 	news2,
-news3,
-news4,
-news5,
-news6,
-	news1,
+	news3,
+	news4,
+	videohieuung2,
+	news6,
 	change1,
 	change2,
 	change3,
@@ -23,14 +22,10 @@ news6,
 	inside52,
 	inside53,
 	car53,
-	car54,
-	car55,
-	car57,
 	car58,
 	car59,
 	car592,
 	car510,
-
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import Car5popular2 from "./car5popular2";
@@ -100,7 +95,7 @@ const Car5popular: React.FC = () => {
 		}
 	}, [activeImage, activeGroup]);
 
-	const parallaxRef = useRef(null); 
+	const parallaxRef = useRef(null);
 	const parallaxLayerRefs = useRef([]);
 
 	const footerRef = useRef<HTMLElement>(null); // Ref cho phần tử footer
@@ -121,7 +116,7 @@ const Car5popular: React.FC = () => {
 		return () => {
 			window.removeEventListener("resize", updateFooterPosition);
 		};
-	}, []); 
+	}, []);
 	return (
 		<div>
 			<div className="hidden xl:block">
@@ -168,9 +163,7 @@ const Car5popular: React.FC = () => {
 								loop
 								playsInline
 								className="w-full h-auto object-cover top-16 relative"
-							>
-								
-							</video>
+							></video>
 						</ParallaxLayer>
 
 						<ParallaxLayer offset={0} speed={4.5} factor={1}>
@@ -312,18 +305,25 @@ const Car5popular: React.FC = () => {
 							factor={1}
 						>
 							<div
-						id="Color"
-						className="relative  w-full h-[900px] bottom-[360px] ss:-top-[600px] md:top-[1500px]"
-					>
-							<div
-  style={{ backgroundImage: `url(${news4})` }}
-  className="relative w-full h-full bg-center bg-cover"
->
-  <div className=" inset-0  bg-gradient-to-t from-blue-300 to-transparent   flex h-1/2 opacity-50 top-1/2 bg-opacity-35  relative"></div>
-</div>
-
-					
-					</div>
+								id="Color"
+								className="relative w-full h-[900px] bottom-[360px] ss:-top-[600px] md:top-[1500px]"
+							>
+								<div
+									style={{ backgroundImage: `url(${news4})` }}
+									className="relative w-full h-full bg-center bg-cover"
+								>
+									<div className="absolute inset-0 z-10 flex justify-center items-center">
+										<video
+											src={videohieuung2}
+											autoPlay
+											loop
+											muted
+											className="w-full h-full object-cover opacity-30 bg-gradient-to-t from-blue-300 to-transparent"
+										/>
+									</div>
+								
+								</div>
+							</div>
 						</ParallaxLayer>
 						<ParallaxLayer
 							offset={3}
@@ -332,9 +332,9 @@ const Car5popular: React.FC = () => {
 							ref={(ref) => (parallaxLayerRefs.current[3] = ref)}
 						>
 							<div
-						id="Interiors"
-					className="flex justify-center bottom-[900px] md:-bottom-[1100px] bg-black relative z-40"
-					>
+								id="Interiors"
+								className="flex justify-center bottom-[900px] md:-bottom-[1100px] bg-black relative z-40"
+							>
 								<div className="w-full z-20">
 									<Car5popular2 />
 								</div>
@@ -346,62 +346,54 @@ const Car5popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[3] = ref)}
 						>
-						<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1800px] z-10 relative">
-					{" "}
-					
-					
-					
-						<iframe
-						className="z-20 w-full md:h-[550px] h-[300px] scale-150 "
-						
-							frameborder="0"
-							allowfullscreen
-							mozallowfullscreen="true"
-							webkitallowfullscreen="true"
-							allow="autoplay; fullscreen; xr-spatial-tracking"
-							xr-spatial-tracking
-							execution-while-out-of-viewport
-							execution-while-not-rendered
-							web-share
-							src="https://sketchfab.com/models/1923bdcbc32f442e97dd49201aa2c928/embed?autospin=1&autostart=1&preload=1&ui_theme=dark"
-						>
-							{" "}
-						</iframe>{" "}
-						
-					
-		
-				</div>
-				</ParallaxLayer>
+							<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1800px] z-10 relative">
+								{" "}
+								<iframe
+									className="z-20 w-full md:h-[550px] h-[300px] scale-150 "
+									frameborder="0"
+									allowfullscreen
+									mozallowfullscreen="true"
+									webkitallowfullscreen="true"
+									allow="autoplay; fullscreen; xr-spatial-tracking"
+									xr-spatial-tracking
+									execution-while-out-of-viewport
+									execution-while-not-rendered
+									web-share
+									src="https://sketchfab.com/models/1923bdcbc32f442e97dd49201aa2c928/embed?autospin=1&autostart=1&preload=1&ui_theme=dark"
+								>
+									{" "}
+								</iframe>{" "}
+							</div>
+						</ParallaxLayer>
 						<ParallaxLayer
 							offset={6}
 							speed={1.2}
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[4] = ref)}
 						>
-						<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[800px]">
+							<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[800px]">
 								Sophisticated, modern, classy
 							</div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6} speed={1} factor={1}>
-						<div
-						style={{ backgroundImage: `url(${news2})` }}
-						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[500px]"
-					></div>
+							<div
+								style={{ backgroundImage: `url(${news2})` }}
+								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[500px]"
+							></div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
-						<div className="justify-end items-end flex">
-						<div
-							style={{ backgroundImage: `url(${news3})` }}
-							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1050px] ss:-top-[300px] sm:-top-[200px] md:-top-[0px]"
-						></div>
-					</div>
+							<div className="justify-end items-end flex">
+								<div
+									style={{ backgroundImage: `url(${news3})` }}
+									className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1050px] ss:-top-[300px] sm:-top-[200px] md:-top-[0px]"
+								></div>
+							</div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6.4} speed={0.5} factor={1}>
-						<div
-						style={{ backgroundImage: `url(${news6})` }}
-							className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[700px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[600px]"
+							<div
+								style={{ backgroundImage: `url(${news6})` }}
+								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[700px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[600px]"
 							></div>
-
 						</ParallaxLayer>
 						<ParallaxLayer
 							offset={7.4}
@@ -487,7 +479,7 @@ const Car5popular: React.FC = () => {
 							</div>
 						</ParallaxLayer>
 						<div className="z-10 w-full bottom-0 absolute">
-							<Footer ref={(footerRef)} />
+							<Footer ref={footerRef} />
 						</div>
 					</Parallax>
 				</div>
