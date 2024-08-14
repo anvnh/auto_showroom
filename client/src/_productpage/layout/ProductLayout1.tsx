@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 import NavbarSmall from "../navbarsmall/NavbarSmall";
 import Car1popular from "../productHomePage/car1popular";
 import React, { useEffect, useRef, useState } from "react";
+import Lenis from "@studio-freight/lenis";
 const ProductLayout = () => {
 	const [selectedSection, setSelectedSection] = useState("");
 	const handleNavClick = (section) => {
@@ -12,6 +13,17 @@ const ProductLayout = () => {
 			prevSection === section ? "" : section
 		);
 	};
+	useEffect(() => {
+		const lenis = new Lenis();
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+		requestAnimationFrame(raf);
+		return () => {
+			lenis.destroy();
+		};
+	}, []);
 	return (
 		<section className="w-full">
 			<div className="w-full overflow-hidden bg-primary">

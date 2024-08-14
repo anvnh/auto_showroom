@@ -90,7 +90,7 @@ const Testimonials = () => {
 						<br />
 						<span>CEO at Audi</span>
 					</p>
-					<p className="pt-5 pr-28">
+					<p className="pt-5 pr-28 font-poppins">
 						"I'm truly impressed by the AAP website. 
 						Its intuitive interface and advanced technology features create a truly unique and convenient car shopping experience. 
 						This perfectly aligns with Audi's relentless pursuit of innovation."

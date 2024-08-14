@@ -235,7 +235,7 @@ const Reviews = () => {
 							</p>
 						</div>
 					) : (
-						<div className="max-h-[600px] min-h-[600px]">
+						<div className=" ">
 							{currentReviewed.map((review) => (
 								// TODO: User avatar
 								<div

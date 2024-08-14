@@ -149,32 +149,61 @@ const OverviewCart = () => {
 								});
 								return (
 									<section className="mb-4" key={item._id}>
-										<div className="hidden md:block">
-											<div className="flex flex-col md:flex-row md:space-x-14 text-white text-xl w-full justify-center md:ml-24 mb-2">
-												<ul className="li">Price</ul>
-												<ul className="li">Quantity</ul>
-												<ul className="li">Total</ul>
-											</div>
-										</div>
-
-										<div className="flex flex-col md:flex-row bg-white p-3 mb-4 rounded-2xl shadow-md h-full w-full hover:bg-opacity-90">
+										<div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white p-3 mb-4 rounded-2xl  shadow-md h-full w-full hover:bg-opacity-90">
 											<div className="relative w-full flex items-center">
+											<Link
+												to={`/shop/product/${item._id}`}
+											>
 												<img
 													src={item.images[0]}
-													className="w-full h-auto md:h-[150px] rounded"
+													className="w-full h-auto md:h-[200px] bg-cover object-cover bg-center bg- rounded"
 												/>
+												</Link>
 											</div>
 
-											<div className="w-full md:w-2/3 text-black">
+											<div className="w-full md:w-[0.75] text-black">
 												<div className="hidden md:block">
-													<div className="ml-0 md:ml-16 flex flex-col md:flex-row">
+													<h2 className="text-2xl pl-3 md:pt-0 pt-5 font-bold mb-2 text-black">
+														{item.brand}&nbsp;
+														{item.car_model}
+													</h2>
+
+													<div className="flex pl-3 text-2xl text-yellow-600 cursor-pointer">
+														{"★".repeat(
+															Math.round(
+																averageRating
+															)
+														)}
+														{"☆".repeat(
+															5 -
+																Math.round(
+																	averageRating
+																)
+														)}
+													</div>
+
+													<h3 className="line-clamp-2 pl-3 md:px-4 mb-5">
+														{item.bio}
+													</h3>
+													<div className="justify-start p-5 w-full gap-5 flex flex-col md:flex-row">
 														<div className="mb-2 w-full md:w-[100px]">
-															<span className="text-[18px] font-bold text-blue-600">
-																${item.price}
+															<span className="text-[20px] font-bold text-blue-600">
+																$
+																{(
+																	Number(
+																		item.price.replace(
+																			/,/g,
+																			""
+																		)
+																	) *
+																	(quantities[
+																		item._id
+																	] || 1)
+																).toLocaleString()}
 															</span>
 														</div>
 
-														<div className="ml-0 md:ml-7 mb-2 text-black">
+														<div className="w-full justify-end flex text-black">
 															<div className="flex items-center hover:bg-gray-100 hover:bg-opacity-15 rounded-lg overflow-hidden w-full md:w-24">
 																<QuantityCounter
 																	quantity={
@@ -196,48 +225,8 @@ const OverviewCart = () => {
 																/>
 															</div>
 														</div>
-
-														<div className="ml-0 md:ml-12 mb-2 w-full md:w-[100px]">
-															<span className="text-[18px] font-bold text-blue-600">
-																$
-																{(
-																	Number(
-																		item.price.replace(
-																			/,/g,
-																			""
-																		)
-																	) *
-																	(quantities[
-																		item._id
-																	] || 1)
-																).toLocaleString()}
-															</span>
-														</div>
 													</div>
 												</div>
-
-												<h2 className="text-2xl pl-3 md:pt-0 pt-5 font-bold mb-2 text-black">
-													{item.brand}&nbsp;
-													{item.car_model}
-												</h2>
-
-												<div className="flex pl-3 text-2xl text-yellow-600 cursor-pointer">
-													{"★".repeat(
-														Math.round(
-															averageRating
-														)
-													)}
-													{"☆".repeat(
-														5 -
-															Math.round(
-																averageRating
-															)
-													)}
-												</div>
-
-												<h3 className="line-clamp-2 pl-3 md:px-5 mb-5">
-													{item.bio}
-												</h3>
 											</div>
 											<div className="xl:hidden block">
 												<div className="w-full justify-center flex">
@@ -297,23 +286,28 @@ const OverviewCart = () => {
 													</div>
 												</div>
 											</div>
-											<div
-												className="flex items-center justify-end  h-[30px] hover:bg-opacity-50 cursor-pointer"
-												title="Remove from cart"
-											>
-												{deletingItems[item._id] && (
-													<LoadingSpinner />
-												)}
-												{!deletingItems[item._id] && (
-													<MdDelete
-														className="text-red-500 text-xl scale-125"
-														onClick={() =>
-															handleDelete(
-																item._id
-															)
-														}
-													/>
-												)}
+											<div className="scale-100">
+												<div
+													className="flex  items-center justify-end w-[35px] h-[35px] rounded-full hover:bg-opacity-70 cursor-pointer bg-white p-2 shadow-md shadow-black text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
+						  before:ease relative overflow-hidden border-gray-600 border  before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-red-500 before:opacity-50 before:duration-700 hover:shadow-red-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[49px]"
+													title="Remove from cart"
+												>
+													{deletingItems[
+														item._id
+													] && <LoadingSpinner />}
+													{!deletingItems[
+														item._id
+													] && (
+														<MdDelete
+															className="text-red-600 text-xl scale-125"
+															onClick={() =>
+																handleDelete(
+																	item._id
+																)
+															}
+														/>
+													)}
+												</div>
 											</div>
 										</div>
 									</section>

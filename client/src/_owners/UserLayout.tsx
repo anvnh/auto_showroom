@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import AOS from "aos";
 import { Navbar, Hero, About, Benefit, Futher, Footer } from './_mainpage'
 import Lenis from '@studio-freight/lenis'
+import NavbarSmallOwner from "./_mainpage/NavbarSmallOwners"
 const OwnerLayout = () => {
 
     useEffect(() => {
@@ -32,23 +33,28 @@ const OwnerLayout = () => {
                         <Navbar />
                     </div>
                 </div>
+                <div className="flex justify-center items-start">
+                    <div className="z-50 w-full">
+                        <NavbarSmallOwner />
+                    </div>
+                </div>
                 <div className="bg-primary flex justify-center items-start">
-                    <div className="w-full">
+                    <div id="Home" className="w-full">
                         <Hero />
                     </div>
                 </div>
                 <div className="bg-white sm:px-16 px-6 flex justify-center items-start">
-                    <div className="w-full">
+                    <div id="Introduce" className="w-full">
                         <About />
                     </div>
                 </div>
                 <div className="bg-primary sm:px-16 px-6 flex justify-center items-start">
-                    <div className="w-full">
+                    <div id="Member_Benefit" className="w-full">
                         <Benefit />
                     </div>
                 </div>
                 <div  className="bg-white sm:px-16 px-6 flex justify-center items-start">
-                    <div className="w-full">
+                    <div id="commitment" className="w-full">
                         <Futher />
                     </div>
                 </div>

@@ -136,7 +136,7 @@ const ProductRepon = () => {
 	return (
 		<section className="mt-12">
 			<div className="block xl:hidden">
-				<Toaster position="top-center" reverseOrder={false} />
+			
 				{/* {isLoading && <LoadingSpinner />} */}
 				{isLoading && <LoadingSpinner />}
 				{!isLoading && !isRefetching && car && (
@@ -283,7 +283,7 @@ const ProductRepon = () => {
 									</div>
 								</div>
 								<div className="justify-evenly pt-12 gap-2 items-end flex text-white mt-auto">
-									<button className="flex bg-gray-800 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out justify-center">
+									<button className="flex bg-gray-400 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out justify-center detail-button text-black px-4 py-2 md:px-6 md:py-3 lg:w-[200px] lg:h-[50px] items-center transition-all  hover:text-white font-bold text-sm md:text-base text-center relative overflow-hidden border-gray-600 border shadow-xl before:absolute before:right-0 before:top-0 before:h-[120px] before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] ">
 										<HiMiniViewfinderCircle className="h-auto w-[30px]" />
 										<p className="pl-4 text-md text-center">
 											{" "}
@@ -292,7 +292,7 @@ const ProductRepon = () => {
 										</p>
 									</button>
 									<button
-										className="flex bg-gray-800 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out justify-center"
+										className="flex bg-gray-400 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out justify-center detail-button text-black px-4 py-2 md:px-6 md:py-3 lg:w-[200px] lg:h-[50px] items-center transition-all  hover:text-white font-bold text-sm md:text-base text-center relative overflow-hidden border-gray-600 border shadow-xl before:absolute before:right-0 before:top-0 before:h-[120px] before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] "
 										onClick={() => handleAddToCart(car._id)}
 									>
 										<FaCartPlus className="h-auto w-[30px]" />
