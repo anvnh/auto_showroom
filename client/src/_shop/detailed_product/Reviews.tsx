@@ -45,17 +45,17 @@ const Reviews = () => {
 	});
 
 	const { mutate: reviewing, isPending: isReviewing } = useMutation({
-		mutationFn: async ({text, rating, rated}) => {
+		mutationFn: async ({text, rated}) => {
 			try {
 				const res = await fetch(`/api/car/comment/${carId}/${authUser._id}`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({text: text, rating: rating, rated: rated}),
+					body: JSON.stringify({text: text, rated: rated}),
 				});
 
-				console.log(res);
+				// console.log(res);
 
 				const data = await res.json();
 
@@ -80,10 +80,10 @@ const Reviews = () => {
 		}
 	})
 
-	const {mutate: ratingCar, isPending: isRatingCar} = useMutation({
+	const {mutate: ratingCar} = useMutation({
 		mutationFn: async () => {
 			try {
-				const res = await fetch(`/api/car/phobert`, {
+				const res = await fetch(`/api/car/phobert/predict`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -108,12 +108,47 @@ const Reviews = () => {
 			// setRating(null);
 			// console.log(data.overallRating);
 			// console.log(data);
-			reviewing({text, rating, rated: data.overallRating});
+			reviewing({text, rated: data.prediction});
 		},
 		onError: (error) => {
 			toast.error(error.message);
 		}
 	})
+
+    const {mutate: deleteReview} = useMutation({
+        mutationFn: async ({review}) => {
+            try {
+                const res = await fetch(`/api/car/delete/${carId}/${review._id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                const data = await res.json();
+
+                if(!res.ok) {
+                    throw new Error(data.error || "Something went wrong");
+                }
+
+                return data;
+
+            } catch(error) {
+                throw new Error(error.message);
+            }
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ["review"]});
+            toast.success("Review deleted successfully");
+        },
+        onError: (error) => {
+            toast.error(error.message);
+        }
+    })
+
+    const handleDelete = (review) => {  
+        deleteReview({review});
+    }
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -148,53 +183,6 @@ const Reviews = () => {
 			</div>
 			<div>
 				{isLoading && <LoadingSpinner />}
-				{authUser ? (
-					<div className="flex overflow-hidden mb-3 ml-2">
-						{[...Array(5)].map((star, index) => {
-							const ratingValue = index + 1;
-							return (
-								<label className="cursor-pointer flex flex-col items-center space-x-1 justify-center">
-									<input
-										type="radio"
-										name="rate"
-										value={ratingValue}
-										onClick={() => setRating(ratingValue)}
-										className="hidden"
-									/>
-									<FaStar
-										size={29}
-										color={
-											ratingValue <= (rateColor || rating)
-												? "#ffc107"
-												: "#e4e5e9"
-										}
-									/>
-								</label>
-							);
-						})}
-					</div>
-				) : (
-					<div className="flex overflow-hidden mb-3 ml-2">
-						{[...Array(5)].map((star, index) => {
-							const ratingValue = index + 1;
-							return (
-								<label className="cursor-pointer flex flex-col items-center space-x-1 justify-center">
-									<input
-										type="radio"
-										name="rate"
-										value={ratingValue}
-										className="hidden"
-									/>
-									<FaStar
-										size={29}
-										color={"#131313"}
-										className="cursor-not-allowed"
-									/>
-								</label>
-							);
-						})}
-					</div>
-				)}
 				<form className="" onSubmit={handleSubmit}>
 					<textarea
 						className="textarea w-full p-3 bg-white md:-mb-8 text-black text-base resize-none border-none focus:outline-none border rounded-3xl"
@@ -265,15 +253,14 @@ const Reviews = () => {
 											</div>
 										</div>
 									</Link>
-									<StarRating rating={review.rating} />
 									<div className="w-full flex justify-between">
-										<p className="max-w-[1400px]">
+										<p className="max-w-[1400px] pt-2">
 											{review.text}
 										</p>
 										{authUser && authUser._id === review.user._id && (
 											<FaTrash
 												className="cursor-pointer hover:text-red-500" 
-												onClick={() => {console.log(review._id)}}
+                                                onClick={() => handleDelete(review)}
 											/>
 										)}
 									</div>

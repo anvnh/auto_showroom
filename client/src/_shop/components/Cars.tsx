@@ -59,7 +59,7 @@ const Cars = () => {
     });
 
 
-	// get all products
+	// get most rated products
 	const { data: products, isLoading, refetch, isRefetching} = useQuery({
 		queryKey: ["products"],
 		queryFn: async () => {

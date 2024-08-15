@@ -3,7 +3,7 @@ const router = express.Router();
 import { protectRoute } from '../middleware/protectRoute.js';
 import { getAllCar, addCar, getCar, deleteCar, reviewCar, getCarReview, getBestReview, getCountReview,
     getSuggestedCars, findCar, updateCar, getPhobertPrediction,
-    getMostRatedCar, getMinMax
+    getMostRatedCar, getMinMax, deleteReview
 } from '../controllers/car.controller.js';
 import { phobert } from '../middleware/phobert.js';
 
@@ -17,10 +17,12 @@ router.get("/reviewed/:id", getCarReview);
 router.get("/other/suggested", getSuggestedCars);
 router.get("/other/getMinMax", getMinMax);
 router.delete("/:id", protectRoute, deleteCar);
-router.post("/phobert", getPhobertPrediction);
+router.post("/phobert/predict", getPhobertPrediction);
 router.post('/comment/:id/:userId', reviewCar);
 router.get("/find/mostRated", getMostRatedCar);
 router.get("/", findCar);
+
+router.delete("/delete/:carId/:reviewId", protectRoute, deleteReview);
 
 
 export default router;
