@@ -5,7 +5,7 @@ import Payment from "./payment/Payment";
 
 const PaymentLayout = () => {
 	return (
-		<section className="w-full h-[1900px] md:h-[1700px] xl:h-[1000px] bg-primary">
+		<section className="w-full h-[1900px] md:h-[1700px] xl:h-[105ư0px] bg-primary">
 			<div className="w-full ">
 				<div className="items-start justify-center">
 					<div className="w-full bg-primary">

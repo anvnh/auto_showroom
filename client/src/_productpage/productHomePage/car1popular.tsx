@@ -360,7 +360,7 @@ const Car1popular = () => {
 				</div>
 
 				{/* --------------------------conclusion --------------*/}
-				<div id="Button_Buy" className="pb-24 pt-40 relative">
+				<div className="pb-24 pt-40 relative">
 					<div
 						data-aos="zoom-out"
 						className={`font-thin text-white text-center text-xl md:text-3xl transition-opacity duration-1000 opacity-0 ${
@@ -369,7 +369,7 @@ const Car1popular = () => {
 					>
 						<span className="font-bold">
 							The Mercedes-AMG CLS 53 4Matic+
-						</span>{" "}
+						</span>{" "}	
 						is a great choice for those looking for a luxurious,{" "}
 						<br />
 						powerful sports car equipped with many advanced

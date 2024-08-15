@@ -175,7 +175,7 @@ const UserCart = () => {
 												>
 													<img
 														src={item.images[0]}
-														className="xl:w-[700px] shadow-xl shadow-black w-full h-full xl:h-[280px] rounded"
+														className="xl:w-[700px] shadow-md shadow-black w-full h-full xl:h-[280px] rounded"
 													/>
 												</Link>
 											</div>
@@ -212,13 +212,7 @@ const UserCart = () => {
 																)}
 															</div>
 														</div>
-														<div className=" mb-2 w-full md:w-[100px]">
-															<span className="text-[18px] font-bold text-blue-600">
-																$
-																{( Number( item.price.replace( /,/g, "")) * (quantities[ item._id ] || 1)
-																).toLocaleString()}
-															</span>
-														</div>
+
 													</div>
 												</div>
 

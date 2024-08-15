@@ -44,7 +44,7 @@ const SomeProduct = () => {
 						effect={"slide"}
 						grabCursor={true}
 						centeredSlides={true}
-						loop={true}
+						loop={false}
 						slidesPerView={2} // Hiển thị 2 slide cùng lúc
 						spaceBetween={15} // Khoảng cách giữa các slide
 						coverflowEffect={{
