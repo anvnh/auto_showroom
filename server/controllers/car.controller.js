@@ -182,7 +182,7 @@ export const deleteCar = async (req, res) => {
 
 export const reviewCar = async (req, res) => {
     try {
-        const {text, rating, rated} = req.body;
+        const {text, rated} = req.body;
         const carId = req.params.id;
         const userId = req.params.userId;
 
@@ -190,7 +190,7 @@ export const reviewCar = async (req, res) => {
             return res.status(400).json({ message: "Text field is required" });
         }
 
-        if(!rating) {
+        if(!rated) {
             return res.status(400).json({ message: "Rating field is required" });
         }
 
@@ -200,25 +200,47 @@ export const reviewCar = async (req, res) => {
             return res.status(404).json({ message: "Car not found" });
         }
 
-        const comment = {rating, text, user: userId }
-        const updatedComments = comment;
-
-
-        const numberRatings = car.user_review.length;
-        const avgRating = (car.overall_rating * numberRatings + rated) / (numberRatings + 1);
+        const comment = {text, rated, user: userId };
 
         car.user_review.push(comment);
-        car.overall_rating = Number(avgRating);
 
         await car.save();
 
-        res.status(201).json({updatedComments, avgRating});
+        res.status(201).json({car});
 
     } catch(error) {
         console.log("Error in commentOnPost controller: ", error);
         res.status(500).json({ message: "Internal Server error" });
     }
 };
+
+export const deleteReview = async (req, res) => {
+    try {
+        const {carId, reviewId} = req.params;
+        const car = await Car.findById(carId);
+
+        if(!car) {
+            return res.status(404).json({ message: "Car not found" });
+        }
+
+        const review = car.user_review.id(reviewId);
+
+        if(!review) {
+            return res.status(404).json({ message: "Review not found" });
+        }
+
+        const index = car.user_review.indexOf(review);
+        car.user_review.splice(index, 1);
+
+        await car.save();
+
+        res.status(200).json({ message: "Review deleted" });
+
+    } catch(error) {
+        console.log("Error in deleteReview controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
 
 export const getSuggestedCars = async (req, res) => {
     try {
@@ -315,11 +337,10 @@ export const updateCar = async (req, res) => {
 
 export const getPhobertPrediction = async (req, res) => {
     try{
-        const {text, rating} = req.body;
+        const {text} = req.body;
         const response = await axios.post('http://localhost:5001/api/v1/phobert/get_predict', { content: text });
-        const prediction = response.data.prediction[0][1];
-        const overallRating = rating * prediction;
-        res.status(200).json({ prediction, overallRating });
+        const prediction = response.data.prediction[0][1] > response.data.prediction[0][0] ? "Positive" : "Negative";
+        res.status(200).json({ prediction });
     } catch (error) {
         console.log("Error in phobert middleware", error.message);
         res.status(500).json({ error: "Internal server error. Please try again later!" });
@@ -329,11 +350,24 @@ export const getPhobertPrediction = async (req, res) => {
 export const getMostRatedCar = async (req, res) => {
     try {
         const cars = await Car.find();
-        // get 8 cars with highest overall rating
-        const mostRatedCar = cars
-            .sort((a, b) => b.overall_rating - a.overall_rating)
+        const carsWithReviews = cars.filter(
+            (car) => car.user_review && car.user_review.length > 0
+        );
+        // Get 8 cars with the positive ratio of reviews
+        const mostRatedCars = carsWithReviews
+            .sort((a, b) => {
+                const positiveReviews = a.user_review.filter(
+                    (review) => review.rated === "Positive"
+                ).length;
+                const negativeReviews = b.user_review.filter(
+                    (review) => review.rated === "Negative"
+                ).length;
+                return positiveReviews / (positiveReviews + negativeReviews);
+            })
             .slice(0, 8);
-        res.status(200).json(mostRatedCar);
+
+        res.status(200).json(mostRatedCars);
+
     } catch (error) {
         console.log("Error in getMostRatedCar controller", error.message);
         res.status(500).json({ error: "Something went wrong" });

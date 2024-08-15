@@ -74,14 +74,14 @@ const carSchema = new mongoose.Schema(
 		},
 		user_review: [
 			{
-				rating: {
-					type: Number,
-					required: true,
-				},
 				text: {
 					type: String,
 					required: true,
 				},
+                rated: {
+                    type: String,
+                    required: true,
+                },
 				user: {
 					// type: mongoose.Schema.Types.ObjectId,
 					// ref: "User",
@@ -116,10 +116,9 @@ const carSchema = new mongoose.Schema(
 				required: true,
 			}
 		],
-		overall_rating: {
-			type: Number,
-			default: 0,
-		},
+        rated: {
+            type: String,
+        }
 	},
 	{ timestamps: true }
 ); 
