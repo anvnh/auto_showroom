@@ -288,7 +288,7 @@ const ProductRepon = () => {
 										<p className="pl-4 text-md text-center">
 											{" "}
 											{/* TODO */}
-											<Link to={""}>Buy now</Link>
+											<Link 	to={`/shop/payment/${car._id}`}>Buy now</Link>
 										</p>
 									</button>
 									<button

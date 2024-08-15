@@ -30,6 +30,7 @@ import TokenConfirmation from './_auth/TokenConfirmation';
 import PaymentLayout from './_shop/PaymentLayout';
 import NotAuthenticated from './_auth/NotAuthenticated';
 import Voucherlayout from './_shop/Voucher/Voucherlayout';
+import PaymentLayoutBuyNow from './_shop/buynow/PaymentLayoutBuyNow';
 
 const App = () => {
     const location = useLocation();
@@ -115,7 +116,7 @@ const App = () => {
                     <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login"/>} />
 
                     <Route path="/shop/payment" element={ authUser ? <PaymentLayout/> : <Navigate to="/login" /> } />
-                  
+                    <Route path="/shop/payment/:id" element={ authUser ? <PaymentLayoutBuyNow/> : <Navigate to="/login" /> } />
 
 
                     

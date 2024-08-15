@@ -153,7 +153,7 @@ const Product = () => {
 								<div className="bg-white  shadow-md rounded-xl shadow-black w-[1800px] h-[860px] flex flex-col">
 									<div className="w-full h-[80%] relative p-2 flex justify-center items-center px-12">
 										<div
-											className="bg-cover bg-center  w-full h-[600px] object-cover rounded-3xl cursor-pointer"
+											className="bg-cover bg-center  w-full h-[600px] object-cover rounded-3xl cursor-pointer "
 											style={{
 												backgroundImage: `url(${selectedImage})`,
 											}}
@@ -308,7 +308,9 @@ const Product = () => {
 											<p className="pl-4 text-xl">
 												{" "}
 												{/* TODO */}
-												<Link to={""}>Buy now</Link>
+												<Link 
+													to={`/shop/payment/${car._id}`}
+												>Buy now</Link>
 											</p>
 										</button>
 										<button
