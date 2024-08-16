@@ -147,13 +147,13 @@ const Story = () => {
                             NISSAN SKYLINE R34
                         </p>
                         <div className="flex gap-x-[15px] ">
-                            <section className="w-[100px] h-[40px] border rounded-[20px] flex justify-center items-center  ">
+                            <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
                                 <p>Nissan</p>
                             </section>
-                            <section className="w-[100px] h-[40px] border rounded-[20px] flex justify-center items-center ">
+                            <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center ">
                                 <p>1001hp</p>
                             </section>
-                            <section className="w-[100px] h-[40px] border rounded-[20px] flex justify-center items-center ">
+                            <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center ">
                                 <p>Japan</p>
                             </section>
                         </div>
