@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import gsap from "gsap"
 import TopBrand_mobile from "./TopBrand_mobile"
-import { topBrandAudi, topBrandHonda, topBrandMer, topBrandToyota } from "@/assets/homepage/"
+import { topBrandAudi, topBrandAudi2, topBrandHonda, topBrandHonda2, topBrandMer, topBrandMer2, topBrandToyota, topBrandToyota2, } from "@/assets/homepage/"
 const TopBrand = () => {
     const popularBrand_right = useRef(null)
     const container_popularBrand = useRef(null)
@@ -78,40 +78,54 @@ const TopBrand = () => {
                     <section ref={popularBrand_section1} className=" w-full h-screen  flex justify-center items-center ">
                         <div className="xsm:pl-[20px] w-[450px] h-[350px] flex flex-col ">
                             <section className="w-full h-[60%]   ">
-                                <h2 className="h-[52%] md:h-[67%] text-[80px] md:text-[100px] lg:text-[110px]  text-red-500   ">TOYOTA</h2>
+                                <h2 className="h-[52%] md:h-[67%] text-[80px] md:text-[100px] lg:text-[110px]  text-red-500   ">
+                                    TOYOTA
+                                </h2>
                                 <p className="h-[40%] text-[18px] md:text-[20px] lg:text-[22px] ml-[5px]">Standard, Elegant, Trusted by many people</p>
                             </section>
-                            
+
                         </div>
                     </section>
 
                     <section ref={popularBrand_section2} className="w-full h-screen flex  justify-center items-center ">
                         <div className="xsm:pl-[20px] w-[450px] h-[350px] flex flex-col ">
                             <section className="w-full h-[60%]   ">
-                                <h2 className="h-[52%] md:h-[67%]  text-[80px] md:text-[100px] lg:text-[110px] text-red-500  ">HONDA</h2>
-                                <p className="h-[40%] text-[18px] md:text-[20px] lg:text-[22px] ml-[5px]">Sport, Cheap, Durable engine</p>
+                                <h2 className="h-[52%] md:h-[67%]  text-[80px] md:text-[100px] lg:text-[110px] text-red-500  ">
+                                    HONDA
+                                </h2>
+                                <p className="h-[40%] text-[18px] md:text-[20px] lg:text-[22px] ml-[5px]">
+                                    Sport, Cheap, Durable engine
+                                </p>
                             </section>
-                            
+
                         </div>
                     </section>
 
                     <section ref={popularBrand_section3} className="w-full h-screen  flex justify-center items-center ">
                         <div className="xsm:pl-[20px] w-[450px] h-[350px] flex flex-col ">
                             <section className="w-full h-[60%]   ">
-                                <h2 className="h-[52%] md:h-[67%]  text-[80px] md:text-[100px] lg:text-[110px] text-red-500  ">MERCEDES</h2>
-                                <p className="h-[40%] text-[18px] md:text-[20px] lg:text-[22px] ml-[5px]">Luxury, Super sport, Expressing personality</p>
+                                <h2 className="h-[52%] md:h-[67%]  text-[80px] md:text-[100px] lg:text-[110px] text-red-500  ">
+                                    MERCEDES
+                                </h2>
+                                <p className="h-[40%] text-[18px] md:text-[20px] lg:text-[22px] ml-[5px]">
+                                    Luxury, Super sport, Expressing personality
+                                </p>
                             </section>
-                            
+
                         </div>
                     </section>
 
                     <section ref={popularBrand_section4} className="w-full h-screen  flex justify-center items-center ">
                         <div className="xsm:pl-[20px] w-[450px] h-[350px] flex flex-col ">
                             <section className="w-full h-[60%]   ">
-                                <h2 className="h-[52%] md:h-[67%]  text-[80px] md:text-[100px] lg:text-[110px] text-red-500  ">AUDI</h2>
-                                <p className="h-[40%] text-[18px] md:text-[20px] lg:text-[22px] ml-[5px]">Luxury, Style, Sweet</p>
+                                <h2 className="h-[52%] md:h-[67%]  text-[80px] md:text-[100px] lg:text-[110px] text-red-500  ">
+                                    AUDI
+                                </h2>
+                                <p className="h-[40%] text-[18px] md:text-[20px] lg:text-[22px] ml-[5px]">
+                                    Luxury, Style, Sweet
+                                </p>
                             </section>
-                            
+
                         </div>
                     </section>
                 </div>
@@ -120,21 +134,21 @@ const TopBrand = () => {
 
                     <div className="w-full h-[60%] overflow-y-hidden">
                         <section className="rounded-[20px] overflow-hidden z-40  w-[80%]  h-[50%]  top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%] absolute">
-                            <img ref={box} src={topBrandToyota} className=" w-full h-full object-cover" />
+                            <img ref={box} src={topBrandToyota2} className=" w-full h-full object-cover" />
                         </section>
                         <section className=" rounded-[20px] z-30 overflow-hidden  top-[50%] left-[50%] translate-x-[-50%] transform translate-y-[-50%] absolute w-[80%]  h-[50%]">
-                            <img ref={box1} src={topBrandHonda} className="w-full h-full object-cover" />
+                            <img ref={box1} src={topBrandHonda2} className="w-full h-full object-cover" />
                         </section>
                         <section className="rounded-[20px] z-20 overflow-hidden  absolute w-[80%]  h-[50%]  top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]">
-                            <img ref={box2} src={topBrandMer} className="w-full h-full object-cover" />
+                            <img ref={box2} src={topBrandMer2} className="w-full h-full object-cover" />
                         </section>
                         <section className="rounded-[20px] z-10 overflow-hidden w-[80%]  h-[50%]  top-[50%] left-[50%] translate-x-[-50%] transform translate-y-[-50%] absolute">
-                            <img ref={box3} src={topBrandAudi} className="w-full h-full object-cover" />
+                            <img ref={box3} src={topBrandAudi2} className="w-full h-full object-cover" />
                         </section>
                     </div>
                 </div>
             </section>
-            <TopBrand_mobile/>
+            <TopBrand_mobile />
         </div>
     )
 }
