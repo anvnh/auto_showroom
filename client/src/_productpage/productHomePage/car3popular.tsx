@@ -174,8 +174,8 @@ const Car3popular: React.FC = () => {
 											Rolls Royce Ghost 2021
 										</h1>
 										<h2 className="text-xs ss:text-2xl lg:text-4xl sm:text-3xl font-thin pt-1">
-											<span className="font-bold text-red-100">
-												1,65 million $
+											<span className="">
+												$ 1,65 million 
 											</span>
 										</h2>
 									</div>
@@ -255,7 +255,7 @@ const Car3popular: React.FC = () => {
 						<ParallaxLayer offset={1.7} speed={0.8} factor={1}>
 							<div
 								style={{ backgroundImage: `url(${r1})` }}
-								className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] top-[200px] ss:top-[150px] sm:top-[350px] md:top-[1600px]"
+								className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] top-[200px] ss:top-[150px] sm:top-[350px] md:top-[2000px]"
 							></div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={1.8} speed={0.9} factor={1}>
@@ -268,7 +268,7 @@ const Car3popular: React.FC = () => {
 							<div className="justify-end items-end flex">
 								<div
 									style={{ backgroundImage: `url(${r2})` }}
-									className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1px] ss:-top-[300px] sm:-top-[200px] md:top-[1200px]"
+									className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1px] ss:-top-[300px] sm:-top-[200px] md:top-[1500px]"
 								></div>
 							</div>
 						</ParallaxLayer>
@@ -278,7 +278,7 @@ const Car3popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[2] = ref)}
 						>
-							<div className="bottom-[400px] ss:-top-[600px] md:top-[1400px] relative">
+							<div className="bottom-[400px] ss:-top-[600px] md:top-[1500px] relative">
 								<div className="md:text-6xl ss:text-6xl sm:text-7xl text-3xl text-center text-white animate-pulse font-syncopate ">
 									NEW COLOR
 								</div>
@@ -423,14 +423,14 @@ const Car3popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[4] = ref)}
 						>
-							<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[1400px]">
+							<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[1200px]">
 								Sophisticated, modern, classy
 							</div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6} speed={1} factor={1}>
 							<div
 								style={{ backgroundImage: `url(${b6})` }}
-								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[1000px]"
+								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[900px]"
 							></div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
@@ -441,10 +441,10 @@ const Car3popular: React.FC = () => {
 								></div>
 							</div>
 						</ParallaxLayer>
-						<ParallaxLayer offset={6.4} speed={0.1} factor={1}>
+						<ParallaxLayer offset={6.4} speed={0.9} factor={1}>
 							<div
 								style={{ backgroundImage: `url(${b5})` }}
-								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[700px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[100px]"
+								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1300px] bg-center md:h-[1200px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[100px]"
 							></div>
 						</ParallaxLayer>
 						<ParallaxLayer

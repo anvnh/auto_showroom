@@ -141,7 +141,7 @@ const OverviewCart = () => {
 					{!isLoading && !isRefetching && cart && (
 						<div
 							data-aos="fade-up"
-							className="max-h-[540px]  overflow-y-auto overflow-x-hidden"
+							className="max-h-[570px]  overflow-y-auto overflow-x-hidden"
 						>
 							{cart.map((item, index) => {
 								const averageRating = calculateAvgRating({
@@ -156,7 +156,7 @@ const OverviewCart = () => {
 												>
 													<img
 														src={item.images[0]}
-														className="w-full h-auto md:h-[200px] bg-cover object-cover bg-center bg- rounded"
+														className="w-[400px] h-[200px] bg-cover object-cover bg-center bg- rounded"
 													/>
 												</Link>
 											</div>
@@ -187,7 +187,7 @@ const OverviewCart = () => {
 													</h3>
 													<div className="hidden md:block">
 														{" "}
-														<div className="justify-start p-5 w-full gap-5 flex flex-col md:flex-row">
+														<div className="justify-start mt-16 p-5 w-full gap-5 flex flex-col md:flex-row">
 															<div className="mb-2 w-full md:w-[100px]">
 																<span className="text-[20px] font-bold text-blue-600">
 																	$
@@ -313,7 +313,7 @@ const OverviewCart = () => {
 							})}
 						</div>
 					)}
-					<div data-aos="fade-down">
+					<div data-aos="fade-right">
 						<div className="flex justify-end pt-10 text-white font-bold text-2xl">
 							Total Price: ${calculateTotalPrice()}
 						</div>
@@ -328,7 +328,22 @@ const OverviewCart = () => {
 							>
 								Voucher
 							</div>
-							<div className="w-full">
+
+							<div className="w-full md:hidden block">
+								<Link
+									to={{
+										pathname: "/shop/payment",
+										search: createSearchParams({
+											totalPrice:
+												calculateTotalPrice().toString(),
+										}).toString(),
+									}}
+								>
+									<div className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
+										Proceed to Payment
+									</div>
+								</Link>
+							</div>
 							<Link
 								to={{
 									pathname: "/shop/payment",
@@ -342,7 +357,6 @@ const OverviewCart = () => {
 									Proceed to Payment
 								</div>
 							</Link>
-							</div>
 						</div>
 					</div>
 

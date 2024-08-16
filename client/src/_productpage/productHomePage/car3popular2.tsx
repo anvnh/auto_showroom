@@ -36,7 +36,7 @@ const Car3popular2 = () => {
 				{/* destop------------------ */}
 				<div className="hidden md:block">
 					<div
-						style={{ backgroundImage: `url(${r3})` }}
+					
 						className=" bg-cover bg-center h-24 sm:h-48 relative object-cover z-20"
 					>
 						<div className="flex justify-center pt-10 md:pt-12 inset-0">
@@ -55,7 +55,7 @@ const Car3popular2 = () => {
 							className="lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover"
 						/>
 					</div>
-					<div className="z-20 h-screen w-1/2 flex justify-center items-center bg-slate-800 text-white">
+					<div className="z-20 h-screen w-1/2 flex justify-center items-center bg-gray-900 text-white">
 						<div className="w-[700px] h-[500px] flex justify-center items-center flex-col  border-purple-500 border-2">
 							<h1 className="font-syncopate text-center text-[55px] font-medium uppercase">
 								Interiors

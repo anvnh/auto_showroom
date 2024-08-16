@@ -58,7 +58,7 @@ const EditProduct = () => {
 							className="textarea textarea-bordered h-[10px] w-full"
 							placeholder="Bio"
 							name="bio"
-							value={formData.bio}
+						
 						></textarea>
 					</h2>
 					<h2 className="text-xl text-white p-3 grid grid-cols-2 gap-2">
@@ -67,49 +67,49 @@ const EditProduct = () => {
 							className="textarea textarea-bordered h-[10px]"
 							placeholder="Brand"
 							name="brand"
-							value={formData.brand}
+						
 						></textarea>
 						<textarea
 							className="textarea textarea-bordered  h-[10px]"
 							placeholder="Model"
 							name="car_model"
-							value={formData.car_model}
+							
 						></textarea>
 						<textarea
 							className="textarea textarea-bordered  h-[10px]"
 							placeholder="Production year"
 							name="production_year"
-							value={formData.production_year}
+						
 						></textarea>
 						<textarea
 							className="textarea textarea-bordered  h-[10px]"
 							placeholder="Body style"
 							name="body_style"
-							value={formData.body_style}
+							
 						></textarea>
 						<textarea
 							className="textarea textarea-bordered  h-[10px]"
 							placeholder="Engine"
 							name="engine"
-							value={formData.engine}
+						
 						></textarea>
 						<textarea
 							className="textarea textarea-bordered h-[10px]"
 							placeholder="Transmission"
 							name="transmission"
-							value={formData.transmission}
+						
 						></textarea>
 						<textarea
 							className="textarea textarea-bordered  h-[10px]"
 							placeholder="Drive type"
 							name="drive_type"
-							value={formData.drive_type}
+						
 						></textarea>
 						<textarea
 							className="textarea textarea-bordered h-[10px]"
 							placeholder="Fuel type"
 							name="fuel_type"
-							value={formData.fuel_type}
+							
 						></textarea>
 
 						<Button
@@ -117,7 +117,7 @@ const EditProduct = () => {
 							className="bg-black border-none h-[48px]"
 							onClick={() =>
 								document
-									.getElementById("Add_Performance")
+									.getElementById("Add_Perfo")
 									.showModal()
 							}
 						>
@@ -126,8 +126,8 @@ const EditProduct = () => {
 							</div>
 						</Button>
 
-						<dialog id="Add_Performance" className="modal w-full">
-							<div className="w-[500px] bg-gray-700 rounded-xl p-3 bg-opacity-20 backdrop-blur-sm z-5 relative top-10">
+						<dialog id="Add_Perfo" className="modal w-full">
+							<div className="w-[500px] bg-gray-700 rounded-xl p-3 shadow-md shadow-white bg-opacity-50 backdrop-blur-sm z-5 relative top-10">
 								<div className="grid gap-4ss">
 									<div className="grid gap-2">
 										<div className="grid grid-cols-3 items-center gap-4">
@@ -139,7 +139,7 @@ const EditProduct = () => {
 												defaultValue=""
 												className="col-span-2 h-8"
 												name="horsepower"
-												value={formData.horsepower}
+												
 											/>
 										</div>
 										<div className="grid grid-cols-3 items-center gap-4">
@@ -151,7 +151,7 @@ const EditProduct = () => {
 												defaultValue=""
 												className="col-span-2 h-8"
 												name="torque"
-												value={formData.torque}
+										
 											/>
 										</div>
 										<div className="grid grid-cols-3 items-center gap-4">
@@ -163,7 +163,7 @@ const EditProduct = () => {
 												defaultValue=""
 												className="col-span-2 h-8"
 												name="top_speed"
-												value={formData.top_speed}
+												
 											/>
 										</div>
 										<div className="grid grid-cols-3 items-center gap-4">
@@ -175,7 +175,7 @@ const EditProduct = () => {
 												defaultValue=""
 												className="col-span-2 h-8"
 												name="acceleration"
-												value={formData.acceleration}
+												
 											/>
 										</div>
 									</div>

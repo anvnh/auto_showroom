@@ -16,8 +16,8 @@ const Products = () => {
 		AOS.init({
 			duration: 1000,
 			easing: "ease-in-out",
-			once: false,
-			mirror: true,
+			once: true,
+			mirror: false,
 			anchorPlacement: "top-center",
 		});
 	}, []);
@@ -189,9 +189,9 @@ const Products = () => {
 										reverseOrder={false}
 									/>
 									<div
-									data-aos="fade-left"
+								
 										key={product._id}
-										className="md:flex  bg-white hover:bg-opacity-90 p-3 md:p-4 mb-7 rounded-2xl shadow-md w-full h-auto">
+										className="md:flex bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white hover:bg-opacity-90 p-3 md:p-4 mb-7 rounded-2xl shadow-md w-full h-auto">
 										<div className="relative w-full md:w-1/3 md:mr-4 overflow-hidden mb-4 items-center flex">
 											<Link
 												to={`/shop/product/${product._id}`}

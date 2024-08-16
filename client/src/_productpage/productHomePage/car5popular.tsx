@@ -182,8 +182,8 @@ const Car5popular: React.FC = () => {
 											Extended Series II
 										</h1>
 										<h2 className="text-xs ss:text-2xl lg:text-4xl sm:text-3xl font-thin pt-1">
-											<span className="font-bold text-red-100">
-												1,65 million $
+											<span className=" ">
+											$ 1,65 million
 											</span>
 										</h2>
 									</div>
@@ -318,7 +318,7 @@ const Car5popular: React.FC = () => {
 											autoPlay
 											loop
 											muted
-											className="w-full h-full object-cover opacity-30 bg-gradient-to-t from-blue-300 to-transparent"
+											className="w-full h-full object-cover opacity-25 bg-gradient-to-t from-blue-900 to-transparent"
 										/>
 									</div>
 								
@@ -397,18 +397,18 @@ const Car5popular: React.FC = () => {
 						</ParallaxLayer>
 						<ParallaxLayer
 							offset={7.4}
-							speed={0.5}
+							speed={0.3}
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[5] = ref)}
 						>
 							<div className="article-tiles-container bg-black text-white p-6 bottom-[900px] relative md:bottom-0">
 								<div className="article-tiles-desc mb-6 text-center font-syncopate">
-									<h3 className="text-4xl ss:text-5xl mb-2">
-										Continue your journey
+									<h3 className="text-4xl ss:text-5xl mb-2 ">
+									Roll Royce Phantom
+									Extended Series II
 									</h3>
 									<p>
-										You may also like the following related
-										articles
+									$1,65 million
 									</p>
 								</div>
 
@@ -421,13 +421,11 @@ const Car5popular: React.FC = () => {
 											/>
 										</figure>
 										<div className="block font-syncopate text-center">
-											<h4 className="text-base ss:text-lg mb-2">
-												GHOST PRISM
+											<h4 className="text-base md:text-xl ss:text-lg font-bold mb-2 mt-5 uppercase">
+											Sophisticated and Classy Design
 											</h4>
 											<p className="text-sm ss:text-base">
-												Ghost Prism draws inspiration
-												from the world of contemporary
-												designs.
+											Stands out with its majestic and sophisticated exterior design
 											</p>
 										</div>
 									</div>
@@ -437,7 +435,7 @@ const Car5popular: React.FC = () => {
 											<img
 												src={car592}
 												alt="Image 1"
-												className="w-full object-cover transform transition-opacity duration-300 group-hover:opacity-0"
+												className="w-full h-[700px] object-cover transform transition-opacity duration-300 group-hover:opacity-0"
 											/>
 											<img
 												src={car59}
@@ -447,13 +445,11 @@ const Car5popular: React.FC = () => {
 										</figure>
 
 										<div className="block font-syncopate text-center">
-											<h4 className="text-base ss:text-lg mb-2">
-												Ghost - In Detail
+											<h4 className="text-base ss:text-lg mb-2 mt-5 font-bold">
+											Luxurious Interior Space
 											</h4>
 											<p className="text-sm ss:text-base">
-												Pure and pristine. The ultimate
-												foundation for infinite
-												self-expression.
+											The interior of the Phantom Extended Series II is like a mobile luxury living room.
 											</p>
 										</div>
 									</div>
@@ -466,12 +462,11 @@ const Car5popular: React.FC = () => {
 											/>
 										</figure>
 										<div className="block font-syncopate text-center">
-											<h4 className="text-base ss:text-lg mb-2">
-												Commission Your Ghost
+											<h4 className="text-base font-bold ss:text-lg mb-2 mt-5">
+											Powerful Performance 
 											</h4>
 											<p className="text-sm ss:text-base">
-												Envision an original with
-												Bespoke services.
+											Possesses a powerful 6.75 liter V12 engine
 											</p>
 										</div>
 									</div>

@@ -16,8 +16,7 @@ import { Label } from "@/components/ui/label";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import ProductManagement from "../AdminBrand/ProductManagement";
 import Header from "./comon/Header";
-import UsersTable from "./elementUsers/UsersTable";
-import AdminTable from "./elementOverview/AdminTable";
+
 import AnalyticsTable from "./elementAnalytics/AnalyticsTable";
 
 const ProductPage = () => {
@@ -159,7 +158,6 @@ const ProductPage = () => {
 
 	const [currentPage, setCurrentPage] = useState("");
 	const [selectedSection, setSelectedSection] = useState("");
-	const [showDiv, setShowDiv] = useState(false);
 
 	const handleInputChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -419,7 +417,7 @@ const ProductPage = () => {
 									id="Add_Performance"
 									className="modal "
 								>
-									<div className="w-[500px] bg-gray-700 shadow-gray-500 shadow-md rounded-xl p-3 bg-opacity-100 backdrop-blur-xl relative top-10">
+									<div className="w-[500px] bg-gray-700 shadow-white shadow-md rounded-xl p-3 bg-opacity-50 backdrop-blur-xl relative top-10">
 										<div className="grid gap-4">
 											<div className="grid gap-2">
 												<div className="grid grid-cols-3 items-center gap-4">
