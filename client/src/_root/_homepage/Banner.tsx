@@ -36,12 +36,12 @@ const Section = () => {
                     </div>
                     <div className="lg:hidden font-bold flex pt-[20px]  mb-[100px]  items-center flex-row justify-center mb-[50px">
                         <Link to="/audi-A5-Couple">
-                            <div className=" text-center border text-[11px] xs:text-[12px] w-[180px] xs:w-[315px]  px-[5px] py-[10px] text-slate-800 bg-slate-200 ">
+                            <div className=" text-center border text-[11px] xs:text-[12px] w-[160px] xs:w-[200px] md:w-[300px]  px-[5px] py-[10px] text-slate-800 bg-slate-200 ">
                                 Explore Audi A5 Coupe
                             </div>
                         </Link>
                         <Link to="/audi-s6-limousin">
-                            <div className="text-center text-[11px] xs:text-[12px] w-[180px] xs:w-[315px] px-[5px] py-[10px] text-white  border border-white">
+                            <div className="text-center text-[11px] xs:text-[12px] w-[160px] xs:w-[200px] md:w-[300px] px-[5px] py-[10px] text-white  border border-white">
                                 Explore Audi S6 Limousin
                             </div>
                         </Link>
