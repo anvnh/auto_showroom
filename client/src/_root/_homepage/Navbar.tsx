@@ -151,7 +151,20 @@ const Navbar: React.FC<SubNavbarProps> = ({
 							/>
 						</Link>
 					</div>
-					<div className="w-full justify-end flex">
+					<div className="flex-1 w-full flex pl-3 justify-start items-center">
+						<button
+							className="md:hidden text-white pr-3 focus:outline-none"
+							onClick={() => setToggle(!toggle)}
+						>
+							<img
+								src={toggle ? close : menu}
+								alt="menu"
+								className="w-[24px] h-[24px] object-contain"
+								onClick={() => setToggle(!toggle)}
+							/>
+						</button>
+					</div>
+					<div className=" ">
 						<ul className="list-none flex pr-3 justify-end items-center flex-1">
 							{authUser ? (
 								<>
@@ -173,7 +186,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 											}
 										>
 											<div className="avatar placeholder w-[30px] xl:w-full h-auto">
-												<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black">
+												<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black"
+													title="Go to your profile">
 													{authUser ? (
 														<img
 															src={
@@ -223,21 +237,6 @@ const Navbar: React.FC<SubNavbarProps> = ({
 								</>
 							)}
 						</ul>
-					</div>
-					<div className="flex-1 flex justify-end items-center">
-						<ul className="list-none sm:flex md:justify-end xl:pl-0 pl-4 items-center justify-start flex-1"></ul>
-
-						<button
-							className="md:hidden text-white pr-3 focus:outline-none"
-							onClick={() => setToggle(!toggle)}
-						>
-							<img
-								src={toggle ? close : menu}
-								alt="menu"
-								className="w-[24px] h-[24px] object-contain"
-								onClick={() => setToggle(!toggle)}
-							/>
-						</button>
 					</div>
 				</nav>
 			)}
@@ -481,6 +480,28 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									</Link>
 								</div>
 							</li>
+							<li
+									className={`cursor-pointer transition-opacity duration-300 ${
+										selectedP && selectedP !== "social"
+											? "opacity-50"
+											: "opacity-100"
+									}`}
+									
+									onClick={() =>
+										handleToggleSection("social")
+									}
+								>
+									<div	className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
+									{!isLoading && (
+										<Link to={`${
+											authUser ? "/social" : "/login"
+										}`}>
+											<p> Social </p>
+										</Link>
+											)}
+									</div>
+									
+								</li>
 							{authUser?.isAdmin === true && (
 								<li
 									className="cursor-pointer transition-opacity duration-300 w-full text-center"

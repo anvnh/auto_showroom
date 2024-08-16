@@ -23,8 +23,8 @@ const NavbarSmall: React.FC<SubNavbarProps> = ({
 		{ id: "Home", label: "Home" },
 		{ id: "Introduce", label: "Introduce" },
 		{ id: "Model", label: "3DModel" },
-		{ id: "Behind", label: "BehindCar" },
-	
+		{ id: "Behind", label: "Behind Car" },
+		{ id: "Buy", label: "Buy Product" },
 	];
 
 	const handleMouseEnter = () => {
@@ -61,13 +61,13 @@ const NavbarSmall: React.FC<SubNavbarProps> = ({
 						data-aos-duration="2000"
 						className="flex items-center"
 					>
-						<div className="px-3 py-6 rounded-tl-xl h-[190px] rounded-bl-xl bg-gray-700 bg-opacity-50 text-white duration-600 transition-all ease-in-out">
+						<div className="px-3 py-6 rounded-tl-xl h-[224px] rounded-bl-xl bg-gray-700 bg-opacity-50 text-white duration-600 transition-all ease-in-out">
 							<div className="group-hover:scale-100  transform scale-110  transition-all duration-300">
 								<FaHome /> <br />
 								<IoIosInformationCircle /> <br />
 								<IoLogoModelS /> <br />
 								<FaCarSide /> <br />
-							
+								<FaCartShopping/>
 							</div>
 						</div>
 						{isHovered && (

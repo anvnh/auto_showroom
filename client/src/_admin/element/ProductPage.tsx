@@ -417,7 +417,7 @@ const ProductPage = () => {
 									id="Add_Performance"
 									className="modal "
 								>
-									<div className="w-[500px] bg-gray-700 shadow-white shadow-md rounded-xl p-3 bg-opacity-50 backdrop-blur-xl relative top-10">
+									<div className="w-[500px] bg-gray-700 shadow-white	 shadow-md rounded-xl p-3 bg-opacity-50 backdrop-blur-xl relative top-10">
 										<div className="grid gap-4">
 											<div className="grid gap-2">
 												<div className="grid grid-cols-3 items-center gap-4">

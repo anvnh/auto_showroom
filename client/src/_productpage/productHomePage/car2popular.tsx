@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import {
+	Buy2,
 	merr,
 	merr1,
 	merr2,
@@ -19,14 +20,15 @@ import {
 	merr12,
 	sky,
 	logomer,
-
 } from "../../assets";
 import { Button } from "@/components/ui/button";
-import Lenis from '@studio-freight/lenis'
-
+import Lenis from "@studio-freight/lenis";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Car2popular = () => {
-
 	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
 
@@ -52,9 +54,75 @@ const Car2popular = () => {
 	const handleThumbnailClick = (image) => {
 		setSelectedImage(image);
 	};
-	useEffect(() => {
-		window.scrollTo(0,0);
-	}, []);
+	// useEffect(() => {
+	// 	window.scrollTo(0,0);
+	// }, []);
+	const ID = "66ab97d42c63f54b95a50dc1";
+	const carId = ID;
+	// get single car
+	const {
+		data: car,
+		isLoading,
+		refetch,
+		isRefetching,
+	} = useQuery({
+		queryKey: ["car", carId],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/car/${carId}`);
+				const data = await response.json();
+
+				// console.log(data);
+
+				if (!response.ok) {
+					throw new Error(data.message || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
+	const { mutate: addToCart, isPending: isAddingToCart } = useMutation({
+		mutationFn: async (productId) => {
+			try {
+				const response = await fetch(
+					`/api/user/add/cart/${productId}`,
+					{
+						method: "POST",
+					}
+				);
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			console.log("okaodjihsi");
+			toast.success("Product added to cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+		onError: (error) => {
+			// TODO
+			toast.error("Item already in cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+	});
+	const handleAddToCart = (productId) => {
+		// setLoadingProductId(productId);
+		addToCart(productId);
+	};
 
 	return (
 		<div>
@@ -70,9 +138,7 @@ const Car2popular = () => {
 						loop
 						playsInline
 						className="w-full h-auto"
-					>
-					
-					</video>
+					></video>
 					<div
 						className="overlay absolute inset-x-0 bottom-0 h-1/4"
 						style={{
@@ -86,7 +152,9 @@ const Car2popular = () => {
 								data-aos="zoom-in"
 								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-48 transform text-center shadow-xl
 								ss:w-[550px] w-[200px] p-2 md:p-5 
-							transition-opacity duration-1000 opacity-0 font-syncopate ${isVisible ? "opacity-100" : ""}`}
+							transition-opacity duration-1000 opacity-0 font-syncopate ${
+								isVisible ? "opacity-100" : ""
+							}`}
 							>
 								<h1 className="text-xs ss:text-3xl lg:text-4xl mb-2 	tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all ">
 									Mercedes-Benz
@@ -95,7 +163,7 @@ const Car2popular = () => {
 									Maybach 2022
 									<br />
 									<span className="font-bold text-red-100">
-										26 000 $
+									$ 679,867
 									</span>
 								</h2>
 							</div>
@@ -157,7 +225,7 @@ const Car2popular = () => {
 						<div className="flex justify-center items-center">
 							<div
 								data-aos="zoom-in-left"
-									className="text-white relative font-thin text-xl p-5 ss:p-16 top-0 sm:text-5xl animate-pulse duration-1000 ease-in-out transition-all font-syncopate"
+								className="text-white relative font-thin text-xl p-5 ss:p-16 top-0 sm:text-5xl animate-pulse duration-1000 ease-in-out transition-all font-syncopate"
 							>
 								MERCEDES
 							</div>
@@ -365,48 +433,66 @@ const Car2popular = () => {
 				</div>
 
 				{/* --------------------------conclusion --------------*/}
-				<div 
-					id="Button_Buy" 
-					className="pb-24 pt-40 relative">
-					<div
-						data-aos="zoom-out"
-						className={`font-thin text-white text-center text-xl md:text-3xl transition-opacity duration-1000 opacity-0 ${
-							isVisible ? "opacity-100" : ""
-						}`}
-					>
-						<span className="font-bold">
-							The Mercedes-Benz Maybach 2022
-						</span>{" "}
-						is a great choice for those looking for a luxurious,{" "}
-						<br />
-						powerful sports car equipped with many advanced
-						technologies.
-						<br />
-						<br />
-						<span>
-							For only{" "}
-							<span className="text-red-100 font-bold">
-								26 000 $
-							</span>{" "}
-							you can own this car
-						</span>
-					</div>
-
-					<div className="mt-8 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center gap-9">
-						<Button
-							variant="outline"
-							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
+				<div className="w-full h-full pt-40 relative">
+					{isLoading && <LoadingSpinner />}
+					{!isLoading && !isRefetching && car && (
+						<div
+							id="Buy"
+							style={{ backgroundImage: `url(${Buy2})` }}
+							className="w-screen bg-cover bg-center h-[900px] relative"
 						>
-							Add to Cart
-						</Button>
+							<div className="w-full flex  justify-center pt-12 ">
+								<div className=" bg-gray-800 h-[280px] p-12 w-[700px] px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl">
+									<Toaster
+										position="top-center"
+										reverseOrder={false}
+									/>
+									<Link to="/shop/product/66ab97d42c63f54b95a50dc1">
+										<div
+											className="text-4xl cursor-pointer font-bold text-center font-syncopate"
+											title="View details"
+										>
+											Mercedes-Benz
+											<p className="text-2xl">
+												Maybach 2022
+											</p>
+										</div>
+									</Link>
+									<div className="text-2xl  text-center font-syncopate">
+									$ 679,867
+									</div>
+									<div className="flex justify-center gap-5 pt-12">
+										<Link to="/shop/payment/66ab97d42c63f54b95a50dc1">
+											<button
+												className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-40
+							"
+											>
+												Buy Now
+											</button>
+										</Link>
 
-						<Button
-							variant="outline"
-							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
-						>
-							Buy Car
-						</Button>
-					</div>
+										<button
+											className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-[230px]
+							"
+											onClick={() =>
+												handleAddToCart(car._id)
+											}
+										>
+											{isAddingToCart ? (
+												<LoadingSpinner />
+											) : (
+												<p>Add to cart</p>
+											)}
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

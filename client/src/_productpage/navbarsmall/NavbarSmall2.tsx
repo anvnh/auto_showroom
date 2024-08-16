@@ -19,7 +19,7 @@ const NavbarSmall2: React.FC<SubNavbarProps> = ({
 		{ id: "Introduce", label: "Introduce" },
 		{ id: "Model", label: "3DModel" },
 		{ id: "Behind", label: "BehindCar" },
-		{ id: "Button_Buy", label: "Buy product" },
+		{ id: "Buy", label: "Buy product" },
 	];
 
 	const handleMouseEnter = () => {

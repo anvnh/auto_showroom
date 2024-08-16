@@ -6,21 +6,25 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import {
+	buy,
 	mer1,
 	mer2,
 	mer3,
 	mer4,
 	mer5,
 	mer8,
+	mer9,
 	mer10,
 	mer11,
 	mer12,
 	sky,
 	logomer,
 	kiaposter,
-	banner1,
 } from "../../assets";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import toast, { Toaster } from "react-hot-toast";
 
 const Car1popular = () => {
 	// hiệu ứng hiển thị khi 3s trôi qua
@@ -48,15 +52,80 @@ const Car1popular = () => {
 	const handleThumbnailClick = (image) => {
 		setSelectedImage(image);
 	};
-	useEffect(() => {
-		window.scrollTo(0, 0); 
-	}, []);
+	const ID = "66ab8c2a2c63f54b95a50d1d";
+	const carId = ID;
+	// get single car
+	const {
+		data: car,
+		isLoading,
+		refetch,
+		isRefetching,
+	} = useQuery({
+		queryKey: ["car", carId],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/car/${carId}`);
+				const data = await response.json();
+
+				// console.log(data);
+
+				if (!response.ok) {
+					throw new Error(data.message || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
+	const { mutate: addToCart, isPending: isAddingToCart } = useMutation({
+		mutationFn: async (productId) => {
+			try {
+				const response = await fetch(
+					`/api/user/add/cart/${productId}`,
+					{
+						method: "POST",
+					}
+				);
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			console.log("okaodjihsi")
+			toast.success("Product added to cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+		onError: (error) => {
+			// TODO
+			toast.error("Item already in cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+	});
+	const handleAddToCart = (productId) => {
+		// setLoadingProductId(productId);
+		addToCart(productId);
+	};
+
 	return (
 		<div>
+
 			<div style={{ backgroundImage: `url(${sky})` }} className="min-h">
 				<div
 					id="Home"
-					data-aos="fade"
+					data-aos="fade-up"
 					className="bg-cover bg-center relative w-full min-h-[900px]  sm:min-h-[1200px] md:min-h-[800px] xl:min-h-[1000px]"
 				>
 					<video
@@ -77,7 +146,7 @@ const Car1popular = () => {
 					<div className="flex justify-center z-10">
 						{isVisible && (
 							<div
-								data-aos="zoom-in"
+								data-aos="fade-in"
 								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-48 transform text-center shadow-xl
            	 ss:w-[550px] w-[200px] p-2 md:p-5 
             transition-opacity duration-1000 opacity-0 font-syncopate ${
@@ -90,7 +159,7 @@ const Car1popular = () => {
 								<h2 className="text-xs ss:text-2xl lg:text-3xl font-thin animate-pulse duration-1000 ease-in-out transition-all">
 									CLS 53 4MATIC+ <br />
 									<span className="font-bold text-red-100 ">
-									183 600 $
+										183 600 $
 									</span>
 								</h2>
 							</div>
@@ -150,13 +219,13 @@ const Car1popular = () => {
 					>
 						<div className="flex justify-center items-center">
 							<div
-								data-aos="zoom-in-left"
+								data-aos="fade-left"
 								className="text-white relative font-thin text-xl p-5 ss:p-16 top-0 sm:text-5xl animate-pulse duration-1000 ease-in-out transition-all font-syncopate"
 							>
 								MERCEDES
 							</div>
 							<div
-								data-aos="zoom-in-right"
+								data-aos="fade-right"
 								style={{ backgroundImage: `url(${logomer})` }}
 								className="w-20 bg-center h-28 bg-cover sm:h-36 animate-pulse duration-1000 ease-in-out transition-all"
 							>
@@ -164,7 +233,7 @@ const Car1popular = () => {
 							</div>
 						</div>
 						<div
-							data-aos="zoom-in"
+							data-aos="fade-down"
 							className="font-thin text-white md:text-2xl text-sm md:p-64 ss:p-14  p-12 pb-64 pt-44 text-center"
 						>
 							<span className="font-bold ">
@@ -183,7 +252,7 @@ const Car1popular = () => {
 							is limited to 250 km/h.
 						</div>
 						<div
-							data-aos="zoom-in"
+							data-aos="fade-in"
 							style={{ backgroundImage: `url(${mer1})` }}
 							className="bg-cover bg-center w-full relative rounded-full rounded-tl-none rounded-br-none pt-[900px] "
 						></div>
@@ -192,7 +261,7 @@ const Car1popular = () => {
 				{/* ------------tiêu đề------------------ */}
 				<div className="relative xl:pt-[1400px] lg:pt-[1400px] md:pt-[1400px] xs:pt-[500px] pt-[670px] ss:py-[100px]">
 					<div
-						data-aos="flip-left"
+						data-aos="fade-up"
 						className="font-thin text-blue-200 relative text-md ss:text-2xl  md:text-6xl sm:text-4xl text-center pb-[100px] font-syncopate"
 					>
 						SIGNIFICANTLY SHARPER - LIKE YOUR EYES
@@ -200,7 +269,7 @@ const Car1popular = () => {
 					{/* ------------ảnh 1------------------ */}
 					<div className="pt-0 md:pt-[20px] flex">
 						<div
-							data-aos="slide-right"
+							data-aos="fade-right"
 							className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-24 p-2 xs:p-12"
 						>
 							In addition to the newly launched upgraded version
@@ -210,7 +279,7 @@ const Car1popular = () => {
 						</div>
 						<div className="justify-end flex">
 							<div
-								data-aos="slide-left"
+								data-aos="fade-left"
 								className="relative bg-cover w-[200px] h-[300px] ss:w-[400px] ss:h-[500px] sm:w-[500px] sm:h-[600px] md:w-[700px] md:h-[600px] xl:w-[1000px] xl:h-[900px] rounded-bl-full"
 								style={{ backgroundImage: `url(${mer2})` }}
 							></div>
@@ -220,13 +289,13 @@ const Car1popular = () => {
 					<div className="pt-[100px] flex">
 						<div className="justify-start flex">
 							<div
-								data-aos="slide-right"
+								data-aos="fade-right"
 								className="relative bg-cover w-[200px] h-[300px] ss:w-[400px] ss:h-[500px] sm:w-[500px] sm:h-[600px] md:w-[600px] md:h-[500px] xl:w-[1000px] xl:h-[900px] rounded-tr-full"
 								style={{ backgroundImage: `url(${mer3})` }}
 							></div>
 						</div>
 						<div
-							data-aos="slide-left"
+							data-aos="fade-left"
 							className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-32 p-2 xs:p-12"
 						>
 							In addition to the newly launched upgraded version
@@ -242,7 +311,7 @@ const Car1popular = () => {
 				<div className="">
 					<div
 						id="Model"
-						data-aos="zoom-out"
+						data-aos="fade-up"
 						className="font-thin text-blue-200 relative text-3xl ss:text-2xl  md:text-6xl sm:text-4xl text-center pt-[200px] font-syncopate"
 					>
 						3D MODEL
@@ -271,22 +340,25 @@ const Car1popular = () => {
 				<div className="flex">
 					<div
 						id="Behind"
-						data-aos="slide-left"
+						data-aos="fade-left"
 						className="relative bg-cover bg-center w-[200px] h-[150px] xs:w-[300px] xs:h-[200px] ss:w-[500px] ss:h-[300px] sm:w-[600px] sm:h-[400px] md:w-[800px] md:h-[500px] xl:w-[1000px] xl:h-[500px] rounded-tr-full"
 						style={{ backgroundImage: `url(${kiaposter})` }}
 					></div>
 					<div
-						data-aos="slide-right"
+						data-aos="fade-right"
 						className="font-thin text-blue-200 relative text-xl ss:text-3xl sm:text-5xl xl:text-6xl justify-center items-center flex left-10 ss:left-12 sm:left-7 md:left-32 xs:left-20 font-syncopate"
 					>
 						CAR BEHIND
 					</div>
 				</div>
 				{/* ---------------CAR behind--------------------------------- */}
-				<div data-aos="slide-up" className="pt-12">
+				<div className="pt-12">
 					<div className="flex pt-20 row-span-2">
 						{/*  các thumbnail */}
-						<div className="md:w-[300px] w-[150px] p-4 flex max-h-[calc(900vh-1000px)]">
+						<div
+							data-aos="fade-right"
+							className="md:w-[300px] w-[150px] p-4 flex max-h-[calc(900vh-1000px)]"
+						>
 							<div className="flex flex-col space-y-4 flex-grow ">
 								{[mer11, mer12, mer8, mer4, mer5].map(
 									(image, index) => (
@@ -309,7 +381,10 @@ const Car1popular = () => {
 						</div>
 
 						{/* ảnh lớn */}
-						<div className="w-full relative pl-2 justify-end items-end flex">
+						<div
+							data-aos="fade-left"
+							className="w-full relative pl-2 justify-end items-end flex"
+						>
 							<div
 								className="bg-cover bg-center w-full h-full object-cove rounded-3xl"
 								style={{
@@ -324,7 +399,7 @@ const Car1popular = () => {
 
 				<div className="pt-[300px] flex">
 					<div
-						data-aos="slide-right"
+						data-aos="fade-right"
 						className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-24 p-2 xs:p-12"
 					>
 						Two AMG Night Package and Night Package II equipment
@@ -334,22 +409,22 @@ const Car1popular = () => {
 					</div>
 					<div className="justify-end flex">
 						<div
-							data-aos="slide-left"
+							data-aos="fade-left"
 							className="relative bg-cover w-[200px] h-[300px] ss:w-[400px] ss:h-[500px] sm:w-[500px] sm:h-[600px] md:w-[700px] md:h-[600px] xl:w-[1000px] xl:h-[900px] rounded-bl-full"
-							style={{ backgroundImage: `url(${banner1})` }}
+							style={{ backgroundImage: `url(${mer9})` }}
 						></div>
 					</div>
 				</div>
 				<div className="pt-[1px] flex">
 					<div className="justify-start flex">
 						<div
-							data-aos="slide-left"
+							data-aos="fade-left"
 							className="relative bg-cover w-[200px] h-[300px] ss:w-[400px] ss:h-[500px] sm:w-[500px] sm:h-[600px] md:w-[600px] md:h-[500px] xl:w-[1000px] xl:h-[900px] rounded-br-full bg-center"
 							style={{ backgroundImage: `url(${mer10})` }}
 						></div>
 					</div>
 					<div
-						data-aos="slide-right"
+						data-aos="fade-right"
 						className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-32 p-2 xs:p-12"
 					>
 						Inside, the AMG Performance upgrade package will provide
@@ -360,46 +435,62 @@ const Car1popular = () => {
 				</div>
 
 				{/* --------------------------conclusion --------------*/}
-				<div className="pb-24 pt-40 relative">
+				<div className="w-full h-full pt-40 relative">
+				{isLoading && <LoadingSpinner />}
+				{!isLoading && !isRefetching && car && (
 					<div
-						data-aos="zoom-out"
-						className={`font-thin text-white text-center text-xl md:text-3xl transition-opacity duration-1000 opacity-0 ${
-							isVisible ? "opacity-100" : ""
-						}`}
+						id="Buy"
+						style={{ backgroundImage: `url(${buy})` }}
+						className="w-screen bg-cover bg-center h-[900px] relative"
 					>
-						<span className="font-bold">
-							The Mercedes-AMG CLS 53 4Matic+
-						</span>{" "}	
-						is a great choice for those looking for a luxurious,{" "}
-						<br />
-						powerful sports car equipped with many advanced
-						technologies.
-						<br />
-						<br />
-						<span>
-							For only{" "}
-							<span className="text-red-100 font-bold">
-							183 600 $
-							</span>{" "}
-							you can own this car
-						</span>
-					</div>
+						<div className="w-full flex  justify-center pt-20 ">
+							
+							<div className=" bg-gray-800 h-[250px] p-12 w-[700px] px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl">
+							<Toaster position="top-center" reverseOrder={false} />
+								<Link to="/shop/product/66ab8c2a2c63f54b95a50d1d">
+								<div className="text-4xl cursor-pointer font-bold text-center font-syncopate"
+								title="View details"
+								>
+									
+									MERCEDES-AMG CLS
+								</div></Link>
+								<div className="text-2xl  text-center font-syncopate">
+									$ 183,600
+								</div>
+								<div className="flex justify-center gap-5 pt-12">
+									
+									<Link to="/shop/payment/66ab8c2a2c63f54b95a50d1d">
+										<button
+											className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-40
+							"
+										>
+											Buy Now
+										</button>
+									</Link>
 
-					<div className="mt-8 flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center gap-9">
-						<Button
-							variant="outline"
-							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
-						>
-							Add to Cart
-						</Button>
-
-						<Button
-							variant="outline"
-							className="w-32 h-11 md:w-60 md:h-20 px-6 py-3 bg-transparent border border-white text-white hover:bg-primary hover:text-white transition-colors duration-300 hover:scale-110 font-syncopate"
-						>
-							Buy Car
-						</Button>
+									<button
+										className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-[230px]
+							"
+							onClick={() =>
+								handleAddToCart(car._id)
+							}
+									>
+										
+										{isAddingToCart ? (
+											<LoadingSpinner />
+										) : (
+											<p>Add to cart</p>
+										)}
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
+					)}
 				</div>
 			</div>
 		</div>

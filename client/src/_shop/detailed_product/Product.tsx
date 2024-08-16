@@ -177,7 +177,7 @@ const Product = () => {
 											{car.images.map((image, index) => (
 												<div
 													key={index}
-													className="flex w-[100px] h-[100px] md:w-[250px] md:h-[150px] object-cover cursor-pointer flex-shrink-0"
+													className="flex w-[100px] h-[100px] md:w-[200px] md:h-[150px] object-cover cursor-pointer flex-shrink-0"
 													onClick={() =>
 														handleThumbnailClick(
 															image

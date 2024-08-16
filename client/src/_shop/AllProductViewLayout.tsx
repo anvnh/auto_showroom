@@ -4,7 +4,7 @@ import LinkHeader from './common/LinkHeader';
 import Products from './products/Products';
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
-
+import Footer from '@/components/common/Footer';
 const AllProductViewLayout = () => {
 	useEffect(() => {
 		const lenis = new Lenis();
@@ -33,6 +33,11 @@ const AllProductViewLayout = () => {
 				<div className='flex px-12 ss:px-0 md:px-[120px] bg-primary'>
 					<div className="w-full justify-center">
 						<Products />
+					</div>
+				</div>
+				<div className='flex pt-20 bg-primary'>
+					<div className="w-full justify-center">
+						<Footer />
 					</div>
 				</div>
 			</div>

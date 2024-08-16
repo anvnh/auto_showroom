@@ -175,7 +175,7 @@ const Car3popular: React.FC = () => {
 										</h1>
 										<h2 className="text-xs ss:text-2xl lg:text-4xl sm:text-3xl font-thin pt-1">
 											<span className="">
-												$ 1,65 million 
+												$ 332,500
 											</span>
 										</h2>
 									</div>
@@ -255,7 +255,7 @@ const Car3popular: React.FC = () => {
 						<ParallaxLayer offset={1.7} speed={0.8} factor={1}>
 							<div
 								style={{ backgroundImage: `url(${r1})` }}
-								className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] top-[200px] ss:top-[150px] sm:top-[350px] md:top-[2000px]"
+								className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] top-[200px] ss:top-[150px] sm:top-[350px] md:top-[1900px]"
 							></div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={1.8} speed={0.9} factor={1}>
@@ -384,7 +384,7 @@ const Car3popular: React.FC = () => {
 						>
 							<div
 								id="Interiors"
-								className="flex justify-center bottom-[900px] md:-bottom-[1030px] bg-bla relative z-50"
+								className="flex justify-center bottom-[900px] md:-bottom-[1030px] pt-12 relative z-50"
 							>
 								<div className="w-full z-50">
 									<Car3popular2 />
@@ -459,8 +459,7 @@ const Car3popular: React.FC = () => {
 										Continue your journey
 									</h3>
 									<p>
-										You may also like the following related
-										articles
+									$ 332,500
 									</p>
 								</div>
 
