@@ -240,7 +240,7 @@ const Audi_A5_Couple = () => {
         <div className="w-full flex bg-primary">
           <Navbar />
         </div>
-        <Link to="/aboutUs"><div className="w-screen h-screen bg-neutral-500"></div></Link>
+        {/* <Link to="/aboutUs"><div className="w-screen h-screen bg-neutral-500"></div></Link> */}
 
         <section className="relative h-screen w-screen flex justify-center items-center">
           <div ref={bg_sec1} style={{ backgroundImage: `url(${a5_8})` }}
