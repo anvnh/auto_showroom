@@ -16,7 +16,9 @@ import {
 	inside51,
 	inside52,
 	inside53,
-
+	news2,
+	news3,
+	news6,
 	car53,
 	car54,
 	car55,
@@ -178,13 +180,7 @@ const car5reponsive: React.FC = () => {
 							17.9–18.6 mpg / 15.8-15.2 l/100km
 						</div>
 					</h2>
-					<div className="pt-36 relative justify-center items-center flex">
-						<div
-						data-aos="fade-right"
-							style={{ backgroundImage: `url(${car53})` }}
-							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] sm:w-[800px] sm:h-[600px] md:w-[1200px] md:h-[600px] bg-cover  animate-pulse bg-center rounded-3xl relative"
-						></div>
-					</div>
+
 					<div className="text-3xl md:text-[200px] text-white ss:text-6xl sm:text-8xl ss:bottom-56 animate-pulse text-center pt-28 md:pt-[300px] sm:pt-0 relative font-syncopate lg:pt-1">
 						IN THE CAR
 					</div>
@@ -356,22 +352,22 @@ const car5reponsive: React.FC = () => {
 				<div className="justify-start items-start flex">
 					<div
 					data-aos="fade-right"
-						style={{ backgroundImage: `url(${car54})` }}
+						style={{ backgroundImage: `url(${news2})` }}
 						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative  -top-[0px] ss:top-[150px] sm:top-[250px] md:top-[2600px] lg:h-[600px] lg:w-[1000px] lg:-top-[10px]"
 					></div>
 				</div>
 				<div className="justify-end items-end flex">
 					<div
 					data-aos="fade-left"
-						style={{ backgroundImage: `url(${car57})` }}
-						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[100px] ss:-top-[300px] sm:top-[100px] md:top-[1700px] lg:h-[600px] lg:w-[1000px] lg:-top-[100px]"
+						style={{ backgroundImage: `url(${news3})` }}
+						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative top-[10px] ss:-top-[300px] sm:top-[100px] md:top-[1700px] lg:h-[600px] lg:w-[1000px] lg:-top-[100px]"
 					></div>
 				</div>
 				<div className="justify-start items-start flex">
 				<div
 				data-aos="fade-right"
-					style={{ backgroundImage: `url(${car55})` }}
-					className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[600px] bg-cover rounded-3xl sm:top-[10px] relative -top-[190px] ss:-top-[500px] xs:-top-[200px] md:top-[800px] lg:h-[600px] lg:w-[1000px] lg:-top-[150px]"
+					style={{ backgroundImage: `url(${news6})` }}
+					className="w-full h-[300px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[600px] bg-cover rounded-3xl sm:top-[10px] relative top-[50px] ss:-top-[500px] xs:-top-[200px] md:top-[800px] left-[0px] lg:h-[600px] lg:w-[1000px] lg:-top-[150px]"
 				></div>
 				</div>
 			</div>
@@ -380,10 +376,11 @@ const car5reponsive: React.FC = () => {
 				<div className="article-tiles-desc mb-6 text-center font-syncopate">
 					<h3
 					data-aos="fade-up"
-					className="text-4xl ss:text-5xl mb-2">
-						Continue your journey
+					className="text-2xl ss:text-5xl mb-2 pt-20">
+							Roll Royce Phantom
+							Extended Series II
 					</h3>
-					<p data-aos="fade-down">You may also like the following related articles</p>
+					<p data-aos="fade-down">	$1,65 million</p>
 				</div>
 
 				<div className="article-tiles-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-10 sm:pt-20">
@@ -398,12 +395,11 @@ const car5reponsive: React.FC = () => {
 						<div
 						data-aos="fade-right"
 						className="block font-syncopate text-center">
-							<h4 className="text-base ss:text-lg mb-2">
-								GHOST PRISM
+							<h4 className="text-base ss:text-lg font-bold pt-4 mb-2">
+							Sophisticated and Classy Design
 							</h4>
 							<p className="text-sm ss:text-base">
-								Ghost Prism draws inspiration from the world of
-								contemporary designs.
+							Stands out with its majestic and sophisticated exterior design
 							</p>
 						</div>
 					</div>
@@ -427,12 +423,11 @@ const car5reponsive: React.FC = () => {
 						<div
 						data-aos="fade-left"
 						className="block font-syncopate text-center">
-							<h4 className="text-base ss:text-lg mb-2">
-								Ghost - In Detail
+							<h4 className="text-base ss:text-lg pt-4 font-bold mb-2">
+							Luxurious Interior Space
 							</h4>
 							<p className="text-sm ss:text-base">
-								Pure and pristine. The ultimate foundation for
-								infinite self-expression.
+							The interior of the Phantom Extended Series II is like a mobile luxury living room.
 							</p>
 						</div>
 					</div>
@@ -446,10 +441,10 @@ const car5reponsive: React.FC = () => {
 						</figure>
 						<div className="block font-syncopate text-center">
 							<h4 className="text-base ss:text-lg mb-2">
-								Commission Your Ghost
+							Powerful Performance 
 							</h4>
 							<p className="text-sm ss:text-base">
-								Envision an original with Bespoke services.
+							Possesses a powerful 6.75 liter V12 engine
 							</p>
 						</div>
 					</div>

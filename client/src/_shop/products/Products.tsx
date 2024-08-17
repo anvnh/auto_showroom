@@ -192,14 +192,14 @@ const Products = () => {
 								
 										key={product._id}
 										className="md:flex bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white hover:bg-opacity-90 p-3 md:p-4 mb-7 rounded-2xl shadow-md w-full h-auto">
-										<div className="relative w-full md:w-1/3 md:mr-4 overflow-hidden mb-4 items-center flex">
+										<div className="relative w-full md:w-1/3 md:mr-4 overflow-hidden mb-4 items-center flex rounded-xl">
 											<Link
 												to={`/shop/product/${product._id}`}
-												className="w-full sm:h-[300px] md:h-[250px] ss:h-[400px] h-[180px] rounded"
+												className="w-full sm:h-[300px] md:h-[250px] ss:h-[400px] h-[180px] "
 											>
 												<img
 											src={product.images[0]}
-											className="w-full ss:h-[400px] bg-center bg-cover md:h-[250px] rounded"
+											className="w-full ss:h-[400px] bg-center bg-cover md:h-[250px]  "
 										/>
 											</Link>
 										</div>

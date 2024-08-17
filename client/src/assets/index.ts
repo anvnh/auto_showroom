@@ -63,6 +63,7 @@ import mer12 from "./car1_popular/mer12.avif";
 import sky from "./car1_popular/sky.jpg";
 import banner1 from "./car1_popular/banner1.jpg";
 import mernavbar from "./car1_popular/navbar.jpg";
+import buy from "./car1_popular/buy.avif"
 
 // car2 popular
 import merr from "./car2_popular/2mer.avif";
@@ -78,7 +79,7 @@ import merr9 from "./car2_popular/2mer9.avif";
 import merr10 from "./car2_popular/2mer10.avif";
 import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
-
+import Buy2 from "./car2_popular/buy.png"
 // import video
 
 import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
@@ -226,6 +227,8 @@ import bgSocial from "./owner/bgsocial.png";
 
 import Voucher15do from "./voucher/15do.png";
 export {
+	Buy2,
+	buy,
 	videohieuung2,
 	moi1,
 	moi2,

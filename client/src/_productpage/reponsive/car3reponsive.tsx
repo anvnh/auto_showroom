@@ -115,7 +115,7 @@ const car3reponsive: React.FC = () => {
 						</h1>
 						<h2 className="text-xs ss:text-2xl lg:text-4xl sm:text-2xl font-thin pt-1">
 							<span className="font-bold text-red-100">
-								1,65 million $
+							$ 332,500
 							</span>
 						</h2>
 					</div>
@@ -365,9 +365,9 @@ const car3reponsive: React.FC = () => {
 					<h3
 					data-aos="fade-up"
 					className="text-4xl ss:text-5xl mb-2">
-						Continue your journey
+							Rolls Royce Ghost 2021
 					</h3>
-					<p data-aos="fade-down">You may also like the following related articles</p>
+					<p data-aos="fade-down">$ 332,500</p>
 				</div>
 
 				<div className="article-tiles-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-10 sm:pt-20">
@@ -382,7 +382,7 @@ const car3reponsive: React.FC = () => {
 						<div
 						data-aos="fade-right"
 						className="block font-syncopate text-center">
-							<h4 className="text-base ss:text-lg mb-2">
+							<h4 className="text-base ss:text-lg mb-2 pt-5 font-bold">
 								GHOST PRISM
 							</h4>
 							<p className="text-sm ss:text-base">
@@ -411,7 +411,7 @@ const car3reponsive: React.FC = () => {
 						<div
 						data-aos="fade-left"
 						className="block font-syncopate text-center">
-							<h4 className="text-base ss:text-lg mb-2">
+							<h4 className="text-base ss:text-lg mb-2 pt-5 font-bold">
 								Ghost - In Detail
 							</h4>
 							<p className="text-sm ss:text-base">
@@ -429,7 +429,7 @@ const car3reponsive: React.FC = () => {
 							/>
 						</figure>
 						<div className="block font-syncopate text-center">
-							<h4 className="text-base ss:text-lg mb-2">
+							<h4 className="text-base ss:text-lg mb-2 pt-5 font-bold" >
 								Commission Your Ghost
 							</h4>
 							<p className="text-sm ss:text-base">

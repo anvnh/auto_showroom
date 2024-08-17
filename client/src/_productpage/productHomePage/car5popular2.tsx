@@ -31,10 +31,9 @@ const car5popular2 = () => {
 						</div>
 					</div>
 				</div>
-				-{/* destop------------------ */}
+				{/* destop------------------ */}
 				<div className="hidden md:block">
 					<div
-					
 						className=" bg-cover bg-center h-24 sm:h-48 relative object-cover z-20"
 					>
 						<div className="flex justify-center pt-10 md:pt-12 inset-0">
@@ -142,7 +141,7 @@ const car5popular2 = () => {
 				>
 					<div className="flex justify-center pt-16 absolute inset-0">
 						<h1
-							data-aos="fade-left"
+						
 							className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl animate-p bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate uppercase"
 						>
 							3D model
