@@ -79,7 +79,7 @@ import merr9 from "./car2_popular/2mer9.avif";
 import merr10 from "./car2_popular/2mer10.avif";
 import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
-import Buy2 from "./car2_popular/buy.png"
+import Buy2 from "./car2_popular/buy.jpg"
 // import video
 
 import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
