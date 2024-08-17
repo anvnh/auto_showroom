@@ -481,6 +481,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 								</div>
 							</li>
 							<li
+							data-aos="fade-up"
+									data-aos-delay="800"
 									className={`cursor-pointer transition-opacity duration-300 ${
 										selectedP && selectedP !== "social"
 											? "opacity-50"
@@ -511,7 +513,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 								>
 									<div
 										data-aos="fade-up"
-										data-aos-delay="700"
+										data-aos-delay="900"
 										className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
 									>
 										<Link to="/admin">
