@@ -122,8 +122,9 @@ const Car1popular = () => {
 	return (
 		<div>
 			<div
-			//  style={{ backgroundImage: `url(${sky})` }} 
-			 className="min-h">
+				//  style={{ backgroundImage: `url(${sky})` }}
+				className="min-h"
+			>
 				<div
 					id="Home"
 					data-aos="fade-up"
@@ -229,9 +230,7 @@ const Car1popular = () => {
 								data-aos="fade-right"
 								style={{ backgroundImage: `url(${logomer})` }}
 								className="w-20 bg-center h-28 bg-cover sm:h-36 animate-pulse duration-1000 ease-in-out transition-all"
-							>
-							
-							</div>
+							></div>
 						</div>
 						<div
 							data-aos="fade-down"
@@ -362,7 +361,7 @@ const Car1popular = () => {
 						>
 							<div className="block md:hidden">
 								<div className="flex gap-2 sm:gap-5  md:flex-col md:space-y-4 flex-grow ">
-									{[mer11,mer12, mer8, mer4, mer5].map(
+									{[mer11, mer12, mer8, mer4, mer5].map(
 										(image, index) => (
 											<div
 												key={index}
@@ -464,29 +463,39 @@ const Car1popular = () => {
 					{!isLoading && !isRefetching && car && (
 						<div
 							id="Buy"
+								data-aos="fade-up"
 							style={{ backgroundImage: `url(${buy})` }}
 							className="w-screen bg-cover bg-center h-[400px] md:h-[900px] relative"
 						>
 							<div className="w-full flex  justify-center pt-5 md:pt-20 ">
-								<div className=" bg-gray-800 w-[320px] h-[150px] md:h-[250px] md:p-12 p-4 md:w-[700px] md:px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl">
+								<div 
+								data-aos="fade-right"
+								className=" bg-gray-800 w-[320px] h-[150px] md:h-[250px] md:p-12 p-4 md:w-[700px] md:px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl">
 									<Toaster
 										position="top-center"
 										reverseOrder={false}
 									/>
 									<Link to="/shop/product/66ab8c2a2c63f54b95a50d1d">
 										<div
+											data-aos="fade-left"
+											data-aos-delay="500"
 											className="md:text-4xl cursor-pointer font-bold text-center font-syncopate"
 											title="View details"
 										>
 											MERCEDES-AMG CLS
 										</div>
 									</Link>
-									<div className="md:text-2xl text-center font-syncopate">
+									<div  
+									data-aos="fade-left"
+									data-aos-delay="500"
+									className="md:text-2xl text-center font-syncopate">
 										$ 183,600
 									</div>
 									<div className="flex justify-center gap-5 pt-5 md:pt-12">
 										<Link to="/shop/payment/66ab8c2a2c63f54b95a50d1d">
 											<button
+												data-aos="fade-right"
+												data-aos-delay="500"
 												className=" opacity-80 backdrop-blur-xl
 							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center 
 										before:ease relative md:h-12 h-10 w-32 md:w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-40
@@ -497,6 +506,8 @@ const Car1popular = () => {
 										</Link>
 
 										<button
+											data-aos="fade-right"
+											data-aos-delay="500"
 											className=" opacity-80 backdrop-blur-xl
 							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
 										before:ease relative h-10 md:h-12 md:w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-[230px]

@@ -34,6 +34,10 @@ import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 
 import AOS from "aos";
+import { Link } from "react-router-dom";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import { toast,Toaster } from "react-hot-toast";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 const car5reponsive: React.FC = () => {
 	useEffect(() => {
@@ -91,7 +95,72 @@ const car5reponsive: React.FC = () => {
 			}
 		}
 	}, [activeImage, activeGroup]);
+	const ID = "66bfc096598bcf76c770c008";
+	const carId = ID;
+	// get single car
+	const {
+		data: car,
+		isLoading,
+		refetch,
+		isRefetching,
+	} = useQuery({
+		queryKey: ["car", carId],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/car/${carId}`);
+				const data = await response.json();
 
+				// console.log(data);
+
+				if (!response.ok) {
+					throw new Error(data.message || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
+	const { mutate: addToCart, isPending: isAddingToCart } = useMutation({
+		mutationFn: async (productId) => {
+			try {
+				const response = await fetch(
+					`/api/user/add/cart/${productId}`,
+					{
+						method: "POST",
+					}
+				);
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			console.log("okaodjihsi");
+			toast.success("Product added to cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+		onError: (error) => {
+			// TODO
+			toast.error("Item already in cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+	});
+	const handleAddToCart = (productId) => {
+		// setLoadingProductId(productId);
+		addToCart(productId);
+	};
 	return (
 		<div className="relative w-full bg-black">
 			<div className="w-full relative">
@@ -382,7 +451,38 @@ const car5reponsive: React.FC = () => {
 					</h3>
 					<p data-aos="fade-down">	$1,65 million</p>
 				</div>
+				<div className="flex justify-center gap-5 pt-5">
+				<Toaster
+										position="top-center"
+										reverseOrder={false}
+									/>
+										<Link to="/shop/payment/66bfc096598bcf76c770c008">
+											<button
+												className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-40
+							"
+											>
+												Buy Now
+											</button>
+										</Link>
 
+										<button
+											className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-[230px]
+							"
+											onClick={() =>
+												handleAddToCart(car._id)
+											}
+										>
+											{isAddingToCart ? (
+												<LoadingSpinner />
+											) : (
+												<p>Add to cart</p>
+											)}
+										</button>
+									</div>
 				<div className="article-tiles-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-10 sm:pt-20">
 					<div className="article-tile">
 						<figure className="hover01 overflow-hidden">
