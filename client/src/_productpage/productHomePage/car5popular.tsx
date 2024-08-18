@@ -483,10 +483,7 @@ const Car5popular: React.FC = () => {
 											$1,65 million
 										</p>
 									</div>
-									<Toaster
-										position="top-center"
-										reverseOrder={false}
-									/>
+
 									<div className="flex justify-center gap-5 pt-5">
 										<Link to="/shop/payment/66bfc096598bcf76c770c008">
 											<button

@@ -63,7 +63,7 @@ import mer12 from "./car1_popular/mer12.avif";
 import sky from "./car1_popular/sky.jpg";
 import banner1 from "./car1_popular/banner1.jpg";
 import mernavbar from "./car1_popular/navbar.jpg";
-import buy from "./car1_popular/buy.avif"
+import buy from "./car1_popular/buy.avif";
 
 // car2 popular
 import merr from "./car2_popular/2mer.avif";
@@ -79,7 +79,7 @@ import merr9 from "./car2_popular/2mer9.avif";
 import merr10 from "./car2_popular/2mer10.avif";
 import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
-import Buy2 from "./car2_popular/buy.jpg"
+import Buy2 from "./car2_popular/buy.jpg";
 // import video
 
 import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
@@ -166,8 +166,7 @@ import news5 from "./car_popular/car5popular/news5.webp";
 import news6 from "./car_popular/car5popular/news6.png";
 import moi1 from "./car_popular/car5popular/moi1.webp";
 import moi2 from "./car_popular/car5popular/moi2.webp";
-import videohieuung2 from "./car_popular/car5popular/videohieuung2.mp4"
-
+import videohieuung2 from "./car_popular/car5popular/videohieuung2.mp4";
 
 //car6 popular
 import car61 from "./car_popular/car6popular/61.jpg";
@@ -210,14 +209,16 @@ import VideoLogo from "./logo/videologo.mp4";
 
 // navbar car
 // mer
-import carnb1 from "./car/carnavbar/CB1.png";
-import carnb2 from "./car/carnavbar/CB2.png";
-import carnb4 from "./car/carnavbar/CB3.png";
-import carnb3 from "./car/carnavbar/A5coupe.png";
-import carnb5 from "./car/carnavbar/CB5.png";
+import carnb1 from "./car/carnavbar/use/1.png";
+import carnb2 from "./car/carnavbar/use/2.png";
+import carnb4 from "./car/carnavbar/use/3.png";
+import carnb3 from "./car/carnavbar/use/4.png";
+import carnb5 from "./car/carnavbar/use/4.png";
 import BuilCar from "./car/shopnavbar/BuilCar.png";
 import offer from "./car/shopnavbar/offer.jpg";
 import testdrive from "./car/shopnavbar/testdrive.webp";
+import carnbRR from "./car/carnavbar/use/5.webp";
+import carnbRR2 from "./car/carnavbar/use/6.png";
 
 //Owner------------------------------------
 import gif from "./login/gif.webp";
@@ -227,6 +228,8 @@ import bgSocial from "./owner/bgsocial.png";
 
 import Voucher15do from "./voucher/15do.png";
 export {
+	carnbRR,
+	carnbRR2,
 	Buy2,
 	buy,
 	videohieuung2,
