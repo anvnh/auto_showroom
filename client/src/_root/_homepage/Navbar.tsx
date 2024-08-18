@@ -390,7 +390,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 				{isExpanded && selectedSection === "vehicles" && (
 					<div
 						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-85 bg-gray-900  ${
+						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-80 backdrop-blur-md bg-gray-900  ${
 							isHidden ? "hidden" : ""
 						}`}
 					>

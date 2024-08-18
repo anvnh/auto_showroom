@@ -1,4 +1,5 @@
 import {
+	car1populars,
 	carnb1,
 	car2,
 	car4,
@@ -22,6 +23,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { car1popular } from "@/_productpage";
 const Product = () => {
 	useEffect(() => {
 		AOS.init({
@@ -57,7 +59,7 @@ const Product = () => {
 						>
 							<div className="car w-full flex justify-center sm:justify-end">
 								<img
-									src={carnb1}
+									src={car1populars}
 									alt=""
 									className="object-cover w-[450px] left-0 md:left-12 relative transition-transform duration-500 ease-out group-hover:rotate-3 group-hover:-translate-x-1 mx:group-hover:scale-150 group-hover:scale-110 
 									scale-90 sm:group-hover:-translate-x-10 "

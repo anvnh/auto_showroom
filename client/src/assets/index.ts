@@ -219,6 +219,7 @@ import offer from "./car/shopnavbar/offer.jpg";
 import testdrive from "./car/shopnavbar/testdrive.webp";
 import carnbRR from "./car/carnavbar/use/5.webp";
 import carnbRR2 from "./car/carnavbar/use/6.png";
+import car1populars from "./car/carnavbar/CB1.png"
 
 //Owner------------------------------------
 import gif from "./login/gif.webp";
@@ -228,6 +229,7 @@ import bgSocial from "./owner/bgsocial.png";
 
 import Voucher15do from "./voucher/15do.png";
 export {
+	car1populars,
 	carnbRR,
 	carnbRR2,
 	Buy2,
