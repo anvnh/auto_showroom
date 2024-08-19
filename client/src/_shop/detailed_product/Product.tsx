@@ -114,9 +114,6 @@ const Product = () => {
 		}
 	};
 
-	const [selectedColor, setSelectedColor] = useState<null | string>(null);
-	const colors = ["black", "white", "red", "green", "blue", "yellow"];
-
 	const [quantity, setQuantity] = useState(1);
 
 	const decreaseQuantity = () => {
@@ -243,42 +240,43 @@ const Product = () => {
 													<p>Out of stock</p>
 												)}
 											</div>
+                                            {/* TODO */}
 											<div>Free ship</div>
 											<div className="flex"></div>
 										</div>
 
 										<hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
 
-										<div className="pt-5 text-xl h-16 w-full flex items-center">
-											<p className="">
-												Select color: &nbsp; &nbsp;
-											</p>
-											{/* <ul className="flex space-x-2">
-											<li className="border border-gray-500 radio rounded-full bg-black"></li>
-											<li className="border border-gray-500 radio rounded-full bg-white"></li>
-											<li className="border border-gray-500 radio rounded-full bg-red-500"></li>
-											<li className="border border-gray-500 radio rounded-full bg-green-500"></li>
-											<li className="border border-gray-500 radio rounded-full bg-blue-500"></li>
-											<li className="border border-gray-500 radio rounded-full bg-yellow-500"></li>
-										</ul> */}
-										
-											{colors.map((color) => (
-												<button
-													key={color}
-													className={`border-2 boder-black hover:scale-110 duration-300 ease-in-out transition-all rounded-full focus:outline-none mx-1 ${
-														selectedColor === color
-															? "w-8 h-8"
-															: "w-6 h-6"
-													}`}
-													style={{
-														backgroundColor: color,
-													}}
-													onClick={() =>
-														setSelectedColor(color)
-													}
-												/>
-											))}
-										</div>
+                                        <div className="py-4 text-md">
+                                            <p className="text-xl pt-4 flex items-center font-bold">
+                                                Information
+                                            </p>
+                                            <p className="pt-4 flex items-center">
+                                                Production Year: {car.production_year}
+                                            </p>
+                                            <p className="pt-4 flex items-center">
+                                                Body Style: {car.body_style}
+                                            </p>
+                                            <p className="pt-4 flex items-center">
+                                                Engine: {car.engine}
+                                            </p>
+                                            {/* 
+                                           "production_year": "2021",
+                                            "body_style": "Sedan",
+                                            "engine": "3.0L TwinPower Turbo inline-6",
+                                            "transmission": "6-speed manual or 8-speed automatic",
+                                            "drive_type": "Rear-wheel drive or all-wheel drive (xDrive)",
+                                            "fuel_type": "Gasoline",
+                                            "horsepower": "473-503",
+                                            "torque": "406-479",
+                                            "top_speed": "250-290",
+                                            "acceleration": "3.5-3.9",
+                                            "seat_capacity": "5", 
+                                            */}
+                                                                                       
+                                        </div>
+
+										<hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
 
 										<div className="text-xl pt-4 flex items-center space-x-4">
 											<div>Quantity:</div>
@@ -300,6 +298,7 @@ const Product = () => {
 												</button>
 											</div>
 										</div>
+
 									</div>
 
 									<div className="justify-evenly items-end flex text-white ">
@@ -308,9 +307,11 @@ const Product = () => {
 											<p className="pl-4 text-xl">
 												{" "}
 												{/* TODO */}
-												<Link 
-													to={`/shop/payment/${car._id}`}
-												>Buy now</Link>
+                                                <Link 
+                                                    to={`/shop/payment/${car._id}`}
+                                                >
+                                                    Buy now
+                                                </Link>
 											</p>
 										</button>
 										<button
