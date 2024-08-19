@@ -35,7 +35,7 @@ const Product = () => {
 		});
 	}, []);
 	return (
-		<div className="bg-primary">
+		<div className="bg-neutral-900">
 			<div
 				style={{ backgroundImage: `url(${aa})` }}
 				className="bg-cover bg-center h-24 sm:h-48 relative object-cover"
@@ -147,7 +147,7 @@ const Product = () => {
 											Rolls Royce Ghost <br /> 2021
 										</h2>
 										<p className="text-center">
-										$ 332,500
+											$ 332,500
 										</p>
 									</div>
 								</div>
@@ -220,40 +220,40 @@ const Product = () => {
 					</Link>
 					{/*--------------Card6-------------------------------------*/}
 					<Link to="/Audi-e-tron-GT-2024">
-					<div
-						style={{ backgroundImage: `url(${acc})` }}
-						data-aos="fade-up"
-						className="card hidden xl:block bg-cover bg-center group xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500"
-					>
-						<div className="car w-full flex justify-center sm:justify-end">
-							<img
-								src={carremove6}
-								alt=""
-								className="object-cover w-[450px] left-0 md:left-10 relative transition-transform duration-500 ease-out group-hover:rotate-3 group-hover:-translate-x-1 mx:group-hover:scale-150 group-hover:scale-110 
+						<div
+							style={{ backgroundImage: `url(${acc})` }}
+							data-aos="fade-up"
+							className="card hidden xl:block bg-cover bg-center group xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500"
+						>
+							<div className="car w-full flex justify-center sm:justify-end">
+								<img
+									src={carremove6}
+									alt=""
+									className="object-cover w-[450px] left-0 md:left-10 relative transition-transform duration-500 ease-out group-hover:rotate-3 group-hover:-translate-x-1 mx:group-hover:scale-150 group-hover:scale-110 
 									scale-90 sm:group-hover:-translate-x-10 "
-								style={{ top: "-1px" }}
-							/>
-						</div>
+									style={{ top: "-1px" }}
+								/>
+							</div>
 
-						<div className="hidden sm:block">
-							<div className="logo_Car w-[150px] h-auto flex flex-col items-start opacity-100 group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-36 left-20  p-2">
-								<img src={logoaudi} alt="" />
-							</div>
-							<div className="Product_text opacity-100 text-white font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-20 left-5 ">
-								<h2 className="font-syncopate">
-									Audi e-tron GT 2024
+							<div className="hidden sm:block">
+								<div className="logo_Car w-[150px] h-auto flex flex-col items-start opacity-100 group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-36 left-20  p-2">
+									<img src={logoaudi} alt="" />
+								</div>
+								<div className="Product_text opacity-100 text-white font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-20 left-5 ">
+									<h2 className="font-syncopate">
+										Audi e-tron GT 2024
 
-								</h2>
-								<p className="text-center">$ 106,500</p>
-							</div>
-							<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
-							The 2024 Audi e-tron GT is a luxury electric <br /> sedan that combines stunning <br /> design with impressive performance. <br /> It features a sleek, aerodynamic exterior, <br /> a high-quality interior with advanced <br /> technology, and a powerful electric <br /> powertrain that delivers up <br /> to 522 horsepower in the RS model. 
+									</h2>
+									<p className="text-center">$ 106,500</p>
+								</div>
+								<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
+									The 2024 Audi e-tron GT is a luxury electric <br /> sedan that combines stunning <br /> design with impressive performance. <br /> It features a sleek, aerodynamic exterior, <br /> a high-quality interior with advanced <br /> technology, and a powerful electric <br /> powertrain that delivers up <br /> to 522 horsepower in the RS model.
+								</div>
 							</div>
 						</div>
-					</div>
 					</Link>
 				</div>
-				
+
 				{/*--------------banner-------------------------------------*/}
 
 				{/*}
@@ -271,7 +271,7 @@ const Product = () => {
 				>
 					<div className="flex justify-center absolute inset-0">
 						<h1 className="relative text-white font-extrabold md:text-6xl animate-pulse sm:text-4xl xs:text-3xl text-xl justify-center items-center flex text-center transition-colors duration-500 font-syncopate select-none uppercase">
-						Upcoming product
+							Upcoming product
 						</h1>
 					</div>
 				</div>

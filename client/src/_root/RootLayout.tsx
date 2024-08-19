@@ -1,9 +1,9 @@
-import { Navbar, Hero, Product, Product2, Banner, CarBrand, TopBrand, Story, Story2, GallaryAlbum, AboutUs, MarqueText,} from "./_homepage";
+import { Navbar, Hero, Product, Product2, Banner, CarBrand, TopBrand, Story, Story2, GallaryAlbum, AboutUs, MarqueText, } from "./_homepage";
 import Footer from "@/components/common/Footer";
 import AOS from "aos";
 import Lenis from "@studio-freight/lenis";
 import "aos/dist/aos.css";
-import  { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChatAI from "@/api_Chat/ChatAI";
 import NavbarSmallHomePage from "./elementNavbar/NavbarSmallHomePage"
 const RootLayout = () => {
@@ -20,10 +20,10 @@ const RootLayout = () => {
 	}, []);
 
 	return (
-		<section className="w-full bg-primary">
-			<div className="w-full overflow-hidden bg-black">
+		<section className="w-full bg-neutral-900">
+			<div className="w-full overflow-hidden ">
 				<div className="flex items-start justify-center ">
-					<div  className="w-full">
+					<div className="w-full">
 						<Navbar />
 					</div>
 				</div>
@@ -43,29 +43,29 @@ const RootLayout = () => {
 					</div>
 				</div>
 				<div id="Introduce" className="w-full">
-					<AboutUs/>
+					<AboutUs />
 				</div>
 				<div className="w-full">
-					<MarqueText/>
+					<MarqueText />
 				</div>
 				<div className="w-full">
-					<GallaryAlbum/>
-				</div>	
-				<div className="w-full">
-					<TopBrand/>
+					<GallaryAlbum />
 				</div>
 				<div className="w-full">
-					<Story2/>
+					<TopBrand />
 				</div>
 				<div className="w-full">
-					<Story/>
+					<Story2 />
 				</div>
-				<div  id="Popular_Cars" className="bg-primary flex items-start justify-center ">
+				<div className="w-full">
+					<Story />
+				</div>
+				<div id="Popular_Cars" className="bg-neutral-900 flex items-start justify-center ">
 					<div className="w-full">
 						<Product />
 					</div>
 				</div>
-				<div  id="Upcoming_Cars" className="bg-primary pt-24 pb-28 justify-center items-center flex" >
+				<div id="Upcoming_Cars" className="bg-neutral-900 pt-24 pb-28 justify-center items-center flex" >
 					<div className="w-full">
 						<Product2 />
 					</div>
@@ -80,7 +80,7 @@ const RootLayout = () => {
 						<CarBrand />
 					</div>
 				</div>
-				<div 
+				<div
 					className="flex items-start justify-center "
 				>
 					<div id="Footer" className="w-full">

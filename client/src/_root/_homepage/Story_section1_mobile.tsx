@@ -18,14 +18,16 @@ const Story_section1_mobile = () => {
         })
     }, [])
     return (
-        <div ref={section_founder1} className="flex flex-col xsm:hidden w-screen h-screen  sticky top-0 bg-black  ">
+        <div ref={section_founder1} className="flex flex-col xsm:hidden w-screen h-screen  sticky top-0 bg-neutral-900  ">
             <section className=" w-full xsm:w-1/2 h-1/2  xsm:h-full relative overflow-y-hidden">
-                <div ref={founder1_overlay} className=" w-full absolute top-0  h-full bg-black"></div>
+                <div ref={founder1_overlay} className=" w-full absolute top-0  h-full bg-neutral-900"></div>
                 <img src={supraMk4} className="w-full h-full object-cover" />
             </section>
             <section className="w-full xsm:w-1/2  h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
                 <div className="w-full  h-[40%]">
-                    <p className="w-full text-[24px] xs:text-[30px] ss:text-[40px]  font-bold font-syncopate text-white   ">TOYOTA SUPRA MK4</p>
+                    <p className="w-full text-[24px] xs:text-[30px] ss:text-[40px]  font-bold font-syncopate text-white   ">
+                        TOYOTA SUPRA MK4
+                    </p>
                     <div className="flex gap-x-[15px] ">
                         <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
                             <p>Toyota</p>

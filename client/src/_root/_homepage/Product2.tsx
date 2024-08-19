@@ -86,17 +86,17 @@ const Product2 = () => {
 				<div>
 					{" "}
 					<iframe
-				className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
-					title="Porsche 911 Sport Classic 2023"
-					frameborder="0"
-					allowfullscreen
-					mozallowfullscreen="true"
-					webkitallowfullscreen="true"
-					allow="autoplay; fullscreen; xr-spatial-tracking"
-					xr-spatial-tracking
-					execution-while-out-of-viewport
-					execution-while-not-rendered
-					web-share
+						className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
+						title="Porsche 911 Sport Classic 2023"
+						frameborder="0"
+						allowfullscreen
+						mozallowfullscreen="true"
+						webkitallowfullscreen="true"
+						allow="autoplay; fullscreen; xr-spatial-tracking"
+						xr-spatial-tracking
+						execution-while-out-of-viewport
+						execution-while-not-rendered
+						web-share
 						src="https://sketchfab.com/models/5e4f079a351e4be5bd8ffd5e5adbbcea/embed?autospin=1&autostart=1&preload=1&ui_theme=dark"
 					>
 						{" "}
@@ -117,7 +117,7 @@ const Product2 = () => {
 				<div >
 					{" "}
 					<iframe
-					className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
+						className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
 						title="Porsche 911 Sport Classic 2023"
 						frameborder="0"
 						allowfullscreen
@@ -148,7 +148,7 @@ const Product2 = () => {
 				<div>
 					{" "}
 					<iframe
-					className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
+						className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
 						title="Porsche 911 Sport Classic 2023"
 						frameborder="0"
 						allowfullscreen
@@ -179,7 +179,7 @@ const Product2 = () => {
 				<div>
 					{" "}
 					<iframe
-					className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
+						className="xl:w-[900px] xl:h-[400px] lg:w-[800px] lg:h-[270px] h-[180px] ss:w-[500px] ss:h-[400px] sm:w-[680px] sm:h-[340px] rounded-xl"
 						title="Porsche 911 Sport Classic 2023"
 						frameborder="0"
 						allowfullscreen
@@ -224,7 +224,7 @@ const Product2 = () => {
 	};
 
 	return (
-		<div className="w-screen">
+		<div className="w-screen bg-neutral-900">
 			<Swiper
 				ref={swiperRef}
 				effect={"coverflow"}
@@ -236,7 +236,7 @@ const Product2 = () => {
 					rotate: 0,
 					stretch: 210,
 					depth: 1800,
-	
+
 					modifier: -1, // Đảo ngược chiều
 					slideShadows: false,
 				}}
@@ -266,7 +266,7 @@ const Product2 = () => {
 						}
 					>
 						<div
-						
+
 							className="slide-content object-cover bg-transparent group flex flex-col items-center w-screen pt-1 sm:pt-12 pb-12 text-white font-poppins justify-center text-2xl"
 							style={{
 								width: "100%",
@@ -274,16 +274,15 @@ const Product2 = () => {
 							}}
 						>
 							<img
-								
+
 								src={car.image}
 								alt={car.brand}
 								className="w-full max-w-xs scale-100 sm:scale-150 md:max-w-sm sm:group-hover:scale-[1.7] group-hover:scale-[1.25] transition-all ease-in-out duration-300 group-hover:rotate-2 translate-x-1 lg:max-w-md"
 								style={{ top: "-10px" }}
 							/>
 							<div
-								className={`car-info px-6 py-1 rounded-3xl mt-4 ${
-									index !== activeIndex ? "hidden" : ""
-								}`}
+								className={`car-info px-6 py-1 rounded-3xl mt-4 ${index !== activeIndex ? "hidden" : ""
+									}`}
 							>
 								<h3 className="brand justify-center flex-col font-bold text-2xl md:text-4xl text-center font-syncopate lg:text-4xl flex">
 									{car.brand}
@@ -319,13 +318,13 @@ const Product2 = () => {
 
 			{/* Selected Car Details Modal */}
 			{selectedCar && showModal && (
-			
+
 				<div className="selected-car-info fixed top-12 left-0 w-full h-full flex justify-center items-center z-50 text-white ">
-			
+
 					<div
 						className="p-4 w-[340px] h-[550px] ss:w-[600px] ss:h-[700px] sm:w-[750px] sm:h-[700px] lg:w-[1100px] lg:h-[600px] xl:w-[1200px] xl:h-[800px] bg-gray-900 backdrop-blur-3xl bg-opacity-20 rounded-2xl shadow-lg "
 					>
-				<div className="justify-end items-end flex">
+						<div className="justify-end items-end flex">
 							<button onClick={closeModal}>
 								<IoIosClose className="w-[30px] h-[30px]" />
 							</button>
@@ -371,9 +370,9 @@ const Product2 = () => {
 							</div>
 						</div>
 					</div>
-				
+
 				</div>
-			
+
 			)}
 		</div>
 	);

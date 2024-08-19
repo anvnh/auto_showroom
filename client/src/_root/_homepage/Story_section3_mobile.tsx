@@ -36,10 +36,10 @@ const Story_section3_mobile = () => {
   }, [])
   return (
     <div ref={section_founder3} className="w-screen h-screen  flex xsm:hidden 
-        flex-col xsm:flex-row sticky top-0 bg-black overlow-y-hidden">
+        flex-col xsm:flex-row sticky top-0 bg-neutral-900 overlow-y-hidden">
       <section className=" w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
         <img src={bmwM3} className="w-full h-full object-cover" />
-        <div ref={founder3_overlay} className="absolute top-0 w-full h-full bg-black"></div>
+        <div ref={founder3_overlay} className="absolute top-0 w-full h-full bg-neutral-900"></div>
       </section>
       <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
         <div className="w-full  h-[40%]">

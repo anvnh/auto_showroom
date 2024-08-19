@@ -52,7 +52,7 @@ export const GallaryAlbum = () => {
 
   }, [])
   return (
-    <div ref={con_col} className="overflow-y-hidden
+    <div ref={con_col} className="bg-neutral-900 overflow-y-hidden
        w-screen h-screen flex justify-evenly items-center ">
       <section ref={col1} className="object-cover w-[20%] h-[400%]  hidden xsm:flex flex-col justify-evenly items-center ">
         <img src={a3} className="w-full h-[500px] object-cover " />

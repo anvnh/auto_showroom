@@ -101,11 +101,13 @@ const Story = () => {
         })
     })
     return (
-        <div className=" h-[300%] relative box-border">
-            <div ref={section_founder1} className="w-screen h-screen hidden xsm:flex flex-col xsm:flex-row sticky top-0 bg-black  ">
+        <div className="bg-neutral-900 h-[300%] relative box-border">
+            <div ref={section_founder1} className="w-screen h-screen hidden xsm:flex flex-col xsm:flex-row sticky top-0   ">
                 <section className="w-full xsm:w-1/2  h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
                     <div className="w-full  h-[40%]">
-                        <p className="w-full text-[37px] xsm:text-[28px] md:text-[35px] mlg:text-[48px] xl:text-[50px] font-bold font-syncopate   ">TOYOTA SUPRA MK4</p>
+                        <p className="w-full text-[37px] xsm:text-[28px] md:text-[35px] mlg:text-[48px] xl:text-[50px] font-bold font-syncopate   ">
+                            TOYOTA SUPRA MK4
+                        </p>
                         <div className="flex gap-x-[15px] ">
                             <section className="w-[100px] h-[40px] border rounded-[20px] flex justify-center items-center  ">
                                 <p>Toyota</p>
@@ -126,7 +128,7 @@ const Story = () => {
                     </div>
                 </section>
                 <section className=" w-full xsm:w-1/2 h-1/2  xsm:h-full relative overflow-y-hidden">
-                    <div ref={founder1_overlay} className="w-full absolute top-0  h-full bg-black overley"></div>
+                    <div ref={founder1_overlay} className="w-full absolute top-0  h-full bg-neutral-900 overley"></div>
                     <img src={supraMk4} className="w-full h-full object-cover" />
                 </section>
             </div>
@@ -136,10 +138,10 @@ const Story = () => {
 
 
             <div ref={section_founder2} className="w-screen h-screen flex 
-       flex-col xsm:flex-row sticky top-0 bg-black">
+       flex-col xsm:flex-row sticky top-0 ">
                 <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
                     <img src={nissanR34} className="w-full h-full object-cover" />
-                    <div ref={founder2_overlay} className="w-full absolute top-0  h-full bg-black"></div>
+                    <div ref={founder2_overlay} className="w-full absolute top-0  h-full bg-neutral-900"></div>
                 </section>
                 <section className="w-full xsm:w-1/2  h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px] flex flex-col justify-between">
                     <div className="w-full  h-[40%]">
@@ -168,7 +170,7 @@ const Story = () => {
             </div>
 
             <div ref={section_founder3} className="w-screen h-screen hidden xsm:flex 
-        flex-col xsm:flex-row sticky top-0 bg-black">
+        flex-col xsm:flex-row sticky top-0 ">
                 <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
                     <div className="w-full  h-[40%]">
                         <p className="w-full  text-[37px] xsm:text-[28px] md:text-[35px] mlg:text-[48px] xl:text-[50px] font-bold font-syncopate">BMW M3</p>
@@ -193,7 +195,7 @@ const Story = () => {
                 </section>
                 <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
                     <img src={bmwM3_vertical} className="w-full h-full object-cover" />
-                    <div ref={founder3_overlay} className="absolute top-0 w-full h-full bg-black"></div>
+                    <div ref={founder3_overlay} className="absolute top-0 w-full h-full bg-neutral-900"></div>
                 </section>
             </div>
             <Story_section3_mobile />
