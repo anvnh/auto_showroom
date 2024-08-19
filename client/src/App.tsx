@@ -120,8 +120,6 @@ const App = () => {
                     <Route path="/shop/payment" element={ authUser ? <PaymentLayout/> : <Navigate to="/login" /> } />
                     <Route path="/shop/payment/:id" element={ authUser ? <PaymentLayoutBuyNow/> : <Navigate to="/login" /> } />
 
-
-                    
                     <Route path="/voucher" element={<Voucherlayout />} />
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
