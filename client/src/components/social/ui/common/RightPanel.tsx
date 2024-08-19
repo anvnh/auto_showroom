@@ -74,7 +74,10 @@ const RightPanel = () => {
                                     </div>
                                     <div>
                                         <button
-                                            className='btn bg-white text-black hover:bg-white hover:opacity-90 rounded-full btn-sm'
+                                            className='btn bg-white text-black hover:bg-gray-500 hover:opacity-90 rounded-full btn-sm
+                                            btn-primary  px-4
+                    before:ease relative overflow-hidden border-gray-900 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-3 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-20
+                                            '
                                             onClick={(e) => {
                                                 e.preventDefault(); 
                                                 follow(user._id);

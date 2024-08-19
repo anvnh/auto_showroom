@@ -39,7 +39,8 @@ const HomePage = () => {
 					>
 						Following
 						{feedType === "following" && (
-							<div className="absolute bottom-0 w-10  h-1 rounded-full bg-[#2191d8]"></div>
+							<div className="absolute bottom-0 w-10  h-1 rounded-full bg-[#2191d8]
+							"></div>
 						)}
 					</div>
 				</div>
