@@ -188,7 +188,7 @@ const Product = () => {
 														<img
 															src={image}
 															alt=""
-															className="w-full h-full object-cover rounded-md transform transition-transform duration-300 hover:scale-110"
+															className="w-[300px] h-full object-cover rounded-md transform transition-transform duration-300 hover:scale-110"
 														/>
 													</figure>
 												</div>
@@ -215,7 +215,7 @@ const Product = () => {
 												<img
 													src={selectedImage}
 													alt=""
-													className="w-[1500px] h-auto max-h-screen object-cover rounded-xl"
+													className="w-[1500px] h-[800px] object-cover bg-center rounded-xl"
 												/>
 											</div>
 										</div>
