@@ -180,8 +180,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 											to={
 												authUser
 													? `/social/profile/${authUser.fullName
-															.replace(/\s+/g, "")
-															.toLowerCase()}`
+														.replace(/\s+/g, "")
+														.toLowerCase()}`
 													: "/social/profile/login"
 											}
 										>
@@ -215,9 +215,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									/>
 									{!isLoading && (
 										<Link
-											to={`${
-												authUser ? "/social" : "/login"
-											}`}
+											to={`${authUser ? "/social" : "/login"
+												}`}
 										>
 											<div className="avatar placeholder w-[30px] xl:w-full h-auto">
 												<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black">
@@ -243,9 +242,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 			<div className="hidden md:block">
 				{isVisible && (
 					<div
-						className={`z-50 md:top-12 w-full font-poppins transition-transform duration-300 sm:block ${
-							isHidden ? "-translate-y-full" : "translate-y-0"
-						}`}
+						className={`z-50 md:top-12 w-full font-poppins transition-transform duration-300 sm:block ${isHidden ? "-translate-y-full" : "translate-y-0"
+							}`}
 					>
 						<nav
 							data-aos="fade-up"
@@ -253,11 +251,10 @@ const Navbar: React.FC<SubNavbarProps> = ({
 						>
 							<ul className="list-none sm:flex gap-10 justify-center items-center flex-1">
 								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "vehicles"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "vehicles"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
 									onMouseEnter={() =>
 										handleMouseEnter("vehicles")
 									}
@@ -273,11 +270,10 @@ const Navbar: React.FC<SubNavbarProps> = ({
 								</li>
 								<Link to="/shop">
 									<li
-										className={`cursor-pointer transition-opacity duration-300 ${
-											selectedP && selectedP !== "shop"
-												? "opacity-50"
-												: "opacity-100"
-										}`}
+										className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "shop"
+											? "opacity-50"
+											: "opacity-100"
+											}`}
 										onMouseEnter={() =>
 											handleMouseEnter("shop")
 										}
@@ -293,11 +289,10 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									</li>
 								</Link>
 								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "shopping"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "shopping"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
 									onMouseEnter={() =>
 										handleMouseEnter("shopping")
 									}
@@ -312,11 +307,10 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									</div>
 								</li>
 								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "owners"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "owners"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
 									onMouseEnter={() =>
 										handleMouseEnter("owners")
 									}
@@ -333,11 +327,10 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									</div>
 								</li>
 								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "social"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "social"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
 									onMouseEnter={() =>
 										handleMouseEnter("social")
 									}
@@ -347,24 +340,41 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									}
 								>
 									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
-									{!isLoading && (
-										<Link to={`${
-											authUser ? "/social" : "/login"
-										}`}>
-											<p> Social </p>
+										{!isLoading && (
+											<Link to={`${authUser ? "/social" : "/login"
+												}`}>
+												<p> Social </p>
+												<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
+											</Link>
+										)}
+									</div>
+								</li>
+								<li
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "aboutUs"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
+									onMouseEnter={() =>
+										handleMouseEnter("aboutUs")
+									}
+									onMouseLeave={handleMouseLeave}
+									onClick={() =>
+										handleToggleSection("aboutUs")
+									}
+								>
+									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
+										<Link to="/aboutUs">
+											<p> About Us </p>
 											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 										</Link>
-											)}
 									</div>
-									
 								</li>
 								{authUser?.isAdmin === true && (
 									<li
-										className={`cursor-pointer transition-opacity duration-300 ${
-											selectedP && selectedP !== "Admin"
-												? "opacity-50"
-												: "opacity-100"
-										}`}
+										className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "Admin"
+											? "opacity-50"
+											: "opacity-100"
+											}`}
 										onMouseEnter={() =>
 											handleMouseEnter("Admin")
 										}
@@ -390,9 +400,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 				{isExpanded && selectedSection === "vehicles" && (
 					<div
 						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-80 backdrop-blur-md bg-gray-900  ${
-							isHidden ? "hidden" : ""
-						}`}
+						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-80 backdrop-blur-md bg-gray-900  ${isHidden ? "hidden" : ""
+							}`}
 					>
 						<div
 							data-aos="fade-up"
@@ -406,9 +415,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 				{isExpanded && selectedSection === "shopping" && (
 					<div
 						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-screen rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900 ${
-							isHidden ? "hidden" : ""
-						}`}
+						className={`z-1 absolute w-screen h-screen rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900 ${isHidden ? "hidden" : ""
+							}`}
 					>
 						<div
 							data-aos="fade-up"
@@ -481,29 +489,27 @@ const Navbar: React.FC<SubNavbarProps> = ({
 								</div>
 							</li>
 							<li
-							data-aos="fade-up"
-									data-aos-delay="800"
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "social"
-											? "opacity-50"
-											: "opacity-100"
+								data-aos="fade-up"
+								data-aos-delay="800"
+								className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "social"
+									? "opacity-50"
+									: "opacity-100"
 									}`}
-									
-									onClick={() =>
-										handleToggleSection("social")
-									}
-								>
-									<div	className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
+
+								onClick={() =>
+									handleToggleSection("social")
+								}
+							>
+								<div className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
 									{!isLoading && (
-										<Link to={`${
-											authUser ? "/social" : "/login"
-										}`}>
+										<Link to={`${authUser ? "/social" : "/login"
+											}`}>
 											<p> Social </p>
 										</Link>
-											)}
-									</div>
-									
-								</li>
+									)}
+								</div>
+
+							</li>
 							{authUser?.isAdmin === true && (
 								<li
 									className="cursor-pointer transition-opacity duration-300 w-full text-center"
