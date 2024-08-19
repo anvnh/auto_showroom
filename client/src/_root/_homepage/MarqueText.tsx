@@ -35,7 +35,7 @@ const MarqueText = () => {
 
     }, [])
     return (
-        <div ref={container_maqueText} className="w-screen h-[300px]  overflow-x-hidden flex flex-col justify-between">
+        <div ref={container_maqueText} className="bg-neutral-900 w-screen h-[300px]  overflow-x-hidden flex flex-col justify-between">
             <section ref={maqueText1} className="pt-[20px] whitespace-nowrap w-[400%] leading-none h-[150px]  text-[43px] xs:text-[70px] lg:text-[80px] font-bold font-syncopate italic">
                 FOUNDER / FOUNDER / FOUNDER / FOUNDER / FOUNDER / FOUNDER / FOUNDER / FOUNDER / FOUNDER / FOUNDER / FOUNDER / FOUNDER / FOUNDER
             </section>

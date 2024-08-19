@@ -67,11 +67,11 @@ const TopBrand = () => {
 
     return (
         <div>
-            <div className="  w-screen h-[100px]  text-[30px] ss:text-[40px] xsm:text-[50px] md:text-[75px] italic  font-bold text-center">
+            <div className="bg-neutral-950  w-screen h-[100px]  text-[30px] ss:text-[40px] xsm:text-[50px] md:text-[75px] italic  font-bold text-center">
                 TOP <span className="text-red-500">BRAND</span> USER TRUST
             </div>
 
-            <section ref={container_popularBrand} className="w-screen h-[400%] hidden xsm:flex bg-black">
+            <section ref={container_popularBrand} className="bg-neutral-900 w-screen h-[401%] hidden xsm:flex ">
 
                 <div className="w-1/2 h-full  flex flex-col">
 
