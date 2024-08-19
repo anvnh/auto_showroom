@@ -119,7 +119,9 @@ const CreatePost = () => {
                         </div>
                     )}
                     <input type='file' hidden ref={imgRef} onChange={handleImgChange}/>
-                    <button className='btn btn-primary bg-[#2191d8] rounded-full btn-sm text-white px-4'>
+                    <button className='btn btn-primary bg-[#2191d8] rounded-full btn-sm text-white px-4
+                    before:ease relative overflow-hidden border-gray-600 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 hover:before:-translate-x-16
+                    '>
                         {isPending ? "Posting..." : "Post"}
                     </button>
                 </div>

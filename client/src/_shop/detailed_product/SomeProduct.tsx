@@ -44,7 +44,7 @@ const SomeProduct = () => {
 						effect={"slide"}
 						grabCursor={true}
 						centeredSlides={true}
-						loop={true}
+						loop={false}
 						slidesPerView={2} // Hiển thị 2 slide cùng lúc
 						spaceBetween={15} // Khoảng cách giữa các slide
 						coverflowEffect={{
@@ -195,7 +195,7 @@ const SomeProduct = () => {
 											<img
 												src={car.images[0]}
 												alt={car.brand}
-												className="rounded-xl w-[400px] h-[200px] ss:w-[400px] ss:h-[300px] transform transition-transform duration-300 hover:scale-110"
+												className="rounded-xl w-[400px] h-[200px] object-cover bg-center ss:w-[400px] ss:h-[300px] transform transition-transform duration-300 hover:scale-110"
 											/>
 										</figure>
 										<div className="text-black p-3 ">

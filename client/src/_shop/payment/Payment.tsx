@@ -82,7 +82,7 @@ const Payment = () => {
 					<input
 						type="text"
 						name="number"
-						className="form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
+						className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-black "
 
 						placeholder="Card Number"
 						value={state.number}
@@ -97,7 +97,7 @@ const Payment = () => {
 						data-aos-delay="200"
 						type="text"
 						name="name"
-					className="form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
+						className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-black "
 						placeholder="Name on Card"
 						value={state.name}
 						onChange={handleInputChange}
@@ -110,7 +110,7 @@ const Payment = () => {
 							data-aos-delay="300"
 							type="text"
 							name="expiry"
-							className="form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
+							className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-black "
 							placeholder="Valid Thru (MM/YY)"
 							pattern="\d\d/\d\d"
 							value={state.expiry}
@@ -124,7 +124,7 @@ const Payment = () => {
 							data-aos-delay="400"
 							type="text"
 							name="cvc"
-						className="form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
+							className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-black "
 							placeholder="CVC"
 							pattern="\d{3,4}"
 							maxLength={3}
@@ -136,7 +136,9 @@ const Payment = () => {
 						<select
 							data-aos="fade-left"
 							data-aos-delay="500"
-							className=" select col-span-2 form-control bg-gray-200 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300  text-gray-800"
+							className=" select col-span-2 
+							form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white 
+							"
 						>
 							{countries.map((country) => (
 								<option
@@ -151,7 +153,7 @@ const Payment = () => {
 					<div data-aos="fade-right">
 						<button
 							className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[800px]
+							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[800px]
 "
 							type="submit"
 						>

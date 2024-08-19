@@ -70,6 +70,7 @@ const NavbarAdmin = () => {
 						{slidebar_items.map((item) => (
 							<motion.div
 								key={item.name}
+									title={item.name}
 								className={`flex items-center p-4 text-sm font-poppins rounded-lg hover:bg-gray-700 transition-colors mb-2 cursor-pointer ${
 									currentPage === item.name
 										? "bg-gray-700 text-white"

@@ -33,6 +33,10 @@ import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 import NavbarSmall5 from "../navbarsmall/NavbarSmall5";
 import Car5reponsive from "../reponsive/car5reponsive";
+import { toast, Toaster } from "react-hot-toast";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import { Link } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 const Car5popular: React.FC = () => {
 	// sự kiện của navbar
@@ -117,6 +121,73 @@ const Car5popular: React.FC = () => {
 			window.removeEventListener("resize", updateFooterPosition);
 		};
 	}, []);
+
+	const ID = "66bfc096598bcf76c770c008";
+	const carId = ID;
+	// get single car
+	const {
+		data: car,
+		isLoading,
+		refetch,
+		isRefetching,
+	} = useQuery({
+		queryKey: ["car", carId],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/car/${carId}`);
+				const data = await response.json();
+
+				// console.log(data);
+
+				if (!response.ok) {
+					throw new Error(data.message || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
+	const { mutate: addToCart, isPending: isAddingToCart } = useMutation({
+		mutationFn: async (productId) => {
+			try {
+				const response = await fetch(
+					`/api/user/add/cart/${productId}`,
+					{
+						method: "POST",
+					}
+				);
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			console.log("okaodjihsi");
+			toast.success("Product added to cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+		onError: (error) => {
+			// TODO
+			toast.error("Item already in cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+	});
+	const handleAddToCart = (productId) => {
+		// setLoadingProductId(productId);
+		addToCart(productId);
+	};
 	return (
 		<div>
 			<div className="hidden xl:block">
@@ -130,7 +201,7 @@ const Car5popular: React.FC = () => {
 						/>
 					</div>
 					<Parallax
-						pages={8.6}
+						pages={8.8}
 						style={{ top: "0", left: "0" }}
 						className="bg-black"
 						ref={parallaxRef} // Gán ref vào Parallax
@@ -182,8 +253,8 @@ const Car5popular: React.FC = () => {
 											Extended Series II
 										</h1>
 										<h2 className="text-xs ss:text-2xl lg:text-4xl sm:text-3xl font-thin pt-1">
-											<span className="font-bold text-red-100">
-												1,65 million $
+											<span className=" ">
+												$ 1,65 million
 											</span>
 										</h2>
 									</div>
@@ -318,10 +389,9 @@ const Car5popular: React.FC = () => {
 											autoPlay
 											loop
 											muted
-											className="w-full h-full object-cover opacity-30 bg-gradient-to-t from-blue-300 to-transparent"
+											className="w-full h-full object-cover opacity-25 bg-gradient-to-t from-blue-900 to-transparent"
 										/>
 									</div>
-								
 								</div>
 							</div>
 						</ParallaxLayer>
@@ -397,86 +467,122 @@ const Car5popular: React.FC = () => {
 						</ParallaxLayer>
 						<ParallaxLayer
 							offset={7.4}
-							speed={0.5}
+							speed={0.3}
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[5] = ref)}
 						>
-							<div className="article-tiles-container bg-black text-white p-6 bottom-[900px] relative md:bottom-0">
-								<div className="article-tiles-desc mb-6 text-center font-syncopate">
-									<h3 className="text-4xl ss:text-5xl mb-2">
-										Continue your journey
-									</h3>
-									<p>
-										You may also like the following related
-										articles
-									</p>
+							{isLoading && <LoadingSpinner />}
+							{!isLoading && !isRefetching && car && (
+								<div className="article-tiles-container bg-black text-white p-6 bottom-[900px] relative md:bottom-0">
+									<div className="article-tiles-desc mb-6 text-center font-syncopate">
+										<h3 className="text-4xl ss:text-5xl mb-2 ">
+											Roll Royce Phantom Extended Series
+											II
+										</h3>
+										<p className="text-2xl">
+											$1,65 million
+										</p>
+									</div>
+
+									<div className="flex justify-center gap-5 pt-5">
+										<Link to="/shop/payment/66bfc096598bcf76c770c008">
+											<button
+												className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-40
+							"
+											>
+												Buy Now
+											</button>
+										</Link>
+
+										<button
+											className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-[230px]
+							"
+											onClick={() =>
+												handleAddToCart(car._id)
+											}
+										>
+											{isAddingToCart ? (
+												<LoadingSpinner />
+											) : (
+												<p>Add to cart</p>
+											)}
+										</button>
+									</div>
+									<div className="article-tiles-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-10 sm:pt-20">
+										<div className="article-tile">
+											<figure className="hover01 overflow-hidden">
+												<img
+													src={car58}
+													className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
+												/>
+											</figure>
+											<div className="block font-syncopate text-center">
+												<h4 className="text-base md:text-xl ss:text-lg font-bold mb-2 mt-5 uppercase">
+													Sophisticated and Classy
+													Design
+												</h4>
+												<p className="text-sm ss:text-base">
+													Stands out with its majestic
+													and sophisticated exterior
+													design
+												</p>
+											</div>
+										</div>
+
+										<div className="article-tile">
+											<figure className="hover01 overflow-hidden group relative">
+												<img
+													src={car592}
+													alt="Image 1"
+													className="w-full h-[700px] object-cover transform transition-opacity duration-300 group-hover:opacity-0"
+												/>
+												<img
+													src={car59}
+													alt="Image 2"
+													className="absolute top-0 left-0 w-full h-full object-cover transform transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110"
+												/>
+											</figure>
+
+											<div className="block font-syncopate text-center">
+												<h4 className="text-base ss:text-lg mb-2 mt-5 font-bold">
+													Luxurious Interior Space
+												</h4>
+												<p className="text-sm ss:text-base">
+													The interior of the Phantom
+													Extended Series II is like a
+													mobile luxury living room.
+												</p>
+											</div>
+											<Toaster
+												position="top-center"
+												reverseOrder={false}
+											/>
+										</div>
+
+										<div className="article-tile hidden md:block">
+											<figure className="hover01 overflow-hidden">
+												<img
+													src={car510}
+													className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
+												/>
+											</figure>
+											<div className="block font-syncopate text-center">
+												<h4 className="text-base font-bold ss:text-lg mb-2 mt-5">
+													Powerful Performance
+												</h4>
+												<p className="text-sm ss:text-base">
+													Possesses a powerful 6.75
+													liter V12 engine
+												</p>
+											</div>
+										</div>
+									</div>
 								</div>
-
-								<div className="article-tiles-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-10 sm:pt-20">
-									<div className="article-tile">
-										<figure className="hover01 overflow-hidden">
-											<img
-												src={car58}
-												className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
-											/>
-										</figure>
-										<div className="block font-syncopate text-center">
-											<h4 className="text-base ss:text-lg mb-2">
-												GHOST PRISM
-											</h4>
-											<p className="text-sm ss:text-base">
-												Ghost Prism draws inspiration
-												from the world of contemporary
-												designs.
-											</p>
-										</div>
-									</div>
-
-									<div className="article-tile">
-										<figure className="hover01 overflow-hidden group relative">
-											<img
-												src={car592}
-												alt="Image 1"
-												className="w-full object-cover transform transition-opacity duration-300 group-hover:opacity-0"
-											/>
-											<img
-												src={car59}
-												alt="Image 2"
-												className="absolute top-0 left-0 w-full h-full object-cover transform transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110"
-											/>
-										</figure>
-
-										<div className="block font-syncopate text-center">
-											<h4 className="text-base ss:text-lg mb-2">
-												Ghost - In Detail
-											</h4>
-											<p className="text-sm ss:text-base">
-												Pure and pristine. The ultimate
-												foundation for infinite
-												self-expression.
-											</p>
-										</div>
-									</div>
-
-									<div className="article-tile hidden md:block">
-										<figure className="hover01 overflow-hidden">
-											<img
-												src={car510}
-												className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
-											/>
-										</figure>
-										<div className="block font-syncopate text-center">
-											<h4 className="text-base ss:text-lg mb-2">
-												Commission Your Ghost
-											</h4>
-											<p className="text-sm ss:text-base">
-												Envision an original with
-												Bespoke services.
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
+							)}
 						</ParallaxLayer>
 						<div className="z-10 w-full bottom-0 absolute">
 							<Footer ref={footerRef} />

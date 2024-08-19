@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react"
 import SplitType from "split-type"
 import gsap from "gsap"
 import { a1, a2, a3 } from "@/assets/audiA5/couple/"
-
+import { nissanR34, supraMk4, bmwM3, bmwM3_vertical, } from "@/assets/homepage/story"
 import Story_section1_mobile from "./Story_section1_mobile"
 import Story_section3_mobile from "./Story_section3_mobile"
 const Story = () => {
@@ -127,7 +127,7 @@ const Story = () => {
                 </section>
                 <section className=" w-full xsm:w-1/2 h-1/2  xsm:h-full relative overflow-y-hidden">
                     <div ref={founder1_overlay} className="w-full absolute top-0  h-full bg-black overley"></div>
-                    <img src={a1} className="w-full h-full" />
+                    <img src={supraMk4} className="w-full h-full object-cover" />
                 </section>
             </div>
 
@@ -138,27 +138,29 @@ const Story = () => {
             <div ref={section_founder2} className="w-screen h-screen flex 
        flex-col xsm:flex-row sticky top-0 bg-black">
                 <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
-                    <img src={a2} className="w-full h-full" />
+                    <img src={nissanR34} className="w-full h-full object-cover" />
                     <div ref={founder2_overlay} className="w-full absolute top-0  h-full bg-black"></div>
                 </section>
-                <section className="w-full xsm:w-1/2  h-1/2 xsm:h-full mt-[50px] ml-[40px] flex flex-col justify-between">
+                <section className="w-full xsm:w-1/2  h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px] flex flex-col justify-between">
                     <div className="w-full  h-[40%]">
-                        <p className="w-full  text-[37px] xsm:text-[28px] md:text-[35px] mlg:text-[48px] xl:text-[50px] font-bold font-syncopate">NISSAN SKYLINE R34</p>
+                        <p className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] xsm:text-[28px] md:text-[35px] mlg:text-[48px] xl:text-[50px] font-bold font-syncopate">
+                            NISSAN SKYLINE R34
+                        </p>
                         <div className="flex gap-x-[15px] ">
-                            <section className="w-[100px] h-[40px] border rounded-[20px] flex justify-center items-center  ">
+                            <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
                                 <p>Nissan</p>
                             </section>
-                            <section className="w-[100px] h-[40px] border rounded-[20px] flex justify-center items-center ">
+                            <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center ">
                                 <p>1001hp</p>
                             </section>
-                            <section className="w-[100px] h-[40px] border rounded-[20px] flex justify-center items-center ">
+                            <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center ">
                                 <p>Japan</p>
                             </section>
                         </div>
                     </div>
-                    <div className="w-[70%] h-[40%]  flex flex-col justify-center gap-y-[20px] mb-[60px] ">
+                    <div className="w-[85%] h-[40%]  flex flex-col justify-center gap-y-[20px] mb-[60px] ">
                         <p ref={founder_txt2} className="split2 text-[20px] md:text-[25px] overflow-y-hidden">
-                            The Nissan Skyline GT-R R34 is an iconic sports car that has captured the hearts of automotive enthusiasts worldwide. Debuting in 1999, this fifth-generation GT-R took the automotive industry by storm with its breathtaking design and superior performance capabilities
+                            The Nissan Skyline GT-R R34 is an iconic sports car that has captured the hearts of automotive enthusiasts worldwide.
                         </p>
 
                     </div>
@@ -167,7 +169,7 @@ const Story = () => {
 
             <div ref={section_founder3} className="w-screen h-screen hidden xsm:flex 
         flex-col xsm:flex-row sticky top-0 bg-black">
-                <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[50px] ml-[40px]  flex flex-col justify-between">
+                <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
                     <div className="w-full  h-[40%]">
                         <p className="w-full  text-[37px] xsm:text-[28px] md:text-[35px] mlg:text-[48px] xl:text-[50px] font-bold font-syncopate">BMW M3</p>
                         <div className="flex gap-x-[15px] ">
@@ -190,7 +192,7 @@ const Story = () => {
                     </div>
                 </section>
                 <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
-                    <img src={a3} className="w-full h-full" />
+                    <img src={bmwM3_vertical} className="w-full h-full object-cover" />
                     <div ref={founder3_overlay} className="absolute top-0 w-full h-full bg-black"></div>
                 </section>
             </div>

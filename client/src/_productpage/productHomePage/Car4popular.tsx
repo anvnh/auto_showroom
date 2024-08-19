@@ -11,64 +11,68 @@ import {
   abstract1, abstract2,
 } from "@/assets/background/index"
 import {
-    carremove,
-	car4BH,
-	car4BH2,
-	car4BH3,
-	car41,
-	car42,
-	car43,
-	car44,
-	car45,
-	car46,
-	car47,
-    car4BH4,
-	carHero,
-	car48, 
-car49 ,
-car410,
-car411,
-car412,
-car413,
-car414,
-car415,
-car416,
-car417,
-car418,
-car419,
+  carremove,
+  car4BH,
+  car4BH2,
+  car4BH3,
+  car41,
+  car42,
+  car43,
+  car44,
+  car45,
+  car46,
+  car47,
+  car4BH4,
+  carHero,
+  car48,
+  car49,
+  car410,
+  car411,
+  car412,
+  car413,
+  car414,
+  car415,
+  car416,
+  car417,
+  car418,
+  car419,
 } from "../../assets";
-import { audiA5_15,  audiA5_9, } from "@/assets/audiA5";
+import { audiA5_15, audiA5_9, } from "@/assets/audiA5";
 //-------------------Component--------------
 import "../style.css";
 import { useFollowPointer } from "../pointer";
 import Footer from "@/components/common/Footer";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import { Link } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { Toaster, toast } from "react-hot-toast";
 
 
 const Car4popular = () => {
-  //cuon dau trang
-  useEffect(() => {
-    window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
-  },[] );
+  // //cuon dau trang
+  // useEffect(() => {
+  //   window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
+  // },[] );
 
   //smooth scroll
- useEffect(()=>{
-   const lenis = new Lenis();
-  function raf(time) {
-    lenis.raf(time);
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf); 
-      return () => {
+    return () => {
       lenis.destroy();
     };
- },[])
+  }, [])
 
   //cursor effect
   const ref = useRef(null);
   const { x, y } = useFollowPointer(ref);
 
   //paralax hero
-const hero_section1 = useRef(null)
+  const hero_section1 = useRef(null)
   const sec1_txt = useRef(null)
   const hero_section3 = useRef(null)
   const sec3_img1 = useRef(null)
@@ -77,68 +81,68 @@ const hero_section1 = useRef(null)
   const sec4_text = useRef(null)
   const bg_sec1 = useRef(null)
   useEffect(() => {
-    
-      const tl = gsap.timeline()
-      tl
-        .set(sec1_txt.current, {
-          opacity: 0,
-          y: 500,
-        })
-        .to(sec1_txt.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-        })
-      ScrollTrigger.create({
 
-        trigger: hero_section1.current,
-        start: "top center",
-        end: "bottom 20%",
-        animation: tl, toggleActions: "restart none none reverse"
-      }
-      )
-    
-    
-      const tl1 = gsap.timeline()
-      tl1.set([sec3_img1.current, sec3_img2.current], {
-        y: 500,
+    const tl = gsap.timeline()
+    tl
+      .set(sec1_txt.current, {
         opacity: 0,
+        y: 500,
       })
-        .to([sec3_img1.current, sec3_img2.current], {
-          y: 0,
-          opacity: 1,
-        })
-
-      ScrollTrigger.create({
-        trigger: hero_section3.current,
-        start: "top 80%",
-        end: "bottom top",
-        scrub: true,
-        animation: tl1
+      .to(sec1_txt.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
       })
-    
+    ScrollTrigger.create({
 
-    
-      const tl_sec4 = gsap.timeline()
-      tl_sec4
-        .set(sec4_text.current, {
-          opacity: 0,
-          y: 400
-        })
-        .to(sec4_text.current, {
-          opacity: 1,
-          y: 0
-        })
-      ScrollTrigger.create({
-        trigger: hero_section4.current,
-        start: "top 80%",
-        end: "bottom center",
-        //scrub:true,
-        toggleActions: "restart none none reverse",
-        animation: tl_sec4
+      trigger: hero_section1.current,
+      start: "top center",
+      end: "bottom 20%",
+      animation: tl, toggleActions: "restart none none reverse"
+    }
+    )
 
+
+    const tl1 = gsap.timeline()
+    tl1.set([sec3_img1.current, sec3_img2.current], {
+      y: 500,
+      opacity: 0,
+    })
+      .to([sec3_img1.current, sec3_img2.current], {
+        y: 0,
+        opacity: 1,
       })
-    
+
+    ScrollTrigger.create({
+      trigger: hero_section3.current,
+      start: "top 80%",
+      end: "bottom top",
+      scrub: true,
+      animation: tl1
+    })
+
+
+
+    const tl_sec4 = gsap.timeline()
+    tl_sec4
+      .set(sec4_text.current, {
+        opacity: 0,
+        y: 400
+      })
+      .to(sec4_text.current, {
+        opacity: 1,
+        y: 0
+      })
+    ScrollTrigger.create({
+      trigger: hero_section4.current,
+      start: "top 80%",
+      end: "bottom center",
+      //scrub:true,
+      toggleActions: "restart none none reverse",
+      animation: tl_sec4
+
+    })
+
 
   }, [])
   //hero
@@ -147,21 +151,21 @@ const hero_section1 = useRef(null)
   const hero_txt = useRef(null)
   const container_slogan = useRef(null);
   const slogan_text = useRef(null);
-  
+
   useEffect(() => {
-    
-      const textTimeline = gsap.timeline();
-      textTimeline
-        .set(hero_txt.current, {
-          opacity: 0,
-          x: -200,
-        })
-        .to(hero_txt.current, {
-          opacity: 1,
-          duration: 1,
-          x: 0,
-        });
-    
+
+    const textTimeline = gsap.timeline();
+    textTimeline
+      .set(hero_txt.current, {
+        opacity: 0,
+        x: -200,
+      })
+      .to(hero_txt.current, {
+        opacity: 1,
+        duration: 1,
+        x: 0,
+      });
+
 
     if (container_slogan.current && slogan_text.current) {
       const sloganTimeline = gsap.timeline({
@@ -610,12 +614,77 @@ const hero_section1 = useRef(null)
 
 
   gsap.config({
-  autoSleep: 60,
-  force3D: false,
-  nullTargetWarn: false,
-  units: { left: "%", top: "%", rotation: "rad" },
-});
-  
+    autoSleep: 60,
+    force3D: false,
+    nullTargetWarn: false,
+    units: { left: "%", top: "%", rotation: "rad" },
+  });
+  const ID = "66a3bb07803942c2c831d0aa";
+  const carId = ID;
+  // get single car
+  const {
+    data: car,
+    isLoading,
+    refetch,
+    isRefetching,
+  } = useQuery({
+    queryKey: ["car", carId],
+    queryFn: async () => {
+      try {
+        const response = await fetch(`/api/car/${carId}`);
+        const data = await response.json();
+
+        // console.log(data);
+
+        if (!response.ok) {
+          throw new Error(data.message || "Something went wrong!");
+        }
+
+        return data;
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+  });
+  const { mutate: addToCart, isPending: isAddingToCart } = useMutation({
+    mutationFn: async (productId) => {
+      try {
+        const response = await fetch(
+          `/api/user/add/cart/${productId}`,
+          {
+            method: "POST",
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Something went wrong!");
+        }
+
+        return data;
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+    onSuccess: () => {
+      console.log("okaodjihsi");
+      toast.success("Product added to cart", {
+        duration: 2000,
+      });
+      // setTimeout(() => { setLoadingProductId (null) });
+    },
+    onError: (error) => {
+      // TODO
+      toast.error("Item already in cart", {
+        duration: 2000,
+      });
+      // setTimeout(() => { setLoadingProductId (null) });
+    },
+  });
+  const handleAddToCart = (productId) => {
+    // setLoadingProductId(productId);
+    addToCart(productId);
+  };
   return (
 
     <div className="">
@@ -623,17 +692,20 @@ const hero_section1 = useRef(null)
         ref={ref}
         style={{ x, y }}
         className=" z-20 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[100px] w-[100px] rounded-[50%] bg-slate-800 "
-        //xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400
+      //xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400
       />
-      <div>s
-
+      <div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
 
         <section className="relative h-screen w-screen flex justify-center items-center">
           <div ref={bg_sec1} style={{ backgroundImage: `url(${car46})` }}
             className="bg  absolute top-0 left-0 w-screen h-screen z-1 object-cover
           bg-center bg-no-repeat  bg-cover  
           "></div>
-          <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[170px] font-kanit  w-full z-10 text-slate-50 font-bold text-7xl ">AUDI R8 COUPE 2022 </h1>s
+          <h1 className="text-center text-[60px] xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[170px] font-kanit  w-full z-10 text-slate-50 font-bold text-7xl ">AUDI R8 COUPE 2022 </h1>s
           <p className="absolute pt-12 font-syncopate md:text-[40px] lg:text-[50px] text-white top-[10%] left-[5%] hidden md:block">
             2024
           </p>
@@ -726,13 +798,13 @@ const hero_section1 = useRef(null)
         {/*----------Split1------------------------ */}
         <div ref={container_split1} className="relative hidden  lg:flex  w-screen h-screen">
           <div className="h-full w-full flex flex-col justify-center items-center lg:w-[50%] bg-slate-900 ">
-            <img  ref={split1_img} src={car417} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover" />
+            <img ref={split1_img} src={car417} className="opacity-0 lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover" />
             {/* <img src={a5_1} className="lg:h-[400px] lg:w-[500px] mlg:h-screen mlg:w-screen object-cover"/> */}
           </div>
           <div className="h-full  w-full lg:w-[50%]  flex justify-center items-center bg-slate-100 ">
             <div className="w-full h-full mx-[5%] flex justify-center  flex-col text-slate-800">
               <h1
-               ref={split1_h1}
+                ref={split1_h1}
                 className="opacity-0 font-syncopate  text-center xl:text-start    lg:text-[30px] mlg:text-[33px] xl:text-[50px] font-medium"
               >
                 POWER AND PRECISION
@@ -750,7 +822,7 @@ const hero_section1 = useRef(null)
           <div className="h-screen   w-[50%]  flex  justify-center items-center bg-slate-100 ">
             <div className="w-full mx-[5%]  h-full flex justify-center items-center flex-col  ">
               <h1
-                ref={split2_h1} 
+                ref={split2_h1}
                 className="opacity-0 w-full   font-syncopate text-center xl:text-start    lg:text-[30px] mlg:text-[33px] xl:text-[42px] font-medium"
               >
                 Quattro® All-Wheel Drive
@@ -803,12 +875,12 @@ const hero_section1 = useRef(null)
         {/* ---------------------text effect------------------ */}
         <div className=" w-screen h-screen bg-primary relative">
           <p className="type text-[38px]  ss:text-[47px] sm:text-[50px] md:text-[55px]  lg:text-[62px]  mlg:text-[70px] text-slate-200 font-syncopate">
-          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
-          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
-          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
-          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
-          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
-          AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+            AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+            AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+            AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+            AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+            AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
+            AUDI R8 COUPE 2022 AUDI R8 COUPE 2022
           </p>
           <img src={carremove} className="absolute w-3/4 top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%] " />
         </div>
@@ -819,20 +891,20 @@ const hero_section1 = useRef(null)
             className="bg  absolute top-0 left-0 w-screen h-screen z-10 object-cover
           bg-center bg-no-repeat  bg-cover 
           "></div>
-          <h1 className="text-center  text-[100px] md:text-[150px] mlg:text-[190px] font-kanit  w-full z-10 text-white   ">SPORTS </h1>
+          <h1 className="text-center  text-[70px] md:text-[150px] mlg:text-[190px] font-kanit  w-full z-10 text-white   ">SPORTS </h1>
         </section>
         <section className="relative h-screen w-screen flex justify-center items-center"  >
           <div
             style={{ backgroundImage: `url(${car412})` }}
             className="bg  absolute top-0 left-0 w-screen h-screen z-10 object-cover
           bg-center bg-no-repeat  bg-cover"></div>
-          <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] 
+          <h1 className="text-center text-[70px] md:text-[150px] mlg:text-[190px] 
             font-kanit   w-full z-10  text-white">MODERN</h1>
         </section>
         <section className="relative h-screen w-screen flex justify-center items-center">
           <div style={{ backgroundImage: `url(${car415})` }} className="bg  absolute top-0 left-0 w-screen h-screen z-10 object-cover
           bg-center bg-no-repeat  bg-cover"></div>
-          <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10 text-white">LUXURY</h1>
+          <h1 className="text-center text-[70px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10 text-white">LUXURY</h1>
         </section>
         <section className="relative h-screen w-screen flex justify-center items-center">
           <div style={{ backgroundImage: `url(${car414})` }} className="bg  absolute top-0 left-0 w-screen h-screen z-10 object-cover
@@ -963,22 +1035,54 @@ const hero_section1 = useRef(null)
 
 
         {/* --------------desktop-----------Container-Pin-------- */}
+
         <div
           ref={container_pin}
           className="overflow-x-hidden  hidden md:flex  w-screen h-[400%] bg-slate-100 text-slate-800"
         >
           <div ref={box_left} className="w-[40%]  h-screen  ">
             <div className="h-full w-full flex flex-col justify-center items-center border-r border-r-slate-800 ">
-              <p className="w-full h-[15%]  text-center text-[50px] md:text-[60px] mlg:text-[80px]  font-syncopate  ">
-                NEW ERA
-              </p>
-              <p className="w-full h-[20%] px-[5%] text-center  text-[20px] md:text-[23px] mlg:text-[25px] font-kanit ">
-                This suite of advanced safety technologies helps to prevent accidents and protect occupants in the event of a collision.
-              </p>
+             <Link to='/shop/product/66a3bb07803942c2c831d0aa'>
+             <p className="w-full h-[15%]  text-center text-[50px] md:text-[60px] mlg:text-[45px]  font-syncopate  font-bold">
+                Audi R8 coupe <br />
+                <span className="h-[20%] px-[5%] text-center text-[20px] md:text-[23px] mlg:text-[40px] font-poppins font-normal">$ 208 100</span>
+              </p></Link>
+
+              {/* {isLoading && <LoadingSpinner />}
+                          {!isLoading && !isRefetching && car && ( */}
+              <div className="flex justify-center gap-5 pt-12">
+                <Link to="/shop/payment/66a3bb07803942c2c831d0aa">
+                  <button
+                    className=" backdrop-blur-xl
+							detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
+							"
+                  >
+                    Buy Now
+                  </button>
+                </Link>
+
+                <button
+                  className=" backdrop-blur-xl
+							detail-button bg-gray-400 text-black px-4 py-2 md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
+							"
+                  onClick={() =>
+                    handleAddToCart(car._id)
+                  }
+                >
+                  {isAddingToCart ? (
+                    <LoadingSpinner />
+                  ) : (
+                    <p>Add to cart</p>
+                  )}
+                </button>
+              </div>
+
             </div>
           </div>
 
-          <div ref={box_right} className="h-[400%] w-[60%]  flex flex-col text-slate-800">
+          <div ref={box_right} className="h-[400%] w-[60%] pb-20 flex flex-col text-slate-800">
             <div ref={right_section1} className="w-full h-screen flex flex-row justify-evenly items-center">
               <img ref={section1_img1} src={audiA5_15} className="w-[25%] h-[80%] object-cover" />
               <img ref={section1_img2} src={audiA5_9} className="w-[25%] h-[80%] object-cover" />
@@ -1032,22 +1136,55 @@ const hero_section1 = useRef(null)
             </div>
             <div
               ref={right_section7}
-              className="w-full h-[400px] md:h-[600px] flex justify-center items-center"
+              className="w-full h-[400px]  md:h-[600px] flex justify-center items-center"
             >
               <img src={car49} className="w-[80%] h-[80%" />
             </div>
           </div>
         </div>
 
+
         {/* -----mobile pin */}
-        <div className=" w-screen h-screen px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-slate-100 text-slate-800">
-          <h1 className="w-full text-[50px] font-syncopate text-center" >
-            NEW ERA
+        <div className=" w-screen h-[300px] px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-primary text-slate-800">
+        <Link to='/shop/product/66a3bb07803942c2c831d0aa'>
+        <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-syncopate text-center" >
+          Audi R8 coupe
           </h1>
-          <p className="w-full text-[25px] sm:text-[28px] font-thin text-center">
-            This suite of advanced safety technologies helps to prevent accidents and protect occupants in the event of a collision.
+          </Link>
+          <p className="w-full text-white text-[30px] sm:text-[28px] font-thin text-center">
+          $ 208 100
           </p>
+          <div className="flex justify-center gap-2 pt-0 sm:pt-12">
+                <Link to="/shop/payment/66a3bb07803942c2c831d0aa">
+                <button
+                    className=" backdrop-blur-xl
+							detail-button bg-gray-400 text-white px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
+										before:ease relative h-10 w-32 sm:h-10 sm:w-44 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
+							"
+                  >
+                    Buy Now
+                  </button>
+                </Link>
+
+                <button
+                    className=" backdrop-blur-xl
+                    detail-button bg-gray-400 text-white px-4 py-2 md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
+                          before:ease relative h-10 w-36 sm:h-10 sm:w-44 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
+                    "
+                  onClick={() =>
+                    handleAddToCart(car._id)
+                  }
+                >
+                  {isAddingToCart ? (
+                    <LoadingSpinner />
+                  ) : (
+                    <p>Add to cart</p>
+                  )}
+                </button>
+              </div>
         </div>
+       
+
 
         <div className=" flex md:hidden justify-center items-center w-screen h-screen gap-x-[5%]    ">
           <img src={car45} className="object-cover w-[170px] xs:w-[200px] sm:w-[270px] h-[60%] xs:h-[70%]" />
@@ -1061,7 +1198,7 @@ const hero_section1 = useRef(null)
 
         <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center">
           <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate ">Sharp Wheels</h1>
-          <img src={car46} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
+          <img src={car46} className="w-[75%] pt-12 h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
         </div>
 
         <div className="z-50 bg-primary">

@@ -15,7 +15,7 @@ import Followers from '@/_social/pages/profile/Followers';
 import PostDetailed from '@/_social/pages/post/PostDetailed';
 import ProductViewLayout from './_shop/ProductViewLayout';
 
-import { ProductLayout1, ProductLayout2, ProductLayout3,ProductLayout4 , ProductLayout5, ProductLayout6 } from './_productpage/layout/';
+import { ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout4, ProductLayout5, ProductLayout6 } from './_productpage/layout/';
 import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
@@ -33,7 +33,7 @@ import NotAuthenticated from './_auth/NotAuthenticated';
 import Voucherlayout from './_shop/voucher/VoucherLayout';
 import PaymentLayoutBuyNow from './_shop/buynow/PaymentLayoutBuyNow';
 
-
+import { AboutUs } from './_aboutUs';
 const App = () => {
     const location = useLocation();
     const isSocialRoute = location.pathname.startsWith('/social');
@@ -59,9 +59,9 @@ const App = () => {
 
     const { pathname } = useLocation();
 
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, [pathname]);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
 
     if (isLoading) {
@@ -98,9 +98,9 @@ const App = () => {
                     <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
                     <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
                     <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/social" />} />
-                    <Route path="/social/posts/:username/:id" element={authUser ? <PostDetailed/> : <Navigate to="/login" />} />
+                    <Route path="/social/posts/:username/:id" element={authUser ? <PostDetailed /> : <Navigate to="/login" />} />
                     <Route path="/social/notifications" element={authUser ? <NotificationPage /> : <Navigate to="/login" />} />
-                    <Route path="/social/posts/:id" element={authUser ? <PostDetailed/> : <Navigate to="/login" />} />
+                    <Route path="/social/posts/:id" element={authUser ? <PostDetailed /> : <Navigate to="/login" />} />
                     <Route path="/social/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
                     <Route path="/social/profile/following/:id" element={authUser ? <Following /> : <Navigate to="/login" />} />
                     <Route path="/social/profile/followers/:id" element={authUser ? <Followers /> : <Navigate to="/login" />} />
@@ -115,10 +115,12 @@ const App = () => {
                     <Route path="/admin" element={authUser && authUser.isAdmin ? <AdminBrandLayout /> : <NotAuthenticated />} />
                     <Route path="/chatAI" element={<ChatAI />} />
 
-                    <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login"/>} />
+                    <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login" />} />
 
-                    <Route path="/shop/payment" element={ authUser ? <PaymentLayout/> : <Navigate to="/login" /> } />
-                    <Route path="/shop/payment/:id" element={ authUser ? <PaymentLayoutBuyNow/> : <Navigate to="/login" /> } />
+                    <Route path="/shop/payment" element={authUser ? <PaymentLayout /> : <Navigate to="/login" />} />
+                    <Route path="/shop/payment/:id" element={authUser ? <PaymentLayoutBuyNow /> : <Navigate to="/login" />} />
+
+                    <Route path="/aboutUs" element={<AboutUs />} />
 
                     <Route path="/voucher" element={<Voucherlayout />} />
                 </Routes>

@@ -175,7 +175,7 @@ const UserCart = () => {
 												>
 													<img
 														src={item.images[0]}
-														className="xl:w-[700px] shadow-xl shadow-black w-full h-full xl:h-[280px] rounded"
+														className="xl:w-[700px] shadow-md shadow-black w-full h-full xl:h-[280px] rounded"
 													/>
 												</Link>
 											</div>
@@ -212,13 +212,7 @@ const UserCart = () => {
 																)}
 															</div>
 														</div>
-														<div className=" mb-2 w-full md:w-[100px]">
-															<span className="text-[18px] font-bold text-blue-600">
-																$
-																{( Number( item.price.replace( /,/g, "")) * (quantities[ item._id ] || 1)
-																).toLocaleString()}
-															</span>
-														</div>
+
 													</div>
 												</div>
 
@@ -401,13 +395,7 @@ const UserCart = () => {
 						</div>
 						<div className="flex justify-end py-1">
 							<Link
-								to={{
-									pathname: "/shop/payment",
-									search: createSearchParams({
-										totalPrice:
-											calculateTotalPrice().toString(),
-									}).toString(),
-								}}
+								to="/shop/payment"
 							>
 								<div
 									className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-md md:text-base rounded-3xl text-center

@@ -14,7 +14,6 @@ import {
 	change10,
 	change8,
 	change9,
-
 	Videohieuung,
 	b4,
 	b5,
@@ -30,6 +29,10 @@ import Footer from "@/components/common/Footer";
 import Navbar from "../../_root/_homepage/Navbar";
 import NavbarSmall3 from "../navbarsmall/NavbarSmall3";
 import Car3reponsive from "../reponsive/car3reponsive";
+import { Link } from "react-router-dom";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import toast, { Toaster } from "react-hot-toast";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 function getPageHeight() {
 	const parallaxContainer = document.querySelector(".parallax"); // Lấy phần tử Parallax
@@ -108,6 +111,72 @@ const Car3popular: React.FC = () => {
 			window.removeEventListener("resize", updateFooterPosition);
 		};
 	}, []); // Dependency array rỗng để đảm bảo useEffect chỉ chạy một lần sau khi mount
+	const ID = "66bfb4d4598bcf76c770bf1f";
+	const carId = ID;
+	// get single car
+	const {
+		data: car,
+		isLoading,
+		refetch,
+		isRefetching,
+	} = useQuery({
+		queryKey: ["car", carId],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/car/${carId}`);
+				const data = await response.json();
+
+				// console.log(data);
+
+				if (!response.ok) {
+					throw new Error(data.message || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
+	const { mutate: addToCart, isPending: isAddingToCart } = useMutation({
+		mutationFn: async (productId) => {
+			try {
+				const response = await fetch(
+					`/api/user/add/cart/${productId}`,
+					{
+						method: "POST",
+					}
+				);
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			console.log("okaodjihsi");
+			toast.success("Product added to cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+		onError: (error) => {
+			// TODO
+			toast.error("Item already in cart", {
+				duration: 2000,
+			});
+			// setTimeout(() => { setLoadingProductId (null) });
+		},
+	});
+	const handleAddToCart = (productId) => {
+		// setLoadingProductId(productId);
+		addToCart(productId);
+	};
 
 	return (
 		<div>
@@ -122,7 +191,7 @@ const Car3popular: React.FC = () => {
 						/>
 					</div>
 					<Parallax
-						pages={8.4}
+						pages={8.5}
 						style={{ top: "0", left: "0" }}
 						className="bg-black"
 						ref={parallaxRef} // Gán ref vào Parallax
@@ -155,9 +224,7 @@ const Car3popular: React.FC = () => {
 								loop
 								playsInline
 								className="w-full h-auto object-cover top-16 relative"
-							>
-							
-							</video>
+							></video>
 						</ParallaxLayer>
 
 						<ParallaxLayer offset={0} speed={4.5} factor={1}>
@@ -174,9 +241,7 @@ const Car3popular: React.FC = () => {
 											Rolls Royce Ghost 2021
 										</h1>
 										<h2 className="text-xs ss:text-2xl lg:text-4xl sm:text-3xl font-thin pt-1">
-											<span className="font-bold text-red-100">
-												1,65 million $
-											</span>
+											<span className="">$ 332,500</span>
 										</h2>
 									</div>
 								)}
@@ -255,7 +320,7 @@ const Car3popular: React.FC = () => {
 						<ParallaxLayer offset={1.7} speed={0.8} factor={1}>
 							<div
 								style={{ backgroundImage: `url(${r1})` }}
-								className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] top-[200px] ss:top-[150px] sm:top-[350px] md:top-[1600px]"
+								className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] top-[200px] ss:top-[150px] sm:top-[350px] md:top-[1900px]"
 							></div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={1.8} speed={0.9} factor={1}>
@@ -268,7 +333,7 @@ const Car3popular: React.FC = () => {
 							<div className="justify-end items-end flex">
 								<div
 									style={{ backgroundImage: `url(${r2})` }}
-									className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1px] ss:-top-[300px] sm:-top-[200px] md:top-[1200px]"
+									className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[1px] ss:-top-[300px] sm:-top-[200px] md:top-[1500px]"
 								></div>
 							</div>
 						</ParallaxLayer>
@@ -278,7 +343,7 @@ const Car3popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[2] = ref)}
 						>
-							<div className="bottom-[400px] ss:-top-[600px] md:top-[1400px] relative">
+							<div className="bottom-[400px] ss:-top-[600px] md:top-[1500px] relative">
 								<div className="md:text-6xl ss:text-6xl sm:text-7xl text-3xl text-center text-white animate-pulse font-syncopate ">
 									NEW COLOR
 								</div>
@@ -310,7 +375,6 @@ const Car3popular: React.FC = () => {
 											/>
 										)
 									)}
-								
 								</div>
 
 								{/* Nút chuyển ảnh */}
@@ -384,7 +448,7 @@ const Car3popular: React.FC = () => {
 						>
 							<div
 								id="Interiors"
-								className="flex justify-center bottom-[900px] md:-bottom-[1030px] bg-bla relative z-50"
+								className="flex justify-center bottom-[900px] md:-bottom-[1030px] pt-12 relative z-50"
 							>
 								<div className="w-full z-50">
 									<Car3popular2 />
@@ -397,25 +461,25 @@ const Car3popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[3] = ref)}
 						>
-						<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1700px] z-10 relative">
-					{" "}
-					<iframe
-						className="w-full md:h-[550px] h-[300px] scale-125 z-50"
-						frameBorder="0"
-						allowfullscreen
-						mozallowfullscreen="true"
-						webkitallowfullscreen="true"
-						allow="autoplay; fullscreen; xr-spatial-tracking"
-						xr-spatial-tracking
-						execution-while-out-of-viewport
-						execution-while-not-rendered
-						web-share
-						src="https://sketchfab.com/models/f417013fd6ff422a83dea9650d1f840b/embed?autospin=1&autostart=1&preload=1&ui_theme=dark&dnt=1"
-					>
-						{" "}
-					</iframe>{" "}
-				</div>
-				</ParallaxLayer>
+							<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1700px] z-10 relative">
+								{" "}
+								<iframe
+									className="w-full md:h-[550px] h-[300px] scale-125 z-50"
+									frameBorder="0"
+									allowfullscreen
+									mozallowfullscreen="true"
+									webkitallowfullscreen="true"
+									allow="autoplay; fullscreen; xr-spatial-tracking"
+									xr-spatial-tracking
+									execution-while-out-of-viewport
+									execution-while-not-rendered
+									web-share
+									src="https://sketchfab.com/models/f417013fd6ff422a83dea9650d1f840b/embed?autospin=1&autostart=1&preload=1&ui_theme=dark&dnt=1"
+								>
+									{" "}
+								</iframe>{" "}
+							</div>
+						</ParallaxLayer>
 
 						<ParallaxLayer
 							offset={6}
@@ -423,14 +487,14 @@ const Car3popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[4] = ref)}
 						>
-							<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[1400px]">
+							<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[1200px]">
 								Sophisticated, modern, classy
 							</div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6} speed={1} factor={1}>
 							<div
 								style={{ backgroundImage: `url(${b6})` }}
-								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[1000px]"
+								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[900px]"
 							></div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
@@ -441,10 +505,10 @@ const Car3popular: React.FC = () => {
 								></div>
 							</div>
 						</ParallaxLayer>
-						<ParallaxLayer offset={6.4} speed={0.1} factor={1}>
+						<ParallaxLayer offset={6.4} speed={0.9} factor={1}>
 							<div
 								style={{ backgroundImage: `url(${b5})` }}
-								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[700px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[100px]"
+								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1300px] bg-center md:h-[1200px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[100px]"
 							></div>
 						</ParallaxLayer>
 						<ParallaxLayer
@@ -453,85 +517,117 @@ const Car3popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[5] = ref)}
 						>
-							<div className="article-tiles-container bg-black text-white p-6 bottom-[1600px] relative md:bottom-[550px]">
-								<div className="article-tiles-desc mb-6 text-center font-syncopate">
-									<h3 className="text-4xl ss:text-5xl mb-2">
-										Continue your journey
-									</h3>
-									<p>
-										You may also like the following related
-										articles
-									</p>
+							{isLoading && <LoadingSpinner />}
+							{!isLoading && !isRefetching && car && (
+								<div className="article-tiles-container bg-black text-white p-6 bottom-[1600px] relative md:bottom-[500px]">
+									<Toaster
+										position="top-center"
+										reverseOrder={false}
+									/>
+									<div className="article-tiles-desc mb-6 text-center font-syncopate">
+										<h3 className="text-4xl ss:text-5xl mb-2">
+											Rolls-Royce-Ghost-2021
+										</h3>
+										<p className="text-2xl">$ 332,500</p>
+									</div>
+									<div className="flex justify-center gap-5 pt-5">
+										<Link to="/shop/payment/66bfb4d4598bcf76c770bf1f">
+											<button
+												className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-40
+							"
+											>
+												Buy Now
+											</button>
+										</Link>
+
+										<button
+											className=" opacity-80 backdrop-blur-xl
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-[230px]
+							"
+											onClick={() =>
+												handleAddToCart(car._id)
+											}
+										>
+											{isAddingToCart ? (
+												<LoadingSpinner />
+											) : (
+												<p>Add to cart</p>
+											)}
+										</button>
+									</div>
+
+									<div className="article-tiles-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-10 sm:pt-20">
+										<div className="article-tile">
+											<figure className="hover01 overflow-hidden">
+												<img
+													src={b8}
+													className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
+												/>
+											</figure>
+											<div className="block font-syncopate text-center">
+												<h4 className="text-base ss:text-lg mb-2">
+													GHOST PRISM
+												</h4>
+												<p className="text-sm ss:text-base">
+													Ghost Prism draws
+													inspiration from the world
+													of contemporary designs.
+												</p>
+											</div>
+										</div>
+
+										<div className="article-tile">
+											<figure className="hover01 overflow-hidden group relative">
+												<img
+													src={toi}
+													alt="Image 1"
+													className="w-full object-cover transform transition-opacity duration-300 group-hover:opacity-0"
+												/>
+												<img
+													src={b4}
+													alt="Image 2"
+													className="absolute top-0 left-0 w-full h-full object-cover transform transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110"
+												/>
+											</figure>
+
+											<div className="block font-syncopate text-center">
+												<h4 className="text-base ss:text-lg mb-2">
+													Ghost - In Detail
+												</h4>
+												<p className="text-sm ss:text-base">
+													Pure and pristine. The
+													ultimate foundation for
+													infinite self-expression.
+												</p>
+											</div>
+										</div>
+
+										<div className="article-tile hidden md:block">
+											<figure className="hover01 overflow-hidden">
+												<img
+													src={b7}
+													className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
+												/>
+											</figure>
+											<div className="block font-syncopate text-center">
+												<h4 className="text-base ss:text-lg mb-2">
+													Commission Your Ghost
+												</h4>
+												<p className="text-sm ss:text-base">
+													Envision an original with
+													Bespoke services.
+												</p>
+											</div>
+										</div>
+									</div>
 								</div>
-
-								<div className="article-tiles-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-10 sm:pt-20">
-									<div className="article-tile">
-										<figure className="hover01 overflow-hidden">
-											<img
-												src={b8}
-												className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
-											/>
-										</figure>
-										<div className="block font-syncopate text-center">
-											<h4 className="text-base ss:text-lg mb-2">
-												GHOST PRISM
-											</h4>
-											<p className="text-sm ss:text-base">
-												Ghost Prism draws inspiration
-												from the world of contemporary
-												designs.
-											</p>
-										</div>
-									</div>
-
-									<div className="article-tile">
-										<figure className="hover01 overflow-hidden group relative">
-											<img
-												src={toi}
-												alt="Image 1"
-												className="w-full object-cover transform transition-opacity duration-300 group-hover:opacity-0"
-											/>
-											<img
-												src={b4}
-												alt="Image 2"
-												className="absolute top-0 left-0 w-full h-full object-cover transform transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-110"
-											/>
-										</figure>
-
-										<div className="block font-syncopate text-center">
-											<h4 className="text-base ss:text-lg mb-2">
-												Ghost - In Detail
-											</h4>
-											<p className="text-sm ss:text-base">
-												Pure and pristine. The ultimate
-												foundation for infinite
-												self-expression.
-											</p>
-										</div>
-									</div>
-
-									<div className="article-tile hidden md:block">
-										<figure className="hover01 overflow-hidden">
-											<img
-												src={b7}
-												className="w-full object-cover transform transition-transform duration-300 hover:scale-110"
-											/>
-										</figure>
-										<div className="block font-syncopate text-center">
-											<h4 className="text-base ss:text-lg mb-2">
-												Commission Your Ghost
-											</h4>
-											<p className="text-sm ss:text-base">
-												Envision an original with
-												Bespoke services.
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
+							)}
 						</ParallaxLayer>
 						<div className="z-10 w-full bottom-0 absolute">
-							<Footer ref={(footerRef)} />
+							<Footer ref={footerRef} />
 						</div>
 					</Parallax>
 				</div>

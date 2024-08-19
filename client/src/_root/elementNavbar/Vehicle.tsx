@@ -22,6 +22,8 @@ import {
 	carnb2,
 	carnb4,
 	carnb5,
+	carnbRR, 
+carnbRR2,
 } from "../../assets";
 import { FaAngleLeft } from "react-icons/fa6";
 
@@ -232,7 +234,7 @@ const Vehicle = () => {
 										<ListItem
 											onClick={() =>
 												handleCarClick(
-													"Mercedes AMG CLS"
+													"Ghost2021"
 												)
 											}
 										>
@@ -247,7 +249,7 @@ const Vehicle = () => {
 										<ListItem
 											onClick={() =>
 												handleCarClick(
-													"Mercedes Benz Maybach 2022"
+													"Phantom"
 												)
 											}
 										>
@@ -288,11 +290,11 @@ const Vehicle = () => {
 											data-aos="slide-left"
 											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
 										></div>
-										<div className="logo_Car xl:w-[1000px] lg:w-[400px] scale-150 pt-12 h-auto xl:ml-[300px] lg:ml-[150px]">
+										<div className="logo_Car xl:w-[1000px] lg:w-[450px] scale-150 pt-12 h-auto xl:ml-[300px] lg:ml-[120px]">
 											<img
 												data-aos="slide-left"
 												data-aos-delay="1000"
-												className=""
+												className="w-[800px] lg:-top-[10px] xl:-top-[40px] relative"
 												src={carnb1}
 											/>
 										</div>
@@ -300,12 +302,23 @@ const Vehicle = () => {
 										<div
 											data-aos="slide-left"
 											data-aos-delay="1500"
-											className="justify-end pr-24 items-center flex pt-3 "
+											className="justify-end pr-24 relative xl:-top-[70px] items-center flex pt-3 "
 										>
 											<Link to="/Mercedes-AMG-CLS">
-												<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+												<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 rounded-md font-bold border-white font-poppins text-center border-r border-t">
 													View
-												</Button>
+												</button>
+											</Link>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1700"
+											className="justify-end pr-24 relative lg:top-[30px] xl:-top-[49px] items-center flex"
+										>
+											<Link to="/shop/product/66ab8c2a2c63f54b95a50d1d">
+												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700 rounded-md font-bold  hover:before:-translate-x-64 font-poppins text-center">
+													Shop
+												</button>
 											</Link>
 										</div>
 									</>
@@ -330,11 +343,11 @@ const Vehicle = () => {
 											data-aos="slide-left"
 											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
 										></div>
-										<div className="logo_Car xl:w-[800px] lg:w-[500px] lg:ml-[80px] scale-150 pt-12 h-auto xl:ml-[100px]">
+										<div className="logo_Car xl:w-[800px] lg:w-[450px] lg:ml-[140px] scale-150 pt-12 h-auto xl:ml-[300px]">
 											<img
 												data-aos="slide-left"
 												data-aos-delay="1000"
-												className="w-[800px]"
+												className="w-[750px] lg:-top-[40px] xl:-top-[60px] relative"
 												src={carnb2}
 											/>
 										</div>
@@ -342,12 +355,23 @@ const Vehicle = () => {
 										<div
 											data-aos="slide-left"
 											data-aos-delay="1500"
-											className="justify-end pr-24 items-center flex"
+											className="justify-end pr-24 relative -top-[25px] items-center flex"
 										>
 											<Link to="/Mercedes-Benz-Maybach-2022">
-												<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+												<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 border-white border-r border-t font-poppins rounded-md">
 													View
-												</Button>
+												</button>
+											</Link>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1700"
+											className="justify-end pr-24 pt-0 items-center flex"
+										>
+											<Link to="/shop/product/66ab97d42c63f54b95a50dc1">
+												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
+													Shop
+												</button>
 											</Link>
 										</div>
 									</>
@@ -371,11 +395,11 @@ const Vehicle = () => {
 											data-aos="slide-left"
 											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
 										></div>
-										<div className="logo_Car xl:w-[1000px] lg:w-[550px] lg:ml-[100px] scale-150 pt-20 h-auto xl: xl:ml-[300px]">
+										<div className="logo_Car xl:w-[1000px] lg:w-[450px] lg:ml-[140px] scale-150 pt-20 h-auto xl: xl:ml-[330px]">
 											<img
 												data-aos="slide-left"
 												data-aos-delay="1000"
-												className="w-[840px]"
+												className="w-[740px] lg:-top-[50px] xl:-top-[80px] relative"
 												src={carnb4}
 											/>
 										</div>
@@ -383,12 +407,23 @@ const Vehicle = () => {
 										<div
 											data-aos="slide-left"
 											data-aos-delay="1500"
-											className="justify-end pr-24 items-center flex"
+											className="justify-end pr-24 relative -top-[25px] items-center flex"
 										>
 											<Link to="/audi-A5-Couple">
-												<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+												<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 border-white border-r border-t font-poppins rounded-md">
 													View
-												</Button>
+												</button>
+											</Link>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1700"
+											className="justify-end pr-24 pt-0 items-center flex"
+										>
+											<Link to="/shop/product/66bfb4d4598bcf76c770bf1f">
+												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
+													Shop
+												</button>
 											</Link>
 										</div>
 									</>
@@ -412,24 +447,136 @@ const Vehicle = () => {
 											data-aos="slide-left"
 											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
 										></div>
-										<div className="logo_Car xl:w-[700px] lg:w-[450px] lg:ml-[100px] scale-150 pt-20 h-auto xl:ml-[300px]">
+										<div className="logo_Car xl:w-[700px] lg:w-[450px] lg:ml-[150px] scale-150 pt-20 h-auto xl:ml-[270px]">
 											<img
 												data-aos="slide-left"
 												data-aos-delay="1000"
-
+												className="w-[700px] -top-[60px] relative"
 												src={carnb5}
 											/>
 										</div>
-
 										<div
 											data-aos="slide-left"
 											data-aos-delay="1500"
-											className="justify-end pr-24 items-center flex"
+											className="justify-end pr-24 -top-[25px] relative items-center flex"
 										>
 											<Link to="/audi-A5-Couple">
-												<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+												<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 border-white border-t border-r font-poppins rounded-md">
 													View
-												</Button>
+												</button>
+											</Link>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1700"
+											className="justify-end pr-24 pt-0 items-center flex"
+										>
+											<Link to="/shop/product/66bfb4d4598bcf76c770bf1f">
+												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
+													Shop
+												</button>
+											</Link>
+										</div>
+									</>
+								)}
+								{selectedCar === "Ghost2021" && (
+									<>
+										<h1
+											data-aos="slide-left"
+											className="text-4xl xl:justify-center xl:items-center xl:pl-3 flex pt-12 lg:text-center lg:justify-start lg:pl-24"
+										>
+											Rolls-Royce Ghost 2021
+										</h1>
+										<p
+											data-aos="slide-left"
+											className="animate-pulse pb-4 justify-center items-center pt-5 flex text-3xl"
+										>
+											$ 332 500
+										</p>
+										<hr data-aos="slide-right" />
+										<div
+											data-aos="slide-left"
+											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
+										></div>
+										<div className="logo_Car xl:w-[700px] lg:w-[450px] lg:ml-[150px] scale-150 pt-20 h-auto xl:ml-[270px]">
+											<img
+												data-aos="slide-left"
+												data-aos-delay="1000"
+												className=" xl:w-[700px] -top-[0px] relative"
+												src={carnbRR}
+											/>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1500"
+											className="justify-end pr-24 pt-12 items-center flex"
+										>
+											<Link to="/Rolls-Royce-Ghost-2021">
+												<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 border-white border-t border-r before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
+													View
+												</button>
+											</Link>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1700"
+											className="justify-end pr-24 pt-5 items-center flex"
+										>
+											<Link to="/shop/product/66bfb4d4598bcf76c770bf1f">
+												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
+													Shop
+												</button>
+											</Link>
+										</div>
+									</>
+								)}
+								{selectedCar === "Phantom" && (
+									<>
+										<h1
+											data-aos="slide-left"
+											className="text-4xl xl:justify-center xl:items-center xl:pl-3 flex pt-12 lg:text-center lg:justify-start lg:pl-24"
+										>
+											Phantom Extended series II
+										</h1>
+										<p
+											data-aos="slide-left"
+											className="animate-pulse pb-4 justify-center items-center pt-5 flex text-3xl"
+										>
+											$ 1,65 million
+										</p>
+										<hr data-aos="slide-right" />
+										<div
+											data-aos="slide-left"
+											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
+										></div>
+										<div className="logo_Car xl:w-[1200px] lg:w-[580px] lg:ml-[100px] scale-150 pt-20 h-auto xl:ml-[240px]">
+											<img
+												data-aos="slide-left"
+												data-aos-delay="1000"
+												className="w-[950px] -top-[25px] relative"
+												src={carnbRR2}
+											/>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1500"
+											className="justify-end pr-24 -top-[20px] relative items-center flex"
+										>
+											<Link to="/Roll-Royce-Phantom">
+												<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 border-white border-r border-t before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
+													View
+												</button>
+											</Link>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1700"
+											className="justify-end pr-24 pt-1 items-center flex"
+										>
+											<Link to="/shop/product/66bfc096598bcf76c770c008">
+												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
+													Shop
+												</button>
 											</Link>
 										</div>
 									</>
@@ -560,6 +707,66 @@ const Vehicle = () => {
 									</ListItem>
 								</List>
 							</AccordionBody>
+					
+						</Accordion>
+						<Accordion
+							open={open === 3}
+							icon={
+								<ChevronDownIcon
+									strokeWidth={2.5}
+									className={`mx-auto h-4 w-4 transition-transform ${
+										open === 3 ? "rotate-180" : ""
+									}`}
+								/>
+							}
+						>
+							<ListItem className="p-0" selected={open === 3}>
+								<AccordionHeader
+									onClick={() => handleOpen(3)}
+									className="border-b-0 p-3"
+								>
+									<Typography
+										color="blue-gray"
+										className="mr-auto font-syncopate uppercase"
+									>
+										Roll-roil
+									</Typography>
+									<div className="logo_Car w-[90px] h-auto ">
+										<img src={logoroi} alt="Audi Logo" />
+									</div>
+								</AccordionHeader>
+							</ListItem>
+					
+							<AccordionBody className="py-1 text-white">
+								<List className="p-0">
+									<ListItem
+										onClick={() =>
+											handleNavClick_repon("Ghost2021")
+										}
+									>
+										<ListItemPrefix>
+											<ChevronRightIcon
+												strokeWidth={3}
+												className="h-3 w-5"
+											/>
+										</ListItemPrefix>
+										Ghost 2021
+									</ListItem>
+									<ListItem
+										onClick={() =>
+											handleNavClick_repon("Phantom")
+										}
+									>
+										<ListItemPrefix>
+											<ChevronRightIcon
+												strokeWidth={3}
+												className="h-3 w-5"
+											/>
+										</ListItemPrefix>
+										Phantom Extended series II
+									</ListItem>
+								</List>
+							</AccordionBody>
 						</Accordion>
 					</List>
 				) : (
@@ -577,33 +784,46 @@ const Vehicle = () => {
 							>
 								<div className="logo_Car w-[300px] ss:w-[600px]  sm:w-[500px] pt-12 sm:pt-0 h-auto">
 									<img
-										data-aos="slide-up"
-										data-aos-delay="1000"
+										data-aos="fade-left"
+										data-aos-delay="500"
 										className=""
 										src={carnb1}
 									/>
 								</div>
 								<div
-									data-aos="slide-left"
-									data-aos-delay="1200 "
+								data-aos="fade-left"
+										data-aos-delay="700"
 								>
-									<h1 className="font-syncopate ss:text-3xl sm:text-2xl  text-center text-xl">
+									<h1 className="font-syncopate ss:text-3xl  text-center text-xl">
 										Mercedes AMG CLS
 									</h1>
-									<p className="animate-pulse justify-center items-center pt-2 flex text-3xl ss:text-3xl">
+									<p className="animate-pulse justify-center items-center pt-2 flex text-xl ss:text-3xl">
 										$ 183 600
 									</p>
 								</div>
+								<div className="flex gap-5">
 								<div
-									data-aos="slide-up"
-									data-aos-delay="1500"
+									data-aos="fade-left"
+										data-aos-delay="900"
 									className="pt-5"
 								>
 									<Link to="/Mercedes-AMG-CLS">
-										<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white font-poppins before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
 											View
-										</Button>
+										</button>
 									</Link>
+								</div>
+								<div
+										data-aos="fade-left"
+										data-aos-delay="1200"
+									className="pt-5"
+								>
+								<Link to="/shop/product/66ab8c2a2c63f54b95a50d1d">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											Shop
+										</button>
+									</Link>
+								</div>
 								</div>
 							</div>
 						)}
@@ -612,35 +832,47 @@ const Vehicle = () => {
 								data-aos="fade-right"
 								className="justify-center items-center flex flex-col"
 							>
-								<div className="logo_Car w-[450px] sm:w-[600px] pt-12 sm:pt-0 h-auto pr-12">
+								<div className="w-[300px] ss:w-[620px] pl-0 ss:pl-12 sm:w-[500px] pt-5 pb-4 sm:pt-0 h-auto ">
 									<img
-										data-aos="slide-up"
-										data-aos-delay="1000"
-										className=""
+										data-aos="fade-left"
+										data-aos-delay="500"
 										src={carnb2}
 									/>
 								</div>
 								<div
-									data-aos="slide-left"
-									data-aos-delay="1200"
+									data-aos="fade-left"
+									data-aos-delay="700"
 								>
-									<h1 className="font-syncopate sm:text-2xl text-center text-xl">
+									<h1 className="font-syncopate ss:text-2xl text-center text-xl">
 										Mercedes Benz Maybay 2022
 									</h1>
-									<p className="animate-pulse justify-center items-center pt-2 flex text-3xl">
+									<p className="animate-pulse justify-center items-center pt-2 flex text-xl ss:text-3xl">
 										$ 679 867
 									</p>
 								</div>
+								<div className="flex gap-5">
 								<div
-									data-aos="slide-up"
-									data-aos-delay="1500"
-									className="items-center flex pt-5 "
+									data-aos="fade-left"
+										data-aos-delay="900"
+									className="pt-5"
 								>
 									<Link to="/Mercedes-Benz-Maybach-2022">
-										<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white font-poppins before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
 											View
-										</Button>
+										</button>
 									</Link>
+								</div>
+								<div
+										data-aos="fade-left"
+										data-aos-delay="1200"
+									className="pt-5"
+								>
+									<Link to="/shop/product/66ab97d42c63f54b95a50dc1">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											Shop
+										</button>
+									</Link>
+								</div>
 								</div>
 							</div>
 						)}
@@ -649,35 +881,48 @@ const Vehicle = () => {
 								data-aos="fade-right"
 								className="justify-center items-center flex flex-col"
 							>
-								<div className="logo_Car w-[500px] sm:w-[650px] pt-12 h-auto pl-9 pb-5">
+								<div className="logo_Car w-[300px] ss:w-[600px]  sm:w-[500px] pt-12 h-auto pb-5">
 									<img
-										data-aos="slide-up"
-										data-aos-delay="1000"
+											data-aos="fade-left"
+										data-aos-delay="500"
 										className=""
 										src={carnb4}
 									/>
 								</div>
 								<div
-									data-aos="slide-left"
-									data-aos-delay="1200"
+										data-aos="fade-left"
+										data-aos-delay="700"
 								>
-									<h1 className="font-syncopate sm:text-2xl text-center text-xl">
+									<h1 className="font-syncopate ss:text-2xl text-center text-xl">
 										Audi A5 Coupe
 									</h1>
-									<p className="animate-pulse justify-center items-center pt-2 flex text-3xl">
+									<p className="animate-pulse justify-center items-center pt-2 flex text-xl ss:text-3xl">
 										$ 48 000
 									</p>
 								</div>
+								<div className="flex gap-5">
 								<div
-									data-aos="slide-up"
-									data-aos-delay="1500"
-									className="flex pt-5 "
+									data-aos="fade-left"
+										data-aos-delay="900"
+									className="pt-5"
 								>
-									<Link to="/audi-A5-Couple">
-										<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+										<Link to="/audi-A5-Couple">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white font-poppins before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
 											View
-										</Button>
+										</button>
 									</Link>
+								</div>
+								<div
+										data-aos="fade-left"
+										data-aos-delay="1200"
+									className="pt-5"
+								>
+									<Link to="/shop/product/66bfb4d4598bcf76c770bf1f">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											Shop
+										</button>
+									</Link>
+								</div>
 								</div>
 							</div>
 						)}
@@ -686,35 +931,148 @@ const Vehicle = () => {
 								data-aos="fade-right"
 								className="justify-center items-center flex flex-col"
 							>
-								<div className="logo_Car w-[350px] sm:w-[550px] pt-12 h-auto pr-1 pb-5">
+								<div className="logo_Car w-[300px] ss:w-[600px]  sm:w-[500px] pt-12 h-auto pr-1 pb-5">
 									<img
-										data-aos="slide-up"
-										data-aos-delay="1000"
+										data-aos="fade-left"
+										data-aos-delay="500"
 										className=""
 										src={carnb5}
 									/>
 								</div>
 								<div
-									data-aos="slide-left"
-									data-aos-delay="1200"
+									data-aos="fade-left"
+										data-aos-delay="700"
 								>
-									<h1 className="font-syncopate sm:text-2xl  text-center text-xl">
+									<h1 className="font-syncopate ss:text-2xl  text-center text-xl">
 										2024 S6 limousin
 									</h1>
-									<p className="animate-pulse justify-center items-center pt-2 flex text-3xl">
+									<p className="animate-pulse justify-center items-center pt-2 flex text-xl ss:text-3xl">
 										$ 58 000
 									</p>
 								</div>
+								<div className="flex gap-5">
 								<div
-									data-aos="slide-up"
-									data-aos-delay="1500"
-									className="flex pt-5 "
+									data-aos="fade-left"
+										data-aos-delay="900"
+									className="pt-5"
 								>
-									<Link to="/audi-A5-Couple">
-										<Button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+								<Link to="/audi-A5-Couple">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white font-poppins before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
 											View
-										</Button>
+										</button>
 									</Link>
+								</div>
+								<div
+										data-aos="fade-left"
+										data-aos-delay="1200"
+									className="pt-5"
+								>
+								<Link to="/shop/product/66bfb4d4598bcf76c770bf1f">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											Shop
+										</button>
+									</Link>
+								</div>
+								</div>
+							</div>
+						)}
+						{currentPage === "Ghost2021" && (
+							<div
+								data-aos="fade-right"
+								className="justify-center items-center flex flex-col"
+							>
+								<div className="logo_Car w-[300px] ss:w-[600px] h-auto sm:w-[500px] pt-12 pr-1 pb-5">
+									<img
+										data-aos="fade-left"
+										data-aos-delay="500"
+										className=""
+										src={carnbRR}
+									/>
+								</div>
+								<div
+									data-aos="fade-left"
+										data-aos-delay="700"
+								>
+									<h1 className="font-syncopate ss:text-3xl  text-center text-xl">
+									Rolls-Royce Ghost 2021
+									</h1>
+									<p className="animate-pulse justify-center items-center pt-2 flex text-xl ss:text-3xl">
+										$ 332 500
+									</p>
+								</div>
+								<div className="flex gap-5">
+								<div
+									data-aos="fade-left"
+										data-aos-delay="900"
+									className="pt-5"
+								>
+									<Link to="/Rolls-Royce-Ghost-2021">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white font-poppins before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											View
+										</button>
+									</Link>
+								</div>
+								<div
+										data-aos="fade-left"
+										data-aos-delay="1200"
+									className="pt-5"
+								>
+									<Link to="/shop/product/66bfb4d4598bcf76c770bf1f">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											Shop
+										</button>
+									</Link>
+								</div>
+								</div>
+							</div>
+						)}
+						{currentPage === "Phantom" && (
+							<div
+								data-aos="fade-right"
+								className="justify-center items-center flex flex-col"
+							>
+								<div className="logo_Car w-[300px] ss:w-[800px] sm:w-[500px] pt-5 h-auto ss:pt-1/2 pb-5">
+									<img
+											data-aos="fade-left"
+										data-aos-delay="500"
+				
+										src={carnbRR2}
+									/>
+								</div>
+								<div
+									data-aos="fade-left"
+										data-aos-delay="700"
+								>
+									<h1 className="font-syncopate ss:text-2xl  text-center text-xl">
+									Phantom Extended series II
+									</h1>
+									<p className="animate-pulse justify-center items-center pt-2 flex text-xl ss:text-3xl">
+										$ 1,65 million
+									</p>
+								</div>
+								<div className="flex gap-5">
+								<div
+									data-aos="fade-left"
+										data-aos-delay="900"
+									className="pt-5"
+								>
+									<Link to="/Roll-Royce-Phantom">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white font-poppins before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											View
+										</button>
+									</Link>
+								</div>
+								<div
+										data-aos="fade-left"
+										data-aos-delay="1200"
+									className="pt-5"
+								>
+								<Link to="/shop/product/66bfc096598bcf76c770c008">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											Shop
+										</button>
+									</Link>
+								</div>
 								</div>
 							</div>
 						)}

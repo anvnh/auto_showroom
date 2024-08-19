@@ -104,7 +104,7 @@ const Story2 = () => {
                         </p>
                     </section>
                     <section ref={con_p4} className="font-kanit font-[600] w-[80%] h-[11%] leading-none  overflow-y-hidden">
-                        <p ref={p4} className="italic  h-full text-center text-[60px] xsm:text-[80px] md:text-[100px] lg:text-[120px]">
+                        <p ref={p4} className="italic  h-full text-center text-[50px] sm:text-[60px] xsm:text-[80px] md:text-[100px] lg:text-[120px]">
                             SHOWROOM
                         </p>
                     </section>

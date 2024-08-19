@@ -15,8 +15,13 @@ interface SubNavbarProps {
 import GetMe from "@/components/common/auth/GetMe";
 import { useQuery } from "@tanstack/react-query";
 import useAuthUser from "@/hooks/useAuthUser";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 
-const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick }) => {
+const Navbar: React.FC<SubNavbarProps> = ({
+	selectedSection_element,
+	onNavClick,
+}) => {
 	useEffect(() => {
 		AOS.init({
 			duration: 900,
@@ -37,7 +42,6 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 	};
 
 	const { data: authUser, error, isLoading } = useAuthUser();
-
 
 	const [isHidden, setIsHidden] = useState(false);
 	let lastScrollTop = 0;
@@ -147,10 +151,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 							/>
 						</Link>
 					</div>
-					<div className="flex-1 flex justify-end items-center">
-						<ul className="list-none sm:flex md:justify-end xl:pl-0 pl-4 items-center justify-start flex-1">
-						</ul>
-
+					<div className="flex-1 w-full flex pl-3 justify-start items-center">
 						<button
 							className="md:hidden text-white pr-3 focus:outline-none"
 							onClick={() => setToggle(!toggle)}
@@ -163,14 +164,86 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 							/>
 						</button>
 					</div>
+					<div className=" ">
+						<ul className="list-none flex pr-3 justify-end items-center flex-1">
+							{authUser ? (
+								<>
+									<Link to="/shop/cart">
+										<MdOutlineShoppingCart
+											className="text-white w-[30px] xl:w-[35px] h-[27px] text-3xl xl:mr-4 mr-2"
+											title="Go to your cart"
+										/>
+									</Link>
+									{isLoading && <LoadingSpinner />}
+									{!isLoading && (
+										<Link
+											to={
+												authUser
+													? `/social/profile/${authUser.fullName
+														.replace(/\s+/g, "")
+														.toLowerCase()}`
+													: "/social/profile/login"
+											}
+										>
+											<div className="avatar placeholder w-[30px] xl:w-full h-auto">
+												<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black"
+													title="Go to your profile">
+													{authUser ? (
+														<img
+															src={
+																authUser.profileImg
+															}
+														/>
+													) : (
+														<FaUser />
+													)}
+												</div>
+											</div>
+										</Link>
+									)}
+								</>
+							) : (
+								<>
+									<MdOutlineShoppingCart
+										className="text-white w-[30px] xl:w-[35px] h-[27px] text-3xl xl:mr-4 mr-2 cursor-pointer"
+										title="Go to your cart"
+										onClick={() =>
+											toast.error(
+												"Please login to view your cart"
+											)
+										}
+									/>
+									{!isLoading && (
+										<Link
+											to={`${authUser ? "/social" : "/login"
+												}`}
+										>
+											<div className="avatar placeholder w-[30px] xl:w-full h-auto">
+												<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black">
+													{authUser ? (
+														<img
+															src={
+																authUser.profileImg
+															}
+														/>
+													) : (
+														<FaUser />
+													)}
+												</div>
+											</div>
+										</Link>
+									)}
+								</>
+							)}
+						</ul>
+					</div>
 				</nav>
 			)}
 			<div className="hidden md:block">
 				{isVisible && (
 					<div
-						className={`z-50 md:top-12 w-full font-poppins transition-transform duration-300 sm:block ${
-							isHidden ? "-translate-y-full" : "translate-y-0"
-						}`}
+						className={`z-50 md:top-12 w-full font-poppins transition-transform duration-300 sm:block ${isHidden ? "-translate-y-full" : "translate-y-0"
+							}`}
 					>
 						<nav
 							data-aos="fade-up"
@@ -178,11 +251,10 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 						>
 							<ul className="list-none sm:flex gap-10 justify-center items-center flex-1">
 								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "vehicles"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "vehicles"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
 									onMouseEnter={() =>
 										handleMouseEnter("vehicles")
 									}
@@ -198,11 +270,10 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 								</li>
 								<Link to="/shop">
 									<li
-										className={`cursor-pointer transition-opacity duration-300 ${
-											selectedP && selectedP !== "shop"
-												? "opacity-50"
-												: "opacity-100"
-										}`}
+										className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "shop"
+											? "opacity-50"
+											: "opacity-100"
+											}`}
 										onMouseEnter={() =>
 											handleMouseEnter("shop")
 										}
@@ -218,11 +289,10 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									</li>
 								</Link>
 								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "shopping"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "shopping"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
 									onMouseEnter={() =>
 										handleMouseEnter("shopping")
 									}
@@ -237,11 +307,10 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									</div>
 								</li>
 								<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "owners"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "owners"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
 									onMouseEnter={() =>
 										handleMouseEnter("owners")
 									}
@@ -257,13 +326,55 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 										</Link>
 									</div>
 								</li>
+								<li
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "social"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
+									onMouseEnter={() =>
+										handleMouseEnter("social")
+									}
+									onMouseLeave={handleMouseLeave}
+									onClick={() =>
+										handleToggleSection("social")
+									}
+								>
+									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
+										{!isLoading && (
+											<Link to={`${authUser ? "/social" : "/login"
+												}`}>
+												<p> Social </p>
+												<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
+											</Link>
+										)}
+									</div>
+								</li>
+								<li
+									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "aboutUs"
+										? "opacity-50"
+										: "opacity-100"
+										}`}
+									onMouseEnter={() =>
+										handleMouseEnter("aboutUs")
+									}
+									onMouseLeave={handleMouseLeave}
+									onClick={() =>
+										handleToggleSection("aboutUs")
+									}
+								>
+									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
+										<Link to="/aboutUs">
+											<p> About Us </p>
+											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
+										</Link>
+									</div>
+								</li>
 								{authUser?.isAdmin === true && (
 									<li
-										className={`cursor-pointer transition-opacity duration-300 ${
-											selectedP && selectedP !== "Admin"
-												? "opacity-50"
-												: "opacity-100"
-										}`}
+										className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "Admin"
+											? "opacity-50"
+											: "opacity-100"
+											}`}
 										onMouseEnter={() =>
 											handleMouseEnter("Admin")
 										}
@@ -289,9 +400,8 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 				{isExpanded && selectedSection === "vehicles" && (
 					<div
 						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-85 bg-gray-900  ${
-							isHidden ? "hidden" : ""
-						}`}
+						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-80 backdrop-blur-md bg-gray-900  ${isHidden ? "hidden" : ""
+							}`}
 					>
 						<div
 							data-aos="fade-up"
@@ -305,9 +415,8 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 				{isExpanded && selectedSection === "shopping" && (
 					<div
 						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-screen rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900 ${
-							isHidden ? "hidden" : ""
-						}`}
+						className={`z-1 absolute w-screen h-screen rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900 ${isHidden ? "hidden" : ""
+							}`}
 					>
 						<div
 							data-aos="fade-up"
@@ -379,6 +488,28 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 									</Link>
 								</div>
 							</li>
+							<li
+								data-aos="fade-up"
+								data-aos-delay="800"
+								className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "social"
+									? "opacity-50"
+									: "opacity-100"
+									}`}
+
+								onClick={() =>
+									handleToggleSection("social")
+								}
+							>
+								<div className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
+									{!isLoading && (
+										<Link to={`${authUser ? "/social" : "/login"
+											}`}>
+											<p> Social </p>
+										</Link>
+									)}
+								</div>
+
+							</li>
 							{authUser?.isAdmin === true && (
 								<li
 									className="cursor-pointer transition-opacity duration-300 w-full text-center"
@@ -388,7 +519,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 								>
 									<div
 										data-aos="fade-up"
-										data-aos-delay="700"
+										data-aos-delay="900"
 										className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
 									>
 										<Link to="/admin">
@@ -413,7 +544,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick 
 								</div>
 							)}
 							{currentPage === "shopping" && (
-								<div data-aos="fade-right" >
+								<div data-aos="fade-right">
 									<ShoppingAssist />
 								</div>
 							)}

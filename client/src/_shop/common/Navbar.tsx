@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import useAuthUser from "@/hooks/useAuthUser";
 import toast from "react-hot-toast";
+import { Vehicle } from "@/_root/_homepage";
 
 interface SubNavbarProps {
 	selectedSection_element: string;
@@ -19,7 +20,7 @@ interface SubNavbarProps {
 const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick, }) => {
 	useEffect(() => {
 		AOS.init({
-			duration: 1200,
+			duration: 900,
 			easing: "ease-in-back",
 			once: false,
 			mirror: true,
@@ -225,6 +226,25 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 									</div>
 								</li>
 							</Link>
+							<li
+									className={`cursor-pointer transition-opacity duration-300 ${
+										selectedP && selectedP !== "vehicles"
+											? "opacity-50"
+											: "opacity-100"
+									}`}
+									onMouseEnter={() =>
+										handleMouseEnter("vehicles")
+									}
+									onMouseLeave={handleMouseLeave}
+									onClick={() =>
+										handleToggleSection("vehicles")
+									}
+								>
+									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
+										<p> Vehicles </p>
+										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
+									</div>
+								</li>
 							<Link to="/shop/product">
 								<li className="cursor-pointer">
 									<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
@@ -251,10 +271,10 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 			</div>
 
 			<div className="hidden md:block">
-				{isExpanded && selectedSection === "vehicles" && (
+			{isExpanded && selectedSection === "vehicles" && (
 					<div
 						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-85 bg-gray-900  ${
+						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-80 backdrop-blur-md bg-gray-900  ${
 							isHidden ? "hidden" : ""
 						}`}
 					>
@@ -262,7 +282,9 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 							data-aos="fade-up"
 							data-aos-delay="1000"
 							className={`${isHidden ? "hidden" : ""}`}
-						></div>
+						>
+							<Vehicle />
+						</div>
 					</div>
 				)}
 				{isExpanded && selectedSection === "shopping" && (

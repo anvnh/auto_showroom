@@ -1,7 +1,7 @@
 import Navbar from "../common/Navbar";
 import Payment from "../payment/Payment";
 import Cart from "./cart";
-
+import Footer from "@/components/common/Footer";
 
 
 
@@ -24,7 +24,11 @@ const PaymentLayout = () => {
 							<Cart />
 						</div>
 					</div>
-			
+					<div className="items-start justify-center">
+					<div className="w-full bg-primary pt-24">
+						<Footer />
+					</div>
+				</div>
 			</div>
 		</section>
 	);

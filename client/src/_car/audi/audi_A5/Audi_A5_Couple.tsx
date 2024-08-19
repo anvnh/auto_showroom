@@ -43,12 +43,12 @@ import Footer from "@/components/common/Footer";
 
 const Audi_A5_Couple = () => {
 
-  
+
   useEffect(() => {
     //cuon dau trang
-     setTimeout(() => {
-    window.scrollTo(0, 0)
-  }, 0)
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 0)
     //smooth scroll
     smoothScroll_lenis()
     //scroll char 
@@ -232,15 +232,15 @@ const Audi_A5_Couple = () => {
     units: { left: "%", top: "%", rotation: "rad" },
   });
 
-  
+
   return (
     <div className="">
       <div>
-        
-          <div className="w-full flex bg-primary">
-            <Navbar />
-          </div>
 
+        <div className="w-full flex bg-primary">
+          <Navbar />
+        </div>
+        {/* <Link to="/aboutUs"><div className="w-screen h-screen bg-neutral-500"></div></Link> */}
 
         <section className="relative h-screen w-screen flex justify-center items-center">
           <div ref={bg_sec1} style={{ backgroundImage: `url(${a5_8})` }}

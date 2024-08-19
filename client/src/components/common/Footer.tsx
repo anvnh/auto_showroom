@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 
 const Footer = () => {
     return (
-        <footer data-aos="fade-up" className="box-border text-white w-screen md:h-[320px] bg-gray-900 border-t  flex flex-col  md:gap-y-[60px] px-[10px] md:py-[20px]">
+        <footer className="box-border text-white w-screen md:h-[320px] bg-gray-900 border-t  flex flex-col  md:gap-y-[60px] px-[10px] md:py-[20px]">
             <div className='w-screen hidden md:flex '>
                 <section className='w-[20%]  '>
                     <Link to="/"><img src={logo} className='w-[80px] md:w-[90px] xl:w-[110px] object-cover bg-center' /></Link>

@@ -1,4 +1,5 @@
 import {
+	car1populars,
 	carnb1,
 	car2,
 	car4,
@@ -22,6 +23,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { car1popular } from "@/_productpage";
 const Product = () => {
 	useEffect(() => {
 		AOS.init({
@@ -57,7 +59,7 @@ const Product = () => {
 						>
 							<div className="car w-full flex justify-center sm:justify-end">
 								<img
-									src={carnb1}
+									src={car1populars}
 									alt=""
 									className="object-cover w-[450px] left-0 md:left-12 relative transition-transform duration-500 ease-out group-hover:rotate-3 group-hover:-translate-x-1 mx:group-hover:scale-150 group-hover:scale-110 
 									scale-90 sm:group-hover:-translate-x-10 "
@@ -71,7 +73,7 @@ const Product = () => {
 								</div>
 								<div className="Product_text opacity-100 text-white  font-bold text-xl group-hover:opacity-0 transition ease-in-out duration-500 absolute bottom-24 left-5 font-syncopate">
 									<h2>Mercedes AMG CLS</h2>
-									<p className="text-center">$ 183 600</p>
+									<p className="text-center">$ 183,600</p>
 								</div>
 								<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
 									You want to sense more, see more,
@@ -113,7 +115,7 @@ const Product = () => {
 									<h2 className="font-syncopate text-center">
 										Mercedes-Benz <br /> Maybach 2022
 									</h2>
-									<p className="text-center">$ 679 867</p>
+									<p className="text-center">$ 679,867</p>
 								</div>
 							</div>
 						</div>
@@ -145,7 +147,7 @@ const Product = () => {
 											Rolls Royce Ghost <br /> 2021
 										</h2>
 										<p className="text-center">
-											$ 1,65 million
+										$ 332,500
 										</p>
 									</div>
 								</div>
@@ -179,7 +181,7 @@ const Product = () => {
 									<h2 className="font-syncopate">
 										Audi R8 Coupe 2022
 									</h2>
-									<p className="text-center">$ 213 500</p>
+									<p className="text-center">$ 208,100</p>
 								</div>
 							</div>
 						</div>
@@ -210,7 +212,7 @@ const Product = () => {
 											Roll Royce Phantom <br />
 											Extended Series II
 										</h2>
-										<p className="text-center">$ 638 000</p>
+										<p className="text-center">$ 1,65 million</p>
 									</div>
 								</div>
 							</div>
@@ -242,7 +244,7 @@ const Product = () => {
 									Audi e-tron GT 2024
 
 								</h2>
-								<p className="text-center">$ 106 500</p>
+								<p className="text-center">$ 106,500</p>
 							</div>
 							<div className="opacity-0 text-white text-sm group-hover:opacity-100 transition ease-in-out duration-300 absolute bottom-24 left-12">
 							The 2024 Audi e-tron GT is a luxury electric <br /> sedan that combines stunning <br /> design with impressive performance. <br /> It features a sleek, aerodynamic exterior, <br /> a high-quality interior with advanced <br /> technology, and a powerful electric <br /> powertrain that delivers up <br /> to 522 horsepower in the RS model. 

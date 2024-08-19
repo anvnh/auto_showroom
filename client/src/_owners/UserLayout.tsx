@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import AOS from "aos";
-import { Navbar, Hero, About, Benefit, Futher, Footer } from './_mainpage'
+import {  Hero, About, Benefit, Futher, Footer } from './_mainpage'
 import Lenis from '@studio-freight/lenis'
 import NavbarSmallOwner from "./_mainpage/NavbarSmallOwners"
+import { Navbar } from '@/_root/_homepage';
 const OwnerLayout = () => {
 
     useEffect(() => {

@@ -82,7 +82,7 @@ const ProductManagement = () => {
 
 	return (
 		<motion.div
-			className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 md:col-span-5 border border-gray-700"
+			className="bg-gray-800  bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 md:col-span-5 border border-gray-700"
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: 0.4 }}
@@ -100,13 +100,14 @@ const ProductManagement = () => {
 
 							return (
 								<div
+								
 									key={product._id}
 									className="flex bg-gray-700 p-4 mb-4 rounded-2xl shadow-md w-full h-[300px]"
 								>
-									<div className="relative w-1/3 mr-4 overflow-hidden flex items-center">
+									<div className="relative w-1/24 mr-4 overflow-hidden flex items-center">
 										<img
 											src={product.images[0]}
-											className="w-[400px] h-[250px] rounded"
+											className="w-[500px] h-[250px] object-cover bg-center rounded"
 										/>
 										{/* <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
 									HOT
@@ -177,7 +178,7 @@ const ProductManagement = () => {
 												${product.price}
 											</span>
 										</div>
-										<p className="text-white mb-4 line-clamp-3">
+										<p className="text-white mb-4 pr-20 line-clamp-3">
 											{product.bio}
 										</p>
 									</div>
