@@ -146,7 +146,7 @@ const MostSearchedCars = () => {
 								</div>
 								<div className="hover:bg-gray-400 hover:bg-opacity-15">
 									<div className="p-4 text-black">
-										<h2 className="text-xl font-bold">
+										<h2 className="text-xl font-bold line-clamp-1">
 											{product.brand} {product.car_model}
 										</h2>
 										<p className="text-sm line-clamp-1">

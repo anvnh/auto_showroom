@@ -28,12 +28,7 @@ const UserCart = () => {
 
 	const [cartInfo, setCartInfo] = useState({ items: [], total: 0 });
 
-	const {
-		data: cart,
-		isLoading,
-		refetch,
-		isRefetching,
-	} = useQuery({
+	const { data: cart, isLoading, refetch, isRefetching, } = useQuery({
 		queryKey: ["cart"],
 		queryFn: async () => {
 			try {

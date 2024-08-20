@@ -14,6 +14,7 @@ import EditProduct from "../element/elementProduct/EditProduct";
 const ProductManagement = () => {
 	const queryClient = useQueryClient();
 	const [currentPage, setCurrentPage] = useState(1);
+    const [currentProduct, setCurrentProduct] = useState(null);
 
 	// get all products
 	const {
@@ -80,6 +81,7 @@ const ProductManagement = () => {
 		},
 	});
 
+
 	return (
 		<motion.div
 			className="bg-gray-800  bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 md:col-span-5 border border-gray-700"
@@ -134,11 +136,14 @@ const ProductManagement = () => {
 												<div
 													className="flex"
 													onClick={() =>
-														document
-															.getElementById(
-																"Edit_Car"
-															)
-															.showModal()
+                                                        {
+                                                            document
+                                                                .getElementById(
+                                                                    "Edit_Car"
+                                                                )
+                                                            .showModal()
+                                                            setCurrentProduct(product)
+                                                        }
 													}
 												>
 													<FaPen className="w-4 h-4 text-blue-500 cursor-pointer" />
@@ -151,6 +156,7 @@ const ProductManagement = () => {
 										</h2>
 
 										<div className="flex items-center mb-2">
+                                            {/*
 											<div className="flex text-yellow-400">
 												{"★".repeat(
 													Math.round(averageRating)
@@ -162,6 +168,7 @@ const ProductManagement = () => {
 														)
 												)}
 											</div>
+                                            */}
 											<span className="text-white text-sm ml-2">
 												{product.user_review.length}{" "}
 												reviews
@@ -207,10 +214,12 @@ const ProductManagement = () => {
 			</div>
 			<dialog id="Edit_Car" className="modal">
 				<div className="modal-box pl-16 backdrop-blur-3xl bg-opacity-0 flex justify-center">
-				<EditProduct />
+                    <EditProduct product={currentProduct} />
 				</div>
 				<form method="dialog" className="modal-backdrop">
-					<button className="outline-none">Close</button>
+					<button className="outline-none">
+                        Close
+                    </button>
 				</form>
 			</dialog>
 			<div className="md:hidden block">

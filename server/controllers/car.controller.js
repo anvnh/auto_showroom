@@ -218,24 +218,17 @@ export const deleteReview = async (req, res) => {
     try {
         const {carId, reviewId} = req.params;
         const car = await Car.findById(carId);
-
         if(!car) {
             return res.status(404).json({ message: "Car not found" });
         }
-
         const review = car.user_review.id(reviewId);
-
         if(!review) {
             return res.status(404).json({ message: "Review not found" });
         }
-
         const index = car.user_review.indexOf(review);
         car.user_review.splice(index, 1);
-
         await car.save();
-
         res.status(200).json({ message: "Review deleted" });
-
     } catch(error) {
         console.log("Error in deleteReview controller: ", error);
         res.status(500).json({ message: "Internal Server error" });

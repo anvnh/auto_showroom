@@ -493,7 +493,9 @@ const ProductPage = () => {
 										method="dialog"
 										className="modal-backdrop w-full absolute h-screen"
 									>
-										<button className="">Close</button>
+										<button className="">
+                                            Close
+                                        </button>
 									</form>
 								</dialog>
 
