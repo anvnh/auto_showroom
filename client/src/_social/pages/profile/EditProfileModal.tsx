@@ -53,22 +53,11 @@ const EditProfileModal = ({ authUser }) => {
 	}, [authUser]);
 
 	return (
-		<section className="justify-center items-center flex space-x-3">
-			{/* <button
-				className="btn btn-outline rounded-full btn-sm"
-				onClick={() => {
-					document.getElementById("edit_profile_modal").showModal();
-				}}
-			>
-				Edit profile
-			</button> */}
+		<section className="justify-center items-center flex space-x-3 md:pt-0 pt-10">
 			<Button
-				className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-white hover:bg-opacity-40
-				 hover:shadow-lg		
-							btn bg-white text-black hover:opacity-90  btn-sm
-        		  btn-primary  px-4
-                    before:ease relative overflow-hidden border-gray-900 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-5 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-900 hover:before:-translate-x-32
-				"
+                className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-white hover:bg-opacity-40
+                hover:shadow-lg	btn bg-white text-black hover:opacity-90 btn-sm btn-primary px-4
+                before:ease relative overflow-hidden border-gray-900 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-5 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-900 hover:before:-translate-x-32 "
 				onClick={() => {
 					document.getElementById("edit_profile_modal").showModal();
 				}}
@@ -81,11 +70,8 @@ const EditProfileModal = ({ authUser }) => {
 					<AlertDialogTrigger asChild>
 						<Button
 							variant="secondary"
-							className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-red-500 hover:shadow-lg
-							btn bg-white text-black hover:opacity-90  btn-sm
-                                            btn-primary  px-4
-                    before:ease relative overflow-hidden border-gray-900 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-5 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-900 hover:before:-translate-x-32
-							"
+                            className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-red-500 hover:shadow-lg
+                            btn bg-white text-black hover:opacity-90 btn-sm btn-primary px-4 before:ease relative overflow-hidden border-gray-900 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-5 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-900 hover:before:-translate-x-32 "
 						>
 							Delete account
 						</Button>

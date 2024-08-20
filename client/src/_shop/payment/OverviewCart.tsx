@@ -181,7 +181,6 @@ const OverviewCart = () => {
 																)
 														)}
 													</div>
-
 													<h3 className="line-clamp-2 pl-3 md:px-4 mb-5">
 														{item.bio}
 													</h3>
@@ -286,8 +285,8 @@ const OverviewCart = () => {
 											</div>
 											<div className="scale-100 justify-end flex">
 												<div
-													className="flex  items-center justify-end w-[35px] h-[35px] rounded-full hover:bg-opacity-70 cursor-pointer bg-white p-2 shadow-md shadow-black text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
-						  before:ease relative overflow-hidden border-gray-600 border  before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-red-500 before:opacity-50 before:duration-700 hover:shadow-red-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[49px]"
+													className="flex items-center justify-end w-[35px] h-[35px] rounded-full hover:bg-opacity-70 cursor-pointer p-2 shadow-black text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
+						  before:ease relative overflow-hidden before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-red-500 before:opacity-50 before:duration-700 hover:shadow-red-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[49px]"
 													title="Remove from cart"
 												>
 													{deletingItems[
@@ -297,7 +296,7 @@ const OverviewCart = () => {
 														item._id
 													] && (
 														<MdDelete
-															className="text-red-600 text-xl scale-125"
+															className="text-red-600 text-xl"
 															onClick={() =>
 																handleDelete(
 																	item._id

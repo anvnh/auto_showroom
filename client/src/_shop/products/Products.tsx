@@ -210,19 +210,21 @@ const Products = () => {
 											</h2>
 											<div className="md:flex items-center mb-2">
 												<div className="flex text-xl text-yellow-400">
-													{"★".repeat(
-														Math.round(
-															averageRating
-														)
-													)}
-													{"☆".repeat(
-														5 -
-															Math.round(
-																averageRating
-															)
-													)}
+                                                    {/*
+                                                    {"★".repeat(
+                                                        Math.round(
+                                                            averageRating
+                                                        )
+                                                    )}
+                                                    {"☆".repeat(
+                                                        5 -
+                                                            Math.round(
+                                                                averageRating
+                                                            )
+                                                    )}
+                                                    */}
 												</div>
-												<span className="text-gray-600 text-sm ml-2">
+												<span className="text-gray-600 text-md">
 													{product.user_review.length}{" "}
 													reviews
 												</span>
@@ -235,10 +237,7 @@ const Products = () => {
 											<div className="xl:block hidden">
 											<p className="text-gray-700 mb-4">
 												{product.bio.length > 320
-													? `${product.bio.substring(
-															0,
-															310
-													  )}...`
+													? `${product.bio.substring( 0, 310 )}...`
 													: product.bio}
 											</p>
 										</div>

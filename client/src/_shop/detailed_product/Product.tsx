@@ -8,6 +8,19 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import toast, { Toaster } from "react-hot-toast";
 import ProductRepon from "./ProductRepon";
 
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+
 const Product = () => {
 	const ID = useParams();
 	const carId = ID.id;
@@ -231,8 +244,8 @@ const Product = () => {
 
 										<hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
 
-										<div className="pt-10 text-xl space-y-4">
-											<div className="flex font-poppins">
+										<div className="pt-6 text-xl">
+											<div className="flex font-poppins mb-2">
 												Availability: &nbsp;{" "}
 												{car.quantity !== 0 ? (
 													<p> In stock</p>
@@ -241,16 +254,13 @@ const Product = () => {
 												)}
 											</div>
                                             {/* TODO */}
-											<div>Free ship</div>
+											<div className="">Free ship</div>
 											<div className="flex"></div>
 										</div>
 
 										<hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
 
-                                        <div className="py-4 text-md">
-                                            <p className="text-xl pt-4 flex items-center font-bold">
-                                                Information
-                                            </p>
+                                        <div className="pt-3 text-[18px]">
                                             <p className="pt-4 flex items-center">
                                                 Production Year: {car.production_year}
                                             </p>
@@ -260,25 +270,58 @@ const Product = () => {
                                             <p className="pt-4 flex items-center">
                                                 Engine: {car.engine}
                                             </p>
-                                            {/* 
-                                           "production_year": "2021",
-                                            "body_style": "Sedan",
-                                            "engine": "3.0L TwinPower Turbo inline-6",
-                                            "transmission": "6-speed manual or 8-speed automatic",
-                                            "drive_type": "Rear-wheel drive or all-wheel drive (xDrive)",
-                                            "fuel_type": "Gasoline",
-                                            "horsepower": "473-503",
-                                            "torque": "406-479",
-                                            "top_speed": "250-290",
-                                            "acceleration": "3.5-3.9",
-                                            "seat_capacity": "5", 
-                                            */}
-                                                                                       
+                                            <p className="pt-4 flex items-center">  
+                                                Transmission: {car.transmission}
+                                            </p>
+                                            <p className="pt-4 flex items-center">
+                                                Drive Type: {car.drive_type}
+                                            </p>
+                                            <p className="pt-4 flex items-center">
+                                                Fuel Type: {car.fuel_type}
+                                            </p>
                                         </div>
 
-										<hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
+                                        <div className="pt-3">
+                                            <Dialog>
+                                                <DialogTrigger asChild>
+                                                    <Button variant="outline" className="border-black text-[18px]">
+                                                        More details ... 
+                                                    </Button>
+                                                </DialogTrigger>
+                                                <DialogContent className="sm:max-w-[425px] bg-white bg-opacity-55 backdrop-blur-md text-black">
+                                                    <DialogHeader>
+                                                        <DialogTitle>More details</DialogTitle>
+                                                        <DialogDescription>
+                                                            More details about the car
+                                                        </DialogDescription>
+                                                    </DialogHeader>
+                                                    <div className="grid grid-cols-2 gap-4">
+                                                        <p className="pt-4 flex items-center"> Production Year: {car.production_year} </p>
+                                                        <p className="pt-4 flex items-center"> Body Style: {car.body_style} </p>
+                                                        <p className="pt-4 flex items-center"> Engine: {car.engine} </p>
+                                                        <p className="pt-4 flex items-center"> Transmission: {car.transmission} </p>
+                                                        <p className="pt-4 flex items-center"> Drive Type: {car.drive_type} </p>
+                                                        <p className="pt-4 flex items-center"> Fuel Type: {car.fuel_type} </p>
+                                                        <p className="pt-4 flex items-center"> Horsepower: {car.horsepower} hp </p>
+                                                        <p className="pt-4 flex items-center"> Torque: {car.torque} Nm </p>
+                                                        <p className="pt-4 flex items-center"> Top Speed: {car.top_speed} km/h </p>
+                                                        <p className="pt-4 flex items-center"> Acceleration: {car.acceleration} s </p>
+                                                        <p className="pt-4 flex items-center"> Seat Capacity: {car.seat_capacity} </p>
+                                                    </div>
+                                                    <DialogFooter>
+                                                        <DialogClose asChild>
+                                                            <Button type="button" variant="secondary" className="bg-black text-white">
+                                                                Close
+                                                            </Button>
+                                                        </DialogClose>
+                                                    </DialogFooter>
+                                                </DialogContent>
+                                            </Dialog>
+                                        </div>
 
-										<div className="text-xl pt-4 flex items-center space-x-4">
+                                        <hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
+
+										<div className="text-xl pt-8 flex items-center space-x-4">
 											<div>Quantity:</div>
 											<div className="flex items-center bg-gray-100 rounded-lg overflow-hidden w-24">
 												<button

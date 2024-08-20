@@ -249,7 +249,9 @@ const PostDetailed = () => {
 						)}
 					</div>
 					<div className="flex flex-col gap-3 overflow-hidden mt-5">
-						<span>{postDetailed.text}</span>
+						<span className="text-[17px]">
+                            {postDetailed.text}
+                        </span>
 						{postDetailed.img && (
 							<img
 								src={postDetailed.img}
@@ -261,7 +263,8 @@ const PostDetailed = () => {
 
 					<div className="flex mt-4 space-x-16 w-full justify-evenly">
 						<div className="flex gap-1 items-center group cursor-pointer onClick={}">
-							<BiRepost className="w-9 h-9  text-slate-500 group-hover:text-green-500" />
+							<BiRepost className="w-6 h-6  text-slate-500 group-hover:text-green-500" />
+                            {/* TODO */}
 							<span className="text-sm text-slate-500 group-hover:text-green-500">
 								0
 							</span>
@@ -272,10 +275,10 @@ const PostDetailed = () => {
 						>
 							{isLiking && <LoadingSpinner size="sm" />}
 							{!isLiked && !isLiking && (
-								<FaRegHeart className="w-6 h-6 cursor-pointer text-slate-500 group-hover:text-pink-500" />
+								<FaRegHeart className="flex w-4 h-4 cursor-pointer text-slate-500 group-hover:text-pink-500" />
 							)}
 							{isLiked && !isLiking && (
-								<FaRegHeart className="w-6 h-6 cursor-pointer text-pink-500 " />
+								<FaRegHeart className="flex w-4 h-4 cursor-pointer text-pink-500 " />
 							)}
 
 							<span
@@ -287,7 +290,7 @@ const PostDetailed = () => {
 							</span>
 						</div>
 						<div className="flex justify-end gap-2 items-center relative group">
-							<FaRegBookmark className="w-6 h-6 text-slate-500 cursor-pointer group-hover:text-yellow-300" />
+							<FaRegBookmark className="w-4 h-4 text-slate-500 cursor-pointer group-hover:text-yellow-300" />
 						</div>
 					</div>
 					<form
@@ -347,7 +350,7 @@ const PostDetailed = () => {
 												)}
 											</span>
 										</div>
-										<div className="text-[18px]">
+										<div className="text-[16px]">
 											{comment.text}
 										</div>
 									</div>
