@@ -331,13 +331,7 @@ const OverviewCart = () => {
 
 							<div className="w-full md:hidden block">
 								<Link
-									to={{
-										pathname: "/shop/payment",
-										search: createSearchParams({
-											totalPrice:
-												calculateTotalPrice().toString(),
-										}).toString(),
-									}}
+									to=""
 								>
 									<div className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
 										Proceed to Payment
@@ -345,13 +339,7 @@ const OverviewCart = () => {
 								</Link>
 							</div>
 							<Link
-								to={{
-									pathname: "/shop/payment",
-									search: createSearchParams({
-										totalPrice:
-											calculateTotalPrice().toString(),
-									}).toString(),
-								}}
+								to=""
 							>
 								<div className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
 									Proceed to Payment
@@ -368,8 +356,8 @@ const OverviewCart = () => {
 
 									<div className="mt-4  flex w-full justify-end">
 										<button
-											className=" w-32 h-10 h bg-opacity-40 rounded-xl detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base text-center
-before:ease relative overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[150px]
+											className=" w-32 h-10 h bg-opacity-40 rounded-xl detail-button bg-white text-white mt-12 px-4 md:px-6 md:py-2 lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base text-center
+before:ease relative overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[130px]
 "
 										>
 											Add

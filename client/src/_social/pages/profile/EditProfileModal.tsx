@@ -29,15 +29,17 @@ const EditProfileModal = ({ authUser }) => {
 		currentPassword: "",
 	});
 
-	const { updateProfile, isUpdatingProfile } =  useUpdateUserProfile();
-	const { deleteProfile, isDeletingProfile } = useDeleteUserProfile({userId: authUser._id});
+	const { updateProfile, isUpdatingProfile } = useUpdateUserProfile();
+	const { deleteProfile, isDeletingProfile } = useDeleteUserProfile({
+		userId: authUser._id,
+	});
 
 	const handleInputChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
 	useEffect(() => {
-		if(authUser) {
+		if (authUser) {
 			setFormData({
 				fullName: authUser.fullName,
 				username: authUser.username,
@@ -46,10 +48,9 @@ const EditProfileModal = ({ authUser }) => {
 				link: authUser.link,
 				newPassword: "",
 				currentPassword: "",
-			})
+			});
 		}
-	}, [authUser])
-
+	}, [authUser]);
 
 	return (
 		<section className="justify-center items-center flex space-x-3">
@@ -62,7 +63,12 @@ const EditProfileModal = ({ authUser }) => {
 				Edit profile
 			</button> */}
 			<Button
-				className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-white hover:bg-opacity-40"
+				className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-white hover:bg-opacity-40
+				 hover:shadow-lg		
+							btn bg-white text-black hover:opacity-90  btn-sm
+        		  btn-primary  px-4
+                    before:ease relative overflow-hidden border-gray-900 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-5 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-900 hover:before:-translate-x-32
+				"
 				onClick={() => {
 					document.getElementById("edit_profile_modal").showModal();
 				}}
@@ -75,7 +81,11 @@ const EditProfileModal = ({ authUser }) => {
 					<AlertDialogTrigger asChild>
 						<Button
 							variant="secondary"
-							className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-red-500 hover:shadow-lg"
+							className="w-[130px] rounded-full h-[35px] mt-4 font-bold hover:bg-red-500 hover:shadow-lg
+							btn bg-white text-black hover:opacity-90  btn-sm
+                                            btn-primary  px-4
+                    before:ease relative overflow-hidden border-gray-900 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-5 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-900 hover:before:-translate-x-32
+							"
 						>
 							Delete account
 						</Button>
@@ -92,13 +102,9 @@ const EditProfileModal = ({ authUser }) => {
 							</AlertDialogDescription>
 						</AlertDialogHeader>
 						<AlertDialogFooter>
-							<AlertDialogCancel>
-								Cancel
-							</AlertDialogCancel>
+							<AlertDialogCancel>Cancel</AlertDialogCancel>
 							<Link to="/social/account/confirmation">
-								<AlertDialogAction 
-									className="bg-white text-black hover:bg-red-500"
-								>
+								<AlertDialogAction className="bg-white text-black hover:bg-red-500">
 									Continue
 								</AlertDialogAction>
 							</Link>
@@ -108,9 +114,7 @@ const EditProfileModal = ({ authUser }) => {
 			</div>
 			<dialog id="edit_profile_modal" className="modal">
 				<div className="modal-box border rounded-md border-gray-700 shadow-md">
-					<h3 className="font-bold text-lg my-3">
-						Update Profile
-					</h3>
+					<h3 className="font-bold text-lg my-3">Update Profile</h3>
 					<form
 						className="flex flex-col gap-4 z-20"
 						onSubmit={(e) => {

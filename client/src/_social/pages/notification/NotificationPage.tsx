@@ -81,7 +81,7 @@ const NotificationPage = () => {
                 {notifications?.length === 0 && <div className='text-center p-4 font-bold'>No notifications 🤔</div>}
 
 				{notifications?.map((notification) => (
-                    <div className='bg-black bg-opacity-55 my-2 border border-gray-800 rounded-3xl' key={notification._id}>
+                    <div className='bg-black bg-opacity-55 my-2 border border-gray-800 rounded-3xl hover:bg-slate-900 transition-all duration-100 ease-in-out' key={notification._id}>
                         <div className='flex gap-2 p-4'>
                             <Link to="/social/notifications">
                                 {notification.type === "follow" && <FaUser className='w-7 h-7 text-primary' />}
