@@ -343,11 +343,11 @@ const Vehicle = () => {
 											data-aos="slide-left"
 											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
 										></div>
-										<div className="logo_Car xl:w-[800px] lg:w-[450px] lg:ml-[140px] scale-150 pt-12 h-auto xl:ml-[300px]">
+										<div className="logo_Car xl:w-[800px] lg:w-[450px] lg:ml-[140px] scale-150 pt-12 h-auto xl:ml-[260px]">
 											<img
 												data-aos="slide-left"
 												data-aos-delay="1000"
-												className="w-[750px] lg:-top-[40px] xl:-top-[60px] relative"
+												className="w-[770px] lg:top-[40px] xl:top-[50px] relative"
 												src={carnb2}
 											/>
 										</div>
@@ -355,7 +355,7 @@ const Vehicle = () => {
 										<div
 											data-aos="slide-left"
 											data-aos-delay="1500"
-											className="justify-end pr-24 relative -top-[25px] items-center flex"
+											className="justify-end pr-24 pt-20 pb-5 relative items-center flex"
 										>
 											<Link to="/Mercedes-Benz-Maybach-2022">
 												<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 border-white border-r border-t font-poppins rounded-md">

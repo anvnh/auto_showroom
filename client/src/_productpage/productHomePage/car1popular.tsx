@@ -20,6 +20,7 @@ import {
 	sky,
 	logomer,
 	kiaposter,
+	video1
 } from "../../assets";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
@@ -123,11 +124,11 @@ const Car1popular = () => {
 		<div>
 			<div
 				//  style={{ backgroundImage: `url(${sky})` }}
-				className="min-h"
+				className="min-h bg-black"
 			>
 				<div
 					id="Home"
-					data-aos="fade-up"
+					
 					className="bg-cover bg-center relative w-full min-h-[900px]  sm:min-h-[1200px] md:min-h-[800px] xl:min-h-[1000px]"
 				>
 					<video
@@ -135,8 +136,10 @@ const Car1popular = () => {
 						muted
 						loop
 						playsInline
-						className="w-full h-auto relative top-20"
-					></video>
+						className="w-full h-auto relative "
+					>
+					  <source src={video1} type="video/mp4" />
+					</video>
 
 					<div
 						className="overlay absolute inset-x-0 bottom-0 h-1/4"

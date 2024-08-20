@@ -20,6 +20,7 @@ import {
 	merr12,
 	sky,
 	logomer,
+	video2
 } from "../../assets";
 import { Button } from "@/components/ui/button";
 import Lenis from "@studio-freight/lenis";
@@ -129,11 +130,10 @@ const Car2popular = () => {
 			<div
 				// style={{ backgroundImage: `url(${sky})` }}
 
-				className="min-h"
+				className="min-h bg-black"
 			>
 				<div
 					id="Home"
-					data-aos="fade-up"
 					className="bg-cover bg-center relative w-full  min-h-[700px] md:min-h-[800px] xl:min-h-[1000px]"
 				>
 					<video
@@ -142,7 +142,9 @@ const Car2popular = () => {
 						loop
 						playsInline
 						className="w-full h-auto"
-					></video>
+					>
+					  <source src={video2} type="video/mp4" />	
+					</video>
 					<div
 						className="overlay absolute inset-x-0 bottom-0 h-1/4"
 						style={{
