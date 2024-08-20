@@ -232,7 +232,7 @@ const Hero = () => {
 			}, "-=0.5")
 	}, [])
 	return (
-		<div className={`  `}>
+		<div className="bg-black w-full h-screen">
 			{/* ---------------Parallax-------- */}
 			<section className="z-10 relative h-screen w-screen flex justify-center items-center">
 				<div className="bg absolute top-0 left-0 w-screen h-screen -z-10 object-cover bg-center bg-cover flex">
