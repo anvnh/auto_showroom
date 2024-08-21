@@ -10,6 +10,9 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 import { Car, Bmw, Honda, View } from "@/components/3d";
 const Hero = () => {
+	useEffect(() => {
+		gsap.config({ nullTargetWarn: false });
+	}, [])
 	// //----Parallax-------//
 	// useEffect(() => {
 	// 	let getRatio = (el) =>

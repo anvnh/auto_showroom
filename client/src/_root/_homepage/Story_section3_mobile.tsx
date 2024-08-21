@@ -10,7 +10,6 @@ const Story_section3_mobile = () => {
 
 
   useEffect(() => {
-    console.log(text3)
     gsap.to(founder3_overlay.current, {
       yPercent: -100,
       scrollTrigger: {
