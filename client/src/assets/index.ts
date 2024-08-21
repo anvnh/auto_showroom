@@ -228,7 +228,14 @@ import bgLG from "./login/backgroundlogin.png";
 import bgSocial from "./owner/bgsocial.png";
 
 import Voucher15do from "./voucher/15do.png";
+
+
+// video intro
+import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov"
+import video2 from "./car2_popular/Maybach S-Class.mov"
 export {
+	video1,
+video2,
 	car1populars,
 	carnbRR,
 	carnbRR2,
