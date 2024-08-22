@@ -82,7 +82,7 @@ const Payment = () => {
 					<input
 						type="text"
 						name="number"
-						className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-black "
+						className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 
 						placeholder="Card Number"
 						value={state.number}
@@ -97,7 +97,7 @@ const Payment = () => {
 						data-aos-delay="200"
 						type="text"
 						name="name"
-						className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-black "
+						className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 						placeholder="Name on Card"
 						value={state.name}
 						onChange={handleInputChange}
@@ -110,7 +110,7 @@ const Payment = () => {
 							data-aos-delay="300"
 							type="text"
 							name="expiry"
-							className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-black "
+							className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 							placeholder="Valid Thru (MM/YY)"
 							pattern="\d\d/\d\d"
 							value={state.expiry}
@@ -124,7 +124,7 @@ const Payment = () => {
 							data-aos-delay="400"
 							type="text"
 							name="cvc"
-							className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-black "
+							className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 							placeholder="CVC"
 							pattern="\d{3,4}"
 							maxLength={3}
