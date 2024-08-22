@@ -8,7 +8,7 @@ import SplitType from "split-type";
 import { Canvas } from "@react-three/fiber"
 import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
-import { Car, Bmw, Honda, View } from "@/components/3d";
+import { Car, Bmw, Honda, View } from "@/components/3d/child_component";
 const Hero = () => {
 	useEffect(() => {
 		gsap.config({ nullTargetWarn: false });

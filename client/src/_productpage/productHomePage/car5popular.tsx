@@ -37,7 +37,7 @@ import { toast, Toaster } from "react-hot-toast";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
-
+import { Rollroyce_phantom_view } from "@/components/3d";
 const Car5popular: React.FC = () => {
 	// sự kiện của navbar
 	const [selectedSection, setSelectedSection] = useState("");
@@ -244,9 +244,8 @@ const Car5popular: React.FC = () => {
 										data-aos="fade-up"
 										className={`font-thin absolute text-white top-96 transform text-center shadow-xl
                   ss:w-[1200px] xs:w-[300px] w-[200px] p-2 md:p-5 
-                  transition-opacity duration-1000 opacity-0 font-syncopate ${
-						isVisible ? "opacity-100" : ""
-					}`}
+                  transition-opacity duration-1000 opacity-0 font-syncopate ${isVisible ? "opacity-100" : ""
+											}`}
 									>
 										<h1 className="text-xs xs:text-xl ss:text-3xl sm:text-4xl lg:text-6xl mb-1 tracking-widest font-bold">
 											Roll Royce Phantom <br />
@@ -418,7 +417,8 @@ const Car5popular: React.FC = () => {
 						>
 							<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1800px] z-10 relative">
 								{" "}
-								<iframe
+								<Rollroyce_phantom_view />
+								{/* <iframe
 									className="z-20 w-full md:h-[550px] h-[300px] scale-150 "
 									frameborder="0"
 									allowfullscreen
@@ -432,7 +432,7 @@ const Car5popular: React.FC = () => {
 									src="https://sketchfab.com/models/1923bdcbc32f442e97dd49201aa2c928/embed?autospin=1&autostart=1&preload=1&ui_theme=dark"
 								>
 									{" "}
-								</iframe>{" "}
+								</iframe>{" "} */}
 							</div>
 						</ParallaxLayer>
 						<ParallaxLayer
