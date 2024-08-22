@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 import { useEffect, useRef, useState } from "react";
 import ChatAI from "@/api_Chat/ChatAI";
 import NavbarSmallHomePage from "./elementNavbar/NavbarSmallHomePage"
+import Car from "./Car";
 const RootLayout = () => {
 	useEffect(() => {
 		const lenis = new Lenis();
@@ -41,6 +42,9 @@ const RootLayout = () => {
 					<div className="w-full">
 						<Hero />
 					</div>
+				</div>
+				<div className="w-screen h-screen">
+					<Car />
 				</div>
 				<div id="Introduce" className="w-full">
 					<AboutUs />
