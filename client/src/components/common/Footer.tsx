@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 
 const Footer = () => {
     return (
-        <footer className="box-border text-white w-screen md:h-[320px] bg-neutral-800 border-t  flex flex-col  md:gap-y-[60px] px-[10px] md:py-[20px]">
+        <footer className="box-border text-white w-screen md:h-[320px] bg-primary border-t  flex flex-col  md:gap-y-[60px] px-[10px] md:py-[20px]">
             <div className='w-screen hidden md:flex '>
                 <section className='w-[20%]  '>
                     <Link to="/"><img src={logo} className='w-[80px] md:w-[90px] xl:w-[110px] object-cover bg-center' /></Link>
@@ -17,10 +17,10 @@ const Footer = () => {
                         Vehicles
                     </div>
                     <div className=' text-[14px] flex flex-col gap-y-[4px]'>
-                        <Link to="/Mercedes-AMG-CLS" ><div className='underline'>AMG CLS</div></Link>
-                        <Link to="/Mercedes-Benz-Maybach-2022"><div className='underline'>Maybach 2022</div></Link>
-                        <Link to="/audi-A5-Couple"><div className='underline'>A5 Couple</div></Link>
-                        <Link to="/audi-s6-limousin"><div className='underline'>A5 Limousin</div></Link>
+                        <Link to="/Mercedes-AMG-CLS" ><div className=''>AMG CLS</div></Link>
+                        <Link to="/Mercedes-Benz-Maybach-2022"><div className=''>Maybach 2022</div></Link>
+                        <Link to="/audi-A5-Couple"><div className=''>A5 Couple</div></Link>
+                        <Link to="/audi-s6-limousin"><div className=''>A5 Limousin</div></Link>
                     </div>
                 </section>
                 <section className='w-[20%] flex flex-col gap-y-[35px]'>
@@ -45,7 +45,7 @@ const Footer = () => {
                     </div>
                 </section>
                 <section className='w-[20%] flex flex-col gap-y-[25px] '>
-                    <Link to="/owners"><div className='text-[20px] md:text-[24px] lg:text-[29px] font-kanit underline'>
+                    <Link to="/owners"><div className='text-[20px] md:text-[24px] lg:text-[29px] font-kanit '>
                         Owners
                     </div></Link>
                     <div className='flex flex-col text-[14px] gap-y-[2px]'>
@@ -72,15 +72,17 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className='w-screen pt-[35px]   h-[525px]  md:hidden  ml-[20px] '>
+            <div className='w-screen pt-[35px] h-[525px] md:hidden  ml-[20px] '>
                 <section className='w-screen flex justify-center '>
                     <div className='w-[40%] h-[225px]'>
-                        <h1 className=' text-[22px] sm:text-[25px] font-kanit mb-[15px]'>Vehicles</h1>
+                        <h1 className=' text-[22px] sm:text-[25px] font-kanit mb-[15px]'>
+                            Vehicles
+                        </h1>
                         <div className='w-full flex flex-col gap-y-[4px]'>
-                            <Link to="/Mercedes-AMG-CLS"><div className='underline'>AMG CLS</div></Link>
-                            <Link to="/Mercedes-Benz-Maybach-2022"><div className='underline'>Maybach 2022</div></Link>
-                            <Link to="/audi-A5-Couple"><div className='underline'>A5 Couple</div></Link>
-                            <Link to="/audi-s6-limousin"><div className='underline '>A5 Limousin</div></Link>
+                            <Link to="/Mercedes-AMG-CLS"><div className=''>AMG CLS</div></Link>
+                            <Link to="/Mercedes-Benz-Maybach-2022"><div className=''>Maybach 2022</div></Link>
+                            <Link to="/audi-A5-Couple"><div className=''>A5 Couple</div></Link>
+                            <Link to="/audi-s6-limousin"><div className=''>A5 Limousin</div></Link>
                         </div>
                     </div>
                     <div className='w-[40%] h-[225px]'>

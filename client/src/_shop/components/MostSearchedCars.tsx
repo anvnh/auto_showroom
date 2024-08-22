@@ -64,7 +64,7 @@ const MostSearchedCars = () => {
 
 	// get all products
 	const { data: suggestedProducts, isLoading, refetch, isRefetching, } = useQuery({
-		queryKey: ["products"],
+		queryKey: ["suggestedProducts"],
 		queryFn: async () => {
 			try {
 				const response = await fetch("/api/car/other/suggested");

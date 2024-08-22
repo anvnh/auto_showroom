@@ -58,18 +58,19 @@ const Cars = () => {
 		}
     });
 
-
-	// get most rated products
-	const { data: products, isLoading, refetch, isRefetching} = useQuery({
+	const { data: products, isLoading, isRefetching} = useQuery({
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {
+				// const response = await fetch("/api/car/get/find/mostRated");
 				const response = await fetch("/api/car/find/mostRated");
 				const data = await response.json();
 
 				if (!response.ok) {
 					throw new Error(data.message || "Something went wrong!");
 				}
+
+                console.log(data);
 
 				return data;
 			} catch (error) {

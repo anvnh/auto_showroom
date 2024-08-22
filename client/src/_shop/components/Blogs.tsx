@@ -11,7 +11,7 @@ const Blogs = () => {
             try {
                 const response = await fetch("/api/posts/newest")
                 const data = await response.json();
-                
+
                 // console.log(data);
 
                 if(!response.ok){
@@ -23,56 +23,54 @@ const Blogs = () => {
                 throw new Error(error);
             }
         },
-	});
+    });
 
     const {data: authUser} = useAuthUser();
 
     return (
-     <div>
-         <hr className="w-1/2 border-black mx-auto relative top-1 pt-10 pb-12" /> 
-           <section className="md:px-60 px-12 ss:px-32 sm:px-44 text-black bg-[#F9FBFC] font-poppins">
-            <div data-aos="fade-up" className="font-bold text-4xl font-poppins pb-12">
-                Latest Blogs
-            </div>
-            {!isLoading && !isRefetching && newestPosts?.length === 0 && (
-                <p className="text-center my-4">
-                    There is no blog post yet. Be the first one to create a blog post.
-                </p>
-            )}
-            <div data-aos="zoom-out" className="md:flex w-full md:gap-4 space-y-12 md:space-y-0 ">
-                {!isLoading && 
-                    !isRefetching && 
-                    newestPosts && 
-                    newestPosts.map((post) => (
-                        <div 
-                            key={post._id} 
-                            className="w-full  rounded-lg overflow-hidden shadow-lg bg-white hover:bg-gray-500 hover:bg-opacity-15"
-                            onClick={() => !authUser && toast.error('You need to login to view this post.')}
-                        >
-                            <Link to={`/social/posts/${post.user.username}/${post._id}`}>
-                                <div className="relative">
-                                    <img src={post.img} alt="" className="w-full h-52 object-cover" />
-                                    <span className="absolute top-2 right-2 bg-white text-gray-800 text-xs font-medium px-2 py-1 rounded">
-                                        {/* TODO */}
-                                        Blogs
-                                    </span>
-                                </div>
-                                <div className="px-4 py-3">
-                                    <div className="text-xs text-gray-500 mb-1">
-                                        {post.user.username} • {formatPostDate(`${post.createdAt}`)}
+        <div>
+            <hr className="w-1/2 border-black mx-auto relative top-1 pt-10 pb-12" /> 
+            <section className="md:px-60 px-12 ss:px-32 sm:px-44 text-black bg-[#F9FBFC] font-poppins">
+                <div data-aos="fade-up" className="font-bold text-4xl font-poppins pb-12">
+                    Latest Blogs
+                </div>
+                {!isLoading && !isRefetching && newestPosts?.length === 0 && (
+                    <p className="text-center my-4">
+                        There is no blog post yet. Be the first one to create a blog post.
+                    </p>
+                )}
+                <div data-aos="zoom-out" className="md:flex w-full md:gap-4 space-y-12 md:space-y-0 ">
+                    {!isLoading && 
+                        !isRefetching && 
+                        newestPosts && 
+                        newestPosts.map((post) => (
+                            <div 
+                                key={post._id} 
+                                className="w-full  rounded-lg overflow-hidden shadow-lg bg-white hover:bg-gray-500 hover:bg-opacity-15"
+                                onClick={() => !authUser && toast.error('You need to login to view this post.')}
+                            >
+                                <Link to={`/social/posts/${post.user.username}/${post._id}`}>
+                                    <div className="relative">
+                                        <img src={post.img} alt="" className="w-full h-52 object-cover" />
+                                        <span className="absolute top-2 right-2 bg-white text-gray-800 text-xs font-medium px-2 py-1 rounded">
+                                            {/* TODO */}
+                                            Blogs
+                                        </span>
                                     </div>
-                                    <h2 className="text-lg font-bold text-gray-800 mb-2">
-                                        {post.text ? post.text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates."}
-                                    </h2>
-                                </div>
-                            </Link>
-                        </div>
-                    ))}
-            </div>
-
-
-        </section>
-     </div>
+                                    <div className="px-4 py-3">
+                                        <div className="text-xs text-gray-500 mb-1">
+                                            {post.user.username} • {formatPostDate(`${post.createdAt}`)}
+                                        </div>
+                                        <h2 className="text-lg font-bold text-gray-800 mb-2">
+                                            {post.text ? post.text : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates."}
+                                        </h2>
+                                    </div>
+                                </Link>
+                            </div>
+                        ))}
+                </div>
+            </section>
+        </div>
     )
 }
 

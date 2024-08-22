@@ -19,7 +19,7 @@ router.get("/other/getMinMax", getMinMax);
 router.delete("/:id", protectRoute, deleteCar);
 router.post("/phobert/predict", getPhobertPrediction);
 router.post('/comment/:id/:userId', reviewCar);
-router.get("/find/mostRated", getMostRatedCar);
+router.get("/find/mostRated/", getMostRatedCar);
 router.get("/", findCar);
 
 router.delete("/delete/:carId/:reviewId", protectRoute, deleteReview);
