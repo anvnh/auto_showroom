@@ -242,7 +242,7 @@ const Product = () => {
 											$&nbsp;{car.price}
 										</p>
 
-										<hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
+										<hr className="w-1/2 border-1 border-black border-opacity-30 relative top-3 " />
 
 										<div className="pt-6 text-xl">
 											<div className="flex font-poppins mb-2">
@@ -258,63 +258,60 @@ const Product = () => {
 											<div className="flex"></div>
 										</div>
 
-										<hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
+										<hr className="w-full border-1 border-black border-opacity-30 relative top-3 " />
 
                                         <div className="pt-3 text-[18px]">
                                             <p className="pt-4 flex items-center">
-                                                Production Year: {car.production_year}
+                                                <span className="font-bold pr-2">Production Year:</span> {car.production_year}
                                             </p>
                                             <p className="pt-4 flex items-center">
-                                                Body Style: {car.body_style}
+											<span className="font-bold pr-2">Body Style:</span> {car.body_style}
                                             </p>
                                             <p className="pt-4 flex items-center">
-                                                Engine: {car.engine}
+											<span className="font-bold pr-2">Engine:</span> {car.engine}
                                             </p>
-                                            <p className="pt-4 flex items-center">  
-                                                Transmission: {car.transmission}
-                                            </p>
-                                            <p className="pt-4 flex items-center">
-                                                Drive Type: {car.drive_type}
+                                            <p className="pt-4 items-center">  
+											<span className="font-bold pr-1">Transmission:</span> {car.transmission}
                                             </p>
                                             <p className="pt-4 flex items-center">
-                                                Fuel Type: {car.fuel_type}
+											<span className="font-bold pr">Drive Type:</span> {car.drive_type}
+                                            </p>
+                                            <p className="pt-4 flex items-center">
+											<span className="font-bold pr-2">Fuel Type:</span> {car.fuel_type}
                                             </p>
                                         </div>
 
                                         <div className="pt-3">
                                             <Dialog>
                                                 <DialogTrigger asChild>
-                                                    <Button variant="outline" className="border-black text-[18px]">
+                                                    <Button variant="outline" className="border-black text-[18px]
+													flex bg-gray-400  p-3 rounded-md hover:bg-black duration-300 ease-in-out justify-center detail-button text-black px-4 py-2 md:px-6 md:py-3  items-center transition-all  hover:text-white font-bold text-sm md:text-base text-center relative overflow-hidden border shadow-xl before:absolute before:right-0 before:top-0 before:h-[120px] before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[240px]
+													">
                                                         More details ... 
                                                     </Button>
                                                 </DialogTrigger>
-                                                <DialogContent className="sm:max-w-[425px] bg-white bg-opacity-55 backdrop-blur-md text-black">
+                                                <DialogContent className="sm:max-w-[425px] bg-gray-700 text-white bg-opacity-55 backdrop-blur-md ">
                                                     <DialogHeader>
                                                         <DialogTitle>More details</DialogTitle>
-                                                        <DialogDescription>
-                                                            More details about the car
-                                                        </DialogDescription>
                                                     </DialogHeader>
                                                     <div className="grid grid-cols-2 gap-4">
-                                                        <p className="pt-4 flex items-center"> Production Year: {car.production_year} </p>
-                                                        <p className="pt-4 flex items-center"> Body Style: {car.body_style} </p>
-                                                        <p className="pt-4 flex items-center"> Engine: {car.engine} </p>
-                                                        <p className="pt-4 flex items-center"> Transmission: {car.transmission} </p>
-                                                        <p className="pt-4 flex items-center"> Drive Type: {car.drive_type} </p>
-                                                        <p className="pt-4 flex items-center"> Fuel Type: {car.fuel_type} </p>
-                                                        <p className="pt-4 flex items-center"> Horsepower: {car.horsepower} hp </p>
-                                                        <p className="pt-4 flex items-center"> Torque: {car.torque} Nm </p>
-                                                        <p className="pt-4 flex items-center"> Top Speed: {car.top_speed} km/h </p>
-                                                        <p className="pt-4 flex items-center"> Acceleration: {car.acceleration} s </p>
-                                                        <p className="pt-4 flex items-center"> Seat Capacity: {car.seat_capacity} </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Production Year:</span> {car.production_year} </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Body Style:</span> {car.body_style} </p>
+														<p className="pt-4 items-center col-span-2">  
+														<span className="font-bold pr-1">Engine:</span> {car.engine}
+                                         			    </p>
+														<p className="pt-4 items-center col-span-2">  
+														<span className="font-bold pr-1">Transmission:</span> {car.transmission}
+                                         			    </p>
+														 <p className="pt-4 items-center col-span-2">   	<span className="font-bold pr-2">Drive Type:</span> {car.drive_type} </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Fuel Type:</span> {car.fuel_type} </p>
+                                                        <p className="pt-4 items-center col-span-2"> 	<span className="font-bold pr-2">Horsepower:</span> {car.horsepower} hp </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Torque:</span> {car.torque} Nm </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Top Speed:</span> {car.top_speed} km/h </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Acceleration:</span> {car.acceleration} </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Seat Capacity:</span> {car.seat_capacity} </p>
                                                     </div>
-                                                    <DialogFooter>
-                                                        <DialogClose asChild>
-                                                            <Button type="button" variant="secondary" className="bg-black text-white">
-                                                                Close
-                                                            </Button>
-                                                        </DialogClose>
-                                                    </DialogFooter>
+                                                  
                                                 </DialogContent>
                                             </Dialog>
                                         </div>
