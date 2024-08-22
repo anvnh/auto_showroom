@@ -45,7 +45,7 @@ const View = ({ sendDataToParent }) => {
                 zoom={1}
                 position={[5, 3, 5]}
             />
-            <axesHelper args={[4]} />
+            {/* <axesHelper args={[4]} /> */}
             {/* <ambientLight
     intensity={10}
     />
