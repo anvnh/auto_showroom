@@ -40,13 +40,8 @@ const ShopLayout = () => {
 					</div>
 				</div>
 				<div className="py-20 bg-white">
-					<div  id="Shop"  className="w-full bg-white">
+					<div id="Shop" className="w-full bg-white">
 						<Products />
-					</div>
-				</div>
-				<div className="items-start justify-center pb-16 bg-white">
-					<div className="w-full bg-white">
-						<Features />
 					</div>
 				</div>
 				<div className="items-start justify-center py-16 bg-primary">
@@ -54,12 +49,7 @@ const ShopLayout = () => {
 						<Cars />
 					</div>
 				</div>
-				<div  id="Reviews" className="items-start justify-center pb-16 bg-white">
-					<div className="w-full bg-white">
-						<Testimonials />
-					</div>
-				</div>
-				<div  id="Blogs" className="items-start justify-center py-16 bg-[#F9FBFC]">
+				<div id="Blogs" className="items-start justify-center py-16 bg-[#F9FBFC]">
 					<div className="w-full bg-[#F9FBFC]">
                         <Blogs />
 					</div>
