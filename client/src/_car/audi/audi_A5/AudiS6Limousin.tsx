@@ -11,49 +11,49 @@ import {
   abstract1, abstract2,
 } from "@/assets/background/index"
 import {
-  noithat, calang,  
-   a5_3,  
+  noithat, calang,
+  a5_3,
   a5_5,
   a5_6,
-  a5_10, 
-  a5_13, 
-  light2, backLight2, mam2, 
-  audi_thanXe,banner,
-  road, audiold1,  audiold4, 
+  a5_10,
+  a5_13,
+  light2, backLight2, mam2,
+  audi_thanXe, banner,
+  road, audiold1, audiold4,
 } from "@/assets/audiA5/couple";
-import {  sport3, sport4, sport5, sport6, sport7 ,sport8, sport9 ,sport10 } from "@/assets/audiA5/sportback";
-import { audiA5_15,  audiA5_9, } from "@/assets/audiA5";
+import { sport3, sport4, sport5, sport6, sport7, sport8, sport9, sport10 } from "@/assets/audiA5/sportback";
+import { audiA5_15, audiA5_9, } from "@/assets/audiA5";
 //-------------------Component--------------
 import "./Effect/style.css";
 import { useFollowPointer } from "./Effect/pointer";
 import Footer from "@/components/common/Footer";
-
+import { Audi_s8_view } from "@/components/3d";
 
 const AudiS6Limousin = () => {
   //cuon dau trang
   useEffect(() => {
     window.scrollTo(0, 0); // Cuộn đến tọa độ (0, 0) - tức là đầu trang
-  },[] );
+  }, []);
 
   //smooth scroll
- useEffect(()=>{
-   const lenis = new Lenis();
-  function raf(time) {
-    lenis.raf(time);
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf); 
-      return () => {
+    return () => {
       lenis.destroy();
     };
- },[])
+  }, [])
 
   //cursor effect
   const ref = useRef(null);
   const { x, y } = useFollowPointer(ref);
 
   //paralax hero
-const hero_section1 = useRef(null)
+  const hero_section1 = useRef(null)
   const sec1_txt = useRef(null)
   const hero_section3 = useRef(null)
   const sec3_img1 = useRef(null)
@@ -62,68 +62,68 @@ const hero_section1 = useRef(null)
   const sec4_text = useRef(null)
   const bg_sec1 = useRef(null)
   useEffect(() => {
-    
-      const tl = gsap.timeline()
-      tl
-        .set(sec1_txt.current, {
-          opacity: 0,
-          y: 500,
-        })
-        .to(sec1_txt.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-        })
-      ScrollTrigger.create({
 
-        trigger: hero_section1.current,
-        start: "top center",
-        end: "bottom 20%",
-        animation: tl, toggleActions: "restart none none reverse"
-      }
-      )
-    
-    
-      const tl1 = gsap.timeline()
-      tl1.set([sec3_img1.current, sec3_img2.current], {
-        y: 500,
+    const tl = gsap.timeline()
+    tl
+      .set(sec1_txt.current, {
         opacity: 0,
+        y: 500,
       })
-        .to([sec3_img1.current, sec3_img2.current], {
-          y: 0,
-          opacity: 1,
-        })
-
-      ScrollTrigger.create({
-        trigger: hero_section3.current,
-        start: "top 80%",
-        end: "bottom top",
-        scrub: true,
-        animation: tl1
+      .to(sec1_txt.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
       })
-    
+    ScrollTrigger.create({
 
-    
-      const tl_sec4 = gsap.timeline()
-      tl_sec4
-        .set(sec4_text.current, {
-          opacity: 0,
-          y: 400
-        })
-        .to(sec4_text.current, {
-          opacity: 1,
-          y: 0
-        })
-      ScrollTrigger.create({
-        trigger: hero_section4.current,
-        start: "top 80%",
-        end: "bottom center",
-        //scrub:true,
-        toggleActions: "restart none none reverse",
-        animation: tl_sec4
+      trigger: hero_section1.current,
+      start: "top center",
+      end: "bottom 20%",
+      animation: tl, toggleActions: "restart none none reverse"
+    }
+    )
 
+
+    const tl1 = gsap.timeline()
+    tl1.set([sec3_img1.current, sec3_img2.current], {
+      y: 500,
+      opacity: 0,
+    })
+      .to([sec3_img1.current, sec3_img2.current], {
+        y: 0,
+        opacity: 1,
       })
-    
+
+    ScrollTrigger.create({
+      trigger: hero_section3.current,
+      start: "top 80%",
+      end: "bottom top",
+      scrub: true,
+      animation: tl1
+    })
+
+
+
+    const tl_sec4 = gsap.timeline()
+    tl_sec4
+      .set(sec4_text.current, {
+        opacity: 0,
+        y: 400
+      })
+      .to(sec4_text.current, {
+        opacity: 1,
+        y: 0
+      })
+    ScrollTrigger.create({
+      trigger: hero_section4.current,
+      start: "top 80%",
+      end: "bottom center",
+      //scrub:true,
+      toggleActions: "restart none none reverse",
+      animation: tl_sec4
+
+    })
+
 
   }, [])
   //hero
@@ -132,21 +132,21 @@ const hero_section1 = useRef(null)
   const hero_txt = useRef(null)
   const container_slogan = useRef(null);
   const slogan_text = useRef(null);
-  
+
   useEffect(() => {
-    
-      const textTimeline = gsap.timeline();
-      textTimeline
-        .set(hero_txt.current, {
-          opacity: 0,
-          x: -200,
-        })
-        .to(hero_txt.current, {
-          opacity: 1,
-          duration: 1,
-          x: 0,
-        });
-    
+
+    const textTimeline = gsap.timeline();
+    textTimeline
+      .set(hero_txt.current, {
+        opacity: 0,
+        x: -200,
+      })
+      .to(hero_txt.current, {
+        opacity: 1,
+        duration: 1,
+        x: 0,
+      });
+
 
     if (container_slogan.current && slogan_text.current) {
       const sloganTimeline = gsap.timeline({
@@ -595,16 +595,16 @@ const hero_section1 = useRef(null)
 
 
   gsap.config({
-  autoSleep: 60,
-  force3D: false,
-  nullTargetWarn: false,
-  units: { left: "%", top: "%", rotation: "rad" },
-});
-  
+    autoSleep: 60,
+    force3D: false,
+    nullTargetWarn: false,
+    units: { left: "%", top: "%", rotation: "rad" },
+  });
+
   return (
 
     <div className="">
-     
+
       <div>
         <div className="flex ">
           <div className="w-full bg-primary">
@@ -619,8 +619,8 @@ const hero_section1 = useRef(null)
           bg-center bg-no-repeat  bg-cover  
           "></div>
           <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold  ">
-            AUDI S6 
-             </h1>
+            AUDI S6
+          </h1>
           <p className="absolute font-syncopate md:text-[40px] lg:text-[50px] text-slate-700 top-[10%] left-[5%] hidden md:block">
             2024
           </p>
@@ -639,7 +639,7 @@ const hero_section1 = useRef(null)
           bg-center bg-no-repeat  bg-cover flex justify-center items-center">
             <p ref={sec1_txt} className="w-full text-[30px] ss:text-[40px]  sm:text-[50px] md:text-[60px] xl:text-[80px] text-center font-kanit text-slate-700">
               Modern but elegant
-              </p>
+            </p>
           </div>
         </section>
 
@@ -697,7 +697,9 @@ const hero_section1 = useRef(null)
           />
         </div>
 
-
+        <div className="w-screen h-screen">
+          <Audi_s8_view />
+        </div>
 
         {/* -------slogan----------- */}
         <div

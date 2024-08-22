@@ -39,8 +39,7 @@ import { Split_mobile, History_mobile } from "./Reponsive/index"
 import "./Effect/style.css";
 import { useFollowPointer } from "./Effect/pointer";
 import Footer from "@/components/common/Footer";
-
-
+import { Audi_a5_view } from "@/components/3d";
 const Audi_A5_Couple = () => {
 
 
@@ -300,7 +299,6 @@ const Audi_A5_Couple = () => {
           </div>
         </section>
 
-
         <div ref={container_hero} className="hero  relative w-screen h-screen">
           <div className="z-10 w-full absolute h-full bg-gradient-to-tr from-slate-950 opacity-50"></div>
           <img className="object-cover w-full h-screen bg-no-repeat opacity-90" src={abstract2} />
@@ -322,7 +320,9 @@ const Audi_A5_Couple = () => {
           />
         </div>
 
-
+        <div className="w-screen h-screen">
+          <Audi_a5_view />
+        </div>
 
         {/* -------slogan----------- */}
         <div

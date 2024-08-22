@@ -32,11 +32,11 @@ const Car3popular2 = () => {
 						</div>
 					</div>
 				</div>
--
+				-
 				{/* destop------------------ */}
 				<div className="hidden md:block">
 					<div
-					
+
 						className=" bg-cover bg-center h-24 sm:h-48 relative object-cover z-20"
 					>
 						<div className="flex justify-center pt-10 md:pt-12 inset-0">

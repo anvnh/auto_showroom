@@ -1,0 +1,11 @@
+Model Information:
+* title:	Mercedesbenz-amg-cls
+* source:	https://sketchfab.com/3d-models/mercedesbenz-amg-cls-1679823c75984162b54c77b0defb72c5
+* author:	efeekinci2k13 (https://sketchfab.com/efeekinci2k13)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Mercedesbenz-amg-cls" (https://sketchfab.com/3d-models/mercedesbenz-amg-cls-1679823c75984162b54c77b0defb72c5) by efeekinci2k13 (https://sketchfab.com/efeekinci2k13) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

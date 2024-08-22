@@ -28,7 +28,7 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
-
+import { Mercedes_maybach_view } from "@/components/3d";
 const Car2popular = () => {
 	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
@@ -143,7 +143,7 @@ const Car2popular = () => {
 						playsInline
 						className="w-full h-auto"
 					>
-					  <source src={video2} type="video/mp4" />	
+						<source src={video2} type="video/mp4" />
 					</video>
 					<div
 						className="overlay absolute inset-x-0 bottom-0 h-1/4"
@@ -158,9 +158,8 @@ const Car2popular = () => {
 								data-aos="fade-in"
 								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-48 transform text-center shadow-xl
 								ss:w-[550px] w-[200px] p-2 md:p-5 
-							transition-opacity duration-1000 opacity-0 font-syncopate ${
-								isVisible ? "opacity-100" : ""
-							}`}
+							transition-opacity duration-1000 opacity-0 font-syncopate ${isVisible ? "opacity-100" : ""
+									}`}
 							>
 								<h1 className="text-xs ss:text-3xl lg:text-4xl mb-2 	tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all ">
 									Mercedes-Benz
@@ -220,13 +219,13 @@ const Car2popular = () => {
 				<div
 					id="Introduce"
 					// style={{ backgroundImage: `url(${sky})` }}
-				className=" rounded-bl-3xl bg-center w-full min-h-screen relative object-cover justify-center items-center flex "
+					className=" rounded-bl-3xl bg-center w-full min-h-screen relative object-cover justify-center items-center flex "
 				>
 					<div
 						className="h-full"
-						// style={{
-						// 	backgroundImage: `url(${sky})`,
-						// }}
+					// style={{
+					// 	backgroundImage: `url(${sky})`,
+					// }}
 					>
 						<div className="flex justify-center items-center">
 							<div
@@ -265,7 +264,7 @@ const Car2popular = () => {
 						<div
 							data-aos="fade-in"
 							style={{ backgroundImage: `url(${merr7})` }}
-								className="bg-cover bg-center h-[400px] md:w-full relative rounded-full rounded-tl-none rounded-br-none md:pt-[900px] "
+							className="bg-cover bg-center h-[400px] md:w-full relative rounded-full rounded-tl-none rounded-br-none md:pt-[900px] "
 						></div>
 					</div>
 				</div>
@@ -273,7 +272,7 @@ const Car2popular = () => {
 				<div className="relative xl:pt-[1400px] lg:pt-[1400px] md:pt-[1400px] xs:pt-[500px] pt-[670px] ss:py-[100px]">
 					<div
 						data-aos="fade-left"
-					className="font-thin text-blue-200 relative text-md ss:text-2xl  md:text-6xl sm:text-4xl md:px-0 px-16 text-center font-syncopate"
+						className="font-thin text-blue-200 relative text-md ss:text-2xl  md:text-6xl sm:text-4xl md:px-0 px-16 text-center font-syncopate"
 					>
 						SIGNIFICANTLY SHARPER - LIKE YOUR EYES
 					</div>
@@ -318,7 +317,10 @@ const Car2popular = () => {
 				</div>
 
 				{/* 3D car------------------------------------------- */}
-				<div className="">
+				<div className="w-screen h-screen">
+					<Mercedes_maybach_view />
+				</div>
+				{/* <div className="">
 					<div
 						id="Model"
 						data-aos="fade-up"
@@ -345,7 +347,7 @@ const Car2popular = () => {
 							{" "}
 						</iframe>{" "}
 					</div>
-				</div>
+				</div> */}
 				{/*----------------------- banner -------------------------*/}
 				<div className="flex">
 					<div
@@ -363,57 +365,57 @@ const Car2popular = () => {
 				</div>
 				{/* ---------------CAR behind--------------------------------- */}
 				<div data-aos="fade-right" className="pt-12">
-				<div className="md:flex grid h-full grid-rows-2 pt-20 px-4 md:px-16">
+					<div className="md:flex grid h-full grid-rows-2 pt-20 px-4 md:px-16">
 						{/*  các thumbnail */}
 						<div className="md:w-[300px] w-full p-4 flex h-full ">
-						<div className="block md:hidden">
-						<div className="flex gap-2 sm:gap-5  md:flex-col md:space-y-4 flex-grow ">
-								{[merr11, merr12, merr5, merr4, merr1].map(
-									(image, index) => (
-										<div
-											key={index}
-											className="w-full object-cover"
-											onClick={() =>
-												handleThumbnailClick(image)
-											}
-										>
-											<img
-												src={image}
-												alt=""
-												className="md:w-full md:h-full h-[100px] object-cover hover:scale-110 transition-all ease-in-out duration-400 rounded-xl"
-											/>
-										</div>
-									)
-								)}
-							</div>
+							<div className="block md:hidden">
+								<div className="flex gap-2 sm:gap-5  md:flex-col md:space-y-4 flex-grow ">
+									{[merr11, merr12, merr5, merr4, merr1].map(
+										(image, index) => (
+											<div
+												key={index}
+												className="w-full object-cover"
+												onClick={() =>
+													handleThumbnailClick(image)
+												}
+											>
+												<img
+													src={image}
+													alt=""
+													className="md:w-full md:h-full h-[100px] object-cover hover:scale-110 transition-all ease-in-out duration-400 rounded-xl"
+												/>
+											</div>
+										)
+									)}
+								</div>
 							</div>
 							<div className="md:block hidden">
-							<div className="flex gap-2 md:flex-col md:space-y-4 flex-grow ">
-								{[merr11, merr12, merr5, merr4, merr1].map(
-									(image, index) => (
-										<div
-											key={index}
-											className="w-full object-cover"
-											onClick={() =>
-												handleThumbnailClick(image)
-											}
-										>
-											<img
-												src={image}
-												alt=""
-												className="md:w-full md:h-full h-[100px] object-cover hover:scale-110 transition-all ease-in-out duration-400 rounded-xl"
-											/>
-										</div>
-									)
-								)}
-							</div>
+								<div className="flex gap-2 md:flex-col md:space-y-4 flex-grow ">
+									{[merr11, merr12, merr5, merr4, merr1].map(
+										(image, index) => (
+											<div
+												key={index}
+												className="w-full object-cover"
+												onClick={() =>
+													handleThumbnailClick(image)
+												}
+											>
+												<img
+													src={image}
+													alt=""
+													className="md:w-full md:h-full h-[100px] object-cover hover:scale-110 transition-all ease-in-out duration-400 rounded-xl"
+												/>
+											</div>
+										)
+									)}
+								</div>
 							</div>
 						</div>
 
 						{/* ảnh lớn */}
-						<div data-aos="fade-left"	className="w-full relative md:pl-2  flex">
+						<div data-aos="fade-left" className="w-full relative md:pl-2  flex">
 							<div
-							className="bg-cover bg-center w-full relative md:bottom-0 bottom-40 md:h-auto h-[300px] object-cove rounded-3xl"
+								className="bg-cover bg-center w-full relative md:bottom-0 bottom-40 md:h-auto h-[300px] object-cove rounded-3xl"
 								style={{
 									backgroundImage: `url(${selectedImage})`,
 								}}

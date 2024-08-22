@@ -26,7 +26,7 @@ import { Link } from "react-router-dom";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
-
+import { Mercedes_amg_cls_view } from "@/components/3d";
 const Car1popular = () => {
 	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
@@ -128,7 +128,7 @@ const Car1popular = () => {
 			>
 				<div
 					id="Home"
-					
+
 					className="bg-cover bg-center relative w-full min-h-[900px]  sm:min-h-[1200px] md:min-h-[800px] xl:min-h-[1000px]"
 				>
 					<video
@@ -138,7 +138,7 @@ const Car1popular = () => {
 						playsInline
 						className="w-full h-auto relative "
 					>
-					  <source src={video1} type="video/mp4" />
+						<source src={video1} type="video/mp4" />
 					</video>
 
 					<div
@@ -154,9 +154,8 @@ const Car1popular = () => {
 								data-aos="fade-in"
 								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-48  transform text-center shadow-xl
            	 ss:w-[550px] w-[200px] p-5 md:p-5 
-            transition-opacity duration-1000 opacity-0 font-syncopate ${
-				isVisible ? "opacity-100" : ""
-			}`}
+            transition-opacity duration-1000 opacity-0 font-syncopate ${isVisible ? "opacity-100" : ""
+									}`}
 							>
 								<h1 className="text-xs ss:text-3xl lg:text-4xl mb-1 tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all">
 									MERCEDES-AMG
@@ -218,9 +217,9 @@ const Car1popular = () => {
 				>
 					<div
 						className=" h-full"
-						// style={{
-						// 	backgroundImage: `url(${sky})`,
-						// }}
+					// style={{
+					// 	backgroundImage: `url(${sky})`,
+					// }}
 					>
 						<div className="flex justify-center items-center">
 							<div
@@ -311,7 +310,10 @@ const Car1popular = () => {
 				</div>
 
 				{/* 3D car------------------------------------------- */}
-				<div className="">
+				<div className="w-screen h-screen">
+					<Mercedes_amg_cls_view />
+				</div>
+				{/* <div className="">
 					<div
 						id="Model"
 						data-aos="fade-up"
@@ -338,7 +340,7 @@ const Car1popular = () => {
 							{" "}
 						</iframe>{" "}
 					</div>
-				</div>
+				</div> */}
 				{/*----------------------- banner -------------------------*/}
 				<div className="flex">
 					<div
@@ -466,14 +468,14 @@ const Car1popular = () => {
 					{!isLoading && !isRefetching && car && (
 						<div
 							id="Buy"
-								data-aos="fade-up"
+							data-aos="fade-up"
 							style={{ backgroundImage: `url(${buy})` }}
 							className="w-screen bg-cover bg-center h-[400px] md:h-[900px] relative"
 						>
 							<div className="w-full flex  justify-center pt-5 md:pt-20 ">
-								<div 
-								data-aos="fade-right"
-								className=" bg-gray-800 w-[320px] h-[150px] md:h-[250px] md:p-12 p-4 md:w-[700px] md:px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl">
+								<div
+									data-aos="fade-right"
+									className=" bg-gray-800 w-[320px] h-[150px] md:h-[250px] md:p-12 p-4 md:w-[700px] md:px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl">
 									<Toaster
 										position="top-center"
 										reverseOrder={false}
@@ -488,10 +490,10 @@ const Car1popular = () => {
 											MERCEDES-AMG CLS
 										</div>
 									</Link>
-									<div  
-									data-aos="fade-left"
-									data-aos-delay="500"
-									className="md:text-2xl text-center font-syncopate">
+									<div
+										data-aos="fade-left"
+										data-aos-delay="500"
+										className="md:text-2xl text-center font-syncopate">
 										$ 183,600
 									</div>
 									<div className="flex justify-center gap-5 pt-5 md:pt-12">

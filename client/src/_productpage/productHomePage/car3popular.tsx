@@ -33,7 +33,7 @@ import { Link } from "react-router-dom";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import toast, { Toaster } from "react-hot-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
-
+import { Rollroyce_ghost_view } from "@/components/3d";
 function getPageHeight() {
 	const parallaxContainer = document.querySelector(".parallax"); // Lấy phần tử Parallax
 	const viewportHeight = window.innerHeight; // Lấy chiều cao viewport
@@ -233,9 +233,8 @@ const Car3popular: React.FC = () => {
 									<div
 										className={`font-thin absolute text-white top-96 transform text-center shadow-xl
                   ss:w-[1200px] xs:w-[300px] w-[200px] p-2 md:p-5 
-                  transition-opacity duration-1000 opacity-0 font-syncopate ${
-						isVisible ? "opacity-100" : ""
-					}`}
+                  transition-opacity duration-1000 opacity-0 font-syncopate ${isVisible ? "opacity-100" : ""
+											}`}
 									>
 										<h1 className="text-xs xs:text-xl ss:text-3xl sm:text-4xl lg:text-6xl mb-1 tracking-widest font-bold">
 											Rolls Royce Ghost 2021
@@ -367,11 +366,10 @@ const Car3popular: React.FC = () => {
 												key={index}
 												src={image}
 												alt={`Image ${index + 1}`}
-												className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-500 ${
-													activeImage === index
+												className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-500 ${activeImage === index
 														? "opacity-100"
 														: "opacity-0"
-												}`}
+													}`}
 											/>
 										)
 									)}
@@ -403,11 +401,10 @@ const Car3popular: React.FC = () => {
 											setActiveImage(0);
 											setActiveGroup(0);
 										}}
-										className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
-											activeGroup === 0
+										className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${activeGroup === 0
 												? buttonColors[0]
 												: "bg-gray-900 bg-opacity-50 text-white"
-										}`}
+											}`}
 									>
 										Front
 									</button>
@@ -416,11 +413,10 @@ const Car3popular: React.FC = () => {
 											setActiveImage(0);
 											setActiveGroup(1);
 										}}
-										className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
-											activeGroup === 1
+										className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${activeGroup === 1
 												? buttonColors[1]
 												: "bg-gray-900 bg-opacity-50 text-white"
-										}`}
+											}`}
 									>
 										Side
 									</button>
@@ -429,11 +425,10 @@ const Car3popular: React.FC = () => {
 											setActiveImage(0);
 											setActiveGroup(2);
 										}}
-										className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${
-											activeGroup === 2
+										className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${activeGroup === 2
 												? buttonColors[1]
 												: "bg-gray-900 bg-opacity-50 text-white"
-										}`}
+											}`}
 									>
 										Behind
 									</button>
@@ -463,7 +458,8 @@ const Car3popular: React.FC = () => {
 						>
 							<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1700px] z-10 relative">
 								{" "}
-								<iframe
+								<Rollroyce_ghost_view />
+								{/* <iframe
 									className="w-full md:h-[550px] h-[300px] scale-125 z-50"
 									frameBorder="0"
 									allowfullscreen
@@ -477,7 +473,7 @@ const Car3popular: React.FC = () => {
 									src="https://sketchfab.com/models/f417013fd6ff422a83dea9650d1f840b/embed?autospin=1&autostart=1&preload=1&ui_theme=dark&dnt=1"
 								>
 									{" "}
-								</iframe>{" "}
+								</iframe>{" "} */}
 							</div>
 						</ParallaxLayer>
 

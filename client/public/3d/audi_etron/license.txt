@@ -1,0 +1,11 @@
+Model Information:
+* title:	Audi e-Tron GT - made with Blender
+* source:	https://sketchfab.com/3d-models/audi-e-tron-gt-made-with-blender-a48a8c4ac4474c47b8ddf5bba754db40
+* author:	gbarzu (https://sketchfab.com/gbarzu)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Audi e-Tron GT - made with Blender" (https://sketchfab.com/3d-models/audi-e-tron-gt-made-with-blender-a48a8c4ac4474c47b8ddf5bba754db40) by gbarzu (https://sketchfab.com/gbarzu) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -46,7 +46,7 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Toaster, toast } from "react-hot-toast";
-
+import { Audi_r8_view } from "@/components/3d";
 
 const Car4popular = () => {
   // //cuon dau trang
@@ -688,12 +688,12 @@ const Car4popular = () => {
   return (
 
     <div className="">
-      <motion.div
+      {/* <motion.div
         ref={ref}
         style={{ x, y }}
         className=" z-20 cursor fixed top-1/2  left-1/2   opacity-50  border-slate-700 h-[100px] w-[100px] rounded-[50%] bg-slate-800 "
       //xs:bg-red-500 ss:bg-yellow-500 sm:bg-green-500 md:bg-purple-500 lg:bg-red-400 mlg:bg-yellow-400 xl:bg-green-400
-      />
+      /> */}
       <div>
         <Toaster
           position="top-center"
@@ -758,6 +758,9 @@ const Car4popular = () => {
           </div>
         </section>
 
+        <div className="w-screen h-screen">
+          <Audi_r8_view />
+        </div>
 
         <div ref={container_hero} className="hero  relative w-screen h-screen">
           <div className="z-1 w-full absolute h-full bg-gradient-to-tr from-slate-950 opacity-50"></div>
@@ -1042,11 +1045,11 @@ const Car4popular = () => {
         >
           <div ref={box_left} className="w-[40%]  h-screen  ">
             <div className="h-full w-full flex flex-col justify-center items-center border-r border-r-slate-800 ">
-             <Link to='/shop/product/66a3bb07803942c2c831d0aa'>
-             <p className="w-full h-[15%]  text-center text-[50px] md:text-[60px] mlg:text-[45px]  font-syncopate  font-bold">
-                Audi R8 coupe <br />
-                <span className="h-[20%] px-[5%] text-center text-[20px] md:text-[23px] mlg:text-[40px] font-poppins font-normal">$ 208 100</span>
-              </p></Link>
+              <Link to='/shop/product/66a3bb07803942c2c831d0aa'>
+                <p className="w-full h-[15%]  text-center text-[50px] md:text-[60px] mlg:text-[45px]  font-syncopate  font-bold">
+                  Audi R8 coupe <br />
+                  <span className="h-[20%] px-[5%] text-center text-[20px] md:text-[23px] mlg:text-[40px] font-poppins font-normal">$ 208 100</span>
+                </p></Link>
 
               {/* {isLoading && <LoadingSpinner />}
                           {!isLoading && !isRefetching && car && ( */}
@@ -1146,44 +1149,44 @@ const Car4popular = () => {
 
         {/* -----mobile pin */}
         <div className=" w-screen h-[300px] px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-primary text-slate-800">
-        <Link to='/shop/product/66a3bb07803942c2c831d0aa'>
-        <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-syncopate text-center" >
-          Audi R8 coupe
-          </h1>
+          <Link to='/shop/product/66a3bb07803942c2c831d0aa'>
+            <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-syncopate text-center" >
+              Audi R8 coupe
+            </h1>
           </Link>
           <p className="w-full text-white text-[30px] sm:text-[28px] font-thin text-center">
-          $ 208 100
+            $ 208 100
           </p>
           <div className="flex justify-center gap-2 pt-0 sm:pt-12">
-                <Link to="/shop/payment/66a3bb07803942c2c831d0aa">
-                <button
-                    className=" backdrop-blur-xl
+            <Link to="/shop/payment/66a3bb07803942c2c831d0aa">
+              <button
+                className=" backdrop-blur-xl
 							detail-button bg-gray-400 text-white px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
 										before:ease relative h-10 w-32 sm:h-10 sm:w-44 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
 							"
-                  >
-                    Buy Now
-                  </button>
-                </Link>
+              >
+                Buy Now
+              </button>
+            </Link>
 
-                <button
-                    className=" backdrop-blur-xl
+            <button
+              className=" backdrop-blur-xl
                     detail-button bg-gray-400 text-white px-4 py-2 md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
                           before:ease relative h-10 w-36 sm:h-10 sm:w-44 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
                     "
-                  onClick={() =>
-                    handleAddToCart(car._id)
-                  }
-                >
-                  {isAddingToCart ? (
-                    <LoadingSpinner />
-                  ) : (
-                    <p>Add to cart</p>
-                  )}
-                </button>
-              </div>
+              onClick={() =>
+                handleAddToCart(car._id)
+              }
+            >
+              {isAddingToCart ? (
+                <LoadingSpinner />
+              ) : (
+                <p>Add to cart</p>
+              )}
+            </button>
+          </div>
         </div>
-       
+
 
 
         <div className=" flex md:hidden justify-center items-center w-screen h-screen gap-x-[5%]    ">
