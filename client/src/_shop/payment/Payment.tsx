@@ -1,10 +1,14 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import Cards from "react-credit-cards-2";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import mapboxgl from "mapbox-gl";
+
+mapboxgl.accessToken =
+	"pk.eyJ1IjoidHVhbmFuaDIwMDU4ODkiLCJhIjoiY20wNmc3cGE5MGR0bTJpczR6anF0cDMxeiJ9.nf180VnWasOogLOLMOS5gw";
 
 let isAOSInitialized = false;
 const Payment = () => {
@@ -20,32 +24,6 @@ const Payment = () => {
 			isAOSInitialized = true; // Đặt cờ là true sau khi khởi tạo AOS
 		}
 	}, []);
-	const location = useLocation();
-	const searchParams = new URLSearchParams(location.search);
-	const totalPrice = searchParams.get("totalPrice");
-	const [countries, setCountries] = useState([]);
-
-	useEffect(() => {
-		const fetchCountries = async () => {
-			try {
-				const response = await axios.get(
-					"https://restcountries.com/v3.1/all"
-				);
-				const countryOptions = response.data
-					.map((country) => ({
-						value: country.cca2,
-						label: country.name.common,
-					}))
-					.sort((a, b) => a.label.localeCompare(b.label));
-				setCountries(countryOptions);
-			} catch (error) {
-				console.error("Error fetching countries:", error);
-			}
-		};
-
-		fetchCountries();
-	}, []);
-
 	const [state, setState] = useState({
 		number: "",
 		name: "",
@@ -61,6 +39,119 @@ const Payment = () => {
 
 	const handleInputFocus = (e) => {
 		setState((prev) => ({ ...prev, focus: e.target.name }));
+	};
+
+	const map = useRef<mapboxgl.Map | null>(null);
+	const [inputValue, setInputValue] = useState("");
+	const [address, setAddress] = useState("");
+	const [distance, setDistance] = useState<number | null>(null);
+	const [currentLocation, setCurrentLocation] = useState("");
+
+	const calculateDistance = (
+		lat1: number,
+		lon1: number,
+		lat2: number,
+		lon2: number
+	) => {
+		const toRadians = (degree: number) => degree * (Math.PI / 180);
+		const R = 6371;
+		const dLat = toRadians(lat2 - lat1);
+		const dLon = toRadians(lon2 - lon1);
+		const a =
+			Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+			Math.cos(toRadians(lat1)) *
+				Math.cos(toRadians(lat2)) *
+				Math.sin(dLon / 2) *
+				Math.sin(dLon / 2);
+		const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+		return R * c;
+	};
+
+	const handleGetLocation = () => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					const { latitude, longitude } = position.coords;
+					fetch(
+						`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${mapboxgl.accessToken}`
+					)
+						.then((response) => response.json())
+						.then((data) => {
+							const placeName =
+								data.features[0]?.place_name ||
+								"Location not found";
+							setAddress(placeName);
+							setCurrentLocation(placeName); // Cập nhật vị trí hiện tại
+							setInputValue(placeName); // Cập nhật giá trị input
+							if (map.current) {
+								map.current.setCenter([longitude, latitude]);
+								map.current.setZoom(15);
+
+								new mapboxgl.Marker({
+									element: createMarkerElement(),
+								})
+									.setLngLat([longitude, latitude])
+									.addTo(map.current);
+							}
+						})
+						.catch((error) =>
+							console.error(
+								"Error fetching location data:",
+								error
+							)
+						);
+				},
+				(error) => console.error("Error getting geolocation:", error)
+			);
+		} else {
+			alert("Geolocation is not supported by this browser.");
+		}
+	};
+
+	const handleCalculateDistance = () => {
+		if (inputValue.trim()) {
+			fetch(
+				`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+					inputValue
+				)}.json?access_token=${mapboxgl.accessToken}`
+			)
+				.then((response) => response.json())
+				.then((data) => {
+					const feature = data.features[0];
+					if (feature) {
+						const { center } = feature;
+						const [longitude, latitude] = center;
+
+						const daNangLat = 15.975098188846443;
+						const daNangLon = 108.25353149551003;
+						const calculatedDistance = calculateDistance(
+							daNangLat,
+							daNangLon,
+							latitude,
+							longitude
+						);
+						setDistance(calculatedDistance);
+					} else {
+						alert("Address not found.");
+					}
+				})
+				.catch((error) =>
+					console.error("Error fetching location data:", error)
+				);
+		} else {
+			alert("Please enter an address to calculate distance.");
+		}
+	};
+
+
+	const handleAddressInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+		setInputValue(value);
+		// Reset khoảng cách khi input trống
+		if (!value.trim()) {
+			setDistance(null);
+		}
 	};
 
 	return (
@@ -80,10 +171,10 @@ const Payment = () => {
 				</div>
 				<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
 					<input
+							data-aos="fade-left"
 						type="text"
 						name="number"
 						className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-
 						placeholder="Card Number"
 						value={state.number}
 						maxLength={16}
@@ -133,34 +224,58 @@ const Payment = () => {
 							onFocus={handleInputFocus}
 							required
 						/>
-						<select
+						<input
 							data-aos="fade-left"
-							data-aos-delay="500"
-							className=" select col-span-2 
-							form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white 
-							"
-						>
-							{countries.map((country) => (
-								<option
-									key={country.value}
-									value={country.value}
-								>
-									{country.label}
-								</option>
-							))}
-						</select>
+							data-aos-delay="400"
+							type="text"
+							name="cvc"
+							className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
+							placeholder="Search or enter your address"
+							value={inputValue}
+							onChange={handleAddressInputChange}
+						
+						/>
+							<div className="col-span-1">
+						{distance !== null && (
+							<div className=" p-4 text-white rounded-lg shadow-md">
+								<p>
+									VKU to {inputValue}:{" "}
+								<span className="text-blue-300">{distance.toFixed(2)} km</span>
+								</p>
+							</div>
+						)}
 					</div>
-					<div data-aos="fade-right">
+					<div className="flex justify-end gap-5">
 						<button
-							className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[800px]
-"
-							type="submit"
+						className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[180px]"
+							onClick={handleGetLocation}
 						>
-							Payment
+							Get Current Address
+						</button>
+						<button
+							className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[180px]"
+							onClick={handleCalculateDistance}
+						>
+							Select
 						</button>
 					</div>
+					</div>
+				
 				</div>
+				<div>
+				<div data-aos="fade-right">
+					<button
+						className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[800px]
+"
+						type="submit"
+					>
+						Payment
+					</button>
+				</div>
+			</div>
 			</div>
 		</section>
 	);
