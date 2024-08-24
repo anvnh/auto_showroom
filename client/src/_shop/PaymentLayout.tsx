@@ -2,6 +2,7 @@ import Footer from "@/components/common/Footer";
 import Navbar from "./common/Navbar";
 import OverviewCart from "./payment/OverviewCart";
 import Payment from "./payment/Payment";
+import { useState } from "react";
 
 const PaymentLayout = () => {
 	return (
@@ -13,13 +14,11 @@ const PaymentLayout = () => {
 					</div>
 				</div>
 
-				<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
+				<div className="">
 					<div className=" bg-primary">
 						<Payment />
 					</div>
-					<div className=" bg-primary ">
-						<OverviewCart />
-					</div>
+				
 				</div>
 				<div className="items-start justify-center">
 					<div className="w-full bg-primary pt-24">
