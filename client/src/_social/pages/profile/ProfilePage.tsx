@@ -301,17 +301,6 @@ const ProfilePage = () => {
 							<div className="flex w-full border-b border-gray-700 mt-4">
 								<div
 									className="flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer"
-									onClick={() => setFeedType("reposts")}
-								>
-									<p className={`${feedType === "reposts" ? "text-white" : "text-slate-500"}`}>
-										Reposts
-									</p>
-									{feedType === "reposts" && (
-										<div className="absolute bottom-0 w-10 h-1 rounded-full bg-[#2191d8]" />
-									)}
-								</div>
-								<div
-									className="flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer"
 									onClick={() => setFeedType("posts")}
 								>
 									<p className={`${feedType === "posts" ? "text-white" : "text-slate-500"}`}>
@@ -330,6 +319,17 @@ const ProfilePage = () => {
 									</p>
 									{feedType === "likes" && (
 										<div className="absolute bottom-0 w-10  h-1 rounded-full bg-[#2191d8]" />
+									)}
+								</div>
+								<div
+									className="flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 relative cursor-pointer"
+									onClick={() => setFeedType("reposts")}
+								>
+									<p className={`${feedType === "reposts" ? "text-white" : "text-slate-500"}`}>
+										Reposts
+									</p>
+									{feedType === "reposts" && (
+										<div className="absolute bottom-0 w-10 h-1 rounded-full bg-[#2191d8]" />
 									)}
 								</div>
 							</div>

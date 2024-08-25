@@ -242,7 +242,7 @@ const Post = ({ post }) => {
 							{postOwner.isAdmin ? (
 								<img
 									src={logoMain}
-									className="flex h-[25px] w-[25px] justify-center items-center transition-transform duration-300 ease-in-out transform hover:scale-110 hover:shadow-lg"
+									className="flex h-[25px] w-[25px] justify-center items-center duration-300 hover:scale-110 hover:shadow-lg"
 									title="Admin"
 								/>
 							) : (

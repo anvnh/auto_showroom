@@ -201,6 +201,7 @@ const MostSearchedCars = () => {
 					</button>
 				))}
 			</div> */}
+            <hr className="w-1/2 border-black mx-auto flex mt-20" /> 
 		</section>
 	);
 };
