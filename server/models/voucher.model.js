@@ -1,13 +1,7 @@
-import e from "cors";
 import mongoose from "mongoose";
 
 const voucherSchema = new mongoose.Schema(
 	{
-		code: {
-			type: String,
-			required: true,
-			unique: true,
-		},
 		discount: {
 			type: Number,
 			required: true,
