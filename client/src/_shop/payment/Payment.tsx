@@ -101,8 +101,12 @@ const Payment = () => {
 								data.features[0]?.place_name ||
 								"Location not found";
 							setAddress(placeName);
-							setCurrentLocation(placeName); // Cập nhật vị trí hiện tại
-							setInputValue(placeName); // Cập nhật giá trị input
+							setCurrentLocation(placeName);
+							setInputValue(placeName);
+
+							// Gọi hàm tính phí ship
+							handleCalculateDistance(placeName);
+
 							if (map.current) {
 								map.current.setCenter([longitude, latitude]);
 								map.current.setZoom(15);
@@ -126,11 +130,11 @@ const Payment = () => {
 		}
 	};
 
-	const handleCalculateDistance = () => {
-		if (inputValue.trim()) {
+	const handleCalculateDistance = (address: string) => {
+		if (address.trim()) {
 			fetch(
 				`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
-					inputValue
+					address
 				)}.json?access_token=${mapboxgl.accessToken}`
 			)
 				.then((response) => response.json())
@@ -170,9 +174,13 @@ const Payment = () => {
 	) => {
 		const value = e.target.value;
 		setInputValue(value);
-		// Reset khoảng cách khi input trống
+
+		// Reset khoảng cách và phí ship khi input trống
 		if (!value.trim()) {
 			setDistance(null);
+			setShippingCost(null);
+		} else {
+			handleCalculateDistance(value);
 		}
 	};
 
@@ -257,18 +265,21 @@ const Payment = () => {
 		},
 	});
 
+
 	const calculateTotalPrice = () => {
 		if (!cart) return 0;
-		return cart
+		const totalCartPrice = cart
 			.reduce((total, item) => {
 				const itemTotal =
 					Number(item.price.replace(/,/g, "")) *
 					(quantities[item._id] || 1);
 				return total + itemTotal;
-			}, 0)
-			.toLocaleString();
+			}, 0);
+	
+		const totalPriceWithShipping = totalCartPrice + (shippingCost || 0);
+		return totalPriceWithShipping.toLocaleString();
 	};
-
+	
 	const [quantities, setQuantities] = useState({});
 
 	const increaseQuantity = (item) => {
@@ -403,7 +414,7 @@ const Payment = () => {
 								data-aos="fade-left"
 								type="text"
 								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-								placeholder="Consignee name "
+								placeholder="Recipient name "
 								required
 							/>
 
@@ -427,7 +438,20 @@ const Payment = () => {
 									onChange={handleAddressInputChange}
 								/>
 								<div className="col-span-1">
-									{distance !== null && (
+								<div className="md:hidden block">
+								{distance !== null && (
+										<div className=" p-4 text-white rounded-lg shadow-md">
+											<p>
+												Distance about: <br />
+												<span className="text-blue-300">
+													{distance.toFixed(2)} km
+												</span>
+											</p>
+										</div>
+									)}
+								</div>
+								<div className="md:block hidden">
+								{distance !== null && (
 										<div className=" p-4 text-white rounded-lg shadow-md">
 											<p>
 												Distance about:
@@ -437,6 +461,7 @@ const Payment = () => {
 											</p>
 										</div>
 									)}
+								</div>
 								</div>
 								<div className="flex justify-end gap-9 mt-3 mr-3">
 									<button
@@ -452,13 +477,6 @@ const Payment = () => {
 										title="	Get Current Address"
 									>
 										<IoLocation />
-									</button>
-									<button
-										className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
-										onClick={handleCalculateDistance}
-										title="Confirm"
-									>
-										<MdOutlineCalculate />
 									</button>
 								</div>
 							</div>
@@ -685,26 +703,55 @@ const Payment = () => {
 							</div>
 						)}
 						<div data-aos="fade-right">
-							{distance !== null && (
-								<div className=" p-4 text-white rounded-lg shadow-md w-full flex justify-end">
-									<div>
-										<p>
-											VKU to {inputValue}:{" "}
-											<span className="text-blue-300 pl-3">
-												{distance.toFixed(2)} km
-											</span>
-										</p>
-										<p className="flex justify-end">
-											Shipping Cost:{" "}
-											<span className="text-blue-300 pl-3">
-												${shippingCost?.toFixed(2)}
-											</span>{" "}
-										</p>
+							<div className="hidden md:block">
+								{distance !== null && (
+									<div className=" p-4 text-white rounded-lg shadow-md w-full flex justify-end">
+										<div>
+											<p>
+												VKU to {inputValue}:{" "}
+												<span className="text-blue-300 pl-3">
+													{distance.toFixed(2)} km
+												</span>
+											</p>
+											<p className="flex justify-end">
+												Shipping Cost:{" "}
+												<span className="text-blue-300 pl-3">
+													${shippingCost?.toFixed(2)}
+												</span>{" "}
+											</p>
+										</div>
 									</div>
+								)}
+							</div>
+							<div className="block md:hidden">
+								{distance !== null && (
+									<div className=" text-white rounded-lg shadow-md w-full flex justify-start">
+										<div>
+											<p>
+												Distance about
+												<span className="text-blue-300 pl-3">
+													{distance.toFixed(2)} km
+												</span>
+											</p>
+											<p className="flex ">
+												Shipping Cost:{" "}
+												<span className="text-blue-300 pl-3">
+													${shippingCost?.toFixed(2)}
+												</span>{" "}
+											</p>
+										</div>
+									</div>
+								)}
+							</div>
+							<div className="block md:hidden">
+								<div className="flex justify-start pt-10 text-white font-bold text-2xl">
+									Total Price: ${calculateTotalPrice()}
 								</div>
-							)}
-							<div className="flex justify-end pt-10 text-white font-bold text-2xl">
-								Total Price: ${calculateTotalPrice()}
+							</div>
+							<div className="hidden md:block">
+								<div className="flex justify-end pt-10 text-white font-bold text-2xl">
+									Total Price: ${calculateTotalPrice()}
+								</div>
 							</div>
 							<div className="flex justify-end pb-4 pt-6 gap-3">
 								<div
@@ -718,7 +765,7 @@ const Payment = () => {
 									Voucher
 								</div>
 
-								<div className="w-full md:hidden block">
+								<div className="w-full md:block hidden">
 									<Link to="">
 										<div className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
 											Proceed to Payment
