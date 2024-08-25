@@ -16,14 +16,11 @@ const PaymentLayout = () => {
 					</div>
 				</div>
 				
-					<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
+				
 						<div className=" bg-primary">
 							<Payment />
 						</div>
-						<div className=" bg-primary ">
-							<Cart />
-						</div>
-					</div>
+				
 					<div className="items-start justify-center">
 					<div className="w-full bg-primary pt-24">
 						<Footer />

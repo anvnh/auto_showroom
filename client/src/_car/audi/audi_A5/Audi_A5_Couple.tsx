@@ -40,6 +40,8 @@ import "./Effect/style.css";
 import { useFollowPointer } from "./Effect/pointer";
 import Footer from "@/components/common/Footer";
 import { Audi_a5_view } from "@/components/3d";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import { useMutation, useQuery } from "@tanstack/react-query";
 const Audi_A5_Couple = () => {
 
 
@@ -231,7 +233,72 @@ const Audi_A5_Couple = () => {
     units: { left: "%", top: "%", rotation: "rad" },
   });
 
+  const ID = "66cb0bfcbdf7ec719d6d5996";
+  const carId = ID;
+  // get single car
+  const {
+    data: car,
+    isLoading,
+    refetch,
+    isRefetching,
+  } = useQuery({
+    queryKey: ["car", carId],
+    queryFn: async () => {
+      try {
+        const response = await fetch(`/api/car/${carId}`);
+        const data = await response.json();
 
+        // console.log(data);
+
+        if (!response.ok) {
+          throw new Error(data.message || "Something went wrong!");
+        }
+
+        return data;
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+  });
+  const { mutate: addToCart, isPending: isAddingToCart } = useMutation({
+    mutationFn: async (productId) => {
+      try {
+        const response = await fetch(
+          `/api/user/add/cart/${productId}`,
+          {
+            method: "POST",
+          }
+        );
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Something went wrong!");
+        }
+
+        return data;
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+    onSuccess: () => {
+      console.log("okaodjihsi");
+      toast.success("Product added to cart", {
+        duration: 2000,
+      });
+      // setTimeout(() => { setLoadingProductId (null) });
+    },
+    onError: (error) => {
+      // TODO
+      toast.error("Item already in cart", {
+        duration: 2000,
+      });
+      // setTimeout(() => { setLoadingProductId (null) });
+    },
+  });
+  const handleAddToCart = (productId) => {
+    // setLoadingProductId(productId);
+    addToCart(productId);
+  };
   return (
     <div className="">
       <div>
@@ -519,13 +586,41 @@ const Audi_A5_Couple = () => {
           className="overflow-x-hidden  hidden md:flex  w-screen h-[400%] bg-slate-100 text-slate-800"
         >
           <div ref={box_left} className="w-[40%]  h-screen  ">
-            <div className="h-full w-full flex flex-col justify-center items-center border-r border-r-slate-800 ">
-              <p className="w-full h-[15%]  text-center text-[50px] md:text-[60px] mlg:text-[80px]  font-syncopate  ">
-                NEW ERA
-              </p>
-              <p className="w-full h-[20%] px-[5%] text-center  text-[20px] md:text-[23px] mlg:text-[25px] font-kanit ">
-                This suite of advanced safety technologies helps to prevent accidents and protect occupants in the event of a collision.
-              </p>
+          <div className="h-full w-full flex flex-col justify-center items-center border-r border-r-slate-800 ">
+              <Link to='shop/product/66bfffa6aeeda00e450a9e26'>
+                <p className="w-full h-[15%]  text-center text-[50px] md:text-[60px] mlg:text-[45px]  font-syncopate font-bold ">
+                  Audi A5 Coupe <br />
+                  <span className="h-[20%] px-[5%] text-center text-[20px] md:text-[23px] mlg:text-[40px] font-poppins font-normal">    $ 48 000</span>
+                </p>
+              </Link>
+              <div className="flex justify-center gap-5 pt-12">
+                <Link to="/shop/payment/66cb0bfcbdf7ec719d6d5996">
+                  <button
+                    className=" opacity-80 backdrop-blur-xl
+							detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
+							"
+                  >
+                    Buy Now
+                  </button>
+                </Link>
+
+                <button
+                  className=" opacity-80 backdrop-blur-xl
+							detail-button bg-gray-400 text-black px-4 py-2 md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 w-40 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
+							"
+                  onClick={() =>
+                    handleAddToCart(car._id)
+                  }
+                >
+                  {isAddingToCart ? (
+                    <LoadingSpinner />
+                  ) : (
+                    <p>Add to cart</p>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
 
@@ -592,13 +687,44 @@ const Audi_A5_Couple = () => {
 
         {/* -----mobile pin */}
         <div className="  block md:hidden">
-          <div className=" w-screen h-screen px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-slate-100 text-slate-800">
-            <h1 className="w-full text-[50px] font-syncopate text-center" >
-              NEW ERA
+        <div className=" w-screen h-[300px] px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-primary text-slate-800">
+          <Link to='/shop/product/66bfffa6aeeda00e450a9e26'>
+          <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-syncopate text-center" >
+            Audi e-tron GT 2024
             </h1>
-            <p className="w-full text-[25px] sm:text-[28px] font-thin text-center">
-              This suite of advanced safety technologies helps to prevent accidents and protect occupants in the event of a collision.
-            </p>
+            </Link>
+            <p className="w-full text-white text-[30px] sm:text-[28px] font-thin text-center">
+            $ 106 500
+          </p>
+          <div className="flex justify-center gap-2 pt-0 sm:pt-12">
+            <Link to="/shop/payment/66bfffa6aeeda00e450a9e26">
+              <button
+                className=" backdrop-blur-xl
+							detail-button bg-gray-400 text-white px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
+										before:ease relative h-10 w-32 sm:h-10 sm:w-44 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
+							"
+              >
+                Buy Now
+              </button>
+            </Link>
+
+            <button
+              className=" backdrop-blur-xl
+							detail-button bg-gray-400 text-white px-4 py-2 md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
+										before:ease relative h-10 w-36 sm:h-10 sm:w-44 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
+							"
+              onClick={() =>
+                handleAddToCart(car._id)
+              }
+            >
+              {isAddingToCart ? (
+                <LoadingSpinner />
+              ) : (
+                <p>Add to cart</p>
+              )}
+            </button>
+          </div>
+
           </div>
 
           <div className=" flex md:hidden justify-center items-center w-screen h-screen gap-x-[5%]    ">
