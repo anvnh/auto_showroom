@@ -15,6 +15,8 @@ import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import {
+	carnba8,
+	carnb2024,
 	logoroi,
 	logomer,
 	logoaudi,
@@ -196,6 +198,32 @@ const Vehicle = () => {
 											</ListItemPrefix>
 											S6 Limousine
 										</ListItem>
+										<ListItem
+										onClick={() =>
+											handleCarClick("R8coupe")
+										}
+									>
+										<ListItemPrefix>
+											<ChevronRightIcon
+												strokeWidth={3}
+												className="h-3 w-5"
+											/>
+										</ListItemPrefix>
+										R8 coupe
+									</ListItem>
+									<ListItem
+										onClick={() =>
+											handleCarClick("GT2024")
+										}
+									>
+										<ListItemPrefix>
+											<ChevronRightIcon
+												strokeWidth={3}
+												className="h-3 w-5"
+											/>
+										</ListItemPrefix>
+										E-tron GT 2024
+									</ListItem>
 									</List>
 								</AccordionBody>
 							</Accordion>
@@ -420,7 +448,7 @@ const Vehicle = () => {
 											data-aos-delay="1700"
 											className="justify-end pr-24 pt-0 items-center flex"
 										>
-											<Link to="/shop/product/66bfb4d4598bcf76c770bf1f">
+											<Link to="/shop/product/66cb0bfcbdf7ec719d6d5996">
 												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
 													Shop
 												</button>
@@ -471,7 +499,109 @@ const Vehicle = () => {
 											data-aos-delay="1700"
 											className="justify-end pr-24 pt-0 items-center flex"
 										>
-											<Link to="/shop/product/66bfb4d4598bcf76c770bf1f">
+											<Link to="/shop/product/66cb140fbdf7ec719d6d5a48">
+												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
+													Shop
+												</button>
+											</Link>
+										</div>
+									</>
+								)}
+								{selectedCar === "R8coupe" && (
+									<>
+										<h1
+											data-aos="slide-left"
+											className="text-4xl xl:justify-center xl:items-center xl:pl-3 flex pt-12 lg:text-center lg:justify-start lg:pl-24"
+										>
+											Audi R8 coupe
+										</h1>
+										<p
+											data-aos="slide-left"
+											className="animate-pulse pb-4 justify-center items-center pt-5 flex text-3xl"
+										>
+											$ 208 100
+										</p>
+										<hr data-aos="slide-right" />
+										<div
+											data-aos="slide-left"
+											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
+										></div>
+										<div className="logo_Car xl:w-[800px] lg:w-[450px] lg:ml-[150px] scale-150 pt-20 h-auto xl:ml-[200px]">
+											<img
+												data-aos="slide-left"
+												data-aos-delay="1000"
+												className="w-[800px] top-[40px] relative"
+												src={carnba8}
+											/>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1500"
+											className="justify-end pr-24 top-[40px] relative items-center flex"
+										>
+											<Link to="/Audi-R8-coupe-2022">
+												<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 border-white border-t border-r font-poppins rounded-md">
+													View
+												</button>
+											</Link>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1700"
+											className="justify-end pr-24 pt-16 items-center flex"
+										>
+											<Link to="/shop/product/66a3bb07803942c2c831d0aa">
+												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
+													Shop
+												</button>
+											</Link>
+										</div>
+									</>
+								)}
+								{selectedCar === "GT2024" && (
+									<>
+										<h1
+											data-aos="slide-left"
+											className="text-4xl xl:justify-center xl:items-center xl:pl-3 flex pt-12 lg:text-center lg:justify-start lg:pl-24"
+										>
+											Audi E-Tron GT 2024
+										</h1>
+										<p
+											data-aos="slide-left"
+											className="animate-pulse pb-4 justify-center items-center pt-5 flex text-3xl"
+										>
+											$ 106 500
+										</p>
+										<hr data-aos="slide-right" />
+										<div
+											data-aos="slide-left"
+											className=" absolute  justify-center items-center h-[250px] flex xl:top-[480px] bg-gradient-to-b from-gray-400 to-gray-900 w-screen lg:top-[380px]"
+										></div>
+										<div className="logo_Car xl:w-[800px] lg:w-[450px] lg:ml-[150px] scale-150 pt-20 h-auto xl:ml-[210px]">
+											<img
+												data-aos="slide-left"
+												data-aos-delay="1000"
+												className="w-[800px] top-[20px] relative"
+												src={carnb2024}
+											/>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1500"
+											className="justify-end pr-24 top-[25px] relative items-center flex"
+										>
+											<Link to="/Audi-e-tron-GT-2024">
+												<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64 border-white border-t border-r font-poppins rounded-md">
+													View
+												</button>
+											</Link>
+										</div>
+										<div
+											data-aos="slide-left"
+											data-aos-delay="1700"
+											className="justify-end pr-24 pt-12 items-center flex"
+										>
+											<Link to="/shop/product/66bfffa6aeeda00e450a9e26">
 												<button className="bg-gradient-to-b from-gray-400 hover:shadow-white hover:shadow-md to-gray-900 text-white w-40 h-12 text-2xl before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 border-white border-l border-b before:duration-700  hover:before:-translate-x-64 font-poppins rounded-md">
 													Shop
 												</button>
@@ -632,7 +762,7 @@ const Vehicle = () => {
 												className="h-3 w-5"
 											/>
 										</ListItemPrefix>
-										Mercedes AMG CLS
+										 AMG CLS
 									</ListItem>
 									<ListItem
 										onClick={() =>
@@ -645,7 +775,7 @@ const Vehicle = () => {
 												className="h-3 w-5"
 											/>
 										</ListItemPrefix>
-										Mercedes Benz Maybach 2022
+										 Benz Maybach 2022
 									</ListItem>
 								</List>
 							</AccordionBody>
@@ -690,7 +820,7 @@ const Vehicle = () => {
 												className="h-3 w-5"
 											/>
 										</ListItemPrefix>
-										Audi A5 Coupe
+										 A5 Coupe
 									</ListItem>
 									<ListItem
 										onClick={() =>
@@ -703,7 +833,33 @@ const Vehicle = () => {
 												className="h-3 w-5"
 											/>
 										</ListItemPrefix>
-										Audi S6 Limousine
+										 S6 Limousine
+									</ListItem>
+									<ListItem
+										onClick={() =>
+											handleNavClick_repon("R8coupe")
+										}
+									>
+										<ListItemPrefix>
+											<ChevronRightIcon
+												strokeWidth={3}
+												className="h-3 w-5"
+											/>
+										</ListItemPrefix>
+										 R8 coupe
+									</ListItem>
+									<ListItem
+										onClick={() =>
+											handleNavClick_repon("GT2024")
+										}
+									>
+										<ListItemPrefix>
+											<ChevronRightIcon
+												strokeWidth={3}
+												className="h-3 w-5"
+											/>
+										</ListItemPrefix>
+										 E-tron GT 2024
 									</ListItem>
 								</List>
 							</AccordionBody>
@@ -968,6 +1124,106 @@ const Vehicle = () => {
 									className="pt-5"
 								>
 								<Link to="/shop/product/66bfb4d4598bcf76c770bf1f">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											Shop
+										</button>
+									</Link>
+								</div>
+								</div>
+							</div>
+						)}
+						{currentPage === "R8coupe" && (
+							<div
+								data-aos="fade-right"
+								className="justify-center items-center flex flex-col"
+							>
+								<div className="logo_Car w-[300px] ss:w-[600px]  sm:w-[500px] pt-12 h-auto pr-1 pb-5">
+									<img
+										data-aos="fade-left"
+										data-aos-delay="500"
+										className=""
+										src={carnba8}
+									/>
+								</div>
+								<div
+									data-aos="fade-left"
+										data-aos-delay="700"
+								>
+									<h1 className="font-syncopate ss:text-2xl  text-center text-xl">
+									Audi R8 coupe
+									</h1>
+									<p className="animate-pulse justify-center items-center pt-2 flex text-xl ss:text-3xl">
+									$ 208 100
+									</p>
+								</div>
+								<div className="flex gap-5">
+								<div
+									data-aos="fade-left"
+										data-aos-delay="900"
+									className="pt-5"
+								>
+							<Link to="/Audi-R8-coupe-2022">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white font-poppins before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											View
+										</button>
+									</Link>
+								</div>
+								<div
+										data-aos="fade-left"
+										data-aos-delay="1200"
+									className="pt-5"
+								>
+								<Link to="/shop/product/66a3bb07803942c2c831d0aa">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											Shop
+										</button>
+									</Link>
+								</div>
+								</div>
+							</div>
+						)}
+						{currentPage === "GT2024" && (
+							<div
+								data-aos="fade-right"
+								className="justify-center items-center flex flex-col"
+							>
+								<div className="logo_Car w-[300px] ss:w-[600px]  sm:w-[500px] pt-12 h-auto pr-1 pb-5">
+									<img
+										data-aos="fade-left"
+										data-aos-delay="500"
+										className=""
+										src={carnb2024}
+									/>
+								</div>
+								<div
+									data-aos="fade-left"
+										data-aos-delay="700"
+								>
+									<h1 className="font-syncopate ss:text-2xl  text-center text-xl">
+									Audi E-Tron GT 2024
+									</h1>
+									<p className="animate-pulse justify-center items-center pt-2 flex text-xl ss:text-3xl">
+									$ 106 500
+									</p>
+								</div>
+								<div className="flex gap-5">
+								<div
+									data-aos="fade-left"
+										data-aos-delay="900"
+									className="pt-5"
+								>
+								<Link to="/Audi-e-tron-GT-2024">
+										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white font-poppins before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
+											View
+										</button>
+									</Link>
+								</div>
+								<div
+										data-aos="fade-left"
+										data-aos-delay="1200"
+									className="pt-5"
+								>
+								<Link to="/shop/product/66bfffa6aeeda00e450a9e26">
 										<button className="bg-gradient-to-b from-gray-900 hover:shadow-white hover:shadow-md to-gray-400 text-white w-32 h-10 text-md rounded-md border-t border-r border-white before:ease relative overflow-hidden transition-all before:absolute before:right-0 before:top-0 before:h-24 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-75 before:duration-700  hover:before:-translate-x-64">
 											Shop
 										</button>

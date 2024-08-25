@@ -265,21 +265,19 @@ const Payment = () => {
 		},
 	});
 
-
 	const calculateTotalPrice = () => {
 		if (!cart) return 0;
-		const totalCartPrice = cart
-			.reduce((total, item) => {
-				const itemTotal =
-					Number(item.price.replace(/,/g, "")) *
-					(quantities[item._id] || 1);
-				return total + itemTotal;
-			}, 0);
-	
+		const totalCartPrice = cart.reduce((total, item) => {
+			const itemTotal =
+				Number(item.price.replace(/,/g, "")) *
+				(quantities[item._id] || 1);
+			return total + itemTotal;
+		}, 0);
+
 		const totalPriceWithShipping = totalCartPrice + (shippingCost || 0);
 		return totalPriceWithShipping.toLocaleString();
 	};
-	
+
 	const [quantities, setQuantities] = useState({});
 
 	const increaseQuantity = (item) => {
@@ -438,30 +436,30 @@ const Payment = () => {
 									onChange={handleAddressInputChange}
 								/>
 								<div className="col-span-1">
-								<div className="md:hidden block">
-								{distance !== null && (
-										<div className=" p-4 text-white rounded-lg shadow-md">
-											<p>
-												Distance about: <br />
-												<span className="text-blue-300">
-													{distance.toFixed(2)} km
-												</span>
-											</p>
-										</div>
-									)}
-								</div>
-								<div className="md:block hidden">
-								{distance !== null && (
-										<div className=" p-4 text-white rounded-lg shadow-md">
-											<p>
-												Distance about:
-												<span className="text-blue-300 pl-3">
-													{distance.toFixed(2)} km
-												</span>
-											</p>
-										</div>
-									)}
-								</div>
+									<div className="md:hidden block">
+										{distance !== null && (
+											<div className=" p-4 text-white rounded-lg shadow-md">
+												<p>
+													Distance about: <br />
+													<span className="text-blue-300">
+														{distance.toFixed(2)} km
+													</span>
+												</p>
+											</div>
+										)}
+									</div>
+									<div className="md:block hidden">
+										{distance !== null && (
+											<div className=" p-4 text-white rounded-lg shadow-md">
+												<p>
+													Distance about:
+													<span className="text-blue-300 pl-3">
+														{distance.toFixed(2)} km
+													</span>
+												</p>
+											</div>
+										)}
+									</div>
 								</div>
 								<div className="flex justify-end gap-9 mt-3 mr-3">
 									<button
@@ -765,18 +763,20 @@ const Payment = () => {
 									Voucher
 								</div>
 
-								<div className="w-full md:block hidden">
+								<div className="md:block hidden">
 									<Link to="">
+										<div className="detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
+											Proceed to Payment
+										</div>
+									</Link>
+								</div>
+								<div className="justify-end">
+									<Link to="" className="block md:hidden ">
 										<div className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
 											Proceed to Payment
 										</div>
 									</Link>
 								</div>
-								<Link to="">
-									<div className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
-										Proceed to Payment
-									</div>
-								</Link>
 							</div>
 						</div>
 

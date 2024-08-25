@@ -219,7 +219,9 @@ import offer from "./car/shopnavbar/offer.jpg";
 import testdrive from "./car/shopnavbar/testdrive.webp";
 import carnbRR from "./car/carnavbar/use/5.webp";
 import carnbRR2 from "./car/carnavbar/use/6.png";
-import car1populars from "./car/carnavbar/CB1.png"
+import carnba8 from "./car/carnavbar/use/7.png";
+import carnb2024 from "./car/carnavbar/use/8.png";
+import car1populars from "./car/carnavbar/CB1.png";
 
 //Owner------------------------------------
 import gif from "./login/gif.webp";
@@ -229,13 +231,14 @@ import bgSocial from "./owner/bgsocial.png";
 
 import Voucher15do from "./voucher/15do.png";
 
-
 // video intro
-import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov"
-import video2 from "./car2_popular/Maybach S-Class.mov"
+import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov";
+import video2 from "./car2_popular/Maybach S-Class.mov";
 export {
+	carnba8,
+	carnb2024,
 	video1,
-video2,
+	video2,
 	car1populars,
 	carnbRR,
 	carnbRR2,
