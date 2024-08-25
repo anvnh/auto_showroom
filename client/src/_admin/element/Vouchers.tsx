@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { BarChart2 } from "lucide-react";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "./comon/Header";
 import { IoAddCircle } from "react-icons/io5";
 
@@ -74,6 +74,27 @@ const Vouchers = () => {
 		setImgs([]);
 	};
 
+    useEffect(() => {
+        // Cập nhật DateOfManufacture trong formData khi dateManufacture thay đổi
+        if (dateManufacture) {
+            const formattedDate = format(dateManufacture, 'dd-MM-yyyy');
+            setFormData((prevData) => ({
+                ...prevData,
+                DateOfManufacture: formattedDate,
+            }));
+        }
+    }, [dateManufacture]);
+
+    useEffect(() => {
+        // Cập nhật ExpiryDate trong formData khi dateExpiry thay đổi
+        if (dateExpiry) {
+            const formattedDate = format(dateExpiry, 'dd-MM-yyyy');
+            setFormData((prevData) => ({
+                ...prevData,
+                ExpiryDate: formattedDate,
+            }));
+        }
+    }, [dateExpiry]);
 	return (
 		<div>
 			<Header title="Voucher" />
@@ -210,7 +231,7 @@ const Vouchers = () => {
                                 ></textarea>
 
 								<textarea
-									className="textarea textarea-bordered h-[10px]"
+									className="textarea textarea-bordered h-[10px] col-span-2"
 									placeholder="Discount"
 									name="discount"
 									value={formData.discount}
@@ -248,9 +269,10 @@ const Vouchers = () => {
 										<div className="w-auto shadow-md rounded-xl bg-opacity-0 backdrop-blur-xl relative top-36 mr-52">
                                             <Calendar
                                                 mode="single"
-                                                selected={dateManufacture}
-                                                onSelect={setDateManufacture}
+                                    
                                                 initialFocus
+												selected={dateManufacture}
+												onSelect={setDateManufacture}
                                                 className=" z-50 bg-black"
                                             />
 										</div>
@@ -289,10 +311,11 @@ const Vouchers = () => {
 										<div className="w-auto shadow-md rounded-xl bg-opacity-0 backdrop-blur-xl relative top-36 ml-60">
 												<Calendar
 													mode="single"
-													selected={dateExpiry}
+												
 													onSelect={setDateExpiry}
 													initialFocus
 													className=" z-50 bg-black"
+													selected={dateExpiry}
 												/>
 										</div>
 										<form
