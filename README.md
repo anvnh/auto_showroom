@@ -1,23 +1,5 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a id="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -25,28 +7,30 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
 <a href="https://github.com/othneildrew/Best-README-Template">
 <img src="/client/src/assets/logo/logoMain.png" alt="Logo" width="80" height="80">
 </a>
-
-  <h3 align="center">Best-README-Template</h3>
-
+  <h3 align="center">
+    AAP
+  </h3>
 <p align="center">
-An awesome README template to jumpstart your projects!
+  A fantastic website for buying and connecting with car enthusiasts.
 <br />
-<a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+<a href="">
+  <strong>
+    Explore the docs »
+  </strong>
+</a>
 <br />
 <br />
-<a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+<a href="https://aapvietnam.online/">View Demo</a>
 ·
-<a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+<a href="">Report Bug</a>
 ·
-<a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+<a href="">Request Feature</a>
 </p>
 </div>
 
@@ -54,7 +38,9 @@ An awesome README template to jumpstart your projects!
 
 <!-- TABLE OF CONTENTS -->
 <details>
-<summary>Table of Contents</summary>
+<summary>
+  Table of Contents
+</summary>
 <ol>
 <li>
 <a href="#about-the-project">About The Project</a>
@@ -83,18 +69,10 @@ An awesome README template to jumpstart your projects!
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://aapvietnam.online/)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Are you a car enthusiast looking for your dream ride or a like-minded community to connect with? Look no further! Our website is your one-stop shop for a wide selection of quality used cars and a vibrant social platform where you can connect with fellow car lovers. Whether you're searching for a classic, a sports car, or a family-friendly SUV, we've got you covered. Join our community today and discover the perfect car for your lifestyle, while also connecting with people who share your passion for automobiles.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -102,18 +80,24 @@ Use the `BLANK_README.md` to get started.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+This project is built using the following major frameworks and libraries:
 
-* [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* [![Tailwind CSS][TailwindCSS.com]][TailwindCSS-url]
+* [![Node.js][Node.js]][Node-url]
+* [![Express][Express.js]][Express-url]
+* [Additional UI library used in your project]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[TailwindCSS.com]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[TailwindCSS-url]: https://tailwindcss.com/
+[Node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+[Node-url]: https://nodejs.org/
+[Express.js]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
+[Express-url]: https://expressjs.com/
 
 
 
