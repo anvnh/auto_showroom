@@ -700,9 +700,6 @@ const Car6popular = () => {
           position="top-center"
           reverseOrder={false}
         />
-
-
-
         <section className=" relative h-screen w-screen flex justify-center items-center">
           <div ref={bg_sec1} style={{ backgroundImage: `url(${car625})` }}
             className="bg  absolute top-0 left-0 w-screen h-screen z-10 object-cover

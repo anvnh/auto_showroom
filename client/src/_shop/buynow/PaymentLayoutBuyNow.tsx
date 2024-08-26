@@ -1,5 +1,6 @@
 import Navbar from "../common/Navbar";
 import Payment from "../payment/Payment";
+import PaymentBuyNow from "../payment/PaymentBuyNow";
 import Cart from "./cart";
 import Footer from "@/components/common/Footer";
 
@@ -15,10 +16,8 @@ const PaymentLayout = () => {
 						<Navbar />
 					</div>
 				</div>
-				
-				
 						<div className=" bg-primary">
-							<Payment />
+							<PaymentBuyNow />
 						</div>
 				
 					<div className="items-start justify-center">

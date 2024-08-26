@@ -42,6 +42,7 @@ import Footer from "@/components/common/Footer";
 import { Audi_a5_view } from "@/components/3d";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { Toaster, toast } from "react-hot-toast";
 const Audi_A5_Couple = () => {
 
 
@@ -301,19 +302,23 @@ const Audi_A5_Couple = () => {
   };
   return (
     <div className="">
-      <div>
-
-        <div className="w-full flex bg-primary">
+          <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
+               <div className="w-screen flex bg-primary">
           <Navbar />
         </div>
+      <div>
+ 
         {/* <Link to="/aboutUs"><div className="w-screen h-screen bg-neutral-500"></div></Link> */}
 
-        <section className="relative h-screen w-screen flex justify-center items-center">
+        <section className="relative h-screen w-full flex justify-center items-center">
           <div ref={bg_sec1} style={{ backgroundImage: `url(${a5_8})` }}
             className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover  
           "></div>
-          <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold  ">AUDI A5 </h1>
+          <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 text-[50px] font-bold  ">AUDI A5 </h1>
           <p className="absolute font-syncopate md:text-[40px] lg:text-[50px] text-white top-[10%] left-[5%] hidden md:block">
             2024
           </p>
@@ -585,12 +590,13 @@ const Audi_A5_Couple = () => {
           ref={container_pin}
           className="overflow-x-hidden  hidden md:flex  w-screen h-[400%] bg-slate-100 text-slate-800"
         >
+       
           <div ref={box_left} className="w-[40%]  h-screen  ">
           <div className="h-full w-full flex flex-col justify-center items-center border-r border-r-slate-800 ">
-              <Link to='shop/product/66bfffa6aeeda00e450a9e26'>
+              <Link to='shop/product/66cb0bfcbdf7ec719d6d5996'>
                 <p className="w-full h-[15%]  text-center text-[50px] md:text-[60px] mlg:text-[45px]  font-syncopate font-bold ">
                   Audi A5 Coupe <br />
-                  <span className="h-[20%] px-[5%] text-center text-[20px] md:text-[23px] mlg:text-[40px] font-poppins font-normal">    $ 48 000</span>
+                  <span className="h-[20%] px-[5%] text-center text-[20px] md:text-[23px] mlg:text-[40px] font-poppins font-normal">    $ 58 000</span>
                 </p>
               </Link>
               <div className="flex justify-center gap-5 pt-12">
@@ -690,14 +696,14 @@ const Audi_A5_Couple = () => {
         <div className=" w-screen h-[300px] px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-primary text-slate-800">
           <Link to='/shop/product/66bfffa6aeeda00e450a9e26'>
           <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-syncopate text-center" >
-            Audi e-tron GT 2024
+            Audi A5 coupe
             </h1>
             </Link>
             <p className="w-full text-white text-[30px] sm:text-[28px] font-thin text-center">
-            $ 106 500
+            $ 58 000
           </p>
           <div className="flex justify-center gap-2 pt-0 sm:pt-12">
-            <Link to="/shop/payment/66bfffa6aeeda00e450a9e26">
+            <Link to="/shop/payment/66cb0bfcbdf7ec719d6d5996">
               <button
                 className=" backdrop-blur-xl
 							detail-button bg-gray-400 text-white px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
@@ -739,7 +745,7 @@ const Audi_A5_Couple = () => {
 
           <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center">
             <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate ">Sharp Wheels</h1>
-            <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
+            <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] pt-12 xs:h-[50%] object-cover" />
           </div>
         </div>
 
