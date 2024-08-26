@@ -32,7 +32,9 @@ const MarqueText = () => {
                 end: "bottom top"
             }
         })
-
+        return () => {
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        }
     }, [])
     return (
         <div ref={container_maqueText} className="bg-neutral-900 w-screen h-[300px]  overflow-x-hidden flex flex-col justify-between">

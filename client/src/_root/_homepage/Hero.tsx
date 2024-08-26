@@ -13,7 +13,7 @@ const Hero = () => {
 	useEffect(() => {
 		gsap.config({ nullTargetWarn: false });
 	}, [])
-	// //----Parallax-------//
+	//----Parallax-------//
 	// useEffect(() => {
 	// 	let getRatio = (el) =>
 	// 		window.innerHeight / (window.innerHeight + el.offsetHeight);
@@ -47,60 +47,6 @@ const Hero = () => {
 	// 	};
 	// }, []);
 
-	// //text effect
-	// const canvasRef = useRef(null);
-
-	// useEffect(() => {
-	// 	const sketch = (p) => {
-	// 		let canvas;
-	// 		const calculateFontSize = () => {
-	// 			const baseFontSize = 32; // Kích thước font cơ bản
-	// 			const scaleFactor = p.windowWidth / 300;
-	// 			return baseFontSize * scaleFactor;
-	// 		};
-	// 		p.setup = () => {
-	// 			canvas = p.createCanvas(p.windowWidth, p.windowHeight);
-	// 			canvas.parent(canvasRef.current);
-	// 			p.textAlign(p.CENTER, p.CENTER);
-	// 			p.textFont("Kanit");
-	// 			p.textSize(calculateFontSize());
-	// 		};
-
-	// 		p.draw = () => {
-	// 			p.noFill(); // Loại bỏ phần tô bên trong của chữ
-	// 			p.stroke("#FFFFFF"); // Thiết lập màu đường viền là màu đen
-	// 			p.strokeWeight(2); // Thiết lập độ dày của đường viền
-	// 			p.text("AAP", p.width / 2, p.height / 2);
-	// 		};
-	// 		p.windowResized = () => {
-	// 			p.resizeCanvas(p.windowWidth, p.windowHeight);
-	// 		};
-	// 	};
-	// }, []);
-
-	// useEffect(() => {
-	// 	const split = document.querySelectorAll(".type");
-	// 	split.forEach((char, i) => {
-	// 		const text = new SplitType(char, { types: "chars" });
-	// 		gsap.from(text.chars, {
-	// 			scrollTrigger: {
-	// 				trigger: char,
-	// 				start: "top 80%",
-	// 				end: "bottom 30%",
-	// 				scrub: 0.2,
-	// 			},
-	// 			opacity: 0.2,
-	// 			stagger: 0.1,
-	// 		});
-	// 	});
-	// }, []);
-
-	// gsap.config({
-	// 	autoSleep: 60,
-	// 	force3D: false,
-	// 	nullTargetWarn: false,
-	// 	units: { left: "%", top: "%", rotation: "rad" },
-	// });
 
 	// hiệu ứng cho video------------------------------
 	const [selectedP, setSelectedP] = useState("");
@@ -204,36 +150,7 @@ const Hero = () => {
 		handleDataFromView
 		// window.addEventListener("resize",handleDataFromView)
 	}, [])
-	// herro
-	useEffect(() => {
-		const tl = gsap.timeline()
-		tl.to(".overley", {
-			delay: 0.5,
-			yPercent: -100,
-			duration: 1,
-			ease: "circ.inOut"
-		})
-			.from(".txt1", {
-				yPercent: 100,
-				duration: 0.5
-			})
-			.from(".txt2", {
-				yPercent: 100,
-				duration: 0.5
-			}, "-=0.5")
-			.from(".txt3", {
-				yPercent: 100,
-				duration: 0.5
-			}, "-=0.5")
-			.from(".btn2", {
-				xPercent: -300,
-				duration: 0.5
-			}, "-=0.5")
-			.from(".btn1", {
-				xPercent: -300,
-				duration: 0.5
-			}, "-=0.5")
-	}, [])
+
 	return (
 		<div className="bg-black w-full h-screen">
 			{/* ---------------Parallax-------- */}
@@ -277,6 +194,8 @@ const Hero = () => {
 				<h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] 
             font-syncopate font-bold   w-full z-10  text-white">APP</h1>
 			</section> */}
+
+
 		</div>
 	);
 };

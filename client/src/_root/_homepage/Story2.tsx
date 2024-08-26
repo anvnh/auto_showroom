@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
-import { hero_5 } from "@/assets"
+import { supra_f2f } from "@/assets/homepage"
 const Story2 = () => {
     const con_p1 = useRef(null)
     const con_p2 = useRef(null)
@@ -83,11 +83,15 @@ const Story2 = () => {
             start: "top 0%",
             end: "bottom top"
         })
+
+        return () => {
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        }
     }, [])
     return (
         <div>
             <section className="bg-black">
-                <div ref={container_textBlock} className="rounded-t-[80px] w-screen bg-white  text-black h-screen flex flex-col justify-center items-center">
+                <div ref={container_textBlock} className=" w-screen bg-white  text-black h-screen flex flex-col justify-center items-center">
                     <section ref={con_p1} className=" w-[80%] h-[11%] leading-none  overflow-y-hidden">
                         <p ref={p1} className=" font-[600] italic font-kanit h-full text-center  text-[60px] xsm:text-[80px] md:text-[100px] lg:text-[120px]">
                             DISCOVER
@@ -112,7 +116,7 @@ const Story2 = () => {
             </section>
 
             <div ref={container_imageZoom} className="w-screen h-screen bg-white  flex justify-center items-center ">
-                <img ref={imageZoom_img} src={hero_5} className="w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] rounded-[1000px]  object-cover" />
+                <img ref={imageZoom_img} src={supra_f2f} className="w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] rounded-[1000px]  object-cover" />
             </div>
         </div>
     )

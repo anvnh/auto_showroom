@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { a1, a2, a3 } from "@/assets/audiA5/couple/"
+import { ScrollTrigger } from "gsap/all"
 
 export const GallaryAlbum = () => {
   const con_col = useRef(null)
@@ -17,18 +18,22 @@ export const GallaryAlbum = () => {
     }
     )
     gsap.to(col1.current, {
-      yPercent: 10,
+      yPercent: 40,
       duration: 1,
       scrollTrigger: {
         trigger: con_col.current,
+        start: "top 70%",
+        end: "bottom top",
         scrub: true,
       }
     })
     gsap.to(col3.current, {
-      yPercent: 30,
-      duration: 0.5,
+      yPercent: 40,
+      duration: 1,
       scrollTrigger: {
         trigger: con_col.current,
+        start: "top 80%",
+        end: "bottom top",
         scrub: true,
       }
     })
@@ -49,7 +54,9 @@ export const GallaryAlbum = () => {
       }
     })
 
-
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    }
   }, [])
   return (
     <div ref={con_col} className="bg-neutral-900 overflow-y-hidden
