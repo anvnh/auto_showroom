@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react"
 import SplitType from "split-type"
 import gsap from "gsap"
 import { bmwM3 } from "@/assets/homepage/story"
+import { ScrollTrigger } from "gsap/all"
 const Story_section3_mobile = () => {
   const founder_txt3 = useRef(null)
   const section_founder3 = useRef(null)
@@ -31,7 +32,9 @@ const Story_section3_mobile = () => {
     //     toggleActions: "restart reverse restart reverse"
     //   }
     // })
-
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    }
   }, [])
   return (
     <div ref={section_founder3} className="w-screen h-screen  flex xsm:hidden 

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import SplitType from "split-type"
 import gsap from "gsap"
-
+import { ScrollTrigger } from "gsap/all"
 const AboutUs = () => {
   const container_whoweare = useRef(null)
   useEffect(() => {
@@ -33,6 +33,9 @@ const AboutUs = () => {
         scrub: true
       }
     })
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    }
   }, [])
   return (
     <div ref={container_whoweare} className=" bg-[#fafafa] w-screen h-screen flex flex-col justify-center items-center ">

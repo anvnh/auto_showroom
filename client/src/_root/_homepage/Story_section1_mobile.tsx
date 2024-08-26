@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react"
 import gsap from "gsap"
 import { supraMk4 } from "@/assets/homepage/story"
+import { ScrollTrigger } from "gsap/all"
 const Story_section1_mobile = () => {
     const founder_txt1 = useRef(null)
     const founder1_overlay = useRef(null)
@@ -16,6 +17,9 @@ const Story_section1_mobile = () => {
                 scrub: true
             }
         })
+        return () => {
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        }
     }, [])
     return (
         <div ref={section_founder1} className="flex flex-col xsm:hidden w-screen h-screen  sticky top-0 bg-neutral-900  ">

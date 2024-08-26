@@ -5,6 +5,7 @@ import { a1, a2, a3 } from "@/assets/audiA5/couple/"
 import { nissanR34, supraMk4, bmwM3, bmwM3_vertical, } from "@/assets/homepage/story"
 import Story_section1_mobile from "./Story_section1_mobile"
 import Story_section3_mobile from "./Story_section3_mobile"
+import { ScrollTrigger } from "gsap/all"
 const Story = () => {
     const founder_txt1 = useRef(null)
     const founder_txt2 = useRef(null)
@@ -99,7 +100,10 @@ const Story = () => {
                 toggleActions: "restart reverse restart reverse"
             }
         })
-    })
+        return () => {
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        }
+    }, [])
     return (
         <div className="bg-neutral-900 h-[300%] relative box-border">
             <div ref={section_founder1} className="w-screen h-screen hidden xsm:flex flex-col xsm:flex-row sticky top-0   ">
