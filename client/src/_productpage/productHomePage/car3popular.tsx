@@ -367,8 +367,8 @@ const Car3popular: React.FC = () => {
 												src={image}
 												alt={`Image ${index + 1}`}
 												className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-500 ${activeImage === index
-														? "opacity-100"
-														: "opacity-0"
+													? "opacity-100"
+													: "opacity-0"
 													}`}
 											/>
 										)
@@ -402,8 +402,8 @@ const Car3popular: React.FC = () => {
 											setActiveGroup(0);
 										}}
 										className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${activeGroup === 0
-												? buttonColors[0]
-												: "bg-gray-900 bg-opacity-50 text-white"
+											? buttonColors[0]
+											: "bg-gray-900 bg-opacity-50 text-white"
 											}`}
 									>
 										Front
@@ -414,8 +414,8 @@ const Car3popular: React.FC = () => {
 											setActiveGroup(1);
 										}}
 										className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${activeGroup === 1
-												? buttonColors[1]
-												: "bg-gray-900 bg-opacity-50 text-white"
+											? buttonColors[1]
+											: "bg-gray-900 bg-opacity-50 text-white"
 											}`}
 									>
 										Side
@@ -426,8 +426,8 @@ const Car3popular: React.FC = () => {
 											setActiveGroup(2);
 										}}
 										className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${activeGroup === 2
-												? buttonColors[1]
-												: "bg-gray-900 bg-opacity-50 text-white"
+											? buttonColors[1]
+											: "bg-gray-900 bg-opacity-50 text-white"
 											}`}
 									>
 										Behind
@@ -456,7 +456,7 @@ const Car3popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[3] = ref)}
 						>
-							<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1700px] z-10 relative">
+							<div className="sketchfab-embed-wrapper w-[1000x] h-[500px] md:h-[600px]  -bottom-[1700px] z-10 relative">
 								{" "}
 								<Rollroyce_ghost_view />
 								{/* <iframe

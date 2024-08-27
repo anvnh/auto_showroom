@@ -40,7 +40,6 @@ const View = ({ sendDataToParent }) => {
                 zoomSpeed={0.5}
                 enableDamping={true}
                 dampingFactor={0.1}
-
                 autoRotate
                 autoRotateSpeed={5}
                 makeDefault

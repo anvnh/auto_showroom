@@ -576,23 +576,21 @@ const AudiS6Limousin = () => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
-  useEffect(() => {
 
-
-
-    const handleResize = () => {
-      const newSize = {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-      setWindowSize(newSize);
-      console.log(`Width: ${newSize.width}px, Height: ${newSize.height}px`);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     const newSize = {
+  //       width: window.innerWidth,
+  //       height: window.innerHeight,
+  //     };
+  //     setWindowSize(newSize);
+  //     console.log(`Width: ${newSize.width}px, Height: ${newSize.height}px`);
+  //   };
+  //   window.addEventListener('resize', handleResize);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
 
   gsap.config({
@@ -622,17 +620,17 @@ const AudiS6Limousin = () => {
           className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover  
           "></div>
-        <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold  ">
+        <h1 className="text-center text-[80px] xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold  ">
           AUDI S6
         </h1>
-        <p className="absolute font-syncopate md:text-[40px] lg:text-[50px] text-slate-700 top-[10%] left-[5%] hidden md:block">
+        <p className="absolute font-syncopate text-[26px] md:text-[40px] lg:text-[50px] text-slate-700 top-[10%] left-[5%]">
           2024
         </p>
-        <p className="absolute font-syncopate md:text-[40px] lg:text-[50px] text-slate-700 top-[10%] right-[5%] hidden md:block">
+        <p className="absolute font-syncopate text-[26px] md:text-[40px] lg:text-[50px] text-slate-700 top-[10%] right-[5%]">
           VIETNAM
         </p>
-        <img src={calang} className="absolute w-[150px] h-[70px] right-[5%] bottom-[5%] hidden mlg:block" />
-        <img src={noithat} className="absolute w-[150px] h-[70px] left-[5%] bottom-[5%] hidden mlg:block" />
+        <img src={calang} className="absolute w-[120px] ss:w-[150px] h-[60px] ss:h-[70px] right-[5%] bottom-[5%] " />
+        <img src={noithat} className="absolute w-[120px] ss:w-[150px] h-[60px] ss:h-[70px] left-[5%] bottom-[5%] " />
       </section>
 
       <section className="relative h-screen w-screen flex justify-center items-center bg-slate-50"  >
@@ -654,12 +652,12 @@ const AudiS6Limousin = () => {
           bg-center bg-no-repeat   flex justify-center items-center gap-x-[6%]">
           <p
             ref={sec3_img1}
-            className="w-[25%] h-[70%] ">
+            className="rounded-[20px] overflow-hidden hidden ss:flex w-[25%] h-[70%] ">
             <img src={sport4} className="w-full h-full object-cover" />
           </p>
           <p
             ref={sec3_img2}
-            className="w-[25%] h-[70%] ">
+            className="rounded-[20px] overflow-hidden w-[75%] ss:w-[25%] h-[70%] ">
             <img src={sport5} className="w-full h-full object-cover" />
           </p>
 
@@ -674,18 +672,18 @@ const AudiS6Limousin = () => {
           style={{ backgroundImage: `url(${sport6})` }}
           className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover flex justify-center items-center ">
-          <h1 ref={sec4_text} className="text-center  text-[70px] ss:text-[80px] sm:text-[115px] md:text-[130px] lg:text-[170px] mlg:text-[210px] xl:text-[250px] font-kanit  w-full z-10 text-slate-50 font-bold   ">
+          <h1 ref={sec4_text} className="text-center  text-[50px] ss:text-[80px] sm:text-[115px] md:text-[130px] lg:text-[170px] mlg:text-[210px] xl:text-[250px] font-kanit  w-full z-10 text-slate-50 font-bold   ">
             Discover Now </h1>
         </div>
       </section>
 
-      <div className="w-screen h-[80%] flex flex-col justify-center items-center bg-[#DADADA]">
+      <div className="w-screen h-[500px] flex flex-col justify-center items-center bg-[#DADADA]">
         <section
           onClick={() => {
             showPopup()
           }}
-          className="cursor-pointer rounded-[40px] w-[350px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
-          <p className="font-kanit font-bold text-[25px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
+          className="cursor-pointer rounded-[40px] w-[300px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
+          <p className="font-kanit font-bold text-[23px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
             Click to Explore 3D Model
           </p>
         </section>
@@ -830,7 +828,7 @@ const AudiS6Limousin = () => {
         <p className="type text-[38px]  ss:text-[47px] sm:text-[50px] md:text-[55px]  lg:text-[62px]  mlg:text-[70px] text-slate-200 font-syncopate">
           Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8
           Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8
-          Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi  A5 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8
+          Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi S8 Audi  A5 Audi
         </p>
         <img src={audi_thanXe} className="absolute w-3/4 top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%] " />
       </div>
@@ -841,20 +839,20 @@ const AudiS6Limousin = () => {
           className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover 
           "></div>
-        <h1 className="text-center  text-[100px] md:text-[150px] mlg:text-[190px] font-kanit  w-full z-10 text-white   ">SPORTS </h1>
+        <h1 className="text-center  text-[85px] md:text-[150px] mlg:text-[190px] font-kanit  w-full z-10 text-white   ">SPORTS </h1>
       </section>
       <section className="relative h-screen w-screen flex justify-center items-center"  >
         <div
           style={{ backgroundImage: `url(${sport8})` }}
           className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover"></div>
-        <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] 
+        <h1 className=" text-center text-[85px] md:text-[150px] mlg:text-[190px] 
             font-kanit   w-full z-10  text-white">MODERN</h1>
       </section>
       <section className="relative h-screen w-screen flex justify-center items-center">
         <div style={{ backgroundImage: `url(${a5_5})` }} className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover"></div>
-        <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10 text-white">LUXURY</h1>
+        <h1 className="text-center text-[85px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10 text-white">LUXURY</h1>
       </section>
       <section className="relative h-screen w-screen flex justify-center items-center">
         <div style={{ backgroundImage: `url(${sport6})` }} className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
@@ -1066,28 +1064,28 @@ const AudiS6Limousin = () => {
         <h1 className="w-full text-[50px] font-syncopate text-center" >
           NEW ERA
         </h1>
-        <p className="w-full text-[25px] sm:text-[28px] font-thin text-center">
+        <p className="w-full text-[25px] sm:text-[28px]  text-center">
           This suite of advanced safety technologies helps to prevent accidents and protect occupants in the event of a collision.
         </p>
       </div>
 
-      <div className=" flex md:hidden justify-center items-center w-screen h-screen gap-x-[5%]    ">
+      <div className=" flex md:hidden justify-center items-center w-screen h-screen gap-x-[5%]   bg-neutral-900 ">
         <img src={audiA5_15} className="object-cover w-[170px] xs:w-[200px] sm:w-[270px] h-[60%] xs:h-[70%]" />
         <img src={audiA5_9} className="object-cover w-[170px] xs:w-[200px]  sm:w-[270px] h-[60%] xs:h-[70%]" />
       </div>
 
-      <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center bg-slate-900">
+      <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center bg-neutral-900">
         <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate  text-white">Back Light</h1>
         <img src={backLight2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
       </div>
 
-      <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center">
+      <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center bg-neutral-900">
         <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate ">Sharp Wheels</h1>
         <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
       </div>
 
       <div className="bg-primary">
-        <Footer></Footer>
+        <Footer />
       </div>
     </div>
   );

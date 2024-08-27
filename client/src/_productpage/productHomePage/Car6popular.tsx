@@ -40,6 +40,7 @@ import {
   car624,
 } from "../../assets";
 import { audiA5_15, audiA5_9, } from "@/assets/audiA5";
+import { close_icon } from "@/assets/homepage";
 //-------------------Component--------------
 import "../style.css";
 import { useFollowPointer } from "../pointer";
@@ -590,35 +591,8 @@ const Car6popular = () => {
     };
   }, [])
 
-
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-  useEffect(() => {
-
-
-
-    const handleResize = () => {
-      const newSize = {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-      setWindowSize(newSize);
-      console.log(`Width: ${newSize.width}px, Height: ${newSize.height}px`);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-
   gsap.config({
-    autoSleep: 60,
-    force3D: false,
     nullTargetWarn: false,
-    units: { left: "%", top: "%", rotation: "rad" },
   });
   const ID = "66bfffa6aeeda00e450a9e26";
   const carId = ID;
@@ -686,9 +660,16 @@ const Car6popular = () => {
     // setLoadingProductId(productId);
     addToCart(productId);
   };
+  const [isPopupVisible, setPopupVisible] = useState(false)
+  const showPopup = () => {
+    setPopupVisible(true)
+  }
+  const hidePopup = () => {
+    setPopupVisible(false)
+  }
   return (
 
-    <div className="">
+    <div>
       {/* <motion.div
         ref={ref}
         style={{ x, y }}
@@ -762,6 +743,42 @@ const Car6popular = () => {
         </section>
 
 
+        <div className="w-screen h-[800px] flex flex-col justify-center items-center bg-[#DADADA]">
+          <section
+            onClick={() => {
+              showPopup()
+            }}
+            className="cursor-pointer rounded-[40px] w-[300px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
+            <p className="font-kanit font-bold text-[23px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
+              Click to Explore 3D Model
+            </p>
+          </section>
+        </div>
+
+        <div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
+          <section className={`w-screen h-screen flex  flex-col justify-center items-center `}>
+            <div className="w-[80%] h-[8%] bg-neutral-600  flex justify-between items-center">
+              <section className="w-[5%] h-full "></section>
+              <section className="w-[80%] h-full  flex justify-center items-center">
+                <p className="font-kanit font-bold text-[23px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
+                  Audi Etron 3D Model
+                </p>
+              </section>
+              <section
+                onClick={() => {
+                  hidePopup()
+                }}
+                className="cursor-pointer w-[15%] ss:w-[10%] xsm:w-[8%] mlg:w-[6%] h-full flex justify-center items-center bg-red-400 ">
+                <img src={close_icon} className="w-1/2 h-1/2 object-cover" />
+              </section>
+            </div>
+            <div className="w-[80%] h-[50%] rounded-[10px]  ">
+              <Audi_etron_view />
+            </div>
+          </section>
+        </div>
+
+
 
         <div ref={container_hero} className="hero  relative w-screen h-screen">
           <div className="z-10 w-full absolute h-full bg-gradient-to-tr from-slate-950 opacity-50"></div>
@@ -771,7 +788,7 @@ const Car6popular = () => {
             className="z-10 absolute top-[5%]  left-0  text-slate-200 mx-[20px] my-[20px] sm:my-[80px] sm:mx-[50px]"
           >
             <div className="font-bold font-syncopate text-[40px] md:text-[60px] ">
-              2024 A5 Coupe
+              2024 Audi Etron
             </div>
             <div className="font-medium font-kanit text-[22px] md:text-[27px]">
               Starting at $48,000
@@ -911,9 +928,6 @@ const Car6popular = () => {
           <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10  text-white">GDM</h1>
         </section>
 
-        <div className="w-screen h-screen">
-          <Audi_etron_view />
-        </div>
 
         <div
           ref={txtbox}
