@@ -201,7 +201,7 @@ import logo1 from "./logo_car1.png";
 import logo4 from "./logo_car4.png";
 import logo5 from "./logo_car5.png";
 import logo236 from "./logo_car236.png";
-import logoroi from "./logo/logoroll.png";
+import logoroi from "./logo/logoroll.png"
 import logomer from "./logo/logomer.png";
 import logoaudi from "./logo/logoaudi.png";
 import logopos from "./logo/logopos.png";
