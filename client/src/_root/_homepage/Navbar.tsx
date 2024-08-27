@@ -165,7 +165,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 						</button>
 					</div>
 					<div className=" ">
-						<ul className="list-none flex pr-3 justify-end items-center flex-1">
+						<ul className="list-none flex pr-7 justify-end items-center flex-1">
 							{authUser ? (
 								<>
 									<Link to="/shop/cart">
@@ -185,8 +185,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 													: "/social/profile/login"
 											}
 										>
-											<div className="avatar placeholder w-[30px] xl:w-full h-auto">
-												<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black"
+											<div className="avatar placeholder w-[30px] xl:w-full h-auto ">
+												<div className="bg-[#C9C6C6] w-10 rounded-3xl text-black "
 													title="Go to your profile">
 													{authUser ? (
 														<img

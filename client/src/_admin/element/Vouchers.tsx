@@ -325,7 +325,7 @@ const Vouchers = () => {
 										id="Add_Performances"
 										className="modal"
 									>
-										<div className="w-auto shadow-md rounded-xl bg-opacity-0 backdrop-blur-xl relative top-36 mr-52">
+										<div className="w-auto shadow-md rounded-xl bg-opacity-0 backdrop-blur-xl relative md:top-52 md:mr-52 top-[150px] mr-12 ss:top-52 ss:mr-44">
 											<Calendar
 												mode="single"
 												initialFocus
@@ -375,7 +375,7 @@ const Vouchers = () => {
 										id="Add_Performance"
 										className="modal "
 									>
-										<div className="w-auto shadow-md rounded-xl bg-opacity-0 backdrop-blur-xl relative top-36 ml-60">
+										<div className="w-auto shadow-md rounded-xl bg-opacity-0 backdrop-blur-xl relative md:top-52 md:ml-60 top-[150px] ml-12 ss:top-52 ss:ml-52">
 											<Calendar
 												mode="single"
 												onSelect={setDateExpiry}
