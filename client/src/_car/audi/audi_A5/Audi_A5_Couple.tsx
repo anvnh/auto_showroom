@@ -46,6 +46,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { Canvas } from "@react-three/fiber";
 import Lenis from "@studio-freight/lenis";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis"
+import { Toaster, toast } from "react-hot-toast";
 const Audi_A5_Couple = () => {
 
 
@@ -329,7 +330,10 @@ const Audi_A5_Couple = () => {
   return (
 
     <div className={`${isPopupVisible ? "overflow-hidden" : "overflow-visible"} w-screen h-screen   `}>
-
+       <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       <div className="w-screen flex bg-primary">
         <Navbar />
       </div>
@@ -668,17 +672,17 @@ const Audi_A5_Couple = () => {
         <div ref={box_left} className="w-[40%]  h-screen  ">
           <div className="h-full w-full flex flex-col justify-center items-center border-r border-r-slate-800 ">
             <Link to='shop/product/66bfffa6aeeda00e450a9e26'>
-              <p className="w-full h-[70px]  text-center text-[50px] md:text-[55px]    font-kanit font-bold ">
+              <p className="w-full h-[70px]  text-center text-[50px] md:text-[70px]    font-kanit font-bold ">
                 Audi A5 Coupe
                 <div className="h-[40px]  text-center text-[20px]  md:text-[40px] font-kanit font-light">    $ 48 000</div>
               </p>
             </Link>
-            <div className="flex justify-center gap-x-[20px] pt-[100px]">
+            <div className="flex justify-center gap-x-[20px] pt-[150px]">
               <Link to="/shop/payment/66cb0bfcbdf7ec719d6d5996">
                 <button
                   className=" opacity-80 backdrop-blur-xl
-							detail-button  text-black   md:w-[150px] md:h-[50px] justify-center flex items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-sm md:text-base rounded-3xl text-center
-										before:ease relative  overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
+							detail-button  text-black  md:w-[200px] md:h-[50px] justify-center flex items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-sm md:text-base rounded-3xl text-center
+										before:ease relative  overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
 							"
                 >
                   <p>Buy Now</p>
@@ -687,7 +691,7 @@ const Audi_A5_Couple = () => {
 
               <button
                 className=" opacity-80 backdrop-blur-xl
-							detail-button  text-black  border-black border  md:w-[150px] md:h-[50px]  flex justify-center items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-sm md:text-base rounded-3xl text-center
+							detail-button  text-black  border-black border  md:w-[200px] md:h-[50px]  flex justify-center items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-sm md:text-base rounded-3xl text-center
 										before:ease relative  overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
 							"
                 onClick={() =>
@@ -770,14 +774,14 @@ const Audi_A5_Couple = () => {
         <div className=" w-screen h-[300px] px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-neutral-900 text-slate-800">
           <Link to='/shop/product/66bfffa6aeeda00e450a9e26'>
             <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-kanit text-center" >
-              Audi e-tron GT 2024
+              Audi A5 Coupe
             </h1>
           </Link>
           <p className="w-full text-neutral-200 text-[30px] sm:text-[28px] font-kanit font-light text-center">
             $ 106 500
           </p>
           <div className="flex justify-center  gap-2  ">
-            <Link to="/shop/payment/66bfffa6aeeda00e450a9e26">
+            <Link to="/shop/payment/66cb0bfcbdf7ec719d6d5996">
               <button
                 className=" backdrop-blur-xl
 							detail-button bg-neutral-400 text-white px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center items-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
