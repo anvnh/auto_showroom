@@ -135,7 +135,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 	};
 
 	return (
-		<div className="z-50 fixed top-0 w-full font-poppins transition-transform duration-300">
+		<div className="z-50 fixed top-0 w-screen font-poppins transition-transform duration-30">
 			{isVisible && (
 				<nav
 					data-aos="fade"

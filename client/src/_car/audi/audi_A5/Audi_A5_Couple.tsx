@@ -311,56 +311,11 @@ const Audi_A5_Couple = () => {
     // infinite: true, // cho phép cuộn vô hạn
   });
   useEffect(() => {
-
-
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-
-    // const lenis = useLenis(({ scroll }) => {
-    // called every scroll
-    // })
-
-    // const rect = canvasRef.current.getBoundingClientRect();
-    // console.log(rect.top)
-    // lenis.on('scroll', ScrollTrigger.update)
-    // smoothScroll_lenis()
-
-    // gsap.ticker.add((time) => {
-    //   lenis.raf(time * 1000)
-    // })
-
-    // gsap.ticker.lagSmoothing(0)
-
-    // const handleWheel = (e) => {
-    //   // e.stopPropagation(); // Ngăn không cho sự kiện cuộn ảnh hưởng đến canvas
-
-    //   // lenis.destroy()
-    //   if (canvasRef.current) {
-    //     // Tạm dừng Lenis khi cuộn trong Canvas
-    //     console.log("scroll in canvas")
-    //     // e.preventDefault()
-
-    //     // lenis.stop();
-    //     lenis.destroy()
-    //   }
-
-    // };
-
-    // const canvas = canvasRef.current;
-    // if (canvas) {
-    //   canvas.addEventListener('wheel', handleWheel);
-    // } else () => {
-    //   canvas.removeEventListenr('wheel')
-    // }
-
-    // return () => {
-    //   if (canvas) {
-    //     canvas.removeEventListener('wheel', handleWheel);
-    //   }
-    // };
   }, []);
 
   const [isPopupVisible, setPopupVisible] = useState(false)
@@ -373,9 +328,9 @@ const Audi_A5_Couple = () => {
 
   return (
 
-    <div className={`${isPopupVisible ? "overflow-hidden" : "overflow-visible"}`}>
+    <div className={`${isPopupVisible ? "overflow-hidden" : "overflow-visible"} w-screen h-screen   `}>
 
-      <div className="w-full flex bg-primary">
+      <div className="w-screen flex bg-primary">
         <Navbar />
       </div>
       {/* <Link to="/aboutUs"><div className="w-screen h-screen bg-neutral-500"></div></Link> */}
@@ -386,15 +341,17 @@ const Audi_A5_Couple = () => {
           className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover  
           "></div>
-        <h1 className="text-center  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold  ">AUDI A5 </h1>
-        <p className="absolute font-syncopate md:text-[40px] lg:text-[50px] text-white top-[10%] left-[5%] hidden md:block">
+        <h1 className="text-center text-[80px]  xs:text-[105px] sm:text-[140px] md:text-[150px] lg:text-[190px] mlg:text-[225px] xl:text-[290px] font-kanit  w-full z-10 text-slate-50 font-bold  ">
+          AUDI A5
+        </h1>
+        <p className="absolute font-syncopate text-[26px] md:text-[40px] lg:text-[50px] text-white top-[10%] left-[5%] ">
           2024
         </p>
-        <p className="absolute font-syncopate md:text-[40px] lg:text-[50px] text-white top-[10%] right-[5%] hidden md:block">
+        <p className="absolute font-syncopate text-[26px] md:text-[40px] lg:text-[50px] text-white top-[10%] right-[5%]  ">
           VIETNAM
         </p>
-        <img src={calang} className="absolute w-[150px] h-[70px] right-[5%] bottom-[5%] hidden mlg:block" />
-        <img src={noithat} className="absolute w-[150px] h-[70px] left-[5%] bottom-[5%] hidden mlg:block" />
+        <img src={calang} className="absolute w-[120px] ss:w-[150px] h-[60px] ss:h-[70px] right-[5%] bottom-[5%] " />
+        <img src={noithat} className="absolute w-[120px] ss:w-[150px] h-[60px] ss:h-[70px] left-[5%] bottom-[5%] " />
       </section>
 
 
@@ -406,7 +363,9 @@ const Audi_A5_Couple = () => {
           //style={{ backgroundImage: `url(${a5_6})` }}
           className="bg z-40 absolute top-0 left-0 w-screen h-screen object-cover
           bg-center bg-no-repeat  bg-cover flex justify-center items-center">
-          <p ref={sec2_txt} className="w-full text-[30px] ss:text-[40px]  sm:text-[50px] md:text-[60px] xl:text-[80px] text-center font-kanit text-slate-700">Dynamic down to the last curve</p>
+          <p ref={sec2_txt} className="w-full text-[35px] ss:text-[40px]  sm:text-[50px] md:text-[60px] xl:text-[80px] text-center font-kanit text-slate-700">
+            Dynamic down to the last curve
+          </p>
         </div>
       </section>
 
@@ -417,12 +376,12 @@ const Audi_A5_Couple = () => {
           bg-center bg-no-repeat   flex justify-center items-center gap-x-[6%]">
           <p
             ref={sec3_img1}
-            className="w-[25%] h-[70%]  ">
+            className="rounded-[20px] overflow-hidden w-[25%] h-[70%] hidden ss:flex  ">
             <img src={a1} className="w-full h-full object-cover " />
           </p>
           <p
             ref={sec3_img2}
-            className="w-[25%] h-[70%] ">
+            className="rounded-[20px] overflow-hidden w-[75%] ss:w-[25%] h-[70%] ">
             <img src={a2} className="w-full h-full object-cover" />
           </p>
 
@@ -437,7 +396,7 @@ const Audi_A5_Couple = () => {
           style={{ backgroundImage: `url(${a5_7})` }}
           className=" bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover flex justify-center items-center ">
-          <h1 ref={sec4_txt} className="text-center  text-[70px] ss:text-[80px] sm:text-[115px] md:text-[130px] lg:text-[170px] mlg:text-[210px] xl:text-[250px] font-kanit  w-full z-10 text-slate-50 font-bold   ">
+          <h1 ref={sec4_txt} className="text-center  text-[50px] ss:text-[80px] sm:text-[115px] md:text-[130px] lg:text-[170px] mlg:text-[210px] xl:text-[250px] font-kanit  w-full z-10 text-slate-50 font-bold   ">
             Discover Now </h1>
         </div>
       </section>
@@ -447,8 +406,8 @@ const Audi_A5_Couple = () => {
           onClick={() => {
             showPopup()
           }}
-          className="cursor-pointer rounded-[40px] w-[350px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
-          <p className="font-kanit font-bold text-[25px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
+          className="cursor-pointer rounded-[40px] w-[300px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
+          <p className="font-kanit font-bold text-[22px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
             Click to Explore 3D Model
           </p>
         </section>
@@ -580,25 +539,33 @@ const Audi_A5_Couple = () => {
           className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
           bg-center bg-no-repeat  bg-cover 
           "></div>
-        <h1 className="text-center  text-[100px] md:text-[150px] mlg:text-[190px] font-kanit  w-full z-10 text-white   ">SPORTS </h1>
+        <h1 className="text-center  text-[85px] md:text-[150px] mlg:text-[190px] font-kanit  w-full z-10 text-white   ">
+          SPORTS
+        </h1>
       </section>
       <section className="relative h-screen w-screen flex justify-center items-center"  >
         <div
           style={{ backgroundImage: `url(${a5_6})` }}
           className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
-          bg-center bg-no-repeat  bg-cover"></div>
-        <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] 
-            font-kanit   w-full z-10  text-white">MODERN</h1>
+          bg-center bg-no-repeat  bg-cover"/>
+        <h1 className="text-center text-[85px] md:text-[150px] mlg:text-[190px] 
+            font-kanit   w-full z-10  text-white">
+          MODERN
+        </h1>
       </section>
       <section className="relative h-screen w-screen flex justify-center items-center">
         <div style={{ backgroundImage: `url(${a5_5})` }} className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
-          bg-center bg-no-repeat  bg-cover"></div>
-        <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10 text-white">LUXURY</h1>
+          bg-center bg-no-repeat  bg-cover"/>
+        <h1 className="text-center text-[85px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10 text-white">
+          LUXURY
+        </h1>
       </section>
       <section className="relative h-screen w-screen flex justify-center items-center">
         <div style={{ backgroundImage: `url(${a5_7})` }} className="bg  absolute top-0 left-0 w-screen h-screen -z-10 object-cover
-          bg-center bg-no-repeat  bg-cover"></div>
-        <h1 className="text-center text-[100px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10  text-white">GDM</h1>
+          bg-center bg-no-repeat  bg-cover"/>
+        <h1 className="text-center text-[80px] md:text-[150px] mlg:text-[190px] font-kanit   w-full z-10  text-white">
+          GDM
+        </h1>
       </section>
 
 
@@ -701,27 +668,27 @@ const Audi_A5_Couple = () => {
         <div ref={box_left} className="w-[40%]  h-screen  ">
           <div className="h-full w-full flex flex-col justify-center items-center border-r border-r-slate-800 ">
             <Link to='shop/product/66bfffa6aeeda00e450a9e26'>
-              <p className="w-full h-[15%]  text-center text-[50px] md:text-[60px] mlg:text-[45px]  font-syncopate font-bold ">
-                Audi A5 Coupe <br />
-                <span className="h-[20%] px-[5%] text-center text-[20px] md:text-[23px] mlg:text-[40px] font-poppins font-normal">    $ 48 000</span>
+              <p className="w-full h-[70px]  text-center text-[50px] md:text-[55px]    font-kanit font-bold ">
+                Audi A5 Coupe
+                <div className="h-[40px]  text-center text-[20px]  md:text-[40px] font-kanit font-light">    $ 48 000</div>
               </p>
             </Link>
-            <div className="flex justify-center gap-5 pt-12">
+            <div className="flex justify-center gap-x-[20px] pt-[100px]">
               <Link to="/shop/payment/66cb0bfcbdf7ec719d6d5996">
                 <button
                   className=" opacity-80 backdrop-blur-xl
-							detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
+							detail-button  text-black   md:w-[150px] md:h-[50px] justify-center flex items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-sm md:text-base rounded-3xl text-center
+										before:ease relative  overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
 							"
                 >
-                  Buy Now
+                  <p>Buy Now</p>
                 </button>
               </Link>
 
               <button
                 className=" opacity-80 backdrop-blur-xl
-							detail-button bg-gray-400 text-black px-4 py-2 md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
+							detail-button  text-black  border-black border  md:w-[150px] md:h-[50px]  flex justify-center items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-sm md:text-base rounded-3xl text-center
+										before:ease relative  overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
 							"
                 onClick={() =>
                   handleAddToCart(car._id)
@@ -799,31 +766,31 @@ const Audi_A5_Couple = () => {
       </div>
 
       {/* -----mobile pin */}
-      <div className="  block md:hidden">
-        <div className=" w-screen h-[300px] px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-primary text-slate-800">
+      <div className="  block md:hidden ">
+        <div className=" w-screen h-[300px] px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-neutral-900 text-slate-800">
           <Link to='/shop/product/66bfffa6aeeda00e450a9e26'>
-            <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-syncopate text-center" >
+            <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-kanit text-center" >
               Audi e-tron GT 2024
             </h1>
           </Link>
-          <p className="w-full text-white text-[30px] sm:text-[28px] font-thin text-center">
+          <p className="w-full text-neutral-200 text-[30px] sm:text-[28px] font-kanit font-light text-center">
             $ 106 500
           </p>
-          <div className="flex justify-center gap-2 pt-0 sm:pt-12">
+          <div className="flex justify-center  gap-2  ">
             <Link to="/shop/payment/66bfffa6aeeda00e450a9e26">
               <button
                 className=" backdrop-blur-xl
-							detail-button bg-gray-400 text-white px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
+							detail-button bg-neutral-400 text-white px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center items-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
 										before:ease relative h-10 w-32 sm:h-10 sm:w-44 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
 							"
               >
-                Buy Now
+                <p>Buy now</p>
               </button>
             </Link>
 
             <button
               className=" backdrop-blur-xl
-							detail-button bg-gray-400 text-white px-4 py-2 md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
+							detail-button bg-neutral-400 text-white px-4  md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px]  flex justify-center items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
 										before:ease relative h-10 w-36 sm:h-10 sm:w-44 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
 							"
               onClick={() =>
@@ -840,23 +807,23 @@ const Audi_A5_Couple = () => {
 
         </div>
 
-        <div className=" flex md:hidden justify-center items-center w-screen h-screen gap-x-[5%]    ">
+        <div className=" flex md:hidden justify-center items-center w-screen h-screen gap-x-[5%]  bg-neutral-900  ">
           <img src={audiA5_15} className="object-cover w-[170px] xs:w-[200px] sm:w-[270px] h-[60%] xs:h-[70%]" />
           <img src={audiA5_9} className="object-cover w-[170px] xs:w-[200px]  sm:w-[270px] h-[60%] xs:h-[70%]" />
         </div>
 
-        <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center bg-slate-900">
+        <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center bg-neutral-900">
           <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate  text-white">Back Light</h1>
           <img src={backLight2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
         </div>
 
-        <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center">
+        <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center bg-neutral-900">
           <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate ">Sharp Wheels</h1>
           <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
         </div>
       </div>
 
-      <div className=" block bg-primary">
+      <div className=" block bg-primary w-screen">
         <Footer />
       </div>
     </div >

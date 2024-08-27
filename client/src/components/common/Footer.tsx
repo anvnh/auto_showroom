@@ -19,7 +19,7 @@ const Footer = () => {
                     <div className=' text-[14px] flex flex-col gap-y-[4px]'>
                         <Link to="/Mercedes-AMG-CLS" ><div className=''>AMG CLS</div></Link>
                         <Link to="/Mercedes-Benz-Maybach-2022"><div className=''>Maybach 2022</div></Link>
-                        <Link to="/audi-A5-Couple"><div className=''>A5 Couple</div></Link>
+                        <Link to="/audi-a5-couple"><div className=''>A5 Couple</div></Link>
                         <Link to="/audi-s6-limousin"><div className=''>A5 Limousin</div></Link>
                     </div>
                 </section>
@@ -72,8 +72,9 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className='w-screen pt-[35px] h-[525px] md:hidden  ml-[20px] '>
-                <section className='w-screen flex justify-center '>
+            {/* ---mobile--- */}
+            <div className='w-full pt-[35px] h-[525px] md:hidden   '>
+                <section className='w-full flex justify-center '>
                     <div className='w-[40%] h-[225px]'>
                         <h1 className=' text-[22px] sm:text-[25px] font-kanit mb-[15px]'>
                             Vehicles
@@ -81,7 +82,7 @@ const Footer = () => {
                         <div className='w-full flex flex-col gap-y-[4px]'>
                             <Link to="/Mercedes-AMG-CLS"><div className=''>AMG CLS</div></Link>
                             <Link to="/Mercedes-Benz-Maybach-2022"><div className=''>Maybach 2022</div></Link>
-                            <Link to="/audi-A5-Couple"><div className=''>A5 Couple</div></Link>
+                            <Link to="/audi-a5-couple"><div className=''>A5 Couple</div></Link>
                             <Link to="/audi-s6-limousin"><div className=''>A5 Limousin</div></Link>
                         </div>
                     </div>
@@ -92,7 +93,7 @@ const Footer = () => {
                         <p className='text-[15px]'>Text Drive</p>
                     </div>
                 </section>
-                <section className='w-screen flex justify-center'>
+                <section className='w-full flex justify-center'>
                     <div className='w-[40%] '>
                         <h1 className='  text-[22px] sm:text-[25px] font-kanit mb-[15px]'>Inventory</h1>
                         <div className='w-full flex flex-col gap-y-[4px]'>
@@ -110,13 +111,13 @@ const Footer = () => {
                         <p className='text-[15px]'>Resource</p>
                     </div>
                 </section>
-                {/* <section className='  w-screen flex justify-between   text-[30px]  mt-[30px] '>
-                    <FaFacebook/>
-                    <RiInstagramFill/>
-                    <FaTwitter/>
-                    <SiZalo/>
-                    <ImGithub/>
-                </section> */}
+                <section className='w-full flex justify-evenly text-[30px]  mt-[30px] border-t pt-[20px] '>
+                    <FaFacebook />
+                    <RiInstagramFill />
+                    <FaTwitter />
+                    <SiZalo />
+                    <ImGithub />
+                </section>
             </div>
         </footer>
     )

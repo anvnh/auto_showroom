@@ -415,7 +415,7 @@ const Car5popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[3] = ref)}
 						>
-							<div className="sketchfab-embed-wrapper w-[1000x] md:h-[900px] h-[500px] -bottom-[1800px] z-10 relative">
+							<div className="sketchfab-embed-wrapper w-[1000x]  h-[500px] md:h-[700px] -bottom-[1800px] z-10 relative">
 								{" "}
 								<Rollroyce_phantom_view />
 								{/* <iframe

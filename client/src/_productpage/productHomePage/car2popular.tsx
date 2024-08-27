@@ -22,8 +22,7 @@ import {
 	logomer,
 	video2
 } from "../../assets";
-import { Button } from "@/components/ui/button";
-import Lenis from "@studio-freight/lenis";
+import { close_icon } from "@/assets/homepage";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
@@ -125,10 +124,18 @@ const Car2popular = () => {
 		addToCart(productId);
 	};
 
+
+	const [isPopupVisible, setPopupVisible] = useState(false)
+	const showPopup = () => {
+		setPopupVisible(true)
+	}
+	const hidePopup = () => {
+		setPopupVisible(false)
+	}
 	return (
 		<div>
 			<div
-				// style={{ backgroundImage: `url(${sky})` }}
+				style={{ backgroundImage: `url(${sky})` }}
 
 				className="min-h bg-black"
 			>
@@ -317,8 +324,40 @@ const Car2popular = () => {
 				</div>
 
 				{/* 3D car------------------------------------------- */}
-				<div className="w-screen h-screen">
-					<Mercedes_maybach_view />
+				<div className="w-screen h-[500px] flex flex-col justify-center items-center bg-[#DADADA]">
+					<section
+						onClick={() => {
+							showPopup()
+						}}
+						className="cursor-pointer rounded-[40px] w-[300px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
+						<p className="font-kanit font-bold text-[23px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
+							Click to Explore 3D Model
+						</p>
+					</section>
+				</div>
+
+				<div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
+					<section className={`w-screen h-screen flex  flex-col justify-center items-center `}>
+						<div className="w-[80%] h-[8%] bg-neutral-600  flex justify-between items-center">
+							<section className="w-[5%] h-full "></section>
+							<section className="w-[80%] h-full  flex justify-center items-center">
+								<p className="font-kanit font-bold text-[23px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
+									Mercedes Maybach 3D Model
+								</p>
+							</section>
+							<section
+								onClick={() => {
+									hidePopup()
+								}}
+								className="cursor-pointer w-[15%] ss:w-[10%] xsm:w-[8%] mlg:w-[6%] h-full flex justify-center items-center bg-red-400 ">
+								<img src={close_icon} className="w-1/2 h-1/2 object-cover" />
+							</section>
+						</div>
+						<div className="w-[80%] h-[50%] rounded-[10px]  ">
+
+							<Mercedes_maybach_view />
+						</div>
+					</section>
 				</div>
 				{/* <div className="">
 					<div
