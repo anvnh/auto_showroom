@@ -347,7 +347,7 @@ const Car1popular = () => {
 							<img src={close_icon} className="w-1/2 h-1/2 object-cover" />
 						</section>
 					</div>
-					<div className="w-[80%] h-[50%] rounded-[10px]  ">
+					<div className="w-[80%] h-[50%] rounded-[10px] overflow-hidden ">
 						<Mercedes_amg_cls_view />
 					</div>
 				</section>
