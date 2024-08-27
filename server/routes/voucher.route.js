@@ -1,6 +1,6 @@
 import express from "express";
 
-import { addVoucher } from "../controllers/voucher.controller.js";
+import { addVoucher, getAllVouchers, deleteVoucher } from "../controllers/voucher.controller.js";
 
 const router = express.Router();
 
@@ -9,6 +9,8 @@ router.get("/", (req, res) => {
     res.json("Voucher route");
 });
 
-router.get("/add", addVoucher);
+router.get("/all", getAllVouchers);
+router.post("/add", addVoucher);
+router.delete("/delete/:id", deleteVoucher);
 
 export default router;

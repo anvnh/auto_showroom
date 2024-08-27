@@ -6,17 +6,29 @@ const voucherSchema = new mongoose.Schema(
 			type: Number,
 			required: true,
 		},
-		minOrder: {
+		minPrice: {
 			type: Number,
 			required: true,
 		},
-        condition: {
+		minPosts: {
+			type: Number,
+			required: true,
+		},
+		minLikes: {
+			type: Number,
+			required: true,
+		},
+		manufacturDate: {
+			type: String,
+			required: true,
+		},
+		expiryDate: {
+			type: String,
+			required: true,
+		},
+        img: {
             type: String,
-            required: true,
-        },
-        image: {
-            type: String,
-            required: true,
+			required: true,
         },
 	},
 	{ timestamps: true }
