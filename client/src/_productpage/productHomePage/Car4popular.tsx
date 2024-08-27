@@ -38,6 +38,7 @@ import {
   car419,
 } from "../../assets";
 import { audiA5_15, audiA5_9, } from "@/assets/audiA5";
+import { close_icon } from "@/assets/homepage";
 //-------------------Component--------------
 import "../style.css";
 import { useFollowPointer } from "../pointer";
@@ -56,6 +57,10 @@ const Car4popular = () => {
 
   //smooth scroll
   useEffect(() => {
+    gsap.config({
+      nullTargetWarn: false,
+    });
+
     const lenis = new Lenis();
     function raf(time) {
       lenis.raf(time);
@@ -83,7 +88,6 @@ const Car4popular = () => {
   useEffect(() => {
 
     const tl = gsap.timeline()
-    tl
       .set(sec1_txt.current, {
         opacity: 0,
         y: 500,
@@ -612,13 +616,6 @@ const Car4popular = () => {
     };
   }, []);
 
-
-  gsap.config({
-    autoSleep: 60,
-    force3D: false,
-    nullTargetWarn: false,
-    units: { left: "%", top: "%", rotation: "rad" },
-  });
   const ID = "66a3bb07803942c2c831d0aa";
   const carId = ID;
   // get single car
@@ -685,9 +682,16 @@ const Car4popular = () => {
     // setLoadingProductId(productId);
     addToCart(productId);
   };
-  return (
 
-    <div className="">
+  const [isPopupVisible, setPopupVisible] = useState(false)
+  const showPopup = () => {
+    setPopupVisible(true)
+  }
+  const hidePopup = () => {
+    setPopupVisible(false)
+  }
+  return (
+    <div className={`${isPopupVisible ? "overflow-y-hidden" : "overflow-y-visible"} `}>
       {/* <motion.div
         ref={ref}
         style={{ x, y }}
@@ -758,9 +762,41 @@ const Car4popular = () => {
           </div>
         </section>
 
-        <div className="w-screen h-screen">
-          <Audi_r8_view />
+        <div className="w-screen h-[600px] flex flex-col justify-center items-center bg-[#DADADA]">
+          <section
+            onClick={() => {
+              showPopup()
+            }}
+            className="cursor-pointer rounded-[40px] w-[350px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
+            <p className="font-kanit font-bold text-[25px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
+              Click to Explore 3D Model
+            </p>
+          </section>
         </div>
+
+        <div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
+          <section className={`w-screen h-screen flex  flex-col justify-center items-center `}>
+            <div className="w-[80%] h-[8%] bg-neutral-600  flex justify-between items-center">
+              <section className="w-[5%] h-full "></section>
+              <section className="w-[80%] h-full  flex justify-center items-center">
+                <p className="font-kanit font-bold text-[23px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
+                  Audi R8 3D Model
+                </p>
+              </section>
+              <section
+                onClick={() => {
+                  hidePopup()
+                }}
+                className="cursor-pointer w-[15%] ss:w-[10%] xsm:w-[8%] mlg:w-[6%] h-full flex justify-center items-center bg-red-400 ">
+                <img src={close_icon} className="w-1/2 h-1/2 object-cover" />
+              </section>
+            </div>
+            <div className="w-[80%] h-[50%] rounded-[10px]  ">
+              <Audi_r8_view />
+            </div>
+          </section>
+        </div>
+
 
         <div ref={container_hero} className="hero  relative w-screen h-screen">
           <div className="z-1 w-full absolute h-full bg-gradient-to-tr from-slate-950 opacity-50"></div>

@@ -21,22 +21,31 @@ const View = ({ sendDataToParent }) => {
         camera.aspect = newAspect;
         camera.updateProjectionMatrix();
 
-        gl.setClearColor("#ff0000")  // set bg-color
+        gl.setClearColor("#e1e6e2")  // set bg-color
 
     }, [size.width, size.height, camera, gl])
 
     useFrame(() => {
         // scene.background = new THREE.Color("#D8D2CD")
     })
+
+
     return (
         <>
-            <Environment preset="warehouse" background />
+            <Environment preset="sunset"
+            //background
+            />
             <OrbitControls
-                makeDefault
-                enableZoom={false}
-                enablePan={false}
-                maxPolarAngle={10}
+                enableZoom={true}
+                zoomSpeed={0.5}
                 enableDamping={true}
+                dampingFactor={0.1}
+
+                autoRotate
+                autoRotateSpeed={5}
+                makeDefault
+                enablePan={true}
+                maxPolarAngle={10}
             />
 
             <PerspectiveCamera

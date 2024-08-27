@@ -363,7 +363,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									}
 								>
 									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
-										<Link to="/aboutUs">
+										<Link to="/aboutus">
 											<p> About Us </p>
 											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 										</Link>
@@ -510,28 +510,28 @@ const Navbar: React.FC<SubNavbarProps> = ({
 								</div>
 							</li>
 							<li
-									className={`cursor-pointer transition-opacity duration-300 w-full text-center ${selectedP && selectedP !== "aboutUs"
-										? "opacity-50"
-										: "opacity-100"
-										}`}
-									onMouseEnter={() =>
-										handleMouseEnter("aboutUs")
-									}
-									onMouseLeave={handleMouseLeave}
-									onClick={() =>
-										handleToggleSection("aboutUs")
-									}
-								>
-									<div
-										data-aos="fade-up"
-										data-aos-delay="900"
+								className={`cursor-pointer transition-opacity duration-300 w-full text-center ${selectedP && selectedP !== "aboutUs"
+									? "opacity-50"
+									: "opacity-100"
+									}`}
+								onMouseEnter={() =>
+									handleMouseEnter("aboutUs")
+								}
+								onMouseLeave={handleMouseLeave}
+								onClick={() =>
+									handleToggleSection("aboutUs")
+								}
+							>
+								<div
+									data-aos="fade-up"
+									data-aos-delay="900"
 									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
-										<Link to="/aboutUs">
-											<p> About Us </p>
-											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
-										</Link>
-									</div>
-								</li>
+									<Link to="/aboutUs">
+										<p> About Us </p>
+										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
+									</Link>
+								</div>
+							</li>
 							{authUser?.isAdmin === true && (
 								<li
 									className="cursor-pointer transition-opacity duration-300 w-full text-center"
