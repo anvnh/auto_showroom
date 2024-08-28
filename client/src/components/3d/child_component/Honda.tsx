@@ -7,10 +7,10 @@ const Honda = () => {
 
         let tl = state.clock.getElapsedTime()
         model.scene.rotation.y -= 0.017
-        model.scene.scale.set(0.5, 0.5, 0.5)
-        model.scene.position.set(0, 0, 0)
-        model.scene.traverse((mesh) => {
-        })
+        model.scene.scale.set(3.3, 3.3, 3.3)
+        model.scene.position.set(0, 1, 0)
+        model.scene.castShadow = true
+
     })
     return (
         <primitive object={model.scene} />

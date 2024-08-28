@@ -6,8 +6,8 @@ const Bmw = () => {
 
 
         let tl = state.clock.getElapsedTime()
-        model.scene.rotation.y -= 0.017
-        model.scene.scale.set(0.5, 0.5, 0.5)
+        // model.scene.rotation.y -= 0.017
+        model.scene.scale.set(2, 2, 2)
         model.scene.position.set(0, 0, 0)
         model.scene.traverse((mesh) => {
         })
