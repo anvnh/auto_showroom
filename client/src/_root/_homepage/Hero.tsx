@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-
+import Bmw_view from "@/components/3d/Bmw_view";
 import { VideoLogo, bannn } from "../../assets";
 import { supra } from "@/assets/hplat_asset/video";
 import { gsap } from "gsap";
@@ -152,12 +152,14 @@ const Hero = () => {
 	}, [])
 
 	return (
-		<div className="bg-black w-full h-screen">
+		<div className="bg-neutral-950 w-screen h-screen">
+
+
 			{/* ---------------Parallax-------- */}
 			<section className="z-10 relative h-screen w-screen flex justify-center items-center">
 				<div className="bg absolute top-0 left-0 w-screen h-screen -z-10 object-cover bg-center bg-cover flex">
 					{isVisible && (
-						<div className="relative z-50 w-screen h-screen flex justify-center items-start">
+						<div className=" absolute top-0 z-50 w-screen h-screen flex justify-center items-start">
 							<video
 								ref={videoRef}
 								className="w-[800px] h-[900px] object-cover"
@@ -171,15 +173,33 @@ const Hero = () => {
 						</div>
 					)}
 					{isVisibles && (
-						<video
-							data-aos="fade-up"
-							className="w-full h-full object-cover"
-							muted
-							autoPlay
-							loop
-						>
-							<source src={supra} />
-						</video>
+						// <video
+						// 	data-aos="fade-up"
+						// 	className="w-full h-full object-cover"
+						// 	muted
+						// 	autoPlay
+						// 	loop
+						// >
+						// 	<source src={supra} />
+						// </video>
+						<section className="w-full h-screen flex flex-col">
+							<div className="w-full h-[40%] bg-neutral-950 text-neutral-100 flex flex-col justify-end items-center gap-y-[10px] xs:gap-y-[0px] lg:gap-y-[10px]  pb-[50px] xs:pb-[65px] xsm:pb-[30px] lg:pb-[50px]">
+								<p className="w-[620px] h-[30px] xs:h-[70px] ss:h-[80px] xsm:h-[90px]  font-kanit font-bold text-[45px] xs:text-[54px] ss:text-[65px] xsm:text-[70px] lg:text-[80px]  border-t border-orange-300 border-none lg:rounded-t-[10px] flex justify-center gap-x-[15px] ss:gap-x-[22px] ">
+									YOUR <span className="text-orange-400 ">PASSION</span>
+								</p>
+								<p className="h-[90px] font-kanit font-bold flex justify-center items-center gap-x-[15px] ss:gap-x-[20px] text-[45px] xs:text-[54px] ss:text-[65px] xsm:text-[70px] lg:text-[80px]  ">
+									OUR <span>CARE</span>
+									<span className=" border border-orange-300  flex justify-center items-center rounded-[35px] overflow-hidden">
+										<video className="w-[100px] xs:w-[140px] overflow-hidden " loop autoPlay muted>
+											<source src={supra} />
+										</video>
+									</span>
+								</p>
+							</div>
+							<div className="w-full h-[60%] bg-neutral-950 flex rounded-t-[100px]">
+								<Bmw_view />
+							</div>
+						</section >
 					)}
 				</div>
 			</section>
@@ -196,7 +216,7 @@ const Hero = () => {
 			</section> */}
 
 
-		</div>
+		</div >
 	);
 };
 

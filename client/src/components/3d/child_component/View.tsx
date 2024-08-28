@@ -44,7 +44,7 @@ const View = ({ sendDataToParent }) => {
                 autoRotateSpeed={5}
                 makeDefault
                 enablePan={true}
-                maxPolarAngle={10}
+                maxPolarAngle={10} // not allow rotate in gam xe
             />
 
             <PerspectiveCamera
