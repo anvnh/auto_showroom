@@ -20,12 +20,13 @@ const LoginPage: React.FC = () => {
 	const [numberForm, setNumberForm] = useState(false);
 	const [showSignInForm, setShowSignInForm] = useState(true);
 	const [activeForm, setActiveForm] = useState<string>("");
+	const [value, setValue] = useState("");
 
 	const [numberData, setNumberData] = useState({
-		email: "",
+		number: "",
 	});
 	const [emaildata, setEmaildata] = useState({
-		number: "",
+		email: "",
 	});
 	const [signUpData, setSignUpData] = useState({
 		email: "",
@@ -197,8 +198,6 @@ const LoginPage: React.FC = () => {
 		});
 	};
 
-	// forgot pass
-	const [value, setValue] = useState("");
 
 	return (
 		<div className="w-full bg-primary">
@@ -495,7 +494,7 @@ const LoginPage: React.FC = () => {
 										className="space-y-6"
 										noValidate
 									>
-										{["email"].map((placeholder, index) => (
+										{["Gmail"].map((placeholder, index) => (
 											<div
 												key={index}
 												className="relative pl-12 px-8"

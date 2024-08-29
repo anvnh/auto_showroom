@@ -152,7 +152,7 @@ const Hero = () => {
 	}, [])
 
 	return (
-		<div className="bg-neutral-950 w-screen h-screen">
+		<div className="bg-black w-screen h-screen">
 
 
 			{/* ---------------Parallax-------- */}
@@ -196,7 +196,7 @@ const Hero = () => {
 									</span>
 								</p>
 							</div>
-							<div className="w-full h-[60%] bg-neutral-950 flex rounded-t-[100px]">
+							<div className="w-full h-[60%] bg-neutral-950 flex">
 								<Bmw_view />
 							</div>
 						</section >
