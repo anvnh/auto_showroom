@@ -196,7 +196,8 @@ const Hero = () => {
 									</span>
 								</p>
 							</div>
-							<div className="w-full h-[60%] bg-neutral-950 flex ">
+
+							<div className="w-full h-[60%] bg-neutral-950 flex">
 								<Bmw_view />
 							</div>
 						</section >

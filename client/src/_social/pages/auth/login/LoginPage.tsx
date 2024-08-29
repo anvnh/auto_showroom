@@ -11,14 +11,23 @@ import { FcGoogle } from "react-icons/fc";
 import LoginRepon from "./LoginRepon";
 import { useMutation } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp";
 const LoginPage: React.FC = () => {
-
 	const [isPending, setIsPending] = useState(false);
 
 	const [showSignUpForm, setShowSignUpForm] = useState(false);
+	const [forgotForm, setForgotForm] = useState(false);
+	const [numberForm, setNumberForm] = useState(false);
 	const [showSignInForm, setShowSignInForm] = useState(true);
 	const [activeForm, setActiveForm] = useState<string>("");
+	const [value, setValue] = useState("");
 
+	const [numberData, setNumberData] = useState({
+		number: "",
+	});
+	const [emaildata, setEmaildata] = useState({
+		email: "",
+	});
 	const [signUpData, setSignUpData] = useState({
 		email: "",
 		username: "",
@@ -67,7 +76,12 @@ const LoginPage: React.FC = () => {
 		},
 	});
 
-	const { mutate: signup, isError, error, isPending: isSigningup} = useMutation({
+	const {
+		mutate: signup,
+		isError,
+		error,
+		isPending: isSigningup,
+	} = useMutation({
 		mutationFn: async (formData) => {
 			try {
 				const res = await fetch("/api/auth/signup", {
@@ -105,14 +119,32 @@ const LoginPage: React.FC = () => {
 		if (form === "signUp") {
 			setShowSignUpForm(true);
 			setShowSignInForm(false);
+			setForgotForm(false);
+			setNumberForm(false);
 			setActiveForm("signUp");
 		} else if (form === "signIn") {
 			setShowSignInForm(true);
 			setShowSignUpForm(false);
+			setForgotForm(false);
+			setNumberForm(false);
 			setActiveForm("signIn");
+		} else if (form === "forgot") {
+			setShowSignInForm(false);
+			setShowSignUpForm(false);
+			setForgotForm(true);
+			setNumberForm(false);
+			setActiveForm("forgot");
+		} else if (form === "number") {
+			setShowSignInForm(false);
+			setShowSignUpForm(false);
+			setForgotForm(false);
+			setNumberForm(true);
+			setActiveForm("number");
 		} else {
 			setShowSignUpForm(false);
 			setShowSignInForm(false);
+			setForgotForm(false);
+			setNumberForm(false);
 			setActiveForm("");
 		}
 		resetFormInputs();
@@ -130,7 +162,7 @@ const LoginPage: React.FC = () => {
 		}
 	};
 	const handleSignInSubmit = async (
-		event: React.FormEvent<HTMLFormElement>, 
+		event: React.FormEvent<HTMLFormElement>
 	) => {
 		event.preventDefault();
 		setIsPending(true);
@@ -165,6 +197,7 @@ const LoginPage: React.FC = () => {
 			password: "",
 		});
 	};
+
 
 	return (
 		<div className="w-full bg-primary">
@@ -240,7 +273,7 @@ const LoginPage: React.FC = () => {
 														"password"
 															? "password"
 															: placeholder ===
-															"email"
+															  "email"
 															? "email"
 															: "text"
 													}
@@ -288,7 +321,8 @@ const LoginPage: React.FC = () => {
 													<LoadingSpinner />
 												) : (
 													<div className="text-xl ">
-														C<span className="lowercase text-center text-xl">
+														C
+														<span className="lowercase text-center text-xl">
 															reate Account
 														</span>
 													</div>
@@ -385,6 +419,7 @@ const LoginPage: React.FC = () => {
 										)}
 										<div
 											data-aos="fade-left"
+											onClick={() => toggleForm("forgot")}
 											className="pt-0 pb-1 w-full justify-center z-10 items-center flex gap-5"
 										>
 											<a className="w-full h-5 cursor-pointer flex justify-end  text-blue-300 transition-all ease-in-out duration-700 text-sm font-poppins z-50 relative hover:underline ">
@@ -441,6 +476,162 @@ const LoginPage: React.FC = () => {
 											</div>
 										</div>
 									</form>
+								</div>
+							)}
+
+							{forgotForm && (
+								<div
+									data-aos="fade-left"
+									className={`relative z-10 w-[500px] pt-20 px-20 pb-5 bg-primary shadow-md shadow-white bg-opacity-50 rounded-xl rounded-tr-[200px] mr-10 backdrop-blur-md`}
+								>
+									<div className="absolute w-[400px] h-[70px] -top-[160px] z-40 -left-[170px] transform scale-x-[-1]">
+										<img src={gif} />
+									</div>
+									<h2 className="text-center pb-12 text-4xl font-poppins text-white mb-6">
+										Forgot password
+									</h2>
+									<form
+										className="space-y-6"
+										noValidate
+									>
+										{["Gmail"].map((placeholder, index) => (
+											<div
+												key={index}
+												className="relative pl-12 px-8"
+											>
+												<input
+													type={
+														placeholder === "email"
+															? "email"
+															: "text"
+													}
+													name={placeholder}
+													className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
+													required
+												/>
+												<label
+													className={`absolute -left-16 top-6 text-gray-400 text-base peer-focus:-top-3 
+													peer-focus:left-0 peer-focus:text-sm transition-all duration-300 ml-12 ${
+														signUpData[
+															placeholder as keyof typeof signUpData
+														]
+															? "-top-3 text-sm"
+															: ""
+													}`}
+												>
+													{placeholder
+														.charAt(0)
+														.toUpperCase() +
+														placeholder.slice(1)}
+												</label>
+											</div>
+										))}
+										<div className="pt-12 relative flex justify-center">
+											<Button
+												type="submit"
+												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-[300px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-xl
+												before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80"
+												onClick={() =>
+													toggleForm("number")
+												}
+											>
+												<div>
+													C
+													<span className="lowercase">
+														ontinue
+													</span>
+												</div>
+											</Button>
+										</div>
+
+										<div className="flex pt-12 justify-center items-center text-center">
+											<p>You remembered the password</p>
+											<div className="w-[70px]">
+												<a
+													onClick={() =>
+														toggleForm("signIn")
+													}
+													className={`cursor-pointer text-blue-300 transition-all ease-in-out duration-700 text-sm font-poppins relative hover:underline`}
+												>
+													Sign In
+												</a>
+											</div>
+										</div>
+									</form>
+								</div>
+							)}
+
+							{numberForm && (
+								<div
+									data-aos="fade-left"
+									className={`relative z-10 w-[500px] pt-20 px-20 pb-5 bg-primary shadow-md shadow-white bg-opacity-50 rounded-xl rounded-tr-[200px] mr-10 backdrop-blur-md`}
+								>
+									<div className="absolute w-[400px] h-[70px] -top-[160px] z-40 -left-[170px] transform scale-x-[-1]">
+										<img src={gif} />
+									</div>
+									<h2 className="text-center pb-12 text-4xl font-poppins text-white mb-6">
+										Forgot password
+									</h2>
+									<div className="space-y-6">
+										<div className="mb-5">
+											<h1 className="text-xl font-bold text-center">
+												Please enter the 6-digit code
+												sent to your email
+											</h1>
+										</div>
+										<div className="justify-center flex">
+											<InputOTP
+												maxLength={6}
+												value={value}
+												onChange={(value) =>
+													setValue(value)
+												}
+											>
+												<InputOTPGroup>
+													<InputOTPSlot index={0} />
+													<InputOTPSlot index={1} />
+													<InputOTPSlot index={2} />
+												</InputOTPGroup>
+												<InputOTPSeparator />
+												<InputOTPGroup>
+													<InputOTPSlot index={3} />
+													<InputOTPSlot index={4} />
+													<InputOTPSlot index={5} />
+												</InputOTPGroup>
+											</InputOTP>
+										</div>
+										<div className="pt-12 relative flex justify-center">
+											<Button
+												type="submit"
+												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-[300px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-xl
+												before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80"
+												onClick={() =>
+													toggleForm("number")
+												}
+											>
+												<div>
+													C
+													<span className="lowercase">
+													onfirm
+													</span>
+												</div>
+											</Button>
+										</div>
+
+										<div className="flex pt-12 justify-center items-center text-center">
+											<p>You remembered the password</p>
+											<div className="w-[70px]">
+												<a
+													onClick={() =>
+														toggleForm("signIn")
+													}
+													className={`cursor-pointer text-blue-300 transition-all ease-in-out duration-700 text-sm font-poppins relative hover:underline`}
+												>
+													Sign In
+												</a>
+											</div>
+										</div>
+									</div>
 								</div>
 							)}
 						</div>
