@@ -122,7 +122,7 @@ const Hero = () => {
 					clearTimeout(timer);
 				}
 
-				const newTimer = setTimeout(() => setIsVisibles(true), 1000); // Timer 1 giây
+				const newTimer = setTimeout(() => setIsVisibles(true), 500); // Timer 1 giây
 				setTimer(newTimer); // Lưu timer mới
 			}
 		};
@@ -130,7 +130,7 @@ const Hero = () => {
 		window.addEventListener("scroll", handleScroll);
 
 		// Timer ban đầu 4 giây
-		const initialTimer = setTimeout(() => setIsVisibles(true), 4200);
+		const initialTimer = setTimeout(() => setIsVisibles(true), 44ư00);
 		setTimer(initialTimer);
 
 		return () => {

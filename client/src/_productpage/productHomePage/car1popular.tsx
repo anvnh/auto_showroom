@@ -384,7 +384,7 @@ const Car1popular = () => {
 					</div>
 				</div> */}
 			{/*----------------------- banner -------------------------*/}
-			<div className="flex">
+			<div className="flex pt-32">
 				<div
 					id="Behind"
 					data-aos="fade-left"
