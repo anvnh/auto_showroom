@@ -130,6 +130,52 @@ export const getMe = async (req, res) => {
     }
 }
 
+export const forgotPassword = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if(!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+        if(!user.isVerified) {
+            return res.status(400).json({ error: "Please verify your email to reset password" });
+        }
+        // Generate a 6-digit OTP
+        const otp = crypto.randomInt(100000, 999999).toString();
+
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASSWORD,
+            },
+        });
+
+        const mailOptions = {
+            from: "AAP",
+            to: email,
+            subject: "Password Reset OTP",
+            html: `
+                <h2> Dear ${user.fullName} </h2>
+                <p> We have received a request to reset your password. </p>
+                <p> To reset your password, please enter the following One-Time Password (OTP) into the designated field on our website: </p>
+                <div style="text-align: center;">
+                    <h2> ${otp} </h2>
+                </div>
+                <p> If you did not request to reset your password, please ignore this email. </p>
+            `,
+        };
+
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: "OTP sent successfully", otp });
+
+    } catch (error) {
+        console.log("Error in forgotPassword controller", error.message);
+        res.status(500).json({ error: "Something went wrong" });
+    }
+}
+
 export const sendConfirmationMail = async (req, res) => {
 	const { email } = req.body;
 
@@ -140,7 +186,6 @@ export const sendConfirmationMail = async (req, res) => {
     if(!user) {
         return res.status(404).json({ error: "User not found" });
     }
-
 
 	if (!email) {
 		return res.status(400).json({ message: "Email is required" });
