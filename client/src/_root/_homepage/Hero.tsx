@@ -130,7 +130,7 @@ const Hero = () => {
 		window.addEventListener("scroll", handleScroll);
 
 		// Timer ban đầu 4 giây
-		const initialTimer = setTimeout(() => setIsVisibles(true), 44ư00);
+		const initialTimer = setTimeout(() => setIsVisibles(true), 4400);
 		setTimer(initialTimer);
 
 		return () => {
