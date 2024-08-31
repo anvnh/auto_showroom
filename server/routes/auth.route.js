@@ -11,6 +11,6 @@ router.post('/logout', logout);
 router.post('/confirmationEmail', sendConfirmationMail);
 router.post('/confirm/sendToken', sendConfirmationToken);
 router.get('/verified/:token', confirmEmail);
-router.post('/forgotpassword', forgotPassword);
+router.post('/confirm/sendResetToken', forgotPassword);
 
 export default router;
