@@ -245,7 +245,7 @@ const Car1popular = () => {
 						></div>
 					</div>
 					<div
-						data-aos="fade-down"
+						data-aos="fade-right"
 						className="font-thin text-white md:text-2xl text-sm md:p-64 ss:p-14  p-12 pb-32 pt-12 text-center"
 					>
 						<span className="font-bold ">
@@ -263,7 +263,7 @@ const Car1popular = () => {
 						top speed is limited to 250 km/h.
 					</div>
 					<div
-						data-aos="fade-in"
+						data-aos="fade-down"
 						style={{ backgroundImage: `url(${mer1})` }}
 						className="bg-cover bg-center h-[400px] md:w-full relative rounded-full rounded-tl-none rounded-br-none md:pt-[900px] "
 					></div>
@@ -378,7 +378,7 @@ const Car1popular = () => {
 							}}
 							className="xl:mt-12 lg:mt-4 border w-[80px] border-white hover:border-black p-3 rounded-xl
 							opacity-80 backdrop-blur-xl
-									detail-button	 text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+									detail-button  text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
 												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
 							"
 						>
@@ -462,7 +462,7 @@ const Car1popular = () => {
 				</div>
 			</div>
 			{/* ---------------CAR behind--------------------------------- */}
-			<div className="md:pt-12">
+			<div data-aos="fade-right" className="md:pt-12">
 				<div className="md:flex grid h-full grid-rows-2 pt-20 px-4 md:px-16">
 					{/*  các thumbnail */}
 					<div
@@ -580,7 +580,7 @@ const Car1popular = () => {
 						<div className="w-full flex  justify-center pt-5 md:pt-20 ">
 							<div
 								data-aos="fade-right"
-								className=" bg-gray-800 w-[320px] h-[150px] md:h-[250px] md:p-12 p-4 md:w-[700px] md:px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl"
+								className=" bg-gray-800 w-[320px] h-[140px] md:h-[250px] md:p-12 p-4 md:w-[700px] md:px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl"
 							>
 								<Toaster
 									position="top-center"
@@ -590,7 +590,7 @@ const Car1popular = () => {
 									<div
 										data-aos="fade-left"
 										data-aos-delay="500"
-										className="md:text-4xl cursor-pointer font-bold text-center font-syncopate"
+										className="md:text-4xl cursor-pointer text-xl font-bold text-center font-syncopate"
 										title="View details"
 									>
 										MERCEDES-AMG CLS
@@ -599,7 +599,7 @@ const Car1popular = () => {
 								<div
 									data-aos="fade-left"
 									data-aos-delay="500"
-									className="md:text-2xl text-center font-syncopate"
+									className="md:text-2xl text-center font-poppins"
 								>
 									$ 183,600
 								</div>
@@ -609,8 +609,8 @@ const Car1popular = () => {
 											data-aos="fade-right"
 											data-aos-delay="500"
 											className=" opacity-80 backdrop-blur-xl
-							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center 
-										before:ease relative md:h-12 h-10 w-32 md:w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-40
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins text-xs md:text-base rounded-3xl text-center 
+										before:ease relative md:h-12 h-8 w-24 md:w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-40
 							"
 										>
 											Buy Now
@@ -621,8 +621,8 @@ const Car1popular = () => {
 										data-aos="fade-right"
 										data-aos-delay="500"
 										className=" opacity-80 backdrop-blur-xl
-							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
-										before:ease relative h-10 md:h-12 md:w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-[230px]
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins text-xs md:text-base rounded-3xl text-center
+										before:ease relative h-8 md:h-12 md:w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-[230px]
 							"
 										onClick={() => handleAddToCart(car._id)}
 									>

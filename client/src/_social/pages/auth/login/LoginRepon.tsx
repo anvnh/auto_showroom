@@ -178,18 +178,16 @@ const LoginRepon = () => {
 	const handleForgotSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 
-		// Biểu thức chính quy để kiểm tra định dạng email
 		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-		// Kiểm tra định dạng email
+		
 		if (emailPattern.test(emaildata.email)) {
 			console.log(emaildata.email)
 			// Nếu email hợp lệ, gọi hàm toggleForm
 			toggleForm("number");
 		} else {
-			// Nếu email không hợp lệ, hiển thị thông báo lỗi hoặc xử lý theo cách khác
+		
 			console.log(
-				"Email không hợp lệ. Vui lòng nhập email đúng định dạng."
+				"Invalid email. Please enter a valid email format."
 			);
 		}
 	};
