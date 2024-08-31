@@ -81,6 +81,8 @@ import merr10 from "./car2_popular/2mer10.avif";
 import merr11 from "./car2_popular/2mer11.avif";
 import merr12 from "./car2_popular/2mer12.webp";
 import Buy2 from "./car2_popular/buy.jpg";
+import changecolor2 from "./car2_popular/video.mp4"
+
 // import video
 
 import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
@@ -237,6 +239,7 @@ import Voucher15do from "./voucher/15do.png";
 import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov";
 import video2 from "./car2_popular/Maybach S-Class.mov";
 export {
+	changecolor2,
 	changeColor,
 	carnba8,
 	carnb2024,
