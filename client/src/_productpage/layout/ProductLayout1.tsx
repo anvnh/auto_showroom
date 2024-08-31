@@ -28,7 +28,7 @@ const ProductLayout = () => {
 		<section className="w-full">
 			<div className="w-full overflow-hidden bg-primary">
 				<div className="flex items-start justify-center ">
-					<div  data-aos-duration="200" className="w-full z-10">
+					<div  data-aos-duration="200" className="w-full z-50">
 						<Navbar onNavClick={handleNavClick} />
 					</div>
 				</div>
