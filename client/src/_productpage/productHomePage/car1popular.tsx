@@ -133,6 +133,7 @@ const Car1popular = () => {
 	};
 	return (
 		<div
+		style={{ backgroundImage: `url(${sky})` }}
 			className={`${
 				isPopupVisible ? "overflow-y-hidden" : "overflow-y-visible"
 			} bg-black`}

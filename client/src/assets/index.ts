@@ -60,7 +60,7 @@ import mer9 from "./car1_popular/mer9.webp";
 import mer10 from "./car1_popular/mer10.jpg";
 import mer11 from "./car1_popular/mer11.jpg";
 import mer12 from "./car1_popular/mer12.avif";
-import sky from "./car1_popular/sky.jpg";
+import sky from "./car1_popular/sao.jpg"
 import banner1 from "./car1_popular/banner1.jpg";
 import mernavbar from "./car1_popular/navbar.jpg";
 import buy from "./car1_popular/buy.avif";
