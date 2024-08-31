@@ -21,11 +21,8 @@ const LoginRepon = () => {
 	const [activeForm, setActiveForm] = useState<string>("");
 	const [forgotForm, setForgotForm] = useState(false);
 	const [numberForm, setNumberForm] = useState(false);
-	const [value, setValue] = useState("");
+	const [number, setNumber] = useState("");
 
-	const [numberData, setNumberData] = useState({
-		number: "",
-	});
 	const [emaildata, setEmaildata] = useState({
 		email: "",
 	});
@@ -115,6 +112,7 @@ const LoginRepon = () => {
 			setShowSignInForm(false);
 			setShowSignUpForm(false);
 			setForgotForm(false);
+			// console.log(emaildata);
 			setNumberForm(true);
 			setActiveForm("number");
 		} else {
@@ -173,8 +171,33 @@ const LoginRepon = () => {
 			username: "",
 			password: "",
 		});
+		setEmaildata({
+			email: "",
+		});
+	};
+	const handleForgotSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+
+		// Biểu thức chính quy để kiểm tra định dạng email
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+		// Kiểm tra định dạng email
+		if (emailPattern.test(emaildata.email)) {
+			console.log(emaildata.email)
+			// Nếu email hợp lệ, gọi hàm toggleForm
+			toggleForm("number");
+		} else {
+			// Nếu email không hợp lệ, hiển thị thông báo lỗi hoặc xử lý theo cách khác
+			console.log(
+				"Email không hợp lệ. Vui lòng nhập email đúng định dạng."
+			);
+		}
 	};
 
+	const handleNumberSubmit = (e) => {
+		e.preventDefault();
+		console.log(number);
+	};
 	return (
 		<div>
 			<div className="w-full h-auto relative bg-cover bg-center pt-12 pb-12">
@@ -398,37 +421,39 @@ const LoginRepon = () => {
 									data-aos="fade-up"
 									className="space-y-6"
 									noValidate
+									onSubmit={handleForgotSubmit}
 								>
-									{["email"].map((placeholder, index) => (
+							
 										<div
-											key={index}
-											className="relative px-3"
+											className="relative px-6"
 										>
 											<input
-												type={
-													placeholder === "email"
-														? "email"
-														: "text"
+												placeholder="Input your Gmail"
+												type="email"
+												name="email"
+												value={emaildata.email}
+												onChange={(e) =>
+													setEmaildata({
+														email: e.target.value,
+													})
 												}
-												placeholder="Enter your gmail"
-												name={placeholder}
 												className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
 												required
 											/>
 										</div>
-									))}
+							
 									<div className="pt-12 relative flex justify-center">
 										<Button
 											type="submit"
 											className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-72 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-md
-											before:ease relative h-12 w-full overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-44
+											before:ease relative h-12 w-full overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-96
 											"
-											onClick={() => toggleForm("number")}
+											// onClick={() => toggleForm("number")}
 										>
 											<div>
-												C
+												S
 												<span className="lowercase">
-													ontinue
+													end code to Gmail
 												</span>
 											</div>
 										</Button>
@@ -456,7 +481,10 @@ const LoginRepon = () => {
 								<h2 className="text-center pb-12 text-2xl sm:text-3xl font-poppins text-white mb-6 lg:text-5xl">
 									Forgot password
 								</h2>
-								<div className="space-y-6">
+								<form
+									onSubmit={handleNumberSubmit}
+									className="space-y-6"
+								>
 									<div data-aos="fade-up" className="mb-5">
 										<h1 className="text-xl font-bold text-center">
 											Please enter the 6-digit code sent
@@ -469,9 +497,9 @@ const LoginRepon = () => {
 									>
 										<InputOTP
 											maxLength={6}
-											value={value}
-											onChange={(value) =>
-												setValue(value)
+											value={number}
+											onChange={(number) =>
+												setNumber(number)
 											}
 										>
 											<InputOTPGroup>
@@ -495,7 +523,6 @@ const LoginRepon = () => {
 											type="submit"
 											className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-[300px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-xl
 												before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80"
-											onClick={() => toggleForm("number")}
 										>
 											<div>
 												C
@@ -510,19 +537,19 @@ const LoginRepon = () => {
 										data-aos="fade-up"
 										className="flex pt-12 justify-center items-center text-center"
 									>
-										<p>You remembered the password</p>
+										<p>You want to re-enter gmail ? </p>
 										<div className="w-[70px]">
 											<a
 												onClick={() =>
-													toggleForm("signIn")
+													toggleForm("forgot")
 												}
 												className={`cursor-pointer text-blue-300 transition-all ease-in-out duration-700 text-sm font-poppins relative hover:underline`}
 											>
-												Sign In
+												Back
 											</a>
 										</div>
 									</div>
-								</div>
+								</form>
 							</div>
 						)}
 					</div>

@@ -22,15 +22,11 @@ const LoginPage: React.FC = () => {
 	const [isPending, setIsPending] = useState(false);
 
 	const [showSignUpForm, setShowSignUpForm] = useState(false);
-	const [forgotForm, setForgotForm] = useState(false);
-	const [numberForm, setNumberForm] = useState(false);
 	const [showSignInForm, setShowSignInForm] = useState(true);
 	const [activeForm, setActiveForm] = useState<string>("");
-	const [value, setValue] = useState("");
-
-	const [numberData, setNumberData] = useState({
-		number: "",
-	});
+	const [forgotForm, setForgotForm] = useState(false);
+	const [numberForm, setNumberForm] = useState(false);
+	const [number, setNumber] = useState("");
 	const [emaildata, setEmaildata] = useState({
 		email: "",
 	});
@@ -203,7 +199,27 @@ const LoginPage: React.FC = () => {
 			password: "",
 		});
 	};
+	const handleForgotSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
 
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		
+		if (emailPattern.test(emaildata.email)) {
+			console.log(emaildata.email)
+			// Nếu email hợp lệ, gọi hàm toggleForm
+			toggleForm("number");
+		} else {
+		
+			console.log(
+				"Invalid email. Please enter a valid email format."
+			);
+		}
+	};
+
+	const handleNumberSubmit = (e) => {
+		e.preventDefault();
+		console.log(number);
+	};
 	return (
 		<div className="w-full bg-primary">
 			<Toaster position="top-center" reverseOrder={false} />
@@ -495,7 +511,11 @@ const LoginPage: React.FC = () => {
 									<h2 className="text-center pb-12 text-4xl font-poppins text-white mb-6">
 										Forgot password
 									</h2>
-									<form className="space-y-6" noValidate>
+									<form
+										onSubmit={handleForgotSubmit}
+										className="space-y-6"
+										noValidate
+									>
 										{["Gmail"].map((placeholder, index) => (
 											<div
 												key={index}
@@ -533,14 +553,14 @@ const LoginPage: React.FC = () => {
 												type="submit"
 												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-[300px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-xl
 												before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80"
-												onClick={() =>
-													toggleForm("number")
-												}
+												// onClick={() =>
+												// 	toggleForm("number")
+												// }
 											>
 												<div>
-													C
+													S
 													<span className="lowercase">
-														ontinue
+														end code to Gmail
 													</span>
 												</div>
 											</Button>
@@ -574,7 +594,7 @@ const LoginPage: React.FC = () => {
 									<h2 className="text-center pb-12 text-4xl font-poppins text-white mb-6">
 										Forgot password
 									</h2>
-									<div className="space-y-6">
+									<form onSubmit={handleNumberSubmit} className="space-y-6">
 										<div className="mb-5">
 											<h1 className="text-xl font-bold text-center">
 												Please enter the 6-digit code
@@ -584,9 +604,9 @@ const LoginPage: React.FC = () => {
 										<div className="justify-center flex">
 											<InputOTP
 												maxLength={6}
-												value={value}
-												onChange={(value) =>
-													setValue(value)
+												value={number}
+												onChange={(number) =>
+													setNumber(number)
 												}
 											>
 												<InputOTPGroup>
@@ -607,9 +627,6 @@ const LoginPage: React.FC = () => {
 												type="submit"
 												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-[300px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-xl
 												before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80"
-												onClick={() =>
-													toggleForm("number")
-												}
 											>
 												<div>
 													C
@@ -633,7 +650,7 @@ const LoginPage: React.FC = () => {
 												</a>
 											</div>
 										</div>
-									</div>
+									</form>
 								</div>
 							)}
 						</div>
