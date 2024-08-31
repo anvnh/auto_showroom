@@ -20,7 +20,8 @@ import {
 	merr12,
 	sky,
 	logomer,
-	video2
+	video2,
+	changecolor2
 } from "../../assets";
 import { close_icon } from "@/assets/homepage";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
@@ -28,6 +29,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Mercedes_maybach_view } from "@/components/3d";
+import { IoMdCloseCircle } from "react-icons/io";
 const Car2popular = () => {
 	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
@@ -141,7 +143,7 @@ const Car2popular = () => {
 			>
 				<div
 					id="Home"
-					className="bg-cover bg-center relative w-full  min-h-[700px] md:min-h-[800px] xl:min-h-[1000px]"
+			className="bg-cover bg-center relative pb-20 md:pb-0"
 				>
 					<video
 						autoPlay
@@ -254,19 +256,9 @@ const Car2popular = () => {
 							className="font-thin text-white md:text-2xl text-sm md:p-64 ss:p-14  p-12 pb-64 pt-44 text-center"
 						>
 							<span className="font-bold ">
-								Mercedes-AMG CLS 53 4Matic+
+							The Mercedes-Benz Maybach 2022
 							</span>{" "}
-							is equipped with a turbocharged 3.0-liter I6 engine,
-							generating maximum power of 435 horsepower and
-							maximum torque of 520 Nm. This power is enhanced
-							with a 48V hybrid drive system, providing an
-							additional 250 Nm of torque and 16 kW of power when
-							the driver needs it. All of this power will be
-							transmitted to all four wheels through the 9-speed
-							Speedshift TCT 9G dual-clutch transmission and
-							4Matic+ drive system, thanks to which the car can
-							accelerate to 100 km/h in 4.5 seconds. and top speed
-							is limited to 250 km/h.
+						 represents the pinnacle of luxury and advanced technology, offering an unparalleled driving experience. With its elegant design, opulent interior, and meticulous attention to detail, the Maybach sets a new standard for sophistication and comfort. Equipped with state-of-the-art features, including advanced driver assistance systems, premium materials, and a powerful yet smooth engine, the Maybach seamlessly blends performance with unparalleled luxury. Every aspect of the 2022 Maybach is crafted to provide passengers with a first-class experience, making it a true statement of prestige and refinement on the road.
 						</div>
 						<div
 							data-aos="fade-in"
@@ -276,23 +268,20 @@ const Car2popular = () => {
 					</div>
 				</div>
 				{/* ------------tiêu đề------------------ */}
-				<div className="relative xl:pt-[1400px] lg:pt-[1400px] md:pt-[1400px] xs:pt-[500px] pt-[670px] ss:py-[100px]">
+				<div className="relative pt-32 md:pt-64 pb-12 ">
 					<div
 						data-aos="fade-left"
-						className="font-thin text-blue-200 relative text-md ss:text-2xl  md:text-6xl sm:text-4xl md:px-0 px-16 text-center font-syncopate"
+					className="text-white relative text-2xl ss:text-2xl  md:text-6xl sm:text-4xl md:px-0 px-10 text-center font-kanit font-bold"
 					>
 						SIGNIFICANTLY SHARPER - LIKE YOUR EYES
 					</div>
 					{/* ------------ảnh 1------------------ */}
-					<div className="pt-0 md:pt-[20px] flex">
+					<div className="pt-24 md:pt-[220px] flex">
 						<div
 							data-aos="fade-right"
 							className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-24 p-2 xs:p-12"
 						>
-							In addition to the newly launched upgraded version
-							of the CLS-Class, Mercedes-Benz also offers
-							customers the high-performance Mercedes-AMG CLS 53
-							4Matic+ version of this car model.
+					The precision-cut lights are designed to evoke a sense of clarity and focus, much like the sharp gaze of human eyes, reflecting both the car’s cutting-edge technology and its sophisticated design ethos.
 						</div>
 						<div className="justify-end flex">
 							<div
@@ -315,45 +304,99 @@ const Car2popular = () => {
 							data-aos="fade-left"
 							className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-32 p-2 xs:p-12"
 						>
-							In addition to the newly launched upgraded version
-							of the CLS-Class, Mercedes-Benz also offers
-							customers the high-performance Mercedes-AMG CLS 53
-							4Matic+ version of this car model.
+							This model features advanced, sharply defined LED or DIGITAL LIGHT headlamps that not only enhance visibility but also add a bold, modern aesthetic to the vehicle’s front profile.
 						</div>
 					</div>
 				</div>
 
 				{/* 3D car------------------------------------------- */}
-				<div className="w-screen h-[500px] flex flex-col justify-center items-center bg-[#DADADA]">
-					<section
-						onClick={() => {
-							showPopup()
-						}}
-						className="cursor-pointer rounded-[40px] w-[300px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
-						<p className="font-kanit font-bold text-[23px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
-							Click to Explore 3D Model
-						</p>
-					</section>
+				<div
+				id="Model"
+				className="w-screen relative h-full z-10 bg-[#DADADA] "
+			>
+				<div className="md:hidden block bg-black px-5 ss:px-12 pb-5">
+					<p data-aos="fade-right" data-aos-delay="200" className="text-xl">Luxury and class</p>
+					<hr data-aos="fade-right" data-aos-delay="300" className="border w-1/6 border-red-500 mt-5" />
+					<p data-aos="fade-right" data-aos-delay="400" className="text-4xl font-kanit font-bold pt-6">
+						<span className="">3D model</span>{" "}
+						<span className="text-xl font-mono">of</span>
+						<br />
+						Mercedes BenZ Maybach 2022
+					</p>
+					<button
+					data-aos="fade-right" data-aos-delay="500"
+							onClick={() => {
+								showPopup();
+							}}	
+							className="mt-5 border w-[120px] border-white hover:border-black p-3 rounded-md
+							opacity-80 backdrop-blur-xl
+									detail-button text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
+							"
+						>
+							View
+						</button>
 				</div>
+				<video
+					autoPlay
+					muted
+					loop
+					playsInline
+					className="w-full z-10 h-auto relative"
+				>
+					<source src={changecolor2} type="video/mp4" />
+				</video>
+				<div
+					onClick={() => {
+						showPopup();
+					}}
+					className="absolute  lg:-top-[220px] lg:-left-[300px]  xl:-top-[300px] xl:-left-[500px]  w-full h-full flex justify-center items-center"
+				>
+					<div data-aos="fade-left" className="md:block hidden z-50 lg:w-[350px] lg:h-[250px] xl:w-[500px] xl:h-[300px] rounded-2xl bg-black backdrop-blur-xl bg-opacity-75 font-bold text-white p-5 ">
+						<p data-aos="fade-right" data-aos-delay="200" className="xl:text-xl">Luxury and class</p>
+						<hr data-aos="fade-right" data-aos-delay="300" className="border w-1/6 border-red-500 mt-5" />
+						<p data-aos="fade-right" data-aos-delay="400" className="xl:text-4xl lg:text-3xl font-kanit font-bold pt-6">
+							<span className="">3D model</span>{" "}
+							<span className="text-xl font-mono">of</span>
+							<br />
+							Mercedes BenZ Maybach
+						</p>
+						<button
+						data-aos="fade-right" data-aos-delay="600"
+							onClick={() => {
+								showPopup();
+							}}
+							className="xl:mt-12 lg:mt-4 border w-[80px] border-white hover:border-black p-3 rounded-xl
+							opacity-80 backdrop-blur-xl
+									detail-button  text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
+							"
+						>
+							View
+						</button>
+					</div>
+				</div>
+			</div>
 
 				<div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
 					<section className={`w-screen h-screen flex  flex-col justify-center items-center `}>
-						<div className="w-[80%] h-[8%] bg-neutral-600  flex justify-between items-center">
+					<div className="w-[100%] h-[8%]  flex justify-between items-center">
 							<section className="w-[5%] h-full "></section>
 							<section className="w-[80%] h-full  flex justify-center items-center">
-								<p className="font-kanit font-bold text-[23px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
+							<p className="font-kanit font-bold text-[20px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
 									Mercedes Maybach 3D Model
 								</p>
 							</section>
 							<section
-								onClick={() => {
-									hidePopup()
-								}}
-								className="cursor-pointer w-[15%] ss:w-[10%] xsm:w-[8%] mlg:w-[6%] h-full flex justify-center items-center bg-red-400 ">
-								<img src={close_icon} className="w-1/2 h-1/2 object-cover" />
-							</section>
+							onClick={() => {
+								hidePopup();
+							}}
+							className="cursor-pointer w-[30px] sm:w-[50px] pr-3 sm:pr-5 h-full flex justify-center items-center text-red-600 scale-150 sm:scale-[3]"
+						>
+							<IoMdCloseCircle />
+						</section>
 						</div>
-						<div className="w-[80%] h-[50%] rounded-[10px]  ">
+						<div className="w-[100%] h-[100%] overflow-hidden ">
 
 							<Mercedes_maybach_view />
 						</div>
@@ -388,7 +431,7 @@ const Car2popular = () => {
 					</div>
 				</div> */}
 				{/*----------------------- banner -------------------------*/}
-				<div className="flex">
+				<div className="flex pt-12">
 					<div
 						id="Behind"
 						data-aos="fade-left"
@@ -397,13 +440,13 @@ const Car2popular = () => {
 					></div>
 					<div
 						data-aos="slide-right"
-						className="font-thin text-blue-200 relative text-xl ss:text-3xl sm:text-5xl xl:text-6xl justify-center items-center flex left-10 ss:left-12 sm:left-7 md:left-32 font-syncopate xs:left-20"
+						className="font-bold text-white relative text-2xl ss:text-3xl sm:text-5xl xl:text-6xl justify-center items-center flex pl-5 md:pl-60 font-kanit"
 					>
 						CAR BEHIND
 					</div>
 				</div>
 				{/* ---------------CAR behind--------------------------------- */}
-				<div data-aos="fade-right" className="pt-12">
+				<div data-aos="fade-right" className="md:pt-12">
 					<div className="md:flex grid h-full grid-rows-2 pt-20 px-4 md:px-16">
 						{/*  các thumbnail */}
 						<div className="md:w-[300px] w-full p-4 flex h-full ">
@@ -465,15 +508,12 @@ const Car2popular = () => {
 
 				{/* -------------------------banner --------------------------*/}
 
-				<div className="pt-[300px] flex">
+				<div className="pt-2 md:pt-[200px] flex">
 					<div
 						data-aos="fade-right"
 						className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-24 p-2 xs:p-12"
 					>
-						Two AMG Night Package and Night Package II equipment
-						packages are standard equipment. Finally, the car is
-						equipped with welcome lights with a three-dimensional
-						AMG logo displayed on the ground when opening the door.
+						 The Maybach is equipped with cutting-edge technology, including the MBUX infotainment system with voice control, advanced driver-assistance features like adaptive cruise control, lane-keeping assist, and a 360-degree camera.
 					</div>
 					<div className="justify-end flex">
 						<div
@@ -483,7 +523,7 @@ const Car2popular = () => {
 						></div>
 					</div>
 				</div>
-				<div className="pt-[1px] flex">
+				<div className="pt-[70px] flex">
 					<div className="justify-start flex">
 						<div
 							data-aos="fade-left"
@@ -495,48 +535,48 @@ const Car2popular = () => {
 						data-aos="fade-right"
 						className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-32 p-2 xs:p-12"
 					>
-						Inside, the AMG Performance upgrade package will provide
-						the interior with a steering wheel wrapped in Nappa
-						leather or Dinamica fabric material. The interior is
-						also covered with carbon fiber.
+						The ambient lighting system is customizable with 64 different colors, and the large infotainment screens, coupled with the Burmester 4D surround sound system, deliver a theater-like audio experience.
 					</div>
 				</div>
 
 				{/* --------------------------conclusion --------------*/}
-				<div className="w-full h-full pt-40 relative">
+				<div className="w-full h-full pt-20 md:pt-40 relative">
 					{isLoading && <LoadingSpinner />}
 					{!isLoading && !isRefetching && car && (
 						<div
 							id="Buy"
 							style={{ backgroundImage: `url(${Buy2})` }}
-							className="w-screen bg-cover bg-center h-[900px] relative"
+								className="w-screen bg-cover bg-center h-[500px] md:h-[900px] relative"
 						>
-							<div className="w-full flex  justify-center pt-12 ">
-								<div className=" bg-gray-800 h-[280px] p-12 w-[700px] px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl">
+						<div className="w-full flex  justify-center pt-5 md:pt-12 ">
+						<div
+								data-aos="fade-right"
+								className=" bg-gray-800 w-[320px] h-[150px] md:h-[270px] md:p-12 p-4 md:w-[700px] md:px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl"
+							>
 									<Toaster
 										position="top-center"
 										reverseOrder={false}
 									/>
 									<Link to="/shop/product/66ab97d42c63f54b95a50dc1">
 										<div
-											className="text-4xl cursor-pointer font-bold text-center font-syncopate"
+												className="md:text-4xl text-xl cursor-pointer font-bold text-center font-syncopate"
 											title="View details"
 										>
 											Mercedes-Benz
-											<p className="text-2xl">
+											<p className=" md:text-2xl">
 												Maybach 2022
 											</p>
 										</div>
 									</Link>
-									<div className="text-2xl  text-center font-syncopate">
+									<div 	className="md:text-2xl text-md text-center font-poppins">
 										$ 679,867
 									</div>
-									<div className="flex justify-center gap-5 pt-12">
+									<div className="flex justify-center gap-5 pt-2 md:pt-12">
 										<Link to="/shop/payment/66ab97d42c63f54b95a50dc1">
 											<button
 												className=" opacity-80 backdrop-blur-xl
-							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-40
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-poppins text-xs md:text-base rounded-3xl text-center font-bold
+										before:ease relative h-8 w-24 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-40
 							"
 											>
 												Buy Now
@@ -545,8 +585,8 @@ const Car2popular = () => {
 
 										<button
 											className=" opacity-80 backdrop-blur-xl
-							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-[230px]
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-poppins text-xs md:text-base rounded-3xl text-center font-bold
+										before:ease relative h-8 w-28 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-[230px]
 							"
 											onClick={() =>
 												handleAddToCart(car._id)
