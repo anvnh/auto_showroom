@@ -423,7 +423,9 @@ const LoginRepon = () => {
 											className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-72 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-md
 											before:ease relative h-12 w-full overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-44
 											"
-											onClick={() => toggleForm("number")}
+											onClick={() => {
+                                                toggleForm("number")
+                                            }}
 										>
 											<div>
 												C
