@@ -64,6 +64,7 @@ import sky from "./car1_popular/sky.jpg";
 import banner1 from "./car1_popular/banner1.jpg";
 import mernavbar from "./car1_popular/navbar.jpg";
 import buy from "./car1_popular/buy.avif";
+import changeColor from "./car1_popular/change color.mp4"
 
 // car2 popular
 import merr from "./car2_popular/2mer.avif";
@@ -223,6 +224,7 @@ import carnba8 from "./car/carnavbar/use/7.png";
 import carnb2024 from "./car/carnavbar/use/8.png";
 import car1populars from "./car/carnavbar/CB1.png";
 
+
 //Owner------------------------------------
 import gif from "./login/gif.webp";
 import gifSocial from "./owner/gif2.webp";
@@ -235,6 +237,7 @@ import Voucher15do from "./voucher/15do.png";
 import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov";
 import video2 from "./car2_popular/Maybach S-Class.mov";
 export {
+	changeColor,
 	carnba8,
 	carnb2024,
 	video1,

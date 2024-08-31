@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import {
+	changeColor,
 	buy,
 	mer1,
 	mer2,
@@ -20,7 +21,7 @@ import {
 	sky,
 	logomer,
 	kiaposter,
-	video1
+	video1,
 } from "../../assets";
 import { close_icon } from "@/assets/homepage";
 import { Link } from "react-router-dom";
@@ -28,6 +29,7 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 import { Mercedes_amg_cls_view } from "@/components/3d";
+import { IoMdCloseCircle } from "react-icons/io";
 const Car1popular = () => {
 	// hiệu ứng hiển thị khi 3s trôi qua
 	const [isVisible, setIsVisible] = useState(false);
@@ -122,20 +124,22 @@ const Car1popular = () => {
 	};
 
 	// 3d
-	const [isPopupVisible, setPopupVisible] = useState(false)
+	const [isPopupVisible, setPopupVisible] = useState(false);
 	const showPopup = () => {
-		setPopupVisible(true)
-	}
+		setPopupVisible(true);
+	};
 	const hidePopup = () => {
-		setPopupVisible(false)
-	}
+		setPopupVisible(false);
+	};
 	return (
-		<div className={`${isPopupVisible ? "overflow-y-hidden" : "overflow-y-visible"} bg-black`}>
-
+		<div
+			className={`${
+				isPopupVisible ? "overflow-y-hidden" : "overflow-y-visible"
+			} bg-black`}
+		>
 			<div
 				id="Home"
-
-				className="bg-cover bg-center relative w-full min-h-[900px]  sm:min-h-[1200px] md:min-h-[800px] xl:min-h-[1000px]"
+				className="bg-cover bg-center relative pb-20 md:pb-0"
 			>
 				<video
 					autoPlay
@@ -144,7 +148,8 @@ const Car1popular = () => {
 					playsInline
 					className="w-full h-auto relative "
 				>
-					<source src={video1} type="video/mp4" />
+					<source src={video1}
+					type="video/mp4" />
 				</video>
 
 				<div
@@ -160,8 +165,9 @@ const Car1popular = () => {
 							data-aos="fade-in"
 							className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-48  transform text-center shadow-xl
            	 ss:w-[550px] w-[200px] p-5 md:p-5 
-            transition-opacity duration-1000 opacity-0 font-syncopate ${isVisible ? "opacity-100" : ""
-								}`}
+            transition-opacity duration-1000 opacity-0 font-syncopate ${
+				isVisible ? "opacity-100" : ""
+			}`}
 						>
 							<h1 className="text-xs ss:text-3xl lg:text-4xl mb-1 tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all">
 								MERCEDES-AMG
@@ -185,9 +191,7 @@ const Car1popular = () => {
 										Nm
 									</span>{" "}
 									<br />
-									<span className="font-bold">
-										4.5s
-									</span>{" "}
+									<span className="font-bold">4.5s</span>{" "}
 									<span className="text-lg font-light">
 										0-100km/h
 									</span>
@@ -203,10 +207,10 @@ const Car1popular = () => {
 											There is always a destination.
 										</span>{" "}
 										Other people think ahead. You think
-										further. You want to sense more,
-										perform more, and above all, you
-										can’t let go any more, because it
-										won’t let go of you.
+										further. You want to sense more, perform
+										more, and above all, you can’t let go
+										any more, because it won’t let go of
+										you.
 									</div>
 								</div>
 							</div>
@@ -223,9 +227,9 @@ const Car1popular = () => {
 			>
 				<div
 					className=" h-full"
-				// style={{
-				// 	backgroundImage: `url(${sky})`,
-				// }}
+					// style={{
+					// 	backgroundImage: `url(${sky})`,
+					// }}
 				>
 					<div className="flex justify-center items-center">
 						<div
@@ -248,16 +252,15 @@ const Car1popular = () => {
 							Mercedes-AMG CLS 53 4Matic+
 						</span>{" "}
 						is equipped with a turbocharged 3.0-liter I6 engine,
-						generating maximum power of 435 horsepower and
-						maximum torque of 520 Nm. This power is enhanced
-						with a 48V hybrid drive system, providing an
-						additional 250 Nm of torque and 16 kW of power when
-						the driver needs it. All of this power will be
-						transmitted to all four wheels through the 9-speed
-						Speedshift TCT 9G dual-clutch transmission and
-						4Matic+ drive system, thanks to which the car can
-						accelerate to 100 km/h in 4.5 seconds. and top speed
-						is limited to 250 km/h.
+						generating maximum power of 435 horsepower and maximum
+						torque of 520 Nm. This power is enhanced with a 48V
+						hybrid drive system, providing an additional 250 Nm of
+						torque and 16 kW of power when the driver needs it. All
+						of this power will be transmitted to all four wheels
+						through the 9-speed Speedshift TCT 9G dual-clutch
+						transmission and 4Matic+ drive system, thanks to which
+						the car can accelerate to 100 km/h in 4.5 seconds. and
+						top speed is limited to 250 km/h.
 					</div>
 					<div
 						data-aos="fade-in"
@@ -267,10 +270,10 @@ const Car1popular = () => {
 				</div>
 			</div>
 			{/* ------------tiêu đề------------------ */}
-			<div className="relative pt-32 md:pt-64 pb-32 ">
+			<div className="relative pt-32 md:pt-64 pb-12 ">
 				<div
 					data-aos="fade-up"
-					className="font-thin text-blue-200 relative text-md ss:text-2xl  md:text-6xl sm:text-4xl md:px-0 px-16 text-center font-syncopate"
+					className="text-white relative text-2xl ss:text-2xl  md:text-6xl sm:text-4xl md:px-0 px-10 text-center font-kanit font-bold"
 				>
 					SIGNIFICANTLY SHARPER, LIKE YOUR EYES
 				</div>
@@ -280,10 +283,10 @@ const Car1popular = () => {
 						data-aos="fade-right"
 						className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-24 p-2 xs:p-12"
 					>
-						In addition to the newly launched upgraded version
-						of the CLS-Class, Mercedes-Benz also offers
-						customers the high-performance Mercedes-AMG CLS 53
-						4Matic+ version of this car model.
+						In addition to the newly launched upgraded version of
+						the CLS-Class, Mercedes-Benz also offers customers the
+						high-performance Mercedes-AMG CLS 53 4Matic+ version of
+						this car model.
 					</div>
 					<div className="justify-end flex">
 						<div
@@ -306,54 +309,114 @@ const Car1popular = () => {
 						data-aos="fade-left"
 						className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-32 p-2 xs:p-12"
 					>
-						In addition to the newly launched upgraded version
-						of the CLS-Class, Mercedes-Benz also offers
-						customers the high-performance Mercedes-AMG CLS 53
-						4Matic+ version of this car model. Along with that
-						is a special limited edition of only 300 vehicles.
+						In addition to the newly launched upgraded version of
+						the CLS-Class, Mercedes-Benz also offers customers the
+						high-performance Mercedes-AMG CLS 53 4Matic+ version of
+						this car model. Along with that is a special limited
+						edition of only 300 vehicles.
 					</div>
 				</div>
 			</div>
 
 			{/* 3D car------------------------------------------- */}
 
-
-			<div className="w-screen h-[500px] flex flex-col justify-center items-center bg-[#DADADA]">
-				<section
-					onClick={() => {
-						showPopup()
-					}}
-					className="cursor-pointer rounded-[40px] w-[350px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
-					<p className="font-kanit font-bold text-[25px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
-						Click to Explore 3D Model
+			<div
+				id="Model"
+				className="w-screen relative h-full z-10 bg-[#DADADA] "
+			>
+				<div className="md:hidden block bg-black px-5 ss:px-12 pb-5">
+					<p data-aos="fade-right" data-aos-delay="200" className="text-xl">Luxury and class</p>
+					<hr data-aos="fade-right" data-aos-delay="300" className="border w-1/6 border-red-500 mt-5" />
+					<p data-aos="fade-right" data-aos-delay="400" className="text-4xl font-kanit font-bold pt-6">
+						<span className="">3D model</span>{" "}
+						<span className="text-xl font-mono">of</span>
+						<br />
+						Mercedes AMG CLS
 					</p>
-				</section>
+					<button
+					data-aos="fade-right" data-aos-delay="500"
+							onClick={() => {
+								showPopup();
+							}}	
+							className="mt-5 border w-[120px] border-white hover:border-black p-3 rounded-md
+							opacity-80 backdrop-blur-xl
+									detail-button text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
+							"
+						>
+							View
+						</button>
+				</div>
+				<video
+					autoPlay
+					muted
+					loop
+					playsInline
+					className="w-full z-10 h-auto relative"
+				>
+					<source src={changeColor} type="video/mp4" />
+				</video>
+				<div
+					onClick={() => {
+						showPopup();
+					}}
+					className="absolute  lg:-top-[220px] lg:-left-[300px]  xl:-top-[300px] xl:-left-[500px]  w-full h-full flex justify-center items-center"
+				>
+					<div data-aos="fade-left" className="md:block hidden z-50 lg:w-[350px] lg:h-[250px] xl:w-[450px] xl:h-[300px] rounded-2xl bg-black backdrop-blur-xl bg-opacity-75 font-bold text-white p-5 ">
+						<p data-aos="fade-right" data-aos-delay="200" className="xl:text-xl">Luxury and class</p>
+						<hr data-aos="fade-right" data-aos-delay="300" className="border w-1/6 border-red-500 mt-5" />
+						<p data-aos="fade-right" data-aos-delay="400" className="xl:text-4xl lg:text-3xl font-kanit font-bold pt-6">
+							<span className="">3D model</span>{" "}
+							<span className="text-xl font-mono">of</span>
+							<br />
+							Mercedes AMG CLS
+						</p>
+						<button
+						data-aos="fade-right" data-aos-delay="600"
+							onClick={() => {
+								showPopup();
+							}}
+							className="xl:mt-12 lg:mt-4 border w-[80px] border-white hover:border-black p-3 rounded-xl
+							opacity-80 backdrop-blur-xl
+									detail-button	 text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
+							"
+						>
+							View
+						</button>
+					</div>
+				</div>
 			</div>
 
-			<div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
-				<section className={`w-screen h-screen flex  flex-col justify-center items-center `}>
-					<div className="w-[80%] h-[8%] bg-neutral-600  flex justify-between items-center">
+			<div
+				className={`top-0 left-0 w-screen ${
+					isPopupVisible ? "flex" : "hidden"
+				} h-screen fixed bg-neutral-800 z-50`}
+			>
+				<section
+					className={`w-screen h-screen flex  flex-col justify-center items-center `}
+				>
+					<div className="w-[100%] h-[8%]  flex justify-between items-center">
 						<section className="w-[5%] h-full "></section>
 						<section className="w-[80%] h-full  flex justify-center items-center">
-							<p className="font-kanit font-bold text-[23px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
+							<p className="font-kanit font-bold text-[20px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
 								Mercedes AMG CLS 3D Model
 							</p>
 						</section>
 						<section
 							onClick={() => {
-								hidePopup()
+								hidePopup();
 							}}
-							className="cursor-pointer w-[15%] ss:w-[10%] xsm:w-[8%] mlg:w-[6%] h-full flex justify-center items-center bg-red-400 ">
-							<img src={close_icon} className="w-1/2 h-1/2 object-cover" />
+							className="cursor-pointer w-[30px] sm:w-[50px] pr-3 sm:pr-5 h-full flex justify-center items-center text-red-600 scale-150 sm:scale-[3]"
+						>
+							<IoMdCloseCircle />
 						</section>
 					</div>
-					<div className="w-[80%] h-[50%] rounded-[10px] overflow-hidden ">
+					<div className="w-[100%] h-[100%] overflow-hidden ">
 						<Mercedes_amg_cls_view />
 					</div>
 				</section>
 			</div>
-
-
 
 			{/* <div className="">
 					<div
@@ -384,7 +447,7 @@ const Car1popular = () => {
 					</div>
 				</div> */}
 			{/*----------------------- banner -------------------------*/}
-			<div className="flex pt-32">
+			<div className="flex pt-12">
 				<div
 					id="Behind"
 					data-aos="fade-left"
@@ -393,7 +456,7 @@ const Car1popular = () => {
 				></div>
 				<div
 					data-aos="fade-right"
-					className="font-thin text-blue-200 relative text-xl ss:text-3xl sm:text-5xl xl:text-6xl justify-center items-center flex md:pl-40 font-syncopate"
+					className="font-bold text-white relative text-2xl ss:text-3xl sm:text-5xl xl:text-6xl justify-center items-center flex pl-5 md:pl-60 font-kanit"
 				>
 					CAR BEHIND
 				</div>
@@ -474,8 +537,8 @@ const Car1popular = () => {
 				>
 					Two AMG Night Package and Night Package II equipment
 					packages are standard equipment. Finally, the car is
-					equipped with welcome lights with a three-dimensional
-					AMG logo displayed on the ground when opening the door.
+					equipped with welcome lights with a three-dimensional AMG
+					logo displayed on the ground when opening the door.
 				</div>
 				<div className="justify-end flex">
 					<div
@@ -497,10 +560,10 @@ const Car1popular = () => {
 					data-aos="fade-right"
 					className="font-thin text-white text-xs ss:text-sm sm:text-xl xl:text-2xl md:p-32 p-2 xs:p-12"
 				>
-					Inside, the AMG Performance upgrade package will provide
-					the interior with a steering wheel wrapped in Nappa
-					leather or Dinamica fabric material. The interior is
-					also covered with carbon fiber.
+					Inside, the AMG Performance upgrade package will provide the
+					interior with a steering wheel wrapped in Nappa leather or
+					Dinamica fabric material. The interior is also covered with
+					carbon fiber.
 				</div>
 			</div>
 
@@ -517,7 +580,8 @@ const Car1popular = () => {
 						<div className="w-full flex  justify-center pt-5 md:pt-20 ">
 							<div
 								data-aos="fade-right"
-								className=" bg-gray-800 w-[320px] h-[150px] md:h-[250px] md:p-12 p-4 md:w-[700px] md:px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl">
+								className=" bg-gray-800 w-[320px] h-[150px] md:h-[250px] md:p-12 p-4 md:w-[700px] md:px-20 rounded-3xl bg-opacity-70 backdrop-blur-3xl"
+							>
 								<Toaster
 									position="top-center"
 									reverseOrder={false}
@@ -535,7 +599,8 @@ const Car1popular = () => {
 								<div
 									data-aos="fade-left"
 									data-aos-delay="500"
-									className="md:text-2xl text-center font-syncopate">
+									className="md:text-2xl text-center font-syncopate"
+								>
 									$ 183,600
 								</div>
 								<div className="flex justify-center gap-5 pt-5 md:pt-12">
@@ -559,9 +624,7 @@ const Car1popular = () => {
 							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
 										before:ease relative h-10 md:h-12 md:w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-black hover:before:-translate-x-[230px]
 							"
-										onClick={() =>
-											handleAddToCart(car._id)
-										}
+										onClick={() => handleAddToCart(car._id)}
 									>
 										{isAddingToCart ? (
 											<LoadingSpinner />

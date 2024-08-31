@@ -11,7 +11,13 @@ import { FcGoogle } from "react-icons/fc";
 import LoginRepon from "./LoginRepon";
 import { useMutation } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp";
+import {
+	InputOTP,
+	InputOTPGroup,
+	InputOTPSeparator,
+	InputOTPSlot,
+} from "@/components/ui/input-otp";
+import { IoArrowBackSharp, IoChevronBackSharp } from "react-icons/io5";
 const LoginPage: React.FC = () => {
 	const [isPending, setIsPending] = useState(false);
 
@@ -197,7 +203,6 @@ const LoginPage: React.FC = () => {
 			password: "",
 		});
 	};
-
 
 	return (
 		<div className="w-full bg-primary">
@@ -490,10 +495,7 @@ const LoginPage: React.FC = () => {
 									<h2 className="text-center pb-12 text-4xl font-poppins text-white mb-6">
 										Forgot password
 									</h2>
-									<form
-										className="space-y-6"
-										noValidate
-									>
+									<form className="space-y-6" noValidate>
 										{["Gmail"].map((placeholder, index) => (
 											<div
 												key={index}
@@ -612,22 +614,22 @@ const LoginPage: React.FC = () => {
 												<div>
 													C
 													<span className="lowercase">
-													onfirm
+														onfirm
 													</span>
 												</div>
 											</Button>
 										</div>
 
 										<div className="flex pt-12 justify-center items-center text-center">
-											<p>You remembered the password</p>
+											<p>You want to re-enter gmail ? </p>
 											<div className="w-[70px]">
 												<a
 													onClick={() =>
-														toggleForm("signIn")
+														toggleForm("forgot")
 													}
 													className={`cursor-pointer text-blue-300 transition-all ease-in-out duration-700 text-sm font-poppins relative hover:underline`}
 												>
-													Sign In
+													Back
 												</a>
 											</div>
 										</div>
