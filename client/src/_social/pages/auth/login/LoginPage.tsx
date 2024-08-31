@@ -512,9 +512,9 @@ const LoginPage: React.FC = () => {
 										Forgot password
 									</h2>
 									<form
-										onSubmit={handleForgotSubmit}
 										className="space-y-6"
 										noValidate
+										onSubmit={handleForgotSubmit}
 									>
 										{["Gmail"].map((placeholder, index) => (
 											<div
@@ -522,12 +522,13 @@ const LoginPage: React.FC = () => {
 												className="relative pl-12 px-8"
 											>
 												<input
-													type={
-														placeholder === "email"
-															? "email"
-															: "text"
-													}
-													name={placeholder}
+												
+												value={emaildata.email}
+												onChange={(e) =>
+													setEmaildata({
+														email: e.target.value,
+													})
+												}
 													className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
 													required
 												/>
