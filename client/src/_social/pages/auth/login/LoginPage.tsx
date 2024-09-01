@@ -230,6 +230,13 @@ const LoginPage: React.FC = () => {
 			username: "",
 			password: "",
 		});
+		setEmaildata({
+			email: "",
+		});
+		setChangePassData({
+			newPass: "",
+			rePass: "",
+		});
 	};
 	const handleForgotSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -259,7 +266,7 @@ const LoginPage: React.FC = () => {
 	};
 
 	// Hàm cập nhật state khi người dùng nhập dữ liệu
-	const handleInputChangepass = (e) => {
+	const handleInputChangePass = (e) => {
 		const { name, value } = e.target;
 		setChangePassData((prevData) => ({
 			...prevData,
@@ -723,9 +730,23 @@ const LoginPage: React.FC = () => {
 												>
 													<input
 														type="password"
-														name={placeholder}
-														value={changePassData[placeholder]}
-														onChange={handleInputChangepass}
+														name={
+															placeholder ===
+															"New password"
+																? "newPass"
+																: "rePass"
+														} // Chỉnh sửa name để khớp với changePassData
+														value={
+															changePassData[
+																placeholder ===
+																"New password"
+																	? "newPass"
+																	: "rePass"
+															]
+														}
+														onChange={
+															handleInputChangePass
+														}
 														className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
 														required
 													/>
