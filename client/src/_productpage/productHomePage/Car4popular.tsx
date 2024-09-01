@@ -758,7 +758,7 @@ const Car4popular = () => {
             ref={hero_section4}
             style={{ backgroundImage: `url(${car44})` }}
             className="bg  absolute top-0 left-0 w-screen h-screen z-1 object-cover
-          bg-center bg-no-repeat  bg-cover flex justify-center items-center ">
+            bg-center bg-no-repeat  bg-cover flex justify-center items-center ">
             <h1 ref={sec4_text} className="text-center  text-[70px] ss:text-[80px] sm:text-[115px] md:text-[130px] lg:text-[170px] mlg:text-[210px] xl:text-[250px] font-kanit  w-full z-1 text-slate-50 font-bold   ">
               Discover Now </h1>
           </div>
@@ -784,9 +784,8 @@ const Car4popular = () => {
 							}}	
 							className="mt-5 border w-[120px] border-white hover:border-black p-3 rounded-md
 							opacity-80 backdrop-blur-xl
-									detail-button text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
-												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
-							"
+							detail-button text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+              before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]"
 						>
 							View
 						</button>
