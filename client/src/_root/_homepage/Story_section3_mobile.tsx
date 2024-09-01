@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react"
+import { Link } from "react-router-dom"
 import SplitType from "split-type"
 import gsap from "gsap"
 import { bmwM3 } from "@/assets/homepage/story"
@@ -43,11 +44,13 @@ const Story_section3_mobile = () => {
         <img src={bmwM3} className="w-full h-full object-cover" />
         <div ref={founder3_overlay} className="absolute top-0 w-full h-full bg-neutral-900"></div>
       </section>
-      <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
-        <div className="w-full  h-[40%]">
-          <p className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] font-bold font-syncopate">
-            BMW M3
-          </p>
+      <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[20px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
+        <div className="w-full  h-full">
+          <div>
+            <p className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] font-bold font-syncopate">
+              BMW M3
+            </p>
+          </div>
           <div className="flex gap-x-[15px] ">
             <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
               <p>Bmw</p>
@@ -59,12 +62,20 @@ const Story_section3_mobile = () => {
               <p>Germany</p>
             </section>
           </div>
+          <div className="w-[85%] mt-[2%]">
+            <p ref={founder_txt3} className="split3 text-[20px] md:text-[25px] overflow-y-hidden">
+              The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH.
+              The changes over the rear of the car resulted in lower lift forces and better straight-line stability.
+              {/* In addition, the windscreen was glued in – not, as with the other E30 models, framed with a window rubber and piping. */}
+            </p>
+          </div>
+          <div className="mt-[5%] w-full  ">
+            <Link to="/shop/product/66ab86b32c63f54b95a50cd3">
+              <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450">Show now</button>
+            </Link>
+          </div>
         </div>
-        <div className="w-[85%] h-[60%]  flex flex-col justify-center gap-y-[20px] ">
-          <p ref={founder_txt3} className="split3 text-[20px] md:text-[25px] overflow-y-hidden">
-            The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH.
-          </p>
-        </div>
+
       </section>
 
     </div>

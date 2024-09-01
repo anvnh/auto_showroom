@@ -330,10 +330,10 @@ const Audi_A5_Couple = () => {
   return (
 
     <div className={`${isPopupVisible ? "overflow-hidden" : "overflow-visible"} w-screen h-screen   `}>
-       <Toaster
-          position="top-center"
-          reverseOrder={false}
-        />
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <div className="w-screen flex bg-primary">
         <Navbar />
       </div>
@@ -419,7 +419,7 @@ const Audi_A5_Couple = () => {
 
       <div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
         <section className={`w-screen h-screen flex  flex-col justify-center items-center `}>
-          <div className="w-[80%] h-[8%] bg-neutral-600  flex justify-between items-center">
+          <div className="w-full h-[8%] bg-neutral-600  flex justify-between items-center">
             <section className="w-[5%] h-full "></section>
             <section className="w-[80%] h-full  flex justify-center items-center">
               <p className="font-kanit font-bold text-[23px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
@@ -434,7 +434,7 @@ const Audi_A5_Couple = () => {
               <img src={close_icon} className="w-1/2 h-1/2 object-cover" />
             </section>
           </div>
-          <div className="w-[80%] h-[50%] rounded-[10px]  ">
+          <div className="w-full h-full rounded-[10px]  ">
             <Suspense fallback={null}>
               <Canvas   >
                 <Audi_a5_view />

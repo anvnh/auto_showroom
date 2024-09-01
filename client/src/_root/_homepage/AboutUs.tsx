@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react"
 import SplitType from "split-type"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/all"
+import { Link } from "react-router-dom"
 const AboutUs = () => {
   const container_whoweare = useRef(null)
   useEffect(() => {
@@ -52,9 +53,11 @@ const AboutUs = () => {
         </div>
       </section>
       <section className="w-full h-[20%] flex justify-center items-center ">
-        <button className="w-[150px] h-[50px] text-slate-900 rounded-[50px] border border-slate-900" >
-          Learn more
-        </button>
+        <Link to="/about-us">
+          <button className="w-[150px] h-[50px] text-slate-900 rounded-[50px] border border-slate-900 hover:bg-neutral-900 hover:text-neutral-200 transition-all duration-450" >
+            Learn more
+          </button>
+        </Link>
       </section>
     </div>
   )

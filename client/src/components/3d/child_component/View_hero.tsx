@@ -18,9 +18,7 @@ const View_hero = () => {
                 fov={50}
             />
 
-
             <mesh
-                //  geometry={new THREE.BoxGeometry(2, 2, 2)}
                 castShadow
                 rotation={[-Math.PI / 2, 0, 0]}
             >
@@ -35,39 +33,10 @@ const View_hero = () => {
                     metalness={0}
                     reflectivity={1}
                 />
-
-
             </mesh >
-            {/* <Reflector
 
-                args={[50, 150]} // Kích thước của mặt phẳng
-                resolution={1024} // Độ phân giải của phản chiếu
-                mirror={1} // Độ phản chiếu
-                mixBlur={0} // Độ mờ của phản chiếu
-                mixStrength={0.9} // Độ mạnh của phản chiếu
-                rotation={[-Math.PI / 2, 0, 0]}
-                position={[2, 0, 0]} // Vị trí của mặt phẳng
-            // geometry={new THREE.PlaneGeometry(50, 250)}
-            >
-                {(Material) => (
-                    < meshPhysicalMaterial
-                        color="#888" // Màu của phản chiếu
-                        side={THREE.DoubleSide} // Hiển thị từ cả hai phía
-                        clearcoat={0.5} // Hiệu ứng lớp phủ thêm
-                        clearcoatRoughness={0} // Độ nhám của lớp phủ
-                    />
-                )}
-            </Reflector> */}
-            {/* <mesh rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry
-                    args={[100, 100]}
-                />
-                <meshPhysicalMaterial side={THREE.DoubleSide} />
-            </mesh> */}
-            {/* <ambientLight
-                color={"#524f47"}
-                intensity={3}
-            /> */}
+            {/* <ambientLight intensity={0.5} /> */}
+
             <pointLight
                 decay={8}
                 distance={200}
@@ -79,16 +48,23 @@ const View_hero = () => {
             <SpotLight
                 decay={1}
                 angle={20}
-                intensity={60}
-                position={[0, 10, 0]}
-                distance={25}
+                intensity={100}
+                position={[0, 20, 0]}
+                distance={40}
             />
+            {/* <SpotLight
+                intensity={1000}
+                angle={30}
+                distance={60}
+                position={[0, 6, 50]}
+            /> */}
             <SpotLight
-                intensity={90}
-                angle={20}
-                distance={50}
-                position={[3, 5, -20]}
+                angle={40}
+                distance={300}
+                intensity={1000}
+                position={[0, 2, -20]}
             />
+
 
         </>
     )
