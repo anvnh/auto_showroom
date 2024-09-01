@@ -22,6 +22,12 @@ const LoginRepon = () => {
 	const [forgotForm, setForgotForm] = useState(false);
 	const [numberForm, setNumberForm] = useState(false);
 	const [number, setNumber] = useState("");
+	const [changePass, setChangePass] = useState(false);
+
+	const [changePassData, setChangePassData] = useState({
+		newPass: "",
+		rePass: "",
+	});
 
 	const [emaildata, setEmaildata] = useState({
 		email: "",
@@ -81,28 +87,32 @@ const LoginRepon = () => {
 		},
 	});
 
-	const {mutate: sendForgotpassword, isPending: isSending, data: otpCode} = useMutation({
-        mutationFn: async (email: string) => {
-            try {
-                const res = await fetch("/api/auth/confirm/sendResetToken", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ email }),
-                });
-                const data = await res.json();
-                if (!res.ok)
-                    throw new Error(data.error || "Failed to send token.");
-                return data;
-            } catch (error) {
-                throw new Error(error.message);
-            }
-        },
-        onSuccess: () => {
-            toast.success("Please check your email for verification link.");
-        },
-    });
+	const {
+		mutate: sendForgotpassword,
+		isPending: isSending,
+		data: otpCode,
+	} = useMutation({
+		mutationFn: async (email: string) => {
+			try {
+				const res = await fetch("/api/auth/confirm/sendResetToken", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ email }),
+				});
+				const data = await res.json();
+				if (!res.ok)
+					throw new Error(data.error || "Failed to send token.");
+				return data;
+			} catch (error) {
+				throw new Error(error.message);
+			}
+		},
+		onSuccess: () => {
+			toast.success("Please check your email for verification link.");
+		},
+	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault(); // page won't reload
@@ -118,33 +128,46 @@ const LoginRepon = () => {
 			setShowSignInForm(false);
 			setForgotForm(false);
 			setNumberForm(false);
+			setChangePass(false);
 			setActiveForm("signUp");
 		} else if (form === "signIn") {
 			setShowSignInForm(true);
 			setShowSignUpForm(false);
 			setForgotForm(false);
 			setNumberForm(false);
+			setChangePass(false);
 			setActiveForm("signIn");
 		} else if (form === "forgot") {
 			setShowSignInForm(false);
 			setShowSignUpForm(false);
 			setForgotForm(true);
 			setNumberForm(false);
+			setChangePass(false);
 			setActiveForm("forgot");
 		} else if (form === "number") {
 			setShowSignInForm(false);
 			setShowSignUpForm(false);
 			setForgotForm(false);
+			setChangePass(false);
 			// console.log(emaildata);
 			setNumberForm(true);
 			setActiveForm("number");
+		} else if (form === "changepass") {
+			setChangePass(true);
+			setShowSignUpForm(false);
+			setShowSignInForm(false);
+			setForgotForm(false);
+			setNumberForm(false);
+			setActiveForm("changepass");
 		} else {
 			setShowSignUpForm(false);
 			setShowSignInForm(false);
 			setForgotForm(false);
 			setNumberForm(false);
+			setChangePass(false);
 			setActiveForm("");
 		}
+
 		resetFormInputs();
 	};
 
@@ -199,21 +222,37 @@ const LoginRepon = () => {
 		});
 	};
 	const handleForgotSubmit = (e: React.FormEvent) => {
-			e.preventDefault();
-			const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-			if (emailPattern.test(emaildata.email)) {
-				toggleForm("number");
-				sendForgotpassword(emaildata.email);
-			}
-			else {
-            toast.error("Invalid email address");
-        }
-		};
+		e.preventDefault();
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (emailPattern.test(emaildata.email)) {
+			toggleForm("number");
+			sendForgotpassword(emaildata.email);
+		} else {
+			toast.error("Invalid email address");
+		}
+	};
 	const handleNumberSubmit = (e) => {
 		e.preventDefault();
-		if(number === otpCode.otp){
-            console.log("OK");
+		if (number === otpCode.otp) {
+			console.log("OK");
+			toggleForm("changepass");
 		}
+	};
+	const handleChangePassSubmit = (e) => {
+		e.preventDefault();
+		console.log(changePassData); // In ra dữ liệu đã nhập
+
+		// khi đổi mật khẩu thành công thì
+		// toggleForm("signIn");
+	};
+
+	// Hàm cập nhật state khi người dùng nhập dữ liệu
+	const handleInputChangepass = (e) => {
+		const { name, value } = e.target;
+		setChangePassData((prevData) => ({
+			...prevData,
+			[name]: value,
+		}));
 	};
 	return (
 		<div>
@@ -440,24 +479,21 @@ const LoginRepon = () => {
 									noValidate
 									onSubmit={handleForgotSubmit}
 								>
-
-										<div
-											className="relative px-6"
-										>
-											<input
-												placeholder="Input your Gmail"
-												type="email"
-												name="email"
-												value={emaildata.email}
-												onChange={(e) =>
-													setEmaildata({
-														email: e.target.value,
-													})
-												}
-												className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
-												required
-											/>
-										</div>
+									<div className="relative px-6">
+										<input
+											placeholder="Input your Gmail"
+											type="email"
+											name="email"
+											value={emaildata.email}
+											onChange={(e) =>
+												setEmaildata({
+													email: e.target.value,
+												})
+											}
+											className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
+											required
+										/>
+									</div>
 
 									<div className="pt-12 relative flex justify-center">
 										<Button
@@ -563,6 +599,69 @@ const LoginRepon = () => {
 												className={`cursor-pointer text-blue-300 transition-all ease-in-out duration-700 text-sm font-poppins relative hover:underline`}
 											>
 												Back
+											</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						)}
+						{changePass && (
+							<div className="w-full max-w-xl p-8 bg-primary backdrop-blur-md bg-opacity-50 shadow-xl rounded-lg pb-12">
+								<h2 className="text-center pb-12 text-2xl sm:text-3xl font-poppins text-white mb-6 lg:text-5xl">
+									Reset password
+								</h2>
+								<form
+									data-aos="fade-up"
+									className="space-y-6"
+									onSubmit={handleChangePassSubmit}
+									noValidate
+								>
+									{["New password", "Re-enter password"].map(
+										(placeholder, index) => (
+											<div
+												key={index}
+												className="relative"
+											>
+												<input
+													placeholder={
+														placeholder === "newPass"
+															? "New password"
+															: "Re-enter password"
+													}
+													type="password"
+													name={placeholder}
+													value={changePassData[placeholder]}
+													onChange={handleInputChangepass}
+													className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
+													required
+												/>
+											</div>
+										)
+									)}
+
+									<div className="pt-2 relative flex justify-center">
+										<Button
+											type="submit"
+											className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-72 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-md
+											before:ease relative h-12 w-full overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-44
+												"
+										>
+											C
+											<span className="lowercase">
+												onfirm
+											</span>
+										</Button>
+									</div>
+									<div className="flex pt-12 justify-center items-center text-center">
+										<p>You remember the old password</p>
+										<div className="w-[70px]">
+											<a
+												onClick={() =>
+													toggleForm("signIn")
+												}
+												className={`cursor-pointer text-blue-300 transition-all ease-in-out duration-700 text-sm font-poppins relative hover:underline`}
+											>
+												Sign In
 											</a>
 										</div>
 									</div>
