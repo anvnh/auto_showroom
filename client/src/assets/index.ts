@@ -198,6 +198,7 @@ import car623 from "./car_popular/car6popular/623doc.jpg";
 import car624 from "./car_popular/car6popular/624doc.jpg";
 import car625 from "./car_popular/car6popular/car625.webp";
 import carremove6 from "./car_popular/car6popular/remove.png";
+import changecolor6 from "./car_popular/car6popular/video.mp4"
 // logo car
 import logo from "./logo/logoMain.png";
 import logo1 from "./logo_car1.png";
@@ -239,6 +240,7 @@ import Voucher15do from "./voucher/15do.png";
 import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov";
 import video2 from "./car2_popular/Maybach S-Class.mov";
 export {
+	changecolor6,
 	changecolor4,
 	changecolor2,
 	changeColor,
