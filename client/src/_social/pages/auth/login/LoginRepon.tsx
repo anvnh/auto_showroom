@@ -220,6 +220,10 @@ const LoginRepon = () => {
 		setEmaildata({
 			email: "",
 		});
+		setChangePassData({
+			newPass: "",
+			rePass: "",
+		});
 	};
 	const handleForgotSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -242,12 +246,12 @@ const LoginRepon = () => {
 		e.preventDefault();
 		console.log(changePassData); // In ra dữ liệu đã nhập
 
-		// khi đổi mật khẩu thành công thì
+		// khi đổi mật khẩu thành công thì,
 		// toggleForm("signIn");
 	};
 
 	// Hàm cập nhật state khi người dùng nhập dữ liệu
-	const handleInputChangepass = (e) => {
+	const handleInputChangePass = (e) => {
 		const { name, value } = e.target;
 		setChangePassData((prevData) => ({
 			...prevData,
@@ -623,15 +627,25 @@ const LoginRepon = () => {
 												className="relative"
 											>
 												<input
-													placeholder={
-														placeholder === "newPass"
-															? "New password"
-															: "Re-enter password"
-													}
+													placeholder={placeholder}
 													type="password"
-													name={placeholder}
-													value={changePassData[placeholder]}
-													onChange={handleInputChangepass}
+													name={
+														placeholder ===
+														"New password"
+															? "newPass"
+															: "rePass"
+													} // Chỉnh sửa name để khớp với changePassData
+													value={
+														changePassData[
+															placeholder ===
+															"New password"
+																? "newPass"
+																: "rePass"
+														]
+													}
+													onChange={
+														handleInputChangePass
+													}
 													className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
 													required
 												/>
