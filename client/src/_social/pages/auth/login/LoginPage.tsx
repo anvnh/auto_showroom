@@ -246,15 +246,15 @@ const LoginPage: React.FC = () => {
 			sendForgotpassword(emaildata.email);
 		}
 		else {
-            toast.error("Invalid email address");
-        }
+       toast.error("Invalid email address");
+    }
 	};
 
 	const handleNumberSubmit = (e) => {
 		e.preventDefault();
 		if(number === otpCode.otp){
-            console.log("OK");
-			toggleForm("changepass");
+        console.log("OK");
+        toggleForm("changepass");
 		}
 	};
 	const handleChangePassSubmit = (e) => {
