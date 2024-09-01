@@ -47,6 +47,7 @@ import { Canvas } from "@react-three/fiber";
 import Lenis from "@studio-freight/lenis";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis"
 import { Toaster, toast } from "react-hot-toast";
+import { IoMdCloseCircle } from "react-icons/io";
 const Audi_A5_Couple = () => {
 
 
@@ -405,24 +406,80 @@ const Audi_A5_Couple = () => {
         </div>
       </section>
 
-      <div className="w-screen h-[80%] flex flex-col justify-center items-center bg-[#DADADA]">
-        <section
-          onClick={() => {
-            showPopup()
-          }}
-          className="cursor-pointer rounded-[40px] w-[300px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
-          <p className="font-kanit font-bold text-[22px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
-            Click to Explore 3D Model
-          </p>
-        </section>
-      </div>
+      <div
+				id="Model"
+				className="w-screen relative h-full z-10 bg-[#DADADA] "
+			>
+				<div className="md:hidden block pt-5 bg-black px-5 ss:px-12 pb-5">
+					<p data-aos="fade-right" data-aos-delay="200" className="text-xl">Luxury and class</p>
+					<hr data-aos="fade-right" data-aos-delay="300" className="border w-1/6 border-red-500 mt-5" />
+					<p data-aos="fade-right" data-aos-delay="400" className="text-4xl font-kanit font-bold pt-6">
+						<span className="">3D model</span>{" "}
+						<span className="text-xl font-mono">of</span>
+						<br />
+						Audi R8 coupe
+					</p>
+					<button
+					data-aos="fade-right" data-aos-delay="500"
+							onClick={() => {
+								showPopup();
+							}}	
+							className="mt-5 border w-[120px] border-white hover:border-black p-3 rounded-md
+							opacity-80 backdrop-blur-xl
+									detail-button text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
+							"
+						>
+							View
+						</button>
+				</div>
+				<video
+					autoPlay
+					muted
+					loop
+					playsInline
+					className="w-full z-10 h-auto relative"
+				>
+					{/* <source src={changecolor6} type="video/mp4" /> */}
+				</video>
+				<div
+					onClick={() => {
+						showPopup();
+					}}
+					className="absolute pt-14 lg:-top-[220px] lg:-left-[300px]  xl:-top-[300px] xl:-left-[500px]  w-full h-full flex justify-center items-center"
+				>
+					<div data-aos="fade-left" className="md:block hidden z-50 lg:w-[350px] lg:h-[250px] xl:w-[450px] xl:h-[300px] rounded-2xl bg-black backdrop-blur-xl bg-opacity-75 font-bold text-white p-5 ">
+						<p data-aos="fade-right" data-aos-delay="200" className="xl:text-xl">Luxury and class</p>
+						<hr data-aos="fade-right" data-aos-delay="300" className="border w-1/6 border-red-500 mt-5" />
+						<p data-aos="fade-right" data-aos-delay="400" className="xl:text-4xl lg:text-3xl font-kanit font-bold pt-6">
+							<span className="">3D model</span>{" "}
+							<span className="text-xl font-mono">of</span>
+							<br />
+							Audi E-Tron GT 2024
+						</p>
+						<button
+						data-aos="fade-right" data-aos-delay="600"
+							onClick={() => {
+								showPopup();
+							}}
+							className="xl:mt-12 lg:mt-4 border w-[80px] border-white hover:border-black p-3 rounded-xl
+							opacity-80 backdrop-blur-xl
+									detail-button  text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
+							"
+						>
+							View
+						</button>
+					</div>
+				</div>
+			</div>
 
       <div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
         <section className={`w-screen h-screen flex  flex-col justify-center items-center `}>
-          <div className="w-[80%] h-[8%] bg-neutral-600  flex justify-between items-center">
+        <div className="w-[100%] h-[8%]  flex justify-between items-center">
             <section className="w-[5%] h-full "></section>
             <section className="w-[80%] h-full  flex justify-center items-center">
-              <p className="font-kanit font-bold text-[23px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
+            <p className="font-kanit font-bold text-[20px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
                 Audi A5 3D Model
               </p>
             </section>
@@ -430,16 +487,14 @@ const Audi_A5_Couple = () => {
               onClick={() => {
                 hidePopup()
               }}
-              className="cursor-pointer w-[15%] ss:w-[10%] xsm:w-[8%] mlg:w-[6%] h-full flex justify-center items-center bg-red-400 ">
-              <img src={close_icon} className="w-1/2 h-1/2 object-cover" />
+              className="cursor-pointer w-[30px] sm:w-[50px] pr-3 sm:pr-5 h-full flex justify-center items-center text-red-600 scale-150 sm:scale-[3]">
+               	<IoMdCloseCircle />
             </section>
           </div>
-          <div className="w-[80%] h-[50%] rounded-[10px]  ">
-            <Suspense fallback={null}>
-              <Canvas   >
+          <div className="w-[100%] h-[100%] overflow-hidden ">
+            
                 <Audi_a5_view />
-              </Canvas>
-            </Suspense>
+              
           </div>
         </section>
       </div>

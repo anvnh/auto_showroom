@@ -27,6 +27,13 @@ const LoginPage: React.FC = () => {
 	const [forgotForm, setForgotForm] = useState(false);
 	const [numberForm, setNumberForm] = useState(false);
 	const [number, setNumber] = useState("");
+	const [changePass, setChangePass] = useState(false);
+
+	const [changePassData, setChangePassData] = useState({
+		newPass: "",
+		rePass: "",
+	});
+
 	const [emaildata, setEmaildata] = useState({
 		email: "",
 	});
@@ -160,11 +167,19 @@ const LoginPage: React.FC = () => {
 			setForgotForm(false);
 			setNumberForm(true);
 			setActiveForm("number");
+		} else if (form === "changepass") {
+			setChangePass(true);
+			setShowSignUpForm(false);
+			setShowSignInForm(false);
+			setForgotForm(false);
+			setNumberForm(false);
+			setActiveForm("changepass");
 		} else {
 			setShowSignUpForm(false);
 			setShowSignInForm(false);
 			setForgotForm(false);
 			setNumberForm(false);
+			setChangePass(false);
 			setActiveForm("");
 		}
 		resetFormInputs();
@@ -215,6 +230,13 @@ const LoginPage: React.FC = () => {
 			username: "",
 			password: "",
 		});
+		setEmaildata({
+			email: "",
+		});
+		setChangePassData({
+			newPass: "",
+			rePass: "",
+		});
 	};
 	const handleForgotSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -224,15 +246,32 @@ const LoginPage: React.FC = () => {
 			sendForgotpassword(emaildata.email);
 		}
 		else {
-            toast.error("Invalid email address");
-        }
+       toast.error("Invalid email address");
+    }
 	};
 
 	const handleNumberSubmit = (e) => {
 		e.preventDefault();
 		if(number === otpCode.otp){
-            console.log("HI");
+        console.log("OK");
+        toggleForm("changepass");
 		}
+	};
+	const handleChangePassSubmit = (e) => {
+		e.preventDefault();
+		console.log(changePassData); // In ra dữ liệu đã nhập
+
+		// khi đổi mật khẩu thành công thì
+		// toggleForm("signIn");
+	};
+
+	// Hàm cập nhật state khi người dùng nhập dữ liệu
+	const handleInputChangePass = (e) => {
+		const { name, value } = e.target;
+		setChangePassData((prevData) => ({
+			...prevData,
+			[name]: value,
+		}));
 	};
 	return (
 		<div className="w-full bg-primary">
@@ -661,6 +700,105 @@ const LoginPage: React.FC = () => {
 													className={`cursor-pointer text-blue-300 transition-all ease-in-out duration-700 text-sm font-poppins relative hover:underline`}
 												>
 													Back
+												</a>
+											</div>
+										</div>
+									</form>
+								</div>
+							)}
+							{changePass && (
+								<div
+									data-aos="fade-left"
+									className={`relative z-10 w-[500px] pt-20 px-20 pb-12 bg-primary shadow-md shadow-white bg-opacity-50 rounded-xl rounded-tr-[200px] mr-10 backdrop-blur-md`}
+								>
+									<div className="absolute w-[400px] h-[70px] -top-[160px] z-40 -left-[170px] transform scale-x-[-1]">
+										<img src={gif} />
+									</div>
+									<h2 className="text-center pb-12 text-3xl font-poppins text-white mb-6">
+									Reset password
+									</h2>
+									<form
+										className="space-y-6"
+										onSubmit={handleChangePassSubmit}
+										noValidate
+									>
+										{["New password", "Re-enter password"].map(
+											(placeholder, index) => (
+												<div
+													key={index}
+													className="relative pl-24"
+												>
+													<input
+														type="password"
+														name={
+															placeholder ===
+															"New password"
+																? "newPass"
+																: "rePass"
+														} // Chỉnh sửa name để khớp với changePassData
+														value={
+															changePassData[
+																placeholder ===
+																"New password"
+																	? "newPass"
+																	: "rePass"
+															]
+														}
+														onChange={
+															handleInputChangePass
+														}
+														className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
+														required
+													/>
+													<label
+														className={`absolute -left-24 top-6 text-gray-400 text-base peer-focus:-top-3
+														peer-focus:left-0 peer-focus:text-sm transition-all duration-300 ml-12 ${
+														signUpData[
+															placeholder as keyof typeof signUpData
+														]
+															? "-top-3 text-sm"
+															: ""
+													}`}
+													>
+														{placeholder
+															.charAt(0)
+															.toUpperCase() +
+															placeholder.slice(
+																1
+															)}
+													</label>
+												</div>
+											)
+										)}
+
+										<div className="pt-2 relative flex justify-center">
+											<Button
+												type="submit"
+												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-[300px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-xl
+												before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80"
+											>
+												{isPending ? (
+													<LoadingSpinner />
+												) : (
+													<div>
+														C
+														<span className="lowercase">
+															onfirm
+														</span>
+													</div>
+												)}
+											</Button>
+										</div>
+										<div className="flex pt-12 justify-center items-center text-center">
+											<p>Don't have an account yet?</p>
+											<div className="w-[70px]">
+												<a
+													onClick={() =>
+														toggleForm("signIn")
+													}
+													className={`cursor-pointer text-blue-300 transition-all ease-in-out duration-700 text-sm font-poppins relative hover:underline`}
+												>
+													Sign In
 												</a>
 											</div>
 										</div>
