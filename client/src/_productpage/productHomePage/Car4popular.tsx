@@ -11,6 +11,7 @@ import {
   abstract1, abstract2,
 } from "@/assets/background/index"
 import {
+  changecolor4,
   carremove,
   car4BH,
   car4BH2,
@@ -48,6 +49,7 @@ import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Toaster, toast } from "react-hot-toast";
 import { Audi_r8_view } from "@/components/3d";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const Car4popular = () => {
   // //cuon dau trang
@@ -762,24 +764,80 @@ const Car4popular = () => {
           </div>
         </section>
 
-        <div className="w-screen h-[600px] flex flex-col justify-center items-center bg-[#DADADA]">
-          <section
-            onClick={() => {
-              showPopup()
-            }}
-            className="cursor-pointer rounded-[40px] w-[350px] h-[90px] ss:w-[400px]  xsm:w-[500px] xsm:h-[90px]  md:w-[700px] md:h-[100px] flex justify-center items-center border border-neutral-500">
-            <p className="font-kanit font-bold text-[25px] ss:text-[27px] xsm:text-[30px] md:text-[50px] text-neutral-700">
-              Click to Explore 3D Model
-            </p>
-          </section>
-        </div>
+        <div
+				id="Model"
+				className="w-screen relative h-full z-10 bg-[#DADADA] "
+			>
+				<div className="md:hidden block pt-5 bg-black px-5 ss:px-12 pb-5">
+					<p data-aos="fade-right" data-aos-delay="200" className="text-xl">Luxury and class</p>
+					<hr data-aos="fade-right" data-aos-delay="300" className="border w-1/6 border-red-500 mt-5" />
+					<p data-aos="fade-right" data-aos-delay="400" className="text-4xl font-kanit font-bold pt-6">
+						<span className="">3D model</span>{" "}
+						<span className="text-xl font-mono">of</span>
+						<br />
+						Audi R8 coupe
+					</p>
+					<button
+					data-aos="fade-right" data-aos-delay="500"
+							onClick={() => {
+								showPopup();
+							}}	
+							className="mt-5 border w-[120px] border-white hover:border-black p-3 rounded-md
+							opacity-80 backdrop-blur-xl
+									detail-button text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
+							"
+						>
+							View
+						</button>
+				</div>
+				<video
+					autoPlay
+					muted
+					loop
+					playsInline
+					className="w-full z-10 h-auto relative"
+				>
+					<source src={changecolor4} type="video/mp4" />
+				</video>
+				<div
+					onClick={() => {
+						showPopup();
+					}}
+					className="absolute pt-14 lg:-top-[220px] lg:-left-[300px]  xl:-top-[300px] xl:-left-[500px]  w-full h-full flex justify-center items-center"
+				>
+					<div data-aos="fade-left" className="md:block hidden z-50 lg:w-[350px] lg:h-[250px] xl:w-[450px] xl:h-[300px] rounded-2xl bg-black backdrop-blur-xl bg-opacity-75 font-bold text-white p-5 ">
+						<p data-aos="fade-right" data-aos-delay="200" className="xl:text-xl">Luxury and class</p>
+						<hr data-aos="fade-right" data-aos-delay="300" className="border w-1/6 border-red-500 mt-5" />
+						<p data-aos="fade-right" data-aos-delay="400" className="xl:text-4xl lg:text-3xl font-kanit font-bold pt-6">
+							<span className="">3D model</span>{" "}
+							<span className="text-xl font-mono">of</span>
+							<br />
+							Audi R8 coupe
+						</p>
+						<button
+						data-aos="fade-right" data-aos-delay="600"
+							onClick={() => {
+								showPopup();
+							}}
+							className="xl:mt-12 lg:mt-4 border w-[80px] border-white hover:border-black p-3 rounded-xl
+							opacity-80 backdrop-blur-xl
+									detail-button  text-white px-4 py-2 md:px-6 md:py-3  justify-center flex hover:bg-white transition-all duration-300 ease-in-out hover:text-black  font-bold  text-xs md:text-base text-center
+												before:ease relative h-10 md:h-12 md:w-36 overflow-hidden  shadow-xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-gray-500 before:opacity-80 before:duration-700 hover:shadow-white hover:before:-translate-x-[200px]
+							"
+						>
+							View
+						</button>
+					</div>
+				</div>
+			</div>
 
         <div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
           <section className={`w-screen h-screen flex  flex-col justify-center items-center `}>
-            <div className="w-[80%] h-[8%] bg-neutral-600  flex justify-between items-center">
+        	<div className="w-[100%] h-[8%]  flex justify-between items-center">
               <section className="w-[5%] h-full "></section>
               <section className="w-[80%] h-full  flex justify-center items-center">
-                <p className="font-kanit font-bold text-[23px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
+              <p className="font-kanit font-bold text-[20px] ss:text-[29px] sm:text-[35px] xsm:text-[45px] mlg:text-[50px]">
                   Audi R8 3D Model
                 </p>
               </section>
@@ -787,11 +845,11 @@ const Car4popular = () => {
                 onClick={() => {
                   hidePopup()
                 }}
-                className="cursor-pointer w-[15%] ss:w-[10%] xsm:w-[8%] mlg:w-[6%] h-full flex justify-center items-center bg-red-400 ">
-                <img src={close_icon} className="w-1/2 h-1/2 object-cover" />
+              	className="cursor-pointer w-[30px] sm:w-[50px] pr-3 sm:pr-5 h-full flex justify-center items-center text-red-600 scale-150 sm:scale-[3]">
+                  	<IoMdCloseCircle />
               </section>
             </div>
-            <div className="w-[80%] h-[50%] rounded-[10px]  ">
+            <div className="w-[100%] h-[100%] overflow-hidden ">
               <Audi_r8_view />
             </div>
           </section>
@@ -812,17 +870,20 @@ const Car4popular = () => {
               Starting at $48,000
             </div>
           </div>
-          <img
+        <div className="hidden md:block">
+        <img
             src={car410}
             ref={hero_car}
             className=" absolute w-full top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%]   object-cover"
           />
         </div>
+        </div>
 
 
 
         {/* -------slogan----------- */}
-        <div
+    <div className="md:block hidden">
+    <div
           ref={container_slogan}
           className=" w-screen h-[300px]  flex justify-center items-center bg-slate-100 "
         >
@@ -832,6 +893,7 @@ const Car4popular = () => {
             DO YOU WANT TO RACE?
           </p>
         </div>
+    </div>
 
 
         {/*----------Split1------------------------ */}
@@ -858,7 +920,7 @@ const Car4popular = () => {
 
         {/* ---------------Split2------------------- */}
         <div ref={container_split2} className="relative hidden lg:flex  w-screen h-screen text-slate-800">
-          <div className="h-screen   w-[50%]  flex  justify-center items-center bg-slate-100 ">
+          <div className="h-screen w-[50%]  flex  justify-center items-center bg-slate-100 ">
             <div className="w-full mx-[5%]  h-full flex justify-center items-center flex-col  ">
               <h1
                 ref={split2_h1}
@@ -1082,30 +1144,30 @@ const Car4popular = () => {
           <div ref={box_left} className="w-[40%]  h-screen  ">
             <div className="h-full w-full flex flex-col justify-center items-center border-r border-r-slate-800 ">
               <Link to='/shop/product/66a3bb07803942c2c831d0aa'>
-                <p className="w-full h-[15%]  text-center text-[50px] md:text-[60px] mlg:text-[45px]  font-syncopate  font-bold">
-                  Audi R8 coupe <br />
-                  <span className="h-[20%] px-[5%] text-center text-[20px] md:text-[23px] mlg:text-[40px] font-poppins font-normal">$ 208 100</span>
+              <p className="w-full h-[70px]  text-center text-[50px] md:text-[70px]    font-kanit font-bold ">
+                  Audi R8 Coupe <br />
+                  <div className="h-[40px]  text-center text-[20px]  md:text-[40px] font-kanit font-light"> $ 208 100</div>
                 </p></Link>
 
               {/* {isLoading && <LoadingSpinner />}
                           {!isLoading && !isRefetching && car && ( */}
-              <div className="flex justify-center gap-5 pt-12">
+              <div className="flex justify-center gap-x-[20px] pt-[150px]">
                 <Link to="/shop/payment/66a3bb07803942c2c831d0aa">
                   <button
-                    className=" backdrop-blur-xl
-							detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
-							"
+                     className=" opacity-80 backdrop-blur-xl
+                     detail-button  text-black  md:w-[200px] md:h-[50px] justify-center flex items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-sm md:text-base rounded-3xl text-center
+                           before:ease relative  overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
+                     "
                   >
                     Buy Now
                   </button>
                 </Link>
 
                 <button
-                  className=" backdrop-blur-xl
-							detail-button bg-gray-400 text-black px-4 py-2 md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
-							"
+                   className=" opacity-80 backdrop-blur-xl
+                   detail-button  text-black  border-black border  md:w-[200px] md:h-[50px]  flex justify-center items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-sm md:text-base rounded-3xl text-center
+                         before:ease relative  overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
+                   "
                   onClick={() =>
                     handleAddToCart(car._id)
                   }
@@ -1186,30 +1248,30 @@ const Car4popular = () => {
         {/* -----mobile pin */}
         <div className=" w-screen h-[300px] px-[10%] flex md:hidden flex-col  justify-center item-center gap-y-[40px] sm:gap-y-0 bg-primary text-slate-800">
           <Link to='/shop/product/66a3bb07803942c2c831d0aa'>
-            <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-syncopate text-center" >
+          <h1 className="w-full text-[30px] sm:text-[40px] text-white font-bold font-kanit text-center" >
               Audi R8 coupe
             </h1>
           </Link>
-          <p className="w-full text-white text-[30px] sm:text-[28px] font-thin text-center">
+          <p className="w-full text-neutral-200 text-[30px] sm:text-[28px] font-kanit font-light text-center">
             $ 208 100
           </p>
           <div className="flex justify-center gap-2 pt-0 sm:pt-12">
             <Link to="/shop/payment/66a3bb07803942c2c831d0aa">
               <button
-                className=" backdrop-blur-xl
-							detail-button bg-gray-400 text-white px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
-										before:ease relative h-10 w-32 sm:h-10 sm:w-44 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
-							"
+             className=" backdrop-blur-xl
+             detail-button bg-neutral-400 text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center items-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
+                   before:ease relative h-10 w-32 sm:h-10 sm:w-44 overflow-hidden border-black border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12  before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-40
+             "
               >
                 Buy Now
               </button>
             </Link>
 
             <button
-              className=" backdrop-blur-xl
-                    detail-button bg-gray-400 text-white px-4 py-2 md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
-                          before:ease relative h-10 w-36 sm:h-10 sm:w-44 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
-                    "
+             className=" backdrop-blur-xl
+             detail-button bg-neutral-400 text-black px-4  md:px-6 border-black border md:py-3 lg:w-56 lg:h-[50px]  flex justify-center items-center hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-xs md:text-base rounded-3xl text-center
+                   before:ease relative h-10 w-36 sm:h-10 sm:w-44 overflow-hidden  shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-800 hover:before:-translate-x-[230px]
+             "
               onClick={() =>
                 handleAddToCart(car._id)
               }
