@@ -11,21 +11,23 @@ import TopBrand_mobile from './TopBrand_mobile';
 import Story from './Story';
 import Story2 from './Story2';
 import Story_section1_mobile from './Story_section1_mobile';
+import Story_section2_mobile from './Story_section2_mobile';
 import Story_section3_mobile from './Story_section3_mobile';
 import { GallaryAlbum } from './GallaryAlbum';
 import AboutUs from './AboutUs';
 import MarqueText from './MarqueText';
 export {
-    Navbar, 
+    Navbar,
     Hero,
     Product,
     Product2,
     Banner,
     CarBrand,
-    Vehicle, 
+    Vehicle,
     ShoppingAssist,
-    TopBrand,TopBrand_mobile,
-    Story, Story2, Story_section1_mobile, Story_section3_mobile,
+    TopBrand, TopBrand_mobile,
+    Story, Story2,
+    Story_section1_mobile, Story_section2_mobile, Story_section3_mobile,
     GallaryAlbum,
     AboutUs,
     MarqueText,

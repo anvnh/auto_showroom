@@ -331,10 +331,10 @@ const Audi_A5_Couple = () => {
   return (
 
     <div className={`${isPopupVisible ? "overflow-hidden" : "overflow-visible"} w-screen h-screen   `}>
-       <Toaster
-          position="top-center"
-          reverseOrder={false}
-        />
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <div className="w-screen flex bg-primary">
         <Navbar />
       </div>
@@ -491,8 +491,8 @@ const Audi_A5_Couple = () => {
                	<IoMdCloseCircle />
             </section>
           </div>
+
           <div className="w-[100%] h-[100%] overflow-hidden ">
-            
                 <Audi_a5_view />
               
           </div>

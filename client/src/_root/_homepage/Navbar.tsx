@@ -359,11 +359,11 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									}
 									onMouseLeave={handleMouseLeave}
 									onClick={() =>
-										handleToggleSection("aboutUs")
+										handleToggleSection("about-us")
 									}
 								>
 									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
-										<Link to="/aboutus">
+										<Link to="/about-us">
 											<p> About Us </p>
 											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 										</Link>

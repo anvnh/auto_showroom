@@ -120,7 +120,7 @@ const App = () => {
                     <Route path="/shop/payment" element={authUser ? <PaymentLayout /> : <Navigate to="/login" />} />
                     <Route path="/shop/payment/:id" element={authUser ? <PaymentLayoutBuyNow /> : <Navigate to="/login" />} />
 
-                    <Route path="/aboutUs" element={<AboutUs />} />
+                    <Route path="/about-us" element={<AboutUs />} />
 
                     <Route path="/voucher" element={<Voucherlayout />} />
                 </Routes>
