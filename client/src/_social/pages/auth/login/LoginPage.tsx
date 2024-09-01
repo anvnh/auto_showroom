@@ -231,7 +231,7 @@ const LoginPage: React.FC = () => {
 	const handleNumberSubmit = (e) => {
 		e.preventDefault();
 		if(number === otpCode.otp){
-            console.log("OK");
+            console.log("HI");
 		}
 	};
 	return (
