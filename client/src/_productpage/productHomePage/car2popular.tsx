@@ -138,8 +138,6 @@ const Car2popular = () => {
 		<div>
 			<div
 				style={{ backgroundImage: `url(${sky})` }}
-
-				className="min-h bg-black"
 			>
 				<div
 					id="Home"
@@ -165,12 +163,12 @@ const Car2popular = () => {
 						{isVisible && (
 							<div
 								data-aos="fade-in"
-								className={`bg-gray-900 bg-opacity-75 rounded-2xl font-thin absolute text-white top-48 transform text-center shadow-xl
+								className={`bg-gray-900  bg-opacity-75 rounded-2xl font-thin absolute text-white top-48 transform text-center shadow-xl
 								ss:w-[550px] w-[200px] p-2 md:p-5 
 							transition-opacity duration-1000 opacity-0 font-syncopate ${isVisible ? "opacity-100" : ""
 									}`}
 							>
-								<h1 className="text-xs ss:text-3xl lg:text-4xl mb-2 	tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all ">
+								<h1 className="text-xs ss:text-3xl lg:text-4xl mb-2 tracking-widest font-bold animate-pulse duration-1000 ease-in-out transition-all ">
 									Mercedes-Benz
 								</h1>
 								<h2 className="text-xs ss:text-2xl lg:text-3xl font-thin animate-pulse duration-1000 ease-in-out transition-all">
@@ -253,7 +251,7 @@ const Car2popular = () => {
 						</div>
 						<div
 							data-aos="fade-down"
-							className="font-thin text-white md:text-2xl text-sm md:p-64 ss:p-14  p-12 pb-64 pt-44 text-center"
+							className="font-thin text-white md:text-2xl text-sm md:p-64 ss:p-14  p-12 pb-64 pt-12 text-center"
 						>
 							<span className="font-bold ">
 							The Mercedes-Benz Maybach 2022

@@ -298,6 +298,25 @@ const Payment = () => {
 		setDeletingItems((prev) => ({ ...prev, [itemId]: true }));
 		deleteItem({ item_id: itemId });
 	};
+
+	const handleProceedToPayment = () => {
+		if (!cart || cart.length === 0) {
+			console.log("Cart is empty.");
+			return;
+		}
+
+		// In ra thông tin của từng xe trong giỏ hàng
+		cart.forEach((item) => {
+			console.log(`Vehicle information:`);
+			console.log(`Brand: ${item.brand}`);
+			console.log(`Model: ${item.car_model}`);
+			console.log(`Price: $${item.price}`);
+			console.log(`Quantity: ${quantities[item._id] || 1}`);
+			console.log(`Bio: ${item.bio}`);
+		});
+
+		console.log("Total:", calculateTotalPrice());
+	};
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
 			<section className="text-black mt-10 md:mt-36">
@@ -501,6 +520,8 @@ const Payment = () => {
 					</div>
 				)}
 			</section>
+
+			{/* cart --------------------------------------------------------------------------------------- */}
 			<section className="text-white relative md:mt-36 mt-12">
 				<div className="container p-2 bg-gray-800 backdrop-blur-md rounded-3xl">
 					<h2
@@ -535,26 +556,26 @@ const Payment = () => {
 											className="mb-4"
 											key={item._id}
 										>
-											<div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white p-3 mb-4 rounded-2xl  shadow-md h-full w-full hover:bg-opacity-90">
-												<div className="relative w-full flex items-center">
+											<div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white p-5 mb-4 rounded-2xl  shadow-md h-full w-full hover:bg-opacity-90">
+												<div className="relative w-full flex items-center justify-center">
 													<Link
 														to={`/shop/product/${item._id}`}
 													>
 														<img
 															src={item.images[0]}
-															className="w-[400px] h-[200px] bg-cover object-cover bg-center bg- rounded"
+															className="w-full  bg-cover object-cover bg-center bg- rounded"
 														/>
 													</Link>
 												</div>
 
 												<div className="w-full md:w-[0.75] text-black">
 													<div>
-														<h2 className="text-2xl pl-3 md:pt-0 pt-5 font-bold mb-2 text-black">
+														<h2 className="text-2xl min-h-[75px] pl-3 md:mt-0 pt-5 font-bold mb-2 text-black">
 															{item.brand}&nbsp;
 															{item.car_model}
 														</h2>
 
-														<div className="flex pl-3 text-2xl text-yellow-600 cursor-pointer">
+														{/* <div className="flex pl-3 text-2xl text-yellow-600 cursor-pointer">
 															{"★".repeat(
 																Math.round(
 																	averageRating
@@ -566,13 +587,13 @@ const Payment = () => {
 																		averageRating
 																	)
 															)}
-														</div>
-														<h3 className="line-clamp-2 pl-3 md:px-4 mb-5">
+														</div> */}
+														<h3 className="line-clamp-2 h-[50px] pl-3 md:px-4 mb-5">
 															{item.bio}
 														</h3>
 														<div className="hidden md:block">
 															{" "}
-															<div className="justify-start mt-16 p-5 w-full gap-5 flex flex-col md:flex-row">
+															<div className="justify-end items-end h-full p-5 w-full gap-5 flex flex-col md:flex-row">
 																<div className="mb-2 w-full md:w-[100px]">
 																	<span className="text-[20px] font-bold text-blue-600">
 																		$
@@ -764,18 +785,22 @@ const Payment = () => {
 								</div>
 
 								<div className="md:block hidden">
-									<Link to="">
-										<div className="detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
-											Proceed to Payment
-										</div>
-									</Link>
+									<div
+										onClick={handleProceedToPayment}
+										className="detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+									>
+										Proceed to Payment
+									</div>
 								</div>
 								<div className="justify-end">
-									<Link to="" className="block md:hidden ">
-										<div className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]">
+									<div className="block md:hidden ">
+										<div
+											onClick={handleProceedToPayment}
+											className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+										>
 											Proceed to Payment
 										</div>
-									</Link>
+									</div>
 								</div>
 							</div>
 						</div>

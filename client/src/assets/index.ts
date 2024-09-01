@@ -60,7 +60,7 @@ import mer9 from "./car1_popular/mer9.webp";
 import mer10 from "./car1_popular/mer10.jpg";
 import mer11 from "./car1_popular/mer11.jpg";
 import mer12 from "./car1_popular/mer12.avif";
-import sky from "./car1_popular/sky.jpg";
+import sky from "./car1_popular/sao.jpg"
 import banner1 from "./car1_popular/banner1.jpg";
 import mernavbar from "./car1_popular/navbar.jpg";
 import buy from "./car1_popular/buy.avif";
@@ -137,7 +137,7 @@ import car416 from "./car_popular/car4popular/audi16.jpg";
 import car417 from "./car_popular/car4popular/audi17.jpg";
 import car418 from "./car_popular/car4popular/audi18.jpg";
 import car419 from "./car_popular/car4popular/audi19.png";
-
+import changecolor4 from "./car_popular/car4popular/0831 (2).mp4"
 import carHero from "./car_popular/car4popular/hero.webp";
 
 import car4BH from "./car_popular/car4popular/audiBH.jpg";
@@ -198,6 +198,7 @@ import car623 from "./car_popular/car6popular/623doc.jpg";
 import car624 from "./car_popular/car6popular/624doc.jpg";
 import car625 from "./car_popular/car6popular/car625.webp";
 import carremove6 from "./car_popular/car6popular/remove.png";
+import changecolor6 from "./car_popular/car6popular/video.mp4"
 // logo car
 import logo from "./logo/logoMain.png";
 import logo1 from "./logo_car1.png";
@@ -239,6 +240,8 @@ import Voucher15do from "./voucher/15do.png";
 import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov";
 import video2 from "./car2_popular/Maybach S-Class.mov";
 export {
+	changecolor6,
+	changecolor4,
 	changecolor2,
 	changeColor,
 	carnba8,

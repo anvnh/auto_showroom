@@ -209,6 +209,7 @@ const LoginPage: React.FC = () => {
 			// Nếu email hợp lệ, gọi hàm toggleForm
 			toggleForm("number");
 		} else {
+		
 			console.log(
 				"Invalid email. Please enter a valid email format."
 			);
@@ -254,7 +255,9 @@ const LoginPage: React.FC = () => {
 								Welcome <br /> to AAP
 							</h1>
 						</div>
+
 						<div className="pl-[250px] top-48 pt-16 relative w-[900px] h-[300px] rounded-[20px]"></div>
+
 						<div
 							data-aos="fade-right"
 							className="relative flex pr-[200px]"
@@ -519,12 +522,12 @@ const LoginPage: React.FC = () => {
 												className="relative pl-12 px-8"
 											>
 												<input
-													type={
-														placeholder === "email"
-															? "email"
-															: "text"
-													}
-													name={placeholder}
+												value={emaildata.email}
+												onChange={(e) =>
+													setEmaildata({
+														email: e.target.value,
+													})
+												}
 													className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
 													required
 												/>
@@ -663,4 +666,3 @@ const LoginPage: React.FC = () => {
 };
 
 export default LoginPage;
-
