@@ -81,9 +81,32 @@ const LoginRepon = () => {
 		},
 	});
 
+	const {mutate: sendForgotpassword, isPending: isSending, data: otpCode} = useMutation({
+        mutationFn: async (email: string) => {
+            try {
+                const res = await fetch("/api/auth/confirm/sendResetToken", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email }),
+                });
+                const data = await res.json();
+                if (!res.ok)
+                    throw new Error(data.error || "Failed to send token.");
+                return data;
+            } catch (error) {
+                throw new Error(error.message);
+            }
+        },
+        onSuccess: () => {
+            toast.success("Please check your email for verification link.");
+        },
+    });
+
 	const handleSubmit = (e) => {
 		e.preventDefault(); // page won't reload
-		console.log(signUpData);
+		// console.log(signUpData);
 		// signup(formData);
 		// send verification email
 		signup(signUpData);
@@ -176,25 +199,21 @@ const LoginRepon = () => {
 		});
 	};
 	const handleForgotSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-
-		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		
-		if (emailPattern.test(emaildata.email)) {
-			console.log(emaildata.email)
-			// Nếu email hợp lệ, gọi hàm toggleForm
-			toggleForm("number");
-		} else {
-		
-			console.log(
-				"Invalid email. Please enter a valid email format."
-			);
-		}
-	};
-
+			e.preventDefault();
+			const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (emailPattern.test(emaildata.email)) {
+				toggleForm("number");
+				sendForgotpassword(emaildata.email);
+			}
+			else {
+            toast.error("Invalid email address");
+        }
+		};
 	const handleNumberSubmit = (e) => {
 		e.preventDefault();
-		console.log(number);
+		if(number === otpCode.otp){
+            console.log("OK");
+		}
 	};
 	return (
 		<div>
@@ -216,7 +235,7 @@ const LoginRepon = () => {
 							Welcome to Social AAP
 						</h1>
 					</div>
-					{/* 
+					{/*
                             ----------------- */}
 					<div className="flex justify-center sm:px-12 w-full">
 						{showSignUpForm && (
@@ -421,7 +440,7 @@ const LoginRepon = () => {
 									noValidate
 									onSubmit={handleForgotSubmit}
 								>
-							
+
 										<div
 											className="relative px-6"
 										>
@@ -439,7 +458,7 @@ const LoginRepon = () => {
 												required
 											/>
 										</div>
-							
+
 									<div className="pt-12 relative flex justify-center">
 										<Button
 											type="submit"

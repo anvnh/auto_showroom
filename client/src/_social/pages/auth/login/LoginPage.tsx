@@ -77,13 +77,31 @@ const LoginPage: React.FC = () => {
 			toast.success("Please check your email for verification link.");
 		},
 	});
+	// send forgot password verification email
+	const {mutate: sendForgotpassword, isPending: isSending, data: otpCode} = useMutation({
+        mutationFn: async (email: string) => {
+            try {
+                const res = await fetch("/api/auth/confirm/sendResetToken", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email }),
+                });
+                const data = await res.json();
+                if (!res.ok)
+                    throw new Error(data.error || "Failed to send token.");
+                return data;
+            } catch (error) {
+                throw new Error(error.message);
+            }
+        },
+        onSuccess: () => {
+            toast.success("Please check your email for verification link.");
+        },
+    });
 
-	const {
-		mutate: signup,
-		isError,
-		error,
-		isPending: isSigningup,
-	} = useMutation({
+	const { mutate: signup, isError, error, isPending: isSigningup } = useMutation({
 		mutationFn: async (formData) => {
 			try {
 				const res = await fetch("/api/auth/signup", {
@@ -186,7 +204,6 @@ const LoginPage: React.FC = () => {
 			setIsPending(false);
 		}
 	};
-
 	const resetFormInputs = () => {
 		setSignUpData({
 			email: "",
@@ -201,24 +218,21 @@ const LoginPage: React.FC = () => {
 	};
 	const handleForgotSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-
 		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		
 		if (emailPattern.test(emaildata.email)) {
-			console.log(emaildata.email)
-			// Nếu email hợp lệ, gọi hàm toggleForm
 			toggleForm("number");
-		} else {
-		
-			console.log(
-				"Invalid email. Please enter a valid email format."
-			);
+			sendForgotpassword(emaildata.email);
 		}
+		else {
+            toast.error("Invalid email address");
+        }
 	};
 
 	const handleNumberSubmit = (e) => {
 		e.preventDefault();
-		console.log(number);
+		if(number === otpCode.otp){
+            console.log("OK");
+		}
 	};
 	return (
 		<div className="w-full bg-primary">
@@ -314,7 +328,7 @@ const LoginPage: React.FC = () => {
 													required
 												/>
 												<label
-													className={`absolute -left-12 top-6 text-gray-400 text-base peer-focus:-top-3 
+													className={`absolute -left-12 top-6 text-gray-400 text-base peer-focus:-top-3
 													peer-focus:left-12 peer-focus:text-sm transition-all duration-300 ${
 														signUpData[
 															placeholder as keyof typeof signUpData
@@ -335,9 +349,9 @@ const LoginPage: React.FC = () => {
 											<Button
 												type="submit"
 												className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-72 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-poppins md:text-base rounded-xl text-center text-xl
-										before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80
-										"
-											>
+              										before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80
+              										"
+                                                >
 												{isSigningup ? (
 													<LoadingSpinner />
 												) : (
@@ -419,7 +433,7 @@ const LoginPage: React.FC = () => {
 														required
 													/>
 													<label
-														className={`absolute -left-24 top-6 text-gray-400 text-base peer-focus:-top-3 
+														className={`absolute -left-24 top-6 text-gray-400 text-base peer-focus:-top-3
 													peer-focus:left-0 peer-focus:text-sm transition-all duration-300 ml-12 ${
 														signUpData[
 															placeholder as keyof typeof signUpData
@@ -532,7 +546,7 @@ const LoginPage: React.FC = () => {
 													required
 												/>
 												<label
-													className={`absolute -left-16 top-6 text-gray-400 text-base peer-focus:-top-3 
+													className={`absolute -left-16 top-6 text-gray-400 text-base peer-focus:-top-3
 													peer-focus:left-0 peer-focus:text-sm transition-all duration-300 ml-12 ${
 														signUpData[
 															placeholder as keyof typeof signUpData
@@ -638,7 +652,7 @@ const LoginPage: React.FC = () => {
 										</div>
 
 										<div className="flex pt-12 justify-center items-center text-center">
-											<p>You want to re-enter gmail ? </p>
+											<p> You want to re-enter gmail ? </p>
 											<div className="w-[70px]">
 												<a
 													onClick={() =>
