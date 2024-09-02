@@ -1,7 +1,7 @@
 import logo from '@/assets/logo/logoMain.png'
 import { Link } from 'react-router-dom';
 
-const NotAuthenticated = () => {
+const NotFound = () => {
     return (
 		<div className="h-screen w-full flex justify-center items-center bg-primary">
 			<div>
@@ -9,8 +9,7 @@ const NotAuthenticated = () => {
 					<img src={logo} alt="logo" className="w-32 h-32" />
 				</div>
 				<h1 className="text-3xl flex justify-center text-center">
-					You do not have permission to view this page. <br />
-					Please contact the administrator.
+                    404 - Page Not Found
 				</h1>
 				<Link
 					to="/"
@@ -23,4 +22,4 @@ const NotAuthenticated = () => {
 	);
 }
 
-export default NotAuthenticated
+export default NotFound

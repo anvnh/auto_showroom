@@ -34,6 +34,7 @@ import Voucherlayout from './_shop/voucher/VoucherLayout';
 import PaymentLayoutBuyNow from './_shop/buynow/PaymentLayoutBuyNow';
 
 import { AboutUs } from './_aboutUs';
+import NotFound from './_auth/NotFound';
 const App = () => {
     const location = useLocation();
     const isSocialRoute = location.pathname.startsWith('/social');
@@ -123,6 +124,9 @@ const App = () => {
                     <Route path="/about-us" element={<AboutUs />} />
 
                     <Route path="/voucher" element={<Voucherlayout />} />
+                    
+                    <Route path="*" element={<NotFound />} />
+
                 </Routes>
                 {location.pathname.startsWith('/social') && authUser && <RightPanel />}
                 {location.pathname.startsWith('/social') && <Toaster />}
