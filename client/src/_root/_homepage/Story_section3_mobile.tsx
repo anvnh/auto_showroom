@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react"
 import { Link } from "react-router-dom"
 import SplitType from "split-type"
 import gsap from "gsap"
-import { bmwM3 } from "@/assets/homepage/story"
+import { bmw_nazca } from "@/assets/homepage/story"
 import { ScrollTrigger } from "gsap/all"
 const Story_section3_mobile = () => {
   const founder_txt3 = useRef(null)
@@ -38,20 +38,20 @@ const Story_section3_mobile = () => {
     }
   }, [])
   return (
-    <div ref={section_founder3} className="w-screen h-screen  flex xsm:hidden 
-        flex-col xsm:flex-row sticky top-0 bg-neutral-900 overlow-y-hidden">
+    <div ref={section_founder3} className="flex xsm:hidden 
+        flex-col xsm:flex-row w-screen h-screen   sticky top-0 bg-neutral-900 overlow-y-hidden">
       <section className=" w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
-        <img src={bmwM3} className="w-full h-full object-cover" />
+        <img src={bmw_nazca} className="w-full h-full object-cover" />
         <div ref={founder3_overlay} className="absolute top-0 w-full h-full bg-neutral-900"></div>
       </section>
       <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[20px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
         <div className="w-full  h-full">
           <div>
             <p className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] font-bold font-syncopate">
-              BMW M3
+              BMW Nazca
             </p>
           </div>
-          <div className="flex gap-x-[15px] ">
+          <div className="hidden ss:flex gap-x-[15px] ">
             <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
               <p>Bmw</p>
             </section>
@@ -63,9 +63,8 @@ const Story_section3_mobile = () => {
             </section>
           </div>
           <div className="w-[85%] mt-[2%]">
-            <p ref={founder_txt3} className="split3 text-[20px] md:text-[25px] overflow-y-hidden">
-              The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH.
-              The changes over the rear of the car resulted in lower lift forces and better straight-line stability.
+            <p ref={founder_txt3} className="  text-[20px] md:text-[25px] overflow-y-hidden">
+              The BMW Nazca is a performance version of the BMW 3 Series, developed by BMW's in-house motorsport division.
               {/* In addition, the windscreen was glued in – not, as with the other E30 models, framed with a window rubber and piping. */}
             </p>
           </div>
