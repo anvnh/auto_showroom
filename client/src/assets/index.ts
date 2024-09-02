@@ -238,10 +238,12 @@ import Voucher15do from "./voucher/15do.png";
 
 
 import changecolorA5 from "./audiA5/couple/video1.mp4"
+import changecolorS6 from "./hplat_asset/car/audiS6/video.mp4"
 // video intro
 import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov";
 import video2 from "./car2_popular/Maybach S-Class.mov";
 export {
+	changecolorS6,
 	changecolorA5,
 	changecolor6,
 	changecolor4,
