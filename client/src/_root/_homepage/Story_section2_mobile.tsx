@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react"
 import { Link } from "react-router-dom"
 import SplitType from "split-type"
 import gsap from "gsap"
-import { nissanR34 } from "@/assets/homepage/story"
+import { nissan_r35 } from "@/assets/homepage/story"
 import { ScrollTrigger } from "gsap/all"
 const Story_section2_mobile = () => {
     const founder_txt2 = useRef(null)
@@ -41,7 +41,7 @@ const Story_section2_mobile = () => {
         <div ref={section_founder2} className="w-screen h-screen  flex xsm:hidden 
         flex-col xsm:flex-row sticky top-0 bg-neutral-900 overlow-y-hidden">
             <section className=" w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
-                <img src={nissanR34} className="w-full h-full object-cover" />
+                <img src={nissan_r35} className="w-full h-full object-cover" />
                 <div ref={founder2_overlay} className="absolute top-0 w-full h-full bg-neutral-900"></div>
             </section>
             <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[20px] ml-[20px] md:ml-[40px]  flex flex-col justify-start">
@@ -49,7 +49,7 @@ const Story_section2_mobile = () => {
                     <p className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] font-bold font-syncopate">
                         Nissan Skyline R34
                     </p>
-                    <div className="flex gap-x-[15px] ">
+                    <div className="hidden ss:flex gap-x-[15px] ">
                         <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
                             <p>Nissan</p>
                         </section>
@@ -61,9 +61,9 @@ const Story_section2_mobile = () => {
                         </section>
                     </div>
                     <div className="w-[86%] mt-[2%]">
-                        <p ref={founder_txt2} className="split2 text-[20px] md:text-[25px] overflow-y-hidden">
+                        <p ref={founder_txt2} className="  text-[20px] md:text-[25px] overflow-y-hidden">
                             The Nissan Skyline GT-R R34 is an iconic sports car that has captured the hearts of automotive enthusiasts worldwide.
-                            After a 16-year hiatus, the GT-R name was revived in 1989 as the BNR32 ("R32") Skyline GT-R.
+                            After a 16-year hiatus, the GT-R name was revived.
                             {/* Group A specification versions of the R32 GT-R were used to win the Japanese Touring Car Championship for four years in a row. */}
                         </p>
                     </div>

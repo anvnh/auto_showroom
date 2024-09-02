@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react"
 import SplitType from "split-type"
 import gsap from "gsap"
 import { a1, a2, a3 } from "@/assets/audiA5/couple/"
-import { nissanR34, supraMk4, bmwM3, bmwM3_vertical, } from "@/assets/homepage/story"
+import { nissan_r35, supra_mk4, bmw_nazca, } from "@/assets/homepage/story"
 import Story_section1_mobile from "./Story_section1_mobile"
 import Story_section2_mobile from "./Story_section2_mobile"
 import Story_section3_mobile from "./Story_section3_mobile"
@@ -128,7 +128,7 @@ const Story = () => {
                             </section>
                         </div>
                         <div className="mt-[7%] w-[85%]">
-                            <p ref={founder_txt1} className="split1 text-[20px] md:text-[25px] overflow-y-hidden">
+                            <p ref={founder_txt1} className="split1 text-justify text-[20px] md:text-[25px] overflow-y-hidden">
                                 The legendary twin-turbo 2JZ-GTE produced 276 HP for Japanese markets, but thanks to upgraded turbos and bigger fuel injectors, the American models were blessed with 321 HP, whilst European models made 326 HP.
                                 The Supra traces much of its roots back to the 2000GT owing to an inline-6 layout. The first three generations were offered with a direct descendant to the Crown's and 2000GT's M engine.
                                 {/* Interior aspects were also similar, as was the chassis code "A". */}
@@ -145,7 +145,7 @@ const Story = () => {
                 </section>
                 <section className=" w-full xsm:w-1/2 h-1/2  xsm:h-full relative overflow-y-hidden">
                     <div ref={founder1_overlay} className="w-full absolute top-0  h-full bg-neutral-900 overley"></div>
-                    <img src={supraMk4} className="w-full h-full object-cover" />
+                    <img src={supra_mk4} className="w-full h-full object-cover" />
                 </section>
             </div>
 
@@ -156,7 +156,7 @@ const Story = () => {
             <div ref={section_founder2} className="hidden xsm:flex  w-screen h-screen  
         sticky top-0 ">
                 <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
-                    <img src={nissanR34} className="w-full h-full object-cover" />
+                    <img src={nissan_r35} className="w-full h-full object-cover" />
                     <div ref={founder2_overlay} className="w-full absolute top-0  h-full bg-neutral-900"></div>
                 </section>
                 <section className="w-full xsm:w-1/2  h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px] flex flex-col justify-start">
@@ -176,7 +176,7 @@ const Story = () => {
                             </section>
                         </div>
                         <div className="mt-[5%] w-[85%]">
-                            <p ref={founder_txt2} className="split2 text-[20px] md:text-[25px] overflow-y-hidden">
+                            <p ref={founder_txt2} className="split2 text-justify text-[20px] md:text-[25px] overflow-y-hidden">
                                 The Nissan Skyline GT-R R34 is an iconic sports car that has captured the hearts of automotive enthusiasts worldwide.
                                 After a 16-year hiatus, the GT-R name was revived in 1989 as the BNR32 ("R32") Skyline GT-R. Group A specification versions of the R32 GT-R were used to win the Japanese Touring Car Championship for four years in a row. The R32 GT-R also had success in the Australian Touring Car Championship.
                                 The original Skyline was launched by the Prince Motor Company.
@@ -199,7 +199,7 @@ const Story = () => {
                     <div className="w-full  h-full">
                         <div>
                             <p className="w-full   xsm:text-[28px] md:text-[35px] mlg:text-[48px] xl:text-[50px] font-bold font-syncopate">
-                                BMW M3
+                                BMW Nazca
                             </p>
                         </div>
                         <div className="mt-[2%] flex gap-x-[15px] ">
@@ -214,8 +214,8 @@ const Story = () => {
                             </section>
                         </div>
                         <div className="mt-[7%] w-[85%]">
-                            <p ref={founder_txt3} className="split3 text-[20px] md:text-[25px] overflow-y-hidden">
-                                The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. M3 models have been produced for every generation of 3 Series since the E30 M3 was introduced in 1986..
+                            <p ref={founder_txt3} className="split3 text-justify text-[20px] md:text-[25px] overflow-y-hidden">
+                                The BMW Nazca is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. M3 models have been produced for every generation of 3 Series since the E30 M3 was introduced in 1986..
                                 Variants of the 3 Series since then have seen the M3 produced as a saloon,
                                 until 2020, when the M3 was produced as an estate (Touring) for the first time, alongside the saloon variant
                             </p>
@@ -228,7 +228,7 @@ const Story = () => {
                     </div>
                 </section>
                 <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
-                    <img src={bmwM3_vertical} className="w-full h-full object-cover" />
+                    <img src={bmw_nazca} className="w-full h-full object-cover" />
                     <div ref={founder3_overlay} className="absolute top-0 w-full h-full bg-neutral-900"></div>
                 </section>
             </div>
