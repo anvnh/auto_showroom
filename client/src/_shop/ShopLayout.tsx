@@ -10,18 +10,18 @@ import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import NavbarSmallShop from "./NavbarSmallShop"
 const ShopLayout = () => {
-	useEffect(() => {
-		const lenis = new Lenis();
-		function raf(time) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
-		return () => {
-			lenis.destroy();
-		};
-	}, []);
-    return (
+	// useEffect(() => {
+	// 	const lenis = new Lenis();
+	// 	function raf(time) {
+	// 		lenis.raf(time);
+	// 		requestAnimationFrame(raf);
+	// 	}
+	// 	requestAnimationFrame(raf);
+	// 	return () => {
+	// 		lenis.destroy();
+	// 	};
+	// }, []);
+	return (
 		<section className="w-full bg-primary">
 			<div className="w-full overflow-hidden">
 				<div className="items-start justify-center">
@@ -51,7 +51,7 @@ const ShopLayout = () => {
 				</div>
 				<div id="Blogs" className="items-start justify-center py-16 bg-[#F9FBFC]">
 					<div className="w-full bg-[#F9FBFC]">
-                        <Blogs />
+						<Blogs />
 					</div>
 				</div>
 				<div className="items-start justify-center bg-white">
