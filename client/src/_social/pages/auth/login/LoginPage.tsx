@@ -134,11 +134,35 @@ const LoginPage: React.FC = () => {
 		},
 	});
 
+	const { mutate: resetPass, isPending: isReseting } = useMutation({
+           mutationFn: async (changePassData) => {
+            try {
+                const res = await fetch("/api/auth/resetPassword", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(changePassData),
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || "Failed to reset password.");
+                // console.log(data);
+                return data;
+            } catch (error) {
+                throw new Error(error.message);
+            }
+        },
+        onSuccess: () => {
+            toast.success("Password reset successfully.");
+            setChangePass(false);
+        },
+        onError: (error) => {
+            toast.error(error.message);
+        },
+    });
+
 	const handleSubmit = (e) => {
-		e.preventDefault(); // page won't reload
-		// console.log(signUpData);
-		// signup(formData);
-		// send verification email
+		e.preventDefault();
 		signup(signUpData);
 	};
 
@@ -247,25 +271,20 @@ const LoginPage: React.FC = () => {
 		}
 		else {
        toast.error("Invalid email address");
-    }
-	};
+    }};
 
 	const handleNumberSubmit = (e) => {
 		e.preventDefault();
 		if(number === otpCode.otp){
-        console.log("OK");
-        toggleForm("changepass");
+            toggleForm("changepass");
 		}
 	};
 	const handleChangePassSubmit = (e) => {
 		e.preventDefault();
-		console.log(changePassData); // In ra dữ liệu đã nhập
-
-		// khi đổi mật khẩu thành công thì
-		// toggleForm("signIn");
+		console.log(changePassData);
+        // resetPass(changePassData);
 	};
 
-	// Hàm cập nhật state khi người dùng nhập dữ liệu
 	const handleInputChangePass = (e) => {
 		const { name, value } = e.target;
 		setChangePassData((prevData) => ({

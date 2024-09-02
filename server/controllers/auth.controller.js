@@ -1,37 +1,41 @@
-import { generateTokenAndSetCookie } from '../lib/utils/generateToken.js';
-import User from '../models/user.model.js';
-import bcrypt from 'bcryptjs';
+import { generateTokenAndSetCookie } from "../lib/utils/generateToken.js";
+import User from "../models/user.model.js";
+import bcrypt from "bcryptjs";
 import nodemailer from "nodemailer";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import crypto from "crypto";
-import jsonwebtoken from 'jsonwebtoken';
-import jwt from 'jsonwebtoken';
+import jsonwebtoken from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
 export const signup = async (req, res) => {
     try {
-        const {fullName, username, email, password} = req.body;
+        const { fullName, username, email, password } = req.body;
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if(!emailRegex.test(email)) {
-            return res.status(400).json({error: "Invalid email format"});
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({ error: "Invalid email format" });
         }
 
-        const existingUser = await User.findOne({ username })
-        if(existingUser) {
-            return res.status(400).json({ error: "Username is already taken "})
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return res
+                .status(400)
+                .json({ error: "Username is already taken " });
         }
 
-        const existingEmail = await User.findOne({ email })
-        if(existingEmail) {
-            return res.status(400).json({ error: "Email is already taken "})
+        const existingEmail = await User.findOne({ email });
+        if (existingEmail) {
+            return res.status(400).json({ error: "Email is already taken " });
         }
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
-        if(!passwordRegex.test(password)) {
-            return res.status(400).json({ error: "Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number" });
+        if (!passwordRegex.test(password)) {
+            return res.status(400).json({
+                error: "Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number",
+            });
         }
 
         // hash password
@@ -46,10 +50,9 @@ export const signup = async (req, res) => {
             password: hashedPassword,
         });
 
-        if(newUser) {
-
+        if (newUser) {
             await newUser.save();
-            
+
             // send confirmation email
 
             res.status(200).json({
@@ -63,32 +66,35 @@ export const signup = async (req, res) => {
                 coverImg: newUser.coverImg,
                 isVerified: newUser.isVerified,
             });
-
         } else {
             res.status(400).json({ error: "Invalid user data" });
         }
-
     } catch (error) {
         console.log("Error in signup controller", error.message);
         res.status(500).json({ error: "Something went wrong" });
     }
-}
+};
 
 export const login = async (req, res) => {
     try {
         const { username, password } = req.body;
         const user = await User.findOne({ username });
-        const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
+        const isPasswordCorrect = await bcrypt.compare(
+            password,
+            user?.password || "",
+        );
 
-        if(!user || !isPasswordCorrect) {
-            return res.status(400).json({error:"Invalid username or password"})
-        }
-        
-        if(!user.isVerified) {
-            return res.status(400).json({ error: "Please verify your email to login" });
+        if (!user || !isPasswordCorrect) {
+            return res
+                .status(400)
+                .json({ error: "Invalid username or password" });
         }
 
-        else {
+        if (!user.isVerified) {
+            return res
+                .status(400)
+                .json({ error: "Please verify your email to login" });
+        } else {
             generateTokenAndSetCookie(user._id, res);
             user.lastLogin = new Date();
             res.status(200).json({
@@ -108,17 +114,57 @@ export const login = async (req, res) => {
         console.log("Error in login controller", error.message);
         res.status(500).json({ error: "Something went wrong" });
     }
-}
+};
 
 export const logout = async (req, res) => {
     try {
-        res.cookie("jwt", "", {maxAge: 0});
+        res.cookie("jwt", "", { maxAge: 0 });
         res.status(200).json({ message: "Logged out successfully" });
     } catch (error) {
         console.log("Error in logout controller", error.message);
         res.status(500).json({ error: "Something went wrong" });
     }
-}
+};
+
+export const resetPassword = async (req, res) => {
+    try {
+        const { newPass: password, rePass: newPassword } = req.body;
+        const { gmail } = req.body;
+        // const user = await User.findById(req.user._id);
+        const user = await User.findOne({ email: gmail }).select("-password");
+
+        // check if 2 password is correct
+        if (password != newPassword) {
+            return res.status(400).json({ error: "Passwords do not match" });
+        }
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        if (!passwordRegex.test(newPassword)) {
+            return res.status(400).json({
+                error: "Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number",
+            });
+        }
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+        // TODO
+        if (user.password == hashedPassword) {
+            return res.status(400).json({
+                error: "New password must be different from the old password",
+            });
+        }
+        else {
+            user.password = hashedPassword;
+        }
+
+        await user.save();
+
+        res.status(200).json({ message: "Password updated successfully" });
+    } catch (error) {
+        console.log("Error in resetPassword controller", error.message);
+        res.status(500).json({ error: "Something went wrong" });
+    }
+};
 
 export const getMe = async (req, res) => {
     try {
@@ -128,18 +174,20 @@ export const getMe = async (req, res) => {
         console.log("Error in getMe controller", error.message);
         res.status(500).json({ error: "Something went wrong" });
     }
-}
+};
 
 export const forgotPassword = async (req, res) => {
     const { email } = req.body;
 
     try {
         const user = await User.findOne({ email });
-        if(!user) {
+        if (!user) {
             return res.status(404).json({ error: "User not found" });
         }
-        if(!user.isVerified) {
-            return res.status(400).json({ error: "Please verify your email to reset password" });
+        if (!user.isVerified) {
+            return res
+                .status(400)
+                .json({ error: "Please verify your email to reset password" });
         }
         // Generate a 6-digit OTP
         const otp = crypto.randomInt(100000, 999999).toString();
@@ -169,45 +217,44 @@ export const forgotPassword = async (req, res) => {
 
         await transporter.sendMail(mailOptions);
         res.status(200).json({ message: "OTP sent successfully", otp });
-
     } catch (error) {
         console.log("Error in forgotPassword controller", error.message);
         res.status(500).json({ error: "Something went wrong" });
     }
-}
+};
 
 export const sendConfirmationMail = async (req, res) => {
-	const { email } = req.body;
+    const { email } = req.body;
 
     // get user fullname
 
     const user = await User.findOne({ email });
 
-    if(!user) {
+    if (!user) {
         return res.status(404).json({ error: "User not found" });
     }
 
-	if (!email) {
-		return res.status(400).json({ message: "Email is required" });
-	}
+    if (!email) {
+        return res.status(400).json({ message: "Email is required" });
+    }
 
-	// Generate a 6-digit OTP
-	const otp = crypto.randomInt(100000, 999999).toString();
+    // Generate a 6-digit OTP
+    const otp = crypto.randomInt(100000, 999999).toString();
 
-	// Configure the email transport using nodemailer
-	const transporter = nodemailer.createTransport({
-		service: "gmail", // Use your email service
-		auth: {
-			user: process.env.EMAIL_USER, // Replace with your email
-			pass: process.env.EMAIL_PASSWORD, // Replace with your email password
-		},
-	});
+    // Configure the email transport using nodemailer
+    const transporter = nodemailer.createTransport({
+        service: "gmail", // Use your email service
+        auth: {
+            user: process.env.EMAIL_USER, // Replace with your email
+            pass: process.env.EMAIL_PASSWORD, // Replace with your email password
+        },
+    });
 
-	const mailOptions = {
-		from: "AAP", 
-		to: email,
-		subject: "Verification of Your Account Deletion Request",
-		html: `
+    const mailOptions = {
+        from: "AAP",
+        to: email,
+        subject: "Verification of Your Account Deletion Request",
+        html: `
             <h2> Dear ${user.fullName} </h2>
             <p> We have received your request to delete your account on AAP </p>
             <p> To confirm that this request is coming from you and to proceed with the deletion of your account, please enter the following One-Time Password (OTP) into the designated field on our website: </p>
@@ -229,14 +276,14 @@ export const sendConfirmationMail = async (req, res) => {
             <p style="font-weight: bold;"> will be permanently removed from our servers and cannot be recovered. </p>
             <p> If you did not request to delete your account, please ignore this email. </p>
         `,
-	};
+    };
 
-	try {
-		await transporter.sendMail(mailOptions);
-		res.status(200).json({ message: "OTP sent successfully", otp });
-	} catch (error) {
-		res.status(500).json({ message: "Failed to send OTP", error });
-	}
+    try {
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: "OTP sent successfully", otp });
+    } catch (error) {
+        res.status(500).json({ message: "Failed to send OTP", error });
+    }
 };
 
 export const sendConfirmationToken = async (req, res) => {
@@ -244,53 +291,53 @@ export const sendConfirmationToken = async (req, res) => {
 
     const user = await User.findOne({ email });
 
-    if(!user) {
+    if (!user) {
         return res.status(404).json({ error: "User not found" });
     }
 
     try {
-		const token = jsonwebtoken.sign({ email }, process.env.JWT_SECRET, {
+        const token = jsonwebtoken.sign({ email }, process.env.JWT_SECRET, {
             expiresIn: "1d",
-		});
+        });
 
-		const user = await User.findOneAndUpdate(
-			{ email },
-			{ confirmationToken: token },
-		);
+        const user = await User.findOneAndUpdate(
+            { email },
+            { confirmationToken: token },
+        );
 
-		if (!user) {
-			return res.status(404).json({ message: "User not found" });
-		}
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
 
-		const confirmationLink = `${process.env.CLIENT_URL}/verified/${token}`;
+        const confirmationLink = `${process.env.CLIENT_URL}/verified/${token}`;
 
-		// Configure the email transport using nodemailer
-		const transporter = nodemailer.createTransport({
-			service: "gmail", // Use your email service
-			auth: {
-				user: process.env.EMAIL_USER, // Replace with your email
-				pass: process.env.EMAIL_PASSWORD, // Replace with your email password
-			},
-		});
+        // Configure the email transport using nodemailer
+        const transporter = nodemailer.createTransport({
+            service: "gmail", // Use your email service
+            auth: {
+                user: process.env.EMAIL_USER, // Replace with your email
+                pass: process.env.EMAIL_PASSWORD, // Replace with your email password
+            },
+        });
 
-		const mailOptions = {
-			from: "AAP",
-			to: email,
-			subject: "Welcome to the AAP",
-			html: `
+        const mailOptions = {
+            from: "AAP",
+            to: email,
+            subject: "Welcome to the AAP",
+            html: `
                 <h2> Dear ${user.fullName} </h2>
                 <p> We're excited to have you join us. To complete your registration, please click on the link below to verify your email address: </p>
                 <h4> ${confirmationLink} </h4>
                 <p> Once verified, you'll have access to all of our amazing features. </p>
                 <p> Thanks for joining our showroom, as well as our community. </p>
             `,
-		};
+        };
 
-		await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptions);
 
-		res.status(200).json({ message: "Confirmation email sent" });
-	} catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(200).json({ message: "Confirmation email sent" });
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
     }
 };
 
@@ -318,4 +365,4 @@ export const confirmEmail = async (req, res) => {
     } catch (error) {
         res.status(400).json({ message: "Invalid or expired token" });
     }
-}
+};
