@@ -22,6 +22,7 @@ import {
   audi_thanXe,
   road, audiold1, audiold4,
 } from "@/assets/audiA5/couple";
+import { changecolorA5 } from "@/assets";
 import { audiA5_15, audiA5_9, } from "@/assets/audiA5";
 import { close_icon } from "@/assets/homepage";
 //-------------------Component--------------
@@ -408,7 +409,7 @@ const Audi_A5_Couple = () => {
 
       <div
 				id="Model"
-				className="w-screen relative h-full z-10 bg-[#DADADA] "
+				className="w-screen relative h-auto z-10 bg-white "
 			>
 				<div className="md:hidden block pt-5 bg-black px-5 ss:px-12 pb-5">
 					<p data-aos="fade-right" data-aos-delay="200" className="text-xl">Luxury and class</p>
@@ -440,13 +441,11 @@ const Audi_A5_Couple = () => {
 					playsInline
 					className="w-full z-10 h-auto relative"
 				>
-					{/* <source src={changecolor6} type="video/mp4" /> */}
+					<source src={changecolorA5} type="video/mp4" />
 				</video>
-				<div
-					onClick={() => {
-						showPopup();
-					}}
-					className="absolute pt-14 lg:-top-[220px] lg:-left-[300px]  xl:-top-[300px] xl:-left-[500px]  w-full h-full flex justify-center items-center"
+				<div className="hidden md:block">
+        <div
+					className="absolute pt-14 lg:-top-[220px] lg:-left-[300px] xl:-top-[300px] xl:-left-[500px]  w-full h-full flex justify-center items-center"
 				>
 					<div data-aos="fade-left" className="md:block hidden z-50 lg:w-[350px] lg:h-[250px] xl:w-[450px] xl:h-[300px] rounded-2xl bg-black backdrop-blur-xl bg-opacity-75 font-bold text-white p-5 ">
 						<p data-aos="fade-right" data-aos-delay="200" className="xl:text-xl">Luxury and class</p>
@@ -472,6 +471,7 @@ const Audi_A5_Couple = () => {
 						</button>
 					</div>
 				</div>
+        </div>
 			</div>
 
       <div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
@@ -499,12 +499,12 @@ const Audi_A5_Couple = () => {
         </section>
       </div>
 
-      <div ref={container_hero} className="hero  relative w-screen h-screen">
+      <div ref={container_hero} className="hero z-50 relative w-screen h-auto">
         <div className="z-10 w-full absolute h-full bg-gradient-to-tr from-slate-950 opacity-50"></div>
-        <img className="object-cover w-full h-screen bg-no-repeat opacity-90" src={abstract2} />
+        <img className="object-cover w-screen h-full bg-cover bg-center opacity-100" src={abstract2} />
         <div
           ref={hero_txt}
-          className=" z-10 absolute top-[5%]  left-0  text-slate-200 mx-[20px] my-[20px] sm:my-[80px] sm:mx-[50px]"
+               className="z-10 absolute top-[5%]  left-0  text-slate-200 mx-[20px] my-[20px] sm:my-[80px] sm:mx-[50px]"
         >
           <div className=" font-bold font-syncopate text-[40px] md:text-[60px] ">
             2024 A5 Coupe
@@ -525,7 +525,7 @@ const Audi_A5_Couple = () => {
       {/* -------slogan----------- */}
       <div
         ref={container_slogan}
-        className=" w-screen h-[300px]  flex justify-center items-center bg-slate-100 "
+        className=" w-screen h-[300px]  flex justify-center items-center bg-white "
       >
 
         <p ref={slogan_txt} className=" font-syncopate text-[24px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] text-slate-800">
@@ -878,7 +878,7 @@ const Audi_A5_Couple = () => {
 
         <div className="w-screen h-screen flex md:hidden flex-col justify-center items-center bg-neutral-900">
           <h1 className="w-full h-[15%] text-[40px] text-center font-syncopate ">Sharp Wheels</h1>
-          <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] xs:h-[50%] object-cover" />
+          <img src={mam2} className="w-[75%] h-[40%] xs:w-[70%] pt-12 xs:h-[50%] object-cover" />
         </div>
       </div>
 
