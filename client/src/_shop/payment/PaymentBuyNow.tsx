@@ -428,7 +428,6 @@ const Payment = () => {
                     deliveredAt: null,
                     phone: inputinformation.Phone,
                     state,
-                    name: inputinformation.RecipientName
                 }
             });
         }

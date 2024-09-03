@@ -1,109 +1,36 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 
-const OrdersData = [
-	{
-		id: 1,
-		nameUser: "Hoàng An",
-		nameProduct: "Mescedes BenZ",
-		address: "Quận Ngũ Hành Sơn,Đà Nẵng",
-		phonenumber: "0374123205",
-		email: "an@gmail.com",
-		status: "delivered",
-		totalamount: "$34530",
-	},
-	{
-		id: 2,
-		nameUser: "Tuấn Anh",
-		nameProduct: "Mescedes AMG",
-		address: "Hải Phong, Quảng Trị",
-		phonenumber: "0374123205",
-		email: "anh@gmail.com",
-		status: "delivered",
-		totalamount: "$65400",
-	},
-	{
-		id: 3,
-		nameUser: "Hoàng Phát",
-		nameProduct: "Audi A5",
-		address: "Quận 5, Hồ Chí Minh",
-		phonenumber: "0374123205",
-		email: "phat@gmail.com",
-		status: "not delivery",
-		totalamount: "$2340",
-	},
-	{
-		id: 4,
-		nameUser: "Lâm",
-		nameProduct: "Audi A9",
-		address: "Quận Ngũ Hành Sơn,Đà Nẵng",
-		phonenumber: "0374123205",
-		email: "lam@gmal.com",
-		status: "not delivery",
-		totalamount: "$45500",
-	},
-	{
-		id: 5,
-		nameUser: "Phong",
-		nameProduct: "Lamboghini Premium",
-		address: "Quận 8, Hồ Chí Minh",
-		phonenumber: "0374123205",
-		email: "phong@gmail.com",
-		status: "delivered",
-		totalamount: "$23250",
-	},
-	{
-		id: 6,
-		nameUser: "Hy",
-		nameProduct: "Kia A5",
-		address: "Quận Ngũ Hành Sơn,Đà Nẵng",
-		phonenumber: "0374123205",
-		email: "hy@gmail.com",
-		status: "not delivery",
-		totalamount: "$34500",
-	},
-    {
-		id: 6,
-		nameUser: "Hy",
-		nameProduct: "Kia A5",
-		address: "Quận Ngũ Hành Sơn,Đà Nẵng",
-		phonenumber: "0374123205",
-		email: "hy@gmail.com",
-		status: "delivered",
-		totalamount: "$34500",
-	},
-    {
-		id: 6,
-		nameUser: "Hy",
-		nameProduct: "Kia A5",
-		address: "Quận Ngũ Hành Sơn,Đà Nẵng",
-		phonenumber: "0374123205",
-		email: "hy@gmail.com",
-		status: "not delivery",
-		totalamount: "$34500",
-	},
-    {
-		id: 6,
-		nameUser: "Hy",
-		nameProduct: "Kia A5",
-		address: "Quận Ngũ Hành Sơn,Đà Nẵng",
-		phonenumber: "0374123205",
-		email: "hy@gmail.com",
-		status: "delivered",
-		totalamount: "$34500",
-	},
-];
 
 const OrdersTable = () => {
+
+	const { data: orders, isLoading, refetch, isRefetching, } = useQuery({
+		queryKey: ["orders"],
+		queryFn: async () => {
+			try {
+				const response = await fetch("/api/order/all");
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
+
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
+
 	const [searchTerm, setSearchTerm] = useState("");
-	const [filteredUsers, setFilteredUsers] = useState(OrdersData);
+	const [filteredUsers, setFilteredUsers] = useState(orders);
 
 	const handleSearch = (e) => {
 		const term = e.target.value.toLowerCase();
 		setSearchTerm(term);
-		const filtered = OrdersData.filter(
-			(user) =>
+		const filtered = orders.filter((user) =>
 				user.nameUser.toLowerCase().includes(term) ||
 				user.status.toLowerCase().includes(term)
 		);
@@ -167,63 +94,74 @@ const OrdersTable = () => {
 						</thead>
 
 						<tbody className="divide-y divide-gray-700">
-							{filteredUsers.map((user) => (
+							{orders && orders.map((order) => (
 								<motion.tr
-									key={user.id}
+									key={order._id}
 									initial={{ opacity: 0 }}
 									animate={{ opacity: 1 }}
 									transition={{ duration: 0.3 }}
 								>
 									<td className="px-6 py-4 whitespace-nowrap">
 										<div className="flex items-center">
-											<div className="flex-shrink-0 h-10 w-10">
+											<div className="flex-shrink-0 h-10 w-9">
 												<div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-													{user.nameUser.charAt(0)}
+													{order.user.fullName.charAt(0)}
 												</div>
 											</div>
-											<div className="ml-4">
-												<div className="text-sm font-medium text-gray-100">
-													{user.nameUser}
+											<div className="ml-3">
+												<div className="text-sm font-sm text-gray-100">
+													{order.user.fullName}
 												</div>
 											</div>
 										</div>
 									</td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-										<div className="text-sm text-gray-300">
-											{user.nameProduct}
+                                    <td className="flex px-6 py-4 whitespace-nowrap">
+                                        <div className="text-sm font-medium text-gray-100 justify-center items-center mt-2 ml-2 max-w-xs overflow-hidden text-ellipsis whitespace-nowrap">
+                                            {order.orderItems.length === 1 ? (
+                                                <div>
+                                                    <div>
+                                                        {order.orderItems[0].brand}{order.orderItems[0].model}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <button
+                                                    className="text-blue-500 hover:underline"
+                                                >
+                                                    See more
+                                                </button>
+                                            )}
 										</div>
 									</td>
                                     <td className="px-6 py-4 whitespace-nowrap">
-										<div className="text-sm text-gray-300">
-											{user.address}
-										</div>
+                                        <div className="text-sm text-gray-300 max-w-xs overflow-hidden text-ellipsis whitespace-nowrap">
+                                            {order.shippingAddress}
+                                        </div>
 									</td>
                                     <td className="px-6 py-4 whitespace-nowrap">
 										<div className="text-sm text-gray-300">
-											{user.phonenumber}
+                                            {order.phoneNumber}
 										</div>
 									</td>
 									<td className="px-6 py-4 whitespace-nowrap">
 										<div className="text-sm text-gray-300">
-											{user.email}
+											{order.email}
 										</div>
 									</td>
 
-									<td className="px-6 py-4 whitespace-nowrap">
-										<span
-											className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-												user.status === "delivered"
-													? "bg-green-800 text-green-100"
-													: "bg-red-800 text-red-100"
-											}`}
-										>
-											{user.status}
-										</span>
-									</td>
-
+                                    <td className="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                                                order.status === "delivered"
+                                                    ? "bg-green-800 text-green-100"
+                                                    : "bg-red-800 text-red-100"
+                                            }`}
+                                        >
+                                            COOKED
+                                        </span>
+                                    </td>
 									<td className="px-6 py-4 whitespace-nowrap">
 										<div className="text-sm text-gray-300">
-											{user.totalamount}
+                                            ${order.totalPrice.toLocaleString()}
 										</div>
 									</td>
 								</motion.tr>

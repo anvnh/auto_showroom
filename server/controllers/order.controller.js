@@ -5,7 +5,7 @@ import User from "../models/user.model.js";
 export const getAllOrders = async (req, res) => {
     try {
         // find all order no need to populate user
-        const orders = await Order.find({});
+        const orders = await Order.find({}).populate("user");
         res.status(200).json(orders);
     }
     catch(error) {
@@ -22,6 +22,7 @@ export const addOrderItems = async (req, res) => {
             paymentMethod,
             paymentResult,
             email,
+            phone: phoneNumber,
             totalPrice,
             isPaid,
             paidAt,
@@ -51,6 +52,7 @@ export const addOrderItems = async (req, res) => {
             paymentMethod,
             paymentResult,
             email,
+            phoneNumber,
             shippingPrice,
             totalPrice,
             isPaid,

@@ -40,6 +40,7 @@ const orderSchema = new mongoose.Schema(
             required: true,
         },
         email: { type: String, required: true },
+        phoneNumber: { type: String, required: true },
         shippingPrice: {
             type: Number,
             required: true,

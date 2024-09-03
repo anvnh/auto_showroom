@@ -392,6 +392,26 @@ const Payment = () => {
             }
         }
         if(orderId && paymentMethod)  {
+            // console.log(
+            //     {
+            //         cars: vehicleInfoArray,
+            //         info: {
+            //             orderId,
+            //             address,
+            //             shippingCost,
+            //             paymentMethod,
+            //             paymentResult,
+            //             email: user.email,
+            //             totalPrice: calculateTotalPrice(),
+            //             isPaid,
+            //             paidAt: isPaid ? new Date() : null,
+            //             isDelivered,
+            //             deliveredAt: null,
+            //             phone: inputinformation.Phone,
+            //             state
+            //         }
+            //     }
+            // )
             sendPaymentMail({
                 cars: vehicleInfoArray,
                 info: {
