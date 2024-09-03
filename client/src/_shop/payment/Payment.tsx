@@ -819,7 +819,7 @@ const Payment = () => {
 											className="mb-4"
 											key={item._id}
 										>
-											<div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white p-2 mb-4 rounded-2xl shadow-md h-auto  w-full hover:bg-opacity-90">
+											<div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white p-2 mb-4 rounded-2xl shadow-md h-auto w-full hover:bg-opacity-90">
 												<div className="relative w-full flex items-center justify-center">
 													<Link
 														to={`/shop/product/${item._id}`}
