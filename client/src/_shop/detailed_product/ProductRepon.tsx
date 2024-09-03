@@ -252,19 +252,19 @@ const ProductRepon = () => {
                                             <span className="font-bold pr-2">Production Year:</span> {car.production_year}
                                         </p>
                                         <p className="pt-4 flex items-center">
-                                        <span className="font-bold pr-2">Body Style:</span> {car.body_style}
+                                            <span className="font-bold pr-2">Body Style:</span> {car.body_style}
                                         </p>
                                         <p className="pt-4 flex items-center">
-                                        <span className="font-bold pr-2">Engine:</span> {car.engine}
+                                            <span className="font-bold pr-2">Engine:</span> {car.engine}
                                         </p>
                                         <p className="pt-4 items-center">  
-                                        <span className="font-bold pr-1">Transmission:</span> {car.transmission}
+                                            <span className="font-bold pr-1">Transmission:</span> {car.transmission}
                                         </p>
                                         <p className="pt-4 flex items-center">
-                                        <span className="font-bold pr">Drive Type:</span> {car.drive_type}
+                                            <span className="font-bold pr">Drive Type:</span> {car.drive_type}
                                         </p>
                                         <p className="pt-4 flex items-center">
-                                        <span className="font-bold pr-2">Fuel Type:</span> {car.fuel_type}
+                                            <span className="font-bold pr-2">Fuel Type:</span> {car.fuel_type}
                                         </p>
                                     </div>
 
