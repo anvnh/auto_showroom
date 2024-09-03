@@ -6,6 +6,17 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import toast, { Toaster } from "react-hot-toast";
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button";
 
 const ProductRepon = () => {
 	const ID = useParams();
@@ -217,70 +228,82 @@ const ProductRepon = () => {
 									<div className="w-full justify-center flex">
 										<hr className="w-1/2 border-black  border-opacity-30 relative top-3 " />
 									</div>
-									<div className="pt-10 text-md text-black space-y-4">
-										<div className="flex font-poppins">
-											<span className="font-bold">
-												Availability:
-											</span>
-											: &nbsp;{" "}
-											{car.quantity !== 0 ? (
-												<p> In stock</p>
-											) : (
-												<p>Out of stock</p>
-											)}
-										</div>
-										<div className="flex">
-											<div className="font-bold">
-												ship:
-											</div>
-											<p className="pl-[65px]">
-												Free ship
-											</p>
-										</div>
-										<div className="flex"></div>
-									</div>
-									<div className="pt-5 text-md w-full flex items-center">
-										<p className="text-black font-bold ">
-											Select color: &nbsp; &nbsp;
-										</p>
-										<div></div>
-										{colors.map((color) => (
-											<button
-												key={color}
-												className={`border-2 boder-black rounded-full focus:outline-none mx-1 ${
-													selectedColor === color
-														? "w-8 h-8"
-														: "w-6 h-6"
-												}`}
-												style={{
-													backgroundColor: color,
-												}}
-												onClick={() =>
-													setSelectedColor(color)
-												}
-											/>
-										))}
-									</div>
-									<div className="text-md text-black font-bold pt-4 flex items-center space-x-4">
-										<div>Quantity:</div>
-										<div className="flex items-center bg-gray-100 rounded-lg overflow-hidden w-24">
-											<button
-												onClick={decreaseQuantity}
-												className="px-2 py-1 bg-gray-200 text-gray-600 hover:bg-gray-300 focus:outline-none"
-											>
-												-
-											</button>
-											<span className="flex-grow text-center py-1">
-												{quantity}
-											</span>
-											<button
-												onClick={increaseQuantity}
-												className="px-2 py-1 bg-gray-200 text-gray-600 hover:bg-gray-300 focus:outline-none"
-											>
-												+
-											</button>
-										</div>
-									</div>
+                                    <div className="pt-6 text-xl text-black">
+                                        <div className="flex font-poppins mb-2">
+                                            Availability: &nbsp;{" "}
+                                            {car.quantity !== 0 ? (
+                                                <p> In stock</p>
+                                            ) : (
+                                                <p>Out of stock</p>
+                                            )}
+                                        </div>
+                                        {/* TODO */}
+                                        <div className="font-bold">Free ship</div>
+                                        <div className="text-xl flex items-center space-x-4">
+                                            <div>Quantity: {car.quantity}</div>
+                                        </div>
+                                        <div className="flex"></div>
+                                    </div>
+
+                                    <hr className="w-full border-1 border-black border-opacity-30 relative top-3 " />
+
+                                    <div className="pt-3 text-[18px] text-black">
+                                        <p className="pt-4 flex items-center">
+                                            <span className="font-bold pr-2">Production Year:</span> {car.production_year}
+                                        </p>
+                                        <p className="pt-4 flex items-center">
+                                        <span className="font-bold pr-2">Body Style:</span> {car.body_style}
+                                        </p>
+                                        <p className="pt-4 flex items-center">
+                                        <span className="font-bold pr-2">Engine:</span> {car.engine}
+                                        </p>
+                                        <p className="pt-4 items-center">  
+                                        <span className="font-bold pr-1">Transmission:</span> {car.transmission}
+                                        </p>
+                                        <p className="pt-4 flex items-center">
+                                        <span className="font-bold pr">Drive Type:</span> {car.drive_type}
+                                        </p>
+                                        <p className="pt-4 flex items-center">
+                                        <span className="font-bold pr-2">Fuel Type:</span> {car.fuel_type}
+                                        </p>
+                                    </div>
+
+                                    <div className="pt-3">
+                                        <Dialog>
+                                            <DialogTrigger asChild>
+                                                <Button variant="outline" className="border-black text-[18px]
+                                                flex bg-gray-400  p-3 rounded-md hover:bg-black duration-300 ease-in-out justify-center detail-button text-black px-4 py-2 md:px-6 md:py-3  items-center transition-all  hover:text-white font-bold text-sm md:text-base text-center relative overflow-hidden border shadow-xl before:absolute before:right-0 before:top-0 before:h-[120px] before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[240px]
+                                                ">
+                                                    More details ... 
+                                                </Button>
+                                            </DialogTrigger>
+                                            <DialogContent className="sm:max-w-[425px] bg-gray-700 text-white bg-opacity-55 backdrop-blur-md ">
+                                                <DialogHeader>
+                                                    <DialogTitle>More details</DialogTitle>
+                                                </DialogHeader>
+                                                <div className="grid grid-cols-2 gap-4">
+                                                    <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Production Year:</span> {car.production_year} </p>
+                                                    <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Body Style:</span> {car.body_style} </p>
+                                                    <p className="pt-4 items-center col-span-2">  
+                                                    <span className="font-bold pr-1">Engine:</span> {car.engine}
+                                                    </p>
+                                                    <p className="pt-4 items-center col-span-2">  
+                                                    <span className="font-bold pr-1">Transmission:</span> {car.transmission}
+                                                    </p>
+                                                    <p className="pt-4 items-center col-span-2">   	<span className="font-bold pr-2">Drive Type:</span> {car.drive_type} </p>
+                                                    <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Fuel Type:</span> {car.fuel_type} </p>
+                                                    <p className="pt-4 items-center col-span-2"> 	<span className="font-bold pr-2">Horsepower:</span> {car.horsepower} hp </p>
+                                                    <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Torque:</span> {car.torque} Nm </p>
+                                                    <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Top Speed:</span> {car.top_speed} km/h </p>
+                                                    <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Acceleration:</span> {car.acceleration} </p>
+                                                    <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Seat Capacity:</span> {car.seat_capacity} </p>
+                                                </div>
+                                              
+                                            </DialogContent>
+                                        </Dialog>
+                                    </div>
+
+                                    <hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
 								</div>
 								<div className="justify-evenly pt-12 gap-2 items-end flex text-white mt-auto">
 									<button className="flex bg-gray-400 w-[200px] h-[55px] p-3 rounded-md hover:bg-black duration-300 ease-in-out justify-center detail-button text-black px-4 py-2 md:px-6 md:py-3 lg:w-[200px] lg:h-[50px] items-center transition-all  hover:text-white font-bold text-sm md:text-base text-center relative overflow-hidden border-gray-600 border shadow-xl before:absolute before:right-0 before:top-0 before:h-[120px] before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] ">
