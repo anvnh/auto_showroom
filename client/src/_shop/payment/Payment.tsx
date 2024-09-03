@@ -354,6 +354,11 @@ const Payment = () => {
         if(!address || !inputinformation) {
             return toast.error("Please fill in all the information");
         }
+        if(paymentMethod === "Visa") {
+            if(!state.number || !state.name || !state.expiry || !state.cvc) {
+                return toast.error("Please fill in all the information");
+            }
+        }
         if(orderId && paymentMethod)  {
             sendPaymentMail({
                 cars: vehicleInfoArray,
@@ -370,6 +375,7 @@ const Payment = () => {
                     isDelivered,
                     deliveredAt: null,
                     phone: inputinformation.Phone,
+                    state
                 }
             });
         }
@@ -619,7 +625,7 @@ const Payment = () => {
 									data-aos="fade-left"
 									type="text"
 									name="RecipientName"
-									value={inputinformation.RecipientName}
+									value={user.fullName}
 									onChange={(event) => setInputinformation({ ...inputinformation, RecipientName: event.target.value })}
 									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 									placeholder="Recipient name "
@@ -632,7 +638,7 @@ const Payment = () => {
                                     className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
                                     placeholder="Gmail"
                                     name="Gmail"
-                                    value={inputinformation.Gmail}
+                                    value={user.email}
                                     onChange={(event) => setInputinformation({ ...inputinformation, Gmail: event.target.value })}
                                     required
 								/>
