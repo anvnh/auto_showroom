@@ -276,9 +276,10 @@ const Payment = () => {
 			return total + itemTotal;
 		}, 0);
 
-		const totalPriceWithShipping = totalCartPrice + (shippingCost || 0);
-		return totalPriceWithShipping.toLocaleString();
-	};
+		const totalPriceWithShipping = totalCartPrice + (Math.round(shippingCost) || 0);
+		return totalPriceWithShipping;
+		// return totalPriceWithShipping.toLocaleString();
+    };
 
 	const [quantities, setQuantities] = useState({});
 

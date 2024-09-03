@@ -68,8 +68,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://aapvietnam.online/)
-
 Are you a car enthusiast looking for your dream ride or a like-minded community to connect with? Look no further! Our website is your one-stop shop for a wide selection of quality used cars and a vibrant social platform where you can connect with fellow car lovers. Whether you're searching for a classic, a sports car, or a family-friendly SUV, we've got you covered. Join our community today and discover the perfect car for your lifestyle, while also connecting with people who share your passion for automobiles.
 
 
@@ -184,6 +182,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [anvnh](https://www.facebook.com/aanvnh/) - anvo20052@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/anvnh/auto_showroom]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
