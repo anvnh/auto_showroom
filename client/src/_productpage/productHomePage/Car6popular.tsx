@@ -798,10 +798,7 @@ const Car6popular = () => {
 					</div>
 				</div>
 			</div>
-
-
-  
-
+      
       <div className={`top-0 left-0 w-screen ${isPopupVisible ? "flex" : "hidden"} h-screen fixed bg-neutral-800 z-50`}>
         <section className={`w-screen h-screen flex  flex-col justify-center items-center `}>
         <div className="w-[100%] h-[8%]  flex justify-between items-center">

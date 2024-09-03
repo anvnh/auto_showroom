@@ -7,7 +7,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { logo, gif, ngoisao } from "@/assets";
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
-import { FcGoogle } from "react-icons/fc";
+
 import LoginRepon from "./LoginRepon";
 import { useMutation } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
@@ -535,23 +535,6 @@ const LoginPage: React.FC = () => {
 														</span>
 													</div>
 												)}
-											</Button>
-										</div>
-										<div className="relative flex justify-center">
-											<Button
-												type="submit"
-												className="flex items-center justify-center w-[300px] h-[50px] text-white bg-gray-900 hover:bg-gray-700 transition-all ease-in-out text-md font-poppins duration-500 md:text-base rounded-xl text-center text-xl
-										before:ease relative overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500  hover:before:-translate-x-80"
-											>
-												<FcGoogle className="mr-2 h-auto w-[25px]" />
-												<div className="flex items-center">
-													<span className="lowercase font-bold">
-														Sign In with
-													</span>
-													<span className="ml-1 lowercase">
-														Google
-													</span>
-												</div>
 											</Button>
 										</div>
 
