@@ -302,6 +302,35 @@ const Payment = () => {
 		}));
 	};
 
+    const {mutate: addOrderToDatabase} = useMutation({
+        mutationFn: async ({cars, info}) => {
+            try {
+                const res = await fetch("/api/order/add", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({cars, info}),
+                });
+                const result = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(result.error || "Something went wrong");
+                }
+
+                return result;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+        onSuccess: () => {
+            toast.success("We have received and send you an email with the payment details. Please check your email.");
+        },
+        onError: (error) => {
+            toast.error("Failed to add order:", error.message);
+        },
+    });
+
     const {mutate: sendPaymentMail, isLoading: isSendingMail} = useMutation({
         mutationFn: async ({cars, info}) => {
             try {
@@ -323,11 +352,14 @@ const Payment = () => {
                 throw new Error(error);
             }
         },
-        onSuccess: () => {
-            toast.success("Payment mail sent successfully");
+        onSuccess: ({cars, info}) => {
+            addOrderToDatabase({
+                cars, info
+            });
+            // toast.success("Payment mail sent successfully");
         },
         onError: (error) => {
-            toast.error("Failed to send payment mail:", error.message);
+            toast.error("Internal server error", error.message);
         },
     });
 
@@ -337,7 +369,8 @@ const Payment = () => {
 		const itemTotal = itemPrice * (quantities[car._id] || 1);
 		const totalPriceWithShipping = itemTotal + (shippingCost || 0);
 
-		return totalPriceWithShipping.toLocaleString();
+		// return totalPriceWithShipping.toLocaleString();
+		return totalPriceWithShipping;
 	};
 
 	const handleDelete = async (itemId) => {
@@ -717,7 +750,7 @@ const Payment = () => {
 											type="text"
 											className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
 											placeholder="Search or enter your address"
-											value={inputAddressValue}
+											value={address}
 											onChange={handleAddressInputChange}
 											required
 										/>
@@ -756,7 +789,7 @@ const Payment = () => {
 										</div>
 										<div className="flex justify-end gap-9 mt-3 mr-3">
 											<button
-												onClick={handleClick}
+												onClick={ handleClick }
 												className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
 												title="	Receive at VKU"
 											>

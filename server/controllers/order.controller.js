@@ -29,7 +29,8 @@ export const addOrderItems = async (req, res) => {
         } = req.body.info;
         let { shippingCost: shippingPrice } = req.body.info;
         shippingPrice = Math.round(shippingPrice);
-        const orderItems = req.body.cars.map((item) => {
+        const cars = Array.isArray(req.body.cars) ? req.body.cars : [req.body.cars];
+        const orderItems = cars.map((item) => {
             return {
                 carId: item.id,
                 brand: item.brand,
