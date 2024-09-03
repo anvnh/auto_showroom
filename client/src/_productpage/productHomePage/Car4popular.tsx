@@ -706,7 +706,7 @@ const Car4popular = () => {
           reverseOrder={false}
         />
 
-        <section className="relative h-screen w-screen flex justify-center items-center">
+        <section id="Home" className="relative h-screen w-screen flex justify-center items-center">
           <div ref={bg_sec1} style={{ backgroundImage: `url(${car46})` }}
             className="bg  absolute top-0 left-0 w-screen h-screen z-1 object-cover
           bg-center bg-no-repeat  bg-cover  
@@ -721,8 +721,8 @@ const Car4popular = () => {
           <img src={car417} className="absolute w-[150px] h-[70px] right-[5%] bottom-[5%] hidden mlg:block" />
           <img src={car418} className="absolute w-[150px] h-[70px] left-[5%] bottom-[5%] hidden mlg:block" />
         </section>
-
-        <section className="relative h-screen w-screen flex justify-center items-center bg-slate-50"  >
+ 
+        <section id="Introduce" className="relative h-screen w-screen flex justify-center items-center bg-slate-50"  >
           <div
             ref={hero_section1}
             //style={{ backgroundImage: `url(${a5_6})` }}
@@ -855,7 +855,7 @@ const Car4popular = () => {
         </div>
 
 
-        <div ref={container_hero} className="hero  relative w-screen h-screen">
+        <div  ref={container_hero} className="hero  relative w-screen h-screen">
           <div className="z-1 w-full absolute h-full bg-gradient-to-tr from-slate-950 opacity-50"></div>
           <img className="object-cover w-full h-screen bg-no-repeat opacity-90" src={car45} />
           <div
@@ -881,7 +881,7 @@ const Car4popular = () => {
 
 
         {/* -------slogan----------- */}
-    <div className="md:block hidden">
+    <div id="information" className="md:block hidden">
     <div
           ref={container_slogan}
           className=" w-screen h-[300px]  flex justify-center items-center bg-slate-100 "
@@ -1137,6 +1137,7 @@ const Car4popular = () => {
         {/* --------------desktop-----------Container-Pin-------- */}
 
         <div
+        id="Buy"
           ref={container_pin}
           className="overflow-x-hidden  hidden md:flex  w-screen h-[400%] bg-slate-100 text-slate-800"
         >

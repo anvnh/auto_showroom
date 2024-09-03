@@ -22,11 +22,11 @@ const ProductLayout4 = () => {
 					</div>
 				</div>
 
-					{/* <div className="flex items-start justify-center ">
-					<div className="w-full">
-						<NavbarSmall />
+					<div className="flex items-start justify-center ">
+					<div className="w-full z-50">
+						<NavbarSmall4 />
 					</div>
-				</div> */}
+				</div>
 					<div
 					>
 						<div  className="w-full">
