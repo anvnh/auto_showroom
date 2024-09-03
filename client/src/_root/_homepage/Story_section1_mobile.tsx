@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react"
 import { supra_mk4 } from "@/assets/homepage/story"
 import { Link } from "react-router-dom"
 import gsap from "gsap"
+import ScrollTrigger from "gsap/ScrollTrigger"
 const Story_section1_mobile = () => {
     const founder_txt1 = useRef(null)
     const founder1_overlay = useRef(null)
