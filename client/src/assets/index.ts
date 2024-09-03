@@ -85,7 +85,7 @@ import changecolor2 from "./car2_popular/video.mp4"
 
 // import video
 
-import Videohieuung from "./car_popular/car3popular/hieuung/hieuung.mp4";
+import Videohieuung from "./car_popular/car3popular/hieuung/effect.mp4";
 
 //car3 popular
 import r1 from "./car_popular/car3popular/behind1.jpg";
@@ -116,6 +116,7 @@ import b7 from "./car_popular/car3popular/b7.webp";
 import b8 from "./car_popular/car3popular/b8.webp";
 import b9 from "./car_popular/car3popular/b9.webp";
 import toi from "./car_popular/car3popular/toi.png";
+import intro3 from "./car_popular/car3popular/0609 (2).mp4"
 
 //car4 popular
 import car41 from "./car_popular/car4popular/audi1.jpg";
@@ -243,6 +244,7 @@ import changecolorS6 from "./hplat_asset/car/audiS6/video.mp4"
 import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov";
 import video2 from "./car2_popular/Maybach S-Class.mov";
 export {
+	intro3,
 	changecolorS6,
 	changecolorA5,
 	changecolor6,

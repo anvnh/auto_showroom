@@ -26,13 +26,12 @@ const Car3popular2 = () => {
 						className=" bg-cover bg-center h-24 sm:h-48 relative object-cover z-20"
 					>
 						<div className="flex justify-center pt-10 md:pt-0 inset-0">
-							<h1 className="font-syncopate text-white text-[20px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px]">
+							<h1 className="font-syncopate text-white font-bold text-[20px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px]">
 								Interiors & Technology
 							</h1>
 						</div>
 					</div>
 				</div>
-				-
 				{/* destop------------------ */}
 				<div className="hidden md:block">
 					<div
@@ -40,7 +39,7 @@ const Car3popular2 = () => {
 						className=" bg-cover bg-center h-24 sm:h-48 relative object-cover z-20"
 					>
 						<div className="flex justify-center pt-10 md:pt-12 inset-0">
-							<h1 className="font-syncopate text-white text-[20px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px]">
+							<h1 className="font-syncopate text-white font-bold text-[20px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px]">
 								Interiors & Technology
 							</h1>
 						</div>
@@ -150,7 +149,7 @@ const Car3popular2 = () => {
 					<div className="flex justify-center pt-16 absolute inset-0">
 						<h1
 							data-aos="fade-left"
-							className="relative text-white font-extrabold md:text-6xl animate-pulse xs:text-4xl text-2xl  bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate uppercase"
+							className="relative text-white font-extrabold md:text-6xl xs:text-4xl text-2xl  bottom-9 sm:bottom-1 md:pb-0 transition-colors duration-500 font-syncopate uppercase"
 						>
 							3D model
 						</h1>

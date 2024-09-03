@@ -14,7 +14,7 @@ import {
 	change10,
 	change8,
 	change9,
-
+	intro3,
 	Videohieuung,
 	b4,
 	b5,
@@ -169,7 +169,7 @@ const car3reponsive: React.FC = () => {
 					playsInline
 					className="w-full h-auto object-cover z-20 pt-[75px]"
 				>
-
+						<source src={intro3}/>
 				</video>
 				{isVisible && (
 					<div className="z-30 flex justify-start w-full h-full items-center bottom-64 sm:-left-[1100px] relative md:left-11 -left-96 ss:-left-52 ss:bottom-32 sm:bottom-40 xs:bottom-48">
@@ -244,14 +244,8 @@ const car3reponsive: React.FC = () => {
 							17.9–18.6 mpg / 15.8-15.2 l/100km
 						</div>
 					</h2>
-					<div className="pt-36 relative justify-center items-center flex">
-						<div
-							data-aos="fade-right"
-							style={{ backgroundImage: `url(${r8})` }}
-							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] sm:w-[800px] sm:h-[600px] md:w-[1200px] md:h-[600px] bg-cover  animate-pulse bg-center rounded-3xl relative"
-						></div>
-					</div>
-					<div className="text-3xl md:text-[200px] text-white ss:text-6xl sm:text-8xl ss:bottom-56 animate-pulse text-center pt-28 md:pt-[300px] sm:pt-0 relative font-syncopate lg:pt-1">
+
+					<div className="text-3xl md:text-[200px] text-white ss:text-6xl sm:text-8xl ss:bottom-56 animate-pulse text-center pt-28 md:pt-[300px] sm:pt-0 relative font-syncopate lg:pt-1 font-bold">
 						IN THE CAR
 					</div>
 					<div className="justify-center items-center flex">
@@ -291,7 +285,7 @@ const car3reponsive: React.FC = () => {
 				data-aos="fade-in"
 				className="relative z-20 pt-72 lg:pt-12">
 				<div>
-					<div className="md:text-6xl pb-12 ss:text-6xl sm:text-7xl text-3xl text-center text-white animate-pulse font-syncopate ">
+					<div className="md:text-6xl font-bold pb-12 ss:text-6xl sm:text-7xl text-3xl text-center text-white animate-pulse font-syncopate ">
 						NEW COLOR
 					</div>
 				</div>
@@ -385,7 +379,7 @@ const car3reponsive: React.FC = () => {
 			<div className="bg-black pt-24">
 				<div
 					data-aos="fade-right"
-					className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[0px] md:-bottom-[1100px] pb-12 lg:bottom-[100px] lg:text-5xl">
+					className="text-3xl md:text-6xl text-white animate-pulse text-center relative font-syncopate uppercase bottom-[0px] md:-bottom-[1100px] pb-12 lg:bottom-[100px] lg:text-5xl font-bold">
 					Sophisticated, modern, classy
 				</div>
 				<div className="justify-start items-start flex">
@@ -415,10 +409,10 @@ const car3reponsive: React.FC = () => {
 				<div className="article-tiles-desc mb-6 text-center font-syncopate">
 					<h3
 						data-aos="fade-up"
-						className="text-4xl ss:text-5xl mb-2">
+						className="text-4xl ss:text-5xl mb-2 font-bold">
 						Rolls Royce Ghost 2021
 					</h3>
-					<p data-aos="fade-down">$ 332,500</p>
+					<p data-aos="fade-down font-kanit">$ 332,500</p>
 				</div>
 				<div className="flex justify-center gap-5 pt-5">
 					<Toaster
@@ -429,7 +423,7 @@ const car3reponsive: React.FC = () => {
 						<button
 							className=" opacity-80 backdrop-blur-xl
 							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-40
+										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-40 items-center
 							"
 						>
 							Buy Now
@@ -439,7 +433,7 @@ const car3reponsive: React.FC = () => {
 					<button
 						className=" opacity-80 backdrop-blur-xl
 							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-[230px]
+										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-[230px] items-center
 							"
 						onClick={() =>
 							handleAddToCart(car._id)
