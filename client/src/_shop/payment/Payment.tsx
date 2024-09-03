@@ -274,9 +274,10 @@ const Payment = () => {
 			return total + itemTotal;
 		}, 0);
 
-		const totalPriceWithShipping = totalCartPrice + (shippingCost || 0);
-		return totalPriceWithShipping.toLocaleString();
-	};
+		const totalPriceWithShipping = totalCartPrice + (Math.round(shippingCost) || 0);
+		return totalPriceWithShipping;
+		// return totalPriceWithShipping.toLocaleString();
+    };
 
 	const [quantities, setQuantities] = useState({});
 
@@ -310,6 +311,7 @@ const Payment = () => {
             const quantity = quantities[item._id] || 1;
             const total = Number(item.price.replace(/,/g, "")) * quantity;
             return {
+                id: item._id,
                 brand: item.brand,
                 model: item.car_model,
                 price: item.price,
