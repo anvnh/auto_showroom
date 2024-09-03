@@ -18,6 +18,7 @@ import VoucherPopup from "./VoucherPopup";
 import { IoLocation } from "react-icons/io5";
 import { GiHomeGarage } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
+import useAuthUser from "@/hooks/useAuthUser";
 
 mapboxgl.accessToken =
 	"pk.eyJ1IjoidHVhbmFuaDIwMDU4ODkiLCJhIjoiY20wNmc3cGE5MGR0bTJpczR6anF0cDMxeiJ9.nf180VnWasOogLOLMOS5gw";
@@ -298,19 +299,13 @@ const Payment = () => {
 		deleteItem({ item_id: itemId });
 	};
 
+    const {data: user} = useAuthUser();
+
 	const handleProceedToPayment = () => {
 		if (!cart || cart.length === 0) {
 			console.log("Cart is empty.");
 			return;
 		}
-		// cart.forEach((item) => {
-		// 	console.log(`Vehicle information:`);
-		// 	console.log(`Brand: ${item.brand}`);
-		// 	console.log(`Model: ${item.car_model}`);
-		// 	console.log(`Price: $${item.price}`);
-		// 	console.log(`Quantity: ${quantities[item._id] || 1}`);
-		// });
-		// console.log("Total:", calculateTotalPrice());
         const vehicleInfoArray = cart.map((item) => {
             const quantity = quantities[item._id] || 1;
             const total = Number(item.price.replace(/,/g, "")) * quantity;
@@ -324,7 +319,26 @@ const Payment = () => {
         });
         // create a unique order Id, required number and characters
         const orderId = Math.floor(Math.random() * 10000000000) + Math.random().toString(36).substring(2, 13).toUpperCase();
-        console.log({cars: vehicleInfoArray, info: {orderId, address, shippingCost}});
+        const paymentMethod = "Visa";
+        const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
+        const isPaid = paymentResult === "Paid" ? true : false;
+        const isDelivered = false;
+        console.log({
+            cars: vehicleInfoArray, 
+            info: {
+                orderId, 
+                address, 
+                shippingCost, 
+                paymentMethod,
+                paymentResult,
+                email: user.email,
+                totalPrice: calculateTotalPrice(),
+                isPaid,
+                paidAt: isPaid ? new Date() : null,
+                isDelivered,
+                deliveredAt: null
+            }
+        });
 	};
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
@@ -767,24 +781,29 @@ const Payment = () => {
 									Voucher
 								</div>
 
-								<div className="md:block hidden">
-									<div
-										onClick={handleProceedToPayment}
-										className="detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-									>
-										Proceed to Payment
-									</div>
-								</div>
-								<div className="justify-end">
-									<div className="block md:hidden ">
-										<div
-											onClick={handleProceedToPayment}
-											className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-										>
-											Proceed to Payment
-										</div>
-									</div>
-								</div>
+
+                                {user && (
+                                    <>
+                                        <div className="md:block hidden">
+                                            <div
+                                                onClick={handleProceedToPayment}
+                                                className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+                                            >
+                                                Proceed to Payment
+                                            </div>
+                                        </div>
+                                        <div className="justify-end">
+                                            <div className="block md:hidden ">
+                                                <div
+                                                    onClick={handleProceedToPayment}
+                                                    className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+                                                >
+                                                    Proceed to Payment
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
 							</div>
 						</div>
 

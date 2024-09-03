@@ -371,7 +371,8 @@ export const sendPaymentDetails = async (req, res) => {
                     <li> Ship fee: 
                         ${Math.round(info.shippingCost)}$
                     </li>
-                    <li> Payment method: Visa </li>
+                    <li> Payment method: ${info.paymentMethod} </li>
+                    <li> Payment result: ${info.paymentResult} </li>
                 </ul>
                 <h3> Payment details </h3>
                 <table>
