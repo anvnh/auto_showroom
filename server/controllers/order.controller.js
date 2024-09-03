@@ -5,7 +5,7 @@ import User from "../models/user.model.js";
 export const getAllOrders = async (req, res) => {
     try {
         // find all order no need to populate user
-        const orders = await Order.find({}).populate("user");
+        const orders = await Order.find({}).populate("user").populate("orderItems.carId");
         res.status(200).json(orders);
     }
     catch(error) {

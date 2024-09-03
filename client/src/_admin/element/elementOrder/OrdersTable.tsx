@@ -2,6 +2,18 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 
 const OrdersTable = () => {
@@ -117,19 +129,48 @@ const OrdersTable = () => {
 									</td>
                                     <td className="flex px-6 py-4 whitespace-nowrap">
                                         <div className="text-sm font-medium text-gray-100 justify-center items-center mt-2 ml-2 max-w-xs overflow-hidden text-ellipsis whitespace-nowrap">
-                                            {order.orderItems.length === 1 ? (
-                                                <div>
-                                                    <div>
-                                                        {order.orderItems[0].brand}{order.orderItems[0].model}
-                                                    </div>
-                                                </div>
-                                            ) : (
-                                                <button
-                                                    className="text-blue-500 hover:underline"
-                                                >
-                                                    See more
-                                                </button>
-                                            )}
+                                            <Dialog>
+                                                <DialogTrigger asChild>
+                                                    <button className="text-blue-500 hover:underline" >
+                                                        See more
+                                                    </button>
+                                                </DialogTrigger>
+                                                    <DialogContent className="sm:max-w-[425px]">
+                                                        <DialogHeader>
+                                                            <DialogTitle className="flex items-center">
+                                                                Detail Order
+                                                            </DialogTitle>
+                                                            <DialogDescription>
+                                                                Detail about customer's order
+                                                            </DialogDescription>
+                                                        </DialogHeader>
+                                                        <div className="grid gap-4 py-4">
+                                                            {order.orderItems.map((item) => (
+                                                                <div key={item._id} className="flex items-center justify-between">
+                                                                    <div className="flex items-center">
+                                                                        <div className="flex-shrink-0 h-10 w-9">
+                                                                            <img
+                                                                                src={item.carId.images[0]}
+                                                                                className="h-10 w-10 rounded-full"
+                                                                            />
+                                                                        </div>
+                                                                        <div className="ml-3">
+                                                                            <div className="text-sm font-medium text-gray-100">
+                                                                                {item.brand} {item.model}
+                                                                            </div>
+                                                                            <div className="text-sm font-medium text-gray-100">
+                                                                                {item.quantity} x ${item.price.toLocaleString()}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="text-sm text-gray-300">
+                                                                        ${item.price.toLocaleString()}
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </DialogContent>
+                                                </Dialog>
 										</div>
 									</td>
                                     <td className="px-6 py-4 whitespace-nowrap">
