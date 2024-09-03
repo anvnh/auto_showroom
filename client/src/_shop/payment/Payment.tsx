@@ -175,7 +175,6 @@ const Payment = () => {
 		const value = e.target.value;
 		setInputValue(value);
 
-		// Reset khoảng cách và phí ship khi input trống
 		if (!value.trim()) {
 			setDistance(null);
 			setShippingCost(null);
@@ -304,18 +303,28 @@ const Payment = () => {
 			console.log("Cart is empty.");
 			return;
 		}
-
-		// In ra thông tin của từng xe trong giỏ hàng
-		cart.forEach((item) => {
-			console.log(`Vehicle information:`);
-			console.log(`Brand: ${item.brand}`);
-			console.log(`Model: ${item.car_model}`);
-			console.log(`Price: $${item.price}`);
-			console.log(`Quantity: ${quantities[item._id] || 1}`);
-			console.log(`Bio: ${item.bio}`);
-		});
-
-		console.log("Total:", calculateTotalPrice());
+		// cart.forEach((item) => {
+		// 	console.log(`Vehicle information:`);
+		// 	console.log(`Brand: ${item.brand}`);
+		// 	console.log(`Model: ${item.car_model}`);
+		// 	console.log(`Price: $${item.price}`);
+		// 	console.log(`Quantity: ${quantities[item._id] || 1}`);
+		// });
+		// console.log("Total:", calculateTotalPrice());
+        const vehicleInfoArray = cart.map((item) => {
+            const quantity = quantities[item._id] || 1;
+            const total = Number(item.price.replace(/,/g, "")) * quantity;
+            return {
+                brand: item.brand,
+                model: item.car_model,
+                price: item.price,
+                quantity: quantity,
+                total: total
+            };
+        });
+        // create a unique order Id, required number and characters
+        const orderId = Math.floor(Math.random() * 10000000000) + Math.random().toString(36).substring(2, 13).toUpperCase();
+        console.log({cars: vehicleInfoArray, info: {orderId, address, shippingCost}});
 	};
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
@@ -574,20 +583,6 @@ const Payment = () => {
 															{item.brand}&nbsp;
 															{item.car_model}
 														</h2>
-
-														{/* <div className="flex pl-3 text-2xl text-yellow-600 cursor-pointer">
-															{"★".repeat(
-																Math.round(
-																	averageRating
-																)
-															)}
-															{"☆".repeat(
-																5 -
-																	Math.round(
-																		averageRating
-																	)
-															)}
-														</div> */}
 														<h3 className="line-clamp-2 h-[50px] pl-3 md:px-4 mb-5">
 															{item.bio}
 														</h3>
@@ -596,19 +591,7 @@ const Payment = () => {
 															<div className="justify-end items-end h-full p-5 w-full gap-5 flex flex-col md:flex-row">
 																<div className="mb-2 w-full md:w-[100px]">
 																	<span className="text-[20px] font-bold text-blue-600">
-																		$
-																		{(
-																			Number(
-																				item.price.replace(
-																					/,/g,
-																					""
-																				)
-																			) *
-																			(quantities[
-																				item
-																					._id
-																			] ||
-																				1)
+																		$ {( Number( item.price.replace( /,/g, "")) * (quantities[ item ._id ] || 1)
 																		).toLocaleString()}
 																	</span>
 																</div>
