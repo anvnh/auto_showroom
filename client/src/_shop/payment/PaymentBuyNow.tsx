@@ -49,6 +49,9 @@ const Payment = () => {
 		Phone: "",
 		Address: "",
 	});
+
+    const [payMethod, setPayMethod] = useState(null);
+
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		setState((prev) => ({ ...prev, [name]: value }));
@@ -178,9 +181,8 @@ const Payment = () => {
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
 		const value = e.target.value;
-		setInputValue(value);
+		setAddress(value);
 
-		// Reset khoảng cách và phí ship khi input trống
 		if (!value.trim()) {
 			setDistance(null);
 			setShippingCost(null);
@@ -299,6 +301,36 @@ const Payment = () => {
 			[item._id]: Math.max((prevQuantities[item._id] || 1) - 1, 1),
 		}));
 	};
+
+    const {mutate: sendPaymentMail, isLoading: isSendingMail} = useMutation({
+        mutationFn: async ({cars, info}) => {
+            try {
+                const res = await fetch("/api/user/payment/buynow/details", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({cars, info}),
+                });
+                const result = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(result.error || "Something went wrong");
+                }
+
+                return result;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+        onSuccess: () => {
+            toast.success("Payment mail sent successfully");
+        },
+        onError: (error) => {
+            toast.error("Failed to send payment mail:", error.message);
+        },
+    });
+
 	const calculateTotalPrice = () => {
 		if (!car) return 0;
 		const itemPrice = Number(car.price.replace(/,/g, ""));
@@ -314,25 +346,54 @@ const Payment = () => {
 	};
 
 	const handleProceedToPayment = () => {
-		if (!car) {
-			console.log("Cart is empty.");
-			return;
+		if (!car){
+            return toast.error("Please add a car to your cart");
 		}
-		// console.log("Vehicle information:");
-		// console.log(`Brand: ${car.brand}`);
-		// console.log(`Model: ${car.car_model}`);
-		// console.log(`Price: $${car.price}`);
-		// console.log(`Quantity: ${quantities[car._id] || 1}`);
-		// console.log(`Bio: ${car.bio}`);
-		// console.log("Total:", calculateTotalPrice());
-		const info = {
-			brand: car.brand,
-			model: car.car_model,
-			price: car.price,
-			quantity: quantities[car._id] || 1,
-			total: calculateTotalPrice(),
-		};
-		console.log(info);
+        const quantity = quantities[car._id] || 1;
+        const total = Number(car.price.replace(/,/g, "")) * quantity;
+        const vehicleInfo = {
+            id: car._id,
+            brand: car.brand,
+            model: car.car_model,
+            price: car.price,
+            quantity: quantity,
+            total: total
+        }
+        // create a unique order Id, required number and characters
+        const orderId = Math.floor(Math.random() * 10000000000) + Math.random().toString(36).substring(2, 13).toUpperCase();
+        const paymentMethod = payMethod == null ? toast.error("Please choose payment method") : payMethod;
+        const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
+        const isPaid = paymentResult === "Paid" ? true : false;
+        const isDelivered = false;
+        if(!address || !inputinformation) {
+            return toast.error("Please fill in all the information");
+        }
+        if(paymentMethod === "Visa") {
+            if(!state.number || !state.name || !state.expiry || !state.cvc) {
+                return toast.error("Please fill in all the information");
+            }
+        }
+        if(orderId && paymentMethod)  {
+            sendPaymentMail({
+                cars: vehicleInfo,
+                info: {
+                    orderId,
+                    address,
+                    shippingCost,
+                    paymentMethod,
+                    paymentResult,
+                    email: inputinformation.Gmail,
+                    totalPrice: calculateTotalPrice(),
+                    isPaid,
+                    paidAt: isPaid ? new Date() : null,
+                    isDelivered,
+                    deliveredAt: null,
+                    phone: inputinformation.Phone,
+                    state,
+                    name: inputinformation.RecipientName
+                }
+            });
+        }
 	};
 
 	// swap visa and Dỉrect
@@ -359,6 +420,7 @@ const Payment = () => {
 
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
+            <Toaster position="top-center" reverseOrder={false} />
 			<div className="mt-20 md:mt-36 ">
 				<div className="w-full bg-gray-800 rounded-3xl backdrop-blur-md p-5 sm:flex mb-7">
 					<h1 className="w-full justify-start flex font-bold font-poppins text-white text-2xl md:pb-0 pb-5">
@@ -368,14 +430,21 @@ const Payment = () => {
 						<button
 							className="detail-button bg-white text-black w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center
 							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[120px]"
-							onClick={() => toggleFormPayment("visaPayment")}
+							onClick={() => {
+                                toggleFormPayment("visaPayment")
+                                setPayMethod("Visa")
+                            }}
 						>
 							Card
 						</button>
 						<button
 							className="detail-button bg-white text-black  w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center 
 							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[120px]"
-							onClick={() => toggleFormPayment("DirectPayment")}
+							onClick={() => {
+                                toggleFormPayment("DirectPayment")
+                                setPayMethod("Direct")
+                                setAddress("Trường Đại học CNTT và TT Việt-Hàn")
+                            }}
 						>
 							Direct
 						</button>
@@ -443,7 +512,7 @@ const Payment = () => {
 										name="cvc"
 										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
 										placeholder="Search or enter your address"
-										value={inputAddressValue}
+										value={address}
 										onChange={handleAddressInputChange}
 										disabled
 									/>
@@ -759,7 +828,6 @@ const Payment = () => {
 					>
 						Your Cart
 					</h2>
-					<Toaster position="top-center" reverseOrder={false} />
 					<div className="pt-0 px-5">
 						{isLoading && isRefetching && <LoadingSpinner />}
 						{!isLoading &&
@@ -995,7 +1063,7 @@ const Payment = () => {
 												onClick={handleProceedToPayment}
 												className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
 											>
-												Proceed to Payment
+                                                {isSendingMail ? <LoadingSpinner /> : "Proceed to Payment"}
 											</div>
 										</div>
 										<div className="justify-end">
@@ -1006,7 +1074,7 @@ const Payment = () => {
 													}
 													className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
 												>
-													Proceed to Payment
+                                                    {isSendingMail ? <LoadingSpinner /> : "Proceed to Payment"}
 												</div>
 											</div>
 										</div>
