@@ -18,6 +18,7 @@ import VoucherPopup from "./VoucherPopup";
 import { IoLocation } from "react-icons/io5";
 import { GiHomeGarage } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
+import useAuthUser from "@/hooks/useAuthUser";
 
 mapboxgl.accessToken =
 	"pk.eyJ1IjoidHVhbmFuaDIwMDU4ODkiLCJhIjoiY20wNmc3cGE5MGR0bTJpczR6anF0cDMxeiJ9.nf180VnWasOogLOLMOS5gw";
@@ -363,6 +364,8 @@ const Payment = () => {
         },
     });
 
+    const {data: user} = useAuthUser();
+
 	const calculateTotalPrice = () => {
 		if (!car) return 0;
 		const itemPrice = Number(car.price.replace(/,/g, ""));
@@ -498,7 +501,7 @@ const Payment = () => {
 									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 									placeholder="Recipient name "
 									name="RecipientName"
-									value={inputinformation.RecipientName}
+									value={user ? user.fullName : inputinformation.RecipientName}
 									onChange={(event) =>
 										setInputinformation({
 											...inputinformation,
@@ -514,7 +517,7 @@ const Payment = () => {
 									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 									placeholder="Gmail"
 									name="Gmail"
-									value={inputinformation.Gmail}
+									value={user ? user.email : inputinformation.Gmail}
 									onChange={(event) =>
 										setInputinformation({
 											...inputinformation,
@@ -699,7 +702,7 @@ const Payment = () => {
 										data-aos="fade-left"
 										type="text"
 										name="RecipientName"
-										value={inputinformation.RecipientName}
+                                        value={user ? user.fullName : inputinformation.RecipientName}
 										onChange={(event) =>
 											setInputinformation({
 												...inputinformation,
@@ -718,7 +721,7 @@ const Payment = () => {
 										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 										placeholder="Gmail"
 										name="Gmail"
-										value={inputinformation.Gmail}
+                                        value={user ? user.email : inputinformation.Gmail}
 										onChange={(event) =>
 											setInputinformation({
 												...inputinformation,
