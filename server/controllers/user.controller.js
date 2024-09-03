@@ -400,7 +400,7 @@ export const sendPaymentDetails = async (req, res) => {
                             Total Price:
                         </b></td>
                         <td><b>
-                            ${(cars.reduce((total, item) => total + item.total, 0)) + Math.round(info.shippingCost)}$
+                            $${((cars.reduce((total, item) => total + item.total, 0)) + Math.round(info.shippingCost)).toLocaleString()}
                         </b></td>
                       </tr>
                 </table>
@@ -496,7 +496,7 @@ export const sendPaymentDetailsBuyNow = async (req, res) => {
                                 Total Price:
                             </b></td>
                             <td><b>
-                                $${(cars.reduce((total, item) => total + item.total, 0)) + Math.round(info.shippingCost)}
+                                $${((cars.reduce((total, item) => total + item.total, 0)) + Math.round(info.shippingCost)).toLocaleString()}
                             </b></td>
                           </tr>
                     </table>
@@ -569,7 +569,7 @@ export const sendPaymentDetailsBuyNow = async (req, res) => {
                                 Total Price:
                             </b></td>
                             <td><b>
-                                $${cars.total + Math.round(info.shippingCost)}
+                                $${cars.total + Math.round(info.shippingCost).toLocaleString()}
                             </b></td>
                           </tr>
                     </table>

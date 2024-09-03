@@ -1,6 +1,18 @@
 import Order from "../models/order.model.js";
 import Car from "../models/car.model.js";
 
+export const getAllOrders = async (req, res) => {
+    try {
+        // find all order no need to populate user
+        const orders = await Order.find({});
+        res.status(200).json(orders);
+    }
+    catch(error) {
+        console.log("Error in getAllOrders controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+};
+
 export const addOrderItems = async (req, res) => {
     try {
         const {
@@ -17,7 +29,6 @@ export const addOrderItems = async (req, res) => {
         } = req.body.info;
         let { shippingCost: shippingPrice } = req.body.info;
         shippingPrice = Math.round(shippingPrice);
-
         const orderItems = req.body.cars.map((item) => {
             return {
                 carId: item.id,
@@ -28,7 +39,6 @@ export const addOrderItems = async (req, res) => {
                 total: item.total,
             };
         });
-
         const order = new Order({
             user: req.user._id,
             orderId,
@@ -46,7 +56,7 @@ export const addOrderItems = async (req, res) => {
         });
         await order.save();
         res.status(200).json({ message: "Order added successfully" });
-        // res.status(200).json(order);
+        // res.status(200).json(req.user._id);
 
     } catch(error) {
         console.log("Error in addOrderItem controller: ", error);

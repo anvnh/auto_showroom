@@ -262,6 +262,35 @@ const Payment = () => {
 		},
 	});
 
+    const {mutate: addOrderToDatabase} = useMutation({
+        mutationFn: async ({cars, info}) => {
+            try {
+                const res = await fetch("/api/order/add", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({cars, info}),
+                });
+                const result = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(result.error || "Something went wrong");
+                }
+
+                return result;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+        onSuccess: () => {
+            toast.success("We have received and send you an email with the payment details. Please check your email.");
+        },
+        onError: (error) => {
+            toast.error("Failed to add order:", error.message);
+        },
+    });
+
     const {mutate: sendPaymentMail, isLoading: isSendingMail} = useMutation({
         mutationFn: async ({cars, info}) => {
             try {
@@ -283,13 +312,16 @@ const Payment = () => {
                 throw new Error(error);
             }
         },
-        onSuccess: () => {
-            toast.success("Payment mail sent successfully");
+        onSuccess: ({cars, info}) => {
+            addOrderToDatabase({
+                cars, info
+            });
         },
         onError: (error) => {
             toast.error("Failed to send payment mail:", error.message);
         },
     });
+
 
 	const calculateTotalPrice = () => {
 		if (!cart) return 0;
@@ -351,7 +383,7 @@ const Payment = () => {
         const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
         const isPaid = paymentResult === "Paid" ? true : false;
         const isDelivered = false;
-        if(!address || !inputinformation) {
+        if(!address || !inputinformation.Phone) {
             return toast.error("Please fill in all the information");
         }
         if(paymentMethod === "Visa") {
