@@ -14,7 +14,9 @@ export const addOrderItems = async (req, res) => {
             paidAt,
             isDelivered,
             deliveredAt,
-        } = req.body;
+        } = req.body.info;
+
+        const orderItems = req.body.cars;
 
         res.status(200).json({ message: "Order added successfully" });
 
