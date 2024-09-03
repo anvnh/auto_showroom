@@ -3,6 +3,8 @@ import { logo } from "../assets";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { SiGithub } from "react-icons/si";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Infor: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -24,34 +26,44 @@ const Infor: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 100);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
-
+  useEffect(() => {
+		AOS.init({
+			duration: 1000,
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-top",
+		});
+	}, []);
   return (
     <div className="hidden md:block">
       <div className="fixed bottom-0 right-0 flex items-end p-7 pr-10 z-20">
         {isVisible && (
           <div
+            data-aos="fade-down"
+						data-aos-delay="4000"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className="relative flex flex-col "
           >
             {isHovered && (
-              <div className=" top-0 right-full flex flex-col items-center space-y-6 bg-gray-800 bg-opacity-75 p-4 rounded-lg shadow-lg transition-transform transform scale-100">
+              <div className=" top-0 right-full flex flex-col items-center space-y-6 bg-gray-800 bg-opacity-75 p-3 rounded-lg shadow-lg transition-transform transform scale-100">
                 <Link to="https://github.com/anvnh"  className="text-white">
-                  <SiGithub className="text-4xl hover:text-purple-600 transition-all duration-300 hover:scale-110 ease-in-out" />
+                  <SiGithub className="text-3xl hover:text-purple-600 transition-all duration-300 hover:scale-110 ease-in-out" />
                 </Link>
                 <Link to="https://www.instagram.com/nvtank/"  className="text-white">
-                  <FaInstagram className="text-4xl hover:text-pink-600 transition-all duration-300 hover:scale-110 ease-in-out" />
+                  <FaInstagram className="text-3xl hover:text-pink-600 transition-all duration-300 hover:scale-110 ease-in-out" />
                 </Link>
                 <Link to="https://www.facebook.com/hplatdev" className="text-white">
-                  <FaFacebook className="text-4xl hover:text-blue-600 transition-all duration-300 hover:scale-110 ease-in-out " />
+                  <FaFacebook className="text-3xl hover:text-blue-600 transition-all duration-300 hover:scale-110 ease-in-out " />
                 </Link>
               </div>
             )}
-            <div className="w-[70px] mt-5 p-3 h-[70px] bg-gray-800 rounded-full flex items-center justify-center text-white transition-transform transform hover:scale-110 duration-300 shadow-md shadow-white" >
+            <div className="w-[60px] mt-5 p-3 h-[60px] bg-gray-800 rounded-full flex items-center justify-center text-white transition-transform transform hover:scale-110 duration-300 shadow-md shadow-white" >
               <img src={logo}/>
             </div>
           </div>
