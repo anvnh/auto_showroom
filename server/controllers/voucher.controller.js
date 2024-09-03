@@ -35,21 +35,21 @@ export const addVoucher = async (req, res) => {
         } = req.body;
         let { img } = req.body;
 
-        if (!img) {
-            return res.status(400).json({ message: "Please upload an image" });
-        }
-        if (img) {
-            const uploadedResponse = await cloudinary.uploader.upload(img);
-            img = uploadedResponse.secure_url;
-        }
+        // if (!img) {
+        //     return res.status(400).json({ message: "Please upload an image" });
+        // }
+        // if (img) {
+        //     const uploadedResponse = await cloudinary.uploader.upload(img);
+        //     img = uploadedResponse.secure_url;
+        // }
 
-        const manufacturDateObj = parseDate(manufacturDate);
-        const expiryDateObj = parseDate(expiryDate);
-        const manufacturDat = manufacturDateObj.getDate();
-        const expiryDat = expiryDateObj.getDate();
+        // const manufacturDateObj = (manufacturDate);
+        // const expiryDateObj = (expiryDate);
+        const manufacturDateObj = new Date(manufacturDate.split('-').reverse().join('-'));
+        const expiryDateObj = new Date(expiryDate.split('-').reverse().join('-'));
         const currentDate = new Date();
         if (
-            manufacturDat > expiryDat || manufacturDat < currentDate
+            manufacturDateObj > expiryDateObj || manufacturDateObj < currentDate
         ) {
             return res.status(400).json({ message: "Invalid date range" });
         }
