@@ -1,5 +1,6 @@
 import Order from "../models/order.model.js";
 import Car from "../models/car.model.js";
+import User from "../models/user.model.js";
 
 export const getAllOrders = async (req, res) => {
     try {
@@ -28,6 +29,8 @@ export const addOrderItems = async (req, res) => {
             deliveredAt,
         } = req.body.info;
         let { shippingCost: shippingPrice } = req.body.info;
+        // find user with email
+        const user = await User.findOne({ email });
         shippingPrice = Math.round(shippingPrice);
         const cars = Array.isArray(req.body.cars) ? req.body.cars : [req.body.cars];
         const orderItems = cars.map((item) => {
@@ -41,7 +44,7 @@ export const addOrderItems = async (req, res) => {
             };
         });
         const order = new Order({
-            user: req.user._id,
+            user: user ? user._id : null,
             orderId,
             orderItems,
             shippingAddress,

@@ -12,6 +12,6 @@ router.get("/", (req, res) => {
 });
 
 router.get("/all", getAllOrders);
-router.post("/add", protectRoute, addOrderItems); 
+router.post("/add", addOrderItems); 
 
 export default router;
