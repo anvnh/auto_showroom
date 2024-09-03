@@ -207,12 +207,7 @@ const Payment = () => {
 	}>({});
 	const [cartInfo, setCartInfo] = useState({ items: [], total: 0 });
 
-	const {
-		data: cart,
-		isLoading,
-		refetch,
-		isRefetching,
-	} = useQuery({
+	const { data: cart, isLoading, refetch, isRefetching, } = useQuery({
 		queryKey: ["cart"],
 		queryFn: async () => {
 			try {
@@ -267,6 +262,35 @@ const Payment = () => {
 		},
 	});
 
+    const {mutate: sendPaymentMail, isLoading: isSendingMail} = useMutation({
+        mutationFn: async ({cars, info}) => {
+            try {
+                const res = await fetch("/api/user/payment/details", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({cars, info}),
+                });
+                const result = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(result.error || "Something went wrong");
+                }
+
+                return result;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+        onSuccess: () => {
+            toast.success("Payment mail sent successfully");
+        },
+        onError: (error) => {
+            toast.error("Failed to send payment mail:", error.message);
+        },
+    });
+
 	const calculateTotalPrice = () => {
 		if (!cart) return 0;
 		const totalCartPrice = cart.reduce((total, item) => {
@@ -309,42 +333,58 @@ const Payment = () => {
 			console.log("Cart is empty.");
 			return;
 		}
-		const vehicleInfoArray = cart.map((item) => {
-			const quantity = quantities[item._id] || 1;
-			const total = Number(item.price.replace(/,/g, "")) * quantity;
-			return {
-				brand: item.brand,
-				model: item.car_model,
-				price: item.price,
-				quantity: quantity,
-				total: total,
-			};
-		});
-		// create a unique order Id, required number and characters
-		const orderId =
-			Math.floor(Math.random() * 10000000000) +
-			Math.random().toString(36).substring(2, 13).toUpperCase();
-		const paymentMethod = "Visa";
-		const paymentResult = paymentMethod === "Visa" ? "Paid" : "Not Paid";
-		const isPaid = paymentResult === "Paid" ? true : false;
-		const isDelivered = false;
-		console.log({
-			cars: vehicleInfoArray,
-			info: {
-				orderId,
-				address,
-				shippingCost,
-				paymentMethod,
-				paymentResult,
-				email: user.email,
-				totalPrice: calculateTotalPrice(),
-				isPaid,
-				paidAt: isPaid ? new Date() : null,
-				isDelivered,
-				deliveredAt: null,
-			},
-		});
+  const vehicleInfoArray = cart.map((item) => {
+            const quantity = quantities[item._id] || 1;
+            const total = Number(item.price.replace(/,/g, "")) * quantity;
+            return {
+                id: item._id,
+                brand: item.brand,
+                model: item.car_model,
+                price: item.price,
+                quantity: quantity,
+                total: total
+            };
+        });
+        // create a unique order Id, required number and characters
+        const orderId = Math.floor(Math.random() * 10000000000) + Math.random().toString(36).substring(2, 13).toUpperCase();
+        const paymentMethod = "Visa";
+        const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
+        const isPaid = paymentResult === "Paid" ? true : false;
+        const isDelivered = false;
+
+        sendPaymentMail({
+            cars: vehicleInfoArray,
+            info: {
+                orderId,
+                address,
+                shippingCost,
+                paymentMethod,
+                paymentResult,
+                email: user.email,
+                totalPrice: calculateTotalPrice(),
+                isPaid,
+                paidAt: isPaid ? new Date() : null,
+                isDelivered,
+                deliveredAt: null
+            }
+        });
 	};
+        // console.log({
+        //     cars: vehicleInfoArray,
+        //     info: {
+        //         orderId,
+        //         address,
+        //         shippingCost,
+        //         paymentMethod,
+        //         paymentResult,
+        //         email: user.email,
+        //         totalPrice: calculateTotalPrice(),
+        //         isPaid,
+        //         paidAt: isPaid ? new Date() : null,
+        //         isDelivered,
+        //         deliveredAt: null
+        //     }
+        // });
 
 	// swap visa and Dỉrect
 	const [showvisaForm, setShowVisaForm] = useState(false);
@@ -393,6 +433,7 @@ const Payment = () => {
 				</div>
 				{showdirectForm && (
 				<section data-aos="fade-left" className="text-black">
+
 					<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
 						<h2 className="text-2xl md:text-3xl font-bold font-poppins mb-20 text-white">
 							Input infomation
@@ -694,9 +735,11 @@ const Payment = () => {
 									data-aos="fade-right"
 									className="flex gap-5 justify-end"
 								>
+
 									<button
 										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[320px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
 										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[320px]
+
 "
 										onClick={() => toggleForm("visa")}
 									>
@@ -726,7 +769,6 @@ const Payment = () => {
 					>
 						Your Cart
 					</h2>
-					<Toaster position="top-center" reverseOrder={false} />
 					<div className="pt-0 px-5">
 						{isLoading && isRefetching && <LoadingSpinner />}
 						{!isLoading &&
@@ -776,7 +818,7 @@ const Payment = () => {
 														<div className="hidden md:block">
 															{" "}
 															<div className="justify-end items-end h-full p-5 w-full gap-5 flex flex-col md:flex-row">
-																<div className="mb-2 w-full md:w-[100px]">
+																<div className="mb-2 w-full md:w-[200px]">
 																	<span className="text-[20px] font-bold text-blue-600">
 																		${" "}
 																		{(
