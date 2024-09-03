@@ -1,6 +1,6 @@
 import Navbar from "../../_root/_homepage/Navbar";
 import Footer from "@/components/common/Footer";
-import NavbarSmall4 from "../navbarsmall/NavbarSmall4";
+import NavbarSmall6 from "../navbarsmall/NavbarSmall6";
 import Car6popular from "../productHomePage/Car6popular";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -22,11 +22,11 @@ const ProductLayout4 = () => {
 					</div>
 				</div>
 
-					{/* <div className="flex items-start justify-center ">
-					<div className="w-full">
-						<NavbarSmall />
+					<div className="flex items-start justify-center ">
+					<div className="w-full z-50">
+						<NavbarSmall6 />
 					</div>
-				</div> */}
+				</div>
 					<div className="z-10"
 					>
 						<div  className="w-full">

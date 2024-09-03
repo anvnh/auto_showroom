@@ -685,7 +685,7 @@ const Car6popular = () => {
 
 
 
-      <section className=" relative h-screen w-screen flex justify-center items-center">
+      <section id="Home" className=" relative h-screen w-screen flex justify-center items-center">
         <div ref={bg_sec1} style={{ backgroundImage: `url(${car625})` }}
           className="bg  absolute top-0 left-0 w-screen h-screen z-10 object-cover
           bg-center bg-no-repeat  bg-cover  
@@ -701,7 +701,7 @@ const Car6popular = () => {
         <img src={car62} className="absolute w-[150px] h-[70px] left-[5%] bottom-[5%] hidden mlg:block z-10" />
       </section>
 
-      <section className="relative h-screen w-screen flex justify-center items-center bg-slate-50"  >
+      <section id="Introduce" className="relative h-screen w-screen flex justify-center items-center bg-slate-50"  >
         <div
           ref={hero_section1}
           //style={{ backgroundImage: `url(${a5_6})` }}
@@ -850,7 +850,7 @@ const Car6popular = () => {
 
 
       {/* -------slogan----------- */}
-   <div className="hidden md:block">
+   <div id="information" className="hidden md:block">
    <div
         ref={container_slogan}
         className=" w-screen h-[300px]  flex justify-center items-center bg-slate-100 "
@@ -1100,6 +1100,7 @@ const Car6popular = () => {
 
       {/* --------------desktop-----------Container-Pin-------- */}
       <div
+      id="Buy"
         ref={container_pin}
         className="overflow-x-hidden  hidden md:flex  w-screen h-[400%] bg-slate-100 text-slate-800"
       >
