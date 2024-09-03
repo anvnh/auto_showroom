@@ -8,18 +8,13 @@ const TopBrand = () => {
     const container_popularBrand = useRef(null)
     const box2 = useRef(null)
     const box = useRef(null)
-    const box3 = useRef(null)
     const box1 = useRef(null)
     const popularBrand_section1 = useRef(null)
     const popularBrand_section2 = useRef(null)
     const popularBrand_section3 = useRef(null)
-    const popularBrand_section4 = useRef(null)
 
 
     useEffect(() => {
-
-
-
         ScrollTrigger.create({
             trigger: container_popularBrand.current,
             start: "top top",
@@ -68,7 +63,7 @@ const TopBrand = () => {
                 TOP <span className="text-red-500">BRAND</span> USER TRUST
             </div>
 
-            <section ref={container_popularBrand} className="bg-neutral-900 w-screen h-[300%] hidden xsm:flex ">
+            <section ref={container_popularBrand} className="bg-neutral-900 w-screen  hidden xsm:flex ">
                 <div className="w-1/2 h-full  flex flex-col">
 
                     <section ref={popularBrand_section1} className=" w-full h-screen  flex justify-center items-center ">

@@ -17,6 +17,7 @@ const Story_section1_mobile = () => {
                 scrub: true
             }
         })
+
         return () => {
             ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         }
@@ -44,7 +45,7 @@ const Story_section1_mobile = () => {
                         </section>
                     </div>
                     <div className="mt-[2%] w-[86%]">
-                        <p className=" text-[20px] md:text-[25px] overflow-y-hidden">
+                        <p className="split1 text-[20px] md:text-[25px] overflow-y-hidden">
                             The legendary twin-turbo 2JZ-GTE produced 276 HP for Japanese markets, but thanks to upgraded turbos and bigger fuel injectors.
                             The Supra traces much of its roots back to the 2000GT.
                         </p>
