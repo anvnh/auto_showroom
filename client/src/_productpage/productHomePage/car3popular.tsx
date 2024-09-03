@@ -20,6 +20,7 @@ import {
 	b6,
 	toi,
 	b7,
+	intro3,
 	b8,
 	b9,
 	new3,
@@ -211,7 +212,7 @@ const Car3popular: React.FC = () => {
 								muted
 								loop
 								playsInline
-								className="w-full h-[400vh] object-cover"
+								className="w-full h-[400vh] pt-32 object-cover"
 							>
 								<source src={Videohieuung} />
 							</video>
@@ -223,8 +224,11 @@ const Car3popular: React.FC = () => {
 								muted
 								loop
 								playsInline
-								className="w-full h-auto object-cover top-16 relative"
-							></video>
+								className="w-full h-auto object-cover relative"
+							>
+								<source src={intro3}/>
+
+							</video>
 						</ParallaxLayer>
 
 						<ParallaxLayer offset={0} speed={4.5} factor={1}>
@@ -239,7 +243,7 @@ const Car3popular: React.FC = () => {
 										<h1 className="text-xs xs:text-xl ss:text-3xl sm:text-4xl lg:text-6xl mb-1 tracking-widest font-bold">
 											Rolls Royce Ghost 2021
 										</h1>
-										<h2 className="text-xs ss:text-2xl lg:text-4xl sm:text-3xl font-thin pt-1">
+										<h2 className="text-xs ss:text-2xl lg:text-4xl sm:text-3xl font-kanit  pt-1">
 											<span className="">$ 332,500</span>
 										</h2>
 									</div>
@@ -312,7 +316,7 @@ const Car3popular: React.FC = () => {
 							</div>
 						</ParallaxLayer>
 						<ParallaxLayer offset={1.1} speed={0.4} factor={1}>
-							<div className="text-3xl md:text-[200px] text-white ss:text-6xl sm:text-8xl ss:bottom-56 animate-pulse text-center pt-28 md:pt-[300px] relative font-syncopate">
+							<div className="text-3xl md:text-[200px] text-white ss:text-6xl sm:text-8xl ss:bottom-56 animate-pulse text-center pt-28 md:pt-[300px] relative font-syncopate font-bold">
 								IN THE CAR
 							</div>
 						</ParallaxLayer>
@@ -343,7 +347,7 @@ const Car3popular: React.FC = () => {
 							ref={(ref) => (parallaxLayerRefs.current[2] = ref)}
 						>
 							<div className="bottom-[400px] ss:-top-[600px] md:top-[1500px] relative">
-								<div className="md:text-6xl ss:text-6xl sm:text-7xl text-3xl text-center text-white animate-pulse font-syncopate ">
+								<div className="md:text-6xl ss:text-6xl sm:text-7xl text-3xl text-center font-bold text-white animate-pulse font-syncopate ">
 									NEW COLOR
 								</div>
 							</div>
@@ -456,7 +460,7 @@ const Car3popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[3] = ref)}
 						>
-							<div className="sketchfab-embed-wrapper w-[1000x] h-[500px] md:h-[600px]  -bottom-[1700px] z-10 relative">
+							<div className="sketchfab-embed-wrapper w-[1000x] h-[500px] md:h-[800px]  -bottom-[1700px] z-10 relative">
 								{" "}
 								<Rollroyce_ghost_view />
 								{/* <iframe
@@ -483,7 +487,7 @@ const Car3popular: React.FC = () => {
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[4] = ref)}
 						>
-							<div className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[1700px] md:bottom-[1200px]">
+							<div className="text-3xl md:text-6xl text-white animate-pulse text-center  relative font-syncopate uppercase bottom-[1700px] md:bottom-[1200px] font-bold">
 								Sophisticated, modern, classy
 							</div>
 						</ParallaxLayer>
@@ -521,10 +525,10 @@ const Car3popular: React.FC = () => {
 										reverseOrder={false}
 									/>
 									<div className="article-tiles-desc mb-6 text-center font-syncopate">
-										<h3 className="text-4xl ss:text-5xl mb-2">
+										<h3 className="text-4xl ss:text-5xl mb-2 font-bold">
 											Rolls-Royce-Ghost-2021
 										</h3>
-										<p className="text-2xl">$ 332,500</p>
+										<p className="text-2xl font-kanit">$ 332,500</p>
 									</div>
 									<div className="flex justify-center gap-5 pt-5">
 										<Link to="/shop/payment/66bfb4d4598bcf76c770bf1f">
