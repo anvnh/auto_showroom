@@ -205,12 +205,7 @@ const Payment = () => {
 	}>({});
 	const [cartInfo, setCartInfo] = useState({ items: [], total: 0 });
 
-	const {
-		data: cart,
-		isLoading,
-		refetch,
-		isRefetching,
-	} = useQuery({
+	const { data: cart, isLoading, refetch, isRefetching, } = useQuery({
 		queryKey: ["cart"],
 		queryFn: async () => {
 			try {
@@ -264,6 +259,35 @@ const Payment = () => {
 			toast.error("Failed to remove item");
 		},
 	});
+
+    const {mutate: sendPaymentMail, isLoading: isSendingMail} = useMutation({
+        mutationFn: async ({cars, info}) => {
+            try {
+                const res = await fetch("/api/user/payment/details", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({cars, info}),
+                });
+                const result = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(result.error || "Something went wrong");
+                }
+
+                return result;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+        onSuccess: () => {
+            toast.success("Payment mail sent successfully");
+        },
+        onError: (error) => {
+            toast.error("Failed to send payment mail:", error.message);
+        },
+    });
 
 	const calculateTotalPrice = () => {
 		if (!cart) return 0;
@@ -325,12 +349,13 @@ const Payment = () => {
         const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
         const isPaid = paymentResult === "Paid" ? true : false;
         const isDelivered = false;
-        console.log({
-            cars: vehicleInfoArray, 
+
+        sendPaymentMail({
+            cars: vehicleInfoArray,
             info: {
-                orderId, 
-                address, 
-                shippingCost, 
+                orderId,
+                address,
+                shippingCost,
                 paymentMethod,
                 paymentResult,
                 email: user.email,
@@ -341,9 +366,28 @@ const Payment = () => {
                 deliveredAt: null
             }
         });
+
+        // console.log({
+        //     cars: vehicleInfoArray,
+        //     info: {
+        //         orderId,
+        //         address,
+        //         shippingCost,
+        //         paymentMethod,
+        //         paymentResult,
+        //         email: user.email,
+        //         totalPrice: calculateTotalPrice(),
+        //         isPaid,
+        //         paidAt: isPaid ? new Date() : null,
+        //         isDelivered,
+        //         deliveredAt: null
+        //     }
+        // });
+
 	};
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
+		    <Toaster position="top-center" reverseOrder={false} />
 			<section className="text-black mt-10 md:mt-36">
 				{visa && (
 					<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
@@ -531,7 +575,7 @@ const Payment = () => {
 "
 									onClick={() => toggleForm("visa")}
 								>
-									visa
+    								Visa
 								</button>
 								<button
 									className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
@@ -555,7 +599,6 @@ const Payment = () => {
 					>
 						Your Cart
 					</h2>
-					<Toaster position="top-center" reverseOrder={false} />
 					<div className="pt-0 px-5">
 						{isLoading && isRefetching && <LoadingSpinner />}
 						{!isLoading &&

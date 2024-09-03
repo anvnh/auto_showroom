@@ -44,9 +44,9 @@ export const addOrderItems = async (req, res) => {
             isDelivered,
             deliveredAt,
         });
-        // await order.save();
-        // res.status(200).json({ message: "Order added successfully" });
-        res.status(200).json(order);
+        await order.save();
+        res.status(200).json({ message: "Order added successfully" });
+        // res.status(200).json(order);
 
     } catch(error) {
         console.log("Error in addOrderItem controller: ", error);
