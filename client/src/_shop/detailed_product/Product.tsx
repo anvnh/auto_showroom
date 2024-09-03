@@ -254,8 +254,11 @@ const Product = () => {
 												)}
 											</div>
                                             {/* TODO */}
-											<div className="">Free ship</div>
-											<div className="flex"></div>
+											<div className="font-bold">Free ship</div>
+                                            <div className="text-xl flex items-center space-x-4">
+                                                <div>Quantity: {car.quantity}</div>
+                                            </div>
+                                            <div className="flex"></div>
 										</div>
 
 										<hr className="w-full border-1 border-black border-opacity-30 relative top-3 " />
@@ -299,11 +302,11 @@ const Product = () => {
                                                         <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Body Style:</span> {car.body_style} </p>
 														<p className="pt-4 items-center col-span-2">  
 														<span className="font-bold pr-1">Engine:</span> {car.engine}
-                                         			    </p>
+                                                        </p>
 														<p className="pt-4 items-center col-span-2">  
 														<span className="font-bold pr-1">Transmission:</span> {car.transmission}
-                                         			    </p>
-														 <p className="pt-4 items-center col-span-2">   	<span className="font-bold pr-2">Drive Type:</span> {car.drive_type} </p>
+                                                        </p>
+												        <p className="pt-4 items-center col-span-2">   	<span className="font-bold pr-2">Drive Type:</span> {car.drive_type} </p>
                                                         <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Fuel Type:</span> {car.fuel_type} </p>
                                                         <p className="pt-4 items-center col-span-2"> 	<span className="font-bold pr-2">Horsepower:</span> {car.horsepower} hp </p>
                                                         <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Torque:</span> {car.torque} Nm </p>
@@ -318,26 +321,6 @@ const Product = () => {
 
                                         <hr className="w-1/2 border-black border-opacity-30 relative top-3 " />
 
-										<div className="text-xl pt-8 flex items-center space-x-4">
-											<div>Quantity:</div>
-											<div className="flex items-center bg-gray-100 rounded-lg overflow-hidden w-24">
-												<button
-													onClick={decreaseQuantity}
-													className="px-2 py-1 bg-gray-200 text-gray-600 hover:bg-gray-300 focus:outline-none"
-												>
-													-
-												</button>
-												<span className="flex-grow text-center py-1">
-													{quantity}
-												</span>
-												<button
-													onClick={increaseQuantity}
-													className="px-2 py-1 bg-gray-200 text-gray-600 hover:bg-gray-300 focus:outline-none"
-												>
-													+
-												</button>
-											</div>
-										</div>
 
 									</div>
 
