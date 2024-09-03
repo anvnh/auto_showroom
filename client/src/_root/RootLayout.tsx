@@ -4,7 +4,7 @@ import AOS from "aos";
 import Lenis from "@studio-freight/lenis";
 import "aos/dist/aos.css";
 import { useEffect, useRef, useState } from "react";
-import ChatAI from "@/api_Chat/ChatAI";
+import Infor from "@/in4/Infor";
 import NavbarSmallHomePage from "./elementNavbar/NavbarSmallHomePage"
 const RootLayout = () => {
 	useEffect(() => {
@@ -28,13 +28,13 @@ const RootLayout = () => {
 					</div>
 				</div>
 				<div className="flex items-start justify-center ">
-					<div className="w-full z">
+					<div className="w-full z-50">
 						<NavbarSmallHomePage />
 					</div>
 				</div>
 				<div className="flex items-start justify-center">
-					<div className="w-full z-50">
-						<ChatAI />
+					<div className="w-full ">
+						<Infor/>
 					</div>
 				</div>
 				<div id="Home" className="flex items-start justify-center ">

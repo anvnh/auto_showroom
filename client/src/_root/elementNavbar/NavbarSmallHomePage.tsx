@@ -51,7 +51,7 @@ const NavbarSmall: React.FC<SubNavbarProps> = ({
 	return (
 		<div className="hidden md:block">
 			<div
-				className="owc-vertical-navigation__list fixed top-[450px] left-2 h-screen flex flex-col items-start fixed z-20 group"
+				className="owc-vertical-navigation__list top-[450px] left-2 h-screen flex flex-col items-start fixed z-20 group"
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 			>

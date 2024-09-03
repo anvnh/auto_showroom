@@ -24,7 +24,7 @@ import React, { useEffect } from "react";
 import AllProductViewLayout from './_shop/AllProductViewLayout';
 import AdminBrandLayout from './_admin/AdminBrandLayout';
 import CartLayout from './_shop/CartLayout';
-import ChatAI from './api_Chat/ChatAI';
+import ChatAI from './in4/Infor';
 import ConfirmationLayout from './_auth/ConfirmationLayout';
 import TokenConfirmation from './_auth/TokenConfirmation';
 import PaymentLayout from './_shop/PaymentLayout';
@@ -114,7 +114,6 @@ const App = () => {
                     <Route path="/shop/cart" element={authUser ? <CartLayout isLogin={Number(true)} /> : <CartLayout isLogin={false} />} />
 
                     <Route path="/admin" element={authUser && authUser.isAdmin ? <AdminBrandLayout /> : <NotAuthenticated />} />
-                    <Route path="/chatAI" element={<ChatAI />} />
 
                     <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login" />} />
 
