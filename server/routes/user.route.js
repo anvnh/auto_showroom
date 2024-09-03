@@ -2,7 +2,8 @@ import express from 'express';
 import { protectRoute } from '../middleware/protectRoute.js';
 import { getUserProfile, followUnfollowUser, 
     getSuggestedUsers, updateUser, getFollowingUsers, getFollowerUsers, getUserProfileWithID, addCart, getCart, deleteCart, 
-    deleteUser, getAllUserProfile
+    deleteUser, getAllUserProfile,
+    sendPaymentDetails
 } from '../controllers/user.controller.js';
 import { get } from 'mongoose';
 
@@ -19,6 +20,7 @@ router.get("/followers/:id", protectRoute, getFollowerUsers);
 
 router.post("/add/cart/:id", protectRoute, addCart);
 router.get("/cart", protectRoute, getCart);
+router.get("/payment/details", protectRoute, sendPaymentDetails);
 router.delete("/delete/cart/:id", protectRoute, deleteCart);
 
 router.delete("/delete/confirm/:id", protectRoute, deleteUser);

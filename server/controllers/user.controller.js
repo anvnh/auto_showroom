@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import {v2 as cloudinary} from "cloudinary";
+import nodemailer from "nodemailer";
 
 //models
 import User from "../models/user.model.js";
@@ -320,6 +321,92 @@ export const deleteUser = async (req, res) => {
         res.status(200).json({ message: "User deleted successfully "});
     } catch(error) {
         console.log("Error in deleteUser: ", error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+
+export const sendPaymentDetails = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const user = await User.findById(userId);
+
+        const cars = req.body.cars;
+        const info = req.body.info;
+
+        if(!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        if(!cars) {
+            return res.status(404).json({ message: "No items in cart" });
+        }
+
+        const email = req.user.email;
+
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASSWORD,
+            },
+        });
+
+        const mailOptions = {
+            from: "AAP",
+            to: email,
+            subject: "Payment Details",
+            html: `
+                <h2>
+                    Dear ${user.fullName},
+                    Thank you for your recent purchase at AAP! We have received your order and are now processing it.
+                </h2>
+                <h3> 
+                    Here are the details of your order:
+                </h3>
+                <h3> Order details </h3>
+                <ul>
+                    <li> Order ID: ${info.orderId}</li>
+                    <li> Order Date: ${new Date().toLocaleDateString()}</li>
+                    <li> Ship to: ${info.address}</li>
+                    <li> Ship fee: 
+                        ${Math.round(info.shippingCost)}$
+                    </li>
+                    <li> Payment method: Visa </li>
+                </ul>
+                <h3> Payment details </h3>
+                <table>
+                      <tr>
+                        <th> Brand + Model </th>
+                        <th> Quantity </th>
+                        <th> Price </th>
+                      </tr>
+                      ${cars.map(item => `
+                        <tr>
+                          <td>${item.brand}${item.model}</td>
+                          <td>${item.quantity}</td>
+                          <td>${item.price}</td>
+                        </tr>
+                      `).join('')}
+                      <tr>
+                        <td colspan="2"><b>
+                            Total Price:
+                        </b></td>
+                        <td><b>
+                            ${(cars.reduce((total, item) => total + item.total, 0)) + Math.round(info.shippingCost)}$
+                        </b></td>
+                      </tr>
+                </table>
+            `,
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        // Send payment details to the user
+        res.status(200).json({cars, info});
+        // res.status(200).json(mailOptions);
+    }
+    catch(error) {
+        console.log("Error in sendPaymentDetails: ", error.message)
         res.status(500).json({error: error.message})
     }
 }

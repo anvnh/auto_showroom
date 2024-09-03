@@ -9,6 +9,7 @@ import postRoutes from './routes/post.route.js';
 import nofiticationRoutes from './routes/notification.route.js';
 import carRoutes from './routes/car.route.js';
 import voucherRoutes from './routes/voucher.route.js';
+import orderRoutes from './routes/order.route.js';
 
 import connectMongoDB from './db/connectMongoDB.js';
 import cors from 'cors';
@@ -43,6 +44,7 @@ app.use("/api/posts", postRoutes); // post routes
 app.use("/api/notifications", nofiticationRoutes); // notification routes
 app.use("/api/car", carRoutes); // car routes
 app.use("/api/vouchers", voucherRoutes); // voucher routes
+app.use("/api/order", orderRoutes); // order routes
 
 app.listen(5000, () => {
     console.log(`Server is running on port ${PORT}`);
