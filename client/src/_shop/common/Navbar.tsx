@@ -226,25 +226,6 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 									</div>
 								</li>
 							</Link>
-							<li
-									className={`cursor-pointer transition-opacity duration-300 ${
-										selectedP && selectedP !== "vehicles"
-											? "opacity-50"
-											: "opacity-100"
-									}`}
-									onMouseEnter={() =>
-										handleMouseEnter("vehicles")
-									}
-									onMouseLeave={handleMouseLeave}
-									onClick={() =>
-										handleToggleSection("vehicles")
-									}
-								>
-									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
-										<p> Vehicles </p>
-										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
-									</div>
-								</li>
 							<Link to="/shop/product">
 								<li className="cursor-pointer">
 									<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
@@ -271,22 +252,6 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 			</div>
 
 			<div className="hidden md:block">
-			{isExpanded && selectedSection === "vehicles" && (
-					<div
-						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-screen font-syncopate bg-opacity-80 backdrop-blur-md bg-gray-900  ${
-							isHidden ? "hidden" : ""
-						}`}
-					>
-						<div
-							data-aos="fade-up"
-							data-aos-delay="1000"
-							className={`${isHidden ? "hidden" : ""}`}
-						>
-							<Vehicle />
-						</div>
-					</div>
-				)}
 				{isExpanded && selectedSection === "shopping" && (
 					<div
 						data-aos="slide-up"
@@ -306,7 +271,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 			{toggle && (
 				<div
 					data-aos="fade"
-					className="md:hidden opacity-90 h-screen relative w-full backdrop-blur-3xl bg-opacity-20 text-white"
+					className="md:hidden opacity-90 h-screen relative w-full backdrop-blur-3xl bg-opacity-30 bg-gray-950 text-white"
 				>
 					{currentPage === "main" ? (
 						<ul className="flex flex-col space-y-5 sm:space-y-16 ss:space-y-10 pt-[50%] sm:pt-[20%] items-center py-2">

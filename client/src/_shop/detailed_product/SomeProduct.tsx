@@ -44,7 +44,7 @@ const SomeProduct = () => {
 						effect={"slide"}
 						grabCursor={true}
 						centeredSlides={true}
-						loop={false}
+						loop={true}
 						slidesPerView={2} // Hiển thị 2 slide cùng lúc
 						spaceBetween={15} // Khoảng cách giữa các slide
 						coverflowEffect={{
@@ -85,13 +85,13 @@ const SomeProduct = () => {
 								}
 							>
 								<div
-									className="slide-content object-cover bg-transparent group flex flex-col items-center w-screen pt-1 sm:pt-12 pb-12 text-white font-poppins justify-center text-2xl"
+									className="slide-content object-cover bg-transparent group flex flex-col items-center w-screen pt-1 sm:pt-12 pb-12 text-white font-poppins justify-center text-2xl "
 									style={{
 										width: "100%",
 										boxSizing: "border-box",
 									}}
 								>
-									<div className="w-[680px] h-[580px] bg-white rounded-md p-3">
+									<div className="w-[680px] h-[600px] bg-white rounded-md p-3">
 							
 										<figure className="hover01 overflow-hidden">
 											<img
@@ -105,7 +105,7 @@ const SomeProduct = () => {
 											<h1 className="text-black text-3xl text-center font-syncopate font-bold">
 												{car.brand}&nbsp;{car.car_model}
 											</h1>
-											<p className="text-black text-xl text-center font-syncopate font-bold">
+											<p className="text-black text-xl text-center font-kanit font-bold">
 												${car.price}
 											</p>
 											<Link
