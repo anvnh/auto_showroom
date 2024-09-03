@@ -45,10 +45,11 @@ export const addVoucher = async (req, res) => {
 
         const manufacturDateObj = parseDate(manufacturDate);
         const expiryDateObj = parseDate(expiryDate);
+        const manufacturDat = manufacturDateObj.getDate();
+        const expiryDat = expiryDateObj.getDate();
         const currentDate = new Date();
         if (
-            manufacturDateObj > expiryDateObj ||
-            manufacturDateObj < currentDate
+            manufacturDat > expiryDat || manufacturDat < currentDate
         ) {
             return res.status(400).json({ message: "Invalid date range" });
         }
