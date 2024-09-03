@@ -119,7 +119,7 @@ const App = () => {
                     <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login" />} />
 
                     <Route path="/shop/payment" element={authUser ? <PaymentLayout /> : <Navigate to="/login" />} />
-                    <Route path="/shop/payment/:id" element={authUser ? <PaymentLayoutBuyNow /> : <Navigate to="/login" />} />
+                    <Route path="/shop/payment/:id" element={<PaymentLayoutBuyNow /> } />
 
                     <Route path="/about-us" element={<AboutUs />} />
 

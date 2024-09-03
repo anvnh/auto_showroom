@@ -47,6 +47,8 @@ const Payment = () => {
 		Address: "",
 	});
 
+    const [payMethod, setPayMethod] = useState(null);
+
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		setState((prev) => ({ ...prev, [name]: value }));
@@ -64,7 +66,7 @@ const Payment = () => {
 	const [shippingCost, setShippingCost] = useState<number | null>(null);
 
 	const handleClick = () => {
-		setInputAddressValue("Trường Đại học CNTT và TT Việt-Hàn");
+		setAddress("Trường Đại học CNTT và TT Việt-Hàn");
 		setDistance(0);
 		setShippingCost(0);
 	};
@@ -146,7 +148,6 @@ const Payment = () => {
 					if (feature) {
 						const { center } = feature;
 						const [longitude, latitude] = center;
-
 						const daNangLat = 15.975098188846443;
 						const daNangLon = 108.25353149551003;
 						const calculatedDistance = calculateDistance(
@@ -176,7 +177,7 @@ const Payment = () => {
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
 		const value = e.target.value;
-		setInputAddressValue(value);
+		setAddress(value);
 
 		if (!value.trim()) {
 			setDistance(null);
@@ -205,7 +206,6 @@ const Payment = () => {
 	const [deletingItems, setDeletingItems] = useState<{
 		[key: string]: boolean;
 	}>({});
-	const [cartInfo, setCartInfo] = useState({ items: [], total: 0 });
 
 	const { data: cart, isLoading, refetch, isRefetching, } = useQuery({
 		queryKey: ["cart"],
@@ -332,8 +332,8 @@ const Payment = () => {
 		if (!cart || cart.length === 0) {
 			console.log("Cart is empty.");
 			return;
-		}
-  const vehicleInfoArray = cart.map((item) => {
+		};
+        const vehicleInfoArray = cart.map((item) => {
             const quantity = quantities[item._id] || 1;
             const total = Number(item.price.replace(/,/g, "")) * quantity;
             return {
@@ -347,44 +347,33 @@ const Payment = () => {
         });
         // create a unique order Id, required number and characters
         const orderId = Math.floor(Math.random() * 10000000000) + Math.random().toString(36).substring(2, 13).toUpperCase();
-        const paymentMethod = "Visa";
+        const paymentMethod = payMethod == null ? toast.error("Please choose payment method") : payMethod;
         const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
         const isPaid = paymentResult === "Paid" ? true : false;
         const isDelivered = false;
-
-        sendPaymentMail({
-            cars: vehicleInfoArray,
-            info: {
-                orderId,
-                address,
-                shippingCost,
-                paymentMethod,
-                paymentResult,
-                email: user.email,
-                totalPrice: calculateTotalPrice(),
-                isPaid,
-                paidAt: isPaid ? new Date() : null,
-                isDelivered,
-                deliveredAt: null
-            }
-        });
-	};
-        // console.log({
-        //     cars: vehicleInfoArray,
-        //     info: {
-        //         orderId,
-        //         address,
-        //         shippingCost,
-        //         paymentMethod,
-        //         paymentResult,
-        //         email: user.email,
-        //         totalPrice: calculateTotalPrice(),
-        //         isPaid,
-        //         paidAt: isPaid ? new Date() : null,
-        //         isDelivered,
-        //         deliveredAt: null
-        //     }
-        // });
+        if(!address || !inputinformation) {
+            return toast.error("Please fill in all the information");
+        }
+        if(orderId && paymentMethod)  {
+            sendPaymentMail({
+                cars: vehicleInfoArray,
+                info: {
+                    orderId,
+                    address,
+                    shippingCost,
+                    paymentMethod,
+                    paymentResult,
+                    email: user.email,
+                    totalPrice: calculateTotalPrice(),
+                    isPaid,
+                    paidAt: isPaid ? new Date() : null,
+                    isDelivered,
+                    deliveredAt: null,
+                    phone: inputinformation.Phone,
+                }
+            });
+        }
+    };
 
 	// swap visa and Dỉrect
 	const [showvisaForm, setShowVisaForm] = useState(false);
@@ -409,6 +398,7 @@ const Payment = () => {
 	};
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
+            <Toaster position="top-center" reverseOrder={false} />
 			<div className="mt-20 md:mt-36 ">
 				<div className="w-full bg-gray-800 rounded-3xl backdrop-blur-md p-5 sm:flex mb-7">
 					<h1 className="w-full justify-start flex font-bold font-poppins text-white text-2xl md:pb-0 pb-5">
@@ -418,14 +408,21 @@ const Payment = () => {
 						<button
 							className="detail-button bg-white text-black w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center
 							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[120px]"
-							onClick={() => toggleFormPayment("visaPayment")}
+							onClick={() => {
+                                toggleFormPayment("visaPayment"),
+                                setPayMethod("Visa")
+                            }}
 						>
 							Card
 						</button>
 						<button
 							className="detail-button bg-white text-black  w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center 
 							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[120px]"
-							onClick={() => toggleFormPayment("DirectPayment")}
+							onClick={() => {
+                                toggleFormPayment("DirectPayment")
+                                setPayMethod("Direct")
+                                setAddress("Trường Đại học CNTT và TT Việt-Hàn")
+                            }}
 						>
 							Direct
 						</button>
@@ -442,23 +439,23 @@ const Payment = () => {
 							<input
 								data-aos="fade-left"
 								type="text"
-								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+								className="form-control hover:cursor-not-allowed bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 								placeholder="Recipient name "
 								name="RecipientName"
-								value={inputinformation.RecipientName}
+								value={user.fullName}
 								onChange={(event) => setInputinformation({ ...inputinformation, RecipientName: event.target.value })}
-								required
+                                readOnly
 							/>
 							<input
 								data-aos="fade-left"
 								type="text"
 								data-aos-delay="100"
-								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+								className="hover:cursor-not-allowed form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 								placeholder="Gmail"
 								name="Gmail"
-								value={inputinformation.Gmail}
+								value={user.email}
 								onChange={(event) => setInputinformation({ ...inputinformation, Gmail: event.target.value })}
-								required
+                                readOnly
 							/>
 							<input
 								data-aos="fade-left"
@@ -479,7 +476,7 @@ const Payment = () => {
 									name="cvc"
 									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
 									placeholder="Search or enter your address"
-									value={inputAddressValue}
+									value={address}
 									onChange={handleAddressInputChange}
 									disabled
 								/>
@@ -509,17 +506,6 @@ const Payment = () => {
 										)}
 									</div>
 								</div>
-							</div>
-						</div>
-						<div>
-							<div data-aos="fade-right" className="flex gap-5 justify-end">
-								<button
-									className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-									before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[150px]
-"
-								>
-								Confirm
-								</button>
 							</div>
 						</div>
 					</div>
@@ -554,7 +540,6 @@ const Payment = () => {
 									onFocus={handleInputFocus}
 									required
 								/>
-
 								<input
 									data-aos="fade-left"
 									data-aos-delay="200"
@@ -611,13 +596,6 @@ const Payment = () => {
 									>
 										Enter personal information	
 									</button>
-									<button
-										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[170px]
-"
-									>
-										Confirm
-									</button>
 								</div>
 							</div>
 						</div>
@@ -625,7 +603,7 @@ const Payment = () => {
 					{infomationForm && (
 						<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
 							<h2 className="text-2xl md:text-3xl font-bold mb-6 text-white font-poppins">
-								Input infomation
+                                Information
 							</h2>
 							<div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.2] xl:hover:scale-[1.3] md:pb-12 md:pt-12 duration-300 ease-in-out">
 								<Cards
@@ -648,15 +626,15 @@ const Payment = () => {
 									required
 								/>
 								<input
-								data-aos="fade-left"
-								type="text"
-								data-aos-delay="100"
-								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-								placeholder="Gmail"
-								name="Gmail"
-								value={inputinformation.Gmail}
-								onChange={(event) => setInputinformation({ ...inputinformation, Gmail: event.target.value })}
-								required
+                                    data-aos="fade-left"
+                                    type="text"
+                                    data-aos-delay="100"
+                                    className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+                                    placeholder="Gmail"
+                                    name="Gmail"
+                                    value={inputinformation.Gmail}
+                                    onChange={(event) => setInputinformation({ ...inputinformation, Gmail: event.target.value })}
+                                    required
 								/>
 								<input
 									data-aos="fade-left"
@@ -676,7 +654,7 @@ const Payment = () => {
 										type="text"
 										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
 										placeholder="Search or enter your address"
-										value={inputAddressValue}
+										value={address}
 										onChange={handleAddressInputChange}
 										required
 									/>
@@ -745,13 +723,6 @@ const Payment = () => {
 									>
 										Enter card information
 									</button>
-									<button
-										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[170px]
-"
-									>
-										Confirm
-									</button>
 								</div>
 							</div>
 						</div>
@@ -776,47 +747,40 @@ const Payment = () => {
 							cart &&
 							cart.length === 0 && (
 								<div className="text-center text-xl text-white mt-24">
-									Your cart is empty 🙄. Add some cars to your
-									cart
+									Your cart is empty 🙄. 
 								</div>
 							)}
 						{!isLoading && !isRefetching && cart && (
 							<div
 								data-aos="fade-up"
-								className="max-h-[570px]  overflow-y-auto overflow-x-hidden"
+								className="max-h-[570px] overflow-y-auto overflow-x-hidden"
 							>
 								{cart.map((item, index) => {
-									const averageRating = calculateAvgRating({
-										reviews: item.user_review,
-									});
 									return (
 										<section
 											className="mb-4"
 											key={item._id}
 										>
-											<div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white p-5 mb-4 rounded-2xl  shadow-md h-full w-full hover:bg-opacity-90">
+											<div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white p-5 mb-4 rounded-2xl shadow-md h-[200px] w-full hover:bg-opacity-90">
 												<div className="relative w-full flex items-center justify-center">
 													<Link
 														to={`/shop/product/${item._id}`}
 													>
 														<img
 															src={item.images[0]}
-															className="w-full  bg-cover object-cover bg-center bg- rounded"
+															className="md:w-[300px] w-full bg-cover object-cover bg-center md:h-[180px] h-full  rounded-lg"
 														/>
 													</Link>
 												</div>
-
 												<div className="w-full md:w-[0.75] text-black">
 													<div>
-														<h2 className="text-2xl min-h-[75px] pl-3 md:mt-0 pt-5 font-bold mb-2 text-black">
-															{item.brand}&nbsp;
-															{item.car_model}
+														<h2 className="text-2xl mb-5 pl-3 md:mt-0 mt-3 font-bold text-black">
+															{item.brand}&nbsp;{item.car_model}
 														</h2>
-														<h3 className="line-clamp-2 h-[50px] pl-3 md:px-4 mb-5">
+														<h3 className="line-clamp-2 h-[50px] pl-3 md:px-4 mt-3">
 															{item.bio}
 														</h3>
 														<div className="hidden md:block">
-															{" "}
 															<div className="justify-end items-end h-full p-5 w-full gap-5 flex flex-col md:flex-row">
 																<div className="mb-2 w-full md:w-[200px]">
 																	<span className="text-[20px] font-bold text-blue-600">
@@ -1015,7 +979,7 @@ const Payment = () => {
 												onClick={handleProceedToPayment}
 												className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
 											>
-												Proceed to Payment
+                                                {isSendingMail ? <LoadingSpinner/> : "Proceed to Payment"}
 											</div>
 										</div>
 										<div className="justify-end">
@@ -1026,7 +990,7 @@ const Payment = () => {
 													}
 													className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
 												>
-													Proceed to Payment
+                                                    {isSendingMail ? <LoadingSpinner/> : "Proceed to Payment"}
 												</div>
 											</div>
 										</div>
