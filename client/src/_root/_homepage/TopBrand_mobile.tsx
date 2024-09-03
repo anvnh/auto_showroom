@@ -61,8 +61,9 @@ const TopBrand_mobile = () => {
 
     return (
         <div>
-            <section className="w-screen h-[300%]  relative">
-                <div ref={section1} className=" w-full h-screen flex flex-col justify-between items-center  sticky top-0  ">
+            <section className="w-screen   ">
+
+                <div ref={section1} className=" w-full h-screen flex flex-col justify-between items-center relative    ">
                     <section className="w-full h-full absolute top-0 left-0">
                         <img src={topBrandToyota} className="w-full h-full object-cover" />
                     </section>
@@ -80,7 +81,7 @@ const TopBrand_mobile = () => {
                     </div>
                 </div>
 
-                <div ref={section2} className=" w-full h-screen flex flex-col justify-between items-center sticky top-0  ">
+                <div ref={section2} className=" w-full h-screen flex flex-col justify-between items-center relative  ">
                     <section className="w-full h-full absolute top-0 left-0 ">
                         <img src={topBrandHonda} className="w-full h-full object-cover" />
                     </section>
@@ -98,7 +99,7 @@ const TopBrand_mobile = () => {
                     </div>
                 </div>
 
-                <div ref={section3} className=" w-full h-screen flex flex-col justify-between items-center sticky top-0  ">
+                <div ref={section3} className=" w-full h-screen flex flex-col justify-between items-center relative  ">
                     <section className="w-full h-full absolute top-0 left-0 ">
                         <img src={topBrandMer} className="w-full h-full object-cover" />
                     </section>
@@ -115,7 +116,6 @@ const TopBrand_mobile = () => {
                     <div className="w-full z-0 absolute top-0 h-full bg-stone-800 mix-blend-color  flex justify-center items-center ">
                     </div>
                 </div>
-
 
             </section>
         </div>

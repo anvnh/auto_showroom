@@ -69,46 +69,51 @@ const Story = () => {
             }
         })
 
-        gsap.from(text1.words, {
-            opacity: 0.2,
-            stagger: 0.01,
-            yPercent: 150,
-            scrollTrigger: {
-                trigger: section_founder1.current,
-                start: "top 35%",
-                end: "bottom top",
-                toggleActions: "restart reverse restart reverse"
-            }
-        })
-        gsap.from(text2.words, {
-            opacity: 0.1,
-            stagger: 0.01,
-            yPercent: 150,
-            scrollTrigger: {
-                trigger: section_founder2.current,
-                start: "top 35%",
-                end: "bottom top",
-                toggleActions: "restart reverse restart reverse"
-            }
-        })
-        gsap.from(text3.words, {
-            opacity: 0.1,
-            stagger: 0.01,
-            yPercent: 150,
-            scrollTrigger: {
-                trigger: section_founder3.current,
-                start: "top center",
-                end: "bottom top",
-                toggleActions: "restart reverse restart reverse"
-            }
-        })
+        // --- Test Effect ---
+        // gsap.from(text1.words, {
+        //     opacity: 0.2,
+        //     stagger: 0.01,
+        //     yPercent: 150,
+        //     scrollTrigger: {
+        //         markers: true,
+        //         trigger: section_founder1.current,
+        //         start: "top 80%",
+        //         end: "bottom top",
+        //         toggleActions: "restart reverse restart reverse"
+        //     }
+        // })
+        // gsap.from(text2.words, {
+        //     opacity: 0.2,
+        //     stagger: 0.01,
+        //     yPercent: 150,
+        //     scrollTrigger: {
+        //         markers: true,
+        //         trigger: section_founder2.current,
+        //         start: "top 80%",
+        //         end: "bottom top",
+        //         toggleActions: "restart reverse restart reverse"
+        //     }
+        // })
+        // gsap.from(text3.words, {
+        //     opacity: 0.2,
+        //     stagger: 0.01,
+        //     yPercent: 150,
+        //     scrollTrigger: {
+        //         markers: true,
+        //         trigger: section_founder3.current,
+        //         start: "top 80%",
+        //         end: "bottom top",
+        //         toggleActions: "restart reverse restart reverse"
+        //     }
+        // })
         return () => {
             ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         }
     }, [])
     return (
-        <div className="bg-neutral-900 h-[300%] relative box-border">
-            <div ref={section_founder1} className="w-screen h-screen hidden xsm:flex flex-col xsm:flex-row sticky top-0   ">
+        <div className="bg-neutral-900  box-border">
+
+            <div ref={section_founder1} className="hidden xsm:flex  w-screen h-screen">
                 <section className="md:pl-[2%] w-full xsm:w-1/2  h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px]  flex flex-col justify-start">
                     <div className="w-full  h-full ">
                         <div>
@@ -153,8 +158,7 @@ const Story = () => {
 
 
 
-            <div ref={section_founder2} className="hidden xsm:flex  w-screen h-screen  
-        sticky top-0 ">
+            <div ref={section_founder2} className="hidden xsm:flex  w-screen h-screen">
                 <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
                     <img src={nissan_r35} className="w-full h-full object-cover" />
                     <div ref={founder2_overlay} className="w-full absolute top-0  h-full bg-neutral-900"></div>
@@ -191,10 +195,11 @@ const Story = () => {
                     </div>
                 </section>
             </div>
+
             <Story_section2_mobile />
 
             <div ref={section_founder3} className="hidden xsm:flex 
-        flex-col xsm:flex-row w-screen h-screen  sticky top-0 ">
+         w-screen h-screen   ">
                 <section className="md:pl-[2%] w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[50px] ml-[20px] md:ml-[40px]  flex flex-col justify-start">
                     <div className="w-full  h-full">
                         <div>
