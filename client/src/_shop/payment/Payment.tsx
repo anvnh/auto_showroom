@@ -26,23 +26,25 @@ mapboxgl.accessToken =
 let isAOSInitialized = false;
 const Payment = () => {
 	useEffect(() => {
-		if (!isAOSInitialized) {
 			AOS.init({
 				duration: 1200,
 				easing: "ease-in-out",
 				once: true,
 				mirror: false,
-				anchorPlacement: "top-bottom",
 			});
-			isAOSInitialized = true; // Đặt cờ là true sau khi khởi tạo AOS
-		}
-	}, []);
+		})
 	const [state, setState] = useState({
 		number: "",
 		name: "",
 		expiry: "",
 		cvc: "",
 		focus: "",
+	});
+	const [inputinformation, setInputinformation] = useState({
+		RecipientName: "",
+		Gmail: "",
+		Phone: "",
+		Address: "",
 	});
 
 	const handleInputChange = (e) => {
@@ -55,14 +57,14 @@ const Payment = () => {
 	};
 
 	const map = useRef<mapboxgl.Map | null>(null);
-	const [inputValue, setInputValue] = useState("");
+	const [inputAddressValue, setInputAddressValue] = useState("");
 	const [address, setAddress] = useState("");
 	const [distance, setDistance] = useState<number | null>(null);
 	const [currentLocation, setCurrentLocation] = useState("");
 	const [shippingCost, setShippingCost] = useState<number | null>(null);
 
 	const handleClick = () => {
-		setInputValue("Trường Đại học CNTT và TT Việt-Hàn");
+		setInputAddressValue("Trường Đại học CNTT và TT Việt-Hàn");
 		setDistance(0);
 		setShippingCost(0);
 	};
@@ -103,7 +105,7 @@ const Payment = () => {
 								"Location not found";
 							setAddress(placeName);
 							setCurrentLocation(placeName);
-							setInputValue(placeName);
+							setInputAddressValue(placeName);
 
 							// Gọi hàm tính phí ship
 							handleCalculateDistance(placeName);
@@ -174,7 +176,7 @@ const Payment = () => {
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
 		const value = e.target.value;
-		setInputValue(value);
+		setInputAddressValue(value);
 
 		if (!value.trim()) {
 			setDistance(null);
@@ -186,15 +188,15 @@ const Payment = () => {
 
 	// change div
 	const [visa, setVisa] = useState(true);
-	const [infomation, setInformation] = useState(false);
+	const [infomationForm, setInformationForm] = useState(false);
 
 	const toggleForm = (form) => {
 		if (form === "visa") {
 			setVisa(true);
-			setInformation(false);
+			setInformationForm(false);
 		} else if (form === "infomation") {
 			setVisa(false);
-			setInformation(true);
+			setInformationForm(true);
 		}
 	};
 
@@ -299,168 +301,129 @@ const Payment = () => {
 		deleteItem({ item_id: itemId });
 	};
 
-    const {data: user} = useAuthUser();
+	const { data: user } = useAuthUser();
 
 	const handleProceedToPayment = () => {
 		if (!cart || cart.length === 0) {
 			console.log("Cart is empty.");
 			return;
 		}
-        const vehicleInfoArray = cart.map((item) => {
-            const quantity = quantities[item._id] || 1;
-            const total = Number(item.price.replace(/,/g, "")) * quantity;
-            return {
-                brand: item.brand,
-                model: item.car_model,
-                price: item.price,
-                quantity: quantity,
-                total: total
-            };
-        });
-        // create a unique order Id, required number and characters
-        const orderId = Math.floor(Math.random() * 10000000000) + Math.random().toString(36).substring(2, 13).toUpperCase();
-        const paymentMethod = "Visa";
-        const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
-        const isPaid = paymentResult === "Paid" ? true : false;
-        const isDelivered = false;
-        console.log({
-            cars: vehicleInfoArray, 
-            info: {
-                orderId, 
-                address, 
-                shippingCost, 
-                paymentMethod,
-                paymentResult,
-                email: user.email,
-                totalPrice: calculateTotalPrice(),
-                isPaid,
-                paidAt: isPaid ? new Date() : null,
-                isDelivered,
-                deliveredAt: null
-            }
-        });
+		const vehicleInfoArray = cart.map((item) => {
+			const quantity = quantities[item._id] || 1;
+			const total = Number(item.price.replace(/,/g, "")) * quantity;
+			return {
+				brand: item.brand,
+				model: item.car_model,
+				price: item.price,
+				quantity: quantity,
+				total: total,
+			};
+		});
+		// create a unique order Id, required number and characters
+		const orderId =
+			Math.floor(Math.random() * 10000000000) +
+			Math.random().toString(36).substring(2, 13).toUpperCase();
+		const paymentMethod = "Visa";
+		const paymentResult = paymentMethod === "Visa" ? "Paid" : "Not Paid";
+		const isPaid = paymentResult === "Paid" ? true : false;
+		const isDelivered = false;
+		console.log({
+			cars: vehicleInfoArray,
+			info: {
+				orderId,
+				address,
+				shippingCost,
+				paymentMethod,
+				paymentResult,
+				email: user.email,
+				totalPrice: calculateTotalPrice(),
+				isPaid,
+				paidAt: isPaid ? new Date() : null,
+				isDelivered,
+				deliveredAt: null,
+			},
+		});
+	};
+
+	// swap visa and Dỉrect
+	const [showvisaForm, setShowVisaForm] = useState(false);
+	const [showdirectForm, setShowDirectForm] = useState(false);
+	const [activeForm, setActiveForm] = useState<string>("");
+
+	const toggleFormPayment = (form: string) => {
+		if (form === "visaPayment") {
+			setShowVisaForm(true);
+			setShowDirectForm(false);
+			setActiveForm("visaPayment");
+		} else if (form === "DirectPayment") {
+			setShowVisaForm(false);
+			setShowDirectForm(true);
+			handleClick()
+			setActiveForm("DirectPayment");
+		} else {
+			setShowVisaForm(false);
+			setShowDirectForm(false);
+			setActiveForm("");
+		}
 	};
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
-			<section className="text-black mt-10 md:mt-36">
-				{visa && (
-					<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
-						<h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">
-							Payment Information
-						</h2>
-						<div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.2] xl:hover:scale-[1.3] md:pb-12 md:pt-12 duration-300 ease-in-out">
-							<Cards
-								number={state.number}
-								expiry={state.expiry}
-								cvc={state.cvc}
-								name={state.name}
-								focused={state.focus}
-							/>
-						</div>
-						<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
-							<input
-								data-aos="fade-left"
-								type="text"
-								name="number"
-								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-								placeholder="Card Number"
-								value={state.number}
-								maxLength={16}
-								onChange={handleInputChange}
-								onFocus={handleInputFocus}
-								required
-							/>
-
-							<input
-								data-aos="fade-left"
-								data-aos-delay="200"
-								type="text"
-								name="name"
-								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-								placeholder="Name on Card"
-								value={state.name}
-								onChange={handleInputChange}
-								onFocus={handleInputFocus}
-								required
-							/>
-							<div className="grid grid-cols-2 gap-4 ">
-								<input
-									data-aos="fade-left"
-									data-aos-delay="300"
-									type="text"
-									name="expiry"
-									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-									placeholder="Valid Thru (MM/YY)"
-									pattern="\d\d/\d\d"
-									value={state.expiry}
-									maxLength={4}
-									onChange={handleInputChange}
-									onFocus={handleInputFocus}
-									required
-								/>
-								<input
-									data-aos="fade-left"
-									data-aos-delay="400"
-									type="text"
-									name="cvc"
-									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-									placeholder="CVC"
-									pattern="\d{3,4}"
-									maxLength={3}
-									value={state.cvc}
-									onChange={handleInputChange}
-									onFocus={handleInputFocus}
-									required
-								/>
-							</div>
-						</div>
-						<div>
-							<div data-aos="fade-right" className="flex gap-5">
-								<button
-									className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[800px]
-"
-									onClick={() => toggleForm("infomation")}
-								>
-									Input infomation
-								</button>
-								<button
-									className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[800px]
-"
-								>
-									Payment
-								</button>
-							</div>
-						</div>
+			<div className="mt-20 md:mt-36 ">
+				<div className="w-full bg-gray-800 rounded-3xl backdrop-blur-md p-5 sm:flex mb-7">
+					<h1 className="w-full justify-start flex font-bold font-poppins text-white text-2xl md:pb-0 pb-5">
+						Choose payment method
+					</h1>
+					<div className="flex gap-4 sm:justify-end justify-center w-full">
+						<button
+							className="detail-button bg-white text-black w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center
+							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[120px]"
+							onClick={() => toggleFormPayment("visaPayment")}
+						>
+							Card
+						</button>
+						<button
+							className="detail-button bg-white text-black  w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center 
+							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[120px]"
+							onClick={() => toggleFormPayment("DirectPayment")}
+						>
+							Direct
+						</button>
 					</div>
-				)}
-				{infomation && (
+				</div>
+				{showdirectForm && (
+				<section data-aos="fade-left" className="text-black">
 					<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
-						<h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">
+						<h2 className="text-2xl md:text-3xl font-bold font-poppins mb-20 text-white">
 							Input infomation
 						</h2>
-						<div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.2] xl:hover:scale-[1.3] md:pb-12 md:pt-12 duration-300 ease-in-out">
-							<Cards
-								number={state.number}
-								expiry={state.expiry}
-								cvc={state.cvc}
-								name={state.name}
-								focused={state.focus}
-							/>
-						</div>
 						<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
 							<input
 								data-aos="fade-left"
 								type="text"
 								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 								placeholder="Recipient name "
+								name="RecipientName"
+								value={inputinformation.RecipientName}
+								onChange={(event) => setInputinformation({ ...inputinformation, RecipientName: event.target.value })}
 								required
 							/>
-
+							<input
+								data-aos="fade-left"
+								type="text"
+								data-aos-delay="100"
+								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+								placeholder="Gmail"
+								name="Gmail"
+								value={inputinformation.Gmail}
+								onChange={(event) => setInputinformation({ ...inputinformation, Gmail: event.target.value })}
+								required
+							/>
 							<input
 								data-aos="fade-left"
 								data-aos-delay="200"
+								name="Phone"
+								value={inputinformation.Phone}
+								onChange={(event) => setInputinformation({ ...inputinformation, Phone: event.target.value })}
 								type="number"
 								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 								placeholder="Phone number"
@@ -474,8 +437,9 @@ const Payment = () => {
 									name="cvc"
 									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
 									placeholder="Search or enter your address"
-									value={inputValue}
+									value={inputAddressValue}
 									onChange={handleAddressInputChange}
+									disabled
 								/>
 								<div className="col-span-1">
 									<div className="md:hidden block">
@@ -503,53 +467,261 @@ const Payment = () => {
 										)}
 									</div>
 								</div>
-								<div className="flex justify-end gap-9 mt-3 mr-3">
-									<button
-										onClick={handleClick}
-										className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
-										title="	Receive at VKU"
-									>
-										<GiHomeGarage />
-									</button>
-									<button
-										className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
-										onClick={handleGetLocation}
-										title="	Get Current Address"
-									>
-										<IoLocation />
-									</button>
-								</div>
 							</div>
 						</div>
 						<div>
-							<div data-aos="fade-right" className="flex gap-5">
+							<div data-aos="fade-right" className="flex gap-5 justify-end">
 								<button
-									className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[400px]
-"
-									onClick={() => toggleForm("visa")}
-								>
-									visa
-								</button>
-								<button
-									className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-full lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[400px]
+									className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+									before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[150px]
 "
 								>
-									Payment
+								Confirm
 								</button>
 							</div>
 						</div>
 					</div>
+				</section>
 				)}
-			</section>
+				{showvisaForm && (
+				<section data-aos="fade-left" className="text-black">
+					{visa && (
+						<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
+							<h2 className="text-2xl md:text-3xl font-bold font-poppins mb-6 text-white">
+								Payment Information
+							</h2>
+							<div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.2] xl:hover:scale-[1.3] md:pb-12 md:pt-12 duration-300 ease-in-out">
+								<Cards
+									number={state.number}
+									expiry={state.expiry}
+									cvc={state.cvc}
+									name={state.name}
+									focused={state.focus}
+								/>
+							</div>
+							<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
+								<input
+									data-aos="fade-left"
+									type="text"
+									name="number"
+									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+									placeholder="Card Number"
+									value={state.number}
+									maxLength={16}
+									onChange={handleInputChange}
+									onFocus={handleInputFocus}
+									required
+								/>
+
+								<input
+									data-aos="fade-left"
+									data-aos-delay="200"
+									type="text"
+									name="name"
+									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+									placeholder="Name on Card"
+									value={state.name}
+									onChange={handleInputChange}
+									onFocus={handleInputFocus}
+									required
+								/>
+								<div className="grid grid-cols-2 gap-4 ">
+									<input
+										data-aos="fade-left"
+										data-aos-delay="300"
+										type="text"
+										name="expiry"
+										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+										placeholder="Valid Thru (MM/YY)"
+										pattern="\d\d/\d\d"
+										value={state.expiry}
+										maxLength={4}
+										onChange={handleInputChange}
+										onFocus={handleInputFocus}
+										required
+									/>
+									<input
+										data-aos="fade-left"
+										data-aos-delay="400"
+										type="text"
+										name="cvc"
+										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+										placeholder="CVC"
+										pattern="\d{3,4}"
+										maxLength={3}
+										value={state.cvc}
+										onChange={handleInputChange}
+										onFocus={handleInputFocus}
+										required
+									/>
+								</div>
+							</div>
+							<div>
+								<div
+									data-aos="fade-right"
+									className="flex gap-5 justify-end"
+								>
+									<button
+										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[320px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[200px] md:hover:before:-translate-x-[370px]
+"
+										onClick={() => toggleForm("infomation")}
+									>
+										Enter personal information	
+									</button>
+									<button
+										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[170px]
+"
+									>
+										Confirm
+									</button>
+								</div>
+							</div>
+						</div>
+					)}
+					{infomationForm && (
+						<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
+							<h2 className="text-2xl md:text-3xl font-bold mb-6 text-white font-poppins">
+								Input infomation
+							</h2>
+							<div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.2] xl:hover:scale-[1.3] md:pb-12 md:pt-12 duration-300 ease-in-out">
+								<Cards
+									number={state.number}
+									expiry={state.expiry}
+									cvc={state.cvc}
+									name={state.name}
+									focused={state.focus}
+								/>
+							</div>
+							<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
+								<input
+									data-aos="fade-left"
+									type="text"
+									name="RecipientName"
+									value={inputinformation.RecipientName}
+									onChange={(event) => setInputinformation({ ...inputinformation, RecipientName: event.target.value })}
+									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+									placeholder="Recipient name "
+									required
+								/>
+								<input
+								data-aos="fade-left"
+								type="text"
+								data-aos-delay="100"
+								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+								placeholder="Gmail"
+								name="Gmail"
+								value={inputinformation.Gmail}
+								onChange={(event) => setInputinformation({ ...inputinformation, Gmail: event.target.value })}
+								required
+								/>
+								<input
+									data-aos="fade-left"
+									data-aos-delay="200"
+									type="number"
+									name="Phone"
+									value={inputinformation.Phone}
+									onChange={(event) => setInputinformation({ ...inputinformation, Phone: event.target.value })}
+									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+									placeholder="Phone number"
+									required
+								/>
+								<div className="grid grid-cols-2 gap-4 ">
+									<input
+										data-aos="fade-left"
+										data-aos-delay="400"
+										type="text"
+										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
+										placeholder="Search or enter your address"
+										value={inputAddressValue}
+										onChange={handleAddressInputChange}
+										required
+									/>
+									<div className="col-span-1">
+										<div className="md:hidden block">
+											{distance !== null && (
+												<div className=" p-4 text-white rounded-lg shadow-md">
+													<p>
+														Distance about: <br />
+														<span className="text-blue-300">
+															{distance.toFixed(
+																2
+															)}{" "}
+															km
+														</span>
+													</p>
+												</div>
+											)}
+										</div>
+										<div className="md:block hidden">
+											{distance !== null && (
+												<div className=" p-4 text-white rounded-lg shadow-md">
+													<p>
+														Distance about:
+														<span className="text-blue-300 pl-3">
+															{distance.toFixed(
+																2
+															)}{" "}
+															km
+														</span>
+													</p>
+												</div>
+											)}
+										</div>
+									</div>
+									<div className="flex justify-end gap-9 mt-3 mr-3">
+										<button
+											onClick={handleClick}
+											className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
+											title="	Receive at VKU"
+										>
+											<GiHomeGarage />
+										</button>
+										<button
+											className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
+											onClick={handleGetLocation}
+											title="	Get Current Address"
+										>
+											<IoLocation />
+										</button>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div
+									data-aos="fade-right"
+									className="flex gap-5 justify-end"
+								>
+									<button
+										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[320px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[320px]
+"
+										onClick={() => toggleForm("visa")}
+									>
+										Enter card information
+									</button>
+									<button
+										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[170px]
+"
+									>
+										Confirm
+									</button>
+								</div>
+							</div>
+						</div>
+					)}
+				</section>
+				)}
+			</div>
 
 			{/* cart --------------------------------------------------------------------------------------- */}
 			<section className="text-white relative md:mt-36 mt-12">
 				<div className="container p-2 bg-gray-800 backdrop-blur-md rounded-3xl">
 					<h2
 						data-aos="fade-up"
-						className="text-3xl font-bold mb-8 p-4"
+						className="text-3xl font-bold mb-8 p-4 font-poppins"
 					>
 						Your Cart
 					</h2>
@@ -605,7 +777,19 @@ const Payment = () => {
 															<div className="justify-end items-end h-full p-5 w-full gap-5 flex flex-col md:flex-row">
 																<div className="mb-2 w-full md:w-[100px]">
 																	<span className="text-[20px] font-bold text-blue-600">
-																		$ {( Number( item.price.replace( /,/g, "")) * (quantities[ item ._id ] || 1)
+																		${" "}
+																		{(
+																			Number(
+																				item.price.replace(
+																					/,/g,
+																					""
+																				)
+																			) *
+																			(quantities[
+																				item
+																					._id
+																			] ||
+																				1)
 																		).toLocaleString()}
 																	</span>
 																</div>
@@ -724,7 +908,7 @@ const Payment = () => {
 									<div className=" p-4 text-white rounded-lg shadow-md w-full flex justify-end">
 										<div>
 											<p>
-												VKU to {inputValue}:{" "}
+												VKU to {inputAddressValue}:{" "}
 												<span className="text-blue-300 pl-3">
 													{distance.toFixed(2)} km
 												</span>
@@ -781,29 +965,30 @@ const Payment = () => {
 									Voucher
 								</div>
 
-
-                                {user && (
-                                    <>
-                                        <div className="md:block hidden">
-                                            <div
-                                                onClick={handleProceedToPayment}
-                                                className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-                                            >
-                                                Proceed to Payment
-                                            </div>
-                                        </div>
-                                        <div className="justify-end">
-                                            <div className="block md:hidden ">
-                                                <div
-                                                    onClick={handleProceedToPayment}
-                                                    className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-                                                >
-                                                    Proceed to Payment
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </>
-                                )}
+								{user && (
+									<>
+										<div className="md:block hidden">
+											<div
+												onClick={handleProceedToPayment}
+												className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+											>
+												Proceed to Payment
+											</div>
+										</div>
+										<div className="justify-end">
+											<div className="block md:hidden ">
+												<div
+													onClick={
+														handleProceedToPayment
+													}
+													className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+												>
+													Proceed to Payment
+												</div>
+											</div>
+										</div>
+									</>
+								)}
 							</div>
 						</div>
 
