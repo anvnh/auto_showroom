@@ -374,6 +374,12 @@ export const sendPaymentDetails = async (req, res) => {
                     <li> Payment method: ${info.paymentMethod} </li>
                     <li> Payment result: ${info.paymentResult} </li>
                     <li> Phone number: ${info.phone} </li>
+                    ${info.state ? `
+                        <li> Card number: ${info.state.number} </li>
+                        <li> Card holder: ${info.state.name} </li>
+                        <li> Expiry date: ${info.state.expiry} </li>
+                        <li> CVC: ${info.state.cvc} </li>
+                    ` : ""}
                 </ul>
                 <h3> Payment details </h3>
                 <table>
