@@ -26,12 +26,13 @@ const Car3popular2 = () => {
 						className=" bg-cover bg-center h-24 sm:h-48 relative object-cover z-20"
 					>
 						<div className="flex justify-center pt-10 md:pt-0 inset-0">
-							<h1 className="font-syncopate text-white font-bold text-[20px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px]">
+							<h1 className="font-syncopate text-white text-[20px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] font-bold">
 								Interiors & Technology
 							</h1>
 						</div>
 					</div>
 				</div>
+				-
 				{/* destop------------------ */}
 				<div className="hidden md:block">
 					<div
@@ -39,7 +40,7 @@ const Car3popular2 = () => {
 						className=" bg-cover bg-center h-24 sm:h-48 relative object-cover z-20"
 					>
 						<div className="flex justify-center pt-10 md:pt-12 inset-0">
-							<h1 className="font-syncopate text-white font-bold text-[20px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px]">
+							<h1 className="font-syncopate text-white text-[20px] xs:text-[27px] sm:text-[32px] md:text-[40px] xl:text-[50px] font-bold">
 								Interiors & Technology
 							</h1>
 						</div>
