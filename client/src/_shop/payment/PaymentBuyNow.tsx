@@ -69,7 +69,7 @@ const Payment = () => {
 	const [shippingCost, setShippingCost] = useState<number | null>(null);
 
 	const handleClick = () => {
-		setInputAddressValue("Trường Đại học CNTT và TT Việt-Hàn");
+		setAddress("Trường Đại học CNTT và TT Việt-Hàn");
 		setDistance(0);
 		setShippingCost(0);
 	};
@@ -365,7 +365,7 @@ const Payment = () => {
         const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
         const isPaid = paymentResult === "Paid" ? true : false;
         const isDelivered = false;
-        if(!address || !inputinformation) {
+        if(!address || !inputinformation.RecipientName || !inputinformation.Gmail || !inputinformation.Phone) { 
             return toast.error("Please fill in all the information");
         }
         if(paymentMethod === "Visa") {
@@ -374,6 +374,8 @@ const Payment = () => {
             }
         }
         if(orderId && paymentMethod)  {
+            // toast.success("Payment successful");
+            // console.log(address);
             sendPaymentMail({
                 cars: vehicleInfo,
                 info: {
@@ -550,20 +552,6 @@ const Payment = () => {
 									</div>
 								</div>
 							</div>
-							<div>
-								<div
-									data-aos="fade-right"
-									className="flex gap-5 justify-end"
-								>
-									<button
-										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-									before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[150px]
-"
-									>
-										Confirm
-									</button>
-								</div>
-							</div>
 						</div>
 					</section>
 				)}
@@ -654,13 +642,6 @@ const Payment = () => {
 											}
 										>
 											Enter personal information
-										</button>
-										<button
-											className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[170px]
-"
-										>
-											Confirm
 										</button>
 									</div>
 								</div>
@@ -804,13 +785,6 @@ const Payment = () => {
 											onClick={() => toggleForm("visa")}
 										>
 											Enter card information
-										</button>
-										<button
-											className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[150px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[170px]
-"
-										>
-											Confirm
 										</button>
 									</div>
 								</div>
