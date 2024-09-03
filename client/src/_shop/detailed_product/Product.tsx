@@ -293,26 +293,28 @@ const Product = () => {
                                                         More details ... 
                                                     </Button>
                                                 </DialogTrigger>
-                                                <DialogContent className="sm:max-w-[425px] bg-gray-700 text-white bg-opacity-55 backdrop-blur-md ">
+                                                <DialogContent className=" sm:w-[650px] bg-gray-900 bg-opacity-80 text-white backdrop-blur-md ">
                                                     <DialogHeader>
-                                                        <DialogTitle>More details</DialogTitle>
+                                                        <DialogTitle className="text-2xl">More details</DialogTitle>
                                                     </DialogHeader>
+													<hr />
                                                     <div className="grid grid-cols-2 gap-4">
+														
                                                         <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Production Year:</span> {car.production_year} </p>
                                                         <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Body Style:</span> {car.body_style} </p>
+														<p className="pt-4 items-center">   	<span className="font-bold pr-2">Drive Type:</span> {car.drive_type} </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Fuel Type:</span> {car.fuel_type} </p>
+                                                        <p className="pt-4 items-center"> 	<span className="font-bold pr-2">Horsepower:</span> {car.horsepower} hp </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Torque:</span> {car.torque} Nm </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Top Speed:</span> {car.top_speed} km/h </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Acceleration:</span> {car.acceleration} </p>
+                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Seat Capacity:</span> {car.seat_capacity} </p>
 														<p className="pt-4 items-center col-span-2">  
 														<span className="font-bold pr-1">Engine:</span> {car.engine}
                                                         </p>
 														<p className="pt-4 items-center col-span-2">  
 														<span className="font-bold pr-1">Transmission:</span> {car.transmission}
                                                         </p>
-												        <p className="pt-4 items-center col-span-2">   	<span className="font-bold pr-2">Drive Type:</span> {car.drive_type} </p>
-                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Fuel Type:</span> {car.fuel_type} </p>
-                                                        <p className="pt-4 items-center col-span-2"> 	<span className="font-bold pr-2">Horsepower:</span> {car.horsepower} hp </p>
-                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Torque:</span> {car.torque} Nm </p>
-                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Top Speed:</span> {car.top_speed} km/h </p>
-                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Acceleration:</span> {car.acceleration} </p>
-                                                        <p className="pt-4 flex items-center"> 	<span className="font-bold pr-2">Seat Capacity:</span> {car.seat_capacity} </p>
                                                     </div>
                                                   
                                                 </DialogContent>

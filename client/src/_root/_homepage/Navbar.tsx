@@ -5,7 +5,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { logo, menu, close } from "../../assets";
 import Vehicle from "../elementNavbar/Vehicle";
-import ShoppingAssist from "../elementNavbar/ShoppingAssist";
 import { FaAngleLeft } from "react-icons/fa6";
 interface SubNavbarProps {
 	selectedSection_element: string;
@@ -242,7 +241,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 			<div className="hidden md:block">
 				{isVisible && (
 					<div
-						className={`z-50 md:top-12 w-full font-poppins transition-transform duration-300 sm:block ${isHidden ? "-translate-y-full" : "translate-y-0"
+						className={`z-50 md:top-12 w-fullfont-poppins transition-transform duration-300 sm:block ${isHidden ? "-translate-y-full" : "translate-y-0"
 							}`}
 					>
 						<nav
@@ -288,24 +287,6 @@ const Navbar: React.FC<SubNavbarProps> = ({
 										</div>
 									</li>
 								</Link>
-								<li
-									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "shopping"
-										? "opacity-50"
-										: "opacity-100"
-										}`}
-									onMouseEnter={() =>
-										handleMouseEnter("shopping")
-									}
-									onMouseLeave={handleMouseLeave}
-									onClick={() =>
-										handleToggleSection("shopping")
-									}
-								>
-									<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
-										<p> Shopping Assist </p>
-										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
-									</div>
-								</li>
 								<li
 									className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "owners"
 										? "opacity-50"
@@ -412,27 +393,12 @@ const Navbar: React.FC<SubNavbarProps> = ({
 						</div>
 					</div>
 				)}
-				{isExpanded && selectedSection === "shopping" && (
-					<div
-						data-aos="slide-up"
-						className={`z-1 absolute w-screen h-screen rounded-b-[20px] font-syncopate px-[10px] lg:px-[50px] pt-[28px] bg-opacity-85 bg-gray-900 ${isHidden ? "hidden" : ""
-							}`}
-					>
-						<div
-							data-aos="fade-up"
-							data-aos-delay="1000"
-							className={`${isHidden ? "hidden" : ""}`}
-						>
-							<ShoppingAssist />
-						</div>
-					</div>
-				)}
 			</div>
 
 			{toggle && (
 				<div
 					data-aos="fade"
-					className="md:hidden opacity-90 h-screen relative w-full backdrop-blur-3xl bg-opacity-20 text-white"
+					className="md:hidden opacity-90 bg-gray-950  h-screen relative w-full backdrop-blur-3xl bg-opacity-30 text-white"
 				>
 					{currentPage === "main" ? (
 						<ul className="flex flex-col space-y-5 sm:space-y-16 ss:space-y-10 pt-[50%] sm:pt-[20%] items-center py-2">
@@ -462,18 +428,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									</Link>
 								</div>
 							</li>
-							<li
-								className="cursor-pointer transition-opacity duration-300 w-full text-center"
-								onClick={() => handleNavClick_repon("shopping")}
-							>
-								<div
-									data-aos="fade-up"
-									data-aos-delay="500"
-									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
-								>
-									<p> Shopping Assist </p>
-								</div>
-							</li>
+
 							<li
 								className="cursor-pointer transition-opacity duration-300 w-full text-center"
 								onClick={() => handleNavClick_repon("owners")}
@@ -563,11 +518,6 @@ const Navbar: React.FC<SubNavbarProps> = ({
 								<div data-aos="fade-right" className="z-auto">
 									{" "}
 									<Vehicle />
-								</div>
-							)}
-							{currentPage === "shopping" && (
-								<div data-aos="fade-right">
-									<ShoppingAssist />
 								</div>
 							)}
 						</div>

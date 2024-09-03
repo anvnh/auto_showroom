@@ -259,7 +259,7 @@ const Reviews = () => {
 										</p>
 										{authUser && authUser._id === review.user._id && (
 											<FaTrash
-												className="cursor-pointer hover:text-red-500" 
+												className="cursor-pointer hover:text-red-500 hover:scale-105 transition-all duration-300 ease-in-out" 
                                                 onClick={() => handleDelete(review)}
 											/>
 										)}
