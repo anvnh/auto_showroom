@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import gsap from "gsap"
 import TopBrand_mobile from "./TopBrand_mobile"
-import { topBrandAudi, topBrandAudi2, topBrandHonda, topBrandHonda2, topBrandMer, topBrandMer2, topBrandToyota, topBrandToyota2, } from "@/assets/homepage/"
+import { topBrandHonda2, topBrandMer2, topBrandToyota2, } from "@/assets/homepage/"
 const TopBrand = () => {
     const popularBrand_right = useRef(null)
     const container_popularBrand = useRef(null)
