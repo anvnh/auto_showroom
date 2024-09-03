@@ -22,7 +22,7 @@ import {
 	car53,
 	car54,
 	car55,
-
+	intro5,
 	car57,
 	car58,
 	car59,
@@ -173,9 +173,9 @@ const car5reponsive: React.FC = () => {
 					muted
 					loop
 					playsInline
-					className="w-full h-auto object-cover z-20 pt-[75px]"
+					className="w-full h-auto object-cover z-20 pt-[65px]"
 				>
-
+						<source src={intro5}/>
 				</video>
 				{isVisible && (
 					<div className="z-30 flex justify-start w-full h-full items-center bottom-64 sm:-left-[1100px] relative md:left-11 -left-96 ss:-left-52 ss:bottom-32 sm:bottom-40 xs:bottom-48">

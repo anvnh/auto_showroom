@@ -171,6 +171,7 @@ import news6 from "./car_popular/car5popular/news6.png";
 import moi1 from "./car_popular/car5popular/moi1.webp";
 import moi2 from "./car_popular/car5popular/moi2.webp";
 import videohieuung2 from "./car_popular/car5popular/videohieuung2.mp4";
+import intro5 from "./car_popular/car5popular/intro/0903 (2).mp4"
 
 //car6 popular
 import car61 from "./car_popular/car6popular/61.jpg";
@@ -244,6 +245,7 @@ import changecolorS6 from "./hplat_asset/car/audiS6/video.mp4"
 import video1 from "./car1_popular/Mercedes-AMG CLS 53 4MATIC+.mov";
 import video2 from "./car2_popular/Maybach S-Class.mov";
 export {
+	intro5,
 	intro3,
 	changecolorS6,
 	changecolorA5,

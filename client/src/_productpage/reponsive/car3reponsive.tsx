@@ -167,7 +167,7 @@ const car3reponsive: React.FC = () => {
 					muted
 					loop
 					playsInline
-					className="w-full h-auto object-cover z-20 pt-[75px]"
+					className="w-full h-auto object-cover z-20 pt-[55px]"
 				>
 						<source src={intro3}/>
 				</video>
