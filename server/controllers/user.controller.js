@@ -528,7 +528,7 @@ export const sendPaymentDetailsBuyNow = async (req, res) => {
                 subject: "Payment Details",
                 html: `
                     <h2>
-                        Dear ${info.name},
+                        Dear ${info.fullName},
                         Thank you for your recent purchase at AAP! We have received your order and are now processing it.
                     </h2>
                     <h3> 

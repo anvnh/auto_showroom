@@ -18,6 +18,7 @@ export const addOrderItems = async (req, res) => {
     try {
         const {
             orderId,
+            fullName,
             address: shippingAddress,
             paymentMethod,
             paymentResult,
@@ -46,6 +47,7 @@ export const addOrderItems = async (req, res) => {
         });
         const order = new Order({
             user: user ? user._id : null,
+            fullName,
             orderId,
             orderItems,
             shippingAddress,
