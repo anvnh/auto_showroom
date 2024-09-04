@@ -204,7 +204,7 @@ export const forgotPassword = async (req, res) => {
 			to: email,
 			subject: "Password Reset OTP",
 			html: `
-   <div
+          <div
             style="
                 width: 100%;
                 height: auto;
