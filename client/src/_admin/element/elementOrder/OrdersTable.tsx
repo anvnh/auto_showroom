@@ -95,8 +95,11 @@ const OrdersTable = () => {
 			}
 		},
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["orders"] });
             toast.success("Change status order successfully");
+			queryClient.invalidateQueries({ queryKey: ["orders"] });
+			queryClient.invalidateQueries({ queryKey: ["onDelivery"] });
+			queryClient.invalidateQueries({ queryKey: ["completed"] });
+			queryClient.invalidateQueries({ queryKey: ["canceled"] });
 		},
 		onError: (error) => {
             toast.error(error.message);
@@ -272,37 +275,43 @@ const OrdersTable = () => {
                                                 </td>
 
                                                 <td className="flex hover:cursor-pointer">
-                                                    <AlertDialog>
-                                                        <AlertDialogTrigger asChild>
-                                                            <span
-                                                                className={`mt-4 ml-16 p-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                                                                    order.isDelivered !== false
-                                                                    ? "bg-green-800 text-green-100"
-                                                                    : "bg-red-600 text-red-100"
-                                                                }`}
-                                                            >
-                                                                {order.isDelivered !== false ? "Delivered" : "Not Delivered"}
-                                                            </span>
-                                                        </AlertDialogTrigger>
-                                                        <AlertDialogContent className="bg-gray-900 backdrop-blur-md bg-opacity-35">
-                                                            <AlertDialogHeader>
-                                                                <AlertDialogTitle> Do you want to change status of this order ? </AlertDialogTitle>
-                                                            </AlertDialogHeader>
-                                                            <AlertDialogFooter>
-                                                                <AlertDialogCancel>
-                                                                    Cancel
-                                                                </AlertDialogCancel>
-                                                                <AlertDialogAction 
-                                                                    className="bg-white text-black hover:bg-white hover:bg-opacity-20"
-                                                                    onClick={
-                                                                        handleChangeStatus(order._id)
-                                                                    }
+                                                    {order.isCancelled ? (
+                                                        <span className="hover:cursor-not-allowed mt-4 ml-16 p-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-600 text-red-100">
+                                                            Cancelled
+                                                        </span>
+                                                    ) : (
+                                                        <AlertDialog>
+                                                            <AlertDialogTrigger asChild>
+                                                                <span
+                                                                    className={`mt-4 ml-16 p-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                                                                        order.isDelivered !== false
+                                                                        ? "bg-green-800 text-green-100"
+                                                                        : "bg-yellow-600 text-red-100"
+                                                                    }`}
                                                                 >
-                                                                    Continue
-                                                                </AlertDialogAction>
-                                                            </AlertDialogFooter>
-                                                        </AlertDialogContent>
-                                                    </AlertDialog>
+                                                                    {order.isDelivered !== false ? "Delivered" : "Not Delivered"}
+                                                                </span>
+                                                            </AlertDialogTrigger>
+                                                            <AlertDialogContent className="bg-gray-900 backdrop-blur-md bg-opacity-35">
+                                                                <AlertDialogHeader>
+                                                                    <AlertDialogTitle> Do you want to change status of this order ? </AlertDialogTitle>
+                                                                </AlertDialogHeader>
+                                                                <AlertDialogFooter>
+                                                                    <AlertDialogCancel>
+                                                                        Cancel
+                                                                    </AlertDialogCancel>
+                                                                    <AlertDialogAction 
+                                                                        className="bg-white text-black hover:bg-white hover:bg-opacity-20"
+                                                                        onClick={
+                                                                            handleChangeStatus(order._id)
+                                                                        }
+                                                                    >
+                                                                        Continue
+                                                                    </AlertDialogAction>
+                                                                </AlertDialogFooter>
+                                                            </AlertDialogContent>
+                                                        </AlertDialog>
+                                                    )}
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap pl-20">
                                                     <div className="text-sm text-gray-300">
