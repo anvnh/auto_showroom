@@ -18,7 +18,7 @@ import "aos/dist/aos.css";
 const MostSearchedCars = () => {
 	useEffect(() => {
 		AOS.init({
-			duration: 900,
+			duration: 800,
 			easing: "ease-in-out",
 			once: false,
 			mirror: true,

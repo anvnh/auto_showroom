@@ -14,7 +14,7 @@ import "aos/dist/aos.css";
 const Products = () => {
 	useEffect(() => {
 		AOS.init({
-			duration: 1000,
+			duration: 700,
 			easing: "ease-in-out",
 			once: true,
 			mirror: false,
@@ -154,7 +154,7 @@ const Products = () => {
 				</div>
 				</div>
 				<div className="md:col-span-4 pt-12 md:pt-3 ss:px-32 sm:px-0">
-					<div 	data-aos="fade-left"  className="md:hidden block">
+					<div data-aos="fade-left"  className="md:hidden block">
 						<div className="flex w-full justify-center ss:justify-end md:justify-end mb-3">
 							<div className="text-[16px] flex border mb-4 border-white justify-between items-center p-2 rounded-xl">
 								<input
@@ -189,7 +189,7 @@ const Products = () => {
 										reverseOrder={false}
 									/>
 									<div
-								
+										data-aos="fade-left"
 										key={product._id}
 										className="md:flex bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white hover:bg-opacity-90 p-3 md:p-4 mb-7 rounded-2xl shadow-md w-full h-auto">
 										<div className="relative w-full md:w-1/3 md:mr-4 overflow-hidden mb-4 items-center flex rounded-xl">

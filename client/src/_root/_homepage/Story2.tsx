@@ -91,15 +91,15 @@ const Story2 = () => {
     return (
         <div>
             <section className="bg-black">
-                <div ref={container_textBlock} className=" w-screen bg-white  text-black h-screen flex flex-col justify-center items-center">
+                <div ref={container_textBlock} className=" w-screen bg-white  text-black h-screen flex flex-col justify-center items-center font-bold">
                     <section ref={con_p1} className=" w-[80%] h-[11%] leading-none  overflow-y-hidden">
                         <p ref={p1} className=" font-[600] italic font-kanit h-full text-center  text-[60px] xsm:text-[80px] md:text-[100px] lg:text-[120px]">
                             DISCOVER
                         </p>
                     </section>
                     <section ref={con_p2} className="w-[80%] h-[11%] leading-none  overflow-y-hidden">
-                        <p ref={p2} className="font-kanit italic  h-full text-center text-[60px] xsm:text-[80px] md:text-[100px] lg:text-[120px]">
-                            the best in
+                        <p ref={p2} className="font-kanit italic h-full text-center text-[60px] xsm:text-[80px] md:text-[100px] lg:text-[120px]">
+                           THE BEST IN
                         </p>
                     </section>
                     <section ref={con_p3} className="font-[600] font-kanit w-[80%] h-[11%] leading-none  overflow-y-hidden">

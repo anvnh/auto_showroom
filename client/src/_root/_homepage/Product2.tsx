@@ -25,7 +25,7 @@ const Product2 = () => {
 
 	useEffect(() => {
 		AOS.init({
-			duration: 1200,
+			duration: 800,
 			easing: "ease-in-out",
 			once: false,
 			mirror: true,
@@ -224,7 +224,7 @@ const Product2 = () => {
 	};
 
 	return (
-		<div className="w-screen bg-neutral-900">
+		<div data-aos="fade-right" className="w-screen bg-neutral-900">
 			<Swiper
 				ref={swiperRef}
 				effect={"coverflow"}

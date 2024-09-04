@@ -1,17 +1,29 @@
 import { audiA5_banner } from "../../assets"
 import { Link } from "react-router-dom"
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 const Section = () => {
+    useEffect(() => {
+		AOS.init({
+			duration: 600,
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-bottom",
+		});
+	}, []);
     return (
         <div className='box-border font-poppins Banner bg-neutral-800 '>
             <div>
                 <div className="relative w-full ">
-                    <img className="object-cover " src={audiA5_banner} />
+                    <img data-aos="fade" className="object-cover " src={audiA5_banner} />
                     <div className="absolute top-0 font-bold text-white lg:mx-[50px] lg:my-[50px] mlg:my-[100px] xl:my-[150px] ">
-                        <div className="hidden lg:block ">
+                        <div 	data-aos="fade-right" data-aos-delay="200" className="hidden lg:block ">
                             <div className="text-[16px] sm:text-[20px] lg:text-[40px]">Dynamic down to the last curve</div>
                             <div className="lg:text-[20px] mt-[10px]">The Audi A5 models are destined to turn heads.</div>
                         </div>
-                        <div className="hidden lg:flex lg:flex-row  lg:my-[25px] lg:gap-x-[10px]">
+                        <div data-aos="fade-right" data-aos-delay="200" className="hidden lg:flex lg:flex-row  lg:my-[25px] lg:gap-x-[10px]">
                             <Link to="/audi-a5-couple">
                                 <div className=" text-center lg:w-[270px]  mlg:w-[300px] lg:px-[20px] lg:py-[10px]  text-slate-800 bg-slate-200
                                     hover:bg-slate-600 hover:text-white transition ease-linear

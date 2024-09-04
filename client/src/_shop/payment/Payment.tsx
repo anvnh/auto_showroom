@@ -28,7 +28,7 @@ const Payment = () => {
 
 	useEffect(() => {
 			AOS.init({
-				duration: 1200,
+				duration: 700,
 				easing: "ease-in-out",
 				once: true,
 				mirror: false,
