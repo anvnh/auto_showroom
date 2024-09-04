@@ -13,10 +13,70 @@ const Footer = () => {
             <div className='fixed bottom-0 h-[600px] w-full bg-neutral-800'>
                 <section className='w-full h-full flex flex-col justify-center items-center'>
                     <div className='h-[65%] w-[93%] md:w-[85%] xl:w-[90%]    flex flex-col justify-center items-center'>
-                        <p className='w-full text-center text-[75px] sm:text-[90px] md:text-[110px] lg:text-[130px] mlg:text-[150px] xl:text-[200px] font-semibold font-syncopate'>
+                        <p className='w-full text-center text-[54px] ss:text-[75px] sm:text-[90px] md:text-[110px] lg:text-[130px] mlg:text-[150px] xl:text-[200px] font-semibold font-syncopate'>
                             let's talk
                         </p>
-                        <div className='w-full h-[20%] ss:h-[30%] border-t  flex justify-between items-center'>
+                        {/* <div>
+                            <p className='text-center font-kanit font-semibold text-[19px] xsm:text-[22px]'>
+                                AAP Showroom is a website that sells cars at reasonable prices,
+                                plus it integrates a social network to connect people who are passionate about cars.
+                            </p>
+                        </div> */}
+                        <section className='h-[230px] border-t w-full flex justify-center gap-x-[4%]'>
+                            <div className='w-full sm:w-[40%] h-full flex justify-between sm:justify-center '>
+                                <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0 justify-start ss:justify-center items-center '>
+                                    <h3 className='text-[26px] xs:text-[30px]  font-semibold font-kanit  '>ABOUT</h3>
+                                    <section className='mt-[5px]  text-center flex flex-col  text-[20px] font-medium font-kanit'>
+                                        <Link to="/shop">
+                                            <h4>Shop</h4>
+                                        </Link>
+                                        <Link to="/owners">
+                                            <h4>Owner</h4>
+                                        </Link>
+                                        <Link to="/social">
+                                            <h4>Social</h4>
+                                        </Link>
+                                    </section>
+                                </div>
+                                <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0  justify-start ss:justify-center items-center '>
+                                    <h3 className='text-[26px] xs:text-[30px] font-semibold font-kanit '>CONTACT</h3>
+                                    <section className='mt-[5px] text-center flex flex-col  text-[20px] font-medium font-kanit'>
+                                        {/* <h4>Facebook</h4> */}
+
+                                        {/* <h4>Instagram</h4> */}
+                                        {/* <h4>Github</h4> */}
+                                        <Link to="https://www.instagram.com/just.hplat/">
+                                            <div className='font-bold flex items-center gap-x-[5px]'>
+                                                <FaInstagram /> Instagram
+                                            </div>
+                                        </Link>
+                                        <Link to="https://github.com/anvnh">
+                                            <div className='font-bold flex items-center gap-x-[5px]'>
+                                                <ImGithub /> Github
+                                            </div>
+                                        </Link>
+                                        <Link to="https://www.facebook.com/profile.php?id=100032385616885&locale=vi_VN">
+                                            <div className='font-bold flex items-center gap-x-[5px]'>
+                                                <FaFacebook />Facebook
+                                            </div>
+                                        </Link>
+                                    </section>
+                                </div>
+                            </div>
+
+                            <div className='hidden sm:flex h-full w-[2px]  justify-center items-center'>
+                                <div className='border-r h-[80%] w-[1px] border-red-500'></div>
+                            </div>
+
+                            <div className='hidden sm:flex w-[40%]  justify-start items-center'>
+                                <p className='font-kanit font-semibold text-[19px] xsm:text-[22px]'>
+                                    AAP Showroom is a website that sells cars at reasonable prices,
+                                    plus it integrates a social network to connect people who are passionate about cars.
+                                </p>
+                            </div>
+
+                        </section>
+                        {/* <div className='w-full h-[20%] ss:h-[30%] border-t  flex justify-between items-center'>
                             <div className='hidden xsm:block font-bold'>
                                 Legal notice
                             </div>
@@ -39,6 +99,7 @@ const Footer = () => {
                                 </div>
                             </Link>
                         </div>
+
                         <div className='w-full flex ss:hidden justify-between   border-t pt-[20px]'>
                             <section className=' font-bold'>
                                 Legal notice
@@ -46,7 +107,7 @@ const Footer = () => {
                             <section className=' w-[70%] font-semibold'>
                                 This website is built on the laws issued by the state, does not violate any laws.
                             </section>
-                        </div>
+                        </div> */}
                     </div>
                 </section>
             </div>
