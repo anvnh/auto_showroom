@@ -482,7 +482,7 @@ const Car3popular: React.FC = () => {
 						</ParallaxLayer>
 
 						<ParallaxLayer
-							offset={6}
+							offset={6.2}
 							speed={1.2}
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[4] = ref)}
@@ -491,13 +491,13 @@ const Car3popular: React.FC = () => {
 								Sophisticated, modern, classy
 							</div>
 						</ParallaxLayer>
-						<ParallaxLayer offset={6} speed={1} factor={1}>
+						<ParallaxLayer offset={6.2} speed={1} factor={1}>
 							<div
 								style={{ backgroundImage: `url(${b6})` }}
 								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative -left-[20px] -top-[1350px] ss:top-[150px] sm:top-[350px] md:-top-[900px]"
 							></div>
 						</ParallaxLayer>
-						<ParallaxLayer offset={6.2} speed={0.8} factor={1}>
+						<ParallaxLayer offset={6.3} speed={0.8} factor={1}>
 							<div className="justify-end items-end flex">
 								<div
 									style={{ backgroundImage: `url(${new3})` }}
@@ -508,7 +508,7 @@ const Car3popular: React.FC = () => {
 						<ParallaxLayer offset={6.4} speed={0.9} factor={1}>
 							<div
 								style={{ backgroundImage: `url(${b5})` }}
-								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1300px] bg-center md:h-[1200px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[100px]"
+								className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] bg-center md:h-[1200px] bg-cover rounded-3xl relative left-6 sm:left-11 md:left-11 -top-[690px] ss:-top-[500px] xs:-top-[200px] md:top-[100px]"
 							></div>
 						</ParallaxLayer>
 						<ParallaxLayer

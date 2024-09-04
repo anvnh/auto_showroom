@@ -283,7 +283,7 @@ const car3reponsive: React.FC = () => {
 			</div>
 			<div
 				data-aos="fade-in"
-				className="relative z-20 pt-72 lg:pt-12">
+				className="relative z-50 pt-72 lg:pt-12">
 				<div>
 					<div className="md:text-6xl font-bold pb-12 ss:text-6xl sm:text-7xl text-3xl text-center text-white animate-pulse font-syncopate ">
 						NEW COLOR
@@ -366,7 +366,7 @@ const car3reponsive: React.FC = () => {
 					</div>
 				</div>
 			</div>
-			<div id="Interiors" className="flex justify-center relative ss:pt-72 pt-20 z-50 sm:pt-[500px]">
+			<div id="Interiors" className="flex justify-center relative ss:pt-72 pt-20 z-20 sm:pt-[500px]">
 				<div className="w-full">
 					<Car3popular2 />
 				</div>
@@ -386,21 +386,21 @@ const car3reponsive: React.FC = () => {
 					<div
 						data-aos="fade-right"
 						style={{ backgroundImage: `url(${b5})` }}
-						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative  -top-[0px] ss:top-[150px] sm:top-[250px] md:top-[2600px] lg:h-[600px] lg:w-[1000px] lg:-top-[10px]"
+						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1200px] md:h-[800px] bg-cover bg-center rounded-3xl relative  -top-[0px] ss:top-[0px] sm:top-[250px] md:top-[2600px] lg:h-[600px] lg:w-[1000px] lg:-top-[10px]"
 					></div>
 				</div>
 				<div className="justify-end items-end flex">
 					<div
 						data-aos="fade-left"
 						style={{ backgroundImage: `url(${b9})` }}
-						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[100px] ss:-top-[300px] sm:top-[100px] md:top-[1700px] lg:h-[600px] lg:w-[1000px] lg:-top-[100px]"
+						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative -top-[100px] ss:-top-[0px] sm:top-[100px] md:top-[1700px] lg:h-[600px] lg:w-[1000px] lg:-top-[100px]"
 					></div>
 				</div>
 				<div className="justify-start items-start flex">
 					<div
 						data-aos="fade-right"
 						style={{ backgroundImage: `url(${b6})` }}
-						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[600px] bg-cover rounded-3xl sm:top-[10px] relative -top-[190px] ss:-top-[500px] xs:-top-[200px] md:top-[800px] lg:h-[600px] lg:w-[1000px] lg:-top-[150px]"
+						className="w-[300px] h-[400px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[600px] bg-cover rounded-3xl sm:top-[10px] relative -top-[190px] ss:-top-[20px] xs:-top-[200px] md:top-[800px] lg:h-[600px] lg:w-[1000px] lg:-top-[150px]"
 					></div>
 				</div>
 			</div>

@@ -42,7 +42,7 @@ const Product2 = () => {
 	const carData = [
 		{
 			brand: "718 Cayman S",
-			price: "$187.353.20",
+			price: "$ 187.353.20",
 			year: 2021,
 			image: pos1,
 			introduction:
@@ -75,7 +75,7 @@ const Product2 = () => {
 
 		{
 			brand: "911 Carrera S",
-			price: "$335.165.02",
+			price: "$ 335.165.02",
 			year: 2023,
 			image: pos3,
 			introduction:
@@ -106,7 +106,7 @@ const Product2 = () => {
 		},
 		{
 			brand: "911 Dakar",
-			price: "$600.782.33",
+			price: "$ 600.782.33",
 			year: 2024,
 			image: pos4,
 			introduction:
@@ -137,7 +137,7 @@ const Product2 = () => {
 		},
 		{
 			brand: "911 Sport Classic",
-			price: "$755.201.85",
+			price: "$ 755.201.85",
 			year: 2023,
 			image: pos5,
 			introduction:
@@ -168,7 +168,7 @@ const Product2 = () => {
 		},
 		{
 			brand: "911 Targa 4",
-			price: "$350.096.18",
+			price: "$ 350.096.18",
 			year: 2022,
 			image: pos6,
 			introduction:
@@ -224,7 +224,7 @@ const Product2 = () => {
 	};
 
 	return (
-		<div data-aos="fade-right" className="w-screen bg-neutral-900">
+		<div className="w-screen bg-neutral-900">
 			<Swiper
 				ref={swiperRef}
 				effect={"coverflow"}
@@ -266,7 +266,7 @@ const Product2 = () => {
 						}
 					>
 						<div
-
+								 data-aos="fade-right" 
 							className="slide-content object-cover bg-transparent group flex flex-col items-center w-screen pt-1 sm:pt-12 pb-12 text-white font-poppins justify-center text-2xl"
 							style={{
 								width: "100%",
@@ -287,14 +287,14 @@ const Product2 = () => {
 								<h3 className="brand justify-center flex-col font-bold text-2xl md:text-4xl text-center font-syncopate lg:text-4xl flex">
 									{car.brand}
 								</h3>
-								<p className="price pt-3 group-hover:scale-110 group-hover:text-gray-300 transition-all ease-in-out duration-300 justify-center text-white font-bold text-base md:text-lg lg:text-xl font-syncopate flex">
+								<p className="price pt-3 group-hover:scale-110 group-hover:text-gray-300 transition-all ease-in-out duration-300 justify-center text-white text-base md:text-lg lg:text-xl font-kanit flex">
 									{car.price}
 								</p>
 								<div className="pt-4 justify-center flex" >
 									<div
-										className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+										className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-kanit text-xl rounded-3xl text-center
 										before:ease relative h-12 w-40 overflow-hidden border-gray-600 border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 hover:before:-translate-x-40
-										"
+										items-center "
 										onClick={() => showDetails(index)}
 									>
 										Details
@@ -306,13 +306,13 @@ const Product2 = () => {
 				))}
 
 				{/* Controls */}
-				<div className="slider_controler ">
-					<div className="swiper-button-next scale-90 hover:scale-110 text-white pr-8 duration-300 transition-all hover:pr-10 font-bold">
+				{/* <div className="slider_controler ">
+					<div className="swiper-button-next scale-90 hover:scale-110 text-white pr-24 duration-300 transition-all hover:pr-26 font-bold">
 					</div>
-					<div className="swiper-button-prev scale-90 hover:scale-110 duration-300 transition-all text-white pl-1 hover:pl-6 font-bold">
+					<div className="swiper-button-prev scale-90 hover:scale-110 duration-300 transition-all text-white pl-24 hover:pl-26 font-bold">
 
 					</div>
-				</div>
+				</div> */}
 			</Swiper>
 
 

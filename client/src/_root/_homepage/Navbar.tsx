@@ -164,7 +164,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 						</button>
 					</div>
 					<div className=" ">
-						<ul className="list-none flex pr-7 justify-end items-center flex-1">
+						<ul className="list-none flex pr-3 justify-end items-center flex-1">
 							{authUser ? (
 								<>
 									<Link to="/shop/cart">
