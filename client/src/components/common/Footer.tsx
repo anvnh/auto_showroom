@@ -24,7 +24,7 @@ const Footer = () => {
                 <section className='w-full h-full flex flex-col justify-center items-center'>
                     <div className='h-[65%] w-[93%] md:w-[85%] xl:w-[90%]    flex flex-col justify-center items-center'>
                         <p className='w-full text-center text-[54px] ss:text-[75px] sm:text-[90px] md:text-[110px] lg:text-[130px] mlg:text-[150px] xl:text-[200px] font-semibold font-syncopate'>
-                            let's talk
+                            AAP
                         </p>
                         {/* <div>
                             <p className='text-center font-kanit font-semibold text-[19px] xsm:text-[22px]'>

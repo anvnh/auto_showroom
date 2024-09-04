@@ -405,11 +405,11 @@ const car3reponsive: React.FC = () => {
 				</div>
 			</div>
 			<div
-				className="article-tiles-container bg-black text-white p-6 bottom-[0px] relative md:-bottom-[520px] lg:-bottom-[10px]">
+				className="article-tiles-container bg-gray-900 text-white p-6 bottom-[0px] relative md:-bottom-[520px] lg:-bottom-[10px]">
 				<div className="article-tiles-desc mb-6 text-center font-syncopate">
 					<h3
 						data-aos="fade-up"
-						className="text-4xl ss:text-5xl mb-2 font-bold">
+						className="text-4xl ss:text-5xl mb-2  pt-20 font-bold">
 						Rolls Royce Ghost 2021
 					</h3>
 					<p data-aos="fade-down font-kanit">$ 332,500</p>
@@ -421,9 +421,10 @@ const car3reponsive: React.FC = () => {
 					/>
 					<Link to="/shop/payment/66bfb4d4598bcf76c770bf1f">
 						<button
+							data-aos="fade"
 							className=" opacity-80 backdrop-blur-xl
-							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-40 items-center
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-md md:text-base rounded-3xl text-center
+							before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-40 items-center
 							"
 						>
 							Buy Now
@@ -431,8 +432,9 @@ const car3reponsive: React.FC = () => {
 					</Link>
 
 					<button
+						data-aos="fade"
 						className=" opacity-80 backdrop-blur-xl
-							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-md  md:text-base rounded-3xl text-center
 										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-[230px] items-center
 							"
 						onClick={() =>
@@ -446,7 +448,7 @@ const car3reponsive: React.FC = () => {
 						)}
 					</button>
 				</div>
-				<div className="article-tiles-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-10 sm:pt-20">
+				<div className="article-tiles-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 pt-10 sm:pt-20 ">
 					<div className="article-tile">
 						<figure className="hover01 overflow-hidden">
 							<img
@@ -515,7 +517,7 @@ const car3reponsive: React.FC = () => {
 					</div>
 				</div>
 			</div>
-			<div data-aos="fade-up" className="z-10 w-full relative pt-20 bg-black">
+			<div className="z-10 w-full relative bg-black">
 				<Footer />
 			</div>
 		</div>

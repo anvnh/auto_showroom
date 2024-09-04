@@ -416,15 +416,15 @@ const car5reponsive: React.FC = () => {
 				</div>
 			</div>
 			<div
-				className="article-tiles-container bg-black text-white p-6 bottom-[0px] relative md:-bottom-[520px] lg:-bottom-[10px]">
-				<div className="article-tiles-desc mb-6 text-center font-syncopate">
+				className="article-tiles-container bg-gray-900 text-white p-6 -bottom-[120px] relative md:-bottom-[520px] lg:-bottom-[10px]">
+				<div className="article-tiles-desc mb-6 text-center font-syncopate ">
 					<h3
 						data-aos="fade-up"
-						className="text-2xl ss:text-5xl mb-2 pt-20">
+						className="text-2xl ss:text-5xl mb-2 pt-20 font-bold">
 						Roll Royce Phantom
 						Extended Series II
 					</h3>
-					<p data-aos="fade-down">	$1,65 million</p>
+					<p data-aos="fade-down font-kanit">	$1,65 million</p>
 				</div>
 				<div className="flex justify-center gap-5 pt-5">
 					<Toaster
@@ -433,9 +433,10 @@ const car5reponsive: React.FC = () => {
 					/>
 					<Link to="/shop/payment/66bfc096598bcf76c770c008">
 						<button
+							data-aos="fade"
 							className=" opacity-80 backdrop-blur-xl
-							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-40
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-40 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-md md:text-base rounded-3xl text-center
+							items-center before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-40
 							"
 						>
 							Buy Now
@@ -443,8 +444,9 @@ const car5reponsive: React.FC = () => {
 					</Link>
 
 					<button
+						data-aos="fade"
 						className=" opacity-80 backdrop-blur-xl
-							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-syncopate text-sm md:text-base rounded-3xl text-center
+							detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 lg:w-56 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold font-kanit text-md items-center md:text-base rounded-3xl text-center
 										before:ease relative h-12 w-40 overflow-hidden border-white border shadow-xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-white hover:before:-translate-x-[230px]
 							"
 						onClick={() =>
@@ -525,7 +527,7 @@ const car5reponsive: React.FC = () => {
 					</div>
 				</div>
 			</div>
-			<div data-aos="fade-up" className="z-10 w-full relative pt-20 bg-black">
+			<div className="z-10 w-full relative bg-black">
 				<Footer />
 			</div>
 		</div >

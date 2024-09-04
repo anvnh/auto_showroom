@@ -203,7 +203,7 @@ const Car5popular: React.FC = () => {
 						/>
 					</div>
 					<Parallax
-						pages={8.8}
+						pages={9.2}
 						style={{ top: "0", left: "0" }}
 						className="bg-black"
 						ref={parallaxRef} // Gán ref vào Parallax
@@ -477,9 +477,9 @@ const Car5popular: React.FC = () => {
 						>
 							{isLoading && <LoadingSpinner />}
 							{!isLoading && !isRefetching && car && (
-								<div className="article-tiles-container bg-black text-white p-6 bottom-[900px] relative md:bottom-0">
-									<div className="article-tiles-desc mb-6 text-center font-syncopate">
-										<h3 className="text-4xl ss:text-5xl mb-2 font-bold">
+								<div className="article-tiles-container h-[1900px] bg-gray-900 text-white p-6 bottom-[900px] relative md:bottom-0">
+									<div className="article-tiles-desc  mb-6 text-center font-syncopate">
+										<h3 className="text-4xl ss:text-5xl pt-5 mb-2 font-bold">
 											Roll Royce Phantom Extended Series
 											II
 										</h3>
