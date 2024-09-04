@@ -20,7 +20,7 @@ const Footer = () => {
             style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
         >
 
-            <div className='fixed bottom-0 h-[600px] w-full bg-neutral-800'>
+            <div className='fixed bottom-0 h-[600px] w-full bg-gray-800'>
                 <section className='w-full h-full flex flex-col justify-center items-center'>
                     <div className='h-[65%] w-[93%] md:w-[85%] xl:w-[90%]    flex flex-col justify-center items-center'>
                         <p className='w-full text-center text-[54px] ss:text-[75px] sm:text-[90px] md:text-[110px] lg:text-[130px] mlg:text-[150px] xl:text-[200px] font-semibold font-syncopate'>
@@ -36,37 +36,37 @@ const Footer = () => {
                             <div className='w-full sm:w-[40%] h-full flex justify-between sm:justify-center '>
                                 <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0 justify-start ss:justify-center items-center '>
                                     <h3 id="about" className='text-[26px] xs:text-[30px]  font-semibold font-kanit  '>ABOUT</h3>
-                                    <section className='mt-[5px]  text-center flex flex-col  text-[20px] font-medium font-kanit'>
+                                    <section className='mt-[5px]  text-center flex flex-col  text-[18px] font-medium'>
                                         <Link to="/shop">
-                                            <h4 className='hover:bg-red-500 transition-all duration-500'>Shop</h4>
+                                            <h4 className='hover:bg-red-500 hover:scale-105 transition-all duration-500'>Shop</h4>
                                         </Link>
                                         <Link to="/owners">
-                                            <h4 className='hover:bg-red-500 transition-all duration-500'>Owner</h4>
+                                            <h4 className='hover:bg-red-500 hover:scale-105 transition-all duration-500'>Owner</h4>
                                         </Link>
                                         <Link to="/social">
-                                            <h4 className='hover:bg-red-500 transition-all duration-500'>Social</h4>
+                                            <h4 className='hover:bg-red-500 hover:scale-105 transition-all duration-500'>Social</h4>
                                         </Link>
                                     </section>
                                 </div>
                                 <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0  justify-start ss:justify-center items-center '>
                                     <h3 id="contact" className='text-[26px] xs:text-[30px] font-semibold font-kanit '>CONTACT</h3>
-                                    <section className='mt-[5px] text-center flex flex-col  text-[20px] font-medium font-kanit'>
+                                    <section className='mt-[5px] text-center flex flex-col  text-[18px] font-medium'>
                                         {/* <h4>Facebook</h4> */}
 
                                         {/* <h4>Instagram</h4> */}
                                         {/* <h4>Github</h4> */}
                                         <Link to="https://www.instagram.com/just.hplat/">
-                                            <div className='hover:bg-red-500 transition-all duration-500 font-bold flex items-center gap-x-[5px]'>
+                                            <div className='hover:bg-red-500 transition-all duration-500  hover:scale-105 flex items-center gap-x-[5px]'>
                                                 <FaInstagram /> Instagram
                                             </div>
                                         </Link>
                                         <Link to="https://github.com/anvnh">
-                                            <div className='hover:bg-red-500 transition-all duration-500 font-bold flex items-center gap-x-[5px]'>
+                                            <div className='hover:bg-red-500 transition-all duration-500 hover:scale-105 flex items-center gap-x-[5px]'>
                                                 <ImGithub /> Github
                                             </div>
                                         </Link>
                                         <Link to="https://www.facebook.com/profile.php?id=100032385616885&locale=vi_VN">
-                                            <div className='hover:bg-red-500 transition-all duration-500 font-bold flex items-center gap-x-[5px]'>
+                                            <div className='hover:bg-red-500 transition-all duration-500 hover:scale-105 flex items-center gap-x-[5px]'>
                                                 <FaFacebook />Facebook
                                             </div>
                                         </Link>
@@ -79,9 +79,8 @@ const Footer = () => {
                             </div>
 
                             <div className='hidden sm:flex w-[40%]  justify-start items-center'>
-                                <p className='slogan font-kanit font-semibold text-[19px] xsm:text-[22px]'>
-                                    AAP Showroom is a website that sells cars at reasonable prices,
-                                    plus it integrates a social network to connect people who are passionate about cars.
+                                <p className='slogan font-kanit  text-[19px] xsm:text-[16px]'>
+                                AAP Showroom is a website specializing in selling cars at reasonable prices, suitable for consumers' needs. In addition to providing a variety of cars from famous brands, AAP Showroom also integrates a social network dedicated to car enthusiasts, creating a space to connect, share experiences, evaluate cars and trade with people with similar interests. This is not only a place to buy and sell cars but also a community that connects car lovers, helping them update the latest information about cars, technology and trends in the market.
                                 </p>
                             </div>
 
