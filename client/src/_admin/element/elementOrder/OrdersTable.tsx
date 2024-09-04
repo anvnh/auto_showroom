@@ -135,9 +135,9 @@ const OrdersTable = () => {
                                                         See more
                                                     </button>
                                                 </DialogTrigger>
-                                                    <DialogContent className="sm:max-w-[425px]">
+                                                    <DialogContent className="sm:max-w-[425px] bg-primary backdrop-blur-md bg-opacity-35">
                                                         <DialogHeader>
-                                                            <DialogTitle className="flex items-center">
+                                                            <DialogTitle className="flex w-full items-center text-2xl">
                                                                 Detail Order
                                                             </DialogTitle>
                                                             <DialogDescription>
@@ -148,14 +148,14 @@ const OrdersTable = () => {
                                                             {order.orderItems.map((item) => (
                                                                 <div key={item._id} className="flex items-center justify-between">
                                                                     <div className="flex items-center">
-                                                                        <div className="flex-shrink-0 h-10 w-9">
+                                                                        <div className="flex-shrink-0">
                                                                             <img
                                                                                 src={item.carId.images[0]}
-                                                                                className="h-10 w-10 rounded-full"
+                                                                                className="h-14 w-20 rounded-full"
                                                                             />
                                                                         </div>
                                                                         <div className="ml-3">
-                                                                            <div className="text-sm font-medium text-gray-100">
+                                                                            <div className="text-sm font-bold text-gray-100 ">
                                                                                 {item.brand} {item.model}
                                                                             </div>
                                                                             <div className="text-sm font-medium text-gray-100">
