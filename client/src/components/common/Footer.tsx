@@ -4,12 +4,22 @@ import { ImGithub } from "react-icons/im";
 import { RiInstagramFill } from "react-icons/ri";
 import { logo } from "@/assets";
 import { Link } from "react-router-dom"
-
+import gsap from 'gsap';
+import Draggable from 'gsap/src/Draggable';
+import { useEffect } from 'react';
 const Footer = () => {
+    gsap.registerPlugin(Draggable)
+    useEffect(() => {
+        Draggable.create(["#about", "#contact"], {
+            type: "rotation",
+            inertia: true
+        });
+    }, [])
     return (
         <footer className='relative h-[600px]'
             style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
         >
+
             <div className='fixed bottom-0 h-[600px] w-full bg-neutral-800'>
                 <section className='w-full h-full flex flex-col justify-center items-center'>
                     <div className='h-[65%] w-[93%] md:w-[85%] xl:w-[90%]    flex flex-col justify-center items-center'>
@@ -25,38 +35,38 @@ const Footer = () => {
                         <section className='h-[230px] border-t w-full flex justify-center gap-x-[4%]'>
                             <div className='w-full sm:w-[40%] h-full flex justify-between sm:justify-center '>
                                 <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0 justify-start ss:justify-center items-center '>
-                                    <h3 className='text-[26px] xs:text-[30px]  font-semibold font-kanit  '>ABOUT</h3>
+                                    <h3 id="about" className='text-[26px] xs:text-[30px]  font-semibold font-kanit  '>ABOUT</h3>
                                     <section className='mt-[5px]  text-center flex flex-col  text-[20px] font-medium font-kanit'>
                                         <Link to="/shop">
-                                            <h4>Shop</h4>
+                                            <h4 className='hover:bg-red-500 transition-all duration-500'>Shop</h4>
                                         </Link>
                                         <Link to="/owners">
-                                            <h4>Owner</h4>
+                                            <h4 className='hover:bg-red-500 transition-all duration-500'>Owner</h4>
                                         </Link>
                                         <Link to="/social">
-                                            <h4>Social</h4>
+                                            <h4 className='hover:bg-red-500 transition-all duration-500'>Social</h4>
                                         </Link>
                                     </section>
                                 </div>
                                 <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0  justify-start ss:justify-center items-center '>
-                                    <h3 className='text-[26px] xs:text-[30px] font-semibold font-kanit '>CONTACT</h3>
+                                    <h3 id="contact" className='text-[26px] xs:text-[30px] font-semibold font-kanit '>CONTACT</h3>
                                     <section className='mt-[5px] text-center flex flex-col  text-[20px] font-medium font-kanit'>
                                         {/* <h4>Facebook</h4> */}
 
                                         {/* <h4>Instagram</h4> */}
                                         {/* <h4>Github</h4> */}
                                         <Link to="https://www.instagram.com/just.hplat/">
-                                            <div className='font-bold flex items-center gap-x-[5px]'>
+                                            <div className='hover:bg-red-500 transition-all duration-500 font-bold flex items-center gap-x-[5px]'>
                                                 <FaInstagram /> Instagram
                                             </div>
                                         </Link>
                                         <Link to="https://github.com/anvnh">
-                                            <div className='font-bold flex items-center gap-x-[5px]'>
+                                            <div className='hover:bg-red-500 transition-all duration-500 font-bold flex items-center gap-x-[5px]'>
                                                 <ImGithub /> Github
                                             </div>
                                         </Link>
                                         <Link to="https://www.facebook.com/profile.php?id=100032385616885&locale=vi_VN">
-                                            <div className='font-bold flex items-center gap-x-[5px]'>
+                                            <div className='hover:bg-red-500 transition-all duration-500 font-bold flex items-center gap-x-[5px]'>
                                                 <FaFacebook />Facebook
                                             </div>
                                         </Link>
@@ -69,7 +79,7 @@ const Footer = () => {
                             </div>
 
                             <div className='hidden sm:flex w-[40%]  justify-start items-center'>
-                                <p className='font-kanit font-semibold text-[19px] xsm:text-[22px]'>
+                                <p className='slogan font-kanit font-semibold text-[19px] xsm:text-[22px]'>
                                     AAP Showroom is a website that sells cars at reasonable prices,
                                     plus it integrates a social network to connect people who are passionate about cars.
                                 </p>
