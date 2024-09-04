@@ -166,7 +166,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 									title="Go to your cart"
 								/>
 							</Link>
-                            <Link to="/heheh">
+                            <Link to="/order">
                                 <FaShippingFast 
 									className="text-white w-[25px] xl:w-[29px] h-[23px] text-2xl xl:mr-4 mr-2"
 									title="Go to your cart"
