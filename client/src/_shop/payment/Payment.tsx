@@ -5,7 +5,6 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 import Cards from "react-credit-cards-2";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import mapboxgl from "mapbox-gl";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import calculateAvgRating from "@/utils/calculateAvgRating";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -19,9 +18,10 @@ import { IoLocation } from "react-icons/io5";
 import { GiHomeGarage } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import useAuthUser from "@/hooks/useAuthUser";
+import mapboxgl from "mapbox-gl";
 
-mapboxgl.accessToken =
-	"pk.eyJ1IjoidHVhbmFuaDIwMDU4ODkiLCJhIjoiY20wNmc3cGE5MGR0bTJpczR6anF0cDMxeiJ9.nf180VnWasOogLOLMOS5gw";
+// Sử dụng biến môi trường
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 let isAOSInitialized = false;
 const Payment = () => {

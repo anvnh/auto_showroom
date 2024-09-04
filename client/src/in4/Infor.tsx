@@ -52,18 +52,18 @@ const Infor: React.FC = () => {
           >
             {isHovered && (
               <div className=" top-0 right-full flex flex-col items-center space-y-6 bg-gray-800 bg-opacity-75 p-3 rounded-lg shadow-lg transition-transform transform scale-100">
-                <Link to="https://github.com/anvnh"  className="text-white">
+                <Link title="Github" to="https://github.com/anvnh"  className="text-white">
                   <SiGithub className="text-3xl hover:text-purple-600 transition-all duration-300 hover:scale-110 ease-in-out" />
                 </Link>
-                <Link to="https://www.instagram.com/nvtank/"  className="text-white">
+                <Link title="Intagram" to="https://www.instagram.com/nvtank/"  className="text-white">
                   <FaInstagram className="text-3xl hover:text-pink-600 transition-all duration-300 hover:scale-110 ease-in-out" />
                 </Link>
                 <Link to="https://www.facebook.com/hplatdev" className="text-white">
-                  <FaFacebook className="text-3xl hover:text-blue-600 transition-all duration-300 hover:scale-110 ease-in-out " />
+                  <FaFacebook title="Facebook" className="text-3xl hover:text-blue-600 transition-all duration-300 hover:scale-110 ease-in-out " />
                 </Link>
               </div>
             )}
-            <div className="w-[60px] mt-5 p-3 h-[60px] bg-gray-800 rounded-full flex items-center justify-center text-white transition-transform transform hover:scale-110 duration-300 shadow-md shadow-white" >
+            <div title="Learn more" className="w-[60px] mt-5 p-3 h-[60px] bg-gray-800 rounded-full flex items-center justify-center text-white transition-transform transform hover:scale-110 duration-300 shadow-md shadow-white" >
               <img src={logo}/>
             </div>
           </div>
