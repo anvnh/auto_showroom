@@ -15,6 +15,7 @@ import {
     getAllUserProfile,
     sendPaymentDetails,
     sendPaymentDetailsBuyNow,
+    sendDeliveryConfirmationMail,
 } from "../controllers/user.controller.js";
 import { get } from "mongoose";
 
@@ -32,6 +33,7 @@ router.post("/add/cart/:id", protectRoute, addCart);
 router.get("/cart", protectRoute, getCart);
 router.post("/payment/details", protectRoute, sendPaymentDetails);
 router.post("/payment/buynow/details",sendPaymentDetailsBuyNow);
+router.post("/delivery/confirmation", sendDeliveryConfirmationMail);
 router.delete("/delete/cart/:id", protectRoute, deleteCart);
 router.delete("/delete/confirm/:id", protectRoute, deleteUser);
 

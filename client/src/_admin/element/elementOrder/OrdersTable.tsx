@@ -216,13 +216,17 @@ const OrdersTable = () => {
                                                                     {order.isDelivered !== false ? "Delivered" : "Processing"}
                                                                 </span>
                                                             </AlertDialogTrigger>
-                                                            <AlertDialogContent >
+                                                            <AlertDialogContent className="bg-gray-900 backdrop-blur-md bg-opacity-35">
                                                                 <AlertDialogHeader>
                                                                     <AlertDialogTitle> Do you want to send mail to this customer? </AlertDialogTitle>
                                                                 </AlertDialogHeader>
                                                                 <AlertDialogFooter>
-                                                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                                    <AlertDialogAction>Continue</AlertDialogAction>
+                                                                    <AlertDialogCancel>
+                                                                        Cancel
+                                                                    </AlertDialogCancel>
+                                                                    <AlertDialogAction className="bg-white text-black hover:bg-white hover:bg-opacity-20">
+                                                                        Continue
+                                                                    </AlertDialogAction>
                                                                 </AlertDialogFooter>
                                                             </AlertDialogContent>
                                                         </AlertDialog>
