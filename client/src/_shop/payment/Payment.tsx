@@ -20,11 +20,12 @@ import { FaSearch } from "react-icons/fa";
 import useAuthUser from "@/hooks/useAuthUser";
 import mapboxgl from "mapbox-gl";
 
-// Sử dụng biến môi trường
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
-
 let isAOSInitialized = false;
+
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || "";
 const Payment = () => {
+	// console.log("Mapbox Access Token:", import.meta.env.VITE_MAPBOX_ACCESS_TOKEN);
+
 	useEffect(() => {
 			AOS.init({
 				duration: 1200,
