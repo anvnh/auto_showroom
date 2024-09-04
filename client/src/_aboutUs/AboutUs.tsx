@@ -4,14 +4,18 @@ import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import { Link } from "react-router-dom"
 import { Canvas } from "@react-three/fiber"
-import { MarqueText } from "@/_root/_homepage"
+import { MarqueText, Navbar } from "@/_root/_homepage"
 import {
     aap_jepg, icon1, icon2, icon3, icon4, icon5, icon6,
     an, anh, phat, an1, anh1, hplat1,
 } from "@/assets/aboutUs"
 import { smoothScroll_lenis } from "@/_car/audi/audi_A5/Effect"
-import Navbar from "@/_shop/common/Navbar"
+
 import Footer from "@/components/common/Footer"
+import AOS from "aos";
+
+import "aos/dist/aos.css";
+
 const AboutUs = () => {
     gsap.registerPlugin(ScrollTrigger)
     const founder_txt1 = useRef(null)
@@ -156,13 +160,24 @@ const AboutUs = () => {
             ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         }
     }, [])
+
+
+    useEffect(() => {
+		AOS.init({
+			duration: 700,
+			easing: "ease-in-out",
+			once: false,
+			mirror: true,
+			anchorPlacement: "top-bottom",
+		});
+	}, []);
     return (
         <div className="bg-neutral-100">
 
             <Navbar />
             <div className="   w-screen h-screen flex flex-col justify-center items-center  select-none">
-                <section className="mt-[20%] md:mt-[10%] h-[30%] w-[80%]">
-                    <h2 data-aos="fade-up" className="text-[40px] font-kanit font-bold w-full text-center text-stone-700">
+                <section className="mt-[25%] md:mt-[10%] h-[30%] w-[80%]">
+                    <h2 data-aos="fade-up" className="text-xl md:text-[40px] font-kanit font-bold w-full text-center text-stone-700">
                         WE ARE FOUNDER FROM VKU, WHO HAVE A PASSION FOR CARS AND BUSINESS,
                         CAR ARE OUR LIFE.
 
