@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button"
+import { AiFillDelete } from "react-icons/ai";
 import {
     Dialog,
     DialogContent,
@@ -95,26 +96,29 @@ const OrdersTable = () => {
                                 <thead>
                                     <tr>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                                        Name user
-                                    </th>
+                                            Name user
+                                        </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                                        Name Product
-                                    </th>
+                                            Name Product
+                                        </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                                        Address
-                                    </th>
+                                            Address
+                                        </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                                        Phone Number
-                                    </th>
+                                            Phone Number
+                                        </th>
                                         <th className="px-6 py-3 w-[250px] text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                                        Email
-                                    </th>
+                                            Email
+                                        </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                                        Status
-                                    </th>
+                                            Status
+                                        </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                                        Total amount
-                                    </th>
+                                            Total amount
+                                        </th>
+                                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                                            Action
+                                        </th>
                                     </tr>
                                 </thead>
 
@@ -145,8 +149,8 @@ const OrdersTable = () => {
                                                         <Dialog>
                                                             <DialogTrigger asChild>
                                                                 <button className="text-blue-500 hover:underline" >
-                                                                See more
-                                                            </button>
+                                                                    See more
+                                                                </button>
                                                             </DialogTrigger>
                                                             <DialogContent className="sm:max-w-[425px] bg-primary backdrop-blur-md bg-opacity-35">
                                                                 <DialogHeader>
@@ -243,6 +247,12 @@ const OrdersTable = () => {
                                                     <div className="text-sm text-gray-300">
                                                         ${order.totalPrice.toLocaleString()}
                                                     </div>
+                                                </td>
+                                                <td className="pl-20 py-4 whitespace-nowrap">
+                                                    <AiFillDelete
+                                                        className="text-red-500 hover:cursor-pointer w-6 h-6"
+                                                        onClick={() => toast.error("This order has been deleted")}
+                                                    />
                                                 </td>
                                             </motion.tr>
                                     ))}
