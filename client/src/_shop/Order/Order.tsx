@@ -65,26 +65,23 @@ const Order = () => {
 				</div>
                 {showDeliveryForm && (
                     <div data-aos="fade-up" className="w-full justify-center px-40  flex mt-12 ">
-                            <div className="w-full backdrop-blur-xl p-5 h-[500px] justify-center rounded-md flex bg-gray-700 ">
-                            delivery
-                                
-                            </div>
+                        <div className="w-full backdrop-blur-xl p-5 h-[500px] justify-center rounded-md flex bg-gray-700 ">
+                            Delivery
+                        </div>
                     </div>
                 )}
-                 {showCompleteForm && (
+                {showCompleteForm && (
                     <div data-aos="fade-up" className="w-full justify-center px-40 p-5 flex mt-12 ">
-                            <div className="w-full h-[500px] justify-center rounded-md flex bg-gray-700 ">
-
-                                complete
-                            </div>
+                        <div className="w-full backdrop-blur-xl p-5 h-[500px] justify-center rounded-md flex bg-gray-700 ">
+                            Complete
+                        </div>
                     </div>
                 )}
-                  {showCanceled && (
+                {showCanceled && (
                     <div data-aos="fade-up" className="w-full justify-center px-40 p-5 flex mt-12 ">
-                            <div className="w-full h-[500px] justify-center rounded-md flex bg-gray-700 ">
-
-                                canceled
-                            </div>
+                        <div className="w-full backdrop-blur-xl p-5 h-[500px] justify-center rounded-md flex bg-gray-700 ">
+                            Canceled
+                        </div>
                     </div>
                 )}
 			</div>
