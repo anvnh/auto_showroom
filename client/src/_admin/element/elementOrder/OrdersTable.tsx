@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button"
 import { AiFillDelete } from "react-icons/ai";
 import {
@@ -27,9 +27,12 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {Toaster, toast} from "react-hot-toast";
+import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 
 
 const OrdersTable = () => {
+
+    const queryClient = useQueryClient();
 
 	const { data: orders, isLoading, refetch, isRefetching, } = useQuery({
 		queryKey: ["orders"],
@@ -49,6 +52,31 @@ const OrdersTable = () => {
 		},
 	});
 
+	const { mutate: deleteOrder, isPending: isDeletingOrder } = useMutation({
+		mutationFn: async (productId) => {
+			try {
+                const response = await fetch(`/api/order/delete/${productId}`, {
+                    method: "DELETE",
+                });
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || "Something went wrong!");
+                }
+                return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["orders"] });
+            toast.success("Delete order successfully");
+		},
+		onError: (error) => {
+            toast.error(error.message);
+		},
+	});
+
 	const [searchTerm, setSearchTerm] = useState("");
 	const [filteredUsers, setFilteredUsers] = useState(orders);
 
@@ -61,6 +89,11 @@ const OrdersTable = () => {
 		);
 		setFilteredUsers(filtered);
 	};
+
+    const handleDelete = async (id) => {
+        deleteOrder(id);
+    }
+        
 
 	return (
         <>
@@ -249,10 +282,14 @@ const OrdersTable = () => {
                                                     </div>
                                                 </td>
                                                 <td className="pl-20 py-4 whitespace-nowrap">
-                                                    <AiFillDelete
-                                                        className="text-red-500 hover:cursor-pointer w-6 h-6"
-                                                        onClick={() => toast.error("This order has been deleted")}
-                                                    />
+                                                    {isDeletingOrder ? (
+                                                        <LoadingSpinner />
+                                                    ) : (
+                                                        <AiFillDelete
+                                                            className="text-red-500 hover:cursor-pointer w-6 h-6"
+                                                            onClick={() => handleDelete(order._id)}
+                                                        />
+                                                    )}
                                                 </td>
                                             </motion.tr>
                                     ))}
