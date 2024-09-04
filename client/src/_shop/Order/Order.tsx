@@ -6,7 +6,7 @@ const Order = () => {
 
 	useEffect(() => {
         AOS.init({
-            duration: 600,
+            duration: 700,
             easing: "ease-in-out",
             once: true,
             mirror: false,

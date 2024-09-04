@@ -39,7 +39,7 @@ const Blogs = () => {
                         There is no blog post yet. Be the first one to create a blog post.
                     </p>
                 )}
-                <div data-aos="zoom-out" className="md:flex w-full md:gap-4 space-y-12 md:space-y-0 ">
+                <div data-aos="fade-up" className="md:flex w-full md:gap-4 space-y-12 md:space-y-0 ">
                     {!isLoading && 
                         !isRefetching && 
                         newestPosts && 

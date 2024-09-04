@@ -27,7 +27,7 @@ import { car1popular } from "@/_productpage";
 const Product = () => {
 	useEffect(() => {
 		AOS.init({
-			duration: 1000,
+			duration: 600,
 			easing: "ease-in-out",
 			once: false,
 			mirror: true,
@@ -54,7 +54,7 @@ const Product = () => {
 					<Link to="/Mercedes-AMG-CLS">
 						<div
 							style={{ backgroundImage: `url(${acc})` }}
-							data-aos="zoom-out"
+							data-aos="fade-right"
 							className="card group bg-cover bg-center xl:col-span-1 col-span-2 bg-white rounded-3xl p-9 relative bottom-7 transition-all ease-in-out duration-300 hover:bg-gray-500 "
 						>
 							<div className="car w-full flex justify-center sm:justify-end">
@@ -125,7 +125,7 @@ const Product = () => {
 					<Link to="/Rolls-Royce-Ghost-2021">
 						<div
 							style={{ backgroundImage: `url(${acc})` }}
-							data-aos="zoom-out"
+								data-aos="fade-left"
 							className="card group bg-cover bg-center hidden xl:block bg-white rounded-3xl p-0 w-full h-full group relative bottom-7"
 						>
 							<div className="car -mt-0 w-[350px] h-[200px]">
@@ -265,7 +265,7 @@ const Product = () => {
 				</div>
                 */}
 				<div
-					data-aos="slide-up"
+					data-aos="fade-up"
 					style={{ backgroundImage: `url(${ditme})` }}
 					className=" bg-cover bg-center h-24 sm:h-48 relative object-cover"
 				>
