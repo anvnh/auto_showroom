@@ -171,11 +171,13 @@ const LoginPage: React.FC = () => {
 			setShowSignUpForm(true);
 			setShowSignInForm(false);
 			setForgotForm(false);
+			setChangePass(false);
 			setNumberForm(false);
 			setActiveForm("signUp");
 		} else if (form === "signIn") {
 			setShowSignInForm(true);
 			setShowSignUpForm(false);
+			setChangePass(false);
 			setForgotForm(false);
 			setNumberForm(false);
 			setActiveForm("signIn");
@@ -184,12 +186,14 @@ const LoginPage: React.FC = () => {
 			setShowSignUpForm(false);
 			setForgotForm(true);
 			setNumberForm(false);
+			setChangePass(false);
 			setActiveForm("forgot");
 		} else if (form === "number") {
 			setShowSignInForm(false);
 			setShowSignUpForm(false);
 			setForgotForm(false);
 			setNumberForm(true);
+			setChangePass(false);
 			setActiveForm("number");
 		} else if (form === "changepass") {
 			setChangePass(true);
