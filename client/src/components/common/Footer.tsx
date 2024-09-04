@@ -23,7 +23,8 @@ const Footer = () => {
             <div className='fixed bottom-0 h-[600px] w-full bg-gray-800'>
                 <section className='w-full h-full flex flex-col justify-center items-center'>
                     <div className='h-[65%] w-[93%] md:w-[85%] xl:w-[90%]    flex flex-col justify-center items-center'>
-                        <p className='w-full text-center text-[54px] ss:text-[75px] sm:text-[90px] md:text-[110px] lg:text-[130px] mlg:text-[150px] xl:text-[200px] font-semibold font-syncopate'>
+                        <p className='w-full text-center text-[90px]  ss:text-[120px]   lg:text-[130px] mlg:text-[150px]
+                         xl:text-[200px] font-semibold font-syncopate'>
                             AAP
                         </p>
                         {/* <div>
@@ -32,7 +33,7 @@ const Footer = () => {
                                 plus it integrates a social network to connect people who are passionate about cars.
                             </p>
                         </div> */}
-                        <section className='h-[230px] border-t w-full flex justify-center gap-x-[4%]'>
+                        <section className='h-[230px] border-t  w-full flex justify-center gap-x-[4%]'>
                             <div className='w-full sm:w-[40%] h-full flex justify-between sm:justify-center '>
                                 <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0 justify-start ss:justify-center items-center '>
                                     <h3 id="about" className='text-[26px] xs:text-[30px]  font-semibold font-kanit  '>ABOUT</h3>
@@ -51,10 +52,6 @@ const Footer = () => {
                                 <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0  justify-start ss:justify-center items-center '>
                                     <h3 id="contact" className='text-[26px] xs:text-[30px] font-semibold font-kanit '>CONTACT</h3>
                                     <section className='mt-[5px] text-center flex flex-col  text-[18px] font-medium'>
-                                        {/* <h4>Facebook</h4> */}
-
-                                        {/* <h4>Instagram</h4> */}
-                                        {/* <h4>Github</h4> */}
                                         <Link to="https://www.instagram.com/just.hplat/">
                                             <div className='hover:bg-red-500 transition-all duration-500  hover:scale-105 flex items-center gap-x-[5px]'>
                                                 <FaInstagram /> Instagram
@@ -78,9 +75,12 @@ const Footer = () => {
                                 <div className='border-r h-[80%] w-[1px] border-red-500'></div>
                             </div>
 
-                            <div className='hidden sm:flex w-[40%]  justify-start items-center'>
-                                <p className='slogan font-kanit  text-[19px] xsm:text-[16px]'>
-                                AAP Showroom is a website specializing in selling cars at reasonable prices, suitable for consumers' needs. In addition to providing a variety of cars from famous brands, AAP Showroom also integrates a social network dedicated to car enthusiasts, creating a space to connect, share experiences, evaluate cars and trade with people with similar interests. This is not only a place to buy and sell cars but also a community that connects car lovers, helping them update the latest information about cars, technology and trends in the market.
+                            <div className='hidden mt-[20px] xsm:mt-0 sm:flex w-[40%]  justify-start items-center'>
+                                <p className='slogan font-kanit  text-[19px] xsm:text-[16px] md:text-[18px] mlg:text-[21px]'>
+                                    AAP Showroom is a website specializing in selling cars at reasonable prices, suitable for consumers' needs.
+                                    In addition,
+                                    AAP Showroom also integrates a social network dedicated to car enthusiasts, creating a space to connect,
+                                    share experiences.
                                 </p>
                             </div>
 
