@@ -415,6 +415,7 @@ const Payment = () => {
             sendPaymentMail({
                 cars: vehicleInfo,
                 info: {
+                    fullName: inputinformation.RecipientName,
                     orderId,
                     address,
                     shippingCost,

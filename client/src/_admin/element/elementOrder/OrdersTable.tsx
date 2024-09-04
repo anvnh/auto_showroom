@@ -130,12 +130,12 @@ const OrdersTable = () => {
                                                     <div className="flex items-center">
                                                         <div className="flex-shrink-0 h-10 w-9">
                                                             <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-                                                                {order.user.fullName.charAt(0)}
+                                                                {order.user ? order.user.fullName.charAt(0) : order.fullName.charAt(0)}
                                                             </div>
                                                         </div>
                                                         <div className="ml-3">
                                                             <div className="text-sm font-sm text-gray-100">
-                                                                {order.user.fullName}
+                                                                {order.user ? order.user.fullName : order.fullName}
                                                             </div>
                                                         </div>
                                                     </div>
