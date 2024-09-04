@@ -9,9 +9,12 @@ import icon6 from "./6.png"
 import an from "./an.jpg"
 import anh from "./anh.jpg"
 import phat from "./phat.jpg"
+import an1 from "./an1.jpg"
+import anh1 from "./anh2.jpg"
+import hplat1 from "./hplat1.jpg"
 
 export {
     aap, aap_jepg,
     icon1, icon2, icon3, icon4, icon5, icon6,
-    an, anh, phat,
+    an, anh, phat, an1, anh1, hplat1,
 }
