@@ -192,7 +192,7 @@ const Car3popular: React.FC = () => {
 						/>
 					</div>
 					<Parallax
-						pages={8.5}
+						pages={8.65}
 						style={{ top: "0", left: "0" }}
 						className="bg-black"
 						ref={parallaxRef} // Gán ref vào Parallax
@@ -513,19 +513,19 @@ const Car3popular: React.FC = () => {
 						</ParallaxLayer>
 						<ParallaxLayer
 							offset={7.4}
-							speed={0.5}
+							speed={0.8}
 							factor={1}
 							ref={(ref) => (parallaxLayerRefs.current[5] = ref)}
 						>
 							{isLoading && <LoadingSpinner />}
 							{!isLoading && !isRefetching && car && (
-								<div className="article-tiles-container bg-black text-white p-6 bottom-[1600px] relative md:bottom-[500px]">
+								<div className="article-tiles-container bg-gray-900 text-white p-6 bottom-[1600px] h-[1900px] relative md:bottom-[500px]">
 									<Toaster
 										position="top-center"
 										reverseOrder={false}
 									/>
 									<div className="article-tiles-desc mb-6 text-center font-syncopate">
-										<h3 className="text-4xl ss:text-5xl mb-2 font-bold">
+										<h3 className="text-4xl pt-5 ss:text-5xl mb-2 font-bold">
 											Rolls-Royce-Ghost-2021
 										</h3>
 										<p className="text-2xl font-kanit">$ 332,500</p>
