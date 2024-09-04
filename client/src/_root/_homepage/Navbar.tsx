@@ -23,7 +23,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 }) => {
 	useEffect(() => {
 		AOS.init({
-			duration: 900,
+			duration: 600,
 			easing: "ease-in-back",
 			once: false,
 			mirror: true,
@@ -481,7 +481,7 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									data-aos="fade-up"
 									data-aos-delay="900"
 									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl">
-									<Link to="/aboutUs">
+									<Link to="/about-us">
 										<p> About Us </p>
 										<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 									</Link>

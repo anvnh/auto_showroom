@@ -161,29 +161,29 @@ const AboutUs = () => {
 
             <Navbar />
             <div className="   w-screen h-screen flex flex-col justify-center items-center  select-none">
-                <section className="mt-[8%] h-[30%] w-[80%]">
-                    <h2 className="text-[40px] font-kanit font-bold w-full text-center text-stone-700">
+                <section className="mt-[20%] md:mt-[10%] h-[30%] w-[80%]">
+                    <h2 data-aos="fade-up" className="text-[40px] font-kanit font-bold w-full text-center text-stone-700">
                         WE ARE FOUNDER FROM VKU, WHO HAVE A PASSION FOR CARS AND BUSINESS,
                         CAR ARE OUR LIFE.
 
                     </h2>
                 </section>
                 <section className=" mb-[3%] h-[60%] w-full flex justify-center items-center ">
-                    <img src={aap_jepg} className="w-[95%] h-full object-cover rounded-[20px]" />
+                    <img data-aos="fade-up" src={aap_jepg} className="w-[95%] h-full object-cover rounded-[20px]" />
                 </section>
             </div>
 
-            <div className="w-screen h-[50%] bg-neutral-800 flex gap-x-[2%] justify-center items-center">
-                <section className="ml-[2%] h-1/2 w-[30%]">
-                    <p className="text-[30px] text-neutral-200 font-bold">
+            <div className="w-screen h-auto md:h-[50%] bg-neutral-800 flex md:flex-row flex-col justify-center px-8 md:px-0 items-center">
+                <section className="ml-[2%] h-1/2 mt-12 md:mt-0 md:w-[30%]">
+                    <p data-aos="fade-up" className="text-[30px] text-neutral-200 font-bold">
                         Studio based in the
                         city of free and
                         creative people - Ngu Hanh Son,
                         Da Nang
                     </p>
                 </section>
-                <section className="h-1/2 w-[30%]">
-                    <p className="text-[17px] text-neutral-200 font-semibold">
+                <section className="ml-[2%] h-1/2 mt-12 md:mt-0 md:w-[30%]">
+                    <p data-aos="fade-up" className="md:text-[17px] text-neutral-200 font-semibold">
                         Our projects are grounded on the combination of creative
                         view and commercial value, where:
                         - It’s critical for us not only to create beautiful images but
@@ -195,8 +195,8 @@ const AboutUs = () => {
                         case studies.
                     </p>
                 </section>
-                <section className="h-1/2 w-[30%]">
-                    <p className="text-[17px] text-neutral-200 font-semibold">
+                <section className="ml-[2%] h-1/2 mt-12 md:mt-0 md:w-[30%] mb-12 md:mb-0">
+                    <p data-aos="fade-up" className="md:text-[17px] text-neutral-200 font-semibold">
                         Our inspired and enthusiastic team of 3D specialists can
                         bring your ideas into volumetric reality. Scroll below to see
                         each team player.
@@ -210,37 +210,37 @@ const AboutUs = () => {
 
             <div className="w-screen h-[70%] flex flex-col bg-neutral-100 text-neutral-700">
                 <section className="w-screen h-1/2  flex justify-evenly">
-                    <div className="w-[40%] h-[90%]  flex flex-col justify-center items-center">
-                        <h3 className="text-[100px]">
+                    <div data-aos="fade-right" className="w-[40%] h-[90%]  flex flex-col justify-center items-center">
+                        <h3 className="text-[80px]">
                             35
                         </h3>
-                        <p className="text-[22px]">
+                        <p className="text-[20px]">
                             Projects started in 2023
                         </p>
                     </div>
-                    <div className="w-[40%] h-[90%] flex flex-col justify-center items-center">
-                        <h3 className="text-[100px]">
+                    <div data-aos="fade-right" className="w-[40%] h-[90%] flex flex-col justify-center items-center">
+                        <h3 className="text-[80px]">
                             15+
                         </h3>
-                        <p className="text-[22px]">
+                        <p className="text-[20px]">
                             Talents on board and growing
                         </p>
                     </div>
                 </section>
                 <section className="w-screen h-1/2  flex  justify-evenly">
-                    <div className="w-[40%] h-[90%] flex flex-col justify-center items-center">
-                        <h3 className="text-[100px]">
+                    <div data-aos="fade-left" className="w-[40%] h-[90%] flex flex-col justify-center items-center">
+                        <h3 className="text-[80px]">
                             50+
                         </h3>
-                        <p className="text-[22px]">
+                        <p className="text-[20px]">
                             Clients worldwide
                         </p>
                     </div>
-                    <div className="w-[40%] h-[90%] flex flex-col justify-center items-center">
-                        <h3 className="text-[100px]">
+                    <div data-aos="fade-left" className="w-[40%] h-[90%] flex flex-col justify-center items-center">
+                        <h3 className="text-[80px]">
                             2
                         </h3>
-                        <p className="text-[22px]">
+                        <p className="text-[20px]">
                             Years experience
                         </p>
                     </div>
@@ -250,40 +250,40 @@ const AboutUs = () => {
             <div className="w-screen h-1/2 flex flex-col bg-neutral-800">
                 <section className="w-full h-1/2 flex justify-evenly ">
                     <div className="w-[30%] h-full flex justify-center items-center gap-x-[2%]">
-                        <img src={icon1} className="w-[50px] h-[50px]" />
-                        <p className="text-[20px] font-kanit font-semibold">
+                        <img data-aos="fade-right" src={icon1} className="w-[50px] h-[50px]" />
+                        <p data-aos="fade-left" className="text-[20px] font-kanit font-semibold hidden md:block">
                             HIGH-QUALITY RENDERS: STUNNING VISUALS TO  BRING YOUR IDEAS TO LIFE
                         </p>
                     </div>
                     <div className="w-[30%] h-full flex justify-center items-center gap-x-[2%]">
-                        <img src={icon2} className="w-[50px] h-[50px] " />
-                        <p className="text-[20px] font-kanit font-semibold">
+                        <img data-aos="fade-right" src={icon2} className="w-[50px] h-[50px] " />
+                        <p data-aos="fade-left" className="text-[20px] font-kanit font-semibold hidden md:block">
                             DIVERSE EXPERTISE: SKILLED TEAM WITH VARIOUS INDUSTRIES & STYLES EXPERTISE
                         </p>
                     </div>
                     <div className="w-[30%] h-full flex justify-center items-center gap-x-[2%]">
-                        <img src={icon3} className="w-[50px] h-[50px] " />
-                        <p className="text-[20px] font-kanit font-semibold">
+                        <img data-aos="fade-right" src={icon3} className="w-[50px] h-[50px] " />
+                        <p data-aos="fade-left" className="text-[20px] font-kanit font-semibold hidden md:block">
                             COLLABORATIVE APPROACH: WORK CLOSELY WITH CLIENTS TO MEET THEIR EXPECTATIONS
                         </p>
                     </div>
                 </section>
                 <section className="w-full h-1/2 flex justify-evenly ">
-                    <div className="w-[30%] h-full flex justify-center items-center gap-x-[2%]">
+                    <div data-aos="fade-right" className="w-[30%] h-full flex justify-center items-center gap-x-[2%]">
                         <img src={icon4} className="w-[50px] h-[50px]" />
-                        <p className="text-[20px] font-kanit font-semibold">
+                        <p className="text-[20px] font-kanit font-semibold hidden md:block">
                             FAST TURNAROUND: EFFICENT DELIVERY AND NON-COMPROMISING QUALITY
                         </p>
                     </div>
-                    <div className="w-[30%] h-full flex justify-center items-center gap-x-[2%]">
+                    <div data-aos="fade-right" className="w-[30%] h-full flex justify-center items-center gap-x-[2%]">
                         <img src={icon5} className="w-[50px] h-[50px] " />
-                        <p className="text-[20px] font-kanit font-semibold">
+                        <p className="text-[20px] font-kanit font-semibold hidden md:block">
                             CUSTOMIZABLE SOLUTIONS: TAILORED 3D SOLUTIONS FOR YOUR UNIQUE REQUIREMENTS
                         </p>
                     </div>
-                    <div className="w-[30%] h-full flex justify-center items-center gap-x-[2%]">
+                    <div data-aos="fade-right" className="w-[30%] h-full flex justify-center items-center gap-x-[2%]">
                         <img src={icon6} className="w-[50px] h-[50px] " />
-                        <p className="text-[20px] font-kanit font-semibold">
+                        <p className="text-[20px] font-kanit font-semibold hidden md:block">
                             CUTTING-EDGE TECHNOLOGY: LATEST SOFTWARE & HARDWARE FOR TOP-NOTCH RESULTS
                         </p>
                     </div>
@@ -294,24 +294,24 @@ const AboutUs = () => {
 
             <div className="w-screen h-screen flex justify-evenly items-center ">
                 <section className="w-[28%] h-full ">
-                    <img src={an} className="w-full h-[80%] object-cover" />
-                    <div className="w-full h-[40%]">
-                        <h2 className="text-[30px] font-kanit font-semibold ">VO NGUYEN HOANG AN</h2>
-                        <p className="text-[17px] font-kanit font-semibold">FOUNDER</p>
+                    <img data-aos="fade-up" src={an} className="w-full h-[50%] md:h-[80%] object-cover" />
+                    <div data-aos="fade-up" className="w-full h-[40%]">
+                        <h2 className="md:text-[30px] font-kanit font-semibold mt-5">VO NGUYEN HOANG AN</h2>
+                        <p className="text-[17px] font-kanit font-semibold hidden md:block">FOUNDER</p>
                     </div>
                 </section>
                 <section className="w-[28%] h-full">
-                    <img src={anh} className="w-full h-[80%] object-cover" />
-                    <div className="w-full h-[40%]">
-                        <h2 className="text-[30px] font-kanit font-semibold ">NGUYEN VAN TUAN ANH</h2>
-                        <p className="text-[17px] font-kanit font-semibold">FOUNDER</p>
+                    <img data-aos="fade-up" src={anh} className="w-full h-[40%] md:h-[80%] object-cover" />
+                    <div data-aos="fade-up" className="w-full h-[40%]">
+                        <h2 className="md:text-[30px] font-kanit font-semibold mt-5">NGUYEN VAN TUAN ANH</h2>
+                        <p className="text-[17px] font-kanit font-semibold hidden md:block">FOUNDER</p>
                     </div>
                 </section>
-                <section className="w-[28%] h-full">
-                    <img src={phat} className="w-full h-[80%] object-cover" />
-                    <div className="w-full h-[40%]">
-                        <h2 className="text-[30px] font-kanit font-semibold ">LA TRUONG HOANG PHAT</h2>
-                        <p className="text-[17px] font-kanit font-semibold">FOUNDER</p>
+                <section className="w-[28%] h-full ">
+                    <img data-aos="fade-up" src={phat} className="w-full h-[70%] md:h-[80%] object-cover" />
+                    <div data-aos="fade-up"  className="w-full h-[40%]">
+                        <h2 className="md:text-[30px] font-kanit font-semibold mt-5">LA TRUONG HOANG PHAT</h2>
+                        <p className="text-[17px] font-kanit font-semibold hidden md:block">FOUNDER</p>
                     </div>
                 </section>
             </div>
@@ -363,14 +363,14 @@ const AboutUs = () => {
             <div ref={section_founder1_mobile} className="flex flex-col xsm:hidden w-screen h-screen  sticky top-0 bg-neutral-900  ">
                 <section className=" w-full xsm:w-1/2 h-1/2   xsm:h-full relative overflow-y-hidden">
                     <div ref={founder1_overlay_mobile} className=" w-full absolute top-0  h-full bg-neutral-900"></div>
-                    <img src={an1} className="w-full h-full object-cover" />
+                    <img src={an1} className="w-full md:h-full object-cover" />
                 </section>
                 <section className="w-full xsm:w-1/2  h-1/2 xsm:h-full mt-[20px]  ml-[20px] md:ml-[40px]  flex flex-col justify-start">
                     <div className="w-full  h-full">
-                        <p className="w-full text-[24px] xs:text-[30px] ss:text-[40px]  font-bold font-syncopate text-white   ">
+                        <p data-aos="fade-up" className="w-full text-[24px] xs:text-[30px] ss:text-[40px]  font-bold font-syncopate text-white   ">
                             HOANG AN
                         </p>
-                        <div className="hidden ss:flex mt-[1%]  gap-x-[15px] ">
+                        <div data-aos="fade-up" className="hidden ss:flex mt-[1%]  gap-x-[15px] ">
                             <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
                                 <p>2005</p>
                             </section>
@@ -382,7 +382,7 @@ const AboutUs = () => {
                             </section>
                         </div>
                         <div className="mt-[2%] w-[86%]">
-                            <p className="split1 text-[20px] md:text-[25px] overflow-y-hidden">
+                            <p data-aos="fade-up" className="split1 text-[20px] md:text-[25px] overflow-y-hidden">
                                 I am an ambitious, enterprising person. I find a way to overcome the difficulties that challenge me,
                                 not afraid of anything.
                                 Don’t tell me what do you think about that I want to hear.Tell me the truth
@@ -390,7 +390,7 @@ const AboutUs = () => {
                         </div>
                         <div className="mt-[4%] w-full  ">
                             <Link to="https://www.facebook.com/aanvnh?comment_id=Y29tbWVudDoxNTA0OTUyMTIwMTM3OTg3XzM5MjQwNTExMTExNTE2NzM%3D">
-                                <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450">
+                                <button data-aos="fade-up" className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450">
                                     Contact me
                                 </button>
                             </Link>
@@ -444,12 +444,12 @@ const AboutUs = () => {
                     <img src={anh1} className="w-full h-full object-cover" />
                     <div ref={founder2_overlay_mobile} className="absolute top-0 w-full h-full bg-neutral-900"></div>
                 </section>
-                <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[20px] ml-[20px] md:ml-[40px]  flex flex-col justify-start">
+                <section data-aos="fade-up" className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[20px] ml-[20px] md:ml-[40px]  flex flex-col justify-start">
                     <div className="w-full  h-full">
                         <p className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] font-bold font-syncopate">
                             TUAN ANH
                         </p>
-                        <div className="hidden ss:flex gap-x-[15px] ">
+                        <div data-aos="fade-up" className="hidden ss:flex gap-x-[15px] ">
                             <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
                                 <p>2005</p>
                             </section>
@@ -460,8 +460,8 @@ const AboutUs = () => {
                                 <p>VKU</p>
                             </section>
                         </div>
-                        <div className="w-[86%] mt-[2%]">
-                            <p ref={founder_txt2} className="  text-[20px] md:text-[25px] overflow-y-hidden">
+                        <div data-aos="fade-up" className="w-[86%] mt-[2%]">
+                            <p  ref={founder_txt2} className="  text-[20px] md:text-[25px] overflow-y-hidden">
                                 I am a person with a passion for information technology, especially software technology.
                                 Web and App are part of my life.
                                 The closer you let people get to you, the easier it gets for them to hurt you
@@ -469,7 +469,7 @@ const AboutUs = () => {
                         </div>
                         <div className="mt-[5%] w-full  ">
                             <Link to="https://www.facebook.com/profile.php?id=100032385616885">
-                                <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450">
+                                <button data-aos="fade-up" className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450">
                                     Contact me
                                 </button>
                             </Link>
@@ -515,7 +515,7 @@ const AboutUs = () => {
                     </div>
                 </section>
                 <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
-                    <img src={hplat1} className="w-full h-full object-cover" />
+                    <img src={hplat1} className="w-full object-cover" />
                     <div ref={founder3_overlay} className="absolute top-0 w-full h-full bg-neutral-900"></div>
                 </section>
             </div>
@@ -523,17 +523,17 @@ const AboutUs = () => {
             <div ref={section_founder3_mobile} className="flex xsm:hidden 
         flex-col xsm:flex-row w-screen h-screen   sticky top-0 bg-neutral-900 overlow-y-hidden">
                 <section className=" w-full xsm:w-1/2 h-1/2 xsm:h-full relative overflow-y-hidden">
-                    <img src={hplat1} className="w-full h-full object-cover" />
+                    <img src={hplat1} className="w-full h-full bg-center object-cover" />
                     <div ref={founder3_overlay_mobile} className="absolute top-0 w-full h-full bg-neutral-900"></div>
                 </section>
-                <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[20px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
+                <section className="w-full pb-96 md:pb-0 xsm:w-1/2 h-1/2 xsm:h-full mt-[20px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
                     <div className="w-full  h-full">
                         <div>
-                            <p className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] font-bold font-syncopate">
+                            <p data-aos="fade-up" className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] font-bold font-syncopate">
                                 HOANG PHAT
                             </p>
                         </div>
-                        <div className="hidden ss:flex gap-x-[15px] ">
+                        <div  data-aos="fade-up" className="hidden ss:flex gap-x-[15px] ">
                             <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
                                 <p>2005</p>
                             </section>
@@ -544,7 +544,7 @@ const AboutUs = () => {
                                 <p>VKU</p>
                             </section>
                         </div>
-                        <div className="w-[85%] mt-[2%]">
+                        <div data-aos="fade-up" className="w-[85%] mt-[2%]">
                             <p ref={founder_txt3} className="  text-[20px] md:text-[25px] overflow-y-hidden">
                                 I am a person with a passion for cars. Since childhood, I have been exposed to cars a lot,
                                 because it has instilled such a great passion in me.
@@ -552,7 +552,7 @@ const AboutUs = () => {
                             </p>
                         </div>
                         <div className="mt-[5%] w-full  ">
-                            <Link to="https://www.facebook.com/hplatdev">
+                            <Link data-aos="fade-up" to="https://www.facebook.com/hplatdev">
                                 <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450">
                                     Contact me
                                 </button>
