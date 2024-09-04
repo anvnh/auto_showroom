@@ -24,7 +24,6 @@ const slidebar_items = [
 	{ name: "Overview", icon: BarChart2, color: "white" },
 	{ name: "Product", icon: ShoppingBag, color: "white" },
 	{ name: "Users", icon: User, color: "white" },
-	{ name: "Sales", icon: DollarSign, color: "white" },
 	{ name: "Voucher", icon: RiCoupon2Fill , color: "white" },
 	{ name: "Orders", icon: ShoppingCart, color: "white" },
 	{ name: "Analytics", icon: TrendingUp, color: "white" },
@@ -114,7 +113,6 @@ const NavbarAdmin = () => {
 				{currentPage === "Product" && <ProductPage />}
 				{currentPage === "Users" && <Users />}
 				{currentPage === "Voucher" && <Vouchers />}
-				{currentPage === "Sales" && <Sales />}
 				{currentPage === "Orders" && <Orders />}
 				{currentPage === "Analytics" && <Analytics />}
 			
