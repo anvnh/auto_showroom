@@ -71,3 +71,20 @@ export const addOrderItems = async (req, res) => {
         res.status(500).json({ message: "Internal Server error" });
     }
 };
+
+export const deleteOrder = async (req, res) => {
+    try {
+        const user = req.user;
+        if(user.isAdmin) {
+            const order = await Order.findByIdAndDelete(req.params.id);
+            if(order) {
+                res.status(200).json({ message: "Order deleted successfully" });
+            } else {
+                res.status(404).json({ message: "Order not found" });
+            }
+        }
+    } catch (error) {
+        console.log("Error in deleteOrder controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
