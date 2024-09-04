@@ -88,3 +88,88 @@ export const deleteOrder = async (req, res) => {
         res.status(500).json({ message: "Internal Server error" });
     }
 }
+
+export const getOnDeliveyUserOrders = async (req, res) => {
+    try {
+        const user = req.user;
+        const orders = await Order.find({ isDelivered: false, isCancelled: false, user: user._id }).populate("user").populate("orderItems.carId");
+        res.status(200).json(orders);
+    } catch (error) {
+        console.log("Error in getUserOrders controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
+
+export const getCompletedUserOrders = async (req, res) => {
+    try {
+        const user = req.user;
+        const orders = await Order.find({ isDelivered: true, user: user._id }).populate("user").populate("orderItems.carId");
+        res.status(200).json(orders);
+    } catch (error) {
+        console.log("Error in getUserOrders controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
+export const getCancelledOrders = async (req, res) => {
+    try {
+        const user = req.user;
+        const orders = await Order.find({ isCancelled: true, user: user._id }).populate("user").populate("orderItems.carId");
+        res.status(200).json(orders);
+    }
+    catch(error) {
+        console.log("Error in getCancelledOrders controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
+export const cancelUserOrder = async (req, res) => {
+    try {
+        const user = req.user;
+        const order = await Order.findById(req.params.id);
+
+        if(order) {
+            if(order.user.toString() === user._id.toString()) {
+                if(!order.isDelivered) {
+                    order.isCancelled = true;
+                    await order.save();
+                    res.status(200).json({ message: "Order cancelled successfully" });
+                } else {
+                    res.status(400).json({ message: "Order already delivered" });
+                }
+            } else {
+                res.status(400).json({ message: "You are not authorized to cancel this order" });
+            }
+        } else {
+            res.status(404).json({ message: "Order not found" });
+        }
+    } catch (error) {
+        console.log("Error in cancelUserOrder controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
+export const changeStatusOrder = async (req, res) => {
+    try {
+        const user = req.user;
+        if(user.isAdmin) {
+            const order = await Order.findById(req.params.id);
+            if(order.isCancelled) {
+                res.status(404).json({ message: "Order is already cancelled" });
+            }
+            if(order) {
+                order.isDelivered = !order.isDelivered;
+                await order.save();
+                res.status(200).json({ message: "Order status changed successfully" });
+            } else {
+                res.status(404).json({ message: "Order not found" });
+            }
+        } else {
+            res.status(400).json({ message: "You are not authorized to change order status" });
+        }
+    } catch (error) {
+        console.log("Error in changeStatusOrder controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}

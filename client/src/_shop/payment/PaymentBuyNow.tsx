@@ -401,6 +401,10 @@ const Payment = () => {
         const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
         const isPaid = paymentResult === "Paid" ? true : false;
         const isDelivered = false;
+        if(user) {
+            inputinformation.RecipientName = user.fullName;
+            inputinformation.Gmail = user.email;
+        }
         if(!address || !inputinformation.RecipientName || !inputinformation.Gmail || !inputinformation.Phone) { 
             return toast.error("Please fill in all the information");
         }
@@ -873,28 +877,6 @@ const Payment = () => {
 													{car.brand}&nbsp;
 													{car.car_model}
 												</h2>
-
-												<div className="flex pl-3 text-2xl text-yellow-600 cursor-pointer">
-													{"★".repeat(
-														Math.round(
-															calculateAvgRating({
-																reviews:
-																	car.user_review,
-															})
-														)
-													)}
-													{"☆".repeat(
-														5 -
-															Math.round(
-																calculateAvgRating(
-																	{
-																		reviews:
-																			car.user_review,
-																	}
-																)
-															)
-													)}
-												</div>
 
 												<h3 className="line-clamp-2 pl-3 md:px-4 mb-5">
 													{car.bio}

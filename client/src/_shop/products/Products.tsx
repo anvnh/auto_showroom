@@ -27,12 +27,7 @@ const Products = () => {
 	const [loadingProductId, setLoadingProductId] = useState(null);
 
 	// get all products
-	const {
-		data: products,
-		isLoading,
-		refetch,
-		isRefetching,
-	} = useQuery({
+	const { data: products, isLoading, refetch, isRefetching, } = useQuery({
 		queryKey: ["products"],
 		queryFn: async () => {
 			try {

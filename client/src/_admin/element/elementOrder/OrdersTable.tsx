@@ -77,6 +77,32 @@ const OrdersTable = () => {
 		},
 	});
 
+
+	const { mutate: changeStatusOrder, isPending: isChangingStatus } = useMutation({
+		mutationFn: async (id) => {
+			try {
+                const response = await fetch(`/api/order/changeStatus/${id}`, {
+                    method: "POST",
+                });
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || "Something went wrong!");
+                }
+                return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["orders"] });
+            toast.success("Change status order successfully");
+		},
+		onError: (error) => {
+            toast.error(error.message);
+		},
+	});
+
 	const [searchTerm, setSearchTerm] = useState("");
 	const [filteredUsers, setFilteredUsers] = useState(orders);
 
@@ -93,7 +119,10 @@ const OrdersTable = () => {
     const handleDelete = async (id) => {
         deleteOrder(id);
     }
-        
+
+    const handleChangeStatus = (id) => async () => {
+        changeStatusOrder(id);
+    }
 
 	return (
         <>
@@ -191,8 +220,11 @@ const OrdersTable = () => {
                                                                     Detail Order
                                                                 </DialogTitle>
                                                                     <DialogDescription>
-                                                                    Detail about customer's order
-                                                                </DialogDescription>
+                                                                        Detail about customer's order. <br/> 
+                                                                        <span className="font-bold text-md"> 
+                                                                            OrderID: {order.orderId}
+                                                                        </span>
+                                                                    </DialogDescription>
                                                                 </DialogHeader>
                                                                 <div className="grid gap-4 py-4">
                                                                     {order.orderItems.map((item) => (
@@ -217,7 +249,7 @@ const OrdersTable = () => {
                                                                                 ${item.price.toLocaleString()}
                                                                                 </div>
                                                                             </div>
-                                                                    ))}
+                                                                        ))}
                                                                 </div>
                                                             </DialogContent>
                                                         </Dialog>
@@ -240,41 +272,37 @@ const OrdersTable = () => {
                                                 </td>
 
                                                 <td className="flex hover:cursor-pointer">
-                                                    {order.isDelivered === false ? (
-                                                        <AlertDialog>
-                                                            <AlertDialogTrigger asChild>
-                                                                <span
-                                                                    className={`mt-4 ml-16 p-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                                                                        order.isDelivered !== false
-                                                                        ? "bg-green-800 text-green-100"
-                                                                        : "bg-yellow-600 text-red-100"
-                                                                    }`}
+                                                    <AlertDialog>
+                                                        <AlertDialogTrigger asChild>
+                                                            <span
+                                                                className={`mt-4 ml-16 p-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                                                                    order.isDelivered !== false
+                                                                    ? "bg-green-800 text-green-100"
+                                                                    : "bg-red-600 text-red-100"
+                                                                }`}
+                                                            >
+                                                                {order.isDelivered !== false ? "Delivered" : "Not Delivered"}
+                                                            </span>
+                                                        </AlertDialogTrigger>
+                                                        <AlertDialogContent className="bg-gray-900 backdrop-blur-md bg-opacity-35">
+                                                            <AlertDialogHeader>
+                                                                <AlertDialogTitle> Do you want to change status of this order ? </AlertDialogTitle>
+                                                            </AlertDialogHeader>
+                                                            <AlertDialogFooter>
+                                                                <AlertDialogCancel>
+                                                                    Cancel
+                                                                </AlertDialogCancel>
+                                                                <AlertDialogAction 
+                                                                    className="bg-white text-black hover:bg-white hover:bg-opacity-20"
+                                                                    onClick={
+                                                                        handleChangeStatus(order._id)
+                                                                    }
                                                                 >
-                                                                    {order.isDelivered !== false ? "Delivered" : "Processing"}
-                                                                </span>
-                                                            </AlertDialogTrigger>
-                                                            <AlertDialogContent className="bg-gray-900 backdrop-blur-md bg-opacity-35">
-                                                                <AlertDialogHeader>
-                                                                    <AlertDialogTitle> Do you want to send mail to this customer? </AlertDialogTitle>
-                                                                </AlertDialogHeader>
-                                                                <AlertDialogFooter>
-                                                                    <AlertDialogCancel>
-                                                                        Cancel
-                                                                    </AlertDialogCancel>
-                                                                    <AlertDialogAction className="bg-white text-black hover:bg-white hover:bg-opacity-20">
-                                                                        Continue
-                                                                    </AlertDialogAction>
-                                                                </AlertDialogFooter>
-                                                            </AlertDialogContent>
-                                                        </AlertDialog>
-                                                    ) : (
-                                                        <span
-                                                            className="mt-4 ml-16 p-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-800 text-green-100"
-                                                            onClick={() => toast.success("This order has been delivered")}
-                                                        >
-                                                            Delivered
-                                                        </span>
-                                                    )}
+                                                                    Continue
+                                                                </AlertDialogAction>
+                                                            </AlertDialogFooter>
+                                                        </AlertDialogContent>
+                                                    </AlertDialog>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap pl-20">
                                                     <div className="text-sm text-gray-300">
