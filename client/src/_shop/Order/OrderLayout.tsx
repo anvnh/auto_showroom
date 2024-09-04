@@ -17,11 +17,6 @@ const OrderLayout = () => {
                         <Order />
                     </div>
                 </div>
-                {/* <div className="items-start justify-center bg-white">
-        <div className="w-full">
-          <Footer />
-        </div>
-      </div> */}
             </div>
         </section>
     )
