@@ -47,11 +47,11 @@ const Story_section3_mobile = () => {
       <section className="w-full xsm:w-1/2 h-1/2 xsm:h-full mt-[20px] ml-[20px] md:ml-[40px]  flex flex-col justify-between">
         <div className="w-full  h-full">
           <div>
-            <p className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] font-bold font-syncopate">
+            <p data-aos="fade-up" className="w-full  text-[24px] xs:text-[30px] ss:text-[40px] font-bold font-syncopate">
               BMW Nazca
             </p>
           </div>
-          <div className="hidden ss:flex gap-x-[15px] ">
+          <div data-aos="fade-up" className="hidden ss:flex gap-x-[15px] ">
             <section className="w-[65px] xs:w-[100px] h-[30px] xs:h-[40px] text-[13px] xs:text-[16px] border rounded-[20px] flex justify-center items-center  ">
               <p>Bmw</p>
             </section>
@@ -63,12 +63,12 @@ const Story_section3_mobile = () => {
             </section>
           </div>
           <div className="w-[85%] mt-[2%]">
-            <p ref={founder_txt3} className="  text-[20px] md:text-[25px] overflow-y-hidden">
+            <p data-aos="fade-up" ref={founder_txt3} className="  text-[20px] md:text-[25px] overflow-y-hidden">
               The BMW Nazca is a performance version of the BMW 3 Series, developed by BMW's in-house motorsport division.
               {/* In addition, the windscreen was glued in – not, as with the other E30 models, framed with a window rubber and piping. */}
             </p>
           </div>
-          <div className="mt-[5%] w-full  ">
+          <div data-aos="fade-up" className="mt-[5%] w-full  ">
             <Link to="/shop/product/66ab86b32c63f54b95a50cd3">
               <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450">Show now</button>
             </Link>

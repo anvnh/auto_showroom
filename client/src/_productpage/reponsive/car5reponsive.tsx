@@ -11,7 +11,8 @@ import {
 	change10,
 	change8,
 	change9,
-
+	news4,
+	videohieuung2,
 	Videohieuung,
 	inside51,
 	inside52,
@@ -251,7 +252,7 @@ const car5reponsive: React.FC = () => {
 						</div>
 					</h2>
 
-					<div className="text-3xl md:text-[200px] text-white ss:text-6xl sm:text-8xl ss:bottom-56 animate-pulse text-center pt-28 md:pt-[300px] sm:pt-0 relative font-syncopate lg:pt-1">
+					<div className="text-3xl md:text-[200px] text-white ss:text-6xl sm:text-8xl animate-pulse text-center pt-28 md:pt-[300px] sm:pt-40 relative font-syncopate lg:pt-1 font-bold">
 						IN THE CAR
 					</div>
 					<div className="justify-center items-center flex">
@@ -265,14 +266,14 @@ const car5reponsive: React.FC = () => {
 						<div
 							data-aos="fade-right"
 							style={{ backgroundImage: `url(${inside52})` }}
-							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px]  sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[900px] bg-cover rounded-3xl relative -top-[150px] ss:-top-[500px] xs:-top-[200px] md:top-[500px] lg:-top-[500px] lg:h-[600px] lg:w-[1000px]"
+							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px]  sm:w-[700px] sm:h-[600px] md:w-[1500px] bg-center md:h-[900px] bg-cover rounded-3xl relative -top-[150px] ss:-top-[530px] xs:-top-[200px] md:top-[500px] lg:-top-[500px] lg:h-[600px] lg:w-[1000px]"
 						></div>
 					</div>
 					<div className="justify-end items-end flex z-40">
 						<div
 							data-aos="fade-right"
 							style={{ backgroundImage: `url(${inside53})` }}
-							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative top-[100px] ss:-top-[220px] xs:-top-[30px] sm:-top-[100px] md:top-[1200px] lg:-top-[80px] lg:h-[600px] lg:w-[1000px]"
+							className="w-[300px] h-[200px] ss:w-[600px] ss:h-[400px] xs:w-[400px] xs:h-[300px] sm:w-[600px] sm:h-[500px] md:w-[1200px] bg-center md:h-[800px] bg-cover rounded-3xl relative top-[100px] ss:-top-[220px] xs:-top-[30px] sm:-top-[00px] md:top-[1200px] lg:-top-[80px] lg:h-[600px] lg:w-[1000px]"
 						></div>
 					</div>
 				</div>
@@ -289,97 +290,42 @@ const car5reponsive: React.FC = () => {
 			</div>
 			<div
 				data-aos="fade-in"
-				className="relative z-20 pt-72 lg:pt-12">
+				className="relative z-50 pt-40">
 				<div>
-					<div className="md:text-6xl pb-12 ss:text-6xl sm:text-7xl text-3xl text-center text-white animate-pulse font-syncopate ">
+					<div className="md:text-6xl pb-12 ss:text-6xl sm:text-7xl text-3xl text-center text-white animate-pulse font-syncopate font-bold">
 						NEW COLOR
 					</div>
 				</div>
 				<div
 					data-aos="fade-out"
-					id="Color" className="z-20 w-full h-[200px] ">
-					{/* Vùng chứa ảnh */}
-					<div className="absolute w-full h-full">
-						{imageGroups[activeGroup].map((image, index) => (
-							<img
-								key={index}
-								src={image}
-								alt={`Image ${index + 1}`}
-								className={`absolute top-0 left-0 w-full h-auto object-cover transition-opacity duration-700 ${activeImage === index
-									? "opacity-100"
-									: "opacity-0"
-									}`}
-							/>
-						))}
-						<div
-							className="overlay absolute inset-x-0 bottom-0 lg:-bottom-72 h-1/4"
-							style={{
-								backgroundImage:
-									"linear-gradient(to top, black, transparent)",
-							}}
-						></div>
-					</div>
+					id="Color" className="w-full h-[200px] z-50">
+				
+				<div
+								id="Color"
+								className="relative w-full h-[900px]"
+							>
+								<div
+									style={{ backgroundImage: `url(${news4})` }}
+									className="relative w-screen h-[200px] ss:h-[600px] bg-center bg-cover"
+								>
+									<div className="absolute inset-0 z-10 flex justify-center items-center">
+										<video
+											src={videohieuung2}
+											autoPlay
+											loop
+											muted
+											className="w-full h-full object-cover opacity-25 bg-gradient-to-t from-blue-900 to-transparent"
+										/>
+									</div>
+								</div>
+							</div>
 
-					<div className="relative top-1">
-						{/* Nút chuyển ảnh */}
-						<div
-							className="absolute md:top-1/2 md:right-4 top-[215px] ss:top-[430px] xs:top-[320px] sm:top-[560px] transform -translate-y-1/2 flex md:flex-col flex-row md:space-y-4 space-y-0 scale-125 gap-3 sm:gap-7 pl-60 sm:pl-[570px]"
-							ref={buttonsRef}
-						>
-							{imageGroups[activeGroup].map((__, index) => (
-								<button
-									key={index}
-									onClick={() => {
-										setActiveImage(index);
-									}}
-									className={`md:w-5 md:h-5 ss:w-6 ss:h-6 sm:w-10 sm:h-10 w-4 h-4 rounded-full focus:outline-none hover:scale-150 transition-all duration-500 ease-in-out ${buttonColors2[index]}`}
-								></button>
-							))}
-						</div>
+				
 
-						{/* Nút chuyển nhóm ảnh */}
-						<div className="absolute flex justify-end md:pr-9 top-52 ss:top-[410px] xs:top-[300px] sm:top-[550px]  md:top-4 md:w-[1850px] sm:h-[60px] sm:text-4xl text-sm md:text-xl md:h-[40px] h-[40[x]] md:space-x-4 sm:gap-6 md:gap-0 gap-2 pl-3 sm:pl-16">
-							<button
-								onClick={() => {
-									setActiveImage(0);
-									setActiveGroup(0);
-								}}
-								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${activeGroup === 0
-									? buttonColors[0]
-									: "bg-gray-900 bg-opacity-50 text-white"
-									}`}
-							>
-								Front
-							</button>
-							<button
-								onClick={() => {
-									setActiveImage(0);
-									setActiveGroup(1);
-								}}
-								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${activeGroup === 1
-									? buttonColors[1]
-									: "bg-gray-900 bg-opacity-50 text-white"
-									}`}
-							>
-								Side
-							</button>
-							<button
-								onClick={() => {
-									setActiveImage(0);
-									setActiveGroup(2);
-								}}
-								className={`px-4 py-2 rounded-md focus:outline-none hover:scale-110 transition-all duration-300 ease-in-out ${activeGroup === 2
-									? buttonColors[1]
-									: "bg-gray-900 bg-opacity-50 text-white"
-									}`}
-							>
-								Behind
-							</button>
-						</div>
-					</div>
+				
 				</div>
 			</div>
-			<div id="Interiors" className="flex justify-center relative ss:pt-72 pt-20 z-50 sm:pt-[500px]">
+			<div id="Interiors" className="flex justify-center relative z-20">
 				<div className="w-full">
 					<Car5popular2 />
 				</div>
@@ -387,10 +333,10 @@ const car5reponsive: React.FC = () => {
 			<div className="sketchfab-embed-wrapper w-[1000x] h-[500px] z-10 relative">
 				<Rollroyce_phantom_view />
 			</div>
-			<div className="bg-black pt-12">
+			<div className="bg-black pt-40">
 				<div
 					data-aos="fade-right"
-					className="text-3xl md:text-6xl text-white animate-pulse text-center font-thin relative font-syncopate uppercase bottom-[0px] md:-bottom-[1100px] pb-12 lg:bottom-[100px] lg:text-5xl">
+					className="text-3xl md:text-6xl text-white animate-pulse text-center relative font-syncopate uppercase bottom-[0px] md:-bottom-[1100px] pb-12 lg:bottom-[100px] lg:text-5xl font-bold">
 					Sophisticated, modern, classy
 				</div>
 				<div className="justify-start items-start flex">
@@ -416,7 +362,7 @@ const car5reponsive: React.FC = () => {
 				</div>
 			</div>
 			<div
-				className="article-tiles-container bg-gray-900 text-white p-6 -bottom-[120px] relative md:-bottom-[520px] lg:-bottom-[10px]">
+				className="article-tiles-container bg-gray-900 text-white p-6 -bottom-[120px] relative md:-bottom-[520px] h-[1600px] ss:h-[1300px] lg:-bottom-[10px]">
 				<div className="article-tiles-desc mb-6 text-center font-syncopate ">
 					<h3
 						data-aos="fade-up"
@@ -472,7 +418,7 @@ const car5reponsive: React.FC = () => {
 						<div
 							data-aos="fade-right"
 							className="block font-syncopate text-center">
-							<h4 className="text-base ss:text-lg font-bold pt-4 mb-2">
+							<h4 className="text-base ss:text-lg font-bold pt-10 mb-2">
 								Sophisticated and Classy Design
 							</h4>
 							<p className="text-sm ss:text-base">
@@ -500,7 +446,7 @@ const car5reponsive: React.FC = () => {
 						<div
 							data-aos="fade-left"
 							className="block font-syncopate text-center">
-							<h4 className="text-base ss:text-lg pt-4 font-bold mb-2">
+							<h4 className="text-base ss:text-lg pt-10 font-bold mb-2">
 								Luxurious Interior Space
 							</h4>
 							<p className="text-sm ss:text-base">
