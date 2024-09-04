@@ -10,7 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import useAuthUser from "@/hooks/useAuthUser";
 import toast from "react-hot-toast";
-import { Vehicle } from "@/_root/_homepage";
+import { FaShippingFast } from "react-icons/fa";
 
 interface SubNavbarProps {
 	selectedSection_element: string;
@@ -166,6 +166,12 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 									title="Go to your cart"
 								/>
 							</Link>
+                            <Link to="/heheh">
+                                <FaShippingFast 
+									className="text-white w-[25px] xl:w-[29px] h-[23px] text-2xl xl:mr-4 mr-2"
+									title="Go to your cart"
+                                />
+                            </Link>
 							{isLoading && <LoadingSpinner />}
 							{!isLoading && (
 								<Link to={`${authUser ? "/social" : "/social/login"}`}>
