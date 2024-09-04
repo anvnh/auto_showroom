@@ -20,7 +20,7 @@ interface SubNavbarProps {
 const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick, }) => {
 	useEffect(() => {
 		AOS.init({
-			duration: 900,
+			duration: 700,
 			easing: "ease-in-back",
 			once: false,
 			mirror: true,
@@ -240,12 +240,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 									</div>
 								</li>
 							</Link>
-							<li className="cursor-pointer">
-								<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none cursor-pointer">
-									<p> Service </p>
-									<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
-								</div>
-							</li>
+					
 							<li className="cursor-pointer">
 								<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
 									<p> About Us </p>
@@ -305,19 +300,11 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 								</li>
 							</Link>
 
+		
 							<li className="cursor-pointer transition-opacity duration-300 w-full text-center">
 								<div
 									data-aos="fade-up"
-									data-aos-delay="500"
-									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
-								>
-									<p> Service </p>
-								</div>
-							</li>
-							<li className="cursor-pointer transition-opacity duration-300 w-full text-center">
-								<div
-									data-aos="fade-up"
-									data-aos-delay="700"
+									data-aos-delay="600"
 									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
 								>
 									{/* TODO */}

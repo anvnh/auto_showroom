@@ -162,7 +162,7 @@ const UserCart = () => {
 									<section className="mb-4" key={item._id}>
 										<div
 											data-aos="fade-left"
-											className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 shadow-2xl shadow-black p-7 mb-7 rounded-2xl h-full hover:bg-gradient-to-r hover:from-gray-100 hover:to-white duration-500 transition-all ease-in-out"
+											className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 shadow-2xl shadow-black p-3 mb-7 rounded-2xl h-full hover:bg-gradient-to-r hover:from-gray-100 hover:to-white duration-500 transition-all ease-in-out"
 										>
 											<div className="relative  flex items-center">
 												<Link
@@ -170,7 +170,7 @@ const UserCart = () => {
 												>
 													<img
 														src={item.images[0]}
-														className="xl:w-[700px] shadow-md shadow-black w-full h-full xl:h-[280px] rounded"
+														className="xl:w-[700px] shadow-sm shadow-black w-full h-full xl:h-[280px] rounded"
 													/>
 												</Link>
 											</div>
@@ -225,7 +225,7 @@ const UserCart = () => {
 													)}
 												</div>
 
-												<h3 className="line-clamp-3 w-full ml-4 md:ml-0 md:px-5 md:mr-24 md:text-[18px] mb-5">
+												<h3 className="line-clamp-3 w-full ml-4 md:ml-0 md:px-5 md:mr-24  md:text-[18px] mb-5">
 													{item.bio}
 												</h3>
 												<div className="hidden md:block">
@@ -269,7 +269,7 @@ const UserCart = () => {
 														</div>
 														<div
 															className="w-[36px] h-[36px] cursor-pointer rounded-full bg-white shadow-md shadow-black flex items-center justify-center   text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
-						  before:ease relative overflow-hidden border-gray-600 border  before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-green-500 before:opacity-50 before:duration-700 hover:shadow-green-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[39px]"
+						 									 before:ease relative overflow-hidden border-gray-600 border  before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-green-500 before:opacity-50 before:duration-700 hover:shadow-green-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[39px]"
 															onClick={() =>
 																handleClick(
 																	item._id

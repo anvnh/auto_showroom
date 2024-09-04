@@ -36,7 +36,7 @@ const Footer = () => {
                         <section className='h-[230px] border-t  w-full flex justify-center gap-x-[4%]'>
                             <div className='w-full sm:w-[40%] h-full flex justify-between sm:justify-center '>
                                 <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0 justify-start ss:justify-center items-center '>
-                                    <h3 id="about" className='text-[26px] xs:text-[30px]  font-semibold font-kanit  '>ABOUT</h3>
+                                    <h3  className='text-[26px] xs:text-[30px]  font-semibold font-kanit  '>ABOUT</h3>
                                     <section className='mt-[5px]  text-center flex flex-col  text-[18px] font-medium'>
                                         <Link to="/shop">
                                             <h4 className='hover:bg-red-500 hover:scale-105 transition-all duration-500'>Shop</h4>
@@ -50,7 +50,7 @@ const Footer = () => {
                                     </section>
                                 </div>
                                 <div className='w-[48%]   h-[230px] flex flex-col mt-[20px] ss:mt-0  justify-start ss:justify-center items-center '>
-                                    <h3 id="contact" className='text-[26px] xs:text-[30px] font-semibold font-kanit '>CONTACT</h3>
+                                    <h3  className='text-[26px] xs:text-[30px] font-semibold font-kanit '>CONTACT</h3>
                                     <section className='mt-[5px] text-center flex flex-col  text-[18px] font-medium'>
                                         <Link to="https://www.instagram.com/just.hplat/">
                                             <div className='hover:bg-red-500 transition-all duration-500  hover:scale-105 flex items-center gap-x-[5px]'>
