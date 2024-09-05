@@ -20,7 +20,7 @@ const Footer = () => {
             style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
         >
 
-            <div className='fixed bottom-0 h-[600px] w-full bg-gray-800'>
+            <div className='fixed bottom-0 h-[600px] w-full bg-gray-950'>
                 <section className='w-full h-full flex flex-col justify-center items-center'>
                     <div className='h-[65%] w-[93%] md:w-[85%] xl:w-[90%]    flex flex-col justify-center items-center'>
                         <p className='w-full text-center text-[90px]  ss:text-[120px]   lg:text-[130px] mlg:text-[150px]

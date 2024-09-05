@@ -242,10 +242,12 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 							</Link>
 					
 							<li className="cursor-pointer">
+								<Link to="/about-us">
 								<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
 									<p> About Us </p>
 									<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 								</div>
+								</Link>
 							</li>
 							{authUser?.isAdmin === true && (
 									<li
@@ -330,7 +332,7 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
 								>
 									{/* TODO */}
-									<Link to="/">
+									<Link to="/about-us">
 										<p> About us </p>
 									</Link>
 								</div>

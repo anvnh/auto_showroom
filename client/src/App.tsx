@@ -84,7 +84,7 @@ const App = () => {
 
                     <Route path="/" element={<RootLayout />} />
 
-                    <Route path="/owners" element={<UserLayout />} />
+                    <Route path="/policy" element={<UserLayout />} />
                     <Route path="/audi-A5-Couple" element={<Audi_A5_Couple />} />
                     <Route path="/audi-s6-limousin" element={<Audi_A5_Sportback />} />
 
