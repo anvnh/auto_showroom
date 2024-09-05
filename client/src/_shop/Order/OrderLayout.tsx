@@ -16,8 +16,11 @@ const OrderLayout = () => {
                     <div className="w-full bg-primary">
                         <Order />
                     </div>
+                   <div className='block md:hidden'>
+                   <hr />
+                   </div>
                 </div>
-                <div className="items-start pt-12 bg-primary justify-center">
+                <div className="items-start md:pt-32 bg-primary justify-center">
                     <div className="w-full bg-primary">
                         <Footer />
                     </div>
