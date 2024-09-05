@@ -198,6 +198,7 @@ const Sidebar = () => {
             </div>
             <div className="md:hidden fixed bottom-0 left-0 right-0 h-[50px] bg-black bg-opacity-40 backdrop-blur-md z-50">
                 <ul className="flex justify-around space-x-4 mt-3">
+
                     <li>
                         <Link to="/social">
                             <GoHomeFill className="w-6 h-6"/>
