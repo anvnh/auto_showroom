@@ -314,7 +314,7 @@ export const sendConfirmationMail = async (req, res) => {
                 Dear ${user.fullName}
                 </h1>
                 <p>
-              We have received your request to delete your account on AAP 
+                  We have received your request to delete your account on AAP 
                 </p>
                 <p>
                 To confirm that this request is coming from you and to proceed with the deletion of your account, please enter the following One-Time Password (OTP) into the designated field on our website:
