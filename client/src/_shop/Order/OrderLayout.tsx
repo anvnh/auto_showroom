@@ -17,6 +17,11 @@ const OrderLayout = () => {
                         <Order />
                     </div>
                 </div>
+                <div className="items-start pt-12 bg-primary justify-center">
+                    <div className="w-full bg-primary">
+                        <Footer />
+                    </div>
+                </div>
             </div>
         </section>
     )
