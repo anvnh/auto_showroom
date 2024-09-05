@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import Cards from "react-credit-cards-2";
 import AOS from "aos";
@@ -25,6 +25,8 @@ let isAOSInitialized = false;
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || "";
 const Payment = () => {
 	// console.log("Mapbox Access Token:", import.meta.env.VITE_MAPBOX_ACCESS_TOKEN);
+
+    const navigate = useNavigate();
 
 	useEffect(() => {
 		AOS.init({
@@ -286,6 +288,27 @@ const Payment = () => {
 		},
 	});
 
+	const { mutate: clearCart} = useMutation({
+		mutationFn: async () => {
+            try {
+                const res = await fetch("/api/user/delete/all/cart", {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                const data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error || "Something went wrong");
+                }
+                return data;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+	});
+
 	const { mutate: addOrderToDatabase } = useMutation({
 		mutationFn: async ({ cars, info }) => {
 			try {
@@ -311,6 +334,9 @@ const Payment = () => {
 			toast.success(
 				"We have received and send you an email with the payment details. Please check your email."
 			);
+            clearCart();
+            // navigate user to /order 
+            navigate('/order');
 		},
 		onError: (error) => {
 			toast.error("Failed to add order:", error.message);
