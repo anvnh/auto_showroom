@@ -100,6 +100,17 @@ export const getOnDeliveyUserOrders = async (req, res) => {
     }
 }
 
+export const getPlacedUserOrders = async (req, res) => {
+    try {
+        const user = req.user;
+        const orders = await Order.find({ isDelivered: false, isCancelled: false, paymentMethod: "Direct" , user: user._id }).populate("user").populate("orderItems.carId");
+        res.status(200).json(orders);
+    } catch (error) {
+        console.log("Error in getUserOrders controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
 
 export const getCompletedUserOrders = async (req, res) => {
     try {
