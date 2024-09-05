@@ -324,7 +324,7 @@ const Payment = () => {
     });
 
 
-	const calculateTotalPrice = () => {
+	const calculateTotalPrice = (payMethod) => {
 		if (!cart) return 0;
 		const totalCartPrice = cart.reduce((total, item) => {
 			const itemTotal =
@@ -334,7 +334,9 @@ const Payment = () => {
 		}, 0);
 
 		const totalPriceWithShipping = totalCartPrice + (Math.round(shippingCost) || 0);
-		return totalPriceWithShipping;
+        // Trả với visa thì trả trước tiền cọc 40%
+		return payMethod == "Visa" ? totalPriceWithShipping * 0.4 : totalPriceWithShipping;
+		// return totalPriceWithShipping;
 		// return totalPriceWithShipping.toLocaleString();
     };
 
@@ -393,26 +395,6 @@ const Payment = () => {
             }
         }
         if(orderId && paymentMethod)  {
-            // console.log(
-            //     {
-            //         cars: vehicleInfoArray,
-            //         info: {
-            //             orderId,
-            //             address,
-            //             shippingCost,
-            //             paymentMethod,
-            //             paymentResult,
-            //             email: user.email,
-            //             totalPrice: calculateTotalPrice(),
-            //             isPaid,
-            //             paidAt: isPaid ? new Date() : null,
-            //             isDelivered,
-            //             deliveredAt: null,
-            //             phone: inputinformation.Phone,
-            //             state
-            //         }
-            //     }
-            // )
             sendPaymentMail({
                 cars: vehicleInfoArray,
                 info: {
@@ -923,18 +905,7 @@ const Payment = () => {
 														<div className="ml-0 md:ml-12 mb-2 w-full md:w-[100px] text-black">
 															Total:
 															<span className="pl-20 text-[18px] font-bold text-blue-600">
-																$
-																{(
-																	Number(
-																		item.price.replace(
-																			/,/g,
-																			""
-																		)
-																	) *
-																	(quantities[
-																		item._id
-																	] || 1)
-																).toLocaleString()}
+																${( Number( item.price.replace( /,/g, "")) * (quantities[ item._id ] || 1)).toLocaleString()}
 															</span>
 														</div>
 													</div>
@@ -1011,12 +982,26 @@ const Payment = () => {
 							</div>
 							<div className="block md:hidden">
 								<div className="flex justify-start pt-10 text-white font-bold text-2xl">
-									Total Price: ${calculateTotalPrice()}
+									Total Price: ${calculateTotalPrice(payMethod)}
 								</div>
 							</div>
 							<div className="hidden md:block">
 								<div className="flex justify-end pt-10 text-white font-bold text-2xl">
-									Total Price: ${calculateTotalPrice()}
+									Total Price: &nbsp;
+                                    {payMethod === "Visa" ? (
+                                        <>
+                                            <span className="text-md items-center">
+                                                (Deposit 40%):  
+                                            </span>
+                                            <span>
+                                                &nbsp; ${calculateTotalPrice(payMethod)}
+                                            </span>
+                                        </>
+                                    ) : (
+                                        <span>
+                                            ${calculateTotalPrice(payMethod)}
+                                        </span>
+                                    )}
 								</div>
 							</div>
 							<div className="flex justify-end pb-4 pt-6 gap-3">

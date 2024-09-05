@@ -80,15 +80,50 @@ const Reviews = () => {
 		}
 	})
 
-	const {mutate: ratingCar} = useMutation({
+	// const {mutate: ratingCar} = useMutation({
+	// 	mutationFn: async () => {
+	// 		try {
+	// 			const res = await fetch(`/api/car/phobert/predict`, {
+	// 				method: "POST",
+	// 				headers: {
+	// 					"Content-Type": "application/json",
+	// 				},
+	// 				body: JSON.stringify({text: text, rating: rating, rated: rated}),
+	// 			});
+	//
+	// 			const data = await res.json();
+	//
+	// 			if(!res.ok) {
+	// 				throw new Error(data.error || "Something went wrong");
+	// 			}
+	//
+	// 			return data;
+	//
+	// 		} catch(error) {
+	// 			throw new Error(error.message);
+	// 		}
+	// 	},
+	// 	onSuccess: (data) => {
+	// 		queryClient.invalidateQueries({queryKey: ["review"]});
+	// 		// setRating(null);
+	// 		// console.log(data.overallRating);
+	// 		// console.log(data);
+	// 		reviewing({text, rated: data.prediction});
+	// 	},
+	// 	onError: (error) => {
+	// 		toast.error(error.message);
+	// 	}
+	// })
+
+	const {mutate: ratingCar, isPending: isRatingCar} = useMutation({
 		mutationFn: async () => {
 			try {
-				const res = await fetch(`/api/car/phobert/predict`, {
+				const res = await fetch(`http://127.0.0.1:8000/api/v1/predict`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({text: text, rating: rating, rated: rated}),
+					body: JSON.stringify({content: text}),
 				});
 
 				const data = await res.json();
@@ -109,6 +144,7 @@ const Reviews = () => {
 			// console.log(data.overallRating);
 			// console.log(data);
 			reviewing({text, rated: data.prediction});
+            // toast.success(data.prediction);
 		},
 		onError: (error) => {
 			toast.error(error.message);
@@ -201,7 +237,7 @@ const Reviews = () => {
 					<div className="w-full justify-end items-end flex mt-12">
 						{authUser ? (
 							<button className="detail-button bg-gray-300 text-black px-4 py-2 md:px-6 md:py-3 w-[150px] lg:w-[170px] lg:h-[40px] items-center justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-sm md:text-base rounded-xl text-center relative h-9  overflow-hidden border-gray-600 border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px] mb-12">
-								{isReviewing ? <LoadingSpinner /> : "Review"}
+								{isReviewing || isRatingCar ? <LoadingSpinner /> : "Review"}
 							</button>
 						) : (
 							<button
