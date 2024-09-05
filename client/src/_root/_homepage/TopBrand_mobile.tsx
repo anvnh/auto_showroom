@@ -1,8 +1,7 @@
 import { useRef, useEffect } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/all"
-import { hero_1, hero_2, hero_3, hero_4, hero_5, hero_6 } from "@/assets"
-import { topBrandToyota, topBrandAudi, topBrandMer, topBrandHonda } from "@/assets/homepage/"
+import { topBrandToyota, topBrandAudi, topBrandMer, topBrandHonda, honda } from "@/assets/homepage/"
 const TopBrand_mobile = () => {
     const section1 = useRef(null)
     const section1_txt1 = useRef(null)
@@ -83,7 +82,7 @@ const TopBrand_mobile = () => {
 
                 <div ref={section2} className=" w-full h-screen flex flex-col justify-between items-center relative  ">
                     <section className="w-full h-full absolute top-0 left-0 ">
-                        <img src={topBrandHonda} className="w-full h-full object-cover" />
+                        <img src={honda} className="w-full h-full object-cover" />
                     </section>
                     <div className="mt-[10%] overflow-y-hidden  w-full  h-[20%]  backdrop-blur-[5px] ">
                         <p ref={section2_txt1} className="text-[75px] xs:text-[100px] ss:text-[120px] w-full text-center font-bold font-kanit">
