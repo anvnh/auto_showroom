@@ -10,6 +10,7 @@ interface SubNavbarProps {
 	selectedSection_element: string;
 	onNavClick: (section: string) => void;
 }
+import {toast, Toaster} from "react-hot-toast";
 
 import GetMe from "@/components/common/auth/GetMe";
 import { useQuery } from "@tanstack/react-query";
