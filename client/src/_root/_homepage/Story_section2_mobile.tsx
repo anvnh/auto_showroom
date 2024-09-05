@@ -69,7 +69,9 @@ const Story_section2_mobile = () => {
                     </div>
                     <div data-aos="fade-up" className="mt-[5%] w-full  ">
                         <Link to="/shop/product/66ab86b32c63f54b95a50cd3">
-                            <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450">Show now</button>
+                            <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450">
+                                Shop now
+                            </button>
                         </Link>
                     </div>
                 </div>

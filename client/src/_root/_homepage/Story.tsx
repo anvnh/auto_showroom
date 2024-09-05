@@ -149,13 +149,13 @@ const Story = () => {
                             <p data-aos="fade-up" ref={founder_txt1} className="split1 text-justify text-[20px] md:text-[25px] overflow-y-hidden">
                                 The legendary twin-turbo 2JZ-GTE produced 276 HP for Japanese markets, but thanks to upgraded turbos and bigger fuel injectors, the American models were blessed with 321 HP, whilst European models made 326 HP.
                                 The Supra traces much of its roots back to the 2000GT owing to an inline-6 layout. The first three generations were offered with a direct descendant to the Crown's and 2000GT's M engine.
-                                {/* Interior aspects were also similar, as was the chassis code "A". */}
-                                {/* Along with this name, Toyota also included its own logo for the Supra. */}
                             </p>
                         </div>
                         <div data-aos="fade-up" className="w-full xsm:mt-[15%] md:mt-[5%]">
                             <Link to={"/shop/product/66abaa4dc0a16d17ddeae332"}>
-                                <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450 ease-in-out  ">Show now</button>
+                                <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450 ease-in-out  ">
+                                    Shop now
+                                </button>
                             </Link>
                         </div>
                     </div>
@@ -202,7 +202,9 @@ const Story = () => {
                         </div>
                         <div data-aos="fade-up" className="w-full xsm:mt-[15%] md:mt-[5%]">
                             <Link to="/shop/product/66ab9def2c63f54b95a50e6c">
-                                <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450 ">Show now</button>
+                                <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450 ">
+                                    Shop now
+                                </button>
                             </Link>
                         </div>
                     </div>
@@ -240,7 +242,9 @@ const Story = () => {
                         </div>
                         <div data-aos="fade-up" className="w-full xsm:mt-[15%] md:mt-[5%]">
                             <Link to="/shop/product/66ab86b32c63f54b95a50cd3">
-                                <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450 ">Show now</button>
+                                <button className="w-[200px] h-[50px] border hover:bg-white hover:text-neutral-800 transition-all duration-450 ">
+                                    Shop now
+                                </button>
                             </Link>
                         </div>
                     </div>
