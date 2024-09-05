@@ -24,7 +24,7 @@ const NavbarSmall: React.FC<SubNavbarProps> = ({
 		{ id: "Home", label: "Home" },
 		{ id: "Shop", label: "Shop" },
 		{ id: "Most_Rated_Cars", label: "Most Rated Cars" },
-		{ id: "Reviews", label: "Reviews" },
+		// { id: "Reviews", label: "Reviews" },
         { id: "Blogs", label: "Blogs" },
 	];
 
@@ -67,7 +67,7 @@ const NavbarSmall: React.FC<SubNavbarProps> = ({
 								<FaHome /> <br />
 								<IoIosInformationCircle /> <br />
 								<IoLogoModelS /> <br />
-								<FaCarSide /> <br />
+								{/* <FaCarSide /> <br /> */}
 								<MdOutlineContactSupport/>
 							</div>
 						</div>

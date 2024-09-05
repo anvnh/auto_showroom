@@ -901,7 +901,7 @@ const Payment = () => {
 						{!isLoading && !isRefetching && cart && (
 							<div
 								data-aos="fade-up"
-								className="max-h-[510px] min-h-[290px] overflow-y-auto overflow-x-hidden"
+								className="h-[510px] overflow-y-auto overflow-x-hidden"
 							>
 								{cart.map((item, index) => {
 									return (

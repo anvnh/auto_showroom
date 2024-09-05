@@ -14,7 +14,7 @@ const PaymentLayout = () => {
 					</div>
 				</div>
 
-				<div className=" min-h-[900px] ">
+				<div className=" min-h-[900px]">
 					<div className=" bg-primary ">
 						<Payment />
 					</div>
