@@ -98,14 +98,22 @@ const VouchersManagement = () => {
                                                     )}
                                                 </div>
                                             </div>
-                                            <div className="flex gap-5">
+                                            <div>
                                                 <div className="font-bold">Terms of Use:</div>
                                                 <p>
                                                     Purchasing products at AAP showroom, minimum bill required: &nbsp;
                                                     <span className='font-bold text-md'>
-                                                        {product.minPrice}$
+                                                        ${product.minPrice}
                                                     </span>
                                                 </p>
+                                            </div>
+                                            <div>
+                                                <span className="font-bold">
+                                                    Discount:&nbsp;
+                                                    <span className="text-xl">
+                                                        {product.discount}%
+                                                    </span>
+                                                </span>
                                             </div>
                                             <div className="flex gap-5">
                                                 <div className="font-bold">
