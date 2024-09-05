@@ -17,7 +17,7 @@ const PaymentLayout = () => {
                     <PaymentBuyNow />
                 </div>
                 <div className="items-start justify-center">
-                    <div className="w-full bg-primary pt-24">
+                    <div className="w-full bg-primary pt-72">
                         <Footer />
                     </div>
                 </div>

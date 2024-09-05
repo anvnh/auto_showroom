@@ -9,7 +9,6 @@ import mapboxgl from "mapbox-gl";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import calculateAvgRating from "@/utils/calculateAvgRating";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-
 import { MdDelete, MdOutlineCalculate } from "react-icons/md";
 import QuantityCounter from "@/utils/QuantityCounter";
 import { toast, Toaster } from "react-hot-toast";
@@ -19,6 +18,8 @@ import { IoLocation } from "react-icons/io5";
 import { GiHomeGarage } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import useAuthUser from "@/hooks/useAuthUser";
+import Car from "@/components/3d/child_component/Supra";
+import { car3popular } from "@/_productpage";
 
 mapboxgl.accessToken =
 	"pk.eyJ1IjoidHVhbmFuaDIwMDU4ODkiLCJhIjoiY20wNmc3cGE5MGR0bTJpczR6anF0cDMxeiJ9.nf180VnWasOogLOLMOS5gw";
@@ -384,25 +385,37 @@ const Payment = () => {
 
     const {data: user} = useAuthUser();
 
-	const calculateTotalPrice = (payMethod) => {
+	const calculateTotalPrice = () => {
 		if (!car) return 0;
-		const itemPrice = Number(car.price.replace(/,/g, ""));
-		const itemTotal = itemPrice * (quantities[car._id] || 1);
-		const totalPriceWithShipping = itemTotal + (Math.round(shippingCost) || 0);
-		// return totalPriceWithShipping.toLocaleString();
-		return payMethod == "Visa" ? totalPriceWithShipping * 0.4 : totalPriceWithShipping;
+
+			const itemTotal =
+				Number(car.price.replace(/,/g, "")) *
+				(quantities[car._id] || 1);		
+		console.log("oko " + itemTotal);
+		// const totalPriceWithShipping = totalCartPrice + (Math.round(shippingCost) || 0);
+		// Trả với visa thì trả trước tiền cọc 40%
+		return itemTotal;
 		// return totalPriceWithShipping;
 		// return totalPriceWithShipping.toLocaleString();
-    };
+	};
 
 
-	const calculateTotalPriceWithVoucher = (percent) => {
+	const calculateTotalPriceWithVoucher = (percent, payMethod) => {
 		if (!car) return 0;
-		const itemPrice = Number(car.price.replace(/,/g, ""));
-		const itemTotal = itemPrice * (quantities[car._id] || 1);
-		const totalPriceWithShipping = itemTotal + (Math.round(shippingCost) || 0);
-		return totalPriceWithShipping - (totalPriceWithShipping * percent) / 100;
-    };
+		const itemTotal =
+				Number(car.price.replace(/,/g, "")) *
+				(quantities[car._id] || 1);		
+
+		const totalPriceWithShipping =
+		itemTotal + (Math.round(shippingCost) || 0);
+		const depon = (totalPriceWithShipping * percent) / 100;
+		const depons = itemTotal - depon;
+		// console.log("per " + percent)
+		// console.log("depon " + depons)
+		const totallast = (depons * 40) / 100;
+		// console.log(totallast)
+		return payMethod == "Visa" ? totallast : depons;
+	};
 
 	const handleDelete = async (itemId) => {
 		setDeletingItems((prev) => ({ ...prev, [itemId]: true }));
@@ -493,7 +506,13 @@ const Payment = () => {
         setVoucherPercent(voucher.discount);
         document.getElementById("Add_Voucher").close();
     }
+	const handlClickRemoveVoucher = () => {
+		
+		console.log("0");
+		setVoucherPercent(0);
+		toast.success("Remove voucher successfully");
 
+	};
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
             <Toaster position="top-center" reverseOrder={false} />
@@ -872,7 +891,7 @@ const Payment = () => {
 				<div className="container p-2 bg-gray-800 backdrop-blur-md rounded-3xl">
 					<h2
 						data-aos="fade-up"
-						className="text-3xl font-bold mb-8 p-4"
+							className="text-3xl font-bold mb-8 p-4 font-poppins"
 					>
 						Your Cart
 					</h2>
@@ -888,54 +907,95 @@ const Payment = () => {
 								</div>
 							)}
 						{!isLoading && !isRefetching && car && (
-							<div
+								<div
 								data-aos="fade-up"
-								className="h-full overflow-y-auto overflow-x-hidden"
+								className="max-h-[510px] min-h-[290px] overflow-y-auto overflow-x-hidden"
 							>
-								<section className="mb-4" key={car._id}>
-									<div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white p-3 mb-4 rounded-2xl  shadow-md h-full w-full hover:bg-opacity-90">
-										<div className="relative w-full flex items-center">
-											<Link
-												to={`/shop/product/${car._id}`}
-											>
-												<img
-													src={car.images[0]}
-													className="w-full h-auto md:h-[200px] bg-cover object-cover bg-center bg- rounded"
-												/>
-											</Link>
-										</div>
 
-										<div className="w-full md:w-[0.75] text-black">
-											<div className="">
-												<h2 className="text-2xl pl-3 md:pt-0 pt-5 font-bold mb-2 text-black">
-													{car.brand}&nbsp;
-													{car.car_model}
-												</h2>
+										<section
+											className="mb-4"
+											key={car._id}
+										>
+											<div className="flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-white p-3 mb-4 rounded-2xl shadow-md h-auto w-full hover:bg-opacity-90">
+												<div className="relative w-full flex items-center justify-center">
+													<Link
+														to={`/shop/product/${car._id}`}
+													>
+														<img
+															src={car.images[0]}
+															className="w-full h-auto md:h-[200px] bg-cover object-cover bg-center bg- rounded"
+														/>
+													</Link>
+												</div>
+												<div className="w-full md:w-[0.75] text-black">
+													<div>
+														<h2 className="text-2xl mb-5 pl-3 md:mt-0 mt-3 font-bold text-black">
+															{car.brand}&nbsp;
+															{car.car_model}
+														</h2>
+														<h3 className="line-clamp-2 h-[50px] pl-3 md:px-4 mt-3">
+															{car.bio}
+														</h3>
+														<div className="hidden md:block">
+															<div className="justify-end items-end h-full p-5 w-full gap-5 flex flex-col md:flex-row">
+																<div className="mb-2 w-full md:w-[200px]">
+																	<span className="text-[20px] font-bold text-blue-600">
+																		${" "}
+																		{(
+																			Number(
+																				car.price.replace(
+																					/,/g,
+																					""
+																				)
+																			) *
+																			(quantities[
+																				car
+																					._id
+																			] ||
+																				1)
+																		).toLocaleString()}
+																	</span>
+																</div>
 
-												<h3 className="line-clamp-2 pl-3 md:px-4 mb-5">
-													{car.bio}
-												</h3>
-												<div className="md:block hidden">
-													<div className="justify-start p-5 w-full gap-5 flex flex-col md:flex-row">
-														<div className="mb-2 w-full md:w-[100px]">
-															<span className="text-[20px] w-[200px] font-bold text-blue-600">
-																$
-																{(
-																	Number(
-																		car.price.replace(
-																			/,/g,
-																			""
-																		)
-																	) *
-																	(quantities[
-																		car._id
-																	] || 1)
-																).toLocaleString()}
-															</span>
+																<div className="w-full justify-end flex text-black">
+																	<div className="flex items-center hover:bg-gray-100 hover:bg-opacity-15 rounded-lg overflow-hidden w-full md:w-24">
+																		<QuantityCounter
+																			quantity={
+																				quantities[
+																					car
+																						._id
+																				] ||
+																				1
+																			}
+																			onIncrease={() =>
+																				increaseQuantity(
+																					car
+																				)
+																			}
+																			onDecrease={() =>
+																				decreaseQuantity(
+																					car
+																				)
+																			}
+																		/>
+																	</div>
+																</div>
+															</div>
 														</div>
-
-														<div className="w-full justify-end flex text-black">
+													</div>
+												</div>
+												<div className="xl:hidden block">
+													<div className="w-full justify-center flex">
+														<hr className=" border-black w-1/2 border-1" />
+													</div>
+												</div>
+												<div className="block md:hidden">
+													<div className="ml-3 mt-4 md:ml-12 ">
+														<div className="ml-0 md:ml-7 mb-2 text-black">
 															<div className="flex items-center hover:bg-gray-100 hover:bg-opacity-15 rounded-lg overflow-hidden w-full md:w-24">
+																<div className="pr-12">
+																	Quantity:
+																</div>
 																<QuantityCounter
 																	quantity={
 																		quantities[
@@ -956,208 +1016,241 @@ const Payment = () => {
 																/>
 															</div>
 														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className="xl:hidden block">
-											<div className="w-full justify-center flex">
-												<hr className=" border-black w-1/2 border-1" />
-											</div>
-										</div>
-										<div className="block md:hidden">
-											<div className="ml-3 mt-4 md:ml-12 ">
-												<div className="ml-0 md:ml-7 mb-2 text-black">
-													<div className="flex items-center hover:bg-gray-100 hover:bg-opacity-15 rounded-lg overflow-hidden w-full md:w-24">
-														<div className="pr-12">
-															Quantity:
+
+														<div className="ml-0 md:ml-12 mb-2 w-full md:w-[100px] text-black">
+															Total:
+															<span className="pl-20 text-[18px] font-bold text-blue-600">
+																$
+																{(
+																	Number(
+																		car.price.replace(
+																			/,/g,
+																			""
+																		)
+																	) *
+																	(quantities[
+																		car._id
+																	] || 1)
+																).toLocaleString()}
+															</span>
 														</div>
-														<QuantityCounter
-															quantity={
-																quantities[
-																	car._id
-																] || 1
-															}
-															onIncrease={() =>
-																increaseQuantity(
-																	car
-																)
-															}
-															onDecrease={() =>
-																decreaseQuantity(
-																	car
-																)
-															}
-														/>
 													</div>
 												</div>
-												<div className="ml-0 md:ml-12 mb-2 w-full md:w-[100px] text-black">
-													Total Price: $
-													{calculateTotalPrice()}
+												<div className="scale-100 justify-end flex">
+													<div
+														className="flex items-center justify-end w-[35px] h-[35px] rounded-full hover:bg-opacity-70 cursor-pointer p-2 shadow-black text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
+						  before:ease relative overflow-hidden before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-red-500 before:opacity-50 before:duration-700 hover:shadow-red-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[49px]"
+														title="Remove from cart"
+													>
+														{deletingItems[
+															car._id
+														] && <LoadingSpinner />}
+														{!deletingItems[
+															car._id
+														] && (
+															<MdDelete
+																className="text-red-600 text-xl"
+																onClick={() =>
+																	handleDelete(
+																		car._id
+																	)
+																}
+															/>
+														)}
+													</div>
 												</div>
 											</div>
-										</div>
-										<div className="scale-100 flex justify-end">
-											<div
-												className="flex  items-center justify-end w-[35px] h-[35px] rounded-full hover:bg-opacity-70 cursor-pointer bg-white p-2 shadow-md shadow-black text-blackhover:bg-white transition-all duration-300 ease-in-out green-400  font-bold text-md md:text-basetext-center
-                                                    before:ease relative overflow-hidden border-gray-600 border  before:absolute before:right-0 before:top-0 before:h-12 before:w-4 before:translate-x-12 before:rotate-12 before:bg-red-500 before:opacity-50 before:duration-700 hover:shadow-red-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[49px]"
-												title="Remove from cart"
-											>
-												{deletingItems[car._id] && (
-													<LoadingSpinner />
-												)}
-												{!deletingItems[car._id] && (
-													<MdDelete
-														className="text-red-600 text-xl scale-125"
-														onClick={() =>
-															handleDelete(
-																car._id
-															)
-														}
-													/>
-												)}
-											</div>
+										</section>
+								
+								
+							</div>
+						)}
+	<div data-aos="fade-right">
+							<div className="hidden md:block">
+								{distance !== null && (
+									<div className=" p-4 text-white rounded-lg shadow-md w-full flex justify-end">
+										<div>
+											<p>
+												VKU to {inputAddressValue}:{" "}
+												<span className="text-blue-300 pl-3">
+													{distance.toFixed(2)} km
+												</span>
+											</p>
+											<p className="flex justify-end">
+												Shipping Cost:{" "}
+												<span className="text-blue-300 pl-3">
+													${shippingCost?.toFixed(2)}
+												</span>{" "}
+											</p>
 										</div>
 									</div>
-								</section>
-								<div className="hidden md:block">
-									{distance !== null && (
-										<div className=" p-4 text-white rounded-lg shadow-md w-full flex justify-end">
-											<div>
-												<p>
-													VKU to {inputAddressValue}:{" "}
-													<span className="text-blue-300 pl-3">
-														{distance.toFixed(2)} km
-													</span>
-												</p>
-												<p className="flex justify-end">
-													Shipping Cost:{" "}
-													<span className="text-blue-300 pl-3">
-														$
-														{shippingCost?.toFixed(
-															2
-														)}
-													</span>{" "}
-												</p>
-											</div>
+								)}
+							</div>
+							<div className="block md:hidden">
+								{distance !== null && (
+									<div className=" text-white rounded-lg shadow-md w-full flex justify-start">
+										<div>
+											<p>
+												Distance about
+												<span className="text-blue-300 pl-3">
+													{distance.toFixed(2)} km
+												</span>
+											</p>
+											<p className="flex ">
+												Shipping Cost:{" "}
+												<span className="text-blue-300 pl-3">
+													${shippingCost?.toFixed(2)}
+												</span>{" "}
+											</p>
 										</div>
-									)}
-								</div>
+									</div>
+								)}
+							</div>
 							<div className="block md:hidden">
 								<div className="flex justify-start pt-10 text-white font-bold text-2xl">
-                                    {payMethod === "Visa" ? (
-                                        <>
-                                            <div>
-                                                <span className="text-md items-center">
-                                                    Total Price(Deposit 40%):
-                                                </span>
-                                                <span>
-                                                    &nbsp; ${calculateTotalPrice(payMethod)}
-                                                </span>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <span>
-                                            Total Price: ${calculateTotalPrice(payMethod)}
-                                        </span>
-                                                    )}
-                                            </div>
-                                        </div>
-                                        <div className="hidden md:block">
-                                            <div className="flex justify-end pt-10 text-white font-bold text-2xl">
-                                                {payMethod === "Visa" ? (
-                                                    <>
-                                                        {voucherPercent !== 0 ? (
-                                                            <div>
-                                                                <span className="text-md items-center">
-                                                                Total Price(Deposit 40%):  &nbsp;
-                                                                </span>
-                                                                    <span className="line-through">
-                                                                    ${calculateTotalPrice(payMethod)}
-                                                                    </span>
-                                                                    <span>
-                                                                    &nbsp; ${calculateTotalPriceWithVoucher(voucherPercent)}
-                                                                    </span>
-                                                                </div>
-                                                        ): (
-                                                                <div>
-                                                                    <span className="text-md items-center">
-                                                                    Total Price(Deposit 40%):
-                                                                </span>
-                                                                        <span>
-                                                                        &nbsp; ${calculateTotalPrice(payMethod)}
-                                                                        </span>
-                                                                    </div>
-                                                            )}
-                                                        </>
-                                                ) : (
-                                                        <span>
-                                                            {voucherPercent !== 0 ? (
-                                                                <>
-                                                                    <span className="text-md items-center">
-                                                                    Total Price:&nbsp;
-                                                                    </span>
-                                                                        <span className="line-through">
-                                                                        ${calculateTotalPrice(payMethod)}
-                                                                        </span>
-                                                                        <span>
-                                                                        &nbsp; ${calculateTotalPriceWithVoucher(voucherPercent)}
-                                                                        </span>
-                                                                    </>
-                                                            ) : (
-                                                                    <>
-                                                                        <span className="text-md items-center">
-                                                                        Total Price:
-                                                                    </span>
-                                                                            <span>
-                                                                            &nbsp; ${calculateTotalPrice(payMethod)}
-                                                                            </span>
-                                                                        </>
-                                                                )}
+									{payMethod === "Visa" ? (
+										<>
+											<div>
+												<span className="text-md items-center">
+													Total Price(Deposit 40%):
+												</span>
+												<span>
+													&nbsp; $
+													{calculateTotalPrice()}
+												</span>
+											</div>
+										</>
+									) : (
+										<span>
+											Total Price: $
+											{calculateTotalPrice()}
+										</span>
+									)}
+								</div>
+							</div>
+							<div className="hidden md:block">
+								<div className="flex justify-end pt-10 text-white font-bold text-2xl">
+									{payMethod === "Visa" ? (
+										<>
+											{voucherPercent !== 0 ? (
+												<div>
+													<span className="text-md items-center">
+														Total Price(Deposit
+														40%): &nbsp;
+													</span>
+													<span className="line-through text-blue-500">
+														${calculateTotalPrice()}
+													</span>
+													<span>
+														&nbsp; $
+														{calculateTotalPriceWithVoucher(
+															voucherPercent,
+															payMethod
+														)}
+													</span>
+												</div>
+											) : (
+												<div>
+													<span className="text-md items-center">
+														Total Price(Deposit
+														40%):
+													</span>
+													<span>
+														&nbsp; $
+														{calculateTotalPrice()}
+													</span>
+												</div>
+											)}
+										</>
+									) : (
+										<span>
+											{voucherPercent !== 0 ? (
+												<>
+													<span className="text-md items-center">
+														Total Price:&nbsp;
+													</span>
+													<span className="line-through text-blue-500">
+														${calculateTotalPrice()}
+													</span>
+													<span>
+														&nbsp; $
+														{calculateTotalPriceWithVoucher(
+															voucherPercent,
+															payMethod
+														)}
+													</span>
+												</>
+											) : (
+												<>
+													<span className="text-md items-center">
+														Total Price:
+													</span>
+													<span>
+														&nbsp; $
+														{calculateTotalPrice()}
+													</span>
+												</>
+											)}
+										</span>
+									)}
+								</div>
+							</div>
+							<div className="flex justify-end pb-4 pt-6 gap-3">
+							{voucherPercent !== 0 ? (
+								<div
+									onClick={handlClickRemoveVoucher}
+									className="detail-button bg-red-400 text-black px-4 py-2 md:px-6 md:py-3 w-[120px] text-xs lg:w-[200px] cursor-pointer lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white items-center font-bold sm:text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+								>
+									Remove Voucher
+								</div>
+							) : (
+								<div></div>
+							)}
+								<div
+									className="detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 w-[120px] text-xs lg:w-[150px] cursor-pointer lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white items-center font-bold sm:text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+									onClick={() =>
+										document
+											.getElementById("Add_Voucher")
+											.showModal()
+									}
+								>
+									Voucher
+								</div>
 
-                                                            </span>
-                                                    )}
-                                            </div>
-                                        </div>
-                                        <div className="flex justify-end pb-4 pt-6 gap-3">
-                                            <div
-                                                className="detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 w-[120px] text-xs lg:w-[150px] cursor-pointer lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white items-center font-bold sm:text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-                                                onClick={() =>
-                                                    document
-                                                        .getElementById("Add_Voucher")
-                                                        .showModal()
-                                                }
-                                            >
-                                                Voucher
-                                            </div>
-                                            {user && (
-                                                <>
-                                                    <div className="md:block hidden">
-                                                        <div
-                                                            onClick={handleProceedToPayment}
-                                                            className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-                                                        >
-                                                                {isSendingMail ? <LoadingSpinner/> : "Proceed to Payment"}
-                                                        </div>
-                                                    </div>
-                                                    <div className="justify-end">
-                                                        <div className="block md:hidden ">
-                                                            <div
-                                                                onClick={
-                                                                    handleProceedToPayment
-                                                                }
-                                                                className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-                                                            >
-                                                                {isSendingMail ? <LoadingSpinner/> : "Proceed to Payment"}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </>
-                                            )}
-                                        </div>
-                                </div>
-						)}
-
+								{user && (
+									<>
+										<div className="md:block hidden">
+											<div
+												onClick={handleProceedToPayment}
+												className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px]"
+											>
+												{isSendingMail ? (
+													<LoadingSpinner />
+												) : (
+													"Proceed to Payment"
+												)}
+											</div>
+										</div>
+										<div className="justify-end">
+											<div className="block md:hidden ">
+												<div
+													onClick={
+														handleProceedToPayment
+													}
+													className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+												>
+													{isSendingMail ? (
+														<LoadingSpinner />
+													) : (
+														"Proceed to Payment"
+													)}
+												</div>
+											</div>
+										</div>
+									</>
+								)}
+							</div>
+						</div>
 						<div>
 							<dialog id="Add_Voucher" className="modal">
 								<div className="modal-box backdrop-blur-3xl bg-gray-100  shadow-gray-500 shadow-md bg-opacity-0 w-full h-full flex rounded-xl">

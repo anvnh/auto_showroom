@@ -27,13 +27,13 @@ const Payment = () => {
 	// console.log("Mapbox Access Token:", import.meta.env.VITE_MAPBOX_ACCESS_TOKEN);
 
 	useEffect(() => {
-			AOS.init({
-				duration: 700,
-				easing: "ease-in-out",
-				once: true,
-				mirror: false,
-			});
-		})
+		AOS.init({
+			duration: 700,
+			easing: "ease-in-out",
+			once: true,
+			mirror: false,
+		});
+	});
 	const [state, setState] = useState({
 		number: "",
 		name: "",
@@ -48,8 +48,7 @@ const Payment = () => {
 		Address: "",
 	});
 
-    const [payMethod, setPayMethod] = useState(null);
-
+	const [payMethod, setPayMethod] = useState(null);
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -67,23 +66,23 @@ const Payment = () => {
 	const [currentLocation, setCurrentLocation] = useState("");
 	const [shippingCost, setShippingCost] = useState<number | null>(null);
 
-    const { data: vouchers } = useQuery({
-        queryKey: ["vouchers"],
-        queryFn: async () => {
-            try {
-                const response = await fetch("/api/user/vouchers");
-                const data = await response.json();
+	const { data: vouchers } = useQuery({
+		queryKey: ["vouchers"],
+		queryFn: async () => {
+			try {
+				const response = await fetch("/api/user/vouchers");
+				const data = await response.json();
 
-                if (!response.ok) {
-                    throw new Error(data.error || "Something went wrong!");
-                }
+				if (!response.ok) {
+					throw new Error(data.error || "Something went wrong!");
+				}
 
-                return data;
-            } catch (error) {
-                throw new Error(error);
-            }
-        },
-    });
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
 
 	const handleClick = () => {
 		setAddress("Trường Đại học CNTT và TT Việt-Hàn");
@@ -227,7 +226,12 @@ const Payment = () => {
 		[key: string]: boolean;
 	}>({});
 
-	const { data: cart, isLoading, refetch, isRefetching, } = useQuery({
+	const {
+		data: cart,
+		isLoading,
+		refetch,
+		isRefetching,
+	} = useQuery({
 		queryKey: ["cart"],
 		queryFn: async () => {
 			try {
@@ -282,68 +286,70 @@ const Payment = () => {
 		},
 	});
 
-    const {mutate: addOrderToDatabase} = useMutation({
-        mutationFn: async ({cars, info}) => {
-            try {
-                const res = await fetch("/api/order/add", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({cars, info}),
-                });
-                const result = await res.json();
+	const { mutate: addOrderToDatabase } = useMutation({
+		mutationFn: async ({ cars, info }) => {
+			try {
+				const res = await fetch("/api/order/add", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ cars, info }),
+				});
+				const result = await res.json();
 
-                if (!res.ok) {
-                    throw new Error(result.error || "Something went wrong");
-                }
+				if (!res.ok) {
+					throw new Error(result.error || "Something went wrong");
+				}
 
-                return result;
-            } catch (error) {
-                throw new Error(error);
-            }
-        },
-        onSuccess: () => {
-            toast.success("We have received and send you an email with the payment details. Please check your email.");
-        },
-        onError: (error) => {
-            toast.error("Failed to add order:", error.message);
-        },
-    });
+				return result;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			toast.success(
+				"We have received and send you an email with the payment details. Please check your email."
+			);
+		},
+		onError: (error) => {
+			toast.error("Failed to add order:", error.message);
+		},
+	});
 
-    const {mutate: sendPaymentMail, isLoading: isSendingMail} = useMutation({
-        mutationFn: async ({cars, info}) => {
-            try {
-                const res = await fetch("/api/user/payment/details", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({cars, info}),
-                });
-                const result = await res.json();
+	const { mutate: sendPaymentMail, isLoading: isSendingMail } = useMutation({
+		mutationFn: async ({ cars, info }) => {
+			try {
+				const res = await fetch("/api/user/payment/details", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ cars, info }),
+				});
+				const result = await res.json();
 
-                if (!res.ok) {
-                    throw new Error(result.error || "Something went wrong");
-                }
+				if (!res.ok) {
+					throw new Error(result.error || "Something went wrong");
+				}
 
-                return result;
-            } catch (error) {
-                throw new Error(error);
-            }
-        },
-        onSuccess: ({cars, info}) => {
-            addOrderToDatabase({
-                cars, info
-            });
-        },
-        onError: (error) => {
-            toast.error("Failed to send payment mail:", error.message);
-        },
-    });
+				return result;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: ({ cars, info }) => {
+			addOrderToDatabase({
+				cars,
+				info,
+			});
+		},
+		onError: (error) => {
+			toast.error("Failed to send payment mail:", error.message);
+		},
+	});
 
-
-	const calculateTotalPrice = (payMethod) => {
+	const calculateTotalPrice = () => {
 		if (!cart) return 0;
 		const totalCartPrice = cart.reduce((total, item) => {
 			const itemTotal =
@@ -351,27 +357,35 @@ const Payment = () => {
 				(quantities[item._id] || 1);
 			return total + itemTotal;
 		}, 0);
-
-		const totalPriceWithShipping = totalCartPrice + (Math.round(shippingCost) || 0);
-        // Trả với visa thì trả trước tiền cọc 40%
-		return payMethod == "Visa" ? totalPriceWithShipping * 0.4 : totalPriceWithShipping;
+		console.log("oko " + totalCartPrice);
+		// const totalPriceWithShipping = totalCartPrice + (Math.round(shippingCost) || 0);
+		// Trả với visa thì trả trước tiền cọc 40%
+		return totalCartPrice;
 		// return totalPriceWithShipping;
 		// return totalPriceWithShipping.toLocaleString();
-    };
-
-
-	const calculateTotalPriceWithVoucher = (percent) => {
+	};
+	// b = a.%/100
+	// c = b.40%.100
+	const calculateTotalPriceWithVoucher = (percent, payMethod) => {
 		if (!cart) return 0;
 		const totalCartPrice = cart.reduce((total, item) => {
 			const itemTotal =
 				Number(item.price.replace(/,/g, "")) *
 				(quantities[item._id] || 1);
+			// console.log(total + itemTotal)
 			return total + itemTotal;
 		}, 0);
 
-		const totalPriceWithShipping = totalCartPrice + (Math.round(shippingCost) || 0);
-		return totalPriceWithShipping - (totalPriceWithShipping * percent) / 100;
-    };
+		const totalPriceWithShipping =
+			totalCartPrice + (Math.round(shippingCost) || 0);
+		const depon = (totalPriceWithShipping * percent) / 100;
+		const depons = totalCartPrice - depon;
+		// console.log("per " + percent)
+		// console.log("depon " + depons)
+		const totallast = (depons * 40) / 100;
+		// console.log(totallast)
+		return payMethod == "Visa" ? totallast : depons;
+	};
 
 	const [quantities, setQuantities] = useState({});
 
@@ -400,54 +414,59 @@ const Payment = () => {
 		if (!cart || cart.length === 0) {
 			console.log("Cart is empty.");
 			return;
-		};
-        const vehicleInfoArray = cart.map((item) => {
-            const quantity = quantities[item._id] || 1;
-            const total = Number(item.price.replace(/,/g, "")) * quantity;
-            return {
-                id: item._id,
-                brand: item.brand,
-                model: item.car_model,
-                price: item.price,
-                quantity: quantity,
-                total: total
-            };
-        });
-        // create a unique order Id, required number and characters
-        const orderId = Math.floor(Math.random() * 10000000000) + Math.random().toString(36).substring(2, 13).toUpperCase();
-        const paymentMethod = payMethod == null ? toast.error("Please choose payment method") : payMethod;
-        const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
-        const isPaid = paymentResult === "Paid" ? true : false;
-        const isDelivered = false;
-        if(!address || !inputinformation.Phone) {
-            return toast.error("Please fill in all the information");
-        }
-        if(paymentMethod === "Visa") {
-            if(!state.number || !state.name || !state.expiry || !state.cvc) {
-                return toast.error("Please fill in all the information");
-            }
-        }
-        if(orderId && paymentMethod)  {
-            sendPaymentMail({
-                cars: vehicleInfoArray,
-                info: {
-                    orderId,
-                    address,
-                    shippingCost,
-                    paymentMethod,
-                    paymentResult,
-                    email: user.email,
-                    totalPrice: calculateTotalPrice(),
-                    isPaid,
-                    paidAt: isPaid ? new Date() : null,
-                    isDelivered,
-                    deliveredAt: null,
-                    phone: inputinformation.Phone,
-                    state,
-                }
-            });
-        }
-    };
+		}
+		const vehicleInfoArray = cart.map((item) => {
+			const quantity = quantities[item._id] || 1;
+			const total = Number(item.price.replace(/,/g, "")) * quantity;
+			return {
+				id: item._id,
+				brand: item.brand,
+				model: item.car_model,
+				price: item.price,
+				quantity: quantity,
+				total: total,
+			};
+		});
+		// create a unique order Id, required number and characters
+		const orderId =
+			Math.floor(Math.random() * 10000000000) +
+			Math.random().toString(36).substring(2, 13).toUpperCase();
+		const paymentMethod =
+			payMethod == null
+				? toast.error("Please choose payment method")
+				: payMethod;
+		const paymentResult = paymentMethod === "Visa" ? "Paid" : "Not Paid";
+		const isPaid = paymentResult === "Paid" ? true : false;
+		const isDelivered = false;
+		if (!address || !inputinformation.Phone) {
+			return toast.error("Please fill in all the information");
+		}
+		if (paymentMethod === "Visa") {
+			if (!state.number || !state.name || !state.expiry || !state.cvc) {
+				return toast.error("Please fill in all the information");
+			}
+		}
+		if (orderId && paymentMethod) {
+			sendPaymentMail({
+				cars: vehicleInfoArray,
+				info: {
+					orderId,
+					address,
+					shippingCost,
+					paymentMethod,
+					paymentResult,
+					email: user.email,
+					totalPrice: calculateTotalPrice(),
+					isPaid,
+					paidAt: isPaid ? new Date() : null,
+					isDelivered,
+					deliveredAt: null,
+					phone: inputinformation.Phone,
+					state,
+				},
+			});
+		}
+	};
 
 	// swap visa and Dỉrect
 	const [showvisaForm, setShowVisaForm] = useState(false);
@@ -462,7 +481,7 @@ const Payment = () => {
 		} else if (form === "DirectPayment") {
 			setShowVisaForm(false);
 			setShowDirectForm(true);
-			handleClick()
+			handleClick();
 			setActiveForm("DirectPayment");
 		} else {
 			setShowVisaForm(false);
@@ -471,18 +490,25 @@ const Payment = () => {
 		}
 	};
 
-    const [selectedVoucher, setSelectedVoucher] = useState("");
-    const [voucherPercent, setVoucherPercent] = useState(0);
+	const [selectedVoucher, setSelectedVoucher] = useState("");
+	const [voucherPercent, setVoucherPercent] = useState(0);
 
-    const handleChooseVoucher = (voucher) => {
-        setSelectedVoucher(voucher._id);
-        setVoucherPercent(voucher.discount);
-        document.getElementById("Add_Voucher").close();
-    }
+	const handlClickRemoveVoucher = () => {
+		
+		console.log("0");
+		setVoucherPercent(0);
+		toast.success("Remove voucher successfully");
+
+	};
+	const handleChooseVoucher = (voucher) => {
+		setSelectedVoucher(voucher._id);
+		setVoucherPercent(voucher.discount);
+		document.getElementById("Add_Voucher").close();
+	};
 
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
-            <Toaster position="top-center" reverseOrder={false} />
+			<Toaster position="top-center" reverseOrder={false} />
 			<div className="mt-20 md:mt-36 ">
 				<div className="w-full bg-gray-800 rounded-3xl backdrop-blur-md p-5 sm:flex mb-7">
 					<h1 className="w-full justify-start flex font-bold font-poppins text-white text-2xl md:pb-0 pb-5">
@@ -493,9 +519,9 @@ const Payment = () => {
 							className="detail-button bg-white text-black w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center
 							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[120px]"
 							onClick={() => {
-                                toggleFormPayment("visaPayment"),
-                                setPayMethod("Visa")
-                            }}
+								toggleFormPayment("visaPayment"),
+									setPayMethod("Visa");
+							}}
 						>
 							Card
 						</button>
@@ -503,230 +529,67 @@ const Payment = () => {
 							className="detail-button bg-white text-black  w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center
 							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[120px]"
 							onClick={() => {
-                                toggleFormPayment("DirectPayment")
-                                setPayMethod("Direct")
-                                setAddress("Trường Đại học CNTT và TT Việt-Hàn")
-                            }}
+								toggleFormPayment("DirectPayment");
+								setPayMethod("Direct");
+								setAddress(
+									"Trường Đại học CNTT và TT Việt-Hàn"
+								);
+							}}
 						>
 							Direct
 						</button>
 					</div>
 				</div>
 				{showdirectForm && (
-				<section data-aos="fade-left" className="text-black">
-
-					<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
-						<h2 className="text-2xl md:text-3xl font-bold font-poppins mb-20 text-white">
-							Input infomation
-						</h2>
-						<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
-							<input
-								data-aos="fade-left"
-								type="text"
-								className="form-control hover:cursor-not-allowed bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-								placeholder="Recipient name "
-								name="RecipientName"
-								value={user.fullName}
-								onChange={(event) => setInputinformation({ ...inputinformation, RecipientName: event.target.value })}
-                                readOnly
-							/>
-							<input
-								data-aos="fade-left"
-								type="text"
-								data-aos-delay="100"
-								className="hover:cursor-not-allowed form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-								placeholder="Gmail"
-								name="Gmail"
-								value={user.email}
-								onChange={(event) => setInputinformation({ ...inputinformation, Gmail: event.target.value })}
-                                readOnly
-							/>
-							<input
-								data-aos="fade-left"
-								data-aos-delay="200"
-								name="Phone"
-								value={inputinformation.Phone}
-								onChange={(event) => setInputinformation({ ...inputinformation, Phone: event.target.value })}
-								type="number"
-								className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-								placeholder="Phone number"
-								required
-							/>
-							<div className="grid grid-cols-2 gap-4 ">
-								<input
-									data-aos="fade-left"
-									data-aos-delay="400"
-									type="text"
-									name="cvc"
-									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
-									placeholder="Search or enter your address"
-									value={address}
-									onChange={handleAddressInputChange}
-									disabled
-								/>
-								<div className="col-span-1">
-									<div className="md:hidden block">
-										{distance !== null && (
-											<div className=" p-4 text-white rounded-lg shadow-md">
-												<p>
-													Distance about: <br />
-													<span className="text-blue-300">
-														{distance.toFixed(2)} km
-													</span>
-												</p>
-											</div>
-										)}
-									</div>
-									<div className="md:block hidden">
-										{distance !== null && (
-											<div className=" p-4 text-white rounded-lg shadow-md">
-												<p>
-													Distance about:
-													<span className="text-blue-300 pl-3">
-														{distance.toFixed(2)} km
-													</span>
-												</p>
-											</div>
-										)}
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				)}
-				{showvisaForm && (
-				<section data-aos="fade-left" className="text-black">
-					{visa && (
+					<section data-aos="fade-left" className="text-black">
 						<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
-							<h2 className="text-2xl md:text-3xl font-bold font-poppins mb-6 text-white">
-								Payment Information
+							<h2 className="text-2xl md:text-3xl font-bold font-poppins mb-20 text-white">
+								Input infomation
 							</h2>
-							<div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.2] xl:hover:scale-[1.3] md:pb-12 md:pt-12 duration-300 ease-in-out">
-								<Cards
-									number={state.number}
-									expiry={state.expiry}
-									cvc={state.cvc}
-									name={state.name}
-									focused={state.focus}
-								/>
-							</div>
 							<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
 								<input
 									data-aos="fade-left"
 									type="text"
-									name="number"
-									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-									placeholder="Card Number"
-									value={state.number}
-									maxLength={16}
-									onChange={handleInputChange}
-									onFocus={handleInputFocus}
-									required
-								/>
-								<input
-									data-aos="fade-left"
-									data-aos-delay="200"
-									type="text"
-									name="name"
-									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-									placeholder="Name on Card"
-									value={state.name}
-									onChange={handleInputChange}
-									onFocus={handleInputFocus}
-									required
-								/>
-								<div className="grid grid-cols-2 gap-4 ">
-									<input
-										data-aos="fade-left"
-										data-aos-delay="300"
-										type="text"
-										name="expiry"
-										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-										placeholder="Valid Thru (MM/YY)"
-										pattern="\d\d/\d\d"
-										value={state.expiry}
-										maxLength={4}
-										onChange={handleInputChange}
-										onFocus={handleInputFocus}
-										required
-									/>
-									<input
-										data-aos="fade-left"
-										data-aos-delay="400"
-										type="text"
-										name="cvc"
-										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-										placeholder="CVC"
-										pattern="\d{3,4}"
-										maxLength={3}
-										value={state.cvc}
-										onChange={handleInputChange}
-										onFocus={handleInputFocus}
-										required
-									/>
-								</div>
-							</div>
-							<div>
-								<div
-									data-aos="fade-right"
-									className="flex gap-5 justify-end"
-								>
-									<button
-										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[320px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[200px] md:hover:before:-translate-x-[370px]
-"
-										onClick={() => toggleForm("infomation")}
-									>
-										Enter personal information
-									</button>
-								</div>
-							</div>
-						</div>
-					)}
-					{infomationForm && (
-						<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
-							<h2 className="text-2xl md:text-3xl font-bold mb-6 text-white font-poppins">
-                                Information
-							</h2>
-							<div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.2] xl:hover:scale-[1.3] md:pb-12 md:pt-12 duration-300 ease-in-out">
-								<Cards
-									number={state.number}
-									expiry={state.expiry}
-									cvc={state.cvc}
-									name={state.name}
-									focused={state.focus}
-								/>
-							</div>
-							<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
-								<input
-									data-aos="fade-left"
-									type="text"
+									className="form-control hover:cursor-not-allowed bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+									placeholder="Recipient name "
 									name="RecipientName"
 									value={user.fullName}
-									onChange={(event) => setInputinformation({ ...inputinformation, RecipientName: event.target.value })}
-									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-									placeholder="Recipient name "
-									required
+									onChange={(event) =>
+										setInputinformation({
+											...inputinformation,
+											RecipientName: event.target.value,
+										})
+									}
+									readOnly
 								/>
 								<input
-                                    data-aos="fade-left"
-                                    type="text"
-                                    data-aos-delay="100"
-                                    className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
-                                    placeholder="Gmail"
-                                    name="Gmail"
-                                    value={user.email}
-                                    onChange={(event) => setInputinformation({ ...inputinformation, Gmail: event.target.value })}
-                                    required
+									data-aos="fade-left"
+									type="text"
+									data-aos-delay="100"
+									className="hover:cursor-not-allowed form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+									placeholder="Gmail"
+									name="Gmail"
+									value={user.email}
+									onChange={(event) =>
+										setInputinformation({
+											...inputinformation,
+											Gmail: event.target.value,
+										})
+									}
+									readOnly
 								/>
 								<input
 									data-aos="fade-left"
 									data-aos-delay="200"
-									type="number"
 									name="Phone"
 									value={inputinformation.Phone}
-									onChange={(event) => setInputinformation({ ...inputinformation, Phone: event.target.value })}
+									onChange={(event) =>
+										setInputinformation({
+											...inputinformation,
+											Phone: event.target.value,
+										})
+									}
+									type="number"
 									className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
 									placeholder="Phone number"
 									required
@@ -736,11 +599,12 @@ const Payment = () => {
 										data-aos="fade-left"
 										data-aos-delay="400"
 										type="text"
+										name="cvc"
 										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
 										placeholder="Search or enter your address"
 										value={address}
 										onChange={handleAddressInputChange}
-										required
+										disabled
 									/>
 									<div className="col-span-1">
 										<div className="md:hidden block">
@@ -774,42 +638,244 @@ const Payment = () => {
 											)}
 										</div>
 									</div>
-									<div className="flex justify-end gap-9 mt-3 mr-3">
+								</div>
+							</div>
+						</div>
+					</section>
+				)}
+				{showvisaForm && (
+					<section data-aos="fade-left" className="text-black">
+						{visa && (
+							<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
+								<h2 className="text-2xl md:text-3xl font-bold font-poppins mb-6 text-white">
+									Payment Information
+								</h2>
+								<div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.2] xl:hover:scale-[1.3] md:pb-12 md:pt-12 duration-300 ease-in-out">
+									<Cards
+										number={state.number}
+										expiry={state.expiry}
+										cvc={state.cvc}
+										name={state.name}
+										focused={state.focus}
+									/>
+								</div>
+								<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
+									<input
+										data-aos="fade-left"
+										type="text"
+										name="number"
+										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+										placeholder="Card Number"
+										value={state.number}
+										maxLength={16}
+										onChange={handleInputChange}
+										onFocus={handleInputFocus}
+										required
+									/>
+									<input
+										data-aos="fade-left"
+										data-aos-delay="200"
+										type="text"
+										name="name"
+										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+										placeholder="Name on Card"
+										value={state.name}
+										onChange={handleInputChange}
+										onFocus={handleInputFocus}
+										required
+									/>
+									<div className="grid grid-cols-2 gap-4 ">
+										<input
+											data-aos="fade-left"
+											data-aos-delay="300"
+											type="text"
+											name="expiry"
+											className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+											placeholder="Valid Thru (MM/YY)"
+											pattern="\d\d/\d\d"
+											value={state.expiry}
+											maxLength={4}
+											onChange={handleInputChange}
+											onFocus={handleInputFocus}
+											required
+										/>
+										<input
+											data-aos="fade-left"
+											data-aos-delay="400"
+											type="text"
+											name="cvc"
+											className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+											placeholder="CVC"
+											pattern="\d{3,4}"
+											maxLength={3}
+											value={state.cvc}
+											onChange={handleInputChange}
+											onFocus={handleInputFocus}
+											required
+										/>
+									</div>
+								</div>
+								<div>
+									<div
+										data-aos="fade-right"
+										className="flex gap-5 justify-end"
+									>
 										<button
-											onClick={handleClick}
-											className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
-											title="	Receive at VKU"
+											className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[320px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[200px] md:hover:before:-translate-x-[370px]
+"
+											onClick={() =>
+												toggleForm("infomation")
+											}
 										>
-											<GiHomeGarage />
-										</button>
-										<button
-											className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
-											onClick={handleGetLocation}
-											title="	Get Current Address"
-										>
-											<IoLocation />
+											Enter personal information
 										</button>
 									</div>
 								</div>
 							</div>
-							<div>
-								<div
-									data-aos="fade-right"
-									className="flex gap-5 justify-end"
-								>
-
-									<button
-										className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[320px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
-										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[320px]"
-										onClick={() => toggleForm("visa")}
+						)}
+						{infomationForm && (
+							<div className="container mx-auto p-6 md:p-10 bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-3xl">
+								<h2 className="text-2xl md:text-3xl font-bold mb-6 text-white font-poppins">
+									Information
+								</h2>
+								<div className="flex justify-center mt-6 mb-12 scale-75 transform md:scale-100 md:hover:scale-110 xl:scale-[1.2] xl:hover:scale-[1.3] md:pb-12 md:pt-12 duration-300 ease-in-out">
+									<Cards
+										number={state.number}
+										expiry={state.expiry}
+										cvc={state.cvc}
+										name={state.name}
+										focused={state.focus}
+									/>
+								</div>
+								<div className="mt-4 grid grid-cols-1 gap-4 md:gap-6">
+									<input
+										data-aos="fade-left"
+										type="text"
+										name="RecipientName"
+										value={user.fullName}
+										onChange={(event) =>
+											setInputinformation({
+												...inputinformation,
+												RecipientName:
+													event.target.value,
+											})
+										}
+										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+										placeholder="Recipient name "
+										required
+									/>
+									<input
+										data-aos="fade-left"
+										type="text"
+										data-aos-delay="100"
+										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+										placeholder="Gmail"
+										name="Gmail"
+										value={user.email}
+										onChange={(event) =>
+											setInputinformation({
+												...inputinformation,
+												Gmail: event.target.value,
+											})
+										}
+										required
+									/>
+									<input
+										data-aos="fade-left"
+										data-aos-delay="200"
+										type="number"
+										name="Phone"
+										value={inputinformation.Phone}
+										onChange={(event) =>
+											setInputinformation({
+												...inputinformation,
+												Phone: event.target.value,
+											})
+										}
+										className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white "
+										placeholder="Phone number"
+										required
+									/>
+									<div className="grid grid-cols-2 gap-4 ">
+										<input
+											data-aos="fade-left"
+											data-aos-delay="400"
+											type="text"
+											className="form-control bg-gray-900 border border-gray-300 p-3 rounded-lg shadow-sm focus:outline-none col-span-2 focus:ring-2 focus:shadow-blue-400 focus:shadow-md transition-all duration-300 text-white"
+											placeholder="Search or enter your address"
+											value={address}
+											onChange={handleAddressInputChange}
+											required
+										/>
+										<div className="col-span-1">
+											<div className="md:hidden block">
+												{distance !== null && (
+													<div className=" p-4 text-white rounded-lg shadow-md">
+														<p>
+															Distance about:{" "}
+															<br />
+															<span className="text-blue-300">
+																{distance.toFixed(
+																	2
+																)}{" "}
+																km
+															</span>
+														</p>
+													</div>
+												)}
+											</div>
+											<div className="md:block hidden">
+												{distance !== null && (
+													<div className=" p-4 text-white rounded-lg shadow-md">
+														<p>
+															Distance about:
+															<span className="text-blue-300 pl-3">
+																{distance.toFixed(
+																	2
+																)}{" "}
+																km
+															</span>
+														</p>
+													</div>
+												)}
+											</div>
+										</div>
+										<div className="flex justify-end gap-9 mt-3 mr-3">
+											<button
+												onClick={handleClick}
+												className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
+												title="	Receive at VKU"
+											>
+												<GiHomeGarage />
+											</button>
+											<button
+												className="text-white scale-[2]  hover:scale-[2.2] transition-all ease-in-out duration-300"
+												onClick={handleGetLocation}
+												title="	Get Current Address"
+											>
+												<IoLocation />
+											</button>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div
+										data-aos="fade-right"
+										className="flex gap-5 justify-end"
 									>
-										Enter card information
-									</button>
+										<button
+											className="detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 w-[320px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center
+										before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[320px]"
+											onClick={() => toggleForm("visa")}
+										>
+											Enter card information
+										</button>
+									</div>
 								</div>
 							</div>
-						</div>
-					)}
-				</section>
+						)}
+					</section>
 				)}
 			</div>
 
@@ -835,7 +901,7 @@ const Payment = () => {
 						{!isLoading && !isRefetching && cart && (
 							<div
 								data-aos="fade-up"
-								className="max-h-[570px] overflow-y-auto overflow-x-hidden"
+								className="max-h-[510px] min-h-[290px] overflow-y-auto overflow-x-hidden"
 							>
 								{cart.map((item, index) => {
 									return (
@@ -850,14 +916,15 @@ const Payment = () => {
 													>
 														<img
 															src={item.images[0]}
-															className="md:w-[330px] w-full bg-cover object-cover bg-center md:h-[200px] h-full  rounded-lg"
+															className="w-full h-auto md:h-[200px] bg-cover object-cover bg-center bg- rounded"
 														/>
 													</Link>
 												</div>
 												<div className="w-full md:w-[0.75] text-black">
 													<div>
 														<h2 className="text-2xl mb-5 pl-3 md:mt-0 mt-3 font-bold text-black">
-															{item.brand}&nbsp;{item.car_model}
+															{item.brand}&nbsp;
+															{item.car_model}
 														</h2>
 														<h3 className="line-clamp-2 h-[50px] pl-3 md:px-4 mt-3">
 															{item.bio}
@@ -946,7 +1013,18 @@ const Payment = () => {
 														<div className="ml-0 md:ml-12 mb-2 w-full md:w-[100px] text-black">
 															Total:
 															<span className="pl-20 text-[18px] font-bold text-blue-600">
-																${( Number( item.price.replace( /,/g, "")) * (quantities[ item._id ] || 1)).toLocaleString()}
+																$
+																{(
+																	Number(
+																		item.price.replace(
+																			/,/g,
+																			""
+																		)
+																	) *
+																	(quantities[
+																		item._id
+																	] || 1)
+																).toLocaleString()}
 															</span>
 														</div>
 													</div>
@@ -1023,81 +1101,104 @@ const Payment = () => {
 							</div>
 							<div className="block md:hidden">
 								<div className="flex justify-start pt-10 text-white font-bold text-2xl">
-                                    {payMethod === "Visa" ? (
-                                        <>
-                                            <div>
-                                                <span className="text-md items-center">
-                                                    Total Price(Deposit 40%):
-                                                </span>
-                                                <span>
-                                                    &nbsp; ${calculateTotalPrice(payMethod)}
-                                                </span>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <span>
-                                            Total Price: ${calculateTotalPrice(payMethod)}
-                                        </span>
-                                    )}
+									{payMethod === "Visa" ? (
+										<>
+											<div>
+												<span className="text-md items-center">
+													Total Price(Deposit 40%):
+												</span>
+												<span>
+													&nbsp; $
+													{calculateTotalPrice()}
+												</span>
+											</div>
+										</>
+									) : (
+										<span>
+											Total Price: $
+											{calculateTotalPrice()}
+										</span>
+									)}
 								</div>
 							</div>
 							<div className="hidden md:block">
 								<div className="flex justify-end pt-10 text-white font-bold text-2xl">
-                                    {payMethod === "Visa" ? (
-                                        <>
-                                            {voucherPercent !== 0 ? (
-                                                <div>
-                                                    <span className="text-md items-center">
-                                                        Total Price(Deposit 40%):  &nbsp;
-                                                    </span>
-                                                    <span className="line-through">
-                                                        ${calculateTotalPrice(payMethod)}
-                                                    </span>
-                                                    <span>
-                                                        &nbsp; ${calculateTotalPriceWithVoucher(voucherPercent)}
-                                                    </span>
-                                                </div>
-                                            ): (
-                                                <div>
-                                                    <span className="text-md items-center">
-                                                        Total Price(Deposit 40%):
-                                                    </span>
-                                                    <span>
-                                                        &nbsp; ${calculateTotalPrice(payMethod)}
-                                                    </span>
-                                                </div>
-                                            )}
-                                        </>
-                                    ) : (
-                                        <span>
-                                            {voucherPercent !== 0 ? (
-                                                <>
-                                                    <span className="text-md items-center">
-                                                        Total Price:&nbsp;
-                                                    </span>
-                                                    <span className="line-through">
-                                                        ${calculateTotalPrice(payMethod)}
-                                                    </span>
-                                                    <span>
-                                                        &nbsp; ${calculateTotalPriceWithVoucher(voucherPercent)}
-                                                    </span>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <span className="text-md items-center">
-                                                        Total Price:
-                                                    </span>
-                                                    <span>
-                                                        &nbsp; ${calculateTotalPrice(payMethod)}
-                                                    </span>
-                                                </>
-                                            )}
-
-                                        </span>
-                                    )}
+									{payMethod === "Visa" ? (
+										<>
+											{voucherPercent !== 0 ? (
+												<div>
+													<span className="text-md items-center">
+														Total Price(Deposit
+														40%): &nbsp;
+													</span>
+													<span className="line-through text-blue-500">
+														${calculateTotalPrice()}
+													</span>
+													<span>
+														&nbsp; $
+														{calculateTotalPriceWithVoucher(
+															voucherPercent,
+															payMethod
+														)}
+													</span>
+												</div>
+											) : (
+												<div>
+													<span className="text-md items-center">
+														Total Price(Deposit
+														40%):
+													</span>
+													<span>
+														&nbsp; $
+														{calculateTotalPrice()}
+													</span>
+												</div>
+											)}
+										</>
+									) : (
+										<span>
+											{voucherPercent !== 0 ? (
+												<>
+													<span className="text-md items-center">
+														Total Price:&nbsp;
+													</span>
+													<span className="line-through text-blue-500">
+														${calculateTotalPrice()}
+													</span>
+													<span>
+														&nbsp; $
+														{calculateTotalPriceWithVoucher(
+															voucherPercent,
+															payMethod
+														)}
+													</span>
+												</>
+											) : (
+												<>
+													<span className="text-md items-center">
+														Total Price:
+													</span>
+													<span>
+														&nbsp; $
+														{calculateTotalPrice()}
+													</span>
+												</>
+											)}
+										</span>
+									)}
 								</div>
 							</div>
 							<div className="flex justify-end pb-4 pt-6 gap-3">
+							{voucherPercent !== 0 ? (
+								<div
+									onClick={handlClickRemoveVoucher}
+									className="detail-button bg-red-400 text-black px-4 py-2 md:px-6 md:py-3 w-[120px] text-xs lg:w-[200px] cursor-pointer lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white items-center font-bold sm:text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+								>
+									Remove Voucher
+								</div>
+							) : (
+								<div></div>
+							)}
 								<div
 									className="detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 w-[120px] text-xs lg:w-[150px] cursor-pointer lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white items-center font-bold sm:text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
 									onClick={() =>
@@ -1114,9 +1215,13 @@ const Payment = () => {
 										<div className="md:block hidden">
 											<div
 												onClick={handleProceedToPayment}
-												className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+												className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px]"
 											>
-                                                {isSendingMail ? <LoadingSpinner/> : "Proceed to Payment"}
+												{isSendingMail ? (
+													<LoadingSpinner />
+												) : (
+													"Proceed to Payment"
+												)}
 											</div>
 										</div>
 										<div className="justify-end">
@@ -1127,7 +1232,11 @@ const Payment = () => {
 													}
 													className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
 												>
-                                                    {isSendingMail ? <LoadingSpinner/> : "Proceed to Payment"}
+													{isSendingMail ? (
+														<LoadingSpinner />
+													) : (
+														"Proceed to Payment"
+													)}
 												</div>
 											</div>
 										</div>
@@ -1140,43 +1249,71 @@ const Payment = () => {
 							<dialog id="Add_Voucher" className="modal">
 								<div className="modal-box backdrop-blur-3xl bg-gray-100  shadow-gray-500 shadow-md bg-opacity-0 w-full h-full flex rounded-xl">
 									<div className=" rounded-lg shadow-lg w-full">
-                                        {/*
+										{/*
                                         <VoucherPopup />
                                         */}
-                                            <div className="flex bg-gray-800 bg-opacity-50 backdrop-blur-xl text-black p-2 mb-4 rounded-2xl shadow-md w-full h-[200px]">
-                                                {vouchers && vouchers.map((voucher) => (
-                                                    <div
-                                                        className="flex hover:cursor-pointer"
-                                                        onClick={() => {
-                                                            handleChooseVoucher(voucher)
-                                                        }}
-                                                    >
-                                                        <div className="relative w-2/3 p-1 mr-4 flex items-center">
-                                                            <img
-                                                            src={voucher.img}
-                                                            className="w-full h-auto shadow-xl shadow-black  rounded"
-                                                            alt="Voucher"
-                                                        />
-                                                        </div>
-                                                            <div className="w-2/3 flex text-md text-white flex-col space-y-2 pt-8">
-                                                                <div className="flex gap-2">
-                                                                    <div className="font-bold ">Discount:</div>
-                                                                    <p className="font-bold text-md">{voucher.discount}%</p>
-                                                                </div>
-                                                                <div className="flex gap-2">
-                                                                    <div className="font-bold">Condition:</div>
-                                                                    <p>Bill at least <span className="font-bold"> ${voucher.minPrice} </span></p>
-                                                                </div>
-                                                                <div className="flex gap-2">
-                                                                    <div className="font-bold">Expiry Date:</div>
-                                                                    <p>
-                                                                        {new Date(voucher.expiryDate).toLocaleDateString()}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                ))}
-                                            </div>
+										<div className="flex bg-gray-800 bg-opacity-50 backdrop-blur-xl text-black p-2 mb-4 rounded-2xl shadow-md w-full h-[200px] hover:bg-gray-900 duration-300 transition-all ease-in-out">
+											{vouchers &&
+												vouchers.map((voucher) => (
+													<div
+														className="flex group hover:cursor-pointer"
+														onClick={() => {
+															handleChooseVoucher(
+																voucher
+															);
+														}}
+													>
+														<div className="relative w-2/3 p-1 mr-4 flex items-center">
+															<img
+																src={
+																	voucher.img
+																}
+																className="w-full h-auto shadow-xl shadow-black  rounded "
+																alt="Voucher"
+															/>
+														</div>
+														<div className="w-2/3 flex text-md text-white flex-col space-y-2 pt-3">
+															<div className="flex gap-2">
+																<div className="font-bold ">
+																	Discount:
+																</div>
+																<p className="font-bold text-md">
+																	{
+																		voucher.discount
+																	}
+																	%
+																</p>
+															</div>
+															<div className="flex gap-2">
+																<div className="font-bold">
+																	Condition:
+																</div>
+																<p>
+																	Bill at
+																	least{" "}
+																	<span className="font-bold">
+																		{" "}
+																		$
+																		{
+																			voucher.minPrice
+																		}{" "}
+																	</span>
+																</p>
+															</div>
+															<div className="flex gap-2">
+																<div className="font-bold">
+																	Expiry Date:
+																</div>
+																<p>
+																	{new Date(
+																		voucher.expiryDate
+																	).toLocaleDateString()}
+																</p>
+															</div>
+														</div>
+													</div>
+												))}
+										</div>
 									</div>
 								</div>
 								<form
