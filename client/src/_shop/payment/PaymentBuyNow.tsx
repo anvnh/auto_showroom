@@ -401,11 +401,8 @@ const Payment = () => {
         const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
         const isPaid = paymentResult === "Paid" ? true : false;
         const isDelivered = false;
-        if(user) {
-            inputinformation.RecipientName = user.fullName;
-            inputinformation.Gmail = user.email;
-        }
         if(!address || !inputinformation.RecipientName || !inputinformation.Gmail || !inputinformation.Phone) { 
+            // console.log(address, inputinformation.RecipientName, inputinformation.Gmail, inputinformation.Phone);
             return toast.error("Please fill in all the information");
         }
         if(paymentMethod === "Visa") {

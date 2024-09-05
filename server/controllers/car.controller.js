@@ -191,7 +191,7 @@ export const reviewCar = async (req, res) => {
         }
 
         if(!rated) {
-            return res.status(400).json({ message: "Rating field is required" });
+            return res.status(400).json({ message: "Internal server error" });
         }
 
         const car = await Car.findById(carId);
@@ -331,12 +331,13 @@ export const updateCar = async (req, res) => {
 export const getPhobertPrediction = async (req, res) => {
     try{
         const {text} = req.body;
-        const response = await axios.post('http://localhost:5001/api/v1/phobert/get_predict', { content: text });
-        const prediction = response.data.prediction[0][1] > response.data.prediction[0][0] ? "Positive" : "Negative";
-        res.status(200).json({ prediction });
+        const server = "http://127.0.0.1:8000/api/v1/predict";
+        const response = await axios.post(server, {content: text});
+        res.status(200).json(response.prediction);
     } catch (error) {
-        console.log("Error in phobert middleware", error.message);
-        res.status(500).json({ error: "Internal server error. Please try again later!" });
+        // console.log("Error in phobert middleware", error.message);
+        // res.status(500).json({ error: "Internal server error. Please try again later!" });
+        res.status(500).json({error: error.message});
     }
 }
 
