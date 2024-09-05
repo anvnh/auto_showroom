@@ -391,7 +391,7 @@ const Payment = () => {
 			const itemTotal =
 				Number(car.price.replace(/,/g, "")) *
 				(quantities[car._id] || 1);		
-		console.log("oko " + itemTotal);
+		// console.log("oko " + itemTotal);
 		// const totalPriceWithShipping = totalCartPrice + (Math.round(shippingCost) || 0);
 		// Trả với visa thì trả trước tiền cọc 40%
 		return itemTotal;
@@ -442,7 +442,7 @@ const Payment = () => {
         const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
         const isPaid = paymentResult === "Paid" ? true : false;
         const isDelivered = false;
-        if(!address || !inputinformation.RecipientName || !inputinformation.Gmail || !inputinformation.Phone) {
+        if(!address || user ? !user.fullName : !inputinformation.RecipientName || user ? !user.email : !inputinformation.Gmail || !inputinformation.Phone) {
             // console.log(address, inputinformation.RecipientName, inputinformation.Gmail, inputinformation.Phone);
             return toast.error("Please fill in all the information");
         }
@@ -457,13 +457,13 @@ const Payment = () => {
             sendPaymentMail({
                 cars: vehicleInfo,
                 info: {
-                    fullName: inputinformation.RecipientName,
+                    fullName: user ? user.fullName : inputinformation.RecipientName,
                     orderId,
                     address,
                     shippingCost,
                     paymentMethod,
                     paymentResult,
-                    email: inputinformation.Gmail,
+                    email: user ? user.email : inputinformation.Gmail,
                     totalPrice: calculateTotalPrice(),
                     isPaid,
                     paidAt: isPaid ? new Date() : null,
