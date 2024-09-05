@@ -21,7 +21,7 @@ const RootLayout = () => {
 					</div>
 				</div>
 				<div className="flex items-start justify-center ">
-					<div className="w-full z-20">
+					<div className="w-full z-30">
 						<NavbarSmallHomePage />
 					</div>
 				</div>

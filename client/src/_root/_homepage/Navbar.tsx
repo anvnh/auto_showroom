@@ -302,8 +302,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									}
 								>
 									<div className="relative group flex transition ease-in-out delay-100  duration-300 select-none">
-										<Link to="/owners">
-											<p> Owners </p>
+										<Link to="/policy">
+											<p> Policy </p>
 											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 										</Link>
 									</div>
@@ -439,8 +439,8 @@ const Navbar: React.FC<SubNavbarProps> = ({
 									data-aos-delay="700"
 									className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
 								>
-									<Link to="/owners">
-										<p> Owners </p>
+									<Link to="/policy">
+										<p> Policy </p>
 									</Link>
 								</div>
 							</li>
