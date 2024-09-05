@@ -92,7 +92,7 @@ export const deleteOrder = async (req, res) => {
 export const getOnDeliveyUserOrders = async (req, res) => {
     try {
         const user = req.user;
-        const orders = await Order.find({ isDelivered: false, isCancelled: false, user: user._id }).populate("user").populate("orderItems.carId");
+        const orders = await Order.find({ isDelivered: false, isCancelled: false, paymentMethod: "Visa" , user: user._id }).populate("user").populate("orderItems.carId");
         res.status(200).json(orders);
     } catch (error) {
         console.log("Error in getUserOrders controller: ", error);
