@@ -24,7 +24,7 @@ const HomePage = () => {
 				<div className="flex w-full border-b border-gray-800 sticky top-0 z-10 bg-black bg-opacity-50 backdrop-blur-md">
 					<div
 						className={
-							"border- rounded-tl-3xl flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 cursor-pointer relative"
+							"border-  flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 cursor-pointer relative"
 						}
 						onClick={() => setFeedType("forYou")}
 					>
@@ -34,7 +34,7 @@ const HomePage = () => {
 						)}
 					</div>
 					<div
-						className="border- rounded-tr-3xl flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 cursor-pointer relative"
+						className="border- rounded flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 cursor-pointer relative"
 						onClick={() => setFeedType("following")}
 					>
 						Following

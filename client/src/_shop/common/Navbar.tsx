@@ -247,6 +247,28 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 									<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
 								</div>
 							</li>
+							{authUser?.isAdmin === true && (
+									<li
+										className={`cursor-pointer transition-opacity duration-300 ${selectedP && selectedP !== "Admin"
+											? "opacity-50"
+											: "opacity-100"
+											}`}
+										onMouseEnter={() =>
+											handleMouseEnter("Admin")
+										}
+										onMouseLeave={handleMouseLeave}
+										onClick={() =>
+											handleToggleSection("Admin")
+										}
+									>
+										<div className="relative group  flex transition ease-in-out delay-100  duration-300 select-none">
+											<Link to="/admin">
+												<p> Admin </p>
+											</Link>
+											<div className="absolute -bottom-2 left-0 h-1 w-0 bg-white group-hover:w-full transition-all duration-300"></div>
+										</div>
+									</li>
+								)}
 						</ul>
 					</nav>
 				</div>
@@ -313,6 +335,24 @@ const Navbar: React.FC<SubNavbarProps> = ({ selectedSection_element, onNavClick,
 									</Link>
 								</div>
 							</li>
+							{authUser?.isAdmin === true && (
+								<li
+									className="cursor-pointer transition-opacity duration-300 w-full text-center"
+									onClick={() =>
+										handleNavClick_repon("Admin")
+									}
+								>
+									<div
+										data-aos="fade-up"
+										data-aos-delay="1000"
+										className="relative group flex justify-center transition ease-in-out delay-100 duration-300 select-none sm:text-2xl ss:text-3xl"
+									>
+										<Link to="/admin">
+											<p> Admin </p>
+										</Link>
+									</div>
+								</li>
+							)}
 						</ul>
 					) : (
 						<div className="pt-5 pl-4">
