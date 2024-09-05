@@ -24,7 +24,7 @@ const LineUsersChart = () => {
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: 0.2 }}
 		>
-			<h2 className='text-lg font-medium mb-4 text-gray-100'>Number of products sold per month</h2>
+			<h2 className='text-lg font-medium mb-4 text-gray-100'>Number of users sold per month</h2>
 
 			<div className='h-80'>
 				<ResponsiveContainer width={"100%"} height={"100%"}>
