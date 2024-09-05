@@ -27,6 +27,8 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import TableVoucher from "./elementVoucher/TableVoucher";
+
 
 const Vouchers = () => {
 	const queryClient = useQueryClient();
@@ -456,7 +458,11 @@ const Vouchers = () => {
 						</button>
 					</form>
 				</dialog>
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8"></div>
+				<div className="">
+					<TableVoucher />
+
+				</div>
+
 			</main>
 		</div>
 	);

@@ -67,7 +67,7 @@ const VouchersManagement = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
         >
-                <div className="text-white p-5 space-y-5 md:block hidden">
+                <div className="text-white p-5 space-y-5 ">
                     <div>
                         {isLoading && isRefetching && <LoadingSpinner />}
                         {!isLoading && !isRefetching && vouchers?.length === 0 && (
@@ -77,16 +77,17 @@ const VouchersManagement = () => {
                             !isRefetching &&
                             vouchers &&
                             vouchers?.map((product) => (
-                                <div className="flex bg-gray-600 p-4 mb-4 rounded-2xl shadow-md w-full h-[390px]">
-                                    <div className="relative w-2/3 p-1 mr-4 flex items-center">
+                                <div className="md:flex bg-gray-600 mb-8 ss:text-xl sm:text-xl p-7 md:p-3 md:mb-4 rounded-2xl shadow-md w-full h-auto md:h-[390px]">
+                                    <div className="relative md:w-2/3 p-1 md:mr-4 flex items-center">
                                         <img
                                         src={product.img}
-                                        className="w-full h-[320px] shadow-xl shadow-black  rounded"
+                                        className="w-full md:h-[320px] shadow-xl object-cover shadow-black  rounded"
                                         alt="Voucher"
                                     />
                                     </div>
-                                        <div className="w-2/3 flex flex-col space-y-5">
-                                            <div className="flex justify-end items-center">
+                                        <div className="md:w-2/3 flex flex-col space-y-3">
+                                         <div className="hidden md:block">
+                                         <div className="flex justify-end items-center">
                                                 <div className="flex gap-3 bg-black p-2 bg-opacity-20 rounded-2xl">
                                                     {isDeleting ? (
                                                         <LoadingSpinner />
@@ -98,11 +99,12 @@ const VouchersManagement = () => {
                                                     )}
                                                 </div>
                                             </div>
+                                         </div>
                                             <div>
                                                 <div className="font-bold">Terms of Use:</div>
                                                 <p>
                                                     Purchasing products at AAP showroom, minimum bill required: &nbsp;
-                                                    <span className='font-bold text-md'>
+                                                    <span className='md:font-bold text-md'>
                                                         ${product.minPrice}
                                                     </span>
                                                 </p>
@@ -110,7 +112,7 @@ const VouchersManagement = () => {
                                             <div>
                                                 <span className="font-bold">
                                                     Discount:&nbsp;
-                                                    <span className="text-xl">
+                                                    <span className="text-xl pl-5">
                                                         {product.discount}%
                                                     </span>
                                                 </span>
@@ -138,6 +140,20 @@ const VouchersManagement = () => {
                                                     User must have at least {product.minPosts} posts and {product.minLikes} likes
                                                 </p>
                                             </div>
+                                            <div className="block md:hidden">
+                                         <div className="flex justify-end items-center">
+                                                <div className="flex gap-3 bg-black p-2 bg-opacity-20 rounded-2xl">
+                                                    {isDeleting ? (
+                                                        <LoadingSpinner />
+                                                    ) : (
+                                                        <MdDelete 
+                                                            className="w-5 h-5 text-red-500 cursor-pointer" 
+                                                            onClick={() => deleteVoucher(product._id)}   
+                                                        />
+                                                    )}
+                                                </div>
+                                            </div>
+                                         </div>
                                         </div>
                                     </div>
                         ))}

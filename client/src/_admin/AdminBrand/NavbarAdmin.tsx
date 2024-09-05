@@ -26,7 +26,7 @@ const slidebar_items = [
 	{ name: "Users", icon: User, color: "white" },
 	{ name: "Voucher", icon: RiCoupon2Fill , color: "white" },
 	{ name: "Orders", icon: ShoppingCart, color: "white" },
-	{ name: "Analytics", icon: TrendingUp, color: "white" },
+	// { name: "Analytics", icon: TrendingUp, color: "white" },
 ];
 
 const pageHeights = {
@@ -36,7 +36,7 @@ const pageHeights = {
 	Sales: "1200px",
 	Voucher: "1600px",
 	Orders: "1450px",
-	Analytics: "1900px",
+	// Analytics: "1900px",
 };
 
 const NavbarAdmin = () => {
@@ -48,9 +48,9 @@ const NavbarAdmin = () => {
 	};
 
 	return (
-		<div className="flex h-full">
+		<div className="flex h-full ">
 			<motion.div
-				className={`relative z-10 transition-all duration-300 ease-in-out flex-shrink-0 ${
+				className={`relative z-10 transition-all duration-300 ease-in-out flex-shrink-0 border-gray-950 rounded-b-full  ${
 					isSlidebarOpen ? "w-64" : "w-20"
 				}`}
 				animate={{ width: isSlidebarOpen ? 256 : 80 }}
@@ -114,7 +114,7 @@ const NavbarAdmin = () => {
 				{currentPage === "Users" && <Users />}
 				{currentPage === "Voucher" && <Vouchers />}
 				{currentPage === "Orders" && <Orders />}
-				{currentPage === "Analytics" && <Analytics />}
+				{/* {currentPage === "Analytics" && <Analytics />} */}
 			
 			</div>
 		</div>
