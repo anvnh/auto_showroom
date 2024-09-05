@@ -81,10 +81,10 @@ const UsersTable = () => {
 								<th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
 									Name
 								</th>
-								<th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+								<th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider ml-10">
 									Email
 								</th>
-								<th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+								<th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider ml-10">
 									Role
 								</th>
 								<th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
@@ -109,25 +109,23 @@ const UsersTable = () => {
 											<div className="flex items-center">
 												<div className="flex-shrink-0 h-10 w-10">
 													<div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-														{user.username.charAt(
-															0
-														)}
+														{user.username.charAt(0).toUpperCase()}
 													</div>
 												</div>
 												<div className="ml-4">
 													<div className="text-sm font-medium text-gray-100">
-														{user.name}
+														{user.fullName}
 													</div>
 												</div>
 											</div>
 										</td>
 
-										<td className="px-6 py-4 whitespace-nowrap">
+										<td className="px-6 py-4 whitespace-nowrap ml-10">
 											<div className="text-sm text-gray-300">
 												{user.email}
 											</div>
 										</td>
-										<td className="px-6 py-4 whitespace-nowrap">
+										<td className="px-6 py-4 whitespace-nowrap ml-10">
 											<span
 												className={`x-2 inline-flex text-xs p-2 leading-5 font-semibold rounded-full ${
 													user.isAdmin
