@@ -153,6 +153,13 @@ export const checkIfMeetConditions = async (req, res) => {
             }
         }
 
+        // check if user has already used this voucher
+        for (const usedVoucher of user.used_vouchers) {
+            if (usedVoucher.toString() === maxDiscountVoucher._id.toString()) {
+                return;
+            }
+        }
+
         // add voucher to user
 
         user.vouchers.push(maxDiscountVoucher._id);
@@ -162,6 +169,29 @@ export const checkIfMeetConditions = async (req, res) => {
 
     } catch (error) {
         console.log("Error in checkIfMeetConditions: ", error.message);
+        res.status(500).json({ message: error.message });
+    }
+}
+
+export const moveVoucherToUsed = async (req, res) => {
+    try {
+        const { voucherId } = req.body;
+
+        const user = await User.findById(req.user._id);
+
+        // remove voucher from user
+        user.vouchers = user.vouchers.filter(
+            (voucher) => voucher.toString() !== voucherId
+        );
+
+        // add voucher to used_vouchers
+        user.used_vouchers.push(voucherId);
+
+        await user.save();
+
+        res.status(200).json({ message: "Voucher moved to used vouchers" });
+    } catch (error) {
+        console.log("Error in moveVoucherToUsed: ", error.message);
         res.status(500).json({ message: error.message });
     }
 }
