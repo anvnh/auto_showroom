@@ -131,9 +131,11 @@ const ProfilePage = () => {
 						<>
 							{/* HEADER */}
 							<div className="flex gap-10 px-4 py-2 items-center sticky top-0 z-10 backdrop-blur-md border-gray-800">
+							<div className="block md:hidden">
 								<Link to="/">
 									<img src={logo} className="w-16 h-10" />
 								</Link>
+								</div>
 								<div className="flex flex-col w-full">
 									<p className="font-bold text-md">
 										{user?.fullName}
@@ -149,7 +151,8 @@ const ProfilePage = () => {
 									</span>
 								</div>
 								<Link to="/">
-								<div className="flex w-[40px] justify-end text-xs"
+							<div className="block md:hidden">
+							<div className="flex w-[40px] justify-end text-xs"
 								onClick={(e) => {
 									e.preventDefault();
 									// TODO
@@ -157,6 +160,7 @@ const ProfilePage = () => {
 								}}>
 									log out
 								</div>
+							</div>
 								</Link>
 							</div>
 
