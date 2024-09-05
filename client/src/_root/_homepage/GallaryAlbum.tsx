@@ -38,7 +38,7 @@ export const GallaryAlbum = () => {
       yPercent: 40,
       scrollTrigger: {
         trigger: con_col.current,
-        start: "top 80%",
+        start: "top 70%",
         end: "bottom top",
         scrub: true,
       }
@@ -66,7 +66,7 @@ export const GallaryAlbum = () => {
   return (
     <div ref={con_col} className="bg-neutral-900 overflow-y-hidden
        w-screen h-screen flex justify-evenly items-center ">
-      <section ref={col1} className="object-cover w-[20%] h-[150%]  hidden xsm:flex flex-col justify-evenly items-center ">
+      <section ref={col1} className="flex object-cover w-[40%] ss:w-[30%] xsm:w-[20%] h-[150%]   flex-col justify-evenly items-center ">
         <img src={nissan2} className="w-full h-[500px] object-cover" />
         <img src={nissan1} className="w-full h-[500px] object-cover" />
       </section>
@@ -78,7 +78,7 @@ export const GallaryAlbum = () => {
         <img src={toyota86} className="w-full h-[500px] object-cover" />
         <img src={audi3} className="w-full h-[500px] object-cover" />
       </section>
-      <section ref={col4} className="w-[40%] ss:w-[30%] xsm:w-[20%] h-[150%]  flex flex-col justify-evenly items-center">
+      <section ref={col4} className="w-[40%] ss:w-[30%] xsm:w-[20%] h-[150%]  hidden xsm:flex flex-col justify-evenly items-center">
         <img src={audi2} className="w-full h-[500px] object-cover" />
         <img src={audi4} className="w-full h-[500px] object-cover" />
       </section>
