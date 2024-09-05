@@ -88,6 +88,13 @@ const userSchema = new mongoose.Schema(
 				default: [],
 			},
 		],
+        used_vouchers: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Voucher",
+                default: [],
+            },
+        ],
         orders: [
             {
                 type: mongoose.Schema.Types.ObjectId,
