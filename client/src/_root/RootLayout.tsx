@@ -6,17 +6,10 @@ import "aos/dist/aos.css";
 import { useEffect, useRef, useState } from "react";
 import Infor from "@/in4/Infor";
 import NavbarSmallHomePage from "./elementNavbar/NavbarSmallHomePage"
+import { smoothScroll_lenis } from "@/_car/audi/audi_A5/Effect";
 const RootLayout = () => {
 	useEffect(() => {
-		const lenis = new Lenis();
-		function raf(time) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
-		return () => {
-			lenis.destroy();
-		};
+		smoothScroll_lenis()
 	}, []);
 
 	return (
@@ -34,7 +27,7 @@ const RootLayout = () => {
 				</div>
 				<div className="flex items-start justify-center">
 					<div className="w-full ">
-						<Infor/>
+						<Infor />
 					</div>
 				</div>
 				<div id="Home" className="flex items-start justify-center ">
