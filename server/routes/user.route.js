@@ -16,6 +16,8 @@ import {
     sendPaymentDetails,
     sendPaymentDetailsBuyNow,
     sendDeliveryConfirmationMail,
+    getPostsAndLikes,
+    getVouchers
 } from "../controllers/user.controller.js";
 import { get } from "mongoose";
 
@@ -36,5 +38,8 @@ router.post("/payment/buynow/details",sendPaymentDetailsBuyNow);
 router.post("/delivery/confirmation", sendDeliveryConfirmationMail);
 router.delete("/delete/cart/:id", protectRoute, deleteCart);
 router.delete("/delete/confirm/:id", protectRoute, deleteUser);
+
+router.get("/postsAndLikes", protectRoute, getPostsAndLikes);
+router.get("/vouchers", protectRoute, getVouchers);
 
 export default router;

@@ -1,4 +1,5 @@
 import Voucher from "../models/voucher.model.js";
+import User from "../models/user.model.js";
 import { v2 as cloudinary } from "cloudinary";
 
 function formatDateToDDMMYYYY(date) {
@@ -35,13 +36,13 @@ export const addVoucher = async (req, res) => {
         } = req.body;
         let { img } = req.body;
 
-        // if (!img) {
-        //     return res.status(400).json({ message: "Please upload an image" });
-        // }
-        // if (img) {
-        //     const uploadedResponse = await cloudinary.uploader.upload(img);
-        //     img = uploadedResponse.secure_url;
-        // }
+        if (!img) {
+            return res.status(400).json({ message: "Please upload an image" });
+        }
+        if (img) {
+            const uploadedResponse = await cloudinary.uploader.upload(img);
+            img = uploadedResponse.secure_url;
+        }
 
         // const manufacturDateObj = (manufacturDate);
         // const expiryDateObj = (expiryDate);
@@ -108,3 +109,60 @@ export const deleteVoucher = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export const checkIfMeetConditions = async (req, res) => {
+    try {
+        const { posts, likes } = req.body;
+
+        // check if with that likes and posts, user can get a voucher in the database ?
+
+        const vouchers = await Voucher.find();
+        const currentDate = new Date();
+        let validVouchers = [];
+        for (const voucher of vouchers) {
+            const { minPosts, minLikes, expiryDate } = voucher;
+            const expiryDateObj = new Date(expiryDate.split('-').reverse().join('-'));
+            if (
+                posts >= minPosts &&
+                likes >= minLikes &&
+                expiryDateObj > currentDate
+            ) {
+                validVouchers.push(voucher);
+            }
+        }
+        // choose the voucher with the highest discount
+
+        if (validVouchers.length === 0) {
+            return;
+        }
+
+        let maxDiscount = 0;
+        let maxDiscountVoucher = null;
+        for (const voucher of validVouchers) {
+            if (voucher.discount > maxDiscount) {
+                maxDiscount = voucher.discount;
+                maxDiscountVoucher = voucher;
+            }
+        }
+
+        // check if user already has this voucher
+        const user = await User.findById(req.user._id);
+        for (const userVoucher of user.vouchers) {
+            if (userVoucher.toString() === maxDiscountVoucher._id.toString()) {
+                return;
+            }
+        }
+
+        // add voucher to user
+
+        user.vouchers.push(maxDiscountVoucher._id);
+        await user.save();
+
+        res.status(200).json({maxDiscountVoucher, user});
+
+    } catch (error) {
+        console.log("Error in checkIfMeetConditions: ", error.message);
+        res.status(500).json({ message: error.message });
+    }
+}
+

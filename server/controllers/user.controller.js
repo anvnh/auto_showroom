@@ -598,5 +598,31 @@ export const sendDeliveryConfirmationMail = async (req, res) => {
 
 
 
+export const getPostsAndLikes = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        // count the number of posts and likes
+        const posts = await Post.find({ user: userId });
+        const likes = posts.reduce((total, post) => total + post.likes.length, 0);
 
+        res.status(200).json({ posts: posts.length, likes });
+    }
+    catch(error) {
+        console.log("Error in getPostsAndLikes: ", error.message)
+        res.status(500).json({error: error.message})
+    }
+}
 
+export const getVouchers = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const user = await User.findById(userId).populate("vouchers");
+        if(!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json(user.vouchers);
+    } catch(error) {
+        console.log("Error in getVouchers: ", error.message)
+        res.status(500).json({error: error.message})
+    }
+}

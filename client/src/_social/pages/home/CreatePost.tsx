@@ -18,11 +18,52 @@ const CreatePost = () => {
 
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
-    const {
-        mutate: createPost,
-        isPending,
-        error,
-    } = useMutation({
+    const {data: postsAndLikes, isLoading, refetch, isRefetching,} = useQuery({
+        queryKey: ["postsAndLikes"],
+        queryFn: async () => {
+            try {
+                const response = await fetch("/api/user/postsAndLikes");
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || "Something went wrong!");
+                }
+
+                return data;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+    });
+
+    const { mutate: checkAndGetVoucher, isPending: isChecking, } = useMutation({
+        mutationFn: async ({posts, likes}) => {
+            try {
+                const res = await fetch("/api/vouchers/check", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ posts, likes }),
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                    throw new Error(data.message || "Something went wrong");
+                }
+                return data;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+        onSuccess: () => {
+            toast.success("You have earned a voucher. Go check it out!");
+        },
+        onError: (error) => {
+            toast.error(error.message);
+        },
+    });
+
+    const { mutate: createPost, isPending, error, } = useMutation({
         mutationFn: async ({ text, img }) => {
             try {
                 const res = await fetch("/api/posts/create", {
@@ -45,7 +86,8 @@ const CreatePost = () => {
             setText("");
             setImg(null);
             toast.success("Post created successfully");
-            queryClient.invalidateQueries("posts");
+			queryClient.invalidateQueries({ queryKey: ["posts"] });
+            checkAndGetVoucher({ posts: postsAndLikes.posts, likes: postsAndLikes.likes });
         },
         onError: (error) => {
             toast.error(error.message);
@@ -74,6 +116,11 @@ const CreatePost = () => {
         setText((prevContent) => prevContent + emojiObject.emoji);
         setShowEmojiPicker(false);
     };
+
+    // get posts and likes on page load
+    useEffect(() => {
+        refetch();
+    }, []);
 
     return (
         <div className="flex p-4 items-start border gap-4 border-gray-800 rounded-3xl my-6 bg-black bg-opacity-55">
@@ -136,10 +183,10 @@ const CreatePost = () => {
                     />
                     <button
                         className="btn btn-primary bg-[#2191d8] rounded-full btn-sm text-white px-4
-                    before:ease relative overflow-hidden border-gray-600 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 hover:before:-translate-x-16
-                    "
+                        before:ease relative overflow-hidden border-gray-600 border shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 hover:before:-translate-x-16
+                        "
                     >
-                        {isPending ? "Posting..." : "Post"}
+                        {isPending || isChecking ? "Posting..." : "Post"}
                     </button>
                 </div>
                 {isError && <div className="text-red-500">{error.message}</div>}

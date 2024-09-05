@@ -1,6 +1,7 @@
 import express from "express";
 
-import { addVoucher, getAllVouchers, deleteVoucher } from "../controllers/voucher.controller.js";
+import { addVoucher, getAllVouchers, deleteVoucher, checkIfMeetConditions } from "../controllers/voucher.controller.js";
+import { protectRoute } from "../middleware/protectRoute.js";
 
 const router = express.Router();
 
@@ -11,6 +12,8 @@ router.get("/", (req, res) => {
 
 router.get("/all", getAllVouchers);
 router.post("/add", addVoucher);
+router.post("/addVoucher", addVoucher);
 router.delete("/delete/:id", deleteVoucher);
+router.post("/check", protectRoute, checkIfMeetConditions);
 
 export default router;
