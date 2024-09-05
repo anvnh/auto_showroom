@@ -114,15 +114,15 @@ const Story = () => {
         }
     }, [])
     useEffect(() => {
-		AOS.init({
-			duration: 600,
-			easing: "ease-in-out",
-			once: false,
-			mirror: true,
-			anchorPlacement: "top-bottom",
-		});
-	}, []);
-    
+        AOS.init({
+            duration: 600,
+            easing: "ease-in-out",
+            once: false,
+            mirror: true,
+            anchorPlacement: "top-bottom",
+        });
+    }, []);
+
     return (
         <div className="bg-neutral-900  box-border">
 

@@ -1,29 +1,24 @@
 import { useEffect } from 'react';
 import AOS from "aos";
-import {  Hero, About, Benefit, Futher, Footer } from './_mainpage'
-import Lenis from '@studio-freight/lenis'
+import { Hero, About, Benefit, Futher } from './_mainpage'
+import Footer from "@/components/common/Footer"
 import NavbarSmallOwner from "./_mainpage/NavbarSmallOwners"
 import { Navbar } from '@/_root/_homepage';
+import { smoothScroll_lenis } from '@/_car/audi/audi_A5/Effect';
 const OwnerLayout = () => {
 
     useEffect(() => {
-		AOS.init({
-			duration: 900,
+        AOS.init({
+            duration: 900,
+            easing: "ease-in-out",
+            once: false,
+            mirror: true,
+            anchorPlacement: "top-bottom",
+        });
+    }, []);
 
-			easing: "ease-in-out",
-			once: false,
-			mirror: true,
-			anchorPlacement: "top-bottom",
-		});
-	}, []);
-	//smooth scroll
-    const lenis = new Lenis();
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
     useEffect(() => {
+        smoothScroll_lenis()
         window.scrollTo(0, 0);
     }, [])
     return (
@@ -54,12 +49,12 @@ const OwnerLayout = () => {
                         <Benefit />
                     </div>
                 </div>
-                <div  className="bg-white sm:px-16 px-6 flex justify-center items-start">
+                <div className="bg-white sm:px-16 px-6 flex justify-center items-start">
                     <div id="commitment" className="w-full">
                         <Futher />
                     </div>
                 </div>
-                <div data-aos="fade"  className="flex items-start justify-center bg-primary">
+                <div data-aos="fade" className="flex items-start justify-center bg-primary">
                     <div className="w-full">
                         <Footer />
                     </div>
