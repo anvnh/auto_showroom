@@ -7,17 +7,18 @@ import EditProfileModal from "./EditProfileModal";
 
 import placeholder_img from "@/assets/social/placeholder/placeholder.png";
 import placeholder_cover from "@/assets/social/placeholder/cover_placeholder.jpeg";
-
+import { logo } from "@/assets";
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FaLink } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { formatMemberSinceDate } from "@/utils/date";
 import useFollow from "@/hooks/useFollow";
 import useUpdateUserProfile from "@/hooks/useUpdateUserProfile";
 import logoMain from '@/assets/logo/logoMain.png'
 import { Button } from "@/components/ui/button";
+import toast from "react-hot-toast";
 
 const ProfilePage = () => {
 	const [coverImg, setCoverImg] = useState(null);
@@ -92,7 +93,31 @@ const ProfilePage = () => {
 			reader.readAsDataURL(file);
 		}
 	};
+	const queryClient = useQueryClient();
+	const{ mutate: logout ,isError, error }= useMutation({
+        mutationFn: async () => {
+            try {
+                const res = await fetch('/api/auth/logout', {
+                    method: 'POST',
+                });
 
+                const data = await res.json();
+
+                if(!res.ok) {
+                    throw new Error(data.message || 'Something went wrong');
+                }
+            }
+            catch (error) {
+                throw new Error(error.message);
+            }
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ['authUser']});
+        },
+        onError: () => {
+            toast.error("Logout failed");
+        }
+    })
 	return (
 		<>
 			<div className="flex-[4_4_0] min-h-screen md:mx-7 bg-black">
@@ -106,11 +131,11 @@ const ProfilePage = () => {
 						<>
 							{/* HEADER */}
 							<div className="flex gap-10 px-4 py-2 items-center sticky top-0 z-10 backdrop-blur-md border-gray-800">
-								<Link to="/social">
-									<FaArrowLeft className="w-4 h-4" />
+								<Link to="/">
+									<img src={logo} className="w-16 h-10" />
 								</Link>
-								<div className="flex flex-col">
-									<p className="font-bold text-lg">
+								<div className="flex flex-col w-full">
+									<p className="font-bold text-md">
 										{user?.fullName}
 									</p>
 									<span>
@@ -123,6 +148,16 @@ const ProfilePage = () => {
 										posts
 									</span>
 								</div>
+								<Link to="/">
+								<div className="flex w-[40px] justify-end text-xs"
+								onClick={(e) => {
+									e.preventDefault();
+									// TODO
+									logout();
+								}}>
+									log out
+								</div>
+								</Link>
 							</div>
 
 							{/* COVER IMG */}
