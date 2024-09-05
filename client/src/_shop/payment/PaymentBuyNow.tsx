@@ -62,6 +62,24 @@ const Payment = () => {
 		setState((prev) => ({ ...prev, focus: e.target.name }));
 	};
 
+    const { data: vouchers } = useQuery({
+        queryKey: ["vouchers"],
+        queryFn: async () => {
+            try {
+                const response = await fetch("/api/user/vouchers");
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || "Something went wrong!");
+                }
+
+                return data;
+            } catch (error) {
+                throw new Error(error);
+            }
+        },
+    });
+
 	const map = useRef<mapboxgl.Map | null>(null);
     const [inputAddressValue, setInputAddressValue] = useState("");
 	const [address, setAddress] = useState("");
@@ -366,15 +384,25 @@ const Payment = () => {
 
     const {data: user} = useAuthUser();
 
-	const calculateTotalPrice = () => {
+	const calculateTotalPrice = (payMethod) => {
 		if (!car) return 0;
 		const itemPrice = Number(car.price.replace(/,/g, ""));
 		const itemTotal = itemPrice * (quantities[car._id] || 1);
-		const totalPriceWithShipping = itemTotal + (shippingCost || 0);
-
+		const totalPriceWithShipping = itemTotal + (Math.round(shippingCost) || 0);
 		// return totalPriceWithShipping.toLocaleString();
-		return totalPriceWithShipping;
-	};
+		return payMethod == "Visa" ? totalPriceWithShipping * 0.4 : totalPriceWithShipping;
+		// return totalPriceWithShipping;
+		// return totalPriceWithShipping.toLocaleString();
+    };
+
+
+	const calculateTotalPriceWithVoucher = (percent) => {
+		if (!car) return 0;
+		const itemPrice = Number(car.price.replace(/,/g, ""));
+		const itemTotal = itemPrice * (quantities[car._id] || 1);
+		const totalPriceWithShipping = itemTotal + (Math.round(shippingCost) || 0);
+		return totalPriceWithShipping - (totalPriceWithShipping * percent) / 100;
+    };
 
 	const handleDelete = async (itemId) => {
 		setDeletingItems((prev) => ({ ...prev, [itemId]: true }));
@@ -401,7 +429,7 @@ const Payment = () => {
         const paymentResult =  paymentMethod === "Visa" ? "Paid" : "Not Paid";
         const isPaid = paymentResult === "Paid" ? true : false;
         const isDelivered = false;
-        if(!address || !inputinformation.RecipientName || !inputinformation.Gmail || !inputinformation.Phone) { 
+        if(!address || !inputinformation.RecipientName || !inputinformation.Gmail || !inputinformation.Phone) {
             // console.log(address, inputinformation.RecipientName, inputinformation.Gmail, inputinformation.Phone);
             return toast.error("Please fill in all the information");
         }
@@ -457,6 +485,15 @@ const Payment = () => {
 		}
 	};
 
+    const [selectedVoucher, setSelectedVoucher] = useState("");
+    const [voucherPercent, setVoucherPercent] = useState(0);
+
+    const handleChooseVoucher = (voucher) => {
+        setSelectedVoucher(voucher._id);
+        setVoucherPercent(voucher.discount);
+        document.getElementById("Add_Voucher").close();
+    }
+
 	return (
 		<div className="md:grid p-5 pt-1 md:grid-cols-2 md:px-12 xl:px-[100px] md:gap-10">
             <Toaster position="top-center" reverseOrder={false} />
@@ -477,7 +514,7 @@ const Payment = () => {
 							Card
 						</button>
 						<button
-							className="detail-button bg-white text-black  w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center 
+							className="detail-button bg-white text-black  w-[120px] lg:h-[40px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base rounded-3xl text-center items-center
 							before:ease relative h-12 overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[120px]"
 							onClick={() => {
                                 toggleFormPayment("DirectPayment")
@@ -1006,87 +1043,162 @@ const Payment = () => {
 										</div>
 									)}
 								</div>
-								<div className="block md:hidden">
-									{distance !== null && (
-										<div className=" text-white rounded-lg shadow-md w-full flex justify-start">
-											<div>
-												<p>
-													Distance about
-													<span className="text-blue-300 pl-3">
-														{distance.toFixed(2)} km
-													</span>
-												</p>
-												<p className="flex ">
-													Shipping Cost:{" "}
-													<span className="text-blue-300 pl-3">
-														$
-														{shippingCost?.toFixed(
-															2
-														)}
-													</span>{" "}
-												</p>
-											</div>
-										</div>
-									)}
-								</div>
-								<div data-aos="fade-down">
-									<div className="flex justify-end pt-10 text-white font-bold text-2xl">
-										Total Price: ${calculateTotalPrice()}
-									</div>
-									<div className="flex justify-end pb-4 pt-6 gap-3">
-										<div
-											className="detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 w-[130px] lg:w-[150px] cursor-pointer lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold text-xs items-center sm:text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-											onClick={() =>
-												document
-													.getElementById(
-														"Add_Voucher"
-													)
-													.showModal()
-											}
-										>
-											Voucher
-										</div>
+							<div className="block md:hidden">
+								<div className="flex justify-start pt-10 text-white font-bold text-2xl">
+                                    {payMethod === "Visa" ? (
+                                        <>
+                                            <div>
+                                                <span className="text-md items-center">
+                                                    Total Price(Deposit 40%):
+                                                </span>
+                                                <span>
+                                                    &nbsp; ${calculateTotalPrice(payMethod)}
+                                                </span>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <span>
+                                            Total Price: ${calculateTotalPrice(payMethod)}
+                                        </span>
+                                                    )}
+                                            </div>
+                                        </div>
+                                        <div className="hidden md:block">
+                                            <div className="flex justify-end pt-10 text-white font-bold text-2xl">
+                                                {payMethod === "Visa" ? (
+                                                    <>
+                                                        {voucherPercent !== 0 ? (
+                                                            <div>
+                                                                <span className="text-md items-center">
+                                                                Total Price(Deposit 40%):  &nbsp;
+                                                                </span>
+                                                                    <span className="line-through">
+                                                                    ${calculateTotalPrice(payMethod)}
+                                                                    </span>
+                                                                    <span>
+                                                                    &nbsp; ${calculateTotalPriceWithVoucher(voucherPercent)}
+                                                                    </span>
+                                                                </div>
+                                                        ): (
+                                                                <div>
+                                                                    <span className="text-md items-center">
+                                                                    Total Price(Deposit 40%):
+                                                                </span>
+                                                                        <span>
+                                                                        &nbsp; ${calculateTotalPrice(payMethod)}
+                                                                        </span>
+                                                                    </div>
+                                                            )}
+                                                        </>
+                                                ) : (
+                                                        <span>
+                                                            {voucherPercent !== 0 ? (
+                                                                <>
+                                                                    <span className="text-md items-center">
+                                                                    Total Price:&nbsp;
+                                                                    </span>
+                                                                        <span className="line-through">
+                                                                        ${calculateTotalPrice(payMethod)}
+                                                                        </span>
+                                                                        <span>
+                                                                        &nbsp; ${calculateTotalPriceWithVoucher(voucherPercent)}
+                                                                        </span>
+                                                                    </>
+                                                            ) : (
+                                                                    <>
+                                                                        <span className="text-md items-center">
+                                                                        Total Price:
+                                                                    </span>
+                                                                            <span>
+                                                                            &nbsp; ${calculateTotalPrice(payMethod)}
+                                                                            </span>
+                                                                        </>
+                                                                )}
 
-										<div className="md:block hidden">
-											<div
-												onClick={handleProceedToPayment}
-												className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-											>
-                                                {isSendingMail ? <LoadingSpinner /> : "Proceed to Payment"}
-											</div>
-										</div>
-										<div className="justify-end">
-											<div className="block md:hidden ">
-												<div
-													onClick={
-														handleProceedToPayment
-													}
-													className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
-												>
-                                                    {isSendingMail ? <LoadingSpinner /> : "Proceed to Payment"}
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+                                                            </span>
+                                                    )}
+                                            </div>
+                                        </div>
+                                        <div className="flex justify-end pb-4 pt-6 gap-3">
+                                            <div
+                                                className="detail-button bg-gray-400 text-black px-4 py-2 md:px-6 md:py-3 w-[120px] text-xs lg:w-[150px] cursor-pointer lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white items-center font-bold sm:text-sm md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+                                                onClick={() =>
+                                                    document
+                                                        .getElementById("Add_Voucher")
+                                                        .showModal()
+                                                }
+                                            >
+                                                Voucher
+                                            </div>
+                                            {user && (
+                                                <>
+                                                    <div className="md:block hidden">
+                                                        <div
+                                                            onClick={handleProceedToPayment}
+                                                            className="hover:cursor-pointer detail-button bg-white text-black px-4 py-2 md:px-6 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+                                                        >
+                                                                {isSendingMail ? <LoadingSpinner/> : "Proceed to Payment"}
+                                                        </div>
+                                                    </div>
+                                                    <div className="justify-end">
+                                                        <div className="block md:hidden ">
+                                                            <div
+                                                                onClick={
+                                                                    handleProceedToPayment
+                                                                }
+                                                                className="detail-button bg-white text-black px-4 py-2 md:px-6 md:py-3 w-full  text-xs lg:w-[250px] lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white font-bold sm:text-sm items-center md:text-base rounded-3xl text-center relative h-12  overflow-hidden border-white border shadow-2xl before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[210px]"
+                                                            >
+                                                                {isSendingMail ? <LoadingSpinner/> : "Proceed to Payment"}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </div>
+                                </div>
 						)}
 
 						<div>
 							<dialog id="Add_Voucher" className="modal">
 								<div className="modal-box backdrop-blur-3xl bg-gray-100  shadow-gray-500 shadow-md bg-opacity-0 w-full h-full flex rounded-xl">
 									<div className=" rounded-lg shadow-lg w-full">
-										<VoucherPopup />
-
-										<div className="mt-4  flex w-full justify-end">
-											<button
-												className=" w-32 h-10 h bg-opacity-40 rounded-xl 				detail-button bg-white text-black mt-12 px-4 py-2 md:px-6 md:py-3 lg:h-[50px] justify-center flex hover:bg-black transition-all duration-300 ease-in-out hover:text-white  font-bold text-sm md:text-base text-center
-                                                before:ease relative overflow-hidden border-white border shadow-2xl  before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-12 before:bg-white before:opacity-50 before:duration-700 hover:shadow-gray-500 font-poppins hover:before:-translate-x-[290px] md:hover:before:-translate-x-[150px]
-                                                "
-											>
-												Add
-											</button>
-										</div>
+                                        {/*
+                                        <VoucherPopup />
+                                        */}
+                                            <div className="flex bg-gray-800 bg-opacity-50 backdrop-blur-xl text-black p-2 mb-4 rounded-2xl shadow-md w-full h-[200px]">
+                                                {vouchers && vouchers.map((voucher) => (
+                                                    <div
+                                                        className="flex hover:cursor-pointer"
+                                                        onClick={() => {
+                                                            handleChooseVoucher(voucher)
+                                                        }}
+                                                    >
+                                                        <div className="relative w-2/3 p-1 mr-4 flex items-center">
+                                                            <img
+                                                            src={voucher.img}
+                                                            className="w-full h-auto shadow-xl shadow-black  rounded"
+                                                            alt="Voucher"
+                                                        />
+                                                        </div>
+                                                            <div className="w-2/3 flex text-md text-white flex-col space-y-2 pt-8">
+                                                                <div className="flex gap-2">
+                                                                    <div className="font-bold ">Discount:</div>
+                                                                    <p className="font-bold text-md">{voucher.discount}%</p>
+                                                                </div>
+                                                                <div className="flex gap-2">
+                                                                    <div className="font-bold">Condition:</div>
+                                                                    <p>Bill at least <span className="font-bold"> ${voucher.minPrice} </span></p>
+                                                                </div>
+                                                                <div className="flex gap-2">
+                                                                    <div className="font-bold">Expiry Date:</div>
+                                                                    <p>
+                                                                        {new Date(voucher.expiryDate).toLocaleDateString()}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                ))}
+                                            </div>
 									</div>
 								</div>
 								<form
