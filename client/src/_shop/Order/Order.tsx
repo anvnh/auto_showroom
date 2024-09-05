@@ -154,47 +154,53 @@ const Order = () => {
         <section>
             <Toaster position="top-center" reverseOrder={false} />
             <div className="w-full h-full flex justify-center items-center">
-                <div className="bg-gray-800 w-[1700px] h-auto rounded-xl p-2 ">
-                    <div className="w-full px-[400px]">
+                <div className="bg-gray-800 w-[1000px] h-auto rounded-xl p-2 ">
+                    <div className="w-full">
                         <div data-aos="fade-down" className="flex justify-center gap- p-5 font-poppins text-md">
-                            <button className={`${currentForm == "deli" ? "bg-gray-500" : "bg-gray-900"} p-5 rounded-tl-xl rounded-bl-xl backdrop-blur-xl hover:bg-gray-700 cursor-pointer duration-300 transition-all ease-in-out`}
+                            <button className={`${currentForm == "deli" ? "bg-gray-500" : "bg-gray-900"} p-5 rounded-tl-xl rounded-bl-xl backdrop-blur-xl hover:bg-gray-700 cursor-pointer duration-300 transition-all ease-in-out group`}
                                 onClick={() => {toggleForm("deli"), setCurrentForm("deli")}}
                             >
-                                On delivery
+                              <p className="group-hover:scale-105 transition-all ease-in-out duration-300 font-bold">
+                              On delivery
+                              </p>
                             </button>
-                            <button className={`${currentForm == "comple" ? "bg-gray-500" : "bg-gray-900"} p-5 backdrop-blur-xl hover:bg-gray-700 cursor-pointer duration-300 transition-all ease-in-out`}
+                            <button className={`${currentForm == "comple" ? "bg-gray-500" : "bg-gray-900"} p-5 backdrop-blur-xl hover:bg-gray-700 group cursor-pointer duration-300 transition-all ease-in-out`}
                                 onClick={() => {toggleForm("comple"), setCurrentForm("comple")}}
                             >
-                                Complete
+                              <p className="group-hover:scale-105 transition-all ease-in-out duration-300 font-bold">
+                              Complete
+                              </p>
                             </button>
-                            <button className={`${currentForm == "cance" ? "bg-gray-500" : "bg-gray-900"} p-5 rounded-tr-xl rounded-br-xl backdrop-blur-xl hover:bg-gray-700 cursor-pointer duration-300 transition-all ease-in-out`}
+                            <button className={`${currentForm == "cance" ? "bg-gray-500" : "bg-gray-900"} p-5 rounded-tr-xl rounded-br-xl backdrop-blur-xl group hover:bg-gray-700 cursor-pointer duration-300 transition-all ease-in-out`}
                                 onClick={() => {toggleForm("cance"), setCurrentForm("cance")}}
                             >
-                                Canceled
+                               <p className="group-hover:scale-105 transition-all ease-in-out duration-300 font-bold">
+                               Canceled
+                               </p>
                             </button>
                         </div>
                     </div>
                     {showDeliveryForm && (
-                        <div data-aos="fade-up" className="w-full justify-center px-40 flex overflow-y-auto h-[600px] mb-8">
-                            <div className="w-full backdrop-blur-xl p-5 h-[500px] justify-center rounded-md">
+                        <div data-aos="fade-up" className="w-full justify-center px-12  flex overflow-y-auto h-[600px] mb-8">
+                            <div className="w-full backdrop-blur-xl p-5  h-[500px] justify-center rounded-md">
                                 {onDelivery && onDelivery.length === 0 && (
                                     <div>
-                                        <h1 className="text-white text-2xl text-center">
+                                        <h1 className="text-white text-2xl text-center font-kanit">
                                             No on delivery order's founds
                                         </h1>
                                     </div>
                                 )}
                                 {onDelivery && onDelivery.map((order) => (
-                                    <div className="bg-gray-500 bg-opacity-40 backdrop-blur-md rounded-2xl mb-8"> 
-                                        <div className="text-white font-bold text-xl p-3 bg-primary bg-opacity-80 rounded-2xl flex justify-between">
-                                            <div>
-                                                OrderID: {order.orderId}
+                                    <div className="bg-gray-600 bg-opacity-40 backdrop-blur-md rounded-2xl mb-8"> 
+                                        <div className="text-white  font-bold text-xl p-3 bg-primary bg-opacity-80 rounded-tr-xl rounded-tl-xl w-full h-[60px] flex justify-center">
+                                            <div className="text-xl w-full">
+                                                OrderID: <span className="font-normal">{order.orderId}</span>
                                             </div>
                                             <div>
                                                 <AlertDialog>
                                                     <AlertDialogTrigger asChild>
                                                         <MdCancelScheduleSend 
-                                                            className="text-red-500 flex cursor-pointer w-5 items-center mt-1 justify-center" 
+                                                            className="text-red-500 flex cursor-pointer w-5 items-center mt-2 justify-center" 
                                                             title="Cancel Order ?"
                                                         />
                                                     </AlertDialogTrigger>
@@ -222,24 +228,26 @@ const Order = () => {
                                             </div>
                                         </div>
                                         {order.orderItems.map((item) => (
-                                            <div className="flex justify-between p-5 border-b border-gray-500 rounded-2xl">
+                                            <div className="flex  p-5 border-b border-gray-500 rounded-2xl">
                                                 <div>
-                                                    <img src={item.carId.images[0]} alt={item.name} className="w-[200px] h-[130px] rounded-2xl" />
+                                                    <img src={item.carId.images[0]} alt={item.name} className="w-[400px] h-[250px] bg-cover object-cover bg-center rounded-2xl" />
                                                     <p>
                                                         {item.name}
                                                     </p>
                                                 </div>
-                                                <div className="text-xl font-bold flex justify-center">
+                                              <div className="pl-5 mt-5">
+                                              <div className="text-2xl w-[360px] font-bold font-kanit flex justify-start">
                                                     {item.carId.brand}&nbsp;{item.carId.car_model}
                                                 </div>
-                                                <div className="flex flex-col justify-start items-center">
+                                                <div className="flex text-xl mt-5 justify-start w-full items-center">
                                                     <p>
                                                         {item.price} x {item.quantity}
                                                     </p>
-                                                    <p className="font-bold">
-                                                        ${(Number(item.price.replace(/,/g, "")) * (item.quantity)).toLocaleString()}
-                                                    </p>
                                                 </div>
+                                                <p className=" font-kanit mt-2 text-2xl">
+                                                        $ {(Number(item.price.replace(/,/g, "")) * (item.quantity)).toLocaleString()}
+                                                    </p>
+                                              </div>
                                             </div>
                                         ))}
                                     </div>
@@ -249,19 +257,19 @@ const Order = () => {
                     )}
                     {showCompleteForm && (
                         // <div data-aos="fade-up" className="w-full justify-center px-40 p-5 flex mt-12 ">
-                        <div data-aos="fade-up" className="w-full justify-center px-40 flex overflow-y-auto h-[600px] mb-8">
+                        <div data-aos="fade-up" className="w-full justify-center px-12 flex overflow-y-auto h-[600px] mb-8">
                             <div className="w-full backdrop-blur-xl p-5 h-[500px] justify-center rounded-md">
                                 {completed && completed.length === 0 && (
                                     <div>
-                                        <h1 className="text-white text-2xl text-center">
+                                        <h1 className="text-white text-2xl text-center font-kanit">
                                             No completed order's founds
                                         </h1>
                                     </div>
                                 )}
                                 {completed && completed.map((order) => (
                                     <div className="bg-gray-500 bg-opacity-40 backdrop-blur-md rounded-2xl mb-8"> 
-                                        <div className="text-white font-bold text-xl p-3 bg-primary bg-opacity-80 rounded-2xl flex justify-between">
-                                            <div>
+                                      <div className="text-white  font-bold text-xl p-3 bg-primary bg-opacity-80 rounded-tr-xl rounded-tl-xl w-full h-[60px] flex justify-center">
+                                      <div className="text-xl w-full">
                                                 OrderID: {order.orderId}
                                             </div>
                                             <div>
@@ -275,24 +283,26 @@ const Order = () => {
                                             </div>
                                         </div>
                                         {order.orderItems.map((item) => (
-                                            <div className="flex justify-between p-5 border-b border-gray-500 rounded-2xl">
+                                            <div className="flex p-5 border-b border-gray-500 rounded-2xl">
                                                 <div>
-                                                    <img src={item.carId.images[0]} alt={item.name} className="w-[200px] h-[130px] rounded-2xl" />
+                                                    <img src={item.carId.images[0]} alt={item.name} className="w-[400px] h-[250px] bg-cover object-cover bg-center rounded-2xl" />
                                                     <p>
                                                         {item.name}
                                                     </p>
                                                 </div>
-                                                <div className="text-xl font-bold flex justify-center">
+                                                <div className="pl-5 mt-5">
+                                              <div className="text-2xl w-[360px] font-bold font-kanit flex justify-start">
                                                     {item.carId.brand}&nbsp;{item.carId.car_model}
                                                 </div>
-                                                <div className="flex flex-col justify-start items-center">
+                                                <div className="flex text-xl mt-5 justify-start w-full items-center">
                                                     <p>
                                                         {item.price} x {item.quantity}
                                                     </p>
-                                                    <p className="font-bold">
-                                                        ${(Number(item.price.replace(/,/g, "")) * (item.quantity)).toLocaleString()}
-                                                    </p>
                                                 </div>
+                                                <p className=" font-kanit mt-2 text-2xl">
+                                                        $ {(Number(item.price.replace(/,/g, "")) * (item.quantity)).toLocaleString()}
+                                                    </p>
+                                              </div>
                                             </div>
                                         ))}
                                     </div>
@@ -301,41 +311,43 @@ const Order = () => {
                         </div>
                     )}
                     {showCanceled && (
-                        <div data-aos="fade-up" className="w-full justify-center px-40 flex overflow-y-auto h-[600px] mb-8">
+                        <div data-aos="fade-up" className="w-full justify-center px-12 flex overflow-y-auto h-[600px] mb-8">
                             <div className="w-full backdrop-blur-xl p-5 h-[500px] justify-center rounded-md">
                                 {canceled && canceled.length === 0 && (
                                     <div>
-                                        <h1 className="text-white text-2xl text-center">
+                                        <h1 className="text-white text-2xl text-center font-kanit">
                                             No canceled order's founds
                                         </h1>
                                     </div>
                                 )}
                                 {canceled && canceled.map((order) => (
                                     <div className="bg-gray-500 bg-opacity-40 backdrop-blur-md rounded-2xl mb-8"> 
-                                        <div className="text-white font-bold text-xl p-3 bg-primary bg-opacity-80 rounded-2xl flex justify-between">
-                                            <div>
+                                      <div className="text-white  font-bold text-xl p-3 bg-primary bg-opacity-80 rounded-tr-xl rounded-tl-xl w-full h-[60px] flex justify-center">
+                                      <div className="text-xl w-full">
                                                 OrderID: {order.orderId}
                                             </div>
                                         </div>
                                         {order.orderItems.map((item) => (
-                                            <div className="flex justify-between p-5 border-b border-gray-500 rounded-2xl">
+                                            <div className="flex p-5 border-b border-gray-500 rounded-2xl">
                                                 <div>
-                                                    <img src={item.carId.images[0]} alt={item.name} className="w-[200px] h-[130px] rounded-2xl" />
+                                                    <img src={item.carId.images[0]} alt={item.name}  className="w-[400px] h-[250px] bg-cover object-cover bg-center rounded-2xl" />
                                                     <p>
                                                         {item.name}
                                                     </p>
                                                 </div>
-                                                <div className="text-xl font-bold flex justify-center">
+                                                <div className="pl-5 mt-5">
+                                              <div className="text-2xl w-[360px] font-bold font-kanit flex justify-start">
                                                     {item.carId.brand}&nbsp;{item.carId.car_model}
                                                 </div>
-                                                <div className="flex flex-col justify-start items-center">
+                                                <div className="flex text-xl mt-5 justify-start w-full items-center">
                                                     <p>
                                                         {item.price} x {item.quantity}
                                                     </p>
-                                                    <p className="font-bold">
-                                                        ${(Number(item.price.replace(/,/g, "")) * (item.quantity)).toLocaleString()}
-                                                    </p>
                                                 </div>
+                                                <p className=" font-kanit mt-2 text-2xl">
+                                                        $ {(Number(item.price.replace(/,/g, "")) * (item.quantity)).toLocaleString()}
+                                                    </p>
+                                              </div>
                                             </div>
                                         ))}
                                     </div>
