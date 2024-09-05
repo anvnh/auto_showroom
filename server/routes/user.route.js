@@ -17,9 +17,9 @@ import {
     sendPaymentDetailsBuyNow,
     sendDeliveryConfirmationMail,
     getPostsAndLikes,
-    getVouchers
+    getVouchers,
+    deleteAllCart,
 } from "../controllers/user.controller.js";
-import { get } from "mongoose";
 
 const router = express.Router();
 
@@ -33,6 +33,7 @@ router.get("/following/:id", protectRoute, getFollowingUsers);
 router.get("/followers/:id", protectRoute, getFollowerUsers);
 router.post("/add/cart/:id", protectRoute, addCart);
 router.get("/cart", protectRoute, getCart);
+router.delete("/delete/all/cart", protectRoute, deleteAllCart);
 router.post("/payment/details", protectRoute, sendPaymentDetails);
 router.post("/payment/buynow/details",sendPaymentDetailsBuyNow);
 router.post("/delivery/confirmation", sendDeliveryConfirmationMail);
