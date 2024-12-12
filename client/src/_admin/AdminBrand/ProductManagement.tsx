@@ -18,7 +18,7 @@ const ProductManagement = () => {
 
 	// get all products
 	const {
-		data: products,
+        data: products,
 		isLoading,
 		refetch,
 		isRefetching,

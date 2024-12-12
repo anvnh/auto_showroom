@@ -32,25 +32,25 @@ import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 
 const OrdersTable = () => {
 
-    const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
-	const { data: orders, isLoading, refetch, isRefetching, } = useQuery({
-		queryKey: ["orders"],
-		queryFn: async () => {
-			try {
-				const response = await fetch("/api/order/all");
-				const data = await response.json();
+  const { data: orders, isLoading, refetch, isRefetching, } = useQuery({
+    queryKey: ["orders"],
+    queryFn: async () => {
+      try {
+        const response = await fetch("/api/order/all");
+        const data = await response.json();
 
-				if (!response.ok) {
-					throw new Error(data.error || "Something went wrong!");
-				}
+        if (!response.ok) {
+          throw new Error(data.error || "Something went wrong!");
+        }
 
-				return data;
-			} catch (error) {
-				throw new Error(error);
-			}
-		},
-	});
+        return data;
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+  });
 
 	const { mutate: deleteOrder, isPending: isDeletingOrder } = useMutation({
 		mutationFn: async (productId) => {
@@ -95,7 +95,7 @@ const OrdersTable = () => {
 			}
 		},
 		onSuccess: () => {
-            toast.success("Change status order successfully");
+      toast.success("Change status order successfully");
 			queryClient.invalidateQueries({ queryKey: ["orders"] });
 			queryClient.invalidateQueries({ queryKey: ["onDelivery"] });
 			queryClient.invalidateQueries({ queryKey: ["completed"] });
@@ -235,9 +235,8 @@ const OrdersTable = () => {
                                                                             <div className="flex items-center">
                                                                                 <div className="flex-shrink-0">
                                                                                     <img
-                                                                                    src={item.carId.images[0]}
-                                                                                    className="h-14 w-20 rounded-full"
-                                                                                />
+                                                                                        className="h-10 w-10 rounded-full bg-black"
+                                                                                    />
                                                                                 </div>
                                                                                 <div className="ml-3">
                                                                                     <div className="text-sm font-bold text-gray-100 ">

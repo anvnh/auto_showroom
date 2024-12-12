@@ -50,7 +50,7 @@ const Orders = () => {
 									size={20}
 									className="mr-2"
 								/>
-								undelivered order
+								Undelivered order
 							</span>
 							<p className="mt-1 text-3xl font-semibold text-gray-100">
 								20

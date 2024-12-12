@@ -30,8 +30,8 @@ const LoginPage: React.FC = () => {
 	const [changePass, setChangePass] = useState(false);
 
 	const [changePassData, setChangePassData] = useState({
-		newPass: "",
-		rePass: "",
+		password: "",
+		newPassword: "",
 	});
 
 	const [emaildata, setEmaildata] = useState({
@@ -286,7 +286,7 @@ const LoginPage: React.FC = () => {
 	const handleChangePassSubmit = (e) => {
 		e.preventDefault();
 		console.log(changePassData);
-        // resetPass(changePassData);
+    resetPass(changePassData);
 	};
 
 	const handleInputChangePass = (e) => {
