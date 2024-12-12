@@ -128,7 +128,7 @@ export const logout = async (req, res) => {
 
 export const resetPassword = async (req, res) => {
 	try {
-		const { newPass: password, rePass: newPassword } = req.body;
+		const { password, newPassword } = req.body;
 		const { gmail } = req.body;
 		// const user = await User.findById(req.user._id);
 		const user = await User.findOne({ email: gmail }).select("-password");

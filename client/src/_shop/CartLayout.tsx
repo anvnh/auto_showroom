@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import Navbar from './common/Navbar';
 import UserCart from './cart/UserCart';
 import Footer from '@/components/common/Footer';

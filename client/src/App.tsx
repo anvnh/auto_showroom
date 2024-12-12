@@ -24,7 +24,6 @@ import React, { useEffect } from "react";
 import AllProductViewLayout from './_shop/AllProductViewLayout';
 import AdminBrandLayout from './_admin/AdminBrandLayout';
 import CartLayout from './_shop/CartLayout';
-import ChatAI from './in4/Infor';
 import ConfirmationLayout from './_auth/ConfirmationLayout';
 import TokenConfirmation from './_auth/TokenConfirmation';
 import PaymentLayout from './_shop/PaymentLayout';

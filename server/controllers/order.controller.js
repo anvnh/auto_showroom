@@ -6,6 +6,7 @@ export const getAllOrders = async (req, res) => {
     try {
         // find all order no need to populate user
         const orders = await Order.find({}).populate("user").populate("orderItems.carId");
+        // const likedUser = await Post.find({}).populate("user");
         res.status(200).json(orders);
     }
     catch(error) {

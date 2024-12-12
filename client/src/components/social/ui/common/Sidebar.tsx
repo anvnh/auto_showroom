@@ -1,9 +1,6 @@
-import XSvg from "../../../svgs/X";
 import logo from "../../../../assets/logo.png";
-
-import { MdHomeFilled } from "react-icons/md";
-import { IoChatboxEllipsesSharp, IoNotifications } from "react-icons/io5";
-import { GoHome, GoHomeFill } from "react-icons/go";
+import { IoNotifications } from "react-icons/io5";
+import { GoHomeFill } from "react-icons/go";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
@@ -11,10 +8,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import placeholder_img from "../../../../assets/social/placeholder/placeholder.png";
 import { useState } from "react";
-import { log } from "console";
 
 import { useNavigate } from "react-router-dom";
-import { CiChat1 } from "react-icons/ci";
 
 const Sidebar = () => {
     const navigate = useNavigate();
@@ -59,7 +54,7 @@ const Sidebar = () => {
             <div className="md:flex hidden mr-5 w-18 max-w-56">
                 <div className="sticky top-0 left-0 h-screen flex flex-col w-20 md:w-full">
                     <Link
-                        to="/owners"
+                        to="/policy"
                         className="flex justify-center md:justify-start"
                         >
                         <img
