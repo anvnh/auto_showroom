@@ -28,8 +28,9 @@ const LoginPage: React.FC = () => {
 	const [numberForm, setNumberForm] = useState(false);
 	const [number, setNumber] = useState("");
 	const [changePass, setChangePass] = useState(false);
-
+    
 	const [changePassData, setChangePassData] = useState({
+        gmail: "",
 		password: "",
 		newPassword: "",
 	});
@@ -80,8 +81,12 @@ const LoginPage: React.FC = () => {
 				throw new Error(error.message);
 			}
 		},
-		onSuccess: () => {
+		onSuccess: (data) => {
 			toast.success("Please check your email for verification link.");
+            setEmaildata({
+                email : data.email
+            })
+
 		},
 	});
 	// send forgot password verification email
@@ -135,7 +140,7 @@ const LoginPage: React.FC = () => {
 	});
 
 	const { mutate: resetPass, isPending: isReseting } = useMutation({
-           mutationFn: async (changePassData) => {
+           mutationFn: async (changePassData)  => {
             try {
                 const res = await fetch("/api/auth/resetPassword", {
                     method: "POST",
@@ -146,7 +151,7 @@ const LoginPage: React.FC = () => {
                 });
                 const data = await res.json();
                 if (!res.ok) throw new Error(data.error || "Failed to reset password.");
-                // console.log(data);
+                console.log(data);
                 return data;
             } catch (error) {
                 throw new Error(error.message);
@@ -261,20 +266,21 @@ const LoginPage: React.FC = () => {
 		setEmaildata({
 			email: "",
 		});
-		setChangePassData({
-			newPass: "",
-			rePass: "",
-		});
+		// setChangePassData({
+		// 	newPass: "",
+		// 	rePass: ""
+		// });
 	};
 	const handleForgotSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		if (emailPattern.test(emaildata.email)) {
-			toggleForm("number");
-			sendForgotpassword(emaildata.email);
-		}
-		else {
-       toast.error("Invalid email address");
+        e.preventDefault();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailPattern.test(emaildata.email)) {
+            toggleForm("number");
+            setChangePassData({...changePassData, gmail: emaildata.email});
+            sendForgotpassword(emaildata.email);
+        }
+        else {
+            toast.error("Invalid email address");
     }};
 
 	const handleNumberSubmit = (e) => {
@@ -285,8 +291,9 @@ const LoginPage: React.FC = () => {
 	};
 	const handleChangePassSubmit = (e) => {
 		e.preventDefault();
-		console.log(changePassData);
-    resetPass(changePassData);
+		// console.log(changePassData, userEmail);
+        resetPass(changePassData);
+        toggleForm("signIn");
 	};
 
 	const handleInputChangePass = (e) => {
@@ -581,12 +588,12 @@ const LoginPage: React.FC = () => {
 												className="relative pl-12 px-8"
 											>
 												<input
-												value={emaildata.email}
-												onChange={(e) =>
-													setEmaildata({
-														email: e.target.value,
-													})
-												}
+                                                    value={emaildata.email}
+                                                    onChange={(e) =>
+                                                        setEmaildata({
+                                                            email: e.target.value,
+                                                        })
+                                                    }
 													className="w-full p-2 text-white bg-transparent border-b-2 border-white focus:outline-none peer"
 													required
 												/>
@@ -626,7 +633,7 @@ const LoginPage: React.FC = () => {
 										</div>
 
 										<div className="flex pt-12 justify-center items-center text-center">
-											<p>You remembered the password</p>
+											<p>Remembered the password ?</p>
 											<div className="w-[70px]">
 												<a
 													onClick={() =>
