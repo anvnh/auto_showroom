@@ -9,7 +9,8 @@ import {
     getCompletedUserOrders,
     getCancelledOrders,
     cancelUserOrder,
-    changeStatusOrder
+    changeStatusOrder,
+    deleteAllOrder
 } from "../controllers/order.controller.js";
 
 const router = express.Router();
@@ -27,5 +28,6 @@ router.get("/getOnDelivery/user", protectRoute, getOnDeliveyUserOrders);
 router.get("/getPlaced/user", protectRoute, getPlacedUserOrders);
 router.get("/getCompleted/user", protectRoute, getCompletedUserOrders);
 router.get("/getCancelledOrders/user", protectRoute, getCancelledOrders);
+router.delete("/deleteAllOrder", protectRoute, deleteAllOrder);
 
 export default router;

@@ -90,6 +90,23 @@ export const deleteOrder = async (req, res) => {
     }
 }
 
+export const deleteAllOrder = async (req, res) => {
+    try {
+        const user = req.user;
+        if(user.isAdmin) {
+            const orders = await Order.deleteMany({});
+            if(orders) {
+                res.status(200).json({ message: "All orders deleted successfully" });
+            } else {
+                res.status(404).json({ message: "Orders not found" });
+            }
+        }
+    } catch (error) {
+        console.log("Error in deleteAllOrder controller: ", error);
+        res.status(500).json({ message: "Internal Server error" });
+    }
+}
+
 export const getOnDeliveyUserOrders = async (req, res) => {
     try {
         const user = req.user;
@@ -104,7 +121,8 @@ export const getOnDeliveyUserOrders = async (req, res) => {
 export const getPlacedUserOrders = async (req, res) => {
     try {
         const user = req.user;
-        const orders = await Order.find({ isDelivered: false, isCancelled: false, paymentMethod: "Direct" , user: user._id }).populate("user").populate("orderItems.carId");
+        const orders = await Order.find(
+            {isDelivered: false, isCancelled: false, paymentMethod: "Direct" , user: user._id }).populate("user").populate("orderItems.carId");
         res.status(200).json(orders);
     } catch (error) {
         console.log("Error in getUserOrders controller: ", error);
