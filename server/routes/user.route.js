@@ -35,7 +35,7 @@ router.post("/add/cart/:id", protectRoute, addCart);
 router.get("/cart", protectRoute, getCart);
 router.delete("/delete/all/cart", protectRoute, deleteAllCart);
 router.post("/payment/details", protectRoute, sendPaymentDetails);
-router.post("/payment/buynow/details",sendPaymentDetailsBuyNow);
+router.post("/payment/buynow/details", sendPaymentDetailsBuyNow);
 router.post("/delivery/confirmation", sendDeliveryConfirmationMail);
 router.delete("/delete/cart/:id", protectRoute, deleteCart);
 router.delete("/delete/confirm/:id", protectRoute, deleteUser);
