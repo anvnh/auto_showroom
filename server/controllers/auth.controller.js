@@ -128,24 +128,26 @@ export const logout = async (req, res) => {
 
 export const resetPassword = async (req, res) => {
 	try {
-		const { password, newPassword } = req.body;
+		const { newPass, rePass } = req.body;
 		const { gmail } = req.body;
 		// const user = await User.findById(req.user._id);
 		const user = await User.findOne({ email: gmail }).select("-password");
 
 		// check if 2 password is correct
-		if (password != newPassword) {
+		if (newPass != rePass) {
 			return res.status(400).json({ error: "Passwords do not match" });
 		}
 
 		const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-		if (!passwordRegex.test(newPassword)) {
+		if (!passwordRegex.test(newPass)) {
 			return res.status(400).json({
 				error: "Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number",
 			});
+
+
 		}
 		const salt = await bcrypt.genSalt(10);
-		const hashedPassword = await bcrypt.hash(newPassword, salt);
+		const hashedPassword = await bcrypt.hash(newPass, salt);
 
 		// TODO
 		if (user.password == hashedPassword) {
@@ -396,54 +398,26 @@ export const sendConfirmationToken = async (req, res) => {
 			to: email,
 			subject: "Welcome to the AAP",
 			html: `
-            <div
-            style="
-                width: 100%;
-                height: auto;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            "
-            >
-            <div
-                style="
-                background-color: #2d3748;
-                border-radius: 0.75rem;
-                border: 3px solid white;
-                box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
-                width: 300px;
-                padding: 1.5rem;
-                backdrop-filter: blur(10px);
-                border-top-right-radius: 150px;
-                "
-            >
-                <h1 style="font-weight: bold; font-size: 1.5rem; padding-bottom: 1.25rem;">
+            <div>
+            <div>
+                <h1> 
                 Dear ${user.fullName}
                 </h1>
                 <p>
                 We're excited to have you join us. To complete your registration, please
                 click on the link below to verify your email address:
                 </p>
-                <div
-                style="
-                    width: 100%;
-                    padding: 0.5rem;
-                    margin: 1rem 0;
-                    border: 1px solid white;
-                    border-radius: 0.375rem;
-                "
-                >
-                <h4 style="cursor: pointer;">${confirmationLink}</h4>
+                <div>
+                <h4> confirmationLink}</h4>
                 </div>
                 <p>
                 Once verified, you'll have access to all of our amazing features.
                 </p>
                 <p>
-                <span style="font-weight: bold;">Thanks</span> for joining our showroom,
+                <span>Thanks</span> for joining our showroom,
                 as well as our community.
                 </p>
-                <div style="width: 100%; display: flex; justify-content: center;">
-                    
+                <div>
                 </div>
             </div>
             </div>
@@ -452,7 +426,7 @@ export const sendConfirmationToken = async (req, res) => {
 
 		await transporter.sendMail(mailOptions);
 
-		res.status(200).json({ message: "Confirmation email sent" });
+		res.status(200).json({ message: "Confirmation email sent", email });
 	} catch (error) {
 		res.status(500).json({ message: "Internal server error" });
 	}
