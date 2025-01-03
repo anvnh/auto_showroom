@@ -18,9 +18,9 @@ import cors from "cors";
 dotenv.config();
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const app = express();
@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true })); // to parse form data(urlencode
 app.use(cookieParser()); // to parse cookies
 
 app.get("/", (req, res) => {
-  res.json("AAP api");
+    res.json("AAP api");
 });
 
 app.use("/api/auth", authRoutes); // auth routes
@@ -47,6 +47,6 @@ app.use("/api/vouchers", voucherRoutes); // voucher routes
 app.use("/api/order", orderRoutes); // order routes
 
 app.listen(5000, () => {
-  console.log(`Server is running on port ${PORT}`);
-  connectMongoDB();
+    console.log(`Server is running on port ${PORT}`);
+    connectMongoDB();
 });

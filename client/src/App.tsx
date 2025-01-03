@@ -57,6 +57,7 @@ const App = () => {
         retry: false,
     });
 
+    // TODO: Fix this
 
     const { pathname } = useLocation();
 
@@ -65,6 +66,7 @@ const App = () => {
     }, [pathname]);
 
 
+    // TODO: Fix this
     if (isLoading) {
         return (
             <div className='h-screen flex justify-center items-center'>
