@@ -1,15 +1,29 @@
 import { Link } from "react-router-dom";
-import { MdAddShoppingCart, MdArrowOutward, MdShoppingCart } from "react-icons/md";
+import { MdAddShoppingCart, MdArrowOutward } from "react-icons/md";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import { CiBookmark } from "react-icons/ci";
+
 import { RiSpeedUpFill } from "react-icons/ri";
 import { FaCogs, FaGasPump } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+
 import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "@/components/social/ui/common/LoadingSpinner";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+interface Product {
+	_id: string;
+	images: string[];
+	brand: string;
+	car_model: string;
+	bio: string;
+	price: number;
+	rating?: number;
+	top_speed: number;
+	fuel_type: string;
+	transmission: string;
+}
+
 const Cars = () => {
 
 	useEffect(() => {
@@ -21,10 +35,10 @@ const Cars = () => {
 			anchorPlacement: "top-center",
 		});
 	}, []);
-	const [loadingProductId, setLoadingProductId] = useState(null);
+	const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
 
-	const {mutate: addToCart, isPending,} = useMutation({
-		mutationFn: async (productId) => {
+	const {mutate: addToCart} = useMutation({
+		mutationFn: async (productId: string) => {
 			try {
 				const response = await fetch(`/api/user/add/cart/${productId}`, {
 					method: "POST",
@@ -37,7 +51,7 @@ const Cars = () => {
 
 				return data;
 			} catch (error) {
-				throw new Error(error);
+				throw new Error(error instanceof Error ? error.message : String(error));
 			}
 		},
 		onSuccess: () => {
@@ -74,12 +88,12 @@ const Cars = () => {
 
 				return data;
 			} catch (error) {
-				throw new Error(error);
+				throw new Error(error instanceof Error ? error.message : String(error));
 			}
 		},
 	});
 
-	const handleAddToCart = (productId) => {
+	const handleAddToCart = (productId: string) => {
 		setLoadingProductId(productId);
 		addToCart(productId);
 	}
@@ -110,7 +124,7 @@ const Cars = () => {
                         {!isLoading &&
                             !isRefetching &&
                             products &&
-                            products.map((product) => (
+                            products.map((product: Product) => (
                                 <div
                                     data-aos="fade-left"
                                     key={product._id}

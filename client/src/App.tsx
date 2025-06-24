@@ -1,40 +1,48 @@
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import RootLayout from './_root/RootLayout';
-import UserLayout from './_owners/UserLayout';
-import { Audi_A5_Couple, Audi_A5_Sportback } from "./_car/audi/audi_A5"
-
-import HomePage from '@/_social/pages/home/HomePage';
-import SignUpPage from '@/_social/./pages/auth/signup/SignUpPage';
-import LoginPage from '@/_social/pages/auth/login/LoginPage';
-import Sidebar from '@/components/social/ui/common/Sidebar';
-import RightPanel from './components/social/ui/common/RightPanel';
-import NotificationPage from '@/_social/./pages/notification/NotificationPage';
-import ProfilePage from '@/_social/./pages/profile/ProfilePage';
-import Following from '@/_social/./pages/profile/Following';
-import Followers from '@/_social/pages/profile/Followers';
-import PostDetailed from '@/_social/pages/post/PostDetailed';
-import ProductViewLayout from './_shop/ProductViewLayout';
-
-import { ProductLayout1, ProductLayout2, ProductLayout3, ProductLayout4, ProductLayout5, ProductLayout6 } from './_productpage/layout/';
+import { Suspense, lazy, useEffect } from "react";
 import { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from './components/social/ui/common/LoadingSpinner';
-import ShopLayout from './_shop/ShopLayout';
-import React, { useEffect } from "react";
-import AllProductViewLayout from './_shop/AllProductViewLayout';
-import AdminBrandLayout from './_admin/AdminBrandLayout';
-import CartLayout from './_shop/CartLayout';
-import ConfirmationLayout from './_auth/ConfirmationLayout';
-import TokenConfirmation from './_auth/TokenConfirmation';
-import PaymentLayout from './_shop/PaymentLayout';
-import NotAuthenticated from './_auth/NotAuthenticated';
 
-import Voucherlayout from './_shop/voucher/VoucherLayout';
-import PaymentLayoutBuyNow from './_shop/buynow/PaymentLayoutBuyNow';
+// Lazy load các components
+const RootLayout = lazy(() => import('./_root/RootLayout'));
+const UserLayout = lazy(() => import('./_owners/UserLayout'));
+const Audi_A5_Couple = lazy(() => import('./_car/audi/audi_A5').then(module => ({ default: module.Audi_A5_Couple })));
+const Audi_A5_Sportback = lazy(() => import('./_car/audi/audi_A5').then(module => ({ default: module.Audi_A5_Sportback })));
 
-import { AboutUs } from './_aboutUs';
-import NotFound from './_auth/NotFound';
-import OrderLayout from './_shop/Order/OrderLayout';
+const HomePage = lazy(() => import('@/_social/pages/home/HomePage'));
+const SignUpPage = lazy(() => import('@/_social/./pages/auth/signup/SignUpPage'));
+const LoginPage = lazy(() => import('@/_social/pages/auth/login/LoginPage'));
+const Sidebar = lazy(() => import('@/components/social/ui/common/Sidebar'));
+const RightPanel = lazy(() => import('./components/social/ui/common/RightPanel'));
+const NotificationPage = lazy(() => import('@/_social/./pages/notification/NotificationPage'));
+const ProfilePage = lazy(() => import('@/_social/./pages/profile/ProfilePage'));
+const Following = lazy(() => import('@/_social/./pages/profile/Following'));
+const Followers = lazy(() => import('@/_social/pages/profile/Followers'));
+const PostDetailed = lazy(() => import('@/_social/pages/post/PostDetailed'));
+const ProductViewLayout = lazy(() => import('./_shop/ProductViewLayout'));
+
+const ProductLayout1 = lazy(() => import('./_productpage/layout/').then(module => ({ default: module.ProductLayout1 })));
+const ProductLayout2 = lazy(() => import('./_productpage/layout/').then(module => ({ default: module.ProductLayout2 })));
+const ProductLayout3 = lazy(() => import('./_productpage/layout/').then(module => ({ default: module.ProductLayout3 })));
+const ProductLayout4 = lazy(() => import('./_productpage/layout/').then(module => ({ default: module.ProductLayout4 })));
+const ProductLayout5 = lazy(() => import('./_productpage/layout/').then(module => ({ default: module.ProductLayout5 })));
+const ProductLayout6 = lazy(() => import('./_productpage/layout/').then(module => ({ default: module.ProductLayout6 })));
+
+const ShopLayout = lazy(() => import('./_shop/ShopLayout'));
+const AllProductViewLayout = lazy(() => import('./_shop/AllProductViewLayout'));
+const AdminBrandLayout = lazy(() => import('./_admin/AdminBrandLayout'));
+const CartLayout = lazy(() => import('./_shop/CartLayout'));
+const ConfirmationLayout = lazy(() => import('./_auth/ConfirmationLayout'));
+const TokenConfirmation = lazy(() => import('./_auth/TokenConfirmation'));
+const PaymentLayout = lazy(() => import('./_shop/PaymentLayout'));
+const NotAuthenticated = lazy(() => import('./_auth/NotAuthenticated'));
+const Voucherlayout = lazy(() => import('./_shop/voucher/VoucherLayout'));
+const PaymentLayoutBuyNow = lazy(() => import('./_shop/buynow/PaymentLayoutBuyNow'));
+const AboutUs = lazy(() => import('./_aboutUs').then(module => ({ default: module.AboutUs })));
+const NotFound = lazy(() => import('./_auth/NotFound'));
+const OrderLayout = lazy(() => import('./_shop/Order/OrderLayout'));
+
 const App = () => {
     const location = useLocation();
     const isSocialRoute = location.pathname.startsWith('/social');
@@ -48,16 +56,14 @@ const App = () => {
                 if (!res.ok) {
                     throw new Error(data.message || 'Something went wrong');
                 }
-                // console.log("authUser is here: ", data);
                 return data;
             } catch (error) {
                 throw new Error(error.message);
             }
         },
         retry: false,
+        staleTime: 5 * 60 * 1000, // Cache user data for 5 minutes
     });
-
-    // TODO: Fix this
 
     const { pathname } = useLocation();
 
@@ -65,8 +71,6 @@ const App = () => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
-
-    // TODO: Fix this
     if (isLoading) {
         return (
             <div className='h-screen flex justify-center items-center'>
@@ -74,12 +78,20 @@ const App = () => {
             </div>
         );
     }
-    return (
-        <>
-            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'md:max-w-[80%] max-w-[90%] mx-auto') : 'h-screen'}`}>
-                {location.pathname.startsWith('/social') && authUser && <Sidebar />}
-                <Routes>
 
+    return (
+        <Suspense fallback={
+            <div className='h-screen flex justify-center items-center'>
+                <LoadingSpinner size='lg' />
+            </div>
+        }>
+            <main className={`flex ${isSocialRoute ? (!authUser ? 'w-full' : 'md:max-w-[80%] max-w-[90%] mx-auto') : 'h-screen'}`}>
+                {location.pathname.startsWith('/social') && authUser && (
+                    <Suspense fallback={<div className="w-64 bg-gray-200 animate-pulse" />}>
+                        <Sidebar />
+                    </Suspense>
+                )}
+                <Routes>
                     {/* Confirmation email */}
                     <Route path="/verified/:token" element={<TokenConfirmation />} />
 
@@ -96,7 +108,6 @@ const App = () => {
                     <Route path="/Audi-R8-coupe-2022" element={<ProductLayout4 />} />
                     <Route path="/Roll-Royce-Phantom" element={<ProductLayout5 />} />
                     <Route path="/Audi-e-tron-GT-2024" element={<ProductLayout6 />} />
-                    {/* owners */}
 
                     <Route path="/social" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
                     <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/social" />} />
@@ -109,30 +120,28 @@ const App = () => {
                     <Route path="/social/profile/followers/:id" element={authUser ? <Followers /> : <Navigate to="/login" />} />
 
                     <Route path="/shop" element={<ShopLayout />} />
-
                     <Route path="/shop/product" element={<AllProductViewLayout />} />
-
                     <Route path="/shop/product/:id" element={<ProductViewLayout />} />
                     <Route path="/shop/cart" element={authUser ? <CartLayout isLogin={Number(true)} /> : <CartLayout isLogin={false} />} />
 
                     <Route path="/admin" element={authUser && authUser.isAdmin ? <AdminBrandLayout /> : <NotAuthenticated />} />
-
                     <Route path="/social/account/confirmation" element={authUser ? <ConfirmationLayout /> : <Navigate to="/login" />} />
-
                     <Route path="/shop/payment" element={authUser ? <PaymentLayout /> : <Navigate to="/login" />} />
-                    <Route path="/shop/payment/:id" element={<PaymentLayoutBuyNow /> } />
+                    <Route path="/shop/payment/:id" element={<PaymentLayoutBuyNow />} />
 
                     <Route path="/about-us" element={<AboutUs />} />
-
                     <Route path="/voucher" element={<Voucherlayout />} />
                     <Route path="/order" element={<OrderLayout />} />
                     <Route path="*" element={<NotFound />} />
-
                 </Routes>
-                {location.pathname.startsWith('/social') && authUser && <RightPanel />}
+                {location.pathname.startsWith('/social') && authUser && (
+                    <Suspense fallback={<div className="w-80 bg-gray-200 animate-pulse" />}>
+                        <RightPanel />
+                    </Suspense>
+                )}
                 {location.pathname.startsWith('/social') && <Toaster />}
             </main>
-        </>
+        </Suspense>
     )
 }
 

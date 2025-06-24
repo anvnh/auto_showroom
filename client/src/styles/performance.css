@@ -1,0 +1,185 @@
+/* Performance optimizations */
+
+/* Sử dụng will-change cho các elements sẽ được animated */
+.will-change-transform {
+	will-change: transform;
+}
+
+.will-change-opacity {
+	will-change: opacity;
+}
+
+.will-change-scroll {
+	will-change: scroll-position;
+}
+
+/* Tối ưu hóa cho GPU acceleration */
+.gpu-accelerated {
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+/* Tối ưu hóa scroll performance */
+.smooth-scroll {
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Tối ưu hóa image rendering */
+.optimized-image {
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: optimize-contrast;
+	image-rendering: crisp-edges;
+}
+
+/* Container queries cho responsive design hiệu quả hơn */
+.container-responsive {
+	container-type: inline-size;
+}
+
+/* Tối ưu hóa animations */
+.efficient-animation {
+	animation-fill-mode: both;
+	animation-play-state: paused;
+}
+
+.efficient-animation.running {
+	animation-play-state: running;
+}
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* Optimized grid layouts */
+.optimized-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1rem;
+	contain: layout style;
+}
+
+/* CSS containment for better performance */
+.contain-layout {
+	contain: layout;
+}
+
+.contain-style {
+	contain: style;
+}
+
+.contain-paint {
+	contain: paint;
+}
+
+.contain-size {
+	contain: size;
+}
+
+.contain-strict {
+	contain: strict;
+}
+
+/* Optimized transitions */
+.optimized-transition {
+	transition-property: transform, opacity;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efficient hover effects */
+.efficient-hover {
+	transition: transform 0.2s ease-out;
+}
+
+.efficient-hover:hover {
+	transform: scale(1.05);
+}
+
+/* Loading states */
+.skeleton-loading {
+	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+	background-size: 200% 100%;
+	animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+/* Efficient lazy loading placeholder */
+.lazy-placeholder {
+	background-color: #f0f0f0;
+	background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0e0' fill-opacity='0.4'%3E%3Cpath d='m0 40 40-40h-40z'/%3E%3C/g%3E%3C/svg%3E");
+	background-repeat: repeat;
+	background-size: 40px 40px;
+}
+
+/* Performance-optimized shadows */
+.efficient-shadow {
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.efficient-shadow-lg {
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Optimized focus states */
+.optimized-focus:focus {
+	outline: 2px solid #3b82f6;
+	outline-offset: 2px;
+}
+
+.optimized-focus:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* Efficient text rendering */
+.optimized-text {
+	text-rendering: optimizeSpeed;
+	font-display: swap;
+}
+
+/* High-quality text for headings */
+.quality-text {
+	text-rendering: optimizeLegibility;
+	font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Optimized scrollbars */
+.optimized-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.optimized-scrollbar::-webkit-scrollbar {
+	width: 8px;
+}
+
+.optimized-scrollbar::-webkit-scrollbar-track {
+	background: #f7fafc;
+}
+
+.optimized-scrollbar::-webkit-scrollbar-thumb {
+	background: #cbd5e0;
+	border-radius: 4px;
+}
+
+.optimized-scrollbar::-webkit-scrollbar-thumb:hover {
+	background: #a0aec0;
+}

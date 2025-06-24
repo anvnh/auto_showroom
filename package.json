@@ -3,13 +3,15 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "nodemon server/server.js",
-        "start": "node server/server.js",
-        "build": "npm i && npm install --prefix client && npm install --prefix server && npm run build --prefix client",
-        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-        "preview": "vite preview"
+        "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+        "start": "node server/index.js",
+        "build": "npm install --prefix client && npm install --prefix server && npm run build --prefix client",
+        "lint": "npm run lint --prefix client",
+        "preview": "npm run preview --prefix client",
+        "vercel-build": "npm run build --prefix client"
     },
     "dependencies": {
+        "concurrently": "^8.2.2",
         "nodemon": "^3.1.4",
         "socket.io": "^4.7.5",
         "socket.io-client": "^4.7.5"
