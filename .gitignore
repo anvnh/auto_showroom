@@ -24,5 +24,8 @@ dist-ssr
 *.sw?
 ai_server
 
-# Environment files
+# Environment files — NEVER commit secrets!
 .env
+.env.*
+!.env.example
+!.env.sample

@@ -69,7 +69,7 @@ export const useWebVitals = () => {
               console.log('LCP:', entry.startTime);
               break;
             case 'first-input':
-              console.log('FID:', entry.processingStart - entry.startTime);
+              console.log('FID:', (entry as PerformanceEventTiming).processingStart - entry.startTime);
               break;
             case 'layout-shift':
               if (!(entry as any).hadRecentInput) {

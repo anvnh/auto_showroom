@@ -31,11 +31,33 @@ cloudinary.config({
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS configuration for Vercel
+// CORS configuration — supports Vercel, S3, CloudFront, custom domain
+const allowedOrigins = [
+    // Local dev
+    'http://localhost:3000',
+    'http://localhost:5173',
+    // Custom domain (nếu có)
+    'https://aapvietnam.online',
+    'https://www.aapvietnam.online',
+    // S3 static website (thay YOUR_BUCKET_NAME và REGION)
+    process.env.CLIENT_URL,               // ← set biến này trên EC2
+    process.env.CLOUDFRONT_URL,           // ← nếu dùng CloudFront
+].filter(Boolean); // Xóa undefined
+
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-        ? ['https://aapvietnam.online', 'https://www.aapvietnam.online', process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '']
-        : ['http://localhost:3000', 'http://localhost:5173'],
+    origin: (origin, callback) => {
+        // Cho phép requests không có origin (mobile app, Postman, curl)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.includes(origin) || 
+            /\.s3-website[-\.].+\.amazonaws\.com$/.test(origin) ||
+            /\.cloudfront\.net$/.test(origin)) {
+            callback(null, true);
+        } else {
+            console.warn(`CORS blocked: ${origin}`);
+            callback(new Error(`CORS policy: ${origin} not allowed`));
+        }
+    },
     credentials: true,
     optionsSuccessStatus: 200
 }));
