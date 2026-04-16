@@ -13,6 +13,7 @@ export const getAllCar = async (req, res) => {
         res.status(200).json(cars);
     } catch (error) {
         console.log("Error in login controller", error.message);
+        console.error("LỖI RỒI BỐ TUẤN ANH ƠI: ", error); // Nhét cái dòng này vào!
         res.status(500).json({ error: "Something went wrong" });
     }
 };
