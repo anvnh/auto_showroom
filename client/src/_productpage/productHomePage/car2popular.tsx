@@ -20,7 +20,6 @@ import {
 	merr12,
 	sky,
 	logomer,
-	video2,
 	changecolor2
 } from "../../assets";
 import { close_icon } from "@/assets/homepage";
@@ -143,15 +142,15 @@ const Car2popular = () => {
 					id="Home"
 			className="bg-cover bg-center relative pb-20 md:pb-0"
 				>
-					<video
-						autoPlay
-						muted
-						loop
-						playsInline
-						className="w-full h-auto"
-					>
-						<source src={video2} type="video/mp4" />
-					</video>
+					<div className="w-full relative aspect-video pointer-events-none">
+						<iframe
+							className="w-full h-full absolute top-0 left-0"
+							src="https://www.youtube.com/embed/o0u8MO9yT3g?autoplay=1&mute=1&loop=1&playlist=o0u8MO9yT3g&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+							title="Maybach Background Video"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowFullScreen
+						></iframe>
+					</div>
 					<div
 						className="overlay absolute inset-x-0 bottom-0 h-1/4"
 						style={{
