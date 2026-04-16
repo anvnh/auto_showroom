@@ -1,8 +1,8 @@
-export const formatPostDate = (createdAt) => {
+export const formatPostDate = (createdAt: string) => {
     const currentDate = new Date();
     const createdAtDate = new Date(createdAt);
 
-    const timeDifferenceInSeconds = Math.floor((currentDate - createdAtDate) / 1000);
+    const timeDifferenceInSeconds = Math.floor((currentDate.getTime() - createdAtDate.getTime()) / 1000);
     const timeDifferenceInMinutes = Math.floor(timeDifferenceInSeconds / 60);
     const timeDifferenceInHours = Math.floor(timeDifferenceInMinutes / 60);
     const timeDifferenceInDays = Math.floor(timeDifferenceInHours / 24);
@@ -20,7 +20,7 @@ export const formatPostDate = (createdAt) => {
     }
 };
 
-export const formatMemberSinceDate = (createdAt) => {
+export const formatMemberSinceDate = (createdAt: string) => {
     const date = new Date(createdAt);
     const months = [
         "January",

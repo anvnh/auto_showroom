@@ -4,11 +4,15 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
 	plugins: [react()],
+
+	base: "/", // bắt buộc cho EC2, tránh asset 404
+
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
 		},
 	},
+
 	server: {
 		proxy: {
 			"/api": {
@@ -17,43 +21,39 @@ export default defineConfig({
 			},
 		},
 	},
+
 	build: {
 		outDir: "../dist",
-		// Tối ưu hóa cho production
+		minify: "esbuild",
+		assetsInlineLimit: 4096,
+		sourcemap: false,
 		rollupOptions: {
 			output: {
-				// Tách code thành chunks nhỏ hơn
 				manualChunks: {
-					vendor: ['react', 'react-dom'],
-					ui: ['@radix-ui/react-dialog', '@radix-ui/react-select', '@radix-ui/react-toast'],
-					three: ['three', '@react-three/fiber', '@react-three/drei'],
-					animation: ['framer-motion', 'gsap', 'aos'],
-					charts: ['recharts'],
-					icons: ['react-icons', 'lucide-react'],
+					vendor: ["react", "react-dom"],
+					ui: ["@radix-ui/react-dialog", "@radix-ui/react-select", "@radix-ui/react-toast"],
+					three: ["three", "@react-three/fiber", "@react-three/drei"],
+					animation: ["framer-motion", "gsap", "aos"],
+					charts: ["recharts"],
+					icons: ["react-icons", "lucide-react"],
 				},
 			},
 		},
-		// Giảm kích thước bundle
-		minify: 'esbuild',
-		// Tối ưu hóa assets
-		assetsInlineLimit: 4096,
-		// Sử dụng sourcemap nhẹ hơn trong production
-		sourcemap: false,
 	},
-	// Tối ưu hóa dependencies
+
+	// Tối ưu hóa dependencies — three chuyển vào include để tránh conflict với manualChunks
 	optimizeDeps: {
 		include: [
-			'react',
-			'react-dom',
-			'react-router-dom',
-			'@tanstack/react-query',
-			'framer-motion',
+			"react",
+			"react-dom",
+			"react-router-dom",
+			"@tanstack/react-query",
+			"framer-motion",
+			"three", // chuyển từ exclude → include
 		],
-		exclude: ['three'],
 	},
-	// Cải thiện hiệu xuất dev server
+
 	esbuild: {
-		target: 'es2020',
+		target: "es2020",
 	},
 });
-

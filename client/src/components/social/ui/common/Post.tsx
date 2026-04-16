@@ -24,9 +24,9 @@ const Post = ({ post }) => {
 
     const postId = post._id;
 
-	const isLiked = post.likes.includes(authUser._id);
+	const isLiked = post.likes.includes((authUser as any)?._id);
 
-	const isMyPost = authUser._id === post.user._id;
+	const isMyPost = (authUser as any)?._id === post.user._id;
 
 	const formattedDate = formatPostDate(post.createdAt);
 
@@ -47,8 +47,8 @@ const Post = ({ post }) => {
                 }
 
                 return data;
-            } catch (error) {
-                throw new Error(error);
+            } catch (err) {
+                throw new Error(err instanceof Error ? err.message : String(err));
             }
         },
         onSuccess: () => {
@@ -102,8 +102,8 @@ const Post = ({ post }) => {
 					throw new Error(data.error || "Something went wrong");
 				}
 				return data;
-			} catch(error) {
-				throw new Error(error);
+			} catch(err) {
+				throw new Error(err instanceof Error ? err.message : String(err));
 			}
 		},
 		onSuccess : (updatedLikes) => {
@@ -112,8 +112,8 @@ const Post = ({ post }) => {
 			// This is not the best way to do it, but it works. Bc it will refetch all posts
 			// queryClient.invalidateQueries({queryKey: ["posts"]});
 			// instead, we can update the post object in the cache
-			queryClient.setQueryData(["posts"], (oldData) => {
-				return oldData.map(p => {
+			queryClient.setQueryData(["posts"], (oldData: any) => {
+				return (oldData as any[]).map(p => {
 					if(p._id === post._id) {
 						return {...p, likes: updatedLikes};
 					}
@@ -145,8 +145,8 @@ const Post = ({ post }) => {
 
 				return data;
 
-			} catch {
-				throw new Error(error);
+			} catch (err) {
+				throw new Error(err instanceof Error ? err.message : String(err));
 			}
 		},
 		onSuccess: (updatedComments) => {
@@ -180,8 +180,8 @@ const Post = ({ post }) => {
                 }
 
                 return data;
-            } catch (error) {
-                throw new Error(error);
+            } catch (err) {
+                throw new Error(err instanceof Error ? err.message : String(err));
             }
         },
         onSuccess: () => {
@@ -320,7 +320,7 @@ const Post = ({ post }) => {
 														@{repost.user.username} 
 													</Link>
 												</div>
-												{repost.user._id === authUser._id && (
+												{repost.user._id === (authUser as any)?._id && (
                                                     <>
                                                         {isDeletingRepost ? (
                                                             <div>
@@ -347,10 +347,9 @@ const Post = ({ post }) => {
 							<div
 								className="flex gap-1 items-center cursor-pointer group"
 								onClick={() =>
-									document
-										.getElementById(
+											(document.getElementById(
 											"comments_modal" + post._id
-										)
+										) as HTMLDialogElement)
 										.showModal()
 								}
 							>
@@ -455,7 +454,7 @@ const Post = ({ post }) => {
 													post.reposts.some(
 														(repost) =>
 															repost.user._id ===
-															authUser._id
+															(authUser as any)?._id
 													)
 														? "text-green-500"
 														: "text-slate-500"

@@ -3,7 +3,12 @@ import { PerspectiveCamera, OrbitControls } from "@react-three/drei"
 import { Environment } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
 import * as THREE from "three"
-const View = ({ sendDataToParent }) => {
+
+interface ViewProps {
+    sendDataToParent?: (value: number) => void;
+}
+
+const View = ({ sendDataToParent }: ViewProps) => {
     const { scene, size, gl, camera } = useThree()
 
     const [aspect, setAspect] = useState(size.width / size.height)
@@ -18,8 +23,11 @@ const View = ({ sendDataToParent }) => {
     useEffect(() => {
         // Tự động cập nhật aspect ratio khi size thay đổi
         const newAspect = size.width / size.height;
-        camera.aspect = newAspect;
-        camera.updateProjectionMatrix();
+        const perspCamera = camera as THREE.PerspectiveCamera;
+        if ('aspect' in perspCamera) {
+            perspCamera.aspect = newAspect;
+            perspCamera.updateProjectionMatrix();
+        }
 
         gl.setClearColor("#e1e6e2")  // set bg-color
 
