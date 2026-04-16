@@ -1,5 +1,6 @@
-import supra from "./supra.mp4"
+// import supra from "./supra.mp4"
 
 export{
-     supra
+    // supra
+}
 }
