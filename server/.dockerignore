@@ -1,0 +1,12 @@
+node_modules
+server/node_modules
+client
+.git
+.gitignore
+.env
+.env.*
+npm-debug.log
+.DS_Store
+*.pem
+*.key
+*.crt

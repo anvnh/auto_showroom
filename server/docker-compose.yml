@@ -1,0 +1,13 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: group2-car-api
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    volumes:
+      - /opt/group2-car/auto_showroom/server/global-bundle.pem:/opt/docdb/global-bundle.pem:ro
